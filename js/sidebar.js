@@ -10,12 +10,14 @@ var Sidebar = function() {
         $('.toc-toggle').click();
     });
 
-    $('main').on('swiperight', function() {
-        $('.row-offcanvas').removeClass('active');
-    });
+    $(document).on('pageinit', function(event) {
+        $('main').on('swiperight', function() {
+            $('.row-offcanvas').removeClass('active');
+        });
 
-    $('main').on('swipeleft', function() {
-        $('.row-offcanvas').addClass('active');
+        $('main').on('swipeleft', function() {
+            $('.row-offcanvas').addClass('active');
+        });
     });
 
     var self = this;
