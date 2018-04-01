@@ -3,21 +3,12 @@ var Sidebar = function() {
     this.initVersionLinks();
 
     $('[data-toggle="offcanvas"]').click(function () {
-        $('.row-offcanvas').toggleClass('active');
+        $('.row-offcanvas').toggleClass('active')
+        $('.sidebar').toggle();
     });
 
     $('.toc-item').on('click', function() {
         $('.toc-toggle').click();
-    });
-
-    $(document).on('pageinit', function(event) {
-        $('main').on('swiperight', function() {
-            $('.row-offcanvas').removeClass('active');
-        });
-
-        $('main').on('swipeleft', function() {
-            $('.row-offcanvas').addClass('active');
-        });
     });
 
     var self = this;
