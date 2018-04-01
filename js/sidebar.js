@@ -3,19 +3,19 @@ var Sidebar = function() {
     this.initVersionLinks();
 
     $('[data-toggle="offcanvas"]').click(function () {
-        $('.row-offcanvas').toggleClass('active')
+        $('.row-offcanvas').toggleClass('active');
     });
 
     $('.toc-item').on('click', function() {
         $('.toc-toggle').click();
     });
 
-    $('.container-fluid').on('swiperight', function() {
-        $('.toc-toggle').click();
+    $('body').on('swiperight', function() {
+        $('.row-offcanvas').removeClass('active');
     });
 
-    $('.container-fluid').on('swipeleft', function() {
-        $('.toc-toggle').click();
+    $('body').on('swipeleft', function() {
+        $('.row-offcanvas').addClass('active');
     });
 
     var self = this;
