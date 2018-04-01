@@ -10,11 +10,11 @@ var Sidebar = function() {
         $('.toc-toggle').click();
     });
 
-    $('body').on('swiperight', function() {
+    $('main').on('swiperight', function() {
         $('.row-offcanvas').removeClass('active');
     });
 
-    $('body').on('swipeleft', function() {
+    $('main').on('swipeleft', function() {
         $('.row-offcanvas').addClass('active');
     });
 
