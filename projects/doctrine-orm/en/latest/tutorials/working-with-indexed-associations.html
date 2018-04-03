@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Working with Indexed Associations - Doctrine - PHP Database Tools</title>
+
+        <meta charset="utf-8">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+                    <meta name="robots" content="noindex, follow">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+
+        <link href="https://staging.doctrine-project.org/css/style.css?46e2ef" rel="stylesheet" type="text/css" />
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://staging.doctrine-project.org/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://staging.doctrine-project.org/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://staging.doctrine-project.org/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://staging.doctrine-project.org/images/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://staging.doctrine-project.org/images/apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://staging.doctrine-project.org/images/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://staging.doctrine-project.org/images/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://staging.doctrine-project.org/images/apple-touch-icon-152x152.png" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-128.png" sizes="128x128" />
+        <meta name="application-name" content="Doctrine"/>
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="https://staging.doctrine-project.org/images/mstile-144x144.png" />
+        <meta name="msapplication-square70x70logo" content="https://staging.doctrine-project.org/images/mstile-70x70.png" />
+        <meta name="msapplication-square150x150logo" content="https://staging.doctrine-project.org/images/mstile-150x150.png" />
+        <meta name="msapplication-wide310x150logo" content="https://staging.doctrine-project.org/images/mstile-310x150.png" />
+        <meta name="msapplication-square310x310logo" content="https://staging.doctrine-project.org/images/mstile-310x310.png" />
+
+        <link rel="stylesheet" href="https://staging.doctrine-project.org/components/highlightjs/styles/railscasts.css?b4f8ae" />
+        <link rel="alternate" type="application/atom+xml" href="https://staging.doctrine-project.org/atom.xml" title="Doctrine activity feed" />
+
+        
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
+    </head>
+    <body>
+                    <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark flex-md-nowrap">
+                <a class="navbar-brand text-hide" href="https://staging.doctrine-project.org/"><img src="https://staging.doctrine-project.org/images/doctrine-logo.svg?335f0f" />Doctrine</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/projects/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Projects
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/annotations/">Annotations</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/cache/">Cache</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/collections/">Collections</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/common/">Common</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/couchdb-odm/">CouchDB ODM</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/dbal/">DBAL</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/inflector/">Inflector</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/lexer/">Lexer</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/migrations/">Migrations</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/mongodb/">MongoDB</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/mongodb-odm/">MongoDB ODM</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/orientdb-odm/">OrientDB ODM</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/orm/">ORM</a>
+                                                                    <a class="dropdown-item" href="https://staging.doctrine-project.org/projects/phpcr-odm/">PHPCR ODM</a>
+                                                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://staging.doctrine-project.org/contribute/">Contribute</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://staging.doctrine-project.org/community/">Community</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://staging.doctrine-project.org/blog/">Blog</a>
+                        </li>
+                    </ul>
+
+                    <form id="header-search" class="form-inline my-2 my-lg-0" action="https://staging.doctrine-project.org/search/">
+                        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+        
+            <div class="container-fluid">
+        <div class="row row-offcanvas row-offcanvas-right">
+                            <nav class="col-md-3 d-sm-block bg-light sidebar sidebar-offcanvas" id="sidebar">
+                    <div class="sidebar-sticky">
+                        
+<div class="toc"><ul><li id="composite-primary-keys-html-title-1" class="toc-item"><a href="composite-primary-keys.html#title.1">Composite and Foreign Keys as Primary Key</a></li><ul><li id="composite-primary-keys-html-title-1-1" class="toc-item"><a href="composite-primary-keys.html#title.1.1">General Considerations</a></li><li id="composite-primary-keys-html-title-1-2" class="toc-item"><a href="composite-primary-keys.html#title.1.2">Primitive Types only</a></li><li id="composite-primary-keys-html-title-1-3" class="toc-item"><a href="composite-primary-keys.html#title.1.3">Identity through foreign Entities</a></li><li id="composite-primary-keys-html-title-1-4" class="toc-item"><a href="composite-primary-keys.html#title.1.4">Use-Case 1: Dynamic Attributes</a></li><li id="composite-primary-keys-html-title-1-5" class="toc-item"><a href="composite-primary-keys.html#title.1.5">Use-Case 2: Simple Derived Identity</a></li><li id="composite-primary-keys-html-title-1-6" class="toc-item"><a href="composite-primary-keys.html#title.1.6">Use-Case 3: Join-Table with Metadata</a></li><li id="composite-primary-keys-html-title-1-7" class="toc-item"><a href="composite-primary-keys.html#title.1.7">Performance Considerations</a></li></ul><li id="embeddables-html-title-1" class="toc-item"><a href="embeddables.html#title.1">Separating Concerns using Embeddables</a></li><li id="embeddables-html-title-2" class="toc-item"><a href="embeddables.html#title.2">Initializing embeddables</a></li><li id="embeddables-html-title-3" class="toc-item"><a href="embeddables.html#title.3">Column Prefixing</a></li><li id="embeddables-html-title-4" class="toc-item"><a href="embeddables.html#title.4">DQL</a></li><li id="extra-lazy-associations-html-title-1" class="toc-item"><a href="extra-lazy-associations.html#title.1">Extra Lazy Associations</a></li><ul><li id="extra-lazy-associations-html-title-1-1" class="toc-item"><a href="extra-lazy-associations.html#title.1.1">Enabling Extra-Lazy Associations</a></li></ul><li id="getting-started-database-html-title-1" class="toc-item"><a href="getting-started-database.html#title.1">Getting Started: Database First</a></li><li id="getting-started-models-html-title-1" class="toc-item"><a href="getting-started-models.html#title.1">Getting Started: Model First</a></li><li id="getting-started-html-title-1" class="toc-item"><a href="getting-started.html#title.1">Getting Started with Doctrine</a></li><ul><li id="getting-started-html-title-1-1" class="toc-item"><a href="getting-started.html#title.1.1">Guide Assumptions</a></li><li id="getting-started-html-title-1-2" class="toc-item"><a href="getting-started.html#title.1.2">What is Doctrine?</a></li><ul><li id="getting-started-html-title-1-2-1" class="toc-item"><a href="getting-started.html#title.1.2.1">What are Entities?</a></li></ul><li id="getting-started-html-title-1-3" class="toc-item"><a href="getting-started.html#title.1.3">An Example Model: Bug Tracker</a></li><li id="getting-started-html-title-1-4" class="toc-item"><a href="getting-started.html#title.1.4">Project Setup</a></li><li id="getting-started-html-title-1-5" class="toc-item"><a href="getting-started.html#title.1.5">Obtaining the EntityManager</a></li><li id="getting-started-html-title-1-6" class="toc-item"><a href="getting-started.html#title.1.6">Generating the Database Schema</a></li><li id="getting-started-html-title-1-7" class="toc-item"><a href="getting-started.html#title.1.7">Starting with the Product Entity</a></li><ul><li id="getting-started-html-title-1-7-1" class="toc-item"><a href="getting-started.html#title.1.7.1">Adding behavior to Entities</a></li></ul><li id="getting-started-html-title-1-8" class="toc-item"><a href="getting-started.html#title.1.8">Adding Bug and User Entities</a></li><li id="getting-started-html-title-1-9" class="toc-item"><a href="getting-started.html#title.1.9">Implementing more Requirements</a></li><li id="getting-started-html-title-1-10" class="toc-item"><a href="getting-started.html#title.1.10">Queries for Application Use-Cases</a></li><ul><li id="getting-started-html-title-1-10-1" class="toc-item"><a href="getting-started.html#title.1.10.1">List of Bugs</a></li><li id="getting-started-html-title-1-10-2" class="toc-item"><a href="getting-started.html#title.1.10.2">Array Hydration of the Bug List</a></li><li id="getting-started-html-title-1-10-3" class="toc-item"><a href="getting-started.html#title.1.10.3">Find by Primary Key</a></li></ul><li id="getting-started-html-title-1-11" class="toc-item"><a href="getting-started.html#title.1.11">Dashboard of the User</a></li><li id="getting-started-html-title-1-12" class="toc-item"><a href="getting-started.html#title.1.12">Number of Bugs</a></li><li id="getting-started-html-title-1-13" class="toc-item"><a href="getting-started.html#title.1.13">Updating Entities</a></li><li id="getting-started-html-title-1-14" class="toc-item"><a href="getting-started.html#title.1.14">Entity Repositories</a></li><li id="getting-started-html-title-1-15" class="toc-item"><a href="getting-started.html#title.1.15">Conclusion</a></li></ul><li id="ordered-associations-html-title-1" class="toc-item"><a href="ordered-associations.html#title.1">Ordering To-Many Associations</a></li><li id="override-field-association-mappings-in-subclasses-html-title-1" class="toc-item"><a href="override-field-association-mappings-in-subclasses.html#title.1">Override Field Association Mappings In Subclasses</a></li><li id="pagination-html-title-1" class="toc-item"><a href="pagination.html#title.1">Pagination</a></li><li id="working-with-indexed-associations-html-title-1" class="toc-item"><a href="working-with-indexed-associations.html#title.1">Working with Indexed Associations</a></li><ul><li id="working-with-indexed-associations-html-title-1-1" class="toc-item"><a href="working-with-indexed-associations.html#title.1.1">Mapping Indexed Associations</a></li><li id="working-with-indexed-associations-html-title-1-2" class="toc-item"><a href="working-with-indexed-associations.html#title.1.2">Querying indexed associations</a></li><li id="working-with-indexed-associations-html-title-1-3" class="toc-item"><a href="working-with-indexed-associations.html#title.1.3">Outlook into the Future</a></li></ul></ul></div>
+                    </div>
+                </nav>
+            
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4">
+                <div class="row">
+                                                                
+                                        
+                                                                <nav class="breadcrumbs d-none d-sm-block d-md-block d-lg-block d-xl-block" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="https://staging.doctrine-project.org/projects/">Projects</a></li>
+                                <li class="breadcrumb-item"><a href="https://staging.doctrine-project.org/projects/orm/">ORM</a></li>
+                                <li class="breadcrumb-item"><a href="https://staging.doctrine-project.org/projects/doctrine-orm/en/latest/">Documentation</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Working with Indexed Associations</li>
+                            </ol>
+                        </nav>
+                                    </div>
+
+                <div class="row">
+                    <div class="col-12">
+                                                    <button type="button" class="btn btn-primary btn-sm float-right toc-toggle" data-toggle="offcanvas" id="toc-toggle">Table of Contents</button>
+
+                                                            <ul class="list-inline">
+                                                                            <li class="list-inline-item mr-0">
+                                            <a href="/projects/doctrine-orm/en/latest/tutorials/working-with-indexed-associations.html" class="project-version-switcher badge badge-warning">master</a>
+                                        </li>
+                                                                            <li class="list-inline-item mr-0">
+                                            <a href="/projects/doctrine-orm/en/2.6/tutorials/working-with-indexed-associations.html" class="project-version-switcher badge badge-secondary">2.6</a>
+                                        </li>
+                                                                            <li class="list-inline-item mr-0">
+                                            <a href="/projects/doctrine-orm/en/2.5/tutorials/working-with-indexed-associations.html" class="project-version-switcher badge badge-secondary">2.5</a>
+                                        </li>
+                                    
+                                    
+                                    <li class="list-inline-item ml-2"><a href="https://github.com/doctrine/doctrine2/edit/master/docs/en/tutorials/working-with-indexed-associations.rst" class="badge badge-primary">Edit</a></li>
+
+                                </ul>
+                            
+                            
+<a class="section-anchor" id="title.1" name="title.1"></a><h1 class="section-header"><a href="#title.1">Working with Indexed Associations<i class="fas fa-link"></i></a></h1>
+<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>This feature is available from version 2.1 of Doctrine.</p>
+</div>
+<p>Doctrine 2 collections are modelled after PHPs native arrays. PHP arrays are an ordered hashmap, but in
+the first version of Doctrine keys retrieved from the database were always numerical unless <code>INDEX BY</code>
+was used. Starting with Doctrine 2.1 you can index your collections by a value in the related entity.
+This is a first step towards full ordered hashmap support through the Doctrine ORM.
+The feature works like an implicit <code>INDEX BY</code> for the selected association but has several
+downsides also:</p>
+<ul><li class="dash"> You have to manage both the key and field if you want to change the index by field value.</li>
+<li class="dash"> On each request the keys are regenerated from the field value, and not from the previous collection key.</li>
+<li class="dash"> Values of the Index-By keys are never considered during persistence. They only exist for accessing purposes.</li>
+<li class="dash"> Fields that are used for the index by feature <strong>HAVE</strong> to be unique in the database. The behavior for multiple entities
+   with the same index-by field value is undefined.</li>
+</ul>
+
+<p>As an example we will design a simple stock exchange list view. The domain consists of the entity <code>Stock</code>
+and <code>Market</code> where each Stock has a symbol and is traded on a single market. Instead of having a numerical
+list of stocks traded on a market they will be indexed by their symbol, which is unique across all markets.</p>
+<a class="section-anchor" id="title.1.1" name="title.1.1"></a><h2 class="section-header"><a href="#title.1.1">Mapping Indexed Associations<i class="fas fa-link"></i></a></h2>
+<p>You can map indexed associations by adding:</p>
+<ul><li><code>indexBy</code> attribute to any <code>@OneToMany</code> or <code>@ManyToMany</code> annotation.</li>
+<li><code>index-by</code> attribute to any <code>&lt;one-to-many /&gt;</code> or <code>&lt;many-to-many /&gt;</code> xml element.</li>
+</ul>
+
+<p>The code and mappings for the Market entity looks like this:</p>
+<div class="configuration-block"><pre><code class="php">&lt;?php
+namespace Doctrine\Tests\Models\StockExchange;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Annotation as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name=&quot;exchange_markets&quot;)
+ */
+class Market
+{
+    /**
+     * @ORM\Id @ORM\Column(type=&quot;integer&quot;) @ORM\GeneratedValue
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type=&quot;string&quot;)
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity=&quot;Stock&quot;, mappedBy=&quot;market&quot;, indexBy=&quot;symbol&quot;)
+     * @var Stock[]
+     */
+    private $stocks;
+
+    public function __construct($name)
+    {
+        $this-&gt;name = $name;
+        $this-&gt;stocks = new ArrayCollection();
+    }
+
+    public function getId()
+    {
+        return $this-&gt;id;
+    }
+
+    public function getName()
+    {
+        return $this-&gt;name;
+    }
+
+    public function addStock(Stock $stock)
+    {
+        $this-&gt;stocks[$stock-&gt;getSymbol()] = $stock;
+    }
+
+    public function getStock($symbol)
+    {
+        if (!isset($this-&gt;stocks[$symbol])) {
+            throw new \InvalidArgumentException(&quot;Symbol is not traded on this market.&quot;);
+        }
+
+        return $this-&gt;stocks[$symbol];
+    }
+
+    public function getStocks()
+    {
+        return $this-&gt;stocks-&gt;toArray();
+    }
+}
+</code></pre>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;doctrine-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping&quot;
+      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+      xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd&quot;&gt;
+
+    &lt;entity name=&quot;Doctrine\Tests\Models\StockExchange\Market&quot;&gt;
+        &lt;id name=&quot;id&quot; type=&quot;integer&quot;&gt;
+            &lt;generator strategy=&quot;AUTO&quot; /&gt;
+        &lt;/id&gt;
+
+        &lt;field name=&quot;name&quot; type=&quot;string&quot;/&gt;
+
+        &lt;one-to-many target-entity=&quot;Stock&quot; mapped-by=&quot;market&quot; field=&quot;stocks&quot; index-by=&quot;symbol&quot; /&gt;
+    &lt;/entity&gt;
+&lt;/doctrine-mapping&gt;
+</code></pre>
+</div>
+<p>Inside the <code>addStock()</code> method you can see how we directly set the key of the association to the symbol,
+so that we can work with the indexed association directly after invoking <code>addStock()</code>. Inside <code>getStock($symbol)</code>
+we pick a stock traded on the particular market by symbol. If this stock doesn't exist an exception is thrown.</p>
+<p>The <code>Stock</code> entity doesn't contain any special instructions that are new, but for completeness
+here are the code and mappings for it:</p>
+<div class="configuration-block"><pre><code class="php">&lt;?php
+
+namespace Doctrine\Tests\Models\StockExchange;
+
+use Doctrine\ORM\Annotation as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name=&quot;exchange_stocks&quot;)
+ */
+class Stock
+{
+    /**
+     * @ORM\Id @ORM\GeneratedValue @ORM\Column(type=&quot;integer&quot;)
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type=&quot;string&quot;, unique=true)
+     */
+    private $symbol;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=&quot;Market&quot;, inversedBy=&quot;stocks&quot;)
+     * @var Market
+     */
+    private $market;
+
+    public function __construct($symbol, Market $market)
+    {
+        $this-&gt;symbol = $symbol;
+        $this-&gt;market = $market;
+        $market-&gt;addStock($this);
+    }
+
+    public function getSymbol()
+    {
+        return $this-&gt;symbol;
+    }
+}
+</code></pre>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;doctrine-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping&quot;
+      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+      xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd&quot;&gt;
+
+    &lt;entity name=&quot;Doctrine\Tests\Models\StockExchange\Stock&quot;&gt;
+        &lt;id name=&quot;id&quot; type=&quot;integer&quot;&gt;
+            &lt;generator strategy=&quot;AUTO&quot; /&gt;
+        &lt;/id&gt;
+
+        &lt;field name=&quot;symbol&quot; type=&quot;string&quot; unique=&quot;true&quot; /&gt;
+        &lt;many-to-one target-entity=&quot;Market&quot; field=&quot;market&quot; inversed-by=&quot;stocks&quot; /&gt;
+    &lt;/entity&gt;
+&lt;/doctrine-mapping&gt;
+</code></pre>
+</div>
+<a class="section-anchor" id="title.1.2" name="title.1.2"></a><h2 class="section-header"><a href="#title.1.2">Querying indexed associations<i class="fas fa-link"></i></a></h2>
+<p>Now that we defined the stocks collection to be indexed by symbol, we can take a look at some code
+that makes use of the indexing.</p>
+<p>First we will populate our database with two example stocks traded on a single market:</p>
+<pre><code class="php">&lt;?php
+// $em is the EntityManager
+
+$market = new Market(&quot;Some Exchange&quot;);
+$stock1 = new Stock(&quot;AAPL&quot;, $market);
+$stock2 = new Stock(&quot;GOOG&quot;, $market);
+
+$em-&gt;persist($market);
+$em-&gt;persist($stock1);
+$em-&gt;persist($stock2);
+$em-&gt;flush();
+</code></pre>
+<p>This code is not particular interesting since the indexing feature is not yet used. In a new request we could
+now query for the market:</p>
+<pre><code class="php">&lt;?php
+// $em is the EntityManager
+$marketId = 1;
+$symbol = &quot;AAPL&quot;;
+
+$market = $em-&gt;find(&quot;Doctrine\Tests\Models\StockExchange\Market&quot;, $marketId);
+
+// Access the stocks by symbol now:
+$stock = $market-&gt;getStock($symbol);
+
+echo $stock-&gt;getSymbol(); // will print &quot;AAPL&quot;
+</code></pre>
+<p>The implementation of <code>Market::addStock()</code>, in combination with <code>indexBy</code>, allows us to access the collection
+consistently by the Stock symbol. It does not matter if Stock is managed by Doctrine or not.</p>
+<p>The same applies to DQL queries: The <code>indexBy</code> configuration acts as implicit &quot;INDEX BY&quot; to a join association.</p>
+<pre><code class="php">&lt;?php
+// $em is the EntityManager
+$marketId = 1;
+$symbol = &quot;AAPL&quot;;
+
+$dql = &quot;SELECT m, s FROM Doctrine\Tests\Models\StockExchange\Market m JOIN m.stocks s WHERE m.id = ?1&quot;;
+$market = $em-&gt;createQuery($dql)
+             -&gt;setParameter(1, $marketId)
+             -&gt;getSingleResult();
+
+// Access the stocks by symbol now:
+$stock = $market-&gt;getStock($symbol);
+
+echo $stock-&gt;getSymbol(); // will print &quot;AAPL&quot;
+</code></pre>
+<p>If you want to use <code>INDEX BY</code> explicitly on an indexed association you are free to do so. Additionally,
+indexed associations also work with the <code>Collection::slice()</code> functionality, even if the association's fetch mode is
+LAZY or EXTRA_LAZY.</p>
+<a class="section-anchor" id="title.1.3" name="title.1.3"></a><h2 class="section-header"><a href="#title.1.3">Outlook into the Future<i class="fas fa-link"></i></a></h2>
+<p>For the inverse side of a many-to-many associations there will be a way to persist the keys and the order
+as a third and fourth parameter into the join table. This feature is discussed in <a href="https://github.com/doctrine/doctrine2/issues/2817">DDC-213</a>
+This feature cannot be implemented for one-to-many associations, because they are never the owning side.</p>
+                                            </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+        <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
+
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
+        <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
+
+        <script type="text/javascript">
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById('back-to-top').style.display = "block";
+                } else {
+                    document.getElementById('back-to-top').style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            }
+        </script>
+
+        <button onclick="topFunction()" id="back-to-top" title="Go to top">Top</button>
+
+            <script src="https://staging.doctrine-project.org/js/sidebar.js?9367a8"></script>
+
+        
+        
+            </body>
+</html>
