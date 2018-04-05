@@ -85,7 +85,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'index',
@@ -189,7 +189,7 @@
         22 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -277,7 +277,7 @@
         22 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -379,7 +379,7 @@
         22 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -529,7 +529,7 @@
           ),
           5 => 
           array (
-            0 => 'Lifecycle callbacks',
+            0 => 'Lifcycle callbacks',
             1 => 
             array (
               0 => 
@@ -699,7 +699,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -824,7 +824,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -872,6 +872,13 @@
             0 => 'Hierarchy mappings',
             1 => 
             array (
+              0 => 
+              array (
+                0 => 'Child restriction',
+                1 => 
+                array (
+                ),
+              ),
             ),
           ),
           1 => 
@@ -976,7 +983,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -1163,7 +1170,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -1283,7 +1290,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -1356,7 +1363,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -1437,7 +1444,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -1713,7 +1720,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -1873,7 +1880,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -2019,7 +2026,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -2108,7 +2115,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -2643,7 +2650,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -3158,7 +3165,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -3301,7 +3308,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -3435,7 +3442,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -3516,7 +3523,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -3624,7 +3631,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -3845,7 +3852,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
@@ -3920,7 +3927,7 @@
         22 => 'reference/xml-mapping',
       ),
     ),
-    'ctime' => 1522748118,
+    'ctime' => 1522906163,
     'depends' => 
     array (
       0 => 'tmp/doctrine-docs/doctrine-phpcr-odm/en/latest/index',
