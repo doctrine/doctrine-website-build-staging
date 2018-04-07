@@ -125,88 +125,85 @@
                                     </p>
 
         <div>
-            We are happy to announce the immediate availability of Doctrine MongoDB
-Abstraction Layer `1.4.0 <https://github.com/doctrine/mongodb/releases/tag/1.4.0>`__.
+            <p>We are happy to announce the immediate availability of Doctrine MongoDB
+Abstraction Layer
+<a href="https://github.com/doctrine/mongodb/releases/tag/1.4.0">1.4.0</a>&#95;.</p>
 
-Passing context options to the driver
--------------------------------------
+<h1 id="passing-context-options-to-the-driver">Passing context options to the driver</h1>
 
-With this release it's possible to pass driver options to the connection class,
-which will then be passed on to the MongoDB driver. For example, to pass a
-stream context with SSL context options, you could use the following code
-snippet:
+<p>With this release it's possible to pass driver options to the connection
+class, which will then be passed on to the MongoDB driver. For example,
+to pass a stream context with SSL context options, you could use the
+following code snippet:</p>
 
-.. code-block:: php
+<pre><code class="sourceCode php">$context = stream_context_create([
+    'ssl' =&gt; [
+        'allow_self_signed' =&gt; false,
+    ]
+]);
+$connection = new \Doctrine\MongoDB\Connection(null, [], null, null, ['context' =&gt; $context]);
+</code></pre>
 
-    $context = stream_context_create([
-        'ssl' => [
-            'allow_self_signed' => false,
-        ]
-    ]);
-    $connection = new \Doctrine\MongoDB\Connection(null, [], null, null, ['context' => $context]);
+<h1 id="passing-multiple-expressions-to-logical-operators">Passing multiple expressions to logical operators</h1>
 
-Passing multiple expressions to logical operators
--------------------------------------------------
+<p>The <code>addAnd</code>, <code>addNor</code> and <code>addOr</code> methods in the query and aggregation
+builders now take multiple expression objects. Instead of having to call
+the method repeatedly, you may call it once with multiple arguments:</p>
 
-The ``addAnd``, ``addNor`` and ``addOr`` methods in the query and aggregation
-builders now take multiple expression objects. Instead of having to call the
-method repeatedly, you may call it once with multiple arguments:
+<pre><code class="sourceCode php">// Before
+$builder
+    -&gt;addAnd($someExpression)
+    -&gt;addAnd($otherExpression);
 
-.. code-block:: php
+// After
+$builder-&gt;addAnd($someExpression, $otherExpression);
+</code></pre>
 
-    // Before
-    $builder
-        ->addAnd($someExpression)
-        ->addAnd($otherExpression);
+<h1 id="deprecations">Deprecations</h1>
 
-    // After
-    $builder->addAnd($someExpression, $otherExpression);
+<p>The <code>update</code> and <code>multiple</code> methods in the query have been deprecated in
+favor of <code>updateOne</code> and <code>updateMany</code>. These deprecations help people
+using ODM prepare for the next version of ODM which will utilize the new
+MongoDB library API.</p>
 
-Deprecations
-------------
+<h1 id="bug-fixes-in-this-release">Bug fixes in this release</h1>
 
-The ``update`` and ``multiple`` methods in the query have been deprecated in
-favor of ``updateOne`` and ``updateMany``. These deprecations help people using
-ODM prepare for the next version of ODM which will utilize the new MongoDB
-library API.
+<p>Notable fixes may be found in the
+<a href="https://github.com/doctrine/mongodb/blob/master/CHANGELOG-1.4.md#140-2016-11-22">changelog</a>&#95;.
+A full list of issues and pull requests included in this release may be
+found in the <a href="https://github.com/doctrine/mongodb/issues?q=milestone%3A1.4.0">1.4.0
+milestone</a>&#95;.</p>
 
-Bug fixes in this release
--------------------------
+<h1 id="php-version-support">PHP version support</h1>
 
-Notable fixes may be found in the
-`changelog <https://github.com/doctrine/mongodb/blob/master/CHANGELOG-1.4.md#140-2016-11-22>`__.
-A full list of issues and pull requests included in this release may be found in the
-`1.4.0 milestone <https://github.com/doctrine/mongodb/issues?q=milestone%3A1.4.0>`__.
+<p>With this release, we have dropped support for PHP 5.5. Users using PHP
+5.5 or older are encouraged to upgrade to a newer PHP version. If you
+are using PHP 7.0 or 7.1, you can use this library by adding a polyfill
+for <code>ext-mongo</code>, like
+<a href="https://github.com/alcaeus/mongo-php-adapter">mongo-php-adapter</a>&#95;.</p>
 
-PHP version support
--------------------
+<h1 id="future-releases">Future releases</h1>
 
-With this release, we have dropped support for PHP 5.5. Users using PHP 5.5 or
-older are encouraged to upgrade to a newer PHP version. If you are using PHP 7.0
-or 7.1, you can use this library by adding a polyfill for ``ext-mongo``, like
-`mongo-php-adapter <https://github.com/alcaeus/mongo-php-adapter>`__.
+<p>This release is the last planned minor release of the MongoDB
+Abstraction Layer, with only bugfixes being done in maintenance
+releases. The library will not be rewritten to support the new MongoDB
+driver. Users are encouraged to use the new <a href="https://github.com/mongodb/mongo-php-library">MongoDB
+library</a>&#95;. Doctrine
+MongoDB ODM will be adapted to support the new driver and the MongoDB
+library.</p>
 
-Future releases
----------------
+<h1 id="installation">Installation</h1>
 
-This release is the last planned minor release of the MongoDB Abstraction Layer,
-with only bugfixes being done in maintenance releases. The library will not be
-rewritten to support the new MongoDB driver. Users are encouraged to use the new
-`MongoDB library <https://github.com/mongodb/mongo-php-library>`__. Doctrine
-MongoDB ODM will be adapted to support the new driver and the MongoDB library.
+<p>You can install the latest version using the following <code>composer.json</code>
+definitions:</p>
 
-Installation
-------------
+<pre><code class="sourceCode json">{
+    "require": {
+        "doctrine/mongodb": "^1.4.0"
+    }
+}
+</code></pre>
 
-You can install the latest version using the following ``composer.json`` definitions:
-
-.. code-block:: json
-
-  {
-      "require": {
-          "doctrine/mongodb": "^1.4.0"
-      }
-  }
         </div>
                 
                     <nav class="article">

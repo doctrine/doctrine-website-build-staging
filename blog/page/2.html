@@ -127,74 +127,84 @@
         <hr />
 
         <div>
-            A few days ago, the Doctrine team released new versions of many packages, dropping
-support for PHP 5.6 and 7.0, as well as HHVM. The affected packages are:
+            <p>A few days ago, the Doctrine team released new versions of many
+packages, dropping support for PHP 5.6 and 7.0, as well as HHVM. The
+affected packages are:</p>
 
-- doctrine/common 2.8.0
-- doctrine/dbal 2.6.0
-- doctrine/collections 1.5.0
-- doctrine/inflector 1.2.0
-- doctrine/cache 1.7.0
-- doctrine/instantiator 1.1.0
-- doctrine/annotations 1.5.0
+<ul>
+<li>doctrine/common 2.8.0</li>
+<li>doctrine/dbal 2.6.0</li>
+<li>doctrine/collections 1.5.0</li>
+<li>doctrine/inflector 1.2.0</li>
+<li>doctrine/cache 1.7.0</li>
+<li>doctrine/instantiator 1.1.0</li>
+<li>doctrine/annotations 1.5.0</li>
+</ul>
 
-Since many people are encountering issues with these updates, here are a few
-suggestions to ensure your code continues working as usual.
+<p>Since many people are encountering issues with these updates, here are a
+few suggestions to ensure your code continues working as usual.</p>
 
-Composer version constraints
-----------------------------
+<h1 id="composer-version-constraints">Composer version constraints</h1>
 
-Chances are your version constraints in ``composer.json`` look something like this:
+<p>Chances are your version constraints in <code>composer.json</code> look something
+like this:</p>
 
-.. code-block:: json
-
-    {
-        "require": {
-            "doctrine/orm": "^2.5"
-        }
+<pre><code class="sourceCode json">{
+    "require": {
+        "doctrine/orm": "^2.5"
     }
+}
+</code></pre>
 
-The ``^2.5`` constraint resolves to: ``>= 2.5.0 && <= 2.999999.999999``. This is
-intended: our projects all follow `Semantic Versioning <http://semver.org/>`__,
-so you can safely install a new minor version without having to fear BC breaks.
+<p>The <code>^2.5</code> constraint resolves to: <code>&gt;= 2.5.0 &amp;&amp; &lt;= 2.999999.999999</code>.
+This is intended: our projects all follow <a href="http://semver.org/">Semantic
+Versioning</a>&#95;, so you can safely install a new minor
+version without having to fear BC breaks.</p>
 
-When determining what version to install, composer employs a SAT solver to make
-sure all dependencies are fulfilled. In our example above, the SAT solver finds
-a version newer than 2.5 that satisfies all requirements.
+<p>When determining what version to install, composer employs a SAT solver
+to make sure all dependencies are fulfilled. In our example above, the
+SAT solver finds a version newer than 2.5 that satisfies all
+requirements.</p>
 
-Making sure you get a compatible version
-----------------------------------------
+<h1 id="making-sure-you-get-a-compatible-version">Making sure you get a compatible version</h1>
 
-When you run ``composer update`` the next time, you'll automatically receive
-updates for the packages mentioned above, provided that you are running on PHP
-7.1. If you are running an older PHP version, composer will not install a version
-that requires PHP 7.1, since its requirements are not fulfilled.
+<p>When you run <code>composer update</code> the next time, you'll automatically
+receive updates for the packages mentioned above, provided that you are
+running on PHP 7.1. If you are running an older PHP version, composer
+will not install a version that requires PHP 7.1, since its requirements
+are not fulfilled.</p>
 
-A common problem is people running a newer PHP version on their developer machines
-than on their production servers. In this case, running ``composer update`` on
-a developer machine (with PHP 7.1) might happily pull in an update that simply
-won't work when deployed on a production machine running PHP 5.6.
+<p>A common problem is people running a newer PHP version on their
+developer machines than on their production servers. In this case,
+running <code>composer update</code> on a developer machine (with PHP 7.1) might
+happily pull in an update that simply won't work when deployed on a
+production machine running PHP 5.6.</p>
 
-To make sure this doesn't happen to you, there are two choices:
+<p>To make sure this doesn't happen to you, there are two choices:</p>
 
--  run ``composer update`` on a machine with the same PHP version that you use
-   in production
--  use the `platform.config <https://getcomposer.org/doc/06-config.md#platform>`__
-   config setting in ``composer.json`` to override your local PHP version.
+<ul>
+<li>run <code>composer update</code> on a machine with the same PHP version that
+you use in production</li>
+<li>use the
+<a href="https://getcomposer.org/doc/06-config.md#platform">platform.config</a>&#95;
+config setting in <code>composer.json</code> to override your local PHP
+version.</li>
+</ul>
 
-Why dropping PHP support in a minor version is not a BC break
--------------------------------------------------------------
+<h1 id="why-dropping-php-support-in-a-minor-version-is-not-a-bc-break">Why dropping PHP support in a minor version is not a BC break</h1>
 
-One question we frequently hear is, "isn't dropping support for a PHP version a
-BC break"? In a nutshell, no. A BC break happens when there is an incompatible
-change that your package manager can't handle. For example, changing a method
-signature in a minor version is a no-go, since the composer version constraints
-mentioned above assume any minor upgrade can safely be used.
+<p>One question we frequently hear is, "isn't dropping support for a PHP
+version a BC break"? In a nutshell, no. A BC break happens when there is
+an incompatible change that your package manager can't handle. For
+example, changing a method signature in a minor version is a no-go,
+since the composer version constraints mentioned above assume any minor
+upgrade can safely be used.</p>
 
-However, when we drop support for an older version of PHP, composer will not
-consider the new version if the PHP version requirement is no longer fulfilled.
-Thus, you won't end up with a fatal error due to a wrong method signature, you
-just won't get the new version.
+<p>However, when we drop support for an older version of PHP, composer will
+not consider the new version if the PHP version requirement is no longer
+fulfilled. Thus, you won't end up with a fatal error due to a wrong
+method signature, you just won't get the new version.</p>
+
         </div>
 
             </article>
@@ -212,99 +222,114 @@ just won't get the new version.
         <hr />
 
         <div>
-            .. note:: 
+            <p>It has been few months since we shed some light on the <a href="https://github.com/doctrine/doctrine2/issues/6211">future of
+Doctrine project</a>&#95;
+and had an extensive insight into what
+<a href="https://twitter.com/guilhermeblanco">Guilherme</a>&#95; had been up to.
+Adding tens of megabytes of IRC logs of internal discussion we felt we
+owe you an update on where Doctrine is and where it's heading to:</p>
 
-    This article is an April Fools joke.
+<h1 id="doctrine-3-is-no-more%21">Doctrine 3 Is No More!</h1>
 
-It has been few months since we shed some light on the `future of Doctrine project <https://github.com/doctrine/doctrine2/issues/6211>`__
-and had an extensive insight into what `Guilherme <https://twitter.com/guilhermeblanco>`__ had been up to. Adding
-tens of megabytes of IRC logs of internal discussion we felt we owe you an update on where Doctrine is and where
-it's heading to:
+<p>Rest assured, we are in no way ditching all the code Guilherme hacked so
+far or any of the ideas that sprung for the next major release. We are
+still looking into leveraging all goodies that were given to us with PHP
+7. We want the next Doctrine version to be an extremely stable and
+reliable piece of software. We are also still trying to figure out how
+to maintain all projects under Doctrine's umbrella effectively. To
+recap, Doctrine is not only the ORM you all know, we are also
+maintaining a number of ODM projects
+(<a href="https://github.com/doctrine/mongodb-odm">MongoDB</a>&#95; and
+<a href="https://github.com/doctrine/couchdb-odm">CouchDB</a>&#95; to name few) which
+all share basic concepts and code. Some of them also face a major
+rewrite, like the much anticipated MongoDB ODM 2.0 with support for new
+MongoDB driver.</p>
 
-Doctrine 3 Is No More!
-----------------------
+<h1 id="joining-forces">Joining Forces</h1>
 
-Rest assured, we are in no way ditching all the code Guilherme hacked so far or any of the ideas that sprung
-for the next major release. We are still looking into leveraging all goodies that were given to us with PHP 7.
-We want the next Doctrine version to be an extremely stable and reliable piece of software. We are also still trying to figure out how to maintain all projects under Doctrine's umbrella effectively. To recap,
-Doctrine is not only the ORM you all know, we are also maintaining a number of ODM projects (`MongoDB <https://github.com/doctrine/mongodb-odm>`__
-and `CouchDB <https://github.com/doctrine/couchdb-odm>`__ to name few) which all share basic concepts and code.
-Some of them also face a major rewrite, like the much anticipated MongoDB ODM 2.0 with support for new MongoDB driver.
+<p>Instead of having each team work independently and implement the same
+concepts multiple times across various libraries, we decided it's for
+the best if we all work on one project and make it as good and robust as
+possible. In the spirit of breaking boundaries, Doctrine 4 will be all
+about interoperability. <strong>Doctrine 4 will support both RDBMS and NoSQL
+databases at the same time!</strong></p>
 
-Joining Forces
---------------
+<h1 id="following-latest-trends">Following Latest Trends</h1>
 
-Instead of having each team work independently and implement the same concepts multiple times across various libraries,
-we decided it's for the best if we all work on one project and make it as good and robust as possible.
-In the spirit of breaking boundaries, Doctrine 4 will be all about interoperability. **Doctrine 4 will support
-both RDBMS and NoSQL databases at the same time!**
+<p>A really big thing we want to (re)introduce is an Active Record pattern.
+We recently ran a poll on the &#35;doctrine IRC channel and it turned out
+that 68% of developers die a little bit each time they inject a service,
+which barely saves data to a database anyway, and miss the simplicity of
+having an entity save itself.</p>
 
-Following Latest Trends
------------------------
+<pre><code class="sourceCode php">use Doctrine;
 
-A really big thing we want to (re)introduce is an Active Record pattern. We recently ran a poll on the #doctrine IRC
-channel and it turned out that 68% of developers die a little bit each time they inject a service, which
-barely saves data to a database anyway, and miss the simplicity of having an entity save itself.
+/**
+ * @Doctrine\Entity(storage="MSSql")
+ * @Doctrine\ActiveRecord
+ */
+class User
+{
+    /** @Doctrine\Id */
+    public $id;
 
-.. code-block:: php
+    /** @Doctrine\Field(type="string") */
+    public $login;
+}
 
-    use Doctrine;
+$user = new User();
+$user-&gt;load(10);
+$user-&gt;login = 'malarzm';
+$user-&gt;save();
+</code></pre>
 
-    /**
-     * @Doctrine\Entity(storage="MSSql")
-     * @Doctrine\ActiveRecord
-     */
-    class User
-    {
-        /** @Doctrine\Id */
-        public $id;
+<p>Thanks to the <code>@Doctrine\ActiveRecord</code> annotation you're able to query
+for and save your entities easily. Please notice that the &#96;User&#96; class
+does not extend any internal Doctrine class - you are still decoupled
+from the ORM!</p>
 
-        /** @Doctrine\Field(type="string") */
-        public $login;
-    }
+<p>We strongly believe that getting back to the Active Record pattern is
+the way to go for us. We weren't able to fully get rid of the old
+fashioned Data Mapper pattern but you can expect its deprecation in one
+of first bug-fix releases and full removal in a subsequent patch release
+(Active Record is replacing semantic versioning, too!)</p>
 
-    $user = new User();
-    $user->load(10);
-    $user->login = 'malarzm';
-    $user->save();
+<p>Another big step towards the highly expected Developer eXperience was
+initially painful, as it required many of us to come out of the Java
+bubble we live in, but we know it will be for the best. With the
+re-introduction of Active Record the obvious next step is making all
+Doctrine utilities available in an easy and sane way: please welcome
+static registries AND short method names!</p>
 
-Thanks to the ``@Doctrine\ActiveRecord`` annotation you're able to query for and save your entities easily. Please
-notice that the `User` class does not extend any internal Doctrine class - you are still decoupled from the ORM!
+<pre><code class="sourceCode php">use Doctrine;
+use Entity\MongoLog;
+use Entity\User;
 
-We strongly believe that getting back to the Active Record pattern is the way to go for us. We weren't able to
-fully get rid of the old fashioned Data Mapper pattern but you can expect its deprecation in one of first bug-fix releases
-and full removal in a subsequent patch release (Active Record is replacing semantic versioning, too!)
+Doctrine::em()-&gt;start(); // start a transaction
+$user = new User(); // this is stored in MSSql
+$user = 'malarzm';
+$user-&gt;save(); // not saved yet
+$log = new MongoLog($user, 'was created'); // this will be "stored" in MongoDB
+$log-&gt;save(); // but not yet
+Doctrine::em()-&gt;commit(); // commit a transaction ACROSS multiple storage engines
+</code></pre>
 
-Another big step towards the highly expected Developer eXperience was initially painful, as it required many
-of us to come out of the Java bubble we live in, but we know it will be for the best. With the re-introduction of
-Active Record the obvious next step is making all Doctrine utilities available in an easy and sane way: please welcome
-static registries AND short method names!
+<p>Big shout out goes to <a href="https://twitter.com/Ocramius">Marco</a>&#95;. Although
+he initially had a heart attack when first hearing about this idea, he's
+come full circle after using the feature and is now a big proponent of
+static registries. Be sure to watch for updates to all of his libraries
+in the near future!</p>
 
-.. code-block:: php
+<h1 id="try-it-out-now%21">Try It Out Now!</h1>
 
-    use Doctrine;
-    use Entity\MongoLog;
-    use Entity\User;
+<p>Uniting forces of all Doctrine developers has enabled us to ship an
+usable "alpha" version way sooner than originally anticipated. But the
+truly thrilling news is that thanks to tremendous help from guys with
+<a href="https://3v4l.org/">3v4l.org</a>&#95; we have set up a sandbox environment so
+everybody can have a hands-on experience using the new version of
+Doctrine: please visit <a href="https://ocrami.us/">3v4l.org/doctrine4</a>&#95; and
+share your thoughts in the comments section below!</p>
 
-    Doctrine::em()->start(); // start a transaction
-    $user = new User(); // this is stored in MSSql
-    $user = 'malarzm';
-    $user->save(); // not saved yet
-    $log = new MongoLog($user, 'was created'); // this will be "stored" in MongoDB
-    $log->save(); // but not yet
-    Doctrine::em()->commit(); // commit a transaction ACROSS multiple storage engines
-
-Big shout out goes to `Marco <https://twitter.com/Ocramius>`__. Although he initially had a heart attack when first
-hearing about this idea, he's come full circle after using the feature and is now a big proponent of static registries. Be sure
-to watch for updates to all of his libraries in the near future!
-
-Try It Out Now!
----------------
-
-Uniting forces of all Doctrine developers has enabled us to ship an usable "alpha" version way sooner than originally
-anticipated. But the truly thrilling news is that thanks to tremendous help from guys with `3v4l.org <https://3v4l.org/>`__
-we have set up a sandbox environment so everybody can have a hands-on experience using the new version of Doctrine:
-please visit `3v4l.org/doctrine4 <https://ocrami.us/>`__ and share your thoughts in the comments section below!
         </div>
 
             </article>
@@ -322,88 +347,85 @@ please visit `3v4l.org/doctrine4 <https://ocrami.us/>`__ and share your thoughts
         <hr />
 
         <div>
-            We are happy to announce the immediate availability of Doctrine MongoDB
-Abstraction Layer `1.4.0 <https://github.com/doctrine/mongodb/releases/tag/1.4.0>`__.
+            <p>We are happy to announce the immediate availability of Doctrine MongoDB
+Abstraction Layer
+<a href="https://github.com/doctrine/mongodb/releases/tag/1.4.0">1.4.0</a>&#95;.</p>
 
-Passing context options to the driver
--------------------------------------
+<h1 id="passing-context-options-to-the-driver">Passing context options to the driver</h1>
 
-With this release it's possible to pass driver options to the connection class,
-which will then be passed on to the MongoDB driver. For example, to pass a
-stream context with SSL context options, you could use the following code
-snippet:
+<p>With this release it's possible to pass driver options to the connection
+class, which will then be passed on to the MongoDB driver. For example,
+to pass a stream context with SSL context options, you could use the
+following code snippet:</p>
 
-.. code-block:: php
+<pre><code class="sourceCode php">$context = stream_context_create([
+    'ssl' =&gt; [
+        'allow_self_signed' =&gt; false,
+    ]
+]);
+$connection = new \Doctrine\MongoDB\Connection(null, [], null, null, ['context' =&gt; $context]);
+</code></pre>
 
-    $context = stream_context_create([
-        'ssl' => [
-            'allow_self_signed' => false,
-        ]
-    ]);
-    $connection = new \Doctrine\MongoDB\Connection(null, [], null, null, ['context' => $context]);
+<h1 id="passing-multiple-expressions-to-logical-operators">Passing multiple expressions to logical operators</h1>
 
-Passing multiple expressions to logical operators
--------------------------------------------------
+<p>The <code>addAnd</code>, <code>addNor</code> and <code>addOr</code> methods in the query and aggregation
+builders now take multiple expression objects. Instead of having to call
+the method repeatedly, you may call it once with multiple arguments:</p>
 
-The ``addAnd``, ``addNor`` and ``addOr`` methods in the query and aggregation
-builders now take multiple expression objects. Instead of having to call the
-method repeatedly, you may call it once with multiple arguments:
+<pre><code class="sourceCode php">// Before
+$builder
+    -&gt;addAnd($someExpression)
+    -&gt;addAnd($otherExpression);
 
-.. code-block:: php
+// After
+$builder-&gt;addAnd($someExpression, $otherExpression);
+</code></pre>
 
-    // Before
-    $builder
-        ->addAnd($someExpression)
-        ->addAnd($otherExpression);
+<h1 id="deprecations">Deprecations</h1>
 
-    // After
-    $builder->addAnd($someExpression, $otherExpression);
+<p>The <code>update</code> and <code>multiple</code> methods in the query have been deprecated in
+favor of <code>updateOne</code> and <code>updateMany</code>. These deprecations help people
+using ODM prepare for the next version of ODM which will utilize the new
+MongoDB library API.</p>
 
-Deprecations
-------------
+<h1 id="bug-fixes-in-this-release">Bug fixes in this release</h1>
 
-The ``update`` and ``multiple`` methods in the query have been deprecated in
-favor of ``updateOne`` and ``updateMany``. These deprecations help people using
-ODM prepare for the next version of ODM which will utilize the new MongoDB
-library API.
+<p>Notable fixes may be found in the
+<a href="https://github.com/doctrine/mongodb/blob/master/CHANGELOG-1.4.md#140-2016-11-22">changelog</a>&#95;.
+A full list of issues and pull requests included in this release may be
+found in the <a href="https://github.com/doctrine/mongodb/issues?q=milestone%3A1.4.0">1.4.0
+milestone</a>&#95;.</p>
 
-Bug fixes in this release
--------------------------
+<h1 id="php-version-support">PHP version support</h1>
 
-Notable fixes may be found in the
-`changelog <https://github.com/doctrine/mongodb/blob/master/CHANGELOG-1.4.md#140-2016-11-22>`__.
-A full list of issues and pull requests included in this release may be found in the
-`1.4.0 milestone <https://github.com/doctrine/mongodb/issues?q=milestone%3A1.4.0>`__.
+<p>With this release, we have dropped support for PHP 5.5. Users using PHP
+5.5 or older are encouraged to upgrade to a newer PHP version. If you
+are using PHP 7.0 or 7.1, you can use this library by adding a polyfill
+for <code>ext-mongo</code>, like
+<a href="https://github.com/alcaeus/mongo-php-adapter">mongo-php-adapter</a>&#95;.</p>
 
-PHP version support
--------------------
+<h1 id="future-releases">Future releases</h1>
 
-With this release, we have dropped support for PHP 5.5. Users using PHP 5.5 or
-older are encouraged to upgrade to a newer PHP version. If you are using PHP 7.0
-or 7.1, you can use this library by adding a polyfill for ``ext-mongo``, like
-`mongo-php-adapter <https://github.com/alcaeus/mongo-php-adapter>`__.
+<p>This release is the last planned minor release of the MongoDB
+Abstraction Layer, with only bugfixes being done in maintenance
+releases. The library will not be rewritten to support the new MongoDB
+driver. Users are encouraged to use the new <a href="https://github.com/mongodb/mongo-php-library">MongoDB
+library</a>&#95;. Doctrine
+MongoDB ODM will be adapted to support the new driver and the MongoDB
+library.</p>
 
-Future releases
----------------
+<h1 id="installation">Installation</h1>
 
-This release is the last planned minor release of the MongoDB Abstraction Layer,
-with only bugfixes being done in maintenance releases. The library will not be
-rewritten to support the new MongoDB driver. Users are encouraged to use the new
-`MongoDB library <https://github.com/mongodb/mongo-php-library>`__. Doctrine
-MongoDB ODM will be adapted to support the new driver and the MongoDB library.
+<p>You can install the latest version using the following <code>composer.json</code>
+definitions:</p>
 
-Installation
-------------
+<pre><code class="sourceCode json">{
+    "require": {
+        "doctrine/mongodb": "^1.4.0"
+    }
+}
+</code></pre>
 
-You can install the latest version using the following ``composer.json`` definitions:
-
-.. code-block:: json
-
-  {
-      "require": {
-          "doctrine/mongodb": "^1.4.0"
-      }
-  }
         </div>
 
             </article>

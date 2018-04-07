@@ -127,467 +127,446 @@
         <hr />
 
         <div>
-            **NOTE**
+            <p><strong>NOTE</strong></p>
 
-    The Doctrine ActiveEntity Extension is just an experiment, nothing
-    that will be developed much further from the Doctrine Dev Team. It
-    is only a show-case for what is possible with Doctrine2. Please
-    feel free to take the code and develop it further.
+<blockquote>
+  <p>The Doctrine ActiveEntity Extension is just an experiment, nothing
+  that will be developed much further from the Doctrine Dev Team. It is
+  only a show-case for what is possible with Doctrine2. Please feel free
+  to take the code and develop it further.</p>
+</blockquote>
 
+<p>Did you feel the urge to write your own Object-Relational Mapper after
+reading Martin Fowlers PoEAA? I am guilty to have tried implementing two
+different ORMs on my own, both now safely dumped into the trash.</p>
 
-Did you feel the urge to write your own Object-Relational Mapper
-after reading Martin Fowlers PoEAA? I am guilty to have tried
-implementing two different ORMs on my own, both now safely dumped
-into the trash.
+<p>In isolation each ORM pattern is easy to describe, understand and even
+implement. However the combination of a large set of patterns into a
+single implementation introduces a lot of hard to solve complexity in
+your code. Even simple Object-Relational-Mappers require a lot of
+patterns to become useful: Metadata Mapping, Identity Map, Foreign Key
+Mapping, Association Table Mapping and Query Object. Implementations
+with more features at least need the UnitOfWork and probably many more,
+for example handling inheritance, locking, value objects and such.</p>
 
-In isolation each ORM pattern is easy to describe, understand and
-even implement. However the combination of a large set of patterns
-into a single implementation introduces a lot of hard to solve
-complexity in your code. Even simple Object-Relational-Mappers
-require a lot of patterns to become useful: Metadata Mapping,
-Identity Map, Foreign Key Mapping, Association Table Mapping and
-Query Object. Implementations with more features at least need the
-UnitOfWork and probably many more, for example handling
-inheritance, locking, value objects and such.
+<p>Doctrine2 already solves a lot of the head aching problems in a
+consistent approach. We have been working on this project for almost 2
+years now, with all the experience we gained implementing Doctrine 1.
+Additionally we make use of well-understood concepts from other ORM
+implementations across various languages.</p>
 
-Doctrine2 already solves a lot of the head aching problems in a
-consistent approach. We have been working on this project for
-almost 2 years now, with all the experience we gained implementing
-Doctrine 1. Additionally we make use of well-understood concepts
-from other ORM implementations across various languages.
+<p>We as developers think that Doctrine2 responsibilities are very well
+separated such that you can exchange larger parts of the Doctrine2 core
+without having to re-implement everything. So if you ever feel inspired
+to implement your own ORM, we would be happy to offer you Doctrine2 as a
+foundation to build upon.</p>
 
-We as developers think that Doctrine2 responsibilities are very
-well separated such that you can exchange larger parts of the
-Doctrine2 core without having to re-implement everything. So if you
-ever feel inspired to implement your own ORM, we would be happy to
-offer you Doctrine2 as a foundation to build upon.
+<p>There are examples of other ORMs that have taken the re-use instead of
+re-implement road. For example the <a href="http://www.grails.org/GORM">Groovy Grails
+ORM</a> is an ActiveRecord implementation on
+top of the popular Hibernate Java ORM. Since Groovy is a
+java-virtual-machine language it can safely use the Hibernate ORM as a
+dependent library.</p>
 
-There are examples of other ORMs that have taken the re-use instead
-of re-implement road. For example the
-`Groovy Grails ORM <http://www.grails.org/GORM>`_ is an
-ActiveRecord implementation on top of the popular Hibernate Java
-ORM. Since Groovy is a java-virtual-machine language it can safely
-use the Hibernate ORM as a dependent library.
+<p>This article will describe some possible extensions and show where you
+can hook into the Doctrine2 core to implement your own ORM. The article
+will be very code focused and also comes with a <a href="http://github.com/beberlei/Doctrine-ActiveEntity">Github
+project</a> where all the
+code and some tests are hosted.</p>
 
-This article will describe some possible extensions and show where
-you can hook into the Doctrine2 core to implement your own ORM. The
-article will be very code focused and also comes with a
-`Github project <http://github.com/beberlei/Doctrine-ActiveEntity>`_
-where all the code and some tests are hosted.
+<h1 id="doctrine2-and-activerecord">Doctrine2 and ActiveRecord</h1>
 
-Doctrine2 and ActiveRecord
---------------------------
+<p>Doctrine2 is implementing the DataMapper pattern, however many
+programmers think ActiveRecord is better for various reasons. For me
+data-mappers are superiour to ActiveRecord, however I do understand why
+ActiveRecord is so popular: Its very easy to get started and do cool
+stuff with it! If you want Doctrine2 to be ActiveRecord you can have it.
+Actually it is very easy to turn it into a powerful ActiveRecord
+implementation, keeping all the powerful features such as DQL.</p>
 
-Doctrine2 is implementing the DataMapper pattern, however many
-programmers think ActiveRecord is better for various reasons. For
-me data-mappers are superiour to ActiveRecord, however I do
-understand why ActiveRecord is so popular: Its very easy to get
-started and do cool stuff with it! If you want Doctrine2 to be
-ActiveRecord you can have it. Actually it is very easy to turn it
-into a powerful ActiveRecord implementation, keeping all the
-powerful features such as DQL.
-
-Some while ago Jonathan already released his approach, called the
+<p>Some while ago Jonathan already released his approach, called the
 "ActiveEntity" extension. Its a single abstract php class that your
-entities have to implement, the code is still
-`in our SVN repository <http://trac.doctrine-project.org/browser/extensions/ActiveEntity/branches/2.0-1.0/DoctrineExtensions/ActiveEntity.php>`_.
-However a more recent version of this code is available as
-`a project on Github <http://github.com/beberlei/Doctrine-ActiveEntity>`_.
-I won't support this experiment any further, I hope somebody picks
-it up and starts maintaining it.
+entities have to implement, the code is still <a href="http://trac.doctrine-project.org/browser/extensions/ActiveEntity/branches/2.0-1.0/DoctrineExtensions/ActiveEntity.php">in our SVN
+repository</a>.
+However a more recent version of this code is available as <a href="http://github.com/beberlei/Doctrine-ActiveEntity">a project on
+Github</a>. I won't
+support this experiment any further, I hope somebody picks it up and
+starts maintaining it.</p>
 
-With Jonathans old code, to allow active record entities, you have
-to bootstrap the ActiveEntity by passing a static EntityManager:
+<p>With Jonathans old code, to allow active record entities, you have to
+bootstrap the ActiveEntity by passing a static EntityManager:</p>
 
-.. code-block:: php
+<pre><code class="sourceCode php">&lt;?php
+\DoctrineExtensions\ActiveEntity::setEntityManager($em);
+</code></pre>
 
-    <?php
-    \DoctrineExtensions\ActiveEntity::setEntityManager($em);
+<p>Now say we have a User Entity (using Jonathans old ActiveEntity):</p>
 
-Now say we have a User Entity (using Jonathans old ActiveEntity):
+<pre><code class="sourceCode php">&lt;?php
+namespace Entities;
 
-.. code-block:: php
+use DoctrineExtensions\ActiveEntity;
 
-    <?php
-    namespace Entities;
-    
-    use DoctrineExtensions\ActiveEntity;
-    
-    /** @Entity */
-    class User extends ActiveEntity
+/** @Entity */
+class User extends ActiveEntity
+{
+    /** @Id @GeneratedValue @column(type="integer") */
+    private $id;
+
+    /** @Column(type="string") */
+    private $name;
+}
+</code></pre>
+
+<p>With PHP 5.3 late-static binding functionality we can now access the
+<code>EntityRepository</code>, a finder object for entities using a Ruby on
+Rails'ish notation:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+$user = User::find($id);
+$users = User::findBy(array("name" =&gt; "beberlei"));
+$beberlei = User::findOneBy(array("name" =&gt; "beberlei"));
+</code></pre>
+
+<p>The code to allow this functionality is very simple:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+public static function __callStatic($method, $arguments)
+{
+    return call_user_func_array(array(self::$_em-&gt;getRepository(get_called_class()), $method), $arguments);
+}
+</code></pre>
+
+<p>There are also some additional methods on the <code>ActiveEntity</code> class that
+use magic <strong>get and</strong>set and &#95;&#95;call methods to access the private
+properties of an Entity (such as the User id and name shown above).
+Additionally you can call save() or remove() on any instance.</p>
+
+<p>For starters this offers a great ActiveRecord implementation with all
+the powerful features that Doctrine2 offers, such as DQL and UnitOfWork.
+However we can still go much further:</p>
+
+<ul>
+<li>Eliminate the need to define ActiveEntity properties by metadata
+mapping inference</li>
+<li>Adding your own powerful Metadata Mapping Layer</li>
+<li>Add a Doctrine 1.2 behaviour system using the PHP 5.3.99DEV Traits
+functionalitiy</li>
+<li>Add validation to properties of an ActiveEntity</li>
+</ul>
+
+<p>Lets begin with a simple introduction to the Doctrine Metadata Model to
+explain how this is all possible.</p>
+
+<h1 id="doctrine2-metadata-model">Doctrine2 Metadata Model</h1>
+
+<p>You probably already saw that Doctrine2 offers many different metadata
+configuration mechanisms: Annotations, YAML, XML and plain PHP. Any one
+of this implementations will transform into an instance of
+<code>Doctrine\ORM\ClassMetadata</code> which is then cached for subsequent web
+requests. The <code>ClassMetadataFactory</code> is responsible for creating and
+managing those metadata instances.</p>
+
+<p>Doctrine2 uses the <code>ClassMetadata</code> instance internally for all runtime
+access to your entities metadata, which means that you have to extend
+this class such that it works exactly the same from the outside.</p>
+
+<p>If you wanted to extend the inner workings of Doctrine2, this is indeed
+the way to go. First extend the EntityManager to replace the
+<code>ClassMetadataFactory</code> used. This piece of code is the only hackish
+workaround, everything else is rather nice :-)</p>
+
+<pre><code class="sourceCode php">&lt;?php
+namespace DoctrineExtensions\ActiveEntity;
+
+use DoctrineExtensions\ActiveEntity\Mapping\ClassMetadataFactory;
+
+class ActiveEntityManager extends \Doctrine\ORM\EntityManager
+{
+    protected function __construct(Connection $conn, Configuration $config, EventManager $eventManager)
     {
-        /** @Id @GeneratedValue @column(type="integer") */
-        private $id;
-    
-        /** @Column(type="string") */
-        private $name;
+        parent::__construct($conn, $config, $eventManager);
+
+        $metadataFactory = new ActiveClassMetadataFactory($this);
+        $metadataFactory-&gt;setCacheDriver($this-&gt;getConfiguration()-&gt;getMetadataCacheImpl());
+
+        // now this is the only hack required to get it work:
+        $reflProperty = new \ReflectionProperty('Doctrine\ORM\EntityManager', 'metadataFactory');
+        $reflProperty-&gt;setAccessible(true);
+        $reflProperty-&gt;setValue($this, $metadataFactory);
     }
 
-With PHP 5.3 late-static binding functionality we can now access
-the ``EntityRepository``, a finder object for entities using a Ruby
-on Rails'ish notation:
-
-.. code-block:: php
-
-    <?php
-    $user = User::find($id);
-    $users = User::findBy(array("name" => "beberlei"));
-    $beberlei = User::findOneBy(array("name" => "beberlei"));
-
-The code to allow this functionality is very simple:
-
-.. code-block:: php
-
-    <?php
-    public static function __callStatic($method, $arguments)
+    public static function create($conn, Configuration $config, EventManager $eventManager = null)
     {
-        return call_user_func_array(array(self::$_em->getRepository(get_called_class()), $method), $arguments);
+        // ... copy paste from EntityManager::create()
+
+        return new ActiveEntityManager($conn, $config, $conn-&gt;getEventManager());
+    }
+}
+</code></pre>
+
+<p>And both the <code>ClassMetadataFactory</code> and <code>ClassMetadata</code>:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+namespace DoctrineExtensions\ActiveEntity\Mapping;
+
+class ActiveClassMetadataFactory extends \Doctrine\ORM\Mapping\ClassMetadataFactory
+{
+    protected function _newClassMetadataInstance($className)
+    {
+        return new ActiveClassMetadata($className);
+    }
+}
+
+class ActiveClassMetadata extends \Doctrine\ORM\Mapping\ClassMetadata
+{
+}
+</code></pre>
+
+<p>This is the foundation of your own Doctrine2-based ORM. We will see in
+the next section how we can use this.</p>
+
+<h1 id="exchange-doctrine2-reflection-for-array-based-field-storage">Exchange Doctrine2 Reflection for Array-based Field Storage</h1>
+
+<p>Doctrine2 uses reflection to access the current values of an entity.
+This is necessary, because Doctrine2 is a Data Mapper that enforces
+clean separation between entities and persistence. If we extend it to be
+an ActiveRecord implementation this separation is not wanted anymore and
+we can opt for a new approach, using the get()/set() methods on our
+ActiveEntities.</p>
+
+<p>Defining the properties "id" and "name" will then not be necessary
+anymore, they will all be saved in an array hash-map called "&#95;data"
+inside the ActiveEntity. We cannot use annotations for metadata anymore,
+however the XML or YAML drivers would still work smoothly.</p>
+
+<p>To get started we have to modify our <code>ActiveClassMetadata</code> a bit to
+exchange the contents of reflClass and reflFields with our own classes.
+Looking at the <code>ClassMetadata</code> code and doing some project wide searches
+I found out about all the necessary changes. To replace the
+<code>ReflectionClass</code> we only need to exchange <code>getProperty</code> and keep the
+rest. To exchange <code>ReflectionProperty</code> we only have to overwrite
+<code>setAccessible()</code>, <code>getValue()</code> and <code>setValue()</code>.</p>
+
+<pre><code class="sourceCode php">&lt;?php
+namespace DoctrineExtensions\ActiveEntity\Reflection;
+
+class ActiveEntityReflectionClass extends \ReflectionClass
+{
+    public function getProperty($name)
+    {
+        return new ActiveEntityPropertyReflection($this-&gt;name, $name);
+    }
+}
+
+class ActiveEntityReflectionProperty
+{
+    public $name = null;
+    public $class = null;
+
+    public function __construct($class, $name)
+    {
+        $this-&gt;class = $class;
+        $this-&gt;name = $name;
     }
 
-There are also some additional methods on the ``ActiveEntity``
-class that use magic **get and**set and \_\_call methods to access
-the private properties of an Entity (such as the User id and name
-shown above). Additionally you can call save() or remove() on any
-instance.
+    public function setAccessible($flag) {}
 
-For starters this offers a great ActiveRecord implementation with
-all the powerful features that Doctrine2 offers, such as DQL and
-UnitOfWork. However we can still go much further:
-
-
--  Eliminate the need to define ActiveEntity properties by metadata
-   mapping inference
--  Adding your own powerful Metadata Mapping Layer
--  Add a Doctrine 1.2 behaviour system using the PHP 5.3.99DEV
-   Traits functionalitiy
--  Add validation to properties of an ActiveEntity
-
-Lets begin with a simple introduction to the Doctrine Metadata
-Model to explain how this is all possible.
-
-Doctrine2 Metadata Model
-------------------------
-
-You probably already saw that Doctrine2 offers many different
-metadata configuration mechanisms: Annotations, YAML, XML and plain
-PHP. Any one of this implementations will transform into an
-instance of ``Doctrine\ORM\ClassMetadata`` which is then cached for
-subsequent web requests. The ``ClassMetadataFactory`` is
-responsible for creating and managing those metadata instances.
-
-Doctrine2 uses the ``ClassMetadata`` instance internally for all
-runtime access to your entities metadata, which means that you have
-to extend this class such that it works exactly the same from the
-outside.
-
-If you wanted to extend the inner workings of Doctrine2, this is
-indeed the way to go. First extend the EntityManager to replace the
-``ClassMetadataFactory`` used. This piece of code is the only
-hackish workaround, everything else is rather nice :-)
-
-.. code-block:: php
-
-    <?php
-    namespace DoctrineExtensions\ActiveEntity;
-    
-    use DoctrineExtensions\ActiveEntity\Mapping\ClassMetadataFactory;
-    
-    class ActiveEntityManager extends \Doctrine\ORM\EntityManager
+    public function setValue($entity = null, $value = null)
     {
-        protected function __construct(Connection $conn, Configuration $config, EventManager $eventManager)
-        {
-            parent::__construct($conn, $config, $eventManager);
-    
-            $metadataFactory = new ActiveClassMetadataFactory($this);
-            $metadataFactory->setCacheDriver($this->getConfiguration()->getMetadataCacheImpl());
-    
-            // now this is the only hack required to get it work:
-            $reflProperty = new \ReflectionProperty('Doctrine\ORM\EntityManager', 'metadataFactory');
-            $reflProperty->setAccessible(true);
-            $reflProperty->setValue($this, $metadataFactory);
-        }
-    
-        public static function create($conn, Configuration $config, EventManager $eventManager = null)
-        {
-            // ... copy paste from EntityManager::create()
-    
-            return new ActiveEntityManager($conn, $config, $conn->getEventManager());
-        }
+        $entity-&gt;set($this-&gt;name, $value);
     }
 
-And both the ``ClassMetadataFactory`` and ``ClassMetadata``:
-
-.. code-block:: php
-
-    <?php
-    namespace DoctrineExtensions\ActiveEntity\Mapping;
-    
-    class ActiveClassMetadataFactory extends \Doctrine\ORM\Mapping\ClassMetadataFactory
+    public function getValue($entity = null)
     {
-        protected function _newClassMetadataInstance($className)
-        {
-            return new ActiveClassMetadata($className);
-        }
+        return $entity-&gt;get($this-&gt;name);
     }
-    
-    class ActiveClassMetadata extends \Doctrine\ORM\Mapping\ClassMetadata
+}
+</code></pre>
+
+<p>This is about enough to exchange reflection transformation against a
+simple ActiveRecord get/set approach. Now we need to replace the all the
+instantiations of <code>ReflectionClass</code> relevant for runtime mapping with
+our implementation:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+namespace DoctrineExtensions\ActiveEntity\Mapping;
+
+use DoctrineExtensions\ActiveEntity\Reflection\ActiveEntityReflectionClass;
+use DoctrineExtensions\ActiveEntity\Reflection\ActiveEntityReflectionProperty;
+
+class ActiveClassMetadata extends \Doctrine\ORM\Mapping\ClassMetadata
+{
+    public function __construct($entityName)
     {
-    }
-
-This is the foundation of your own Doctrine2-based ORM. We will see
-in the next section how we can use this.
-
-Exchange Doctrine2 Reflection for Array-based Field Storage
------------------------------------------------------------
-
-Doctrine2 uses reflection to access the current values of an
-entity. This is necessary, because Doctrine2 is a Data Mapper that
-enforces clean separation between entities and persistence. If we
-extend it to be an ActiveRecord implementation this separation is
-not wanted anymore and we can opt for a new approach, using the
-get()/set() methods on our ActiveEntities.
-
-Defining the properties "id" and "name" will then not be necessary
-anymore, they will all be saved in an array hash-map called
-"\_data" inside the ActiveEntity. We cannot use annotations for
-metadata anymore, however the XML or YAML drivers would still work
-smoothly.
-
-To get started we have to modify our ``ActiveClassMetadata`` a bit
-to exchange the contents of reflClass and reflFields with our own
-classes. Looking at the ``ClassMetadata`` code and doing some
-project wide searches I found out about all the necessary changes.
-To replace the ``ReflectionClass`` we only need to exchange
-``getProperty`` and keep the rest. To exchange
-``ReflectionProperty`` we only have to overwrite
-``setAccessible()``, ``getValue()`` and ``setValue()``.
-
-.. code-block:: php
-
-    <?php
-    namespace DoctrineExtensions\ActiveEntity\Reflection;
-    
-    class ActiveEntityReflectionClass extends \ReflectionClass
-    {
-        public function getProperty($name)
-        {
-            return new ActiveEntityPropertyReflection($this->name, $name);
-        }
-    }
-    
-    class ActiveEntityReflectionProperty
-    {
-        public $name = null;
-        public $class = null;
-    
-        public function __construct($class, $name)
-        {
-            $this->class = $class;
-            $this->name = $name;
-        }
-    
-        public function setAccessible($flag) {}
-    
-        public function setValue($entity = null, $value = null)
-        {
-            $entity->set($this->name, $value);
-        }
-    
-        public function getValue($entity = null)
-        {
-            return $entity->get($this->name);
-        }
+        parent::__construct($entityName);
+        $this-&gt;reflClass = new ActiveEntityReflectionClass($entityName);
+        $this-&gt;namespace = $this-&gt;reflClass-&gt;getNamespaceName();
+        $this-&gt;table['name'] = $this-&gt;reflClass-&gt;getShortName();
     }
 
-This is about enough to exchange reflection transformation against
-a simple ActiveRecord get/set approach. Now we need to replace the
-all the instantiations of ``ReflectionClass`` relevant for runtime
-mapping with our implementation:
-
-.. code-block:: php
-
-    <?php
-    namespace DoctrineExtensions\ActiveEntity\Mapping;
-    
-    use DoctrineExtensions\ActiveEntity\Reflection\ActiveEntityReflectionClass;
-    use DoctrineExtensions\ActiveEntity\Reflection\ActiveEntityReflectionProperty;
-    
-    class ActiveClassMetadata extends \Doctrine\ORM\Mapping\ClassMetadata
+    /**
+     * Restores some state that can not be serialized/unserialized.
+     *
+     * @return void
+     */
+    public function __wakeup()
     {
-        public function __construct($entityName)
-        {
-            parent::__construct($entityName);
-            $this->reflClass = new ActiveEntityReflectionClass($entityName);
-            $this->namespace = $this->reflClass->getNamespaceName();
-            $this->table['name'] = $this->reflClass->getShortName();
-        }
-    
-        /**
-         * Restores some state that can not be serialized/unserialized.
-         *
-         * @return void
-         */
-        public function __wakeup()
-        {
-            // lots of code here, see the Github Repository
-        }
+        // lots of code here, see the Github Repository
     }
+}
+</code></pre>
 
-Again, this is enough and our ActiveEntity Mapping now works. We
-can heavily modify the ``ActiveEntity`` now to loose the
-requirement to specify properties for the defined metadata. We can
-rewrite the User entity to be:
+<p>Again, this is enough and our ActiveEntity Mapping now works. We can
+heavily modify the <code>ActiveEntity</code> now to loose the requirement to
+specify properties for the defined metadata. We can rewrite the User
+entity to be:</p>
 
-.. code-block:: php
+<pre><code class="sourceCode php">&lt;?php
+namespace Entities;
 
-    <?php
-    namespace Entities;
-    
-    use DoctrineExtensions\ActiveEntity\ActiveEntity;
-    
-    class User extends ActiveEntity
-    {
-    }
+use DoctrineExtensions\ActiveEntity\ActiveEntity;
 
-Using an XML or YAML Mapping is already enough for this
-ActiveEntity to work out of the box.
+class User extends ActiveEntity
+{
+}
+</code></pre>
 
-Implementing your own Metadata Mapping Driver
----------------------------------------------
+<p>Using an XML or YAML Mapping is already enough for this ActiveEntity to
+work out of the box.</p>
 
-In the spirit of Doctrine 1.\* or GORM there should be a PHP based
+<h1 id="implementing-your-own-metadata-mapping-driver">Implementing your own Metadata Mapping Driver</h1>
+
+<p>In the spirit of Doctrine 1.&#42; or GORM there should be a PHP based
 metadata mapping driver now and actually Doctrine2 ships with one
-already:
+already:</p>
 
-.. code-block:: php
+<pre><code class="sourceCode php">&lt;?php
+$config = new \Doctrine\ORM\Configuration();
+$config-&gt;setMetadataDriverImpl(new \Doctrine\ORM\Mapping\Driver\StaticPHPDriver());
+// ...
+</code></pre>
 
-    <?php
-    $config = new \Doctrine\ORM\Configuration();
-    $config->setMetadataDriverImpl(new \Doctrine\ORM\Mapping\Driver\StaticPHPDriver());
-    // ...
+<p>This allows to specify the metadata within the User class:</p>
 
-This allows to specify the metadata within the User class:
+<pre><code class="sourceCode php">&lt;?php
+namespace Entities;
 
-.. code-block:: php
+use DoctrineExtensions\ActiveEntity\ActiveEntity;
+use DoctrineExtensions\ActiveEntity\Mapping\ActiveClassMetadata;
 
-    <?php
-    namespace Entities;
-    
-    use DoctrineExtensions\ActiveEntity\ActiveEntity;
-    use DoctrineExtensions\ActiveEntity\Mapping\ActiveClassMetadata;
-    
-    class User extends ActiveEntity
+class User extends ActiveEntity
+{
+    static public function loadMetadata(ActiveClassMetadata $cm)
     {
-        static public function loadMetadata(ActiveClassMetadata $cm)
-        {
-            // work with $cm here!
-        }
+        // work with $cm here!
+    }
+}
+</code></pre>
+
+<p>You could extend that Static PHP Driver even more for the next section.
+We could add additional metadata information, such as names of
+behaviours to extend or validators or anything else.</p>
+
+<h1 id="using-traits-for-behaviours">Using Traits for Behaviours</h1>
+
+<p>We want to add a simple "Timestampable" behaviour now, hooking into the
+<code>loadClassMetadata</code> event <a href="http://www.doctrine-project.org/projects/orm/2.0/docs/reference/events/en#load-classmetadata-event">as described in the
+documentation</a>:</p>
+
+<p>Now this is untested code, as i don't have a PHP-5.3.99-DEV version
+compiled at this machine.</p>
+
+<p>The following trait can be used by our <code>User</code> entity:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+namespace DoctrineExtensions\ActiveEntity\Behaviour;
+
+trait Timestampable
+{
+    public function created()
+    {
+        return $this-&gt;get('created');
     }
 
-You could extend that Static PHP Driver even more for the next
-section. We could add additional metadata information, such as
-names of behaviours to extend or validators or anything else.
-
-Using Traits for Behaviours
----------------------------
-
-We want to add a simple "Timestampable" behaviour now, hooking into
-the ``loadClassMetadata`` event
-`as described in the documentation <http://www.doctrine-project.org/projects/orm/2.0/docs/reference/events/en#load-classmetadata-event>`_:
-
-Now this is untested code, as i don't have a PHP-5.3.99-DEV version
-compiled at this machine.
-
-The following trait can be used by our ``User`` entity:
-
-.. code-block:: php
-
-    <?php
-    namespace DoctrineExtensions\ActiveEntity\Behaviour;
-    
-    trait Timestampable
+    public function updated()
     {
-        public function created()
-        {
-            return $this->get('created');
-        }
-    
-        public function updated()
-        {
-            return $this->get('updated');
-        }
-    
-        /** will be a prePersist lifecycle hook */
-        public function setCreated()
-        {
-            return $this->set('created', new \DateTime("now"));
-        }
-    
-        /** will be a preUpdate lifecycle hook */
-        public function setUpdated()
-        {
-            return $this->set('updated', new \DateTime("now"));
-        }
-    }
-    
-    class User extends ActiveEntity use Timestampable
-    {
-    
+        return $this-&gt;get('updated');
     }
 
-We now need an Event that modifies the ``ActiveClassMetadata`` as
-required:
-
-.. code-block:: php
-
-    <?php
-    namespace DoctrineExtensions\ActiveEntity\Behaviour;
-    
-    use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
-    
-    class TimestampableEvent
+    /** will be a prePersist lifecycle hook */
+    public function setCreated()
     {
-        public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs)
-        {
-            $classMetadata = $eventArgs->getClassMetadata();
-            $traits = $classMetadata->reflClass->getTraitNames();
-            if (!in_array("DoctrineExtensions\ActiveEntity\Behaviour\Timestampable", $traits)) {
-                return;
-            }
-    
-            $classMetadata->mapField(array(
-                'type' => 'datetime',
-                'fieldName' => 'created',
-            ));
-            $classMetadata->mapField(array(
-                'type' => 'datetime',
-                'fieldName' => 'updated',
-            ));
-            $classMetadata->addLifecycleCallback("prePersist", "setCreated");
-            $classMetadata->addLifecycleCallback("prePersist", "setUpdated");
-            $classMetadata->addLifecycleCallback("preUpdate", "setUpdated");
-        }
+        return $this-&gt;set('created', new \DateTime("now"));
     }
 
-You can now register this behaviour with your Entity Manager and
-just the usage of the trait ``Timestampable`` adds two additional
-fields and updates them accordingly.
+    /** will be a preUpdate lifecycle hook */
+    public function setUpdated()
+    {
+        return $this-&gt;set('updated', new \DateTime("now"));
+    }
+}
 
-    **NOTE**
+class User extends ActiveEntity use Timestampable
+{
 
-    Again, the trait code is untested. It should work, but I cannot
-    guarantee! :)
+}
+</code></pre>
 
+<p>We now need an Event that modifies the <code>ActiveClassMetadata</code> as
+required:</p>
 
-Conclusion
-----------
+<pre><code class="sourceCode php">&lt;?php
+namespace DoctrineExtensions\ActiveEntity\Behaviour;
 
-What are you waiting for? This article showed a very deep
-modification of the Doctrine2 core to turn it into Active Record.
-The changes required some understanding of the inner workings of
-Doctrine2, however not many changes were required in the end.
+use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 
-`See the code on GitHub! <http://github.com/beberlei/Doctrine-ActiveEntity>`_
+class TimestampableEvent
+{
+    public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs)
+    {
+        $classMetadata = $eventArgs-&gt;getClassMetadata();
+        $traits = $classMetadata-&gt;reflClass-&gt;getTraitNames();
+        if (!in_array("DoctrineExtensions\ActiveEntity\Behaviour\Timestampable", $traits)) {
+            return;
+        }
+
+        $classMetadata-&gt;mapField(array(
+            'type' =&gt; 'datetime',
+            'fieldName' =&gt; 'created',
+        ));
+        $classMetadata-&gt;mapField(array(
+            'type' =&gt; 'datetime',
+            'fieldName' =&gt; 'updated',
+        ));
+        $classMetadata-&gt;addLifecycleCallback("prePersist", "setCreated");
+        $classMetadata-&gt;addLifecycleCallback("prePersist", "setUpdated");
+        $classMetadata-&gt;addLifecycleCallback("preUpdate", "setUpdated");
+    }
+}
+</code></pre>
+
+<p>You can now register this behaviour with your Entity Manager and just
+the usage of the trait <code>Timestampable</code> adds two additional fields and
+updates them accordingly.</p>
+
+<blockquote>
+  <p><strong>NOTE</strong></p>
+  
+  <p>Again, the trait code is untested. It should work, but I cannot
+  guarantee! :)</p>
+</blockquote>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>What are you waiting for? This article showed a very deep modification
+of the Doctrine2 core to turn it into Active Record. The changes
+required some understanding of the inner workings of Doctrine2, however
+not many changes were required in the end.</p>
+
+<p><a href="http://github.com/beberlei/Doctrine-ActiveEntity">See the code on
+GitHub!</a></p>
+
         </div>
 
             </article>
@@ -605,96 +584,92 @@ Doctrine2, however not many changes were required in the end.
         <hr />
 
         <div>
-            If you access a collection of Entity A pointing to Entity B,
-Doctrine2 always initializes the complete collection for you. For
-small collections up to around 100 entities this won't be a
-problem, however as soon as collections get (much) bigger than this
-you can get into serious trouble.
+            <p>If you access a collection of Entity A pointing to Entity B, Doctrine2
+always initializes the complete collection for you. For small
+collections up to around 100 entities this won't be a problem, however
+as soon as collections get (much) bigger than this you can get into
+serious trouble.</p>
 
-By default Doctrine2 can only optimize adding new entities to a
-collection for you. This operation does not initialize the
-collection. This will only get you bigger collections though,
-reading them is still a pain.
+<p>By default Doctrine2 can only optimize adding new entities to a
+collection for you. This operation does not initialize the collection.
+This will only get you bigger collections though, reading them is still
+a pain.</p>
 
-We already got requests from several development teams for better
-functionality in this regard and we are planning to add a solution
-to this problem that is not constraining your domain model with
-technical blurp. However this solution is currently on our schedule
-for the 2.1 release of Doctrine only.
+<p>We already got requests from several development teams for better
+functionality in this regard and we are planning to add a solution to
+this problem that is not constraining your domain model with technical
+blurp. However this solution is currently on our schedule for the 2.1
+release of Doctrine only.</p>
 
-Until then I wrote a very little extension for Doctrine2 that
-allows you to work with large collections. It has two methods that
-compute the following data for any given ``PersistentCollection``:
+<p>Until then I wrote a very little extension for Doctrine2 that allows you
+to work with large collections. It has two methods that compute the
+following data for any given <code>PersistentCollection</code>:</p>
 
+<ul>
+<li>Total Number of Elements in the Collection</li>
+<li>A slice of entities from the collection using a sql limit (or
+alternative)</li>
+</ul>
 
--  Total Number of Elements in the Collection
--  A slice of entities from the collection using a sql limit (or
-   alternative)
+<p>You can get this extension from the <a href="http://github.com/beberlei/DoctrineExtensions">DoctrineExtensions Github
+repository</a>.</p>
 
-You can get this extension from the
-`DoctrineExtensions Github repository <http://github.com/beberlei/DoctrineExtensions>`_.
+<h1 id="working-with-a-largecollection">Working with a LargeCollection</h1>
 
-Working with a LargeCollection
-------------------------------
-
-The ``LargeCollection`` class is a handler to work with large
+<p>The <code>LargeCollection</code> class is a handler to work with large
 PersistentCollections. You can instantiate it by passing an
-``EntityManager`` instance:
+<code>EntityManager</code> instance:</p>
 
-.. code-block:: php
+<pre><code class="sourceCode php">&lt;?php
+use DoctrineExtensions\LargeCollections\LargeCollection;
 
-    <?php
-    use DoctrineExtensions\LargeCollections\LargeCollection;
-    
-    $lc = new LargeCollection($em);
+$lc = new LargeCollection($em);
 
-    **NOTE**
+**NOTE**
 
-    LargeCollection only works with instances of
-    ``PersistentCollection``, not with other implementations of the
-    ``Doctrine\Common\Collections\Collection`` interface. That means
-    that you can only pass collections to it, whose owning entities
-    have been persisted before or are retrieved from the
-    EntityManager.
+LargeCollection only works with instances of
+``PersistentCollection``, not with other implementations of the
+``Doctrine\Common\Collections\Collection`` interface. That means
+that you can only pass collections to it, whose owning entities
+have been persisted before or are retrieved from the
+EntityManager.
+</code></pre>
 
+<p>You can compute the total number of elements in a given collection by
+passing it to the count method:</p>
 
-You can compute the total number of elements in a given collection
-by passing it to the count method:
+<pre><code class="sourceCode php">&lt;?php
+$size = $lc-&gt;count($article-&gt;getComments());
+</code></pre>
 
-.. code-block:: php
+<p>You can retrieve a slice of entities from the collection by calling:</p>
 
-    <?php
-    $size = $lc->count($article->getComments());
+<pre><code class="sourceCode php">&lt;?php
+$slice = $lc-&gt;getSliceQuery($article-&gt;getComments(), $limit = 30);
+</code></pre>
 
-You can retrieve a slice of entities from the collection by
-calling:
+<p>As you can see this is very simple to use, but also missing some bits:</p>
 
-.. code-block:: php
+<ul>
+<li>In your domain models you sometimes don't want to return the
+<code>Collections</code> instance but call <code>toArray()</code> to encapsulate the
+Collections API inside the Entity. For this two new methods are
+required to access to the persistent collections from the inside of
+an entity.</li>
+<li>The <code>remove</code>, <code>removeElement</code>, <code>contains</code> and <code>containsKey</code> methods
+could also be added to the large collection handler, making direct
+calls to the underlying UnitOfWork API.</li>
+<li>A method that returns an <code>IterableResult</code> for any given collection.
+This would allow to iterate the complete collection on a row-by-row
+basis, which would eliminate possible max memory problems compared
+to the complete hydration of a collection.</li>
+<li>Methods link()/unlink() like described in
+<a href="http://www.doctrine-project.org/jira/browse/DDC-128">DDC-128</a></li>
+</ul>
 
-    <?php
-    $slice = $lc->getSliceQuery($article->getComments(), $limit = 30);
+<p>I hope I got your attention and maybe someone has an interest in
+extending the LargeCollection a little bit more.</p>
 
-As you can see this is very simple to use, but also missing some
-bits:
-
-
--  In your domain models you sometimes don't want to return the
-   ``Collections`` instance but call ``toArray()`` to encapsulate the
-   Collections API inside the Entity. For this two new methods are
-   required to access to the persistent collections from the inside of
-   an entity.
--  The ``remove``, ``removeElement``, ``contains`` and
-   ``containsKey`` methods could also be added to the large collection
-   handler, making direct calls to the underlying UnitOfWork API.
--  A method that returns an ``IterableResult`` for any given
-   collection. This would allow to iterate the complete collection on
-   a row-by-row basis, which would eliminate possible max memory
-   problems compared to the complete hydration of a collection.
--  Methods link()/unlink() like described in
-   `DDC-128 <http://www.doctrine-project.org/jira/browse/DDC-128>`_
-
-I hope I got your attention and maybe someone has an interest in
-extending the LargeCollection a little bit more.
         </div>
 
             </article>
@@ -712,375 +687,350 @@ extending the LargeCollection a little bit more.
         <hr />
 
         <div>
-            You will often come across the requirement to display aggregate
-values of data that can be computed by using the MIN, MAX, COUNT or
-SUM SQL functions. For any ORM this is a tricky issue
-traditionally. Doctrine 2 offers several ways to get access to
-these values and this article will describe all of them from
-different perspectives.
+            <p>You will often come across the requirement to display aggregate values
+of data that can be computed by using the MIN, MAX, COUNT or SUM SQL
+functions. For any ORM this is a tricky issue traditionally. Doctrine 2
+offers several ways to get access to these values and this article will
+describe all of them from different perspectives.</p>
 
-You will see that aggregate fields can become very explicit
-features in your domain model and how this potentially complex
-business rules can be easily tested.
+<p>You will see that aggregate fields can become very explicit features in
+your domain model and how this potentially complex business rules can be
+easily tested.</p>
 
-An example model
-----------------
+<h1 id="an-example-model">An example model</h1>
 
-Say you want to model a bank account and all their entries. Entries
-into the account can either be of positive or negative money
-values. Each account has a credit limit and the account is never
-allowed to have a balance below that value.
+<p>Say you want to model a bank account and all their entries. Entries into
+the account can either be of positive or negative money values. Each
+account has a credit limit and the account is never allowed to have a
+balance below that value.</p>
 
-For simplicity we live in a world were money is composed of
-integers only. Also we omit the receiver/sender name, stated reason
-for transfer and the execution date. These all would have to be
-added on the ``Entry`` object.
+<p>For simplicity we live in a world were money is composed of integers
+only. Also we omit the receiver/sender name, stated reason for transfer
+and the execution date. These all would have to be added on the <code>Entry</code>
+object.</p>
 
-Our entities look like:
+<p>Our entities look like:</p>
 
-.. code-block:: php
+<pre><code class="sourceCode php">&lt;?php
+namespace Bank\Entities;
 
-    <?php
-    namespace Bank\Entities;
-    
+/**
+ * @Entity
+ */
+class Account
+{
+    /** @Id @GeneratedValue @Column(type="integer") */
+    private $id;
+
+    /** @Column(type="string", unique=true) */
+    private $no;
+
     /**
-     * @Entity
+     * @OneToMany(targetEntity="Entry", mappedBy="entries", cascade={"persist"})
      */
-    class Account
-    {
-        /** @Id @GeneratedValue @Column(type="integer") */
-        private $id;
-    
-        /** @Column(type="string", unique=true) */
-        private $no;
-    
-        /**
-         * @OneToMany(targetEntity="Entry", mappedBy="entries", cascade={"persist"})
-         */
-        private $entries;
-    
-        /**
-         * @Column(type="integer")
-         */
-        private $maxCredit = 0;
-    
-        public function __construct($no, $maxCredit = 0)
-        {
-            $this->no = $no;
-            $this->maxCredit = $maxCredit;
-            $this->entries = new \Doctrine\Common\Collections\ArrayCollection();
-        }
-    }
-    
+    private $entries;
+
     /**
-     * @Entity
+     * @Column(type="integer")
      */
-    class Entry
+    private $maxCredit = 0;
+
+    public function __construct($no, $maxCredit = 0)
     {
-        /** @Id @GeneratedValue @Column(type="integer") */
-        private $id;
-    
-        /**
-         * @ManyToOne(targetEntity="Account", inversedBy="entries")
-         */
-        private $account;
-    
-        /**
-         * @Column(type="integer")
-         */
-        private $amount;
-    
-        public function __construct($account, $amount)
-        {
-            $this->account = $account;
-            $this->amount = $amount;
-            // more stuff here, from/to whom, stated reason, execution date and such
-        }
-    
-        public function getAmount()
-        {
-            return $this->amount;
-        }
+        $this-&gt;no = $no;
+        $this-&gt;maxCredit = $maxCredit;
+        $this-&gt;entries = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+}
+
+/**
+ * @Entity
+ */
+class Entry
+{
+    /** @Id @GeneratedValue @Column(type="integer") */
+    private $id;
+
+    /**
+     * @ManyToOne(targetEntity="Account", inversedBy="entries")
+     */
+    private $account;
+
+    /**
+     * @Column(type="integer")
+     */
+    private $amount;
+
+    public function __construct($account, $amount)
+    {
+        $this-&gt;account = $account;
+        $this-&gt;amount = $amount;
+        // more stuff here, from/to whom, stated reason, execution date and such
     }
 
-Using DQL
----------
-
-The Doctrine Query Language allows you to select for aggregate
-values computed from fields of your Domain Model. You can select
-the current balance of your account by calling:
-
-.. code-block:: php
-
-    <?php
-    $dql = "SELECT SUM(e.amount) AS balance FROM Bank\Entities\Entry e " .
-           "WHERE e.account = ?1";
-    $balance = $em->createQuery($dql)
-                  ->setParameter(1, $myAccountId)
-                  ->getSingleScalarResult();
-
-The ``$em`` variable in this (and forthcoming) example holds the
-Doctrine ``EntityManager``. We create a query for the SUM of all
-amounts (negative amounts are withdraws) and retrieve them as a
-single scalar result, essentially return only the first column of
-the first row.
-
-This approach is simple and powerful, however it has a serious
-drawback. We have to execute a specific query for the balance
-whenever we need it.
-
-To implement a powerful domain model we would rather have access to
-the balance from our ``Account`` entity during all times (even if
-the Account was not persisted in the database before!).
-
-Also an additional requirement is the max credit per ``Account``
-rule.
-
-We cannot reliably enforce this rule in our ``Account`` entity with
-the DQL retrieval of the balance. There are many different ways to
-retrieve accounts. We cannot guarantee that we can execute the
-aggregation query for all these use-cases, let alone that a
-userland programmer checks this balance against newly added
-entries.
-
-Using your Domain Model
------------------------
-
-``Account`` and all the ``Entry`` instances are connected through a
-collection, which means we can compute this value at runtime:
-
-.. code-block:: php
-
-    <?php
-    class Account
+    public function getAmount()
     {
-        // .. previous code
-        public function getBalance()
-        {
-            $balance = 0;
-            foreach ($this->entries AS $entry) {
-                $balance += $entry->getAmount();
-            }
-            return $balance;
+        return $this-&gt;amount;
+    }
+}
+</code></pre>
+
+<h1 id="using-dql">Using DQL</h1>
+
+<p>The Doctrine Query Language allows you to select for aggregate values
+computed from fields of your Domain Model. You can select the current
+balance of your account by calling:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+$dql = "SELECT SUM(e.amount) AS balance FROM Bank\Entities\Entry e " .
+       "WHERE e.account = ?1";
+$balance = $em-&gt;createQuery($dql)
+              -&gt;setParameter(1, $myAccountId)
+              -&gt;getSingleScalarResult();
+</code></pre>
+
+<p>The <code>$em</code> variable in this (and forthcoming) example holds the Doctrine
+<code>EntityManager</code>. We create a query for the SUM of all amounts (negative
+amounts are withdraws) and retrieve them as a single scalar result,
+essentially return only the first column of the first row.</p>
+
+<p>This approach is simple and powerful, however it has a serious drawback.
+We have to execute a specific query for the balance whenever we need it.</p>
+
+<p>To implement a powerful domain model we would rather have access to the
+balance from our <code>Account</code> entity during all times (even if the Account
+was not persisted in the database before!).</p>
+
+<p>Also an additional requirement is the max credit per <code>Account</code> rule.</p>
+
+<p>We cannot reliably enforce this rule in our <code>Account</code> entity with the
+DQL retrieval of the balance. There are many different ways to retrieve
+accounts. We cannot guarantee that we can execute the aggregation query
+for all these use-cases, let alone that a userland programmer checks
+this balance against newly added entries.</p>
+
+<h1 id="using-your-domain-model">Using your Domain Model</h1>
+
+<p><code>Account</code> and all the <code>Entry</code> instances are connected through a
+collection, which means we can compute this value at runtime:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+class Account
+{
+    // .. previous code
+    public function getBalance()
+    {
+        $balance = 0;
+        foreach ($this-&gt;entries AS $entry) {
+            $balance += $entry-&gt;getAmount();
         }
+        return $balance;
+    }
+}
+</code></pre>
+
+<p>Now we can always call <code>Account::getBalance()</code> to access the current
+account balance.</p>
+
+<p>To enforce the max credit rule we have to implement the "Aggregate Root"
+pattern as described in Eric Evans book on Domain Driven Design.
+Described with one sentence, an aggregate root controls the instance
+creation, access and manipulation of its children.</p>
+
+<p>In our case we want to enforce that new entries can only added to the
+<code>Account</code> by using a designated method. The <code>Account</code> is the aggregate
+root of this relation. We can also enforce the correctness of the
+bi-directional <code>Account</code> \&lt;-&#62; <code>Entry</code> relation with this method:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+class Account
+{
+    public function addEntry($amount)
+    {
+        $this-&gt;assertAcceptEntryAllowed($amount);
+
+        $e = new Entry($this, $amount);
+        $this-&gt;entries[] = $e;
+        return $e;
+    }
+}
+</code></pre>
+
+<p>Now look at the following test-code for our entities:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+class AccountTest extends \PHPUnit_Framework_TestCase
+{
+    public function testAddEntry()
+    {
+        $account = new Account("123456", $maxCredit = 200);
+        $this-&gt;assertEquals(0, $account-&gt;getBalance());
+
+        $account-&gt;addEntry(500);
+        $this-&gt;assertEquals(500, $account-&gt;getBalance());
+
+        $account-&gt;addEntry(-700);
+        $this-&gt;assertEquals(-200, $account-&gt;getBalance());
     }
 
-Now we can always call ``Account::getBalance()`` to access the
-current account balance.
-
-To enforce the max credit rule we have to implement the "Aggregate
-Root" pattern as described in Eric Evans book on Domain Driven
-Design. Described with one sentence, an aggregate root controls the
-instance creation, access and manipulation of its children.
-
-In our case we want to enforce that new entries can only added to
-the ``Account`` by using a designated method. The ``Account`` is
-the aggregate root of this relation. We can also enforce the
-correctness of the bi-directional ``Account`` <-> ``Entry``
-relation with this method:
-
-.. code-block:: php
-
-    <?php
-    class Account
+    public function testExceedMaxLimit()
     {
-        public function addEntry($amount)
-        {
-            $this->assertAcceptEntryAllowed($amount);
-    
-            $e = new Entry($this, $amount);
-            $this->entries[] = $e;
-            return $e;
+        $account = new Account("123456", $maxCredit = 200);
+
+        $this-&gt;setExpectedException("Exception");
+        $account-&gt;addEntry(-1000);
+    }
+}
+</code></pre>
+
+<p>To enforce our rule we can now implement the assertion in
+<code>Account::addEntry</code>:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+class Account
+{
+    private function assertAcceptEntryAllowed($amount)
+    {
+        $futureBalance = $this-&gt;getBalance() + $amount;
+        $allowedMinimalBalance = ($this-&gt;maxCredit * -1);
+        if ($futureBalance &lt; $allowedMinimalBalance) {
+            throw new Exception("Credit Limit exceeded, entry is not allowed!");
         }
     }
+}
+</code></pre>
 
-Now look at the following test-code for our entities:
+<p>We haven't talked to the entity manager for persistence of our account
+example before. You can call <code>EntityManager::persist($account)</code> and then
+<code>EntityManager::flush()</code> at any point to save the account to the
+database. All the nested <code>Entry</code> objects are automatically flushed to
+the database also.</p>
 
-.. code-block:: php
+<pre><code class="sourceCode php">&lt;?php
+$account = new Account("123456", 200);
+$account-&gt;addEntry(500);
+$account-&gt;addEntry(-200);
+$em-&gt;persist($account);
+$em-&gt;flush();
+</code></pre>
 
-    <?php
-    class AccountTest extends \PHPUnit_Framework_TestCase
+<p>The current implementation has a considerable drawback. To get the
+balance, we have to initialize the complete <code>Account::$entries</code>
+collection, possibly a very large one. This can considerably hurt the
+performance of your application.</p>
+
+<h1 id="using-an-aggregate-field">Using an Aggregate Field</h1>
+
+<p>To overcome the previously mentioned issue (initializing the whole
+entries collection) we want to add an aggregate field called "balance"
+on the Account and adjust the code in <code>Account::getBalance()</code> and
+<code>Account:addEntry()</code>:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+class Account
+{
+    /**
+     * @Column(type="integer")
+     */
+    private $balance = 0;
+
+    public function getBalance()
     {
-        public function testAddEntry()
-        {
-            $account = new Account("123456", $maxCredit = 200);
-            $this->assertEquals(0, $account->getBalance());
-    
-            $account->addEntry(500);
-            $this->assertEquals(500, $account->getBalance());
-    
-            $account->addEntry(-700);
-            $this->assertEquals(-200, $account->getBalance());
-        }
-    
-        public function testExceedMaxLimit()
-        {
-            $account = new Account("123456", $maxCredit = 200);
-    
-            $this->setExpectedException("Exception");
-            $account->addEntry(-1000);
-        }
+        return $this-&gt;balance;
     }
 
-To enforce our rule we can now implement the assertion in
-``Account::addEntry``:
-
-.. code-block:: php
-
-    <?php
-    class Account
+    public function addEntry($amount)
     {
-        private function assertAcceptEntryAllowed($amount)
-        {
-            $futureBalance = $this->getBalance() + $amount;
-            $allowedMinimalBalance = ($this->maxCredit * -1);
-            if ($futureBalance < $allowedMinimalBalance) {
-                throw new Exception("Credit Limit exceeded, entry is not allowed!");
-            }
-        }
+        $this-&gt;assertAcceptEntryAllowed($amount);
+
+        $e = new Entry($this, $amount);
+        $this-&gt;entries[] = $e;
+        $this-&gt;balance += $amount;
+        return $e;
     }
+}
+</code></pre>
 
-We haven't talked to the entity manager for persistence of our
-account example before. You can call
-``EntityManager::persist($account)`` and then
-``EntityManager::flush()`` at any point to save the account to the
-database. All the nested ``Entry`` objects are automatically
-flushed to the database also.
+<p>This is a very simple change, but all the tests still pass. Our account
+entities return the correct balance. Now calling the
+<code>Account::getBalance()</code> method will not occour the overhead of loading
+all entries anymore. Adding a new Entry to the <code>Account::$entities</code> will
+also not initialize the collection internally.</p>
 
-.. code-block:: php
+<p>Adding a new entry is therefore very performant and explictly hooked
+into the domain model. It will only update the account with the current
+balance and insert the new entry into the database.</p>
 
-    <?php
-    $account = new Account("123456", 200);
-    $account->addEntry(500);
-    $account->addEntry(-200);
-    $em->persist($account);
-    $em->flush();
+<h1 id="tackling-race-conditions-with-aggregate-fields">Tackling Race Conditions with Aggregate Fields</h1>
 
-The current implementation has a considerable drawback. To get the
-balance, we have to initialize the complete ``Account::$entries``
-collection, possibly a very large one. This can considerably hurt
-the performance of your application.
+<p>Whenever you denormalize your database schema race-conditions can
+potentially lead to inconsistent state. See this example:</p>
 
-Using an Aggregate Field
-------------------------
+<pre><code class="sourceCode php">&lt;?php
+// The Account $accId has a balance of 0 and a max credit limit of 200:
+// request 1 account
+$account1 = $em-&gt;find('Bank\Entities\Account', $accId);
 
-To overcome the previously mentioned issue (initializing the whole
-entries collection) we want to add an aggregate field called
-"balance" on the Account and adjust the code in
-``Account::getBalance()`` and ``Account:addEntry()``:
+// request 2 account
+$account2 = $em-&gt;find('Bank\Entities\Account', $accId);
 
-.. code-block:: php
+$account1-&gt;addEntry(-200);
+$account2-&gt;addEntry(-200);
 
-    <?php
-    class Account
-    {
-        /**
-         * @Column(type="integer")
-         */
-        private $balance = 0;
-    
-        public function getBalance()
-        {
-            return $this->balance;
-        }
-    
-        public function addEntry($amount)
-        {
-            $this->assertAcceptEntryAllowed($amount);
-    
-            $e = new Entry($this, $amount);
-            $this->entries[] = $e;
-            $this->balance += $amount;
-            return $e;
-        }
-    }
+// now request 1 and 2 both flush the changes.
+</code></pre>
 
-This is a very simple change, but all the tests still pass. Our
-account entities return the correct balance. Now calling the
-``Account::getBalance()`` method will not occour the overhead of
-loading all entries anymore. Adding a new Entry to the
-``Account::$entities`` will also not initialize the collection
-internally.
+<p>The aggregate field <code>Account::$balance</code> is now -200, however the SUM
+over all entries amounts yields -400. A violation of our max credit
+rule.</p>
 
-Adding a new entry is therefore very performant and explictly
-hooked into the domain model. It will only update the account with
-the current balance and insert the new entry into the database.
+<p>You can use both optimistic or pessimistic locking to save-guard your
+aggregate fields against this kind of race-conditions. Reading Eric
+Evans DDD carefully he mentions that the "Aggregate Root" (Account in
+our example) needs a locking mechanism.</p>
 
-Tackling Race Conditions with Aggregate Fields
-----------------------------------------------
+<p>Optimistic locking is as easy as adding a version column:</p>
 
-Whenever you denormalize your database schema race-conditions can
-potentially lead to inconsistent state. See this example:
+<pre><code class="sourceCode php">&lt;?php
+class Amount
+{
+    /** @Column(type="integer") @Version */
+    private $version;
+}
+</code></pre>
 
-.. code-block:: php
-
-    <?php
-    // The Account $accId has a balance of 0 and a max credit limit of 200:
-    // request 1 account
-    $account1 = $em->find('Bank\Entities\Account', $accId);
-    
-    // request 2 account
-    $account2 = $em->find('Bank\Entities\Account', $accId);
-    
-    $account1->addEntry(-200);
-    $account2->addEntry(-200);
-    
-    // now request 1 and 2 both flush the changes.
-
-The aggregate field ``Account::$balance`` is now -200, however the
-SUM over all entries amounts yields -400. A violation of our max
-credit rule.
-
-You can use both optimistic or pessimistic locking to save-guard
-your aggregate fields against this kind of race-conditions. Reading
-Eric Evans DDD carefully he mentions that the "Aggregate Root"
-(Account in our example) needs a locking mechanism.
-
-Optimistic locking is as easy as adding a version column:
-
-.. code-block:: php
-
-    <?php
-    class Amount
-    {
-        /** @Column(type="integer") @Version */
-        private $version;
-    }
-
-The previous example would then throw an exception in the face of
+<p>The previous example would then throw an exception in the face of
 whatever request saves the entity last (and would create the
-inconsistent state).
+inconsistent state).</p>
 
-Pessimmistic locking requires an additional flag set on the
-``EntityManager::find()`` call, enabling write locking directly in
-the database using a FOR UPDATE.
+<p>Pessimmistic locking requires an additional flag set on the
+<code>EntityManager::find()</code> call, enabling write locking directly in the
+database using a FOR UPDATE.</p>
 
-.. code-block:: php
+<pre><code class="sourceCode php">&lt;?php
+use Doctrine\DBAL\LockMode;
 
-    <?php
-    use Doctrine\DBAL\LockMode;
-    
-    $account = $em->find('Bank\Entities\Account', $accId, LockMode::PESSIMISTIC_READ); 
+$account = $em-&gt;find('Bank\Entities\Account', $accId, LockMode::PESSIMISTIC_READ); 
+</code></pre>
 
-Keeping Updates and Deletes in Sync
------------------------------------
+<h1 id="keeping-updates-and-deletes-in-sync">Keeping Updates and Deletes in Sync</h1>
 
-The example shown in this article does not allow changes to the
-value in ``Entry``, which considerably simplifies the effort to
-keep ``Account::$balance`` in sync. If your use-case allows fields
-to be updated or related entities to be removed you have to
-encapsulate this logic in your "Aggregate Root" entity and adjust
-the aggregate field accordingly.
+<p>The example shown in this article does not allow changes to the value in
+<code>Entry</code>, which considerably simplifies the effort to keep
+<code>Account::$balance</code> in sync. If your use-case allows fields to be
+updated or related entities to be removed you have to encapsulate this
+logic in your "Aggregate Root" entity and adjust the aggregate field
+accordingly.</p>
 
-Conclusion
-----------
+<h1 id="conclusion">Conclusion</h1>
 
-This article described how to obtain aggregate values using DQL or
-your domain model. It showed how you can easily add an aggregate
-field that offers serious performance benefits over iterating all
-the related objects that make up an aggregate value. Finally I
-showed how you can ensure that your aggregate fields do not get out
-of sync due to race-conditions and concurrent access.
+<p>This article described how to obtain aggregate values using DQL or your
+domain model. It showed how you can easily add an aggregate field that
+offers serious performance benefits over iterating all the related
+objects that make up an aggregate value. Finally I showed how you can
+ensure that your aggregate fields do not get out of sync due to
+race-conditions and concurrent access.</p>
+
         </div>
 
             </article>

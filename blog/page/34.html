@@ -127,143 +127,163 @@
         <hr />
 
         <div>
-            One of most common complaints about Doctrine2 is the requirement to write
-getters/setters for all the fields and assocations of every entity. A concern
-that immediately follows is that Doctrine 2 is not suitable for Rapid-Application-Development.
+            <p>One of most common complaints about Doctrine2 is the requirement to
+write getters/setters for all the fields and assocations of every
+entity. A concern that immediately follows is that Doctrine 2 is not
+suitable for Rapid-Application-Development.</p>
 
-The problem is purely a usability concern and there are a bunch of very easy ways ouf of this problem:
+<p>The problem is purely a usability concern and there are a bunch of very
+easy ways ouf of this problem:</p>
 
-- A base-object that has __get/__set.
-- The EntityGenerator can generate getters/setters
-- An IDE that generates getters/setters (Netbeans, PHPStorm)
+<ul>
+<li>A base-object that has &#95;&#95;get/&#95;&#95;set.</li>
+<li>The EntityGenerator can generate getters/setters</li>
+<li>An IDE that generates getters/setters (Netbeans, PHPStorm)</li>
+</ul>
 
-We have been very critical of ActiveRecord since we started the development
-of Doctrine 2 for various reasons. Mostly because we don't think coupling the
-database to your domain objects is a good choice for testability an maintainabilty
-reasons.
+<p>We have been very critical of ActiveRecord since we started the
+development of Doctrine 2 for various reasons. Mostly because we don't
+think coupling the database to your domain objects is a good choice for
+testability an maintainabilty reasons.</p>
 
-However we do see the need for Doctrine 2 to be suitable for RAD projects.
-With the launch of Symfony2 and other frameworks with tight Doctrine 2 integration
-this requirement has become even more important.
+<p>However we do see the need for Doctrine 2 to be suitable for RAD
+projects. With the launch of Symfony2 and other frameworks with tight
+Doctrine 2 integration this requirement has become even more important.</p>
 
-That is why we will introduce a very lightweight base-class into Doctrine.
-We managed to write this base-class on an abstract level against the Common
-Metadata interface, such that CouchDB-, MongoDB- and PHPCR-ODM implementations
-benefit from this as well.
+<p>That is why we will introduce a very lightweight base-class into
+Doctrine. We managed to write this base-class on an abstract level
+against the Common Metadata interface, such that CouchDB-, MongoDB- and
+PHPCR-ODM implementations benefit from this as well.</p>
 
-Using a new hook in Doctrine 2.2-DEV you can now inject the EntityManager (ObjectManager)
-and the metadata description into each entity during construction. This metadata
-is used to implement the magic __call hook implementing getters/setters
-and association management methods.
+<p>Using a new hook in Doctrine 2.2-DEV you can now inject the
+EntityManager (ObjectManager) and the metadata description into each
+entity during construction. This metadata is used to implement the magic
+&#95;&#95;call hook implementing getters/setters and association management
+methods.</p>
 
-Example
--------
+<h1 id="example">Example</h1>
 
-A simple example will demonstrate this:
+<p>A simple example will demonstrate this:</p>
 
-    <?php
-    use Doctrine\Common\Persistence\PersistentObject;
-    use Doctrine\ORM\EntityManager;
+<blockquote>
+  <p>\&lt;?php use DoctrineCommonPersistencePersistentObject; use
+  DoctrineORMEntityManager;</p>
+  
+  <dl>
+  <dt>/<em>&#42;</em> @Entity</dt>
+  <dd>&#42;&#42;/</dd>
+  </dl>
+  
+  <p>class User extends PersistentObject { /<em>&#42; @Id @Column(type="integer")
+  @GeneratedValue</em>&#42;/ protected \$id;</p>
+  
+  <blockquote>
+    <p>/<em>&#42; @Column(type="string")</em>&#42;/ protected \$name;</p>
+    
+    <p>/<em>&#42; @OneToMany(targetEntity="Phonenumber", mappedBy="user")</em>&#42;/
+    protected \$phonenumbers;</p>
+  </blockquote>
+  
+  <p>}</p>
+</blockquote>
 
-    /**
-     * @Entity
-     **/
-    class User extends PersistentObject
-    {
-        /** @Id @Column(type="integer") @GeneratedValue **/
-        protected $id;
+<p>Extending from &#96;PersistentObject&#96; will make getters/setters available
+for your entities. Bi-directional associations are handled
+automatically.</p>
 
-        /** @Column(type="string") **/
-        protected $name;
+<pre><code class="sourceCode php">&lt;?php
+/**
+ * @Entity
+ **/
+class Phonenumber extends PersistentObject
+{
+    /** @Id @Column(type="string") **/
+    private $number;
 
-        /** @OneToMany(targetEntity="Phonenumber", mappedBy="user") **/
-        protected $phonenumbers;
-    }
+    /** @ManyToOne(targetEntity="User", inversedBy="phonenumbers") **/
+    private $user;
+}
+</code></pre>
 
-Extending from `PersistentObject` will make getters/setters available
-for your entities. Bi-directional associations are handled automatically.
+<p>The only configuration call for the &#96;PersistentObject&#96; is a
+registration of the responsible entity/document manager:</p>
 
-.. code-block:: php
+<pre><code class="sourceCode php">&lt;?php
+$entityManager = EntityManager::create(...);
+PersistentObject::setObjectManager($entityManager);
+</code></pre>
 
-    <?php
-    /**
-     * @Entity
-     **/
-    class Phonenumber extends PersistentObject
-    {
-        /** @Id @Column(type="string") **/
-        private $number;
+<p>You can now start using the entities as simple as this:</p>
 
-        /** @ManyToOne(targetEntity="User", inversedBy="phonenumbers") **/
-        private $user;
-    }
+<pre><code class="sourceCode php">&lt;?php
+$number = new Phonenumber();
+$number-&gt;setNumber(123454);
+$user = new User();
+$user-&gt;setName("Benjamin");
+$user-&gt;addPhonenumbers($number);
 
-The only configuration call for the `PersistentObject` is a registration
-of the responsible entity/document manager:
+echo $user-&gt;getName();
+foreach ($user-&gt;getPhonenumbers() AS $number) {
+    echo $number-&gt;getNumber();
+}
+</code></pre>
 
-.. code-block:: php
+<h1 id="future-developments">Future Developments</h1>
 
-    <?php
-    $entityManager = EntityManager::create(...);
-    PersistentObject::setObjectManager($entityManager);
+<p>First important notice: We will not develop the &#96;PersistentObject&#96;
+into a full-fledged active record. Doctrine focuses on being a
+DataMapper. We do however provide a bunch of new hooks in version 2.2
+that will allow you to turn Doctrine 2 into an active record very
+easily:</p>
 
-You can now start using the entities as simple as this:
+<ul>
+<li>Inject EntityManager and ClassMetadata</li>
+</ul>
 
-.. code-block:: php
+<p>If your entity implements &#96;DoctrineCommonPersistentObjectManagerAware&#96;
+then the ObjectManager and ClassMetadata of the entity will be injected
+during construction.</p>
 
-    <?php
-    $number = new Phonenumber();
-    $number->setNumber(123454);
-    $user = new User();
-    $user->setName("Benjamin");
-    $user->addPhonenumbers($number);
+<ul>
+<li>EntityManager&#35;flush() can now flush one entity only</li>
+</ul>
 
-    echo $user->getName();
-    foreach ($user->getPhonenumbers() AS $number) {
-        echo $number->getNumber();
-    }
+<p>When you pass a single entity to EntityManager&#35;flush() this entity will
+be the only one flushed into the database. Cascade persist rules are
+applied to this object. With this feature and access to the
+EntityManager inside your entities you can now start implementing an
+efficient Active Record with "Record&#35;save()" and "Record&#35;delete()"
+methods.</p>
 
-Future Developments
--------------------
+<ul>
+<li>PHP 5.4 and Traits</li>
+</ul>
 
-First important notice: We will not develop the `PersistentObject` into a full-fledged active record.
-Doctrine focuses on being a DataMapper. We do however provide a bunch of new hooks in version 2.2
-that will allow you to turn Doctrine 2 into an active record very easily:
+<p>The next version of PHP is already in Beta 2 and will probably be
+released in the next months. One of the most powerful feature of this
+release will be Traits, something very suitable for Doctrine and ORMs in
+general.</p>
 
-- Inject EntityManager and ClassMetadata
+<p>No worries: Doctrine 2 will always be supporting 5.3, however we will
+probably ship with optional features that are using the trait
+functionality. High on the list:</p>
 
-If your entity implements `Doctrine\Common\Persistent\ObjectManagerAware` then the ObjectManager
-and ClassMetadata of the entity will be injected during construction.
+<ul>
+<li>Porting &#96;PersistentObject&#96; to a trait</li>
+<li>Serialization of entities from a trait (ToArray(), ToJson()).
+Available as a service to PHP 5.3</li>
+<li>ActiveEntity trait that extends the &#96;PersistentObject&#96; one.</li>
+</ul>
 
-- EntityManager#flush() can now flush one entity only
+<p>Based on this feature set it should even be possible to add behaviors to
+Doctrine 2, although we won't focus on implementing behaviors in the
+core team.</p>
 
-When you pass a single entity to EntityManager#flush() this entity will be the only
-one flushed into the database. Cascade persist rules are applied to this object.
-With this feature and access to the EntityManager inside your entities you can
-now start implementing an efficient Active Record with "Record#save()" and "Record#delete()"
-methods.
+<h1 id="last-words">Last words</h1>
 
-- PHP 5.4 and Traits
+<p>I would really appreciate people starting to test the
+&#96;PersistentObject&#96; if they like too and give us feedback.</p>
 
-The next version of PHP is already in Beta 2 and will probably be released in the next months.
-One of the most powerful feature of this release will be Traits, something very suitable for
-Doctrine and ORMs in general.
-
-No worries: Doctrine 2 will always be supporting 5.3, however we will probably ship
-with optional features that are using the trait functionality. High on the list:
-
-- Porting `PersistentObject` to a trait
-- Serialization of entities from a trait (ToArray(), ToJson()). Available as a service to PHP 5.3
-- ActiveEntity trait that extends the `PersistentObject` one.
-
-Based on this feature set it should even be possible to add behaviors to Doctrine 2,
-although we won't focus on implementing behaviors in the core team.
-
-Last words
-----------
-
-I would really appreciate people starting to test the `PersistentObject` if they
-like too and give us feedback.
         </div>
 
             </article>
@@ -281,19 +301,24 @@ like too and give us feedback.
         <hr />
 
         <div>
-            We have released the maintenance versions Common 2.1.2, DBAL 2.1.3
-and ORM 2.1.2.
+            <p>We have released the maintenance versions Common 2.1.2, DBAL 2.1.3 and
+ORM 2.1.2.</p>
 
+<ul>
+<li><a href="http://www.doctrine-project.org/jira/browse/DCOM/fixforversion/10161">Common 2.1.2
+Changelog</a></li>
+<li><a href="http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10162">DBAL 2.1.3
+Changelog</a></li>
+<li><a href="http://www.doctrine-project.org/jira/browse/DDC/fixforversion/10154">ORM 2.1.2
+Changelog</a></li>
+</ul>
 
--  `Common 2.1.2 Changelog <http://www.doctrine-project.org/jira/browse/DCOM/fixforversion/10161>`_
--  `DBAL 2.1.3 Changelog <http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10162>`_
--  `ORM 2.1.2 Changelog <http://www.doctrine-project.org/jira/browse/DDC/fixforversion/10154>`_
+<p>A total of 20 bugs have been fixed in all 3 components. The DBAL release
+contains a security fix for the Oracle driver fixing <a href="http://www.doctrine-project.org/jira/browse/DBAL-164">a possible SQL
+injection issue</a>.
+If you are using Oracle please update immediately. This security fix was
+backported to 2.0 and a new 2.0.9 version was released.</p>
 
-A total of 20 bugs have been fixed in all 3 components. The DBAL
-release contains a security fix for the Oracle driver fixing
-`a possible SQL injection issue <http://www.doctrine-project.org/jira/browse/DBAL-164>`_.
-If you are using Oracle please update immediately. This security
-fix was backported to 2.0 and a new 2.0.9 version was released.
         </div>
 
             </article>
@@ -311,23 +336,23 @@ fix was backported to 2.0 and a new 2.0.9 version was released.
         <hr />
 
         <div>
-            It was brought to our attention that identifier quoting in Doctrine
-DBAL has a potential security problem when user-input is passed
-into this function, making the security aspect of this
-functionality obsolete. We fixed as soon as we realized it and
-apologize for to our users for this error.
+            <p>It was brought to our attention that identifier quoting in Doctrine DBAL
+has a potential security problem when user-input is passed into this
+function, making the security aspect of this functionality obsolete. We
+fixed as soon as we realized it and apologize for to our users for this
+error.</p>
 
-We released versions 2.1.2 and 2.0.8 of DBAL that both contain a
-fix for the problem. You can grab the code from
-`PEAR <http://pear.doctrine-project.org>`_ ,
-`Github <http://github.com/doctrine/dbal>`_ or the
-`Downloads section <http://www.doctrine-project.org/projects/dbal/download>`_.
+<p>We released versions 2.1.2 and 2.0.8 of DBAL that both contain a fix for
+the problem. You can grab the code from
+<a href="http://pear.doctrine-project.org">PEAR</a> ,
+<a href="http://github.com/doctrine/dbal">Github</a> or the <a href="http://www.doctrine-project.org/projects/dbal/download">Downloads
+section</a>.</p>
 
-If you make use of AbstractPlatform::quoteIdentifier() or
-Doctrine::quoteIdentifier() please upgrade immediately. The ORM
-itself does not use identifier quoting in combination with
-user-input, however we still urge everyone to update to the latest
-version of DBAL.
+<p>If you make use of AbstractPlatform::quoteIdentifier() or
+Doctrine::quoteIdentifier() please upgrade immediately. The ORM itself
+does not use identifier quoting in combination with user-input, however
+we still urge everyone to update to the latest version of DBAL.</p>
+
         </div>
 
             </article>

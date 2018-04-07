@@ -125,229 +125,211 @@
                                     </p>
 
         <div>
-            One major advantage to using something like MongoDB is the fact
-that it is schema-less. We can store multiple types of documents in
-a single collection and we are not limited to a single type of
-document in embedded and referenced documents. This article shows
-how you can easily mix types of documents in collections, embedded
-and referenced documents.
+            <p>One major advantage to using something like MongoDB is the fact that it
+is schema-less. We can store multiple types of documents in a single
+collection and we are not limited to a single type of document in
+embedded and referenced documents. This article shows how you can easily
+mix types of documents in collections, embedded and referenced
+documents.</p>
 
-Mixing Types in Collections
----------------------------
+<h1 id="mixing-types-in-collections">Mixing Types in Collections</h1>
 
-If you don't want to use ``SINGLE_COLLECTION`` inheritance you can
-easily store different documents in the same collection by using a
-discriminator field. First define an ``Article`` document that maps
-to ``my_documents``:
+<p>If you don't want to use <code>SINGLE_COLLECTION</code> inheritance you can easily
+store different documents in the same collection by using a
+discriminator field. First define an <code>Article</code> document that maps to
+<code>my_documents</code>:</p>
 
-.. code-block:: php
-
-    <?php
-    /**
-     * @Document(collection="my_documents")
-     * @DiscriminatorField(fieldName="type")
-     * @DiscriminatorMap({"article"="Article", "album"="Album"})
-     */
-    class Article
-    {
-        // ...
-    }
-
-Next create another document named ``Album`` and also map it to
-``my_documents``:
-
-.. code-block:: php
-
-    <?php
-    /**
-     * @Document(collection="my_documents")
-     * @DiscriminatorField(fieldName="type")
-     * @DiscriminatorMap({"article"="Article", "album"="Album"})
-     */
-    class Album
-    {
-        // ...
-    }
-
-Now if you create some instances and persist them they will all be
-stored in the ``my_documents`` collection and will have a
-discriminator field named ``type`` automatically set with the value
-specified in the mapping:
-
-.. code-block:: php
-
-    <?php
-    $article = new Article();
-    $article->setTitle('Sample Article');
+<pre><code class="sourceCode php">&lt;?php
+/**
+ * @Document(collection="my_documents")
+ * @DiscriminatorField(fieldName="type")
+ * @DiscriminatorMap({"article"="Article", "album"="Album"})
+ */
+class Article
+{
     // ...
-    
-    $album = new Album();
-    $album->setName('My Album');
-    
-    $dm->persist($article);
-    $dm->persist($album);
+}
+</code></pre>
 
-Finally, if you retrieve the documents they'll all be retrieved
-from ``my_documents`` but you will get back the proper PHP classes
-that created them:
+<p>Next create another document named <code>Album</code> and also map it to
+<code>my_documents</code>:</p>
 
-.. code-block:: php
-
-    <?php
-    $articles = $dm->find('Article');
-    $albums = $dm->find('Album');
-
-You can retrieve more then just one document type by specifying an
-array:
-
-.. code-block:: php
-
-    <?php
-    $documents = $dm
-        ->createQuery(array('Article', 'Album'))
-        ->execute();
-
-The returned documents will contain instances of articles and
-albums!
-
-Mixing Types in Embedded Documents
-----------------------------------
-
-You can store multiple types of documents in embedded documents by
-simply omitting the ``targetDocument`` option. First create a
-``User`` document and embed multiple task documents:
-
-.. code-block:: php
-
-    <?php
-    /** @Document(collection="users") */
-    class User
-    {
-        // ...
-    
-        /** @Embedded */
-        private $tasks = array();
-    
-        // ...
-    }
-
-    **NOTE** Notice how on the ``$tasks`` annotation we don't specify
-    whether it is ``one`` or ``many``. This is because we know it is
-    ``many`` due to the default value being an array.
-
-
-Now create the different types of tasks we can add to the user:
-
-.. code-block:: php
-
-    <?php
-    /** @EmbeddedDocument */
-    class DownloadTask
-    {
-        // ...
-    }
-    
-    /** @EmbeddedDocument */
-    class UploadTask
-    {
-        // ...
-    }
-
-Now you can embed any type of class in the ``$tasks`` property:
-
-.. code-block:: php
-
-    <?php
-    $user = $dm->findOne('User', array(...));
-    
-    $task = new DownloadTask();
+<pre><code class="sourceCode php">&lt;?php
+/**
+ * @Document(collection="my_documents")
+ * @DiscriminatorField(fieldName="type")
+ * @DiscriminatorMap({"article"="Article", "album"="Album"})
+ */
+class Album
+{
     // ...
-    
-    $user->addTask($task);
-    
-    $task = new UploadTask();
+}
+</code></pre>
+
+<p>Now if you create some instances and persist them they will all be
+stored in the <code>my_documents</code> collection and will have a discriminator
+field named <code>type</code> automatically set with the value specified in the
+mapping:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+$article = new Article();
+$article-&gt;setTitle('Sample Article');
+// ...
+
+$album = new Album();
+$album-&gt;setName('My Album');
+
+$dm-&gt;persist($article);
+$dm-&gt;persist($album);
+</code></pre>
+
+<p>Finally, if you retrieve the documents they'll all be retrieved from
+<code>my_documents</code> but you will get back the proper PHP classes that created
+them:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+$articles = $dm-&gt;find('Article');
+$albums = $dm-&gt;find('Album');
+</code></pre>
+
+<p>You can retrieve more then just one document type by specifying an
+array:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+$documents = $dm
+    -&gt;createQuery(array('Article', 'Album'))
+    -&gt;execute();
+</code></pre>
+
+<p>The returned documents will contain instances of articles and albums!</p>
+
+<h1 id="mixing-types-in-embedded-documents">Mixing Types in Embedded Documents</h1>
+
+<p>You can store multiple types of documents in embedded documents by
+simply omitting the <code>targetDocument</code> option. First create a <code>User</code>
+document and embed multiple task documents:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+/** @Document(collection="users") */
+class User
+{
     // ...
-    
-    $user->addTask($task);
-    
-    $dm->flush();
 
-Mixing Types in Referenced Documents
-------------------------------------
+    /** @Embedded */
+    private $tasks = array();
 
-Mixing types in referenced documents works just the same as
-embedded by omitting the ``targetDocument`` option. In this example
-a user can add references to all his favorite albums, songs and
-books. First define a ``User`` document with a many references
-property for storing the users favorites:
+    // ...
+}
 
-.. code-block:: php
+**NOTE** Notice how on the ``$tasks`` annotation we don't specify
+whether it is ``one`` or ``many``. This is because we know it is
+``many`` due to the default value being an array.
+</code></pre>
 
-    <?php
-    /** @Document(collection="users") */
-    class User
-    {
-        // ...
-    
-        /** @Reference */
-        private $favorites = array();
-    
-        // ...
-    }
+<p>Now create the different types of tasks we can add to the user:</p>
 
-Now here is what the referenced documents would look like:
+<pre><code class="sourceCode php">&lt;?php
+/** @EmbeddedDocument */
+class DownloadTask
+{
+    // ...
+}
 
-.. code-block:: php
+/** @EmbeddedDocument */
+class UploadTask
+{
+    // ...
+}
+</code></pre>
 
-    <?php
-    /** @Document(collection="albums") */
-    class Album
-    {
-        // ...
-    }
-    
-    /** @Document(collection="songs") */
-    class Song
-    {
-        // ...
-    }
-    
-    /** @Document(collection="books") */
-    class Book
-    {
-        // ...
-    }
+<p>Now you can embed any type of class in the <code>$tasks</code> property:</p>
 
-Now it is easy to add the references to his favorites:
+<pre><code class="sourceCode php">&lt;?php
+$user = $dm-&gt;findOne('User', array(...));
 
-.. code-block:: php
+$task = new DownloadTask();
+// ...
 
-    <?php
-    $user->addFavorite($album);
-    $user->addFavorite($song);
-    $user->addFavorite($book);
-    
-    $dm->flush();
+$user-&gt;addTask($task);
 
-When you retrieve the user and access the ``$favorites`` the
-documents will be grouped by type and loaded with one or more
-``$in`` queries:
+$task = new UploadTask();
+// ...
 
-.. code-block:: php
+$user-&gt;addTask($task);
 
-    <?php
-    $user = $dm->findOne('User', array(...));
-    $favorites = $user->getFavorites();
-    
-    // Lazily loads references
-    // Contains Album, Song and Book instances
-    foreach ($favorites as $favorite) {
-        // ...
-    }
+$dm-&gt;flush();
+</code></pre>
 
-That is it! It is easy to take advantage of the schema-less
-features of MongoDB with the Doctrine Object Document Mapper
-(ODM)!
+<h1 id="mixing-types-in-referenced-documents">Mixing Types in Referenced Documents</h1>
+
+<p>Mixing types in referenced documents works just the same as embedded by
+omitting the <code>targetDocument</code> option. In this example a user can add
+references to all his favorite albums, songs and books. First define a
+<code>User</code> document with a many references property for storing the users
+favorites:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+/** @Document(collection="users") */
+class User
+{
+    // ...
+
+    /** @Reference */
+    private $favorites = array();
+
+    // ...
+}
+</code></pre>
+
+<p>Now here is what the referenced documents would look like:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+/** @Document(collection="albums") */
+class Album
+{
+    // ...
+}
+
+/** @Document(collection="songs") */
+class Song
+{
+    // ...
+}
+
+/** @Document(collection="books") */
+class Book
+{
+    // ...
+}
+</code></pre>
+
+<p>Now it is easy to add the references to his favorites:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+$user-&gt;addFavorite($album);
+$user-&gt;addFavorite($song);
+$user-&gt;addFavorite($book);
+
+$dm-&gt;flush();
+</code></pre>
+
+<p>When you retrieve the user and access the <code>$favorites</code> the documents
+will be grouped by type and loaded with one or more <code>$in</code> queries:</p>
+
+<pre><code class="sourceCode php">&lt;?php
+$user = $dm-&gt;findOne('User', array(...));
+$favorites = $user-&gt;getFavorites();
+
+// Lazily loads references
+// Contains Album, Song and Book instances
+foreach ($favorites as $favorite) {
+    // ...
+}
+</code></pre>
+
+<p>That is it! It is easy to take advantage of the schema-less features of
+MongoDB with the Doctrine Object Document Mapper (ODM)!</p>
+
         </div>
                 
                     <nav class="article">

@@ -127,48 +127,49 @@
         <hr />
 
         <div>
-            Now that the dust has settled from the move to git I suppose it is
-time for a blog post. About a month ago, we made the decision to
-switch the Doctrine projects source control to
-`git <http://git-scm.com>`_. Like many other
-`open source projects <http://www.symfony-project.org>`_ , we also
-chose `github.com <http://www.github.com>`_ to host our
-repositories. Github brings a whole new level of collaborative
-coding to the Doctrine community and I can already see more people
-getting involved because of it.
+            <p>Now that the dust has settled from the move to git I suppose it is time
+for a blog post. About a month ago, we made the decision to switch the
+Doctrine projects source control to <a href="http://git-scm.com">git</a>. Like many
+other <a href="http://www.symfony-project.org">open source projects</a> , we also
+chose <a href="http://www.github.com">github.com</a> to host our repositories.
+Github brings a whole new level of collaborative coding to the Doctrine
+community and I can already see more people getting involved because of
+it.</p>
 
-Still want to use SVN?
-----------------------
+<h1 id="still-want-to-use-svn%3F">Still want to use SVN?</h1>
 
-If you still want to use subversion externals in your project, you
-can do so by using the read-only SVN features of github.com:
+<p>If you still want to use subversion externals in your project, you can
+do so by using the read-only SVN features of github.com:</p>
 
+<ul>
+<li>Doctrine 1.2 -
+<a href="http://svn.github.com/doctrine/doctrine1.git">http://svn.github.com/doctrine/doctrine1.git</a></li>
+<li>Doctrine 2.0 -
+<a href="http://svn.github.com/doctrine/doctrine2.git">http://svn.github.com/doctrine/doctrine2.git</a></li>
+</ul>
 
--  Doctrine 1.2 - http://svn.github.com/doctrine/doctrine1.git
--  Doctrine 2.0 - http://svn.github.com/doctrine/doctrine2.git
+<p>You can read about this feature on the github
+<a href="http://github.com/blog/626-announcing-svn-support">blog</a>.</p>
 
-You can read about this feature on the github
-`blog <http://github.com/blog/626-announcing-svn-support>`_.
+<h1 id="need-to-learn-git%3F">Need to learn git?</h1>
 
-Need to learn git?
-------------------
+<p>Through the process of moving to git, we have all had to learn lots but
+it could not have been done without the <a href="http://progit.org/">Pro Git
+Book</a>. It is an awesome book written by <a href="http://twitter.com/CHACON">Scott
+Chacon</a> who works at github and is a git guru
+among other things.. The book can be ordered or can be <a href="http://progit.org/book/">read
+online</a> for free!</p>
 
-Through the process of moving to git, we have all had to learn lots
-but it could not have been done without the
-`Pro Git Book <http://progit.org/>`_. It is an awesome book written
-by `Scott Chacon <http://twitter.com/CHACON>`_ who works at github
-and is a git guru among other things.. The book can be ordered or
-can be `read online <http://progit.org/book/>`_ for free!
+<h1 id="want-to-contribute-to-doctrine%3F">Want to contribute to Doctrine?</h1>
 
-Want to contribute to Doctrine?
--------------------------------
+<p>If you are interested in contributing to the Doctrine project, you will
+need to fork one of the Doctrine
+<a href="http://github.com/doctrine">repositories</a> and submit your
+modifications. You can read more about how to <a href="http://github.com/guides/fork-a-project-and-submit-your-modifications/7">"Fork a project and
+submit your
+modifications"</a>
+on the github website.</p>
 
-If you are interested in contributing to the Doctrine project, you
-will need to fork one of the Doctrine
-`repositories <http://github.com/doctrine>`_ and submit your
-modifications. You can read more about how to
-`"Fork a project and submit your modifications" <http://github.com/guides/fork-a-project-and-submit-your-modifications/7>`_
-on the github website.
         </div>
 
             </article>
@@ -186,124 +187,120 @@ on the github website.
         <hr />
 
         <div>
-            A question asked to me many times by many different people over the
-last year is, "will Doctrine ever have any support for MongoDB?". I
-have never really had an answer because we haven't had any official
-plans to support it as it was so new to the database world and php
-so nobody really knew much about it yet.
+            <p>A question asked to me many times by many different people over the last
+year is, "will Doctrine ever have any support for MongoDB?". I have
+never really had an answer because we haven't had any official plans to
+support it as it was so new to the database world and php so nobody
+really knew much about it yet.</p>
 
-A few weekends ago I decided to install MongoDB and give it a try.
-It was pretty fun and interesting. I quickly learned that it being
-a document based storage system lends itself well to a object
-mapper so the experimental
-`Doctrine MongoDB Object Document Mapper <http://github.com/jwage/odm>`_
-was born.
+<p>A few weekends ago I decided to install MongoDB and give it a try. It
+was pretty fun and interesting. I quickly learned that it being a
+document based storage system lends itself well to a object mapper so
+the experimental <a href="http://github.com/jwage/odm">Doctrine MongoDB Object Document
+Mapper</a> was born.</p>
 
-Introducing Doctrine MongoDB Object Document Mapper (ODM)
----------------------------------------------------------
+<h1 id="introducing-doctrine-mongodb-object-document-mapper-odm">Introducing Doctrine MongoDB Object Document Mapper (ODM)</h1>
 
-Much like the Doctrine 2 ORM, the ODM aims to provide transparent
-persistence for PHP 5.3.0+ objects. You will notice that the
-Doctrine 2 ORM and ODM infrastructure, style, interfaces, etc. are
-all very similar. Instead of an EntityManager like in the ORM you
-have the DocumentManager. Map your objects in the same way you do
-for the ORM. Here is an examle ``User`` document:
+<p>Much like the Doctrine 2 ORM, the ODM aims to provide transparent
+persistence for PHP 5.3.0+ objects. You will notice that the Doctrine 2
+ORM and ODM infrastructure, style, interfaces, etc. are all very
+similar. Instead of an EntityManager like in the ORM you have the
+DocumentManager. Map your objects in the same way you do for the ORM.
+Here is an examle <code>User</code> document:</p>
 
-.. code-block:: php
+<pre><code class="sourceCode php">&lt;?php
+/** @Document(db="my_db", collection="users") */
+class User
+{
+    /** @Id */
+    private $id;
 
-    <?php
-    /** @Document(db="my_db", collection="users") */
-    class User
-    {
-        /** @Id */
-        private $id;
-    
-        /** @String */
-        private $username;
-    
-        /** @String */
-        private $password;
-    
-        // ...
-    }
+    /** @String */
+    private $username;
 
-Now like you would expect you can create new instances and persist
-them to Mongo:
+    /** @String */
+    private $password;
 
-.. code-block:: php
+    // ...
+}
+</code></pre>
 
-    <?php
-    $user = new User();
-    $user->setUsername('jwage');
-    $user->setPassword('testing');
-    
-    $dm->persist($user);
-    $dm->flush();
+<p>Now like you would expect you can create new instances and persist them
+to Mongo:</p>
 
-Now if you have a look in MongoDB you will see a database named
-``my_db`` and a collection named ``users`` containing a new
-document like the following:
+<pre><code class="sourceCode php">&lt;?php
+$user = new User();
+$user-&gt;setUsername('jwage');
+$user-&gt;setPassword('testing');
 
-::
+$dm-&gt;persist($user);
+$dm-&gt;flush();
+</code></pre>
 
-    array(
-      '_id' => instanceof MongoId,
-      'username' => 'jwage',
-      'password' => 'testing'
-    )
+<p>Now if you have a look in MongoDB you will see a database named <code>my_db</code>
+and a collection named <code>users</code> containing a new document like the
+following:</p>
 
-When you query for and retrieve this document from the database
-later, Doctrine reconstructs the PHP object with the data from
-MongoDB:
+<pre><code>array(
+  '_id' =&gt; instanceof MongoId,
+  'username' =&gt; 'jwage',
+  'password' =&gt; 'testing'
+)
+</code></pre>
 
-.. code-block:: php
+<p>When you query for and retrieve this document from the database later,
+Doctrine reconstructs the PHP object with the data from MongoDB:</p>
 
-    <?php
-    $user = $dm->findOne('User', array('username' => 'jwage')); // instanceof User
-    echo $user->getUsername();
+<pre><code class="sourceCode php">&lt;?php
+$user = $dm-&gt;findOne('User', array('username' =&gt; 'jwage')); // instanceof User
+echo $user-&gt;getUsername();
+</code></pre>
 
-Below you can find an overview list of the features available:
+<p>Below you can find an overview list of the features available:</p>
 
+<ul>
+<li>Transparent persistence.</li>
+<li>Map one or many embedded documents.</li>
+<li>Map one or many referenced documents.</li>
+<li>Create references between documents in different databases.</li>
+<li>Map documents with Annotations, XML, YAML or plain old PHP code.</li>
+<li>Documents can be stored on the
+<a href="http://www.php.net/MongoGridFS">MongoGridFS</a>.</li>
+<li>Collection per class(concrete) and single collection inheritance
+supported.</li>
+<li>Map your Doctrine 2 ORM Entities to the ODM and use mixed data
+stores.</li>
+<li>Inserts are performed using
+<a href="http://us.php.net/manual/en/mongocollection.batchinsert.php">MongoCollection::batchInsert()</a></li>
+<li>Updates are performed using \$set instead of saving the entire
+document.</li>
+</ul>
 
--  Transparent persistence.
--  Map one or many embedded documents.
--  Map one or many referenced documents.
--  Create references between documents in different databases.
--  Map documents with Annotations, XML, YAML or plain old PHP code.
--  Documents can be stored on the
-   `MongoGridFS <http://www.php.net/MongoGridFS>`_.
--  Collection per class(concrete) and single collection inheritance
-   supported.
--  Map your Doctrine 2 ORM Entities to the ODM and use mixed data
-   stores.
--  Inserts are performed using
-   `MongoCollection::batchInsert() <http://us.php.net/manual/en/mongocollection.batchinsert.php>`_
--  Updates are performed using $set instead of saving the entire
-   document.
+<h1 id="getting-started%3F">Getting Started?</h1>
 
-Getting Started?
-----------------
+<p>We've put together a little documentation to help you get familiar with
+the ODM quickly.</p>
 
-We've put together a little documentation to help you get familiar
-with the ODM quickly.
+<ul>
+<li><a href="http://www.doctrine-project.org/projects/mongodb_odm/1.0/docs/reference/en">Reference
+Documentation</a></li>
+<li><a href="http://www.doctrine-project.org/projects/mongodb_odm/1.0/docs/cookbook/getting-started/en">Getting Started Cookbook
+Article</a></li>
+<li><a href="http://www.doctrine-project.org/projects/mongodb_odm/1.0/api">API
+Documentation</a></li>
+</ul>
 
+<h1 id="how-can-i-contribute%3F">How can I contribute?</h1>
 
--  `Reference Documentation <http://www.doctrine-project.org/projects/mongodb_odm/1.0/docs/reference/en>`_
--  `Getting Started Cookbook Article <http://www.doctrine-project.org/projects/mongodb_odm/1.0/docs/cookbook/getting-started/en>`_
--  `API Documentation <http://www.doctrine-project.org/projects/mongodb_odm/1.0/api>`_
+<p>Get your fork on! All you need to do is fork a Doctrine
+<a href="http://github.com/doctrine">repository</a> on github.com and <a href="http://github.com/guides/fork-a-project-and-submit-your-modifications/7">submit your
+modifications</a>
+to us by sending a pull request.</p>
 
-How can I contribute?
----------------------
+<p>You can also take part in discussions on our <a href="http://groups.google.com/group/doctrine-user">mailing
+list</a> or join &#35;doctrine
+on irc.freenode.net for live support from the community.</p>
 
-Get your fork on! All you need to do is fork a Doctrine
-`repository <http://github.com/doctrine>`_ on github.com and
-`submit your modifications <http://github.com/guides/fork-a-project-and-submit-your-modifications/7>`_
-to us by sending a pull request.
-
-You can also take part in discussions on our
-`mailing list <http://groups.google.com/group/doctrine-user>`_ or
-join #doctrine on irc.freenode.net for live support from the
-community.
         </div>
 
             </article>
@@ -321,29 +318,34 @@ community.
         <hr />
 
         <div>
-            As you probably already noticed, the Doctrine website looks a
-little bit different. In preparation for the Doctrine 2.0 release,
-the website needed to be improved a little bit to better handle the
-multiple versions and projects under the Doctrine umbrella. Along
-the way I did a little spring cleaning of some code from the early
-Doctrine days as well!
+            <p>As you probably already noticed, the Doctrine website looks a little bit
+different. In preparation for the Doctrine 2.0 release, the website
+needed to be improved a little bit to better handle the multiple
+versions and projects under the Doctrine umbrella. Along the way I did a
+little spring cleaning of some code from the early Doctrine days as
+well!</p>
 
-You can now find dedicated sections of the website for both the
-Object Relational Mapper and Database Abstraction Layer projects:
+<p>You can now find dedicated sections of the website for both the Object
+Relational Mapper and Database Abstraction Layer projects:</p>
 
+<ul>
+<li><a href="http://www.doctrine-project.org/projects/orm">ORM Project</a></li>
+<li><a href="http://www.doctrine-project.org/projects/dbal">DBAL Project</a></li>
+</ul>
 
--  `ORM Project <http://www.doctrine-project.org/projects/orm>`_
--  `DBAL Project <http://www.doctrine-project.org/projects/dbal>`_
+<p>The new website also introduces a new API Documentation thanks to <a href="http://peej.github.com/phpdoctor/">PHP
+Doctor</a>!</p>
 
-The new website also introduces a new API Documentation thanks to
-`PHP Doctor <http://peej.github.com/phpdoctor/>`_!
+<ul>
+<li><a href="http://www.doctrine-project.org/projects/orm/2.0/api">Doctrine 2 ORM API
+Documentation</a></li>
+<li><a href="http://www.doctrine-project.org/projects/dbal/2.0/api">Doctrine 2 DBAL API
+Documentation</a></li>
+</ul>
 
+<p>If you have any problems with the website please let me know by e-mail
+at jonwage [at] gmail.com.</p>
 
--  `Doctrine 2 ORM API Documentation <http://www.doctrine-project.org/projects/orm/2.0/api>`_
--  `Doctrine 2 DBAL API Documentation <http://www.doctrine-project.org/projects/dbal/2.0/api>`_
-
-If you have any problems with the website please let me know by
-e-mail at jonwage [at] gmail.com.
         </div>
 
             </article>

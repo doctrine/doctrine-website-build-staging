@@ -127,55 +127,59 @@
         <hr />
 
         <div>
-            We are happy to announce the immediate availability of Doctrine DBAL 2.5.0
-Stable. This release is a landmark in making DBAL more consistent and stable
-than it ever was.
+            <p>We are happy to announce the immediate availability of Doctrine DBAL
+2.5.0 Stable. This release is a landmark in making DBAL more consistent
+and stable than it ever was.</p>
 
-Starting with 2.5 DBAL will have a new release-master, `Steve Müller
-<https://github.com/deeky666>`_. Steve has been working
-on DBAL for the last two years and contributed many of the big features that
-make up this fantastic release. He will replace Benjamin Eberlei who was the
-release master since version 2.0.
+<p>Starting with 2.5 DBAL will have a new release-master, <a href="https://github.com/deeky666">Steve
+Müller</a>. Steve has been working on DBAL for
+the last two years and contributed many of the big features that make up
+this fantastic release. He will replace Benjamin Eberlei who was the
+release master since version 2.0.</p>
 
-You can install DBAL through Composer:
+<p>You can install DBAL through Composer:</p>
 
-.. code-block:: shell
-    composer require doctrine/dbal:~2.5
+<p>This version is mostly backwards compatible with only some minor breaks,
+when using PDO IBM, creating a custom platform or using non-default
+DateTime formats. You can see the breaks in the
+<a href="https://github.com/doctrine/dbal/blob/master/UPGRADE.md">UPGRADE.md</a>
+file. DBAL 2.5 is also compatible with ORM 2.4, there is no need to wait
+for ORM 2.5 to be released.</p>
 
-This version is mostly backwards compatible with only some minor breaks, when
-using PDO IBM, creating a custom platform or using non-default DateTime
-formats. You can see the breaks in the `UPGRADE.md
-<https://github.com/doctrine/dbal/blob/master/UPGRADE.md>`_ file.
-DBAL 2.5 is also compatible with ORM 2.4, there is no need to wait for ORM 2.5
-to be released.
+<p>The following list contains the major new features of DBAL:</p>
 
-The following list contains the major new features of DBAL:
+<ul>
+<li>Support for SAP Sybase SQL Anywhere versions 10, 11, 12 and 16
+(DBAL-475)</li>
+<li>Support for auto-commit=NO on all drivers and platforms. (DBAL-81)</li>
+<li>Refactor exceptions to use common error-codes and exception classes
+that derive from <code>Doctrine\DBAL\DBALException</code>. (DBAL-407)</li>
+<li>Add support to retry connections with
+<code>Doctrine\DBAL\Connection#ping()</code> method. (DBAL-275)</li>
+<li>Add INSERT support to QueryBuilder (DBAL-320)</li>
+<li>Add Binary type for VARBINARY support (DBAL-714)</li>
+<li>Add charset and SSL connection support to PostgreSQL (DBAL-567,
+DBAL-702)</li>
+<li>Add options support for Myqli (DBAL-643)</li>
+<li>Add support for using database uris with the <code>url</code> parameter in
+<code>DriverManager::getConnection()</code> which supports several forms used
+by PaaS providers out of the box (DBAL-1050).</li>
+<li>Auto detection of platform to use based on database (DBAL-757)</li>
+<li>Improved SQL Server LIMIT emulation support. (Multiple tickets)</li>
+<li>Improvements to HHVM Support (no full support yet)</li>
+</ul>
 
-- Support for SAP Sybase SQL Anywhere versions 10, 11, 12 and 16 (DBAL-475)
-- Support for auto-commit=NO on all drivers and platforms. (DBAL-81)
-- Refactor exceptions to use common error-codes and exception classes that
-  derive from ``Doctrine\DBAL\DBALException``. (DBAL-407)
-- Add support to retry connections with ``Doctrine\DBAL\Connection#ping()``
-  method. (DBAL-275)
-- Add INSERT support to QueryBuilder (DBAL-320)
-- Add Binary type for VARBINARY support (DBAL-714)
-- Add charset and SSL connection support to PostgreSQL (DBAL-567, DBAL-702)
-- Add options support for Myqli (DBAL-643)
-- Add support for using database uris with the ``url`` parameter in
-  ``DriverManager::getConnection()`` which supports several forms used by PaaS
-  providers out of the box (DBAL-1050).
-- Auto detection of platform to use based on database (DBAL-757)
-- Improved SQL Server LIMIT emulation support. (Multiple tickets)
-- Improvements to HHVM Support (no full support yet)
+<p>See all the changes for the 2.5.0 Release on Jira, an amazing total of
+316 issues:</p>
 
-See all the changes for the 2.5.0 Release on Jira, an amazing total of 316
-issues:
+<ul>
+<li><a href="http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10523/">DBAL
+2.5.0</a></li>
+</ul>
 
-- `DBAL 2.5.0
-  <http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10523/>`_
+<p>If you find any problems or backwards compatibility breaks with this
+release please report them on JIRA or open up Pull Requests on Github.</p>
 
-If you find any problems or backwards compatibility breaks with this release
-please report them on JIRA or open up Pull Requests on Github.
         </div>
 
             </article>
@@ -193,26 +197,34 @@ please report them on JIRA or open up Pull Requests on Github.
         <hr />
 
         <div>
-            We are happy to announce the immediate availability of Doctrine DBAL 2.4.3, which fixes various bugs
-discovered during DBAL 2.5.x development.
+            <p>We are happy to announce the immediate availability of Doctrine DBAL
+2.4.3, which fixes various bugs discovered during DBAL 2.5.x
+development.</p>
 
-You can find all the changes on JIRA:
+<p>You can find all the changes on JIRA:</p>
 
-- `DBAL 2.4.3 <http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10622>`_ - 10 issues fixed
+<ul>
+<li><a href="http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10622">DBAL
+2.4.3</a>
 
-You can install the DBAL using Composer and the following ``composer.json``
-contents:
+<ul>
+<li>10 issues fixed</li>
+</ul></li>
+</ul>
 
-.. code-block:: json
+<p>You can install the DBAL using Composer and the following
+<code>composer.json</code> contents:</p>
 
-  {
-      "require": {
-          "doctrine/dbal": "2.4.3"
-      }
-  }
+<pre><code class="sourceCode json">{
+    "require": {
+        "doctrine/dbal": "2.4.3"
+    }
+}
+</code></pre>
 
-Please report any issues you may have with the update on the mailing list or on
-`Jira <http://www.doctrine-project.org/jira>`_.
+<p>Please report any issues you may have with the update on the mailing
+list or on <a href="http://www.doctrine-project.org/jira">Jira</a>.</p>
+
         </div>
 
             </article>
@@ -230,29 +242,38 @@ Please report any issues you may have with the update on the mailing list or on
         <hr />
 
         <div>
-            We are happy to announce the immediate availability of Doctrine ORM 2.4.6.
+            <p>We are happy to announce the immediate availability of Doctrine ORM
+2.4.6.</p>
 
-We fixed a PHP 5.6 compatibility issue which prevented usage of entities extending from internal
-PHP classes or implementing the ``Serializable`` interface
-with the ORM: `DDC-3120 <http://www.doctrine-project.org/jira/browse/DDC-3120>`_.
+<p>We fixed a PHP 5.6 compatibility issue which prevented usage of entities
+extending from internal PHP classes or implementing the <code>Serializable</code>
+interface with the ORM:
+<a href="http://www.doctrine-project.org/jira/browse/DDC-3120">DDC-3120</a>.</p>
 
-You can find all the changes on JIRA:
+<p>You can find all the changes on JIRA:</p>
 
-- `ORM 2.4.6 <http://www.doctrine-project.org/jira/browse/DDC/fixforversion/10723>`_ - 2 issues fixed
+<ul>
+<li><a href="http://www.doctrine-project.org/jira/browse/DDC/fixforversion/10723">ORM
+2.4.6</a>
 
-You can install the ORM using Composer and the following ``composer.json``
-contents:
+<ul>
+<li>2 issues fixed</li>
+</ul></li>
+</ul>
 
-.. code-block:: json
+<p>You can install the ORM using Composer and the following <code>composer.json</code>
+contents:</p>
 
-  {
-      "require": {
-          "doctrine/orm": "2.4.6"
-      }
-  }
+<pre><code class="sourceCode json">{
+    "require": {
+        "doctrine/orm": "2.4.6"
+    }
+}
+</code></pre>
 
-Please report any issues you may have with the update on the mailing list or on
-`Jira <http://www.doctrine-project.org/jira>`_.
+<p>Please report any issues you may have with the update on the mailing
+list or on <a href="http://www.doctrine-project.org/jira">Jira</a>.</p>
+
         </div>
 
             </article>

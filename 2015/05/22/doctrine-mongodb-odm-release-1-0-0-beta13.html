@@ -125,91 +125,94 @@
                                     </p>
 
         <div>
-            We are happy to announce the immediate availability of Doctrine MongoDB ODM
-1.0.0-BETA13.
+            <p>We are happy to announce the immediate availability of Doctrine MongoDB
+ODM 1.0.0-BETA13.</p>
 
-What is new in 1.0.0-BETA13?
-----------------------------
+<h1 id="what-is-new-in-1.0.0-beta13%3F">What is new in 1.0.0-BETA13?</h1>
 
-All issues and pull requests in this release may be found under the
-`1.0.0-BETA13 milestone on github <https://github.com/doctrine/mongodb-odm/issues?q=milestone%3A1.0.0-BETA13>`__.
-Here is the highlight of most important features:
+<p>All issues and pull requests in this release may be found under the
+<a href="https://github.com/doctrine/mongodb-odm/issues?q=milestone%3A1.0.0-BETA13">1.0.0-BETA13 milestone on
+github</a>&#95;.
+Here is the highlight of most important features:</p>
 
-atomicSet and atomicSetArray strategies for top-level collections
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<h2 id="atomicset-and-atomicsetarray-strategies-for-top-level-collections">atomicSet and atomicSetArray strategies for top-level collections</h2>
 
-`#1096 <https://github.com/doctrine/mongodb-odm/pull/1096>`__ introduces two new
-collection update strategies, ``atomicSet`` and ``atomicSetArray``. Unlike existing
-strategies (e.g. ``pushAll`` and ``set``), which update collections in a separate
-query after the parent document, the atomic strategy ensures that the collection
-and its parent are updated in the same query. Any nested collections (within
-embedded documents) will also be included in the atomic update, irrespective of
-their update strategies.
+<p><a href="https://github.com/doctrine/mongodb-odm/pull/1096">&#35;1096</a>&#95; introduces
+two new collection update strategies, <code>atomicSet</code> and <code>atomicSetArray</code>.
+Unlike existing strategies (e.g. <code>pushAll</code> and <code>set</code>), which update
+collections in a separate query after the parent document, the atomic
+strategy ensures that the collection and its parent are updated in the
+same query. Any nested collections (within embedded documents) will also
+be included in the atomic update, irrespective of their update
+strategies.</p>
 
-Currently, atomic strategies may only be specified for collections mapped
-directly in a document class (i.e. not collections within embedded documents).
-This strategy may be especially useful for highly concurrent applications and/or
-versioned document classes (see: `#1094 <https://github.com/doctrine/mongodb-odm/pull/1094>`__).
+<p>Currently, atomic strategies may only be specified for collections
+mapped directly in a document class (i.e. not collections within
+embedded documents). This strategy may be especially useful for highly
+concurrent applications and/or versioned document classes (see:
+<a href="https://github.com/doctrine/mongodb-odm/pull/1094">&#35;1094</a>&#95;).</p>
 
-Reference priming improvements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<h2 id="reference-priming-improvements">Reference priming improvements</h2>
 
-`#1068 <https://github.com/doctrine/mongodb-odm/pull/1068>`__ moves the handling of
-primed references to the Cursor object, which allows ODM to take the skip and
-limit options into account and avoid priming more references than are necessary.
+<p><a href="https://github.com/doctrine/mongodb-odm/pull/1068">&#35;1068</a>&#95; moves the
+handling of primed references to the Cursor object, which allows ODM to
+take the skip and limit options into account and avoid priming more
+references than are necessary.</p>
 
-`#970 <https://github.com/doctrine/mongodb-odm/pull/970>`__ now allows references
-within embedded documents to be primed by fixing a previous parsing limitation
-with dot syntax in field names.
+<p><a href="https://github.com/doctrine/mongodb-odm/pull/970">&#35;970</a>&#95; now allows
+references within embedded documents to be primed by fixing a previous
+parsing limitation with dot syntax in field names.</p>
 
-New defaultDiscriminatorValue mapping
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<h2 id="new-defaultdiscriminatorvalue-mapping">New defaultDiscriminatorValue mapping</h2>
 
-`#1072 <https://github.com/doctrine/mongodb-odm/pull/1072>`__ introduces a
-``defaultDiscriminatorValue`` mapping, which may be used to specify a default
-discriminator value if a document or association has no discriminator set.
+<p><a href="https://github.com/doctrine/mongodb-odm/pull/1072">&#35;1072</a>&#95; introduces
+a <code>defaultDiscriminatorValue</code> mapping, which may be used to specify a
+default discriminator value if a document or association has no
+discriminator set.</p>
 
-New Integer and Bool annotation aliases
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<h2 id="new-integer-and-bool-annotation-aliases">New Integer and Bool annotation aliases</h2>
 
-`#1073 <https://github.com/doctrine/mongodb-odm/pull/1073>`__ introduces ``Integer``
-and ``Bool`` annotations, which are aliases of ``Int`` and ``Boolean``, respectively.
+<p><a href="https://github.com/doctrine/mongodb-odm/pull/1073">&#35;1073</a>&#95; introduces
+<code>Integer</code> and <code>Bool</code> annotations, which are aliases of <code>Int</code> and
+<code>Boolean</code>, respectively.</p>
 
-Add millisecond precision to DateType
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<h2 id="add-millisecond-precision-to-datetype">Add millisecond precision to DateType</h2>
 
-`#1063 <https://github.com/doctrine/mongodb-odm/pull/1063>`__ adds millisecond
-precision to ODM's DateType class (note: although PHP supports microsecond
-precision, dates in MongoDB are limited to millisecond precision). This should
-now allow ODM to roundtrip dates from the database without a loss of precision.
+<p><a href="https://github.com/doctrine/mongodb-odm/pull/1063">&#35;1063</a>&#95; adds
+millisecond precision to ODM's DateType class (note: although PHP
+supports microsecond precision, dates in MongoDB are limited to
+millisecond precision). This should now allow ODM to roundtrip dates
+from the database without a loss of precision.</p>
 
-New Hydrator generation modes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<h2 id="new-hydrator-generation-modes">New Hydrator generation modes</h2>
 
-Previously, the ``autoGenerateHydratorClasses`` ODM configuration option was a
-boolean denoting whether to always or never create Hydrator classes. As of
-`#953 <https://github.com/doctrine/mongodb-odm/pull/953>`__, this option now
-supports four modes:
+<p>Previously, the <code>autoGenerateHydratorClasses</code> ODM configuration option
+was a boolean denoting whether to always or never create Hydrator
+classes. As of
+<a href="https://github.com/doctrine/mongodb-odm/pull/953">&#35;953</a>&#95;, this option
+now supports four modes:</p>
 
-- ``AUTOGENERATE_NEVER = 0`` (same as ``false``)
-- ``AUTOGENERATE_ALWAYS = 1`` (same as ``true``)
-- ``AUTOGENERATE_FILE_NOT_EXISTS = 2``
-- ``AUTOGENERATE_EVAL = 3``
+<ul>
+<li><code>AUTOGENERATE_NEVER = 0</code> (same as <code>false</code>)</li>
+<li><code>AUTOGENERATE_ALWAYS = 1</code> (same as <code>true</code>)</li>
+<li><code>AUTOGENERATE_FILE_NOT_EXISTS = 2</code></li>
+<li><code>AUTOGENERATE_EVAL = 3</code></li>
+</ul>
 
-Support for custom DocumentRepository factory
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<h2 id="support-for-custom-documentrepository-factory">Support for custom DocumentRepository factory</h2>
 
-`#892 <https://github.com/doctrine/mongodb-odm/pull/892>`__ allows users to define
-a custom repository class via the ``defaultRepositoryClassName`` configuration
-option. Alternatively, a custom factory class may also be configured, which
-allows users complete control over how repository classes are instantiated.
+<p><a href="https://github.com/doctrine/mongodb-odm/pull/892">&#35;892</a>&#95; allows users
+to define a custom repository class via the <code>defaultRepositoryClassName</code>
+configuration option. Alternatively, a custom factory class may also be
+configured, which allows users complete control over how repository
+classes are instantiated.</p>
 
-Custom repository and factory classes must implement
-``Doctrine\Common\Persistence\ObjectRepository`` and
-``Doctrine\ODM\MongoDB\Repository\RepositoryFactory``, respectively.
+<p>Custom repository and factory classes must implement
+<code>Doctrine\Common\Persistence\ObjectRepository</code> and
+<code>Doctrine\ODM\MongoDB\Repository\RepositoryFactory</code>, respectively.</p>
 
-Stay tuned, there is a lot more to come soon!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<h2 id="stay-tuned%2C-there-is-a-lot-more-to-come-soon%21">Stay tuned, there is a lot more to come soon!</h2>
+
         </div>
                 
                     <nav class="article">

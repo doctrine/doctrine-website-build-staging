@@ -125,233 +125,218 @@
                                     </p>
 
         <div>
-            One of the greatest advantages to using Doctrine is what is under
-the hood that powers it. That is the database abstraction layer.
-This powerful layer is based off of a lot of different code from
-various popular PHP projects such as PEAR MDB2 and Zend\_Db. It
-provides you a nice intuitive interface for retrieving information
-about your database schema as well as issuing DDL statements to
-change it.
+            <p>One of the greatest advantages to using Doctrine is what is under the
+hood that powers it. That is the database abstraction layer. This
+powerful layer is based off of a lot of different code from various
+popular PHP projects such as PEAR MDB2 and Zend&#95;Db. It provides you a
+nice intuitive interface for retrieving information about your database
+schema as well as issuing DDL statements to change it.</p>
 
-Public Method Index
--------------------
+<h1 id="public-method-index">Public Method Index</h1>
 
-The database abstraction layer features the following methods in
-1.x and some new methods added in 2.0.
+<p>The database abstraction layer features the following methods in 1.x and
+some new methods added in 2.0.</p>
 
-1.x Methods
-~~~~~~~~~~~
+<h2 id="1.x-methods">1.x Methods</h2>
 
+<ul>
+<li>listDatabases()</li>
+<li>listFunctions()</li>
+<li>listTriggers()</li>
+<li>listSequences()</li>
+<li>listTableConstraints()</li>
+<li>listTableColumns()</li>
+<li>listTableIndexes()</li>
+<li>listTables()</li>
+<li>listUsers()</li>
+<li>listViews()</li>
+<li>dropDatabase()</li>
+<li>dropTable()</li>
+<li>dropIndex()</li>
+<li>dropConstraint()</li>
+<li>dropForeignKey()</li>
+<li>dropSequence()</li>
+<li>createDatabase()</li>
+<li>createTable()</li>
+<li>createSequence()</li>
+<li>createConstraint()</li>
+<li>createIndex()</li>
+<li>createForeignKey()</li>
+<li>alterTable()</li>
+</ul>
 
--  listDatabases()
--  listFunctions()
--  listTriggers()
--  listSequences()
--  listTableConstraints()
--  listTableColumns()
--  listTableIndexes()
--  listTables()
--  listUsers()
--  listViews()
--  dropDatabase()
--  dropTable()
--  dropIndex()
--  dropConstraint()
--  dropForeignKey()
--  dropSequence()
--  createDatabase()
--  createTable()
--  createSequence()
--  createConstraint()
--  createIndex()
--  createForeignKey()
--  alterTable()
+<h2 id="new-methods-in-2.0">New Methods in 2.0</h2>
 
-New Methods in 2.0
-~~~~~~~~~~~~~~~~~~
+<ul>
+<li>renameTable()</li>
+<li>addTableColumn()</li>
+<li>removeTableColumn()</li>
+<li>changeTableColumn()</li>
+<li>renameTableColumn()</li>
+<li>dropView()</li>
+<li>createView()</li>
+</ul>
 
+<h1 id="some-2.0-examples">Some 2.0 Examples</h1>
 
--  renameTable()
--  addTableColumn()
--  removeTableColumn()
--  changeTableColumn()
--  renameTableColumn()
--  dropView()
--  createView()
+<p>Here are some code examples using the Doctrine 2.0 Database Abstraction
+Layer. We'll show you how you can execute these examples yourself by
+checking out Doctrine 2.0 from SVN and setting up a PHP script to test
+with.</p>
 
-Some 2.0 Examples
------------------
+<blockquote>
+  <p><strong>TIP</strong> The database abstraction layer can be used standalone so if
+  you just want a nice standard layer for communicating with your
+  database then Doctrine works for you too.</p>
+</blockquote>
 
-Here are some code examples using the Doctrine 2.0 Database
-Abstraction Layer. We'll show you how you can execute these
-examples yourself by checking out Doctrine 2.0 from SVN and setting
-up a PHP script to test with.
+<h2 id="checkout-doctrine">Checkout Doctrine</h2>
 
-    **TIP** The database abstraction layer can be used standalone so if
-    you just want a nice standard layer for communicating with your
-    database then Doctrine works for you too.
+<pre><code>$ svn co http://svn.doctrine-project.org/trunk doctrine2
+$ cd doctrine2
+</code></pre>
 
+<h2 id="create-test-script">Create Test Script</h2>
 
-Checkout Doctrine
-~~~~~~~~~~~~~~~~~
+<p>Create a new PHP script anywhere on your server and name it <code>test.php</code>.
+Now lets initialize Doctrine so we can work with it. First we need to
+set our <code>ClassLoader</code>.</p>
 
-::
+<pre><code class="sourceCode php">&lt;?php
+// test.php
 
-    $ svn co http://svn.doctrine-project.org/trunk doctrine2
-    $ cd doctrine2
+require 'lib/Doctrine/Common/ClassLoader.php';
 
-Create Test Script
-~~~~~~~~~~~~~~~~~~
+$classLoader = new \Doctrine\Common\ClassLoader();
+$classLoader-&gt;setBasePath('Doctrine', __DIR__ . '/lib');
+</code></pre>
 
-Create a new PHP script anywhere on your server and name it
-``test.php``. Now lets initialize Doctrine so we can work with it.
-First we need to set our ``ClassLoader``.
+<h2 id="create-connection">Create Connection</h2>
 
-.. code-block:: php
+<p>Now we need to create our <code>Connection</code> instance.</p>
 
-    <?php
-    // test.php
-    
-    require 'lib/Doctrine/Common/ClassLoader.php';
-    
-    $classLoader = new \Doctrine\Common\ClassLoader();
-    $classLoader->setBasePath('Doctrine', __DIR__ . '/lib');
+<pre><code class="sourceCode php">&lt;?php
+// test.php
 
-Create Connection
-~~~~~~~~~~~~~~~~~
+// ...
 
-Now we need to create our ``Connection`` instance.
+$connectionOptions = array(
+    'driver' =&gt; 'pdo_mysql',
+    'dbname' =&gt; 'mysql',
+    'user' =&gt; 'root',
+    'password' =&gt; ''
+);
+$driver = new \Doctrine\DBAL\Driver\PDOMySql\Driver;
+$conn = new \Doctrine\DBAL\Connection($connectionOptions, $driver);
 
-.. code-block:: php
+**NOTE** Notice how we are temporarily connecting to the special
+database for MySQL named ``mysql``. We'll use this database to
+connect to so we can create our test database.
+</code></pre>
 
-    <?php
-    // test.php
-    
-    // ...
-    
-    $connectionOptions = array(
-        'driver' => 'pdo_mysql',
-        'dbname' => 'mysql',
-        'user' => 'root',
-        'password' => ''
-    );
-    $driver = new \Doctrine\DBAL\Driver\PDOMySql\Driver;
-    $conn = new \Doctrine\DBAL\Connection($connectionOptions, $driver);
+<p>Now we can simply retrieve the <code>SchemaManager</code> instance from the
+<code>Connection</code> driver and begin to execute some of the methods we listed
+above.</p>
 
-    **NOTE** Notice how we are temporarily connecting to the special
-    database for MySQL named ``mysql``. We'll use this database to
-    connect to so we can create our test database.
+<pre><code class="sourceCode php">&lt;?php
+// test.php
 
+// ...
 
-Now we can simply retrieve the ``SchemaManager`` instance from the
-``Connection`` driver and begin to execute some of the methods we
-listed above.
+$sm = $conn-&gt;getSchemaManager();
+</code></pre>
 
-.. code-block:: php
+<p>The first thing we could do is create the database by calling the
+<code>createDatabase()</code> method on the <code>$sm</code> instance.</p>
 
-    <?php
-    // test.php
-    
-    // ...
-    
-    $sm = $conn->getSchemaManager();
+<pre><code class="sourceCode php">&lt;?php
+// test.php
 
-The first thing we could do is create the database by calling the
-``createDatabase()`` method on the ``$sm`` instance.
+// ...
 
-.. code-block:: php
+$sm-&gt;createDatabase('doctrine2test');
+</code></pre>
 
-    <?php
-    // test.php
-    
-    // ...
-    
-    $sm->createDatabase('doctrine2test');
+<p>Now that we have the database created, change your <code>$connectionOptions</code>
+key <code>dbname</code> to specify <code>doctrine2test</code> so that we connect to the new
+database that we just created.</p>
 
-Now that we have the database created, change your
-``$connectionOptions`` key ``dbname`` to specify ``doctrine2test``
-so that we connect to the new database that we just created.
+<pre><code class="sourceCode php">&lt;?php
+// test.php
 
-.. code-block:: php
+// ...
 
-    <?php
-    // test.php
-    
-    // ...
-    
-    $connectionOptions = array(
-        'driver' => 'pdo_mysql',
-        'dbname' => 'doctrine2test',
-        'user' => 'root',
-        'password' => ''
-    );
-    
-    // ...
+$connectionOptions = array(
+    'driver' =&gt; 'pdo_mysql',
+    'dbname' =&gt; 'doctrine2test',
+    'user' =&gt; 'root',
+    'password' =&gt; ''
+);
 
-Now we can begin adding things to the new database. For example we
-could issue a command to create a new table.
+// ...
+</code></pre>
 
-.. code-block:: php
+<p>Now we can begin adding things to the new database. For example we could
+issue a command to create a new table.</p>
 
-    <?php
-    // test.php
-    
-    // ...
-    
-    $columns = array(
-        'id' => array(
-            'type' => \Doctrine\DBAL\Type::getType('integer'),
-            'autoincrement' => true,
-            'primary' => true,
-            'notnull' => true
-        ),
-        'test' => array(
-            'type' =>  \Doctrine\DBAL\Type::getType('string'),
-            'length' => 255
-        )
-    );
-    
-    $options = array();
-    
-    $sm->createTable('new_table', $columns, $options);
+<pre><code class="sourceCode php">&lt;?php
+// test.php
 
-Then after creating the table I can later add a new column to it.
+// ...
 
-.. code-block:: php
+$columns = array(
+    'id' =&gt; array(
+        'type' =&gt; \Doctrine\DBAL\Type::getType('integer'),
+        'autoincrement' =&gt; true,
+        'primary' =&gt; true,
+        'notnull' =&gt; true
+    ),
+    'test' =&gt; array(
+        'type' =&gt;  \Doctrine\DBAL\Type::getType('string'),
+        'length' =&gt; 255
+    )
+);
 
-    <?php
-    // test.php
-    
-    // ...
-    
-    $column = array(
-        'type' =>  \Doctrine\DBAL\Type::getType('string'),
-        'length' => 255
-    );
-    
-    $sm->addTableColumn('new_table', 'new_column', $column);
+$options = array();
 
-Or I could even drop the table completely.
+$sm-&gt;createTable('new_table', $columns, $options);
+</code></pre>
 
-.. code-block:: php
+<p>Then after creating the table I can later add a new column to it.</p>
 
-    <?php
-    // test.php
-    
-    // ...
-    
-    $sm->dropTable('new_table');
+<pre><code class="sourceCode php">&lt;?php
+// test.php
 
-    **NOTE** Not all of the above listed methods are supported by every
-    single DBMS. If your DBMS does not support the functionality then
-    Doctrine will throw exceptions accordingly.
+// ...
 
+$column = array(
+    'type' =&gt;  \Doctrine\DBAL\Type::getType('string'),
+    'length' =&gt; 255
+);
 
-All the above example are very simple schema changes but Doctrine
-is capable of manipulating very complex schemas from a standardized
-programmatic interface. The Doctrine Migrations extension makes use
-of this layer heavily to do all the operations for changing your
-database schemas.
+$sm-&gt;addTableColumn('new_table', 'new_column', $column);
+</code></pre>
+
+<p>Or I could even drop the table completely.</p>
+
+<pre><code class="sourceCode php">&lt;?php
+// test.php
+
+// ...
+
+$sm-&gt;dropTable('new_table');
+
+**NOTE** Not all of the above listed methods are supported by every
+single DBMS. If your DBMS does not support the functionality then
+Doctrine will throw exceptions accordingly.
+</code></pre>
+
+<p>All the above example are very simple schema changes but Doctrine is
+capable of manipulating very complex schemas from a standardized
+programmatic interface. The Doctrine Migrations extension makes use of
+this layer heavily to do all the operations for changing your database
+schemas.</p>
+
         </div>
                 
                     <nav class="article">
