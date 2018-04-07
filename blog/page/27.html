@@ -127,25 +127,29 @@
         <hr />
 
         <div>
-            <p>&quot;2012 is the year of graph databases&quot; was the
+            "2012 is the year of graph databases" was the
 sentence that a lot of people were hearing at the
 end of 2011, especially after the explosion of
-Big Data associated with social networks.</p>
-<p>At the beginning of this year, a really promising
-GraphDB, <a href="http://orientdb.org">OrientDB</a> ,
-saw its first stable release (1.0.0) which finally<br />gave to the world a stable toy pretty different
+Big Data associated with social networks.
+
+At the beginning of this year, a really promising
+GraphDB, `OrientDB <http://orientdb.org>`_ ,
+saw its first stable release (1.0.0) which finally 
+gave to the world a stable toy pretty different
 from the traditional RDBMS that we're used to see
 and from the document-based DBs like MongoDB or
 CouchDB: OrientDB integrates document capabilities
 with a graph layer, thus it sounded very, very
-interesting.</p>
-<p>Even before going stable, there were some companies
+interesting.
+
+Even before going stable, there were some companies
 already using OrientDB, thanks to the language-specific
 drivers created by the community surrounding this GraphDB:
-one of them, for PHP, was <a href="http://github.com/congow/Orient">Orient</a> ,
+one of them, for PHP, was `Orient <http://github.com/congow/Orient>`_ ,
 a bunch of classes that wrapped PHP's native cURL functions
-to make queries against OrientDB's via the HTTP protocol.</p>
-<p>Day after day, the guys behind Orient, this PHP library,
+to make queries against OrientDB's via the HTTP protocol.
+
+Day after day, the guys behind Orient, this PHP library,
 decided to add - mostly inspired by the doctrine 1 query
 builder and the Doctrine2 ODMs - abstraction and layers over
 that bunch of classes, finally having 3 different pieces of
@@ -153,51 +157,56 @@ software to interact with OrientDB from PHP: the HTTP binding,
 which does HTTP calls to the OrientDB server, the Query Builder,
 which provides an object-oriented synthax to write SQL+
 (OrientDB's SQL) queries and the Data Mapper, which is still
-unfinished.</p>
-<p>Trying to adhere to the Doctrine2 ODMs standards, the code looks
-pretty similar:</p>
-<pre><code class="php">&lt;?php
+unfinished.
 
-// invoking a repository
-$userRepository = $manager-&gt;getRepository('My\Entity');
+Trying to adhere to the Doctrine2 ODMs standards, the code looks
+pretty similar:
 
-// creating SQL+ queries
-$query = new Query();
-$query-&gt;from(array('users'))-&gt;where('username = ?', &quot;admin&quot;);
+.. code-block:: php
 
-// mapping POPOs
-namespace Domain;
+    <?php
 
-use Doctrine\ODM\OrientDB\Mapper\Annotations as ODM;
+    // invoking a repository
+    $userRepository = $manager->getRepository('My\Entity');
 
-/**
-* @ODM\Document(class=&quot;Address&quot;)
-*/
-class Address
-{
+    // creating SQL+ queries
+    $query = new Query();
+    $query->from(array('users'))->where('username = ?', "admin");
+
+    // mapping POPOs
+    namespace Domain;
+
+    use Doctrine\ODM\OrientDB\Mapper\Annotations as ODM;
+
     /**
-     * @ODM\Property(type=&quot;string&quot;)
-     */
-    public $street;
-}
+    * @ODM\Document(class="Address")
+    */
+    class Address
+    {
+        /**
+         * @ODM\Property(type="string")
+         */
+        public $street;
+    }
 
-// finding a record
-$record = $manager-&gt;find($id);
+    // finding a record
+    $record = $manager->find($id);
 
-</code></pre>
-<p>The work done so far was interesting enough to think about
+
+The work done so far was interesting enough to think about
 an OrientDB ODM inside the Doctrine organization, thing that
 eventually happened today when the old repository has been
-moved to the <a href="https://github.com/doctrine/orientdb-odm">doctrine organization</a>
-on Github.</p>
-<p>More news are going to come in the next weeks, as the target is to
-release a stable version of the OrientDB ODM this year: you can
-already <a href="https://packagist.org/packages/doctrine/orientdb-odm">use it</a>
-or even <a href="https://github.com/doctrine/orientdb-odm">fork it</a> if you want
-to contribute or propose a patch.</p>
-<p>For further informations you can subscribe to the doctrine-dev
-google group or join the IRC channel #doctrine-dev on Freenode.</p>
+moved to the `doctrine organization <https://github.com/doctrine/orientdb-odm>`_
+on Github.
 
+More news are going to come in the next weeks, as the target is to
+release a stable version of the OrientDB ODM this year: you can
+already `use it <https://packagist.org/packages/doctrine/orientdb-odm>`_
+or even `fork it <https://github.com/doctrine/orientdb-odm>`_ if you want
+to contribute or propose a patch.
+
+For further informations you can subscribe to the doctrine-dev
+google group or join the IRC channel #doctrine-dev on Freenode.
         </div>
 
             </article>
@@ -215,26 +224,27 @@ google group or join the IRC channel #doctrine-dev on Freenode.</p>
         <hr />
 
         <div>
-            <p><strong>05.12.2012</strong></p>
-<p>We have released the first mini release in the 2.3 cycle. Due to high workload
+            **05.12.2012**
+
+We have released the first mini release in the 2.3 cycle. Due to high workload
 of all the participating developers we couldn't release this earlier. We hope
-to release 2.3.2 in a much shorter period from now.</p>
-<ul><li><a href="http://doctrine-project.org/jira/browse/DBAL/fixforversion/10325">DBAL Changelog
- </a></li>
-<li><a href="http://doctrine-project.org/jira/browse/DDC/fixforversion/10323">ORM Changelog
- </a></li>
-</ul>
+to release 2.3.2 in a much shorter period from now.
 
-<p>You can install the release through <a href="https://github.com/doctrine/doctrine2">Github</a> ,
-download, PEAR or <a href="http://www.packagist.org">Composer</a>:</p>
+* `DBAL Changelog
+  <http://doctrine-project.org/jira/browse/DBAL/fixforversion/10325>`_
+* `ORM Changelog
+  <http://doctrine-project.org/jira/browse/DDC/fixforversion/10323>`_
 
-<pre><code class="">{
-    &quot;require&quot;: {
-        &quot;doctrine/orm&quot;: &quot;2.3.1&quot;
+You can install the release through `Github <https://github.com/doctrine/doctrine2>`_ ,
+download, PEAR or `Composer <http://www.packagist.org>`_:
+
+::
+
+    {
+        "require": {
+            "doctrine/orm": "2.3.1"
+        }
     }
-}
-</code></pre>
-
         </div>
 
             </article>
@@ -252,53 +262,57 @@ download, PEAR or <a href="http://www.packagist.org">Composer</a>:</p>
         <hr />
 
         <div>
-            <p><strong>20.9.2012</strong></p>
-<p>After a 2 month long phase of beta and release candidates we can finally
+            **20.9.2012**
+
+After a 2 month long phase of beta and release candidates we can finally
 announce the release of Doctrine 2.3. This includes new versions for the
-packages Common, DBAL and ORM.</p>
-<p>This release trys to keep backwards compatibility to every previous release as
+packages Common, DBAL and ORM.
+
+This release trys to keep backwards compatibility to every previous release as
 much as possible, however some slight changes might be necessary to your
-applications. See the UPGRADE files of each project for details:</p>
-<ul><li><a href="https://github.com/doctrine/doctrine2/blob/master/UPGRADE.md">ORM</a></li>
-<li><a href="https://github.com/doctrine/dbal/blob/master/UPGRADE">DBAL</a></li>
-</ul>
+applications. See the UPGRADE files of each project for details:
 
-<p>Compared to previous versions there are no new blockbuster feature, but many
-little optimizations:</p>
-<ul><li>Custom ID Generators</li>
-<li>Naming Strategies (Camel-, Underscore Cased)</li>
-<li>Collection Criteria API</li>
-<li>@AssociationOverride and @AttributeOverride (useful for Trait and
-  MappedSuperclass)</li>
-<li>Arbitrary JOIN Syntax (FROM User u JOIN Comment c WITH c.user = u.id)</li>
-<li>Named Native Queries</li>
-</ul>
+* `ORM <https://github.com/doctrine/doctrine2/blob/master/UPGRADE.md>`_
+* `DBAL <https://github.com/doctrine/dbal/blob/master/UPGRADE>`_
 
-<p>The complete changelogs are listed on JIRA:</p>
-<ul><li><a href="http://www.doctrine-project.org/jira/browse/DCOM/fixforversion/10183">Common Changelog
- </a></li>
-<li><a href="http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10184">DBAL Changelog
- </a></li>
-<li><a href="http://www.doctrine-project.org/jira/browse/DDC/fixforversion/10185">ORM Changelog
- </a></li>
-</ul>
+Compared to previous versions there are no new blockbuster feature, but many
+little optimizations:
 
-<p>We will flesh out the documentation and information about all new features in
+* Custom ID Generators
+* Naming Strategies (Camel-, Underscore Cased)
+* Collection Criteria API
+* @AssociationOverride and @AttributeOverride (useful for Trait and
+  MappedSuperclass)
+* Arbitrary JOIN Syntax (FROM User u JOIN Comment c WITH c.user = u.id)
+* Named Native Queries
+
+The complete changelogs are listed on JIRA:
+
+* `Common Changelog
+  <http://www.doctrine-project.org/jira/browse/DCOM/fixforversion/10183>`_
+* `DBAL Changelog
+  <http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10184>`_
+* `ORM Changelog
+  <http://www.doctrine-project.org/jira/browse/DDC/fixforversion/10185>`_
+
+We will flesh out the documentation and information about all new features in
 the coming month. If you want to contribute to the documentation of new
-features see the <a href="https://github.com/doctrine/dbal-documentation">DBAL</a> and
-<a href="https://github.com/doctrine/orm-documentation">ORM</a> documentation links on
-Github.</p>
-<p>You can install the final release through <a href="https://github.com/doctrine/doctrine2">Github</a>
-or <a href="http://www.packagist.org">Composer</a>:</p>
+features see the `DBAL <https://github.com/doctrine/dbal-documentation>`_ and
+`ORM <https://github.com/doctrine/orm-documentation>`_ documentation links on
+Github.
 
-<pre><code class="">{
-    &quot;require&quot;: {
-        &quot;doctrine/orm&quot;: &quot;2.3.0&quot;
+You can install the final release through `Github <https://github.com/doctrine/doctrine2>`_
+or `Composer <http://www.packagist.org>`_:
+
+::
+
+    {
+        "require": {
+            "doctrine/orm": "2.3.0"
+        }
     }
-}
-</code></pre>
-<p>The downloadable packages will be available later today.</p>
 
+The downloadable packages will be available later today.
         </div>
 
             </article>

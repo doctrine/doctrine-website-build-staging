@@ -125,238 +125,265 @@
                                     </p>
 
         <div>
-            <p>Today I will teach you how to write a simple Doctrine behavior. You
+            Today I will teach you how to write a simple Doctrine behavior. You
 will learn some of the basics of creating a behavior and you will
-gain some pretty cool functionality for your relationships.</p>
-<p>We will write a behavior called <code>RelationDql</code> which allows you to
+gain some pretty cool functionality for your relationships.
+
+We will write a behavior called ``RelationDql`` which allows you to
 add default query parts that are automatically added to your
 queries when you reference the specified relationships. So first we
 will get started by looking at an example schema we can apply this
-to.</p>
-<p>Here is an example schema where we have a <code>Site</code>, <code>BlogPost</code>
-and <code>Tag</code> model:</p>
+to.
 
-<pre><code class="">[yml]
-Site:
-  columns:
-    name: string(255)
+Here is an example schema where we have a ``Site``, ``BlogPost``
+and ``Tag`` model:
 
-BlogPost:
-  actAs: [Timestampable]
-  columns:
-    title: string(255)
-    body: clob
-    site_id: integer
-  relations:
+::
+
+    [yml]
     Site:
-      foreignAlias: BlogPosts
-    Tags:
-      class: Tag
-      refClass: BlogPostTag
-      foreignAlias: BlogPosts
-
-Tag:
-  columns:
-    name: string(255)
-
-BlogPostTag:
-  columns:
-    blog_post_id:
-      type: integer
-      primary: true
-    tag_id:
-      type: integer
-      primary: true
-  relations:
+      columns:
+        name: string(255)
+    
     BlogPost:
-      foreignAlias: BlogPostTags
+      actAs: [Timestampable]
+      columns:
+        title: string(255)
+        body: clob
+        site_id: integer
+      relations:
+        Site:
+          foreignAlias: BlogPosts
+        Tags:
+          class: Tag
+          refClass: BlogPostTag
+          foreignAlias: BlogPosts
+    
     Tag:
-      foreignAlias: BlogPostTags
-</code></pre>
-<p>This is a fairly simple schema as you can see, but what if we want
-to have a relationship on the <code>Site</code> model to retrieve the latest
-five <code>BlogPost</code> records or order the <code>Tags</code> relationship
-alphabetically by default?</p>
-<p>Lets modify our schema to take into account a new behavior that we
-will write in the next step. First modify the <code>Site</code> model and a
-relationship named <code>LatestBlogPosts</code>:</p>
+      columns:
+        name: string(255)
+    
+    BlogPostTag:
+      columns:
+        blog_post_id:
+          type: integer
+          primary: true
+        tag_id:
+          type: integer
+          primary: true
+      relations:
+        BlogPost:
+          foreignAlias: BlogPostTags
+        Tag:
+          foreignAlias: BlogPostTags
 
-<pre><code class="">[yml]
-Site:
-  actAs:
-    RelationDql:
+This is a fairly simple schema as you can see, but what if we want
+to have a relationship on the ``Site`` model to retrieve the latest
+five ``BlogPost`` records or order the ``Tags`` relationship
+alphabetically by default?
+
+Lets modify our schema to take into account a new behavior that we
+will write in the next step. First modify the ``Site`` model and a
+relationship named ``LatestBlogPosts``:
+
+::
+
+    [yml]
+    Site:
+      actAs:
+        RelationDql:
+          relations:
+            LatestBlogPosts:
+              orderBy: %s.created_at DESC
+              limit: 5
+      columns:
+        name: string(255)
       relations:
         LatestBlogPosts:
-          orderBy: %s.created_at DESC
-          limit: 5
-  columns:
-    name: string(255)
-  relations:
-    LatestBlogPosts:
-      autoComplete: false
-      class: BlogPost
-      local: id
-      foreign: site_id
+          autoComplete: false
+          class: BlogPost
+          local: id
+          foreign: site_id
 
-**TIP** The ``autoComplete`` option is set to ``false`` so that the
-relationship is not reflected and added to the opposite end,
-``BlogPost`` automatically.
+    **TIP** The ``autoComplete`` option is set to ``false`` so that the
+    relationship is not reflected and added to the opposite end,
+    ``BlogPost`` automatically.
 
-</code></pre>
-<p>Now lets modify the <code>BlogPost</code> model to change the <code>Tags</code>
+
+Now lets modify the ``BlogPost`` model to change the ``Tags``
 relationship so that it is ordered alphabetically by name by
-default:</p>
+default:
 
-<pre><code class="">[yml]
-BlogPost:
-  actAs:
-    Timestampable:
-    RelationDql:
+::
+
+    [yml]
+    BlogPost:
+      actAs:
+        Timestampable:
+        RelationDql:
+          relations:
+            Tags:
+              orderBy: %s.name ASC
+      columns:
+        title: string(255)
+        body: clob
+        site_id: integer
       relations:
+        Site:
+          foreignAlias: BlogPosts
         Tags:
-          orderBy: %s.name ASC
-  columns:
-    title: string(255)
-    body: clob
-    site_id: integer
-  relations:
-    Site:
-      foreignAlias: BlogPosts
-    Tags:
-      class: Tag
-      refClass: BlogPostTag
-      foreignAlias: BlogPosts
+          class: Tag
+          refClass: BlogPostTag
+          foreignAlias: BlogPosts
 
-**TIP** The ``relations`` array is an array of changes to make to
-the DQL query. The key can be any valid function on the
-``Doctrine_Query`` API and the value is of course the parameter to
-pass to the function.
+    **TIP** The ``relations`` array is an array of changes to make to
+    the DQL query. The key can be any valid function on the
+    ``Doctrine_Query`` API and the value is of course the parameter to
+    pass to the function.
 
-</code></pre>
-<p>Now that we have our schemas modified to take into account the new
-<code>RelationDql</code> behavior we need to actually write the code:</p>
-<pre><code class="php">&lt;?php
-class RelationDql extends Doctrine_Template
-{
-  protected $_options = array();
 
-  public function __construct($options)
-  {
-    $this-&gt;_options = $options;
-  }
+Now that we have our schemas modified to take into account the new
+``RelationDql`` behavior we need to actually write the code:
 
-  public function setTableDefinition()
-  {
-    $this-&gt;_table-&gt;addRecordListener(new RelationDqlListener($this-&gt;_options));
-  }
-}
-</code></pre>
-<p>The template is very simple. It only attaches a record listener to
-the invoking table. Their is where most of the magic happens. So
-now lets define the <code>RelationDqlListener</code> class:</p>
-<pre><code class="php">&lt;?php
-class RelationDqlListener extends Doctrine_Record_Listener
-{
-  protected $_options = array('relations' =&gt; array());
+.. code-block:: php
 
-  public function __construct($options)
-  {
-    $this-&gt;_options = $options;
-  }
-
-  public function preDqlSelect(Doctrine_Event $event)
-  {
-    $query = $event-&gt;getQuery();
-
-    if (empty($this-&gt;_options['relations']))
+    <?php
+    class RelationDql extends Doctrine_Template
     {
-      throw new Doctrine_Exception(
-        'You must specify at least one relationship to add DQL to'
-      );
-    }
-
-    $relations = $this-&gt;_options['relations'];
-
-    $components = $this-&gt;_getDqlCallbackComponents($query);
-    foreach ($components as $alias =&gt; $component)
-    {
-      if (isset($component['relation']) &amp;&amp; isset($relations[$component['relation']-&gt;getAlias()]))
+      protected $_options = array();
+    
+      public function __construct($options)
       {
-        $dqls = $relations[$component['relation']-&gt;getAlias()];
-        foreach ($dqls as $func =&gt; $dql)
-        {
-          $dql = str_replace('%s', $alias, $dql);
-          $query-&gt;$func($dql);
-        }
-        unset($relations[$component['relation']-&gt;getAlias()]);
+        $this->_options = $options;
+      }
+    
+      public function setTableDefinition()
+      {
+        $this->_table->addRecordListener(new RelationDqlListener($this->_options));
       }
     }
-  }
 
-  protected function _getDqlCallbackComponents($query)
-  {
-      $params = $query-&gt;getParams();
-      $componentsBefore = array();
-      if ($query-&gt;isSubquery()) {
-          $componentsBefore = $query-&gt;getQueryComponents();
+The template is very simple. It only attaches a record listener to
+the invoking table. Their is where most of the magic happens. So
+now lets define the ``RelationDqlListener`` class:
+
+.. code-block:: php
+
+    <?php
+    class RelationDqlListener extends Doctrine_Record_Listener
+    {
+      protected $_options = array('relations' => array());
+    
+      public function __construct($options)
+      {
+        $this->_options = $options;
       }
-
-      $copy = $query-&gt;copy();
-      $copy-&gt;getSqlQuery($params);
-      $componentsAfter = $copy-&gt;getQueryComponents();
-
-      if ($componentsBefore !== $componentsAfter) {
-          return array_diff($componentsAfter, $componentsBefore);
-      } else {
-          return $componentsAfter;
+    
+      public function preDqlSelect(Doctrine_Event $event)
+      {
+        $query = $event->getQuery();
+    
+        if (empty($this->_options['relations']))
+        {
+          throw new Doctrine_Exception(
+            'You must specify at least one relationship to add DQL to'
+          );
+        }
+    
+        $relations = $this->_options['relations'];
+    
+        $components = $this->_getDqlCallbackComponents($query);
+        foreach ($components as $alias => $component)
+        {
+          if (isset($component['relation']) && isset($relations[$component['relation']->getAlias()]))
+          {
+            $dqls = $relations[$component['relation']->getAlias()];
+            foreach ($dqls as $func => $dql)
+            {
+              $dql = str_replace('%s', $alias, $dql);
+              $query->$func($dql);
+            }
+            unset($relations[$component['relation']->getAlias()]);
+          }
+        }
       }
-  }
-}
-</code></pre>
-<p>So now we have the behavior defined so lets look at some example
-DQL queries and the SQL that is outputted:</p>
-<blockquote><p><strong>TIP</strong> Remember, in order for the dql callbacks to be executed we
-must enable an attribute first.</p>
-</blockquote>
-<pre><code class="php">&lt;?php
-    $manager-&gt;setAttribute('use_dql_callbacks', true);
+    
+      protected function _getDqlCallbackComponents($query)
+      {
+          $params = $query->getParams();
+          $componentsBefore = array();
+          if ($query->isSubquery()) {
+              $componentsBefore = $query->getQueryComponents();
+          }
+    
+          $copy = $query->copy();
+          $copy->getSqlQuery($params);
+          $componentsAfter = $copy->getQueryComponents();
+    
+          if ($componentsBefore !== $componentsAfter) {
+              return array_diff($componentsAfter, $componentsBefore);
+          } else {
+              return $componentsAfter;
+          }
+      }
+    }
 
-</code></pre>
-<pre><code class="php">&lt;?php
-$q = Doctrine_Query::create()
-  -&gt;select('s.name, p.title, p.created_at')
-  -&gt;from('Site s')
-  -&gt;leftJoin('s.LatestBlogPosts p');
+So now we have the behavior defined so lets look at some example
+DQL queries and the SQL that is outputted:
 
-echo $q-&gt;getSql();
-</code></pre>
-<p>The above would output the following SQL:</p>
+    **TIP** Remember, in order for the dql callbacks to be executed we
+    must enable an attribute first.
 
-<pre><code class="">[sql]
-SELECT s.id AS s__id, s.name AS s__name, b.id AS b__id, b.title AS b__title, b.created_at AS b__created_at FROM site s LEFT JOIN blog_post b ON s.id = b.site_id ORDER BY b.created_at DESC LIMIT 5
+.. code-block:: php
 
-**NOTE** Notice how the ``ORDER BY`` and ``LIMIT`` were added to
-the query.
+    <?php
+        $manager->setAttribute('use_dql_callbacks', true);
 
-</code></pre>
-<p>Now lets look at an example that involves the <code>BlogPost</code> tags:</p>
-<pre><code class="php">&lt;?php
-$q = Doctrine_Query::create()
-  -&gt;from('BlogPost p')
-  -&gt;leftJoin('p.Tags t');
 
-echo $q-&gt;getSql();
-</code></pre>
-<p>The above would output the following SQL query:</p>
+.. code-block:: php
 
-<pre><code class="">[sql]
-SELECT b.id AS b__id, b.title AS b__title, b.body AS b__body, b.site_id AS b__site_id, b.created_at AS b__created_at, b.updated_at AS b__updated_at, t.id AS t__id, t.name AS t__name FROM blog_post b LEFT JOIN blog_post_tag b2 ON b.id = b2.blog_post_id LEFT JOIN tag t ON t.id = b2.tag_id ORDER BY t.name ASC
-</code></pre>
-<p>As you can see the <code>ORDER BY</code> clause to order the related tags by
-<code>name</code> was added for us.</p>
-<p>Pretty cool huh? You can use this in your projects to make your
-relationships a little nicer.</p>
+    <?php
+    $q = Doctrine_Query::create()
+      ->select('s.name, p.title, p.created_at')
+      ->from('Site s')
+      ->leftJoin('s.LatestBlogPosts p');
+    
+    echo $q->getSql();
 
+The above would output the following SQL:
+
+::
+
+    [sql]
+    SELECT s.id AS s__id, s.name AS s__name, b.id AS b__id, b.title AS b__title, b.created_at AS b__created_at FROM site s LEFT JOIN blog_post b ON s.id = b.site_id ORDER BY b.created_at DESC LIMIT 5
+
+    **NOTE** Notice how the ``ORDER BY`` and ``LIMIT`` were added to
+    the query.
+
+
+Now lets look at an example that involves the ``BlogPost`` tags:
+
+.. code-block:: php
+
+    <?php
+    $q = Doctrine_Query::create()
+      ->from('BlogPost p')
+      ->leftJoin('p.Tags t');
+    
+    echo $q->getSql();
+
+The above would output the following SQL query:
+
+::
+
+    [sql]
+    SELECT b.id AS b__id, b.title AS b__title, b.body AS b__body, b.site_id AS b__site_id, b.created_at AS b__created_at, b.updated_at AS b__updated_at, t.id AS t__id, t.name AS t__name FROM blog_post b LEFT JOIN blog_post_tag b2 ON b.id = b2.blog_post_id LEFT JOIN tag t ON t.id = b2.tag_id ORDER BY t.name ASC
+
+As you can see the ``ORDER BY`` clause to order the related tags by
+``name`` was added for us.
+
+Pretty cool huh? You can use this in your projects to make your
+relationships a little nicer.
         </div>
                 
                     <nav class="article">

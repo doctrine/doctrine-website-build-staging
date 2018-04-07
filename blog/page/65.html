@@ -127,104 +127,138 @@
         <hr />
 
         <div>
-            <p>I've seen a few requests recently on how you can use a view with
+            I've seen a few requests recently on how you can use a view with
 Doctrine. This is very easy and I've also learned a few neat tricks
 that you can do to accomplish abnormal things while writing this
-article.</p>
-<a id="title.1"></a><h1>Creating the View</h1>
-<p>First I will demonstrate how you can turn a normal
-<code>Doctrine_Query</code> instance in to a view. This is just as easy as
-creating an instance of <code>Doctrine_View</code> and setting a reference
-between the query and the view.</p>
-<pre><code class="php">&lt;?php
-$q = Doctrine::getTable('BlogPost')
-  -&gt;createQuery('p')
-  -&gt;select('p.*, COUNT(c.id) as num_comments')
-  -&gt;leftJoin('p.Comments c')
-  -&gt;orderBy('p.id DESC')
-  -&gt;groupBy('p.id');
+article.
 
-$view = new Doctrine_View($q, 'test_view');
-</code></pre>
-<p>To create the view in the database you can call the
-<code>Doctrine_View::create()</code> method.</p>
-<pre><code class="php">&lt;?php
-$view-&gt;create();
+Creating the View
+-----------------
 
-**TIP** You can drop the view just the same by calling the
-``Doctrine_View::drop()`` method.
-</code></pre>
-<pre><code class="php">&lt;?php
-    $view-&gt;drop();
+First I will demonstrate how you can turn a normal
+``Doctrine_Query`` instance in to a view. This is just as easy as
+creating an instance of ``Doctrine_View`` and setting a reference
+between the query and the view.
 
-</code></pre>
-<a id="title.2"></a><h1>Executing the View</h1>
-<p>Now when the <code>Doctrine_Query</code> instance above is executed, it will
+.. code-block:: php
+
+    <?php
+    $q = Doctrine::getTable('BlogPost')
+      ->createQuery('p')
+      ->select('p.*, COUNT(c.id) as num_comments')
+      ->leftJoin('p.Comments c')
+      ->orderBy('p.id DESC')
+      ->groupBy('p.id');
+    
+    $view = new Doctrine_View($q, 'test_view');
+
+To create the view in the database you can call the
+``Doctrine_View::create()`` method.
+
+.. code-block:: php
+
+    <?php
+    $view->create();
+
+    **TIP** You can drop the view just the same by calling the
+    ``Doctrine_View::drop()`` method.
+
+.. code-block:: php
+
+    <?php
+        $view->drop();
+
+
+Executing the View
+------------------
+
+Now when the ``Doctrine_Query`` instance above is executed, it will
 execute the SQL for the view instead of parsing the DQL, generating
-the SQL and executing it.</p>
-<pre><code class="php">&lt;?php
-$blogPosts = $q-&gt;execute();
-</code></pre>
-<p>Executing the above would execute the following SQL query.</p>
+the SQL and executing it.
 
-<pre><code class="">[sql]
-SELECT * FROM test_view
-</code></pre>
-<a id="title.3"></a><h1>Tweaking the View</h1>
-<p>Now here is where things get interesting. Say we wanted to take the
-SQL that the above <code>Doctrine_Query</code> generates, and modify it
+.. code-block:: php
+
+    <?php
+    $blogPosts = $q->execute();
+
+Executing the above would execute the following SQL query.
+
+::
+
+    [sql]
+    SELECT * FROM test_view
+
+Tweaking the View
+-----------------
+
+Now here is where things get interesting. Say we wanted to take the
+SQL that the above ``Doctrine_Query`` generates, and modify it
 slightly with some custom SQL that otherwise could not make it
-through the DQL parser.</p>
-<p>We can get the SQL from the query, modify it, then manually create
-the view in our database.</p>
-<pre><code class="php">&lt;?php
-echo $q-&gt;getSql();
-</code></pre>
-<p>The above would output the following SQL.</p>
+through the DQL parser.
 
-<pre><code class="">[sql]
-SELECT b.id AS b__id, b.title AS b__title, b.excerpt AS b__excerpt, b.body AS b__body, COUNT(c.id) AS c__0 FROM blog_post b LEFT JOIN comment c ON b.id = c.blog_post_id GROUP BY b.id ORDER BY b.id DESC
-</code></pre>
-<p>Now lets say we wanted to add something to the SQL that is
+We can get the SQL from the query, modify it, then manually create
+the view in our database.
+
+.. code-block:: php
+
+    <?php
+    echo $q->getSql();
+
+The above would output the following SQL.
+
+::
+
+    [sql]
+    SELECT b.id AS b__id, b.title AS b__title, b.excerpt AS b__excerpt, b.body AS b__body, COUNT(c.id) AS c__0 FROM blog_post b LEFT JOIN comment c ON b.id = c.blog_post_id GROUP BY b.id ORDER BY b.id DESC
+
+Now lets say we wanted to add something to the SQL that is
 proprietary to your DBMS, or is some complex SQL that won't make it
 through the DQL parser. We can modify the above SQL then re-create
 the view with that SQL manually. Let's make a simple change and add
-the <code>USE INDEX</code> keyword to force MySQL to use a certain index for
-the query.</p>
-<blockquote><p><strong>NOTE</strong> The example I have chosen is a very simple one only to
-demonstrate the capabilities. This example may not be a real world
-scenario for you. The only purpose of me showing this is to open a
-door for you to solve potential problems for you in the future.</p>
-</blockquote>
+the ``USE INDEX`` keyword to force MySQL to use a certain index for
+the query.
 
-<pre><code class="">[sql]
-SELECT b.id AS b__id, b.title AS b__title, b.excerpt AS b__excerpt, b.body AS b__body, COUNT(c.id) AS c__0 FROM blog_post b LEFT JOIN comment c USE INDEX (blog_post_id_idx) ON b.id = c.blog_post_id GROUP BY b.id ORDER BY b.id DESC;
-</code></pre>
-<p>Now lets take this query and manually create the view with it.</p>
-<blockquote><p><strong>NOTE</strong> We must first drop the view as we already created it once
-in a previous step. This is just as easy as issuing the DROP VIEW
-command to MySQL. Afterward, re-create the view again with the
-modified SQL.</p>
-</blockquote>
+    **NOTE** The example I have chosen is a very simple one only to
+    demonstrate the capabilities. This example may not be a real world
+    scenario for you. The only purpose of me showing this is to open a
+    door for you to solve potential problems for you in the future.
 
-<pre><code class="">[sql]
-DROP VIEW test_view;
-CREATE VIEW test_view AS SELECT b.id AS b__id, b.title AS b__title, b.excerpt AS b__excerpt, b.body AS b__body, COUNT(c.id) AS c__0 FROM blog_post b LEFT JOIN comment c USE INDEX (blog_post_id_idx) ON b.id = c.blog_post_id GROUP BY b.id ORDER BY b.id DESC;
-</code></pre>
-<p>Now when we execute the code in the first part of this article it
-will execute the view which contains the customized SQL.</p>
-<pre><code class="php">&lt;?php
-$blogPosts = $q-&gt;execute();
 
-**CAUTION** If you customize the SQL, it must maintain the same
-structure, aliases, etc. in order for Doctrine to be able to
-hydrate the data in to the object graph.
+::
 
-</code></pre>
-<p>That is it! Now you can easily use some custom SQL in your queries
+    [sql]
+    SELECT b.id AS b__id, b.title AS b__title, b.excerpt AS b__excerpt, b.body AS b__body, COUNT(c.id) AS c__0 FROM blog_post b LEFT JOIN comment c USE INDEX (blog_post_id_idx) ON b.id = c.blog_post_id GROUP BY b.id ORDER BY b.id DESC;
+
+Now lets take this query and manually create the view with it.
+
+    **NOTE** We must first drop the view as we already created it once
+    in a previous step. This is just as easy as issuing the DROP VIEW
+    command to MySQL. Afterward, re-create the view again with the
+    modified SQL.
+
+
+::
+
+    [sql]
+    DROP VIEW test_view;
+    CREATE VIEW test_view AS SELECT b.id AS b__id, b.title AS b__title, b.excerpt AS b__excerpt, b.body AS b__body, COUNT(c.id) AS c__0 FROM blog_post b LEFT JOIN comment c USE INDEX (blog_post_id_idx) ON b.id = c.blog_post_id GROUP BY b.id ORDER BY b.id DESC;
+
+Now when we execute the code in the first part of this article it
+will execute the view which contains the customized SQL.
+
+.. code-block:: php
+
+    <?php
+    $blogPosts = $q->execute();
+
+    **CAUTION** If you customize the SQL, it must maintain the same
+    structure, aliases, etc. in order for Doctrine to be able to
+    hydrate the data in to the object graph.
+
+
+That is it! Now you can easily use some custom SQL in your queries
 as views. The benefit of using a view is that it is easily reusable
-and it is much faster than executing a normal query in most cases.</p>
-
+and it is much faster than executing a normal query in most cases.
         </div>
 
             </article>
@@ -242,145 +276,181 @@ and it is much faster than executing a normal query in most cases.</p>
         <hr />
 
         <div>
-            <a id="title.1"></a><h1>Cross Database Joins</h1>
-<p>In Doctrine, joining data across databases is not technically
-&quot;supported&quot; by a designed feature, but you can make it work by
-tricking Doctrine a little bit.</p>
-<p>In this article I'll show you how you can setup a database schema
+            Cross Database Joins
+--------------------
+
+In Doctrine, joining data across databases is not technically
+"supported" by a designed feature, but you can make it work by
+tricking Doctrine a little bit.
+
+In this article I'll show you how you can setup a database schema
 that specifies relationships across two databases and then issue a
-query which joins data from these two databases.</p>
-<p>I used the Doctrine sandbox to prepare this test so if you want to
-try it, you can use it too.</p>
-<a id="title.2"></a><h1>Database Connections</h1>
-<p>First lets setup our two database connections we'll use to query
-from. Modify the <code>config.php</code> file included with the sandbox and
-replace the default single connection with the following code.</p>
-<pre><code class="php">&lt;?php
-Doctrine_Manager::connection('mysql://root@localhost/doctrine_test1', 'doctrine_test1');
-Doctrine_Manager::connection('mysql://root@localhost/doctrine_test2', 'doctrine_test2');
-</code></pre>
-<a id="title.3"></a><h1>Schema</h1>
-<p>Now lets define our YAML schema file that we'll use to run our
-tests against. You can modify the <code>config/doctrine/schema.yml</code>
-file and include the following YAML.</p>
+query which joins data from these two databases.
 
-<pre><code class="">[yml]
-User:
-  tableName: doctrine_test1.user
-  connection: doctrine_test1
-  columns:
-    username: string(255)
-    password: string(255)
+I used the Doctrine sandbox to prepare this test so if you want to
+try it, you can use it too.
 
-Profile:
-  tableName: doctrine_test2.profile
-  connection: doctrine_test2
-  columns:
-    user_id: integer
-    first_name: string(255)
-    last_name: string(255)
-  relations:
+Database Connections
+--------------------
+
+First lets setup our two database connections we'll use to query
+from. Modify the ``config.php`` file included with the sandbox and
+replace the default single connection with the following code.
+
+.. code-block:: php
+
+    <?php
+    Doctrine_Manager::connection('mysql://root@localhost/doctrine_test1', 'doctrine_test1');
+    Doctrine_Manager::connection('mysql://root@localhost/doctrine_test2', 'doctrine_test2');
+
+Schema
+------
+
+Now lets define our YAML schema file that we'll use to run our
+tests against. You can modify the ``config/doctrine/schema.yml``
+file and include the following YAML.
+
+::
+
+    [yml]
     User:
-      foreignType: one
-      onDelete: CASCADE
-
-**NOTE** Notice how we specify the full table name, including the
-name of the database. Currently, Doctrine does not generate the SQL
-that includes the database name. It only includes the table name,
-but we can trick Doctrine by simply specifying the
-``database_name.table_name`` as the table name.
-
-</code></pre>
-<a id="title.4"></a><h1>Test Data Fixtures</h1>
-<p>In the <code>data/fixtures</code> directory create a <code>data.yml</code> file and
-paste the following fixtures inside so we can have some data in
-each database to run our tests against.</p>
-
-<pre><code class="">[yml]
-User:
-  jwage:
-    username: jwage
-    password: changeme
+      tableName: doctrine_test1.user
+      connection: doctrine_test1
+      columns:
+        username: string(255)
+        password: string(255)
+    
     Profile:
-      first_name: string(255)
-      last_name: string(255)
-</code></pre>
-<a id="title.5"></a><h1>Build the Database</h1>
-<p>Now lets build our database and import the data fixtures from
+      tableName: doctrine_test2.profile
+      connection: doctrine_test2
+      columns:
+        user_id: integer
+        first_name: string(255)
+        last_name: string(255)
+      relations:
+        User:
+          foreignType: one
+          onDelete: CASCADE
+
+    **NOTE** Notice how we specify the full table name, including the
+    name of the database. Currently, Doctrine does not generate the SQL
+    that includes the database name. It only includes the table name,
+    but we can trick Doctrine by simply specifying the
+    ``database_name.table_name`` as the table name.
+
+
+Test Data Fixtures
+------------------
+
+In the ``data/fixtures`` directory create a ``data.yml`` file and
+paste the following fixtures inside so we can have some data in
+each database to run our tests against.
+
+::
+
+    [yml]
+    User:
+      jwage:
+        username: jwage
+        password: changeme
+        Profile:
+          first_name: string(255)
+          last_name: string(255)
+
+Build the Database
+------------------
+
+Now lets build our database and import the data fixtures from
 above. This can be easily done by running the following from the
-Doctrine command line interface.</p>
+Doctrine command line interface.
 
-<pre><code class="">$ php doctrine build-all-reload
-</code></pre>
-<a id="title.6"></a><h1>Run the Test</h1>
-<p>Now we have our models created, we have our database created and we
+::
+
+    $ php doctrine build-all-reload
+
+Run the Test
+------------
+
+Now we have our models created, we have our database created and we
 have our test fixtures loaded in to the database. Now it is time to
-run some sample code and see what we get!</p>
-<p>First lets write our <code>Doctrine_Query</code> and look at the generated
-SQL. Paste the following code in to index.php and lets execute it!</p>
-<pre><code class="php">&lt;?php
-$q = Doctrine::getTable('User')
-  -&gt;createQuery('u')
-  -&gt;leftJoin('u.Profile p');
+run some sample code and see what we get!
 
-echo $q-&gt;getSql();
-</code></pre>
-<p>The above code would output the following SQL query.</p>
+First lets write our ``Doctrine_Query`` and look at the generated
+SQL. Paste the following code in to index.php and lets execute it!
 
-<pre><code class="">[sql]
-SELECT d.id AS d__id, d.username AS d__username, d.password AS d__password, d2.id AS d2__id, d2.user_id AS d2__user_id, d2.first_name AS d2__first_name, d2.last_name AS d2__last_name FROM doctrine_test1.user d LEFT JOIN doctrine_test2.profile d2 ON d.id = d2.user_id
+.. code-block:: php
 
-**NOTE** Notice how in the above SQL that is generated it include
-the database name and the table name. So now the query is able to
-join across databases if your RDBMS supports it.
+    <?php
+    $q = Doctrine::getTable('User')
+      ->createQuery('u')
+      ->leftJoin('u.Profile p');
+    
+    echo $q->getSql();
 
-</code></pre>
-<p>Now lets execute the above query and look at the results.</p>
-<pre><code class="php">&lt;?php
-$q = Doctrine::getTable('User')
-  -&gt;createQuery('u')
-  -&gt;leftJoin('u.Profile p');
+The above code would output the following SQL query.
 
-$users = $q-&gt;fetchArray();
+::
 
-print_r($users);
-</code></pre>
-<p>The above would output just exactly what you'd expect.</p>
+    [sql]
+    SELECT d.id AS d__id, d.username AS d__username, d.password AS d__password, d2.id AS d2__id, d2.user_id AS d2__user_id, d2.first_name AS d2__first_name, d2.last_name AS d2__last_name FROM doctrine_test1.user d LEFT JOIN doctrine_test2.profile d2 ON d.id = d2.user_id
 
-<pre><code class="">Array
-(
-    [0] =&gt; Array
-        (
-            [id] =&gt; 1
-            [username] =&gt; jwage
-            [password] =&gt; changeme
-            [Profile] =&gt; Array
-                (
-                    [id] =&gt; 1
-                    [user_id] =&gt; 1
-                    [first_name] =&gt; string(255)
-                    [last_name] =&gt; string(255)
-                )
+    **NOTE** Notice how in the above SQL that is generated it include
+    the database name and the table name. So now the query is able to
+    join across databases if your RDBMS supports it.
 
-        )
 
-)
-</code></pre>
-<p>The data from the <code>User</code> model came from one database, and the
-data from the <code>Profile</code> model came from the other database.</p>
-<blockquote><p><strong>NOTE</strong> This will only work if your database supports foreign keys
-and joins across databases. I know MySQL does support this but I am
-unsure about others. This same method can be used to query for data
-across PostgreSQL schemas too.</p>
-</blockquote>
-<p>That is it! Joining data from across different databases is no
-problem in Doctrine.</p>
-<blockquote><p><strong>CAUTION</strong> This is not a designed feature of Doctrine and you may
-experience edge cases that may not work as you'd expect. This is
-just useful if you need to join data across databases and if you
-experience edge cases you can work around them in your project.</p>
-</blockquote>
+Now lets execute the above query and look at the results.
 
+.. code-block:: php
+
+    <?php
+    $q = Doctrine::getTable('User')
+      ->createQuery('u')
+      ->leftJoin('u.Profile p');
+    
+    $users = $q->fetchArray();
+    
+    print_r($users);
+
+The above would output just exactly what you'd expect.
+
+::
+
+    Array
+    (
+        [0] => Array
+            (
+                [id] => 1
+                [username] => jwage
+                [password] => changeme
+                [Profile] => Array
+                    (
+                        [id] => 1
+                        [user_id] => 1
+                        [first_name] => string(255)
+                        [last_name] => string(255)
+                    )
+    
+            )
+    
+    )
+
+The data from the ``User`` model came from one database, and the
+data from the ``Profile`` model came from the other database.
+
+    **NOTE** This will only work if your database supports foreign keys
+    and joins across databases. I know MySQL does support this but I am
+    unsure about others. This same method can be used to query for data
+    across PostgreSQL schemas too.
+
+
+That is it! Joining data from across different databases is no
+problem in Doctrine.
+
+    **CAUTION** This is not a designed feature of Doctrine and you may
+    experience edge cases that may not work as you'd expect. This is
+    just useful if you need to join data across databases and if you
+    experience edge cases you can work around them in your project.
         </div>
 
             </article>
@@ -398,24 +468,25 @@ experience edge cases you can work around them in your project.</p>
         <hr />
 
         <div>
-            <p>As you all may know, I work for
-<a href="http://www.sensiolabs.com">Sensio Labs</a> , the creators of the
-<a href="http://www.symfony-project.org">Symfony</a> framework. Sensio
+            As you all may know, I work for
+`Sensio Labs <http://www.sensiolabs.com>`_ , the creators of the
+`Symfony <http://www.symfony-project.org>`_ framework. Sensio
 offers trainings in many topics, but primarily Symfony and
 Doctrine. I will be teaching a training session June 29th to July
 1st in the San Francisco bay area that covers Symfony 1.2 and
 Doctrine 1.0. We are having a little issue completely filling the
 class and I need a few more trainees in order to fill the class to
-maintain the date, otherwise we'll have to cancel.</p>
-<p>I am able to make a special offer to any interested parties on the
+maintain the date, otherwise we'll have to cancel.
+
+I am able to make a special offer to any interested parties on the
 price of the training. All things are negotiable. So if you would
 like to attend the 3 day workshop taught by myself and learn the
 best practices when using Symfony and Doctrine, contact me right
 away! Remember, the price is completely negotiable so if you're a
 student or a member of a development team and would like to attend
-please contact me so we can negotiate a price that works for you.</p>
-<p>You can contact me at jonathan.wage@sensio.com to discuss details.</p>
+please contact me so we can negotiate a price that works for you.
 
+You can contact me at jonathan.wage@sensio.com to discuss details.
         </div>
 
             </article>

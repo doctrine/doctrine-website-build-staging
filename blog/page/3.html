@@ -127,37 +127,46 @@
         <hr />
 
         <div>
-            <p>We are happy to announce the immediate availability of Doctrine MongoDB ODM
-<a href="https://github.com/doctrine/mongodb-odm/releases/tag/1.1.2">1.1.2</a> and
-<a href="https://github.com/doctrine/mongodb-odm/releases/tag/1.0.8">1.0.8</a>.</p>
-<a id="title.1"></a><h1>MongoDB ODM 1.0.8</h1>
-<ul><li class="dash">calling <code>dropCollections()</code> in the SchemaManager did not drop GridFS
-collections. <a href="https://github.com/doctrine/mongodb-odm/pull/1468">#1468</a></li>
-<li class="dash">calling <code>clear()</code> on an uninitialized collection with <code>orphanRemoval</code>
-enabled failed to remove orphaned documents. <a href="https://github.com/doctrine/mongodb-odm/pull/1500">#1500</a></li>
-<li class="dash">Documents with identifiers evaluating to <code>false</code> (e.g. empty string or 0)
-could not be reference using <code>createDBRef()</code> in DocumentManager. <a href="https://github.com/doctrine/mongodb-odm/pull/1503">#1503</a></li>
-</ul>
+            We are happy to announce the immediate availability of Doctrine MongoDB ODM
+`1.1.2 <https://github.com/doctrine/mongodb-odm/releases/tag/1.1.2>`__ and
+`1.0.8 <https://github.com/doctrine/mongodb-odm/releases/tag/1.0.8>`__.
 
-<a id="title.2"></a><h1>MongoDB ODM 1.1.2</h1>
-<ul><li class="dash">This release contains the bugfixes outlined for ODM 1.0.8 above</li>
-<li class="dash">Querying for referenced objects in <code>findBy()</code> or <code>findOneBy()</code> did not work
-properly due to incorrect preparation of the DBRef objects. <a href="https://github.com/doctrine/mongodb-odm/pull/1481">#1481</a></li>
-</ul>
+MongoDB ODM 1.0.8
+-----------------
 
-<a id="title.3"></a><h1>Installation</h1>
-<p>You can install the latest version using the following <code>composer.json</code> definitions:</p>
-<pre><code class="json">{
-    &quot;require&quot;: {
-        &quot;doctrine/mongodb-odm&quot;: &quot;^1.1.2&quot;
-    }
-}
-</code></pre>
-<a id="title.4"></a><h1>Support for Doctrine ODM 1.0.x</h1>
-<p>As outlined previously, support for MongoDB ODM 1.0.x will end on December 9th,
+- calling ``dropCollections()`` in the SchemaManager did not drop GridFS
+collections. `#1468 <https://github.com/doctrine/mongodb-odm/pull/1468>`_
+- calling ``clear()`` on an uninitialized collection with ``orphanRemoval``
+enabled failed to remove orphaned documents. `#1500 <https://github.com/doctrine/mongodb-odm/pull/1500>`_
+- Documents with identifiers evaluating to ``false`` (e.g. empty string or 0)
+could not be reference using ``createDBRef()`` in DocumentManager. `#1503 <https://github.com/doctrine/mongodb-odm/pull/1503>`_
+
+MongoDB ODM 1.1.2
+-----------------
+
+- This release contains the bugfixes outlined for ODM 1.0.8 above
+- Querying for referenced objects in ``findBy()`` or ``findOneBy()`` did not work
+properly due to incorrect preparation of the DBRef objects. `#1481 <https://github.com/doctrine/mongodb-odm/pull/1481>`_
+
+Installation
+------------
+
+You can install the latest version using the following ``composer.json`` definitions:
+
+.. code-block:: json
+
+  {
+      "require": {
+          "doctrine/mongodb-odm": "^1.1.2"
+      }
+  }
+
+Support for Doctrine ODM 1.0.x
+------------------------------
+
+As outlined previously, support for MongoDB ODM 1.0.x will end on December 9th,
 2016. If you have not upgraded to version 1.1 yet, please do so to receive
-future bug fixes.</p>
-
+future bug fixes.
         </div>
 
             </article>
@@ -175,27 +184,33 @@ future bug fixes.</p>
         <hr />
 
         <div>
-            <p>We are happy to announce the immediate availability of Doctrine ORM
-<a href="https://github.com/doctrine/doctrine2/releases/tag/v2.5.5">2.5.5</a>.</p>
-<p>Following issues were fixed:</p>
-<ul><li class="dash">Embeddable classes are now allowed in inheritance trees <a href="https://github.com/doctrine/doctrine2/issues/4097">#4097</a></li>
-<li class="dash">Removed some object hash collisions caused by entity merging <a href="https://github.com/doctrine/doctrine2/pull/1465">#1465</a></li>
-<li class="dash">Allowed usage of mathematical operators in DQL <code>HAVING</code> clauses <a href="https://github.com/doctrine/doctrine2/pull/5598">#5598</a></li>
-<li class="dash">Fixed cloning of proxies with private properties at multiple inheritance levels <a href="https://github.com/doctrine/doctrine2/pull/5755">#5755</a></li>
-<li class="dash">Entity insertions are correctly cleared when a specific entity is to be cleared <a href="https://github.com/doctrine/doctrine2/issues/5849">#5849</a></li>
-<li class="dash">Corrected hydration of fetch-joins that use composite keys <a href="https://github.com/doctrine/doctrine2/issues/5762">#5762</a></li>
-<li class="dash">Metadata exporters now only export the owning side metadata in a one-to-one relation <a href="https://github.com/doctrine/doctrine2/issues/5858">#5858</a></li>
-<li class="dash">Corrected hydration of JTI entities when <code>NULL</code> is retrieved for a <code>simple_array</code> or <code>json_array</code> field <a href="https://github.com/doctrine/doctrine2/issues/5989">#5989</a></li>
-<li class="dash">Correctly expire L2 cache query caches, based on entity region cache timestamp <a href="https://github.com/doctrine/doctrine2/issues/6001">#6001</a></li>
-</ul>
+            We are happy to announce the immediate availability of Doctrine ORM
+`2.5.5 <https://github.com/doctrine/doctrine2/releases/tag/v2.5.5>`_.
 
-<a id="title.1"></a><h1>Installation</h1>
-<p>You can install the ORM component using Composer:</p>
-<pre><code class="shell">composer require doctrine/orm:^2.5.5
-</code></pre>
-<p>Please report any issues you may have with the update on the
-<a href="https://github.com/doctrine/doctrine2/issues">issue tracker</a>.</p>
+Following issues were fixed:
 
+ - Embeddable classes are now allowed in inheritance trees `#4097 <https://github.com/doctrine/doctrine2/issues/4097>`_
+ - Removed some object hash collisions caused by entity merging `#1465 <https://github.com/doctrine/doctrine2/pull/1465>`_
+ - Allowed usage of mathematical operators in DQL ``HAVING`` clauses `#5598 <https://github.com/doctrine/doctrine2/pull/5598>`_
+ - Fixed cloning of proxies with private properties at multiple inheritance levels `#5755 <https://github.com/doctrine/doctrine2/pull/5755>`_
+ - Entity insertions are correctly cleared when a specific entity is to be cleared `#5849 <https://github.com/doctrine/doctrine2/issues/5849>`_
+ - Corrected hydration of fetch-joins that use composite keys `#5762 <https://github.com/doctrine/doctrine2/issues/5762>`_
+ - Metadata exporters now only export the owning side metadata in a one-to-one relation `#5858 <https://github.com/doctrine/doctrine2/issues/5858>`_
+ - Corrected hydration of JTI entities when ``NULL`` is retrieved for a ``simple_array`` or ``json_array`` field `#5989 <https://github.com/doctrine/doctrine2/issues/5989>`_
+ - Correctly expire L2 cache query caches, based on entity region cache timestamp `#6001 <https://github.com/doctrine/doctrine2/issues/6001>`_
+
+
+Installation
+~~~~~~~~~~~~
+
+You can install the ORM component using Composer:
+
+.. code-block:: shell
+
+  composer require doctrine/orm:^2.5.5
+
+Please report any issues you may have with the update on the
+`issue tracker <https://github.com/doctrine/doctrine2/issues>`_.
         </div>
 
             </article>
@@ -213,36 +228,41 @@ future bug fixes.</p>
         <hr />
 
         <div>
-            <p>We are happy to announce the immediate availability of Doctrine DBAL
-<a href="https://github.com/doctrine/dbal/releases/tag/v2.5.5">2.5.5</a>.</p>
-<p>This release contains a huge amount of fixes, specifically:</p>
-<ul><li class="dash">Parsing of SQL strings containing single quotes <a href="https://github.com/doctrine/common/pull/842">#842</a></li>
-<li class="dash">Listing foreign key names when no DB name is used (use current DB instead) <a href="https://github.com/doctrine/common/pull/856">#856</a></li>
-<li class="dash">Verifying if table names correspond on dropped foreign keys <a href="https://github.com/doctrine/common/pull/861">#861</a></li>
-<li class="dash">Quoting identifiers in <code>DROP</code> DDL statements <a href="https://github.com/doctrine/common/pull/862">#862</a></li>
-<li class="dash">Removing leading slash from database/schema names when using DSNs <a href="https://github.com/doctrine/common/pull/863">#863</a></li>
-<li class="dash">Stopped using <code>template1</code> as default database in Postgres <a href="https://github.com/doctrine/common/pull/2279">#2279</a></li>
-<li class="dash">Allowing <code>&quot;path&quot;</code> instead of <code>&quot;dbname&quot;</code> in SQLite connections <a href="https://github.com/doctrine/common/pull/2267">#2267</a></li>
-<li class="dash">Correcting DB2 boolean columns schema introspection <a href="https://github.com/doctrine/common/pull/2277">#2277</a></li>
-<li class="dash">Correcting OCI8 parameter binding, which was broken by upgrading to PHP 7.0 <a href="https://github.com/doctrine/common/pull/2434">#2434</a></li>
-<li class="dash">Quoting reserved table names when using <code>TRUNCATE</code> <a href="https://github.com/doctrine/common/pull/2270">#2270</a></li>
-<li class="dash">Fixing of DSN parsing when no schema is in the path <a href="https://github.com/doctrine/common/pull/2287">#2287</a></li>
-<li class="dash">Correcting query builder, which was adding a <code>FROM</code> clause even with no arguments for it <a href="https://github.com/doctrine/common/pull/2292">#2292</a></li>
-<li class="dash">Correcting altering primary key with <code>AUTO_INCREMENT</code> on MySQL (requires dropping/re-adding PK) <a href="https://github.com/doctrine/common/pull/2303">#2303</a></li>
-<li class="dash">Moving DB2 pagination (query modification) offset/limit count result to the end of the results <a href="https://github.com/doctrine/common/pull/2310">#2310</a></li>
-<li class="dash">Handling <code>Throwable</code> exceptions thrown in <code>Connection#transactional()</code> <a href="https://github.com/doctrine/common/pull/2390">#2390</a></li>
-<li class="dash">Correcting logging of parameters passed to a statement via <code>bindParam()</code>  <a href="https://github.com/doctrine/common/pull/2440">#2440</a></li>
-<li class="dash">Allowing installation of <code>symfony/console:^3.0</code> <a href="https://github.com/doctrine/common/pull/2484">#2484</a></li>
-<li class="dash">Correcing MySQLi statements, which were returning <code>null</code> instead of <code>false</code> on no results <a href="https://github.com/doctrine/common/pull/2497">#2497</a></li>
-</ul>
+            We are happy to announce the immediate availability of Doctrine DBAL
+`2.5.5 <https://github.com/doctrine/dbal/releases/tag/v2.5.5>`_.
 
-<a id="title.1"></a><h1>Installation</h1>
-<p>You can install the DBAL component using Composer:</p>
-<pre><code class="shell">composer require doctrine/dbal:^2.5.5
-</code></pre>
-<p>Please report any issues you may have with the update on the
-<a href="https://github.com/doctrine/dbal/issues">issue tracker</a>.</p>
+This release contains a huge amount of fixes, specifically:
 
+ - Parsing of SQL strings containing single quotes `#842 <https://github.com/doctrine/common/pull/842>`_
+ - Listing foreign key names when no DB name is used (use current DB instead) `#856 <https://github.com/doctrine/common/pull/856>`_
+ - Verifying if table names correspond on dropped foreign keys `#861 <https://github.com/doctrine/common/pull/861>`_
+ - Quoting identifiers in ``DROP`` DDL statements `#862 <https://github.com/doctrine/common/pull/862>`_
+ - Removing leading slash from database/schema names when using DSNs `#863 <https://github.com/doctrine/common/pull/863>`_
+ - Stopped using ``template1`` as default database in Postgres `#2279 <https://github.com/doctrine/common/pull/2279>`_
+ - Allowing ``"path"`` instead of ``"dbname"`` in SQLite connections `#2267 <https://github.com/doctrine/common/pull/2267>`_
+ - Correcting DB2 boolean columns schema introspection `#2277 <https://github.com/doctrine/common/pull/2277>`_
+ - Correcting OCI8 parameter binding, which was broken by upgrading to PHP 7.0 `#2434 <https://github.com/doctrine/common/pull/2434>`_
+ - Quoting reserved table names when using ``TRUNCATE`` `#2270 <https://github.com/doctrine/common/pull/2270>`_
+ - Fixing of DSN parsing when no schema is in the path `#2287 <https://github.com/doctrine/common/pull/2287>`_
+ - Correcting query builder, which was adding a ``FROM`` clause even with no arguments for it `#2292 <https://github.com/doctrine/common/pull/2292>`_
+ - Correcting altering primary key with ``AUTO_INCREMENT`` on MySQL (requires dropping/re-adding PK) `#2303 <https://github.com/doctrine/common/pull/2303>`_
+ - Moving DB2 pagination (query modification) offset/limit count result to the end of the results `#2310 <https://github.com/doctrine/common/pull/2310>`_
+ - Handling ``Throwable`` exceptions thrown in ``Connection#transactional()`` `#2390 <https://github.com/doctrine/common/pull/2390>`_
+ - Correcting logging of parameters passed to a statement via ``bindParam()``  `#2440 <https://github.com/doctrine/common/pull/2440>`_
+ - Allowing installation of ``symfony/console:^3.0`` `#2484 <https://github.com/doctrine/common/pull/2484>`_
+ - Correcing MySQLi statements, which were returning ``null`` instead of ``false`` on no results `#2497 <https://github.com/doctrine/common/pull/2497>`_
+
+Installation
+~~~~~~~~~~~~
+
+You can install the DBAL component using Composer:
+
+.. code-block:: shell
+
+  composer require doctrine/dbal:^2.5.5
+
+Please report any issues you may have with the update on the
+`issue tracker <https://github.com/doctrine/dbal/issues>`_.
         </div>
 
             </article>

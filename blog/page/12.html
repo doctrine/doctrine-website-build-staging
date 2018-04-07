@@ -127,40 +127,48 @@
         <hr />
 
         <div>
-            <p>In observance of August 18th, the day that Jon Wage tagged Doctrine MongoDB ODM's
-<a href="https://github.com/doctrine/mongodb-odm/releases/tag/1.0.0BETA1">first BETA release</a>,
+            In observance of August 18th, the day that Jon Wage tagged Doctrine MongoDB ODM's
+`first BETA release <https://github.com/doctrine/mongodb-odm/releases/tag/1.0.0BETA1>`__,
 we've come together for a big celebration. From humble beginnings as a weekend
 hack to port Doctrine 2's data mapper pattern to NoSQL, the ODM quickly became a
 beast of a project and cut its teeth on production servers early on as a core
 dependency of the very first Symfony2 startups. Today, after five years of
 adoption, improvements, refactoring, and
-<a href="https://twitter.com/jmikola/status/583047759160336384?lang=en">countless jokes</a>…
+`countless jokes <https://twitter.com/jmikola/status/583047759160336384?lang=en>`__…
 we are very happy to announce the immediate availability of Doctrine MongoDB ODM
-1.0.0!</p>
-<a id="title.1"></a><h1>What is new in 1.0.0?</h1>
-<p>For our first stable release, we focused on fixing most known bugs (some of
-which were open for <em>years</em>), hardening existing features, and straightening out
+1.0.0!
+
+What is new in 1.0.0?
+---------------------
+
+For our first stable release, we focused on fixing most known bugs (some of
+which were open for *years*), hardening existing features, and straightening out
 ODM's behaviour and correctness where possible. In hopes of ensuring a pleasant
 upgrade experience, we have prepared a
-<a href="https://github.com/doctrine/mongodb-odm/blob/master/CHANGELOG-1.0.md#100-2015-08-18">checklist</a>
+`checklist <https://github.com/doctrine/mongodb-odm/blob/master/CHANGELOG-1.0.md#100-2015-08-18>`__
 for you, which highlights the most important changes that may require your
 attention. A complete list of resolved issues and pull requests may be found on
-GitHub under the <a href="https://github.com/doctrine/mongodb-odm/issues?q=milestone%3A1.0.0">1.0.0 milestone</a>.</p>
-<a id="title.2"></a><h1>Behind the scenes: Doctrine MongoDB 1.2.0</h1>
-<p>We are also happy to announce the immediate availability of Doctrine MongoDB
+GitHub under the `1.0.0 milestone <https://github.com/doctrine/mongodb-odm/issues?q=milestone%3A1.0.0>`__.
+
+Behind the scenes: Doctrine MongoDB 1.2.0
+-----------------------------------------
+
+We are also happy to announce the immediate availability of Doctrine MongoDB
 1.2.0, which is the underlying driver abstraction layer employed by the ODM.
 In particular, this release sports a brand new
-<a href="https://github.com/doctrine/mongodb/pull/213">Aggregation Builder</a>, along
+`Aggregation Builder <https://github.com/doctrine/mongodb/pull/213>`__, along
 with improved query builder support for
-<a href="https://github.com/doctrine/mongodb/pull/212">update operators</a> and
-and <a href="https://github.com/doctrine/mongodb/pull/184">full-text search</a>
+`update operators <https://github.com/doctrine/mongodb/pull/212>`__ and
+and `full-text search <https://github.com/doctrine/mongodb/pull/184>`__
 introduced in MongoDB 2.6. For a full list of closed issues and pull requests,
-please see the <a href="https://github.com/doctrine/mongodb/releases/tag/1.2.0">release notes on GitHub</a>.</p>
-<a id="title.3"></a><h1>Stop fooling around, I want my BETA back!</h1>
-<p>We apologize for any inconvenience, but Doctrine MongoDB ODM has officially gone
-stable and we don't intend on shipping more BETAs anytime soon. Well, at least
-not until work begins on 2.0 :D</p>
+please see the `release notes on GitHub <https://github.com/doctrine/mongodb/releases/tag/1.2.0>`__.
 
+Stop fooling around, I want my BETA back!
+-----------------------------------------
+
+We apologize for any inconvenience, but Doctrine MongoDB ODM has officially gone
+stable and we don't intend on shipping more BETAs anytime soon. Well, at least
+not until work begins on 2.0 :D
         </div>
 
             </article>
@@ -178,64 +186,91 @@ not until work begins on 2.0 :D</p>
         <hr />
 
         <div>
-            <p>We are happy to announce the immediate availability of Doctrine MongoDB ODM
-1.0.0-BETA13.</p>
-<a id="title.1"></a><h1>What is new in 1.0.0-BETA13?</h1>
-<p>All issues and pull requests in this release may be found under the
-<a href="https://github.com/doctrine/mongodb-odm/issues?q=milestone%3A1.0.0-BETA13">1.0.0-BETA13 milestone on github</a>.
-Here is the highlight of most important features:</p>
-<a id="title.1.1"></a><h2>atomicSet and atomicSetArray strategies for top-level collections</h2>
-<p><a href="https://github.com/doctrine/mongodb-odm/pull/1096">#1096</a> introduces two new
-collection update strategies, <code>atomicSet</code> and <code>atomicSetArray</code>. Unlike existing
-strategies (e.g. <code>pushAll</code> and <code>set</code>), which update collections in a separate
+            We are happy to announce the immediate availability of Doctrine MongoDB ODM
+1.0.0-BETA13.
+
+What is new in 1.0.0-BETA13?
+----------------------------
+
+All issues and pull requests in this release may be found under the
+`1.0.0-BETA13 milestone on github <https://github.com/doctrine/mongodb-odm/issues?q=milestone%3A1.0.0-BETA13>`__.
+Here is the highlight of most important features:
+
+atomicSet and atomicSetArray strategies for top-level collections
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`#1096 <https://github.com/doctrine/mongodb-odm/pull/1096>`__ introduces two new
+collection update strategies, ``atomicSet`` and ``atomicSetArray``. Unlike existing
+strategies (e.g. ``pushAll`` and ``set``), which update collections in a separate
 query after the parent document, the atomic strategy ensures that the collection
 and its parent are updated in the same query. Any nested collections (within
 embedded documents) will also be included in the atomic update, irrespective of
-their update strategies.</p>
-<p>Currently, atomic strategies may only be specified for collections mapped
+their update strategies.
+
+Currently, atomic strategies may only be specified for collections mapped
 directly in a document class (i.e. not collections within embedded documents).
 This strategy may be especially useful for highly concurrent applications and/or
-versioned document classes (see: <a href="https://github.com/doctrine/mongodb-odm/pull/1094">#1094</a>).</p>
-<a id="title.1.2"></a><h2>Reference priming improvements</h2>
-<p><a href="https://github.com/doctrine/mongodb-odm/pull/1068">#1068</a> moves the handling of
+versioned document classes (see: `#1094 <https://github.com/doctrine/mongodb-odm/pull/1094>`__).
+
+Reference priming improvements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`#1068 <https://github.com/doctrine/mongodb-odm/pull/1068>`__ moves the handling of
 primed references to the Cursor object, which allows ODM to take the skip and
-limit options into account and avoid priming more references than are necessary.</p>
-<p><a href="https://github.com/doctrine/mongodb-odm/pull/970">#970</a> now allows references
+limit options into account and avoid priming more references than are necessary.
+
+`#970 <https://github.com/doctrine/mongodb-odm/pull/970>`__ now allows references
 within embedded documents to be primed by fixing a previous parsing limitation
-with dot syntax in field names.</p>
-<a id="title.1.3"></a><h2>New defaultDiscriminatorValue mapping</h2>
-<p><a href="https://github.com/doctrine/mongodb-odm/pull/1072">#1072</a> introduces a
-<code>defaultDiscriminatorValue</code> mapping, which may be used to specify a default
-discriminator value if a document or association has no discriminator set.</p>
-<a id="title.1.4"></a><h2>New Integer and Bool annotation aliases</h2>
-<p><a href="https://github.com/doctrine/mongodb-odm/pull/1073">#1073</a> introduces <code>Integer</code>
-and <code>Bool</code> annotations, which are aliases of <code>Int</code> and <code>Boolean</code>, respectively.</p>
-<a id="title.1.5"></a><h2>Add millisecond precision to DateType</h2>
-<p><a href="https://github.com/doctrine/mongodb-odm/pull/1063">#1063</a> adds millisecond
+with dot syntax in field names.
+
+New defaultDiscriminatorValue mapping
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`#1072 <https://github.com/doctrine/mongodb-odm/pull/1072>`__ introduces a
+``defaultDiscriminatorValue`` mapping, which may be used to specify a default
+discriminator value if a document or association has no discriminator set.
+
+New Integer and Bool annotation aliases
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`#1073 <https://github.com/doctrine/mongodb-odm/pull/1073>`__ introduces ``Integer``
+and ``Bool`` annotations, which are aliases of ``Int`` and ``Boolean``, respectively.
+
+Add millisecond precision to DateType
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`#1063 <https://github.com/doctrine/mongodb-odm/pull/1063>`__ adds millisecond
 precision to ODM's DateType class (note: although PHP supports microsecond
 precision, dates in MongoDB are limited to millisecond precision). This should
-now allow ODM to roundtrip dates from the database without a loss of precision.</p>
-<a id="title.1.6"></a><h2>New Hydrator generation modes</h2>
-<p>Previously, the <code>autoGenerateHydratorClasses</code> ODM configuration option was a
+now allow ODM to roundtrip dates from the database without a loss of precision.
+
+New Hydrator generation modes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Previously, the ``autoGenerateHydratorClasses`` ODM configuration option was a
 boolean denoting whether to always or never create Hydrator classes. As of
-<a href="https://github.com/doctrine/mongodb-odm/pull/953">#953</a>, this option now
-supports four modes:</p>
-<ul><li class="dash"><code>AUTOGENERATE_NEVER = 0</code> (same as <code>false</code>)</li>
-<li class="dash"><code>AUTOGENERATE_ALWAYS = 1</code> (same as <code>true</code>)</li>
-<li class="dash"><code>AUTOGENERATE_FILE_NOT_EXISTS = 2</code></li>
-<li class="dash"><code>AUTOGENERATE_EVAL = 3</code></li>
-</ul>
+`#953 <https://github.com/doctrine/mongodb-odm/pull/953>`__, this option now
+supports four modes:
 
-<a id="title.1.7"></a><h2>Support for custom DocumentRepository factory</h2>
-<p><a href="https://github.com/doctrine/mongodb-odm/pull/892">#892</a> allows users to define
-a custom repository class via the <code>defaultRepositoryClassName</code> configuration
+- ``AUTOGENERATE_NEVER = 0`` (same as ``false``)
+- ``AUTOGENERATE_ALWAYS = 1`` (same as ``true``)
+- ``AUTOGENERATE_FILE_NOT_EXISTS = 2``
+- ``AUTOGENERATE_EVAL = 3``
+
+Support for custom DocumentRepository factory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`#892 <https://github.com/doctrine/mongodb-odm/pull/892>`__ allows users to define
+a custom repository class via the ``defaultRepositoryClassName`` configuration
 option. Alternatively, a custom factory class may also be configured, which
-allows users complete control over how repository classes are instantiated.</p>
-<p>Custom repository and factory classes must implement
-<code>Doctrine\Common\Persistence\ObjectRepository</code> and
-<code>Doctrine\ODM\MongoDB\Repository\RepositoryFactory</code>, respectively.</p>
-<a id="title.1.8"></a><h2>Stay tuned, there is a lot more to come soon!</h2>
+allows users complete control over how repository classes are instantiated.
 
+Custom repository and factory classes must implement
+``Doctrine\Common\Persistence\ObjectRepository`` and
+``Doctrine\ODM\MongoDB\Repository\RepositoryFactory``, respectively.
+
+Stay tuned, there is a lot more to come soon!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         </div>
 
             </article>
@@ -253,51 +288,57 @@ allows users complete control over how repository classes are instantiated.</p>
         <hr />
 
         <div>
-            <p>The <strong>Zend Framework Integration Team</strong> is happy to announce the new release of <strong>DoctrineORMModule</strong>.</p>
-<p>DoctrineORMModule 0.9.0 is out of the door!!</p>
-<p><em>Note</em> that this is the last version that supports <a href="https://github.com/doctrine/migrations">doctrine/migrations</a>. We are working on extracting this feature into an independent module.</p>
-<p>Follow issue <a href="https://github.com/doctrine/DoctrineORMModule/pull/401">#401</a>.</p>
-<p>The Following issues were solved in this release:
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/199">[#199] Add 'entity_listener_resolver' config key</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/281">[#281] Forced failing unit test for #247</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/306">[#306] Removing PHP 5.3.3 support</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/272">[#272] Fix and test #270, #242, #285</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/311">[#311] remove unused statement</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/326">[#326] Highlight only uppercase words</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/329">[#329] remove unused statements</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/328">[#328] wrong var assignment</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/313">[#313] Prevent overriding of type</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/338">[#338] order the classes</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/346">[#346] Corrected a typo in a comment to better clarify</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/357">[#357] Modify sql_logger_collector class factory</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/360">[#360] Add example for entity_resolver</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/359">[#359] Update deprecated dialog console helper</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/363">[#363] Prevent Zend\Form\Element\File types inherit of StringLength validator...</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/365">[#365] Re-enable scrutinizer code coverage</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/373">[#373] Add doc for cache</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/347">[#347] added extra check in handleRequiredField</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/377">[#377] fix docblocks</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/376">[#376] Add latest migrations command</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/375">[#375] Default repository</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/374">[#374] Use ResolveTargetEntityListener as an event subscriber when supported</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/318">[#318] Add support for second level cache</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/378">[#378] Allow to set file lock for SLC</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/380">[#380] Fix typo in configuration file markdown.</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/385">[#385] Allow symfony 3.0 components</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/388">[#388] update comment block in Module.php as no Module::getAutoloaderConfig() </a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/389">[#389] Delete Module.php in root directory</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/390">[#390] travis: PHP 5.6, 7.0 nightly added, 5.3 dropped</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/392">[#392] Use-case: caching module' s configuration</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/396">[#396] Removed unnecessary line in travis config</a>
- - <a href="https://github.com/doctrine/DoctrineORMModule/pull/398">[#398] Composer * -update for stable version</a></p>
-<p>To install this version, simply update your <code>composer.json</code>:</p>
-<pre><code class="json">{
-    &quot;require&quot;: {
-        &quot;doctrine/doctrine-orm-module&quot;: &quot;0.9.0&quot;
-    }
-}
-</code></pre>
+            The **Zend Framework Integration Team** is happy to announce the new release of **DoctrineORMModule**.
 
+DoctrineORMModule 0.9.0 is out of the door!!
+
+*Note* that this is the last version that supports `doctrine/migrations <https://github.com/doctrine/migrations>`_. We are working on extracting this feature into an independent module.
+
+Follow issue `#401 <https://github.com/doctrine/DoctrineORMModule/pull/401>`_.
+
+The Following issues were solved in this release:
+ - `[#199] Add 'entity_listener_resolver' config key <https://github.com/doctrine/DoctrineORMModule/pull/199>`_
+ - `[#281] Forced failing unit test for #247 <https://github.com/doctrine/DoctrineORMModule/pull/281>`_
+ - `[#306] Removing PHP 5.3.3 support <https://github.com/doctrine/DoctrineORMModule/pull/306>`_
+ - `[#272] Fix and test #270, #242, #285 <https://github.com/doctrine/DoctrineORMModule/pull/272>`_
+ - `[#311] remove unused statement <https://github.com/doctrine/DoctrineORMModule/pull/311>`_
+ - `[#326] Highlight only uppercase words <https://github.com/doctrine/DoctrineORMModule/pull/326>`_
+ - `[#329] remove unused statements <https://github.com/doctrine/DoctrineORMModule/pull/329>`_
+ - `[#328] wrong var assignment <https://github.com/doctrine/DoctrineORMModule/pull/328>`_
+ - `[#313] Prevent overriding of type <https://github.com/doctrine/DoctrineORMModule/pull/313>`_
+ - `[#338] order the classes <https://github.com/doctrine/DoctrineORMModule/pull/338>`_
+ - `[#346] Corrected a typo in a comment to better clarify <https://github.com/doctrine/DoctrineORMModule/pull/346>`_
+ - `[#357] Modify sql_logger_collector class factory <https://github.com/doctrine/DoctrineORMModule/pull/357>`_
+ - `[#360] Add example for entity_resolver <https://github.com/doctrine/DoctrineORMModule/pull/360>`_
+ - `[#359] Update deprecated dialog console helper <https://github.com/doctrine/DoctrineORMModule/pull/359>`_
+ - `[#363] Prevent Zend\Form\Element\File types inherit of StringLength validator... <https://github.com/doctrine/DoctrineORMModule/pull/363>`_
+ - `[#365] Re-enable scrutinizer code coverage <https://github.com/doctrine/DoctrineORMModule/pull/365>`_
+ - `[#373] Add doc for cache <https://github.com/doctrine/DoctrineORMModule/pull/373>`_
+ - `[#347] added extra check in handleRequiredField <https://github.com/doctrine/DoctrineORMModule/pull/347>`_
+ - `[#377] fix docblocks <https://github.com/doctrine/DoctrineORMModule/pull/377>`_
+ - `[#376] Add latest migrations command <https://github.com/doctrine/DoctrineORMModule/pull/376>`_
+ - `[#375] Default repository <https://github.com/doctrine/DoctrineORMModule/pull/375>`_
+ - `[#374] Use ResolveTargetEntityListener as an event subscriber when supported <https://github.com/doctrine/DoctrineORMModule/pull/374>`_
+ - `[#318] Add support for second level cache <https://github.com/doctrine/DoctrineORMModule/pull/318>`_
+ - `[#378] Allow to set file lock for SLC <https://github.com/doctrine/DoctrineORMModule/pull/378>`_
+ - `[#380] Fix typo in configuration file markdown. <https://github.com/doctrine/DoctrineORMModule/pull/380>`_
+ - `[#385] Allow symfony 3.0 components <https://github.com/doctrine/DoctrineORMModule/pull/385>`_
+ - `[#388] update comment block in Module.php as no Module::getAutoloaderConfig()  <https://github.com/doctrine/DoctrineORMModule/pull/388>`_
+ - `[#389] Delete Module.php in root directory <https://github.com/doctrine/DoctrineORMModule/pull/389>`_
+ - `[#390] travis: PHP 5.6, 7.0 nightly added, 5.3 dropped <https://github.com/doctrine/DoctrineORMModule/pull/390>`_
+ - `[#392] Use-case: caching module' s configuration <https://github.com/doctrine/DoctrineORMModule/pull/392>`_
+ - `[#396] Removed unnecessary line in travis config <https://github.com/doctrine/DoctrineORMModule/pull/396>`_
+ - `[#398] Composer * -update for stable version <https://github.com/doctrine/DoctrineORMModule/pull/398>`_
+
+To install this version, simply update your ``composer.json``:
+
+.. code-block:: json
+
+  {
+      "require": {
+          "doctrine/doctrine-orm-module": "0.9.0"
+      }
+  }
         </div>
 
             </article>

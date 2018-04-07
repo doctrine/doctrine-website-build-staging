@@ -127,37 +127,45 @@
         <hr />
 
         <div>
-            <p>We are happy to announce the immediate availability of Doctrine Cache 1.4.0.</p>
-<p>This release fixes a series of performance and compatibility issues in the
-filesystem-based cache adapters (<a href="https://github.com/doctrine/cache/pull/16">#16</a>,
-<a href="https://github.com/doctrine/cache/pull/50">#50</a>,
-<a href="https://github.com/doctrine/cache/pull/55">#55</a>).</p>
-<p>New cache adapters for <code>SQlite3</code> (<a href="https://github.com/doctrine/cache/pull/32">#32</a>)
-and <code>Predis</code> (<a href="https://github.com/doctrine/cache/pull/28">#28</a>) were implemented.</p>
-<p>A new <code>ChainCache</code> (<a href="https://github.com/doctrine/cache/pull/52">#52</a>)
+            We are happy to announce the immediate availability of Doctrine Cache 1.4.0.
+
+This release fixes a series of performance and compatibility issues in the
+filesystem-based cache adapters (`#16 <https://github.com/doctrine/cache/pull/16>`_,
+`#50 <https://github.com/doctrine/cache/pull/50>`_,
+`#55 <https://github.com/doctrine/cache/pull/55>`_).
+
+New cache adapters for ``SQlite3`` (`#32 <https://github.com/doctrine/cache/pull/32>`_)
+and ``Predis`` (`#28 <https://github.com/doctrine/cache/pull/28>`_) were implemented.
+
+A new ``ChainCache`` (`#52 <https://github.com/doctrine/cache/pull/52>`_)
 was implemented, allowing multiple levels of caching, for performance and
-efficiency.</p>
-<p>New interfaces were introduced, for better interface segregation and improved performance:</p>
-<ul><li class="dash"><code>MultiGetCache</code> (<a href="https://github.com/doctrine/cache/pull/29">#29</a>)</li>
-<li class="dash"><code>FlushableCache</code> (<a href="https://github.com/doctrine/cache/pull/48">#48</a>)</li>
-<li class="dash"><code>ClearableCache</code> (<a href="https://github.com/doctrine/cache/pull/48">#48</a>)</li>
-</ul>
+efficiency.
 
-<p>This release also causes the filesystem-based caches to change directory structure
-for saved files: please clear your file-based caches completely before upgrading.</p>
-<p>You can find the complete changelog for this release in the
-<a href="https://github.com/doctrine/cache/releases/tag/v1.4.0">release notes</a>.</p>
-<p>You can install the Cache component using Composer and the following <code>composer.json</code>
-contents:</p>
-<pre><code class="json">{
-    &quot;require&quot;: {
-        &quot;doctrine/cache&quot;: &quot;1.4.0&quot;
-    }
-}
-</code></pre>
-<p>Please report any issues you may have with the update on the mailing list or on
-<a href="http://www.doctrine-project.org/jira">Jira</a>.</p>
+New interfaces were introduced, for better interface segregation and improved performance:
 
+- ``MultiGetCache`` (`#29 <https://github.com/doctrine/cache/pull/29>`_)
+- ``FlushableCache`` (`#48 <https://github.com/doctrine/cache/pull/48>`_)
+- ``ClearableCache`` (`#48 <https://github.com/doctrine/cache/pull/48>`_)
+
+This release also causes the filesystem-based caches to change directory structure
+for saved files: please clear your file-based caches completely before upgrading.
+
+You can find the complete changelog for this release in the
+`release notes <https://github.com/doctrine/cache/releases/tag/v1.4.0>`_.
+
+You can install the Cache component using Composer and the following ``composer.json``
+contents:
+
+.. code-block:: json
+
+  {
+      "require": {
+          "doctrine/cache": "1.4.0"
+      }
+  }
+
+Please report any issues you may have with the update on the mailing list or on
+`Jira <http://www.doctrine-project.org/jira>`_.
         </div>
 
             </article>
@@ -175,45 +183,52 @@ contents:</p>
         <hr />
 
         <div>
-            <p>We are happy to announce the immediate availability of Doctrine DBAL 2.4.4 and 2.5.1.
+            We are happy to announce the immediate availability of Doctrine DBAL 2.4.4 and 2.5.1.
 Various bugs that prevented users from upgrading to DBAL 2.5.x have been fixed in DBAL 2.5.1,
-along with some others. DBAL 2.4.4 only contains backported bug fixes addressed since the release of DBAL 2.5.0.</p>
-<p>The index renaming feature introduced in DBAL 2.5.0 caused trouble for some MySQL users utilizing ORM's
-schema tool to upgrade their schemas where the schema tool was generating invalid <code>DROP INDEX</code> /
-<code>CREATE INDEX</code> SQL. Fixing this issue was only possible by introducing a minor BC break (change in behaviour),
-please see <code>UPGRADE.md</code> for more information (we know that this is a patch release but we are actually reverting a BC
+along with some others. DBAL 2.4.4 only contains backported bug fixes addressed since the release of DBAL 2.5.0.
+
+The index renaming feature introduced in DBAL 2.5.0 caused trouble for some MySQL users utilizing ORM's
+schema tool to upgrade their schemas where the schema tool was generating invalid ``DROP INDEX`` /
+``CREATE INDEX`` SQL. Fixing this issue was only possible by introducing a minor BC break (change in behaviour),
+please see ``UPGRADE.md`` for more information (we know that this is a patch release but we are actually reverting a BC
 break here).
 MariaDB users had problems upgrading to DBAL 2.5.0 because of the new platform detection feature not taking
 MariaDB backends into account.
-Additionally, some minor bugs around schema creation / introspection and DDL in various platforms were fixed.</p>
-<p>Please note that this release does <code>not yet</code> include a fix for users having problems with the DBAL connection
+Additionally, some minor bugs around schema creation / introspection and DDL in various platforms were fixed.
+
+Please note that this release does ``not yet`` include a fix for users having problems with the DBAL connection
 not being lazy anymore since DBAL 2.5.0 when retrieving the underlying platform. Unfortunately we did not
 find a good solution for this issue yet.
 Until the issue is fixed please directly set the platform version as a workaround by using the
-<code>serverVersion</code> configuration option described in the <a href="http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#automatic-platform-version-detection">documentation</a>
-if you are encountering any problems.</p>
-<p>You can find all the changes on JIRA:</p>
-<ul><li class="dash"><a href="http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10725">DBAL 2.4.4</a> - 9 issues fixed</li>
-<li class="dash"><a href="http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10727">DBAL 2.5.1</a> - 24 issues fixed</li>
-</ul>
+``serverVersion`` configuration option described in the `documentation <http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#automatic-platform-version-detection>`_
+if you are encountering any problems.
 
-<p>You can install the DBAL using Composer and the following <code>composer.json</code>
-contents:</p>
-<pre><code class="json">{
-    &quot;require&quot;: {
-        &quot;doctrine/dbal&quot;: &quot;2.4.4&quot;
-    }
-}
-</code></pre>
-<pre><code class="json">{
-    &quot;require&quot;: {
-        &quot;doctrine/dbal&quot;: &quot;2.5.1&quot;
-    }
-}
-</code></pre>
-<p>Please report any issues you may have with the update on the mailing list or on
-<a href="http://www.doctrine-project.org/jira">Jira</a>.</p>
+You can find all the changes on JIRA:
 
+- `DBAL 2.4.4 <http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10725>`_ - 9 issues fixed
+- `DBAL 2.5.1 <http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10727>`_ - 24 issues fixed
+
+You can install the DBAL using Composer and the following ``composer.json``
+contents:
+
+.. code-block:: json
+
+  {
+      "require": {
+          "doctrine/dbal": "2.4.4"
+      }
+  }
+
+.. code-block:: json
+
+  {
+      "require": {
+          "doctrine/dbal": "2.5.1"
+      }
+  }
+
+Please report any issues you may have with the update on the mailing list or on
+`Jira <http://www.doctrine-project.org/jira>`_.
         </div>
 
             </article>
@@ -231,32 +246,36 @@ contents:</p>
         <hr />
 
         <div>
-            <p>We are happy to announce the immediate availability of <code>doctrine/inflector</code> 1.0.1.</p>
-<p>The release includes minor fixes since the first 1.0.0 release, and also stabilizes
-and enforces support for HHVM.</p>
-<ul><li class="dash"><a href="https://github.com/doctrine/annotations/pull/49">49: #46 - applying correct chmod() to generated cache file</a></li>
-<li class="dash"><a href="https://github.com/doctrine/annotations/pull/50">50: Hotfix: match escaped quotes (revert #44)</a></li>
-<li class="dash"><a href="https://github.com/doctrine/inflector/pull/1">1: Corrected keyword spelling</a></li>
-<li class="dash"><a href="https://github.com/doctrine/inflector/pull/2">2: Documentation fixes</a></li>
-<li class="dash"><a href="https://github.com/doctrine/inflector/pull/3">3: Added the branch alias for master</a></li>
-<li class="dash"><a href="https://github.com/doctrine/inflector/pull/4">4: Fixed typo</a></li>
-<li class="dash"><a href="https://github.com/doctrine/inflector/pull/5">5: exclude word 'staff' from inflectable ones</a></li>
-<li class="dash"><a href="https://github.com/doctrine/inflector/pull/6">6: add LICENSE file</a></li>
-<li class="dash"><a href="https://github.com/doctrine/inflector/pull/7">7: HHVM is not allowed to fail anymore. Inflector should work as expected</a></li>
-<li class="dash"><a href="https://github.com/doctrine/inflector/pull/10">10: Added the local phpunit config to the ignore list</a></li>
-<li class="dash"><a href="https://github.com/doctrine/inflector/pull/12">12: Adding 'human' to the irregular array</a></li>
-<li class="dash"><a href="https://github.com/doctrine/inflector/pull/14">14: Add testing on PHP 5.6 on Travis</a></li>
-</ul>
+            We are happy to announce the immediate availability of ``doctrine/inflector`` 1.0.1.
 
-<p>You can install the Inflector library using Composer and the following <code>composer.json</code>
-contents:</p>
-<pre><code class="json">{
-    &quot;require&quot;: {
-        &quot;doctrine/inflector&quot;: &quot;1.0.1&quot;
-    }
-}
-</code></pre>
+The release includes minor fixes since the first 1.0.0 release, and also stabilizes
+and enforces support for HHVM.
 
+- `49: #46 - applying correct chmod() to generated cache file <https://github.com/doctrine/annotations/pull/49>`_
+- `50: Hotfix: match escaped quotes (revert #44) <https://github.com/doctrine/annotations/pull/50>`_
+
+- `1: Corrected keyword spelling <https://github.com/doctrine/inflector/pull/1>`_
+- `2: Documentation fixes <https://github.com/doctrine/inflector/pull/2>`_
+- `3: Added the branch alias for master <https://github.com/doctrine/inflector/pull/3>`_
+- `4: Fixed typo <https://github.com/doctrine/inflector/pull/4>`_
+- `5: exclude word 'staff' from inflectable ones <https://github.com/doctrine/inflector/pull/5>`_
+- `6: add LICENSE file <https://github.com/doctrine/inflector/pull/6>`_
+- `7: HHVM is not allowed to fail anymore. Inflector should work as expected <https://github.com/doctrine/inflector/pull/7>`_
+- `10: Added the local phpunit config to the ignore list <https://github.com/doctrine/inflector/pull/10>`_
+- `12: Adding 'human' to the irregular array <https://github.com/doctrine/inflector/pull/12>`_
+- `14: Add testing on PHP 5.6 on Travis <https://github.com/doctrine/inflector/pull/14>`_
+
+
+You can install the Inflector library using Composer and the following ``composer.json``
+contents:
+
+.. code-block:: json
+
+  {
+      "require": {
+          "doctrine/inflector": "1.0.1"
+      }
+  }
         </div>
 
             </article>

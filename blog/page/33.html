@@ -127,92 +127,108 @@
         <hr />
 
         <div>
-            <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Important first point: This move does not affect Symfony 2.0 apps at all, only the Symfony master is affected.</p>
-</div>
-<p>The Symfony2 Doctrine related Bundles move to the Doctrine organization. The DoctrineBundle being in the core for the 2.0 release it is now maintained in a more decoupled way from Symfony for several reasons:</p>
-<ul><li>No coupling of release cycles anymore.</li>
-<li>Move code to the organization that actually maintains it.</li>
-<li>Avoid Symfony suggesting Doctrine is the only way for persistence, Symfony wants to focus on providing View and Controller and not make suggestions about the model.</li>
-</ul>
+            .. note::
 
-<p>The DoctrineFixturesBundle, DoctrineMigrationsBundle and DoctrineMongoDBBundle are now maintained in the Doctrine organization, however forks have been created in the Symfony repository to make all the 2.0 apps out there backwards compatible. You find the new repositories here:</p>
-<ul><li>https://github.com/doctrine/DoctrineBundle</li>
-<li>https://github.com/doctrine/DoctrineMongoDBBundle</li>
-<li>https://github.com/doctrine/DoctrineFixturesBundle</li>
-<li>https://github.com/doctrine/DoctrineMigrationsBundle</li>
-</ul>
+    Important first point: This move does not affect Symfony 2.0 apps at all, only the Symfony master is affected.
 
-<p>What do you need to change in your code? Not very much. For the DoctrineBundle for example the following:</p>
-<ul><li>Update the deps file to include the DoctrineBundle
+The Symfony2 Doctrine related Bundles move to the Doctrine organization. The DoctrineBundle being in the core for the 2.0 release it is now maintained in a more decoupled way from Symfony for several reasons:
+
+* No coupling of release cycles anymore.
+* Move code to the organization that actually maintains it.
+* Avoid Symfony suggesting Doctrine is the only way for persistence, Symfony wants to focus on providing View and Controller and not make suggestions about the model.
+
+The DoctrineFixturesBundle, DoctrineMigrationsBundle and DoctrineMongoDBBundle are now maintained in the Doctrine organization, however forks have been created in the Symfony repository to make all the 2.0 apps out there backwards compatible. You find the new repositories here:
+
+* https://github.com/doctrine/DoctrineBundle
+* https://github.com/doctrine/DoctrineMongoDBBundle
+* https://github.com/doctrine/DoctrineFixturesBundle
+* https://github.com/doctrine/DoctrineMigrationsBundle
+
+What do you need to change in your code? Not very much. For the DoctrineBundle for example the following:
+
+* Update the deps file to include the DoctrineBundle
+
     ::
+
         [empty]
         [DoctrineBundle]
             git=http://github.com/doctrine/DoctrineBundle.git
-            target=/bundles/Doctrine/Bundle/DoctrineBundle</li>
-<li>Change the Bundle class
+            target=/bundles/Doctrine/Bundle/DoctrineBundle
+
+* Change the Bundle class
+
     .. code-block :: php
+
         $bundles = array(
             //..
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             //..
-        );</li>
-<li>Change references to Registry</li>
-</ul>
+        );
 
-<p>The `Symfony\Bundle\DoctrineBundle\Registry` class may be type-hinted in your code. You have to change this code to point to `Doctrine\Bundle\DoctrineBundle\Registry`.</p>
-<p>A full deps file for all Doctrine bundles now looks like:</p>
 
-<pre><code class="">[empty]
-[data-fixtures]
-    git=http://github.com/doctrine/data-fixtures.git
+* Change references to Registry
 
-[migrations]
-    git=http://github.com/doctrine/migrations.git
+The `Symfony\Bundle\DoctrineBundle\Registry` class may be type-hinted in your code. You have to change this code to point to `Doctrine\Bundle\DoctrineBundle\Registry`.
 
-[DoctrineBundle]
-    git=http://github.com/doctrine/DoctrineBundle.git
-    target=/bundles/Doctrine/Bundle/DoctrineBundle
+A full deps file for all Doctrine bundles now looks like:
 
-[DoctrineMigrationsBundle]
-    git=http://github.com/doctrine/DoctrineMigrationsBundle.git
-    target=/bundles/Doctrine/Bundle/MigrationsBundle
+::
 
-[DoctrineFixturesBundle]
-    git=http://github.com/doctrine/DoctrineFixturesBundle.git
-    target=/bundles/Doctrine/Bundle/FixturesBundle
-</code></pre>
-<p>And the autoload.php:</p>
-<pre><code class="php">$loader-&gt;registerNamespaces(array(
-    'Symfony'          =&gt; array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles'),
-    'Sensio'           =&gt; __DIR__.'/../vendor/bundles',
-    'JMS'              =&gt; __DIR__.'/../vendor/bundles',
-    'Doctrine\\Bundle' =&gt; __DIR__.'/../vendor/bundles',
-    'Doctrine\\DBAL\\Migrations' =&gt; __DIR__.'/../vendor/migrations/lib',
-    'Doctrine\\Common\\DataFixtures' =&gt; __DIR__.'/../vendor/data-fixtures/lib',
-    'Doctrine\\Common' =&gt; __DIR__.'/../vendor/doctrine-common/lib',
-    'Doctrine\\DBAL'   =&gt; __DIR__.'/../vendor/doctrine-dbal/lib',
-    'Doctrine'         =&gt; __DIR__.'/../vendor/doctrine/lib',
-    'Monolog'          =&gt; __DIR__.'/../vendor/monolog/src',
-    'Assetic'          =&gt; __DIR__.'/../vendor/assetic/src',
-    'Metadata'         =&gt; __DIR__.'/../vendor/metadata/src',
-));
-</code></pre>
-<p>And the Kernel:</p>
-<pre><code class="php">$bundles = array(
-    new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-    new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-    new Symfony\Bundle\TwigBundle\TwigBundle(),
-    new Symfony\Bundle\MonologBundle\MonologBundle(),
-    new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-    new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-    new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-    new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-    new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-    new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
-    new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-);
-</code></pre>
+    [empty]
+    [data-fixtures]
+        git=http://github.com/doctrine/data-fixtures.git
 
+    [migrations]
+        git=http://github.com/doctrine/migrations.git
+
+    [DoctrineBundle]
+        git=http://github.com/doctrine/DoctrineBundle.git
+        target=/bundles/Doctrine/Bundle/DoctrineBundle
+
+    [DoctrineMigrationsBundle]
+        git=http://github.com/doctrine/DoctrineMigrationsBundle.git
+        target=/bundles/Doctrine/Bundle/MigrationsBundle
+
+    [DoctrineFixturesBundle]
+        git=http://github.com/doctrine/DoctrineFixturesBundle.git
+        target=/bundles/Doctrine/Bundle/FixturesBundle
+
+And the autoload.php:
+
+.. code-block:: php
+        
+    $loader->registerNamespaces(array(
+        'Symfony'          => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles'),
+        'Sensio'           => __DIR__.'/../vendor/bundles',
+        'JMS'              => __DIR__.'/../vendor/bundles',
+        'Doctrine\\Bundle' => __DIR__.'/../vendor/bundles',
+        'Doctrine\\DBAL\\Migrations' => __DIR__.'/../vendor/migrations/lib',
+        'Doctrine\\Common\\DataFixtures' => __DIR__.'/../vendor/data-fixtures/lib',
+        'Doctrine\\Common' => __DIR__.'/../vendor/doctrine-common/lib',
+        'Doctrine\\DBAL'   => __DIR__.'/../vendor/doctrine-dbal/lib',
+        'Doctrine'         => __DIR__.'/../vendor/doctrine/lib',
+        'Monolog'          => __DIR__.'/../vendor/monolog/src',
+        'Assetic'          => __DIR__.'/../vendor/assetic/src',
+        'Metadata'         => __DIR__.'/../vendor/metadata/src',
+    ));
+
+And the Kernel:
+
+.. code-block:: php
+
+    $bundles = array(
+        new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+        new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+        new Symfony\Bundle\TwigBundle\TwigBundle(),
+        new Symfony\Bundle\MonologBundle\MonologBundle(),
+        new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+        new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+        new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+        new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+        new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+        new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+        new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+    );
         </div>
 
             </article>
@@ -230,14 +246,14 @@
         <hr />
 
         <div>
-            <p>I just released Doctrine ORM 2.1.4. The Doctrine ORM 2.1.3 release has a
+            I just released Doctrine ORM 2.1.4. The Doctrine ORM 2.1.3 release has a
 regression in the EntityManager#merge() method, which is fixed in this release.
 See the
-<a href="http://www.doctrine-project.org/jira/browse/DDC/fixforversion/10165">changelog</a>.</p>
-<p>Get the package from <a href="http://pear.doctrine-project.org">PEAR</a> ,
-<a href="http://www.doctrine-project.org/projects">Downloads</a> or from
-<a href="https://github.com/doctrine/doctrine2">Github</a>.</p>
+`changelog <http://www.doctrine-project.org/jira/browse/DDC/fixforversion/10165>`_.
 
+Get the package from `PEAR <http://pear.doctrine-project.org>`_ ,
+`Downloads <http://www.doctrine-project.org/projects>`_ or from
+`Github <https://github.com/doctrine/doctrine2>`_.
         </div>
 
             </article>
@@ -255,19 +271,20 @@ See the
         <hr />
 
         <div>
-            <p>The bugfix release is three weeks overdue, here is it now:</p>
-<ul><li><a href="http://www.doctrine-project.org/jira/browse/DDC/fixforversion/10164">ORM 2.1.3 with 24 bugfixes and 1 security fix</a></li>
-<li><a href="http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10167">DBAL 2.1.5 with 6 bugfixes</a></li>
-<li><a href="http://www.doctrine-project.org/jira/browse/DCOM/fixforversion/10166">Common 2.1.3 with 1 bugfix</a></li>
-</ul>
+            The bugfix release is three weeks overdue, here is it now:
 
-<p>The security fix concerns usage of the ASC/DESC orientation parameters in
-<code>$repository-&gt;findBy($criteria, $orderBy)</code>, which is subject to SQL
-injection when user-input is allowed into this method.</p>
-<p>You can grab the downloads from the <a href="http://www.doctrine-project.org/projects">project page</a> ,
-via <a href="http://pear.doctrine-project.org">PEAR</a> or <a href="https://github.com/doctrine">Git</a></p>
-<p>Please update your installations.</p>
+* `ORM 2.1.3 with 24 bugfixes and 1 security fix <http://www.doctrine-project.org/jira/browse/DDC/fixforversion/10164>`_
+* `DBAL 2.1.5 with 6 bugfixes <http://www.doctrine-project.org/jira/browse/DBAL/fixforversion/10167>`_
+* `Common 2.1.3 with 1 bugfix <http://www.doctrine-project.org/jira/browse/DCOM/fixforversion/10166>`_
 
+The security fix concerns usage of the ASC/DESC orientation parameters in
+``$repository->findBy($criteria, $orderBy)``, which is subject to SQL
+injection when user-input is allowed into this method.
+
+You can grab the downloads from the `project page <http://www.doctrine-project.org/projects>`_ ,
+via `PEAR <http://pear.doctrine-project.org>`_ or `Git <https://github.com/doctrine>`_
+
+Please update your installations.
         </div>
 
             </article>
