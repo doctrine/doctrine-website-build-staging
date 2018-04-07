@@ -210,131 +210,6 @@ method signature, you just won't get the new version.</p>
             </article>
     <article>
         <header>
-            <h2><a href="https://staging.doctrine-project.org/2017/04/01/announcing-doctrine-4.html">Announcing Doctrine 4</a></h2>
-        </header>
-
-        <p class="lead">
-            Posted on 2017-04-01
-                            by
-                                    <a href="mailto:malarzm@gmail.com">Maciej Malarz</a>
-                                    </p>
-
-        <hr />
-
-        <div>
-            <p>It has been few months since we shed some light on the <a href="https://github.com/doctrine/doctrine2/issues/6211">future of
-Doctrine project</a>&#95;
-and had an extensive insight into what
-<a href="https://twitter.com/guilhermeblanco">Guilherme</a>&#95; had been up to.
-Adding tens of megabytes of IRC logs of internal discussion we felt we
-owe you an update on where Doctrine is and where it's heading to:</p>
-
-<h1 id="doctrine-3-is-no-more%21">Doctrine 3 Is No More!</h1>
-
-<p>Rest assured, we are in no way ditching all the code Guilherme hacked so
-far or any of the ideas that sprung for the next major release. We are
-still looking into leveraging all goodies that were given to us with PHP
-7. We want the next Doctrine version to be an extremely stable and
-reliable piece of software. We are also still trying to figure out how
-to maintain all projects under Doctrine's umbrella effectively. To
-recap, Doctrine is not only the ORM you all know, we are also
-maintaining a number of ODM projects
-(<a href="https://github.com/doctrine/mongodb-odm">MongoDB</a>&#95; and
-<a href="https://github.com/doctrine/couchdb-odm">CouchDB</a>&#95; to name few) which
-all share basic concepts and code. Some of them also face a major
-rewrite, like the much anticipated MongoDB ODM 2.0 with support for new
-MongoDB driver.</p>
-
-<h1 id="joining-forces">Joining Forces</h1>
-
-<p>Instead of having each team work independently and implement the same
-concepts multiple times across various libraries, we decided it's for
-the best if we all work on one project and make it as good and robust as
-possible. In the spirit of breaking boundaries, Doctrine 4 will be all
-about interoperability. <strong>Doctrine 4 will support both RDBMS and NoSQL
-databases at the same time!</strong></p>
-
-<h1 id="following-latest-trends">Following Latest Trends</h1>
-
-<p>A really big thing we want to (re)introduce is an Active Record pattern.
-We recently ran a poll on the &#35;doctrine IRC channel and it turned out
-that 68% of developers die a little bit each time they inject a service,
-which barely saves data to a database anyway, and miss the simplicity of
-having an entity save itself.</p>
-
-<pre><code class="sourceCode php">use Doctrine;
-
-/**
- * @Doctrine\Entity(storage="MSSql")
- * @Doctrine\ActiveRecord
- */
-class User
-{
-    /** @Doctrine\Id */
-    public $id;
-
-    /** @Doctrine\Field(type="string") */
-    public $login;
-}
-
-$user = new User();
-$user-&gt;load(10);
-$user-&gt;login = 'malarzm';
-$user-&gt;save();
-</code></pre>
-
-<p>Thanks to the <code>@Doctrine\ActiveRecord</code> annotation you're able to query
-for and save your entities easily. Please notice that the &#96;User&#96; class
-does not extend any internal Doctrine class - you are still decoupled
-from the ORM!</p>
-
-<p>We strongly believe that getting back to the Active Record pattern is
-the way to go for us. We weren't able to fully get rid of the old
-fashioned Data Mapper pattern but you can expect its deprecation in one
-of first bug-fix releases and full removal in a subsequent patch release
-(Active Record is replacing semantic versioning, too!)</p>
-
-<p>Another big step towards the highly expected Developer eXperience was
-initially painful, as it required many of us to come out of the Java
-bubble we live in, but we know it will be for the best. With the
-re-introduction of Active Record the obvious next step is making all
-Doctrine utilities available in an easy and sane way: please welcome
-static registries AND short method names!</p>
-
-<pre><code class="sourceCode php">use Doctrine;
-use Entity\MongoLog;
-use Entity\User;
-
-Doctrine::em()-&gt;start(); // start a transaction
-$user = new User(); // this is stored in MSSql
-$user = 'malarzm';
-$user-&gt;save(); // not saved yet
-$log = new MongoLog($user, 'was created'); // this will be "stored" in MongoDB
-$log-&gt;save(); // but not yet
-Doctrine::em()-&gt;commit(); // commit a transaction ACROSS multiple storage engines
-</code></pre>
-
-<p>Big shout out goes to <a href="https://twitter.com/Ocramius">Marco</a>&#95;. Although
-he initially had a heart attack when first hearing about this idea, he's
-come full circle after using the feature and is now a big proponent of
-static registries. Be sure to watch for updates to all of his libraries
-in the near future!</p>
-
-<h1 id="try-it-out-now%21">Try It Out Now!</h1>
-
-<p>Uniting forces of all Doctrine developers has enabled us to ship an
-usable "alpha" version way sooner than originally anticipated. But the
-truly thrilling news is that thanks to tremendous help from guys with
-<a href="https://3v4l.org/">3v4l.org</a>&#95; we have set up a sandbox environment so
-everybody can have a hands-on experience using the new version of
-Doctrine: please visit <a href="https://ocrami.us/">3v4l.org/doctrine4</a>&#95; and
-share your thoughts in the comments section below!</p>
-
-        </div>
-
-            </article>
-    <article>
-        <header>
             <h2><a href="https://staging.doctrine-project.org/2016/11/22/doctrine-mongodb-release-1.html">Doctrine MongoDB 1.4.0</a></h2>
         </header>
 
@@ -425,6 +300,69 @@ definitions:</p>
     }
 }
 </code></pre>
+
+        </div>
+
+            </article>
+    <article>
+        <header>
+            <h2><a href="https://staging.doctrine-project.org/2016/10/07/doctrine-mongodb-odm-release-1.1.2-and-1.html">Doctrine MongoDB ODM 1.1.2 and 1.0.8 released</a></h2>
+        </header>
+
+        <p class="lead">
+            Posted on 2016-10-07
+                            by
+                                    <a href="mailto:alcaeus@alcaeus.org">Andreas Braun</a>
+                                    </p>
+
+        <hr />
+
+        <div>
+            <p>We are happy to announce the immediate availability of Doctrine MongoDB
+ODM
+<a href="https://github.com/doctrine/mongodb-odm/releases/tag/1.1.2">1.1.2</a>&#95;
+and
+<a href="https://github.com/doctrine/mongodb-odm/releases/tag/1.0.8">1.0.8</a>&#95;.</p>
+
+<h1 id="mongodb-odm-1.0.8">MongoDB ODM 1.0.8</h1>
+
+<ul>
+<li>calling <code>dropCollections()</code> in the SchemaManager did not drop GridFS
+collections. <a href="https://github.com/doctrine/mongodb-odm/pull/1468">&#35;1468</a></li>
+<li>calling <code>clear()</code> on an uninitialized collection with <code>orphanRemoval</code>
+enabled failed to remove orphaned documents.
+<a href="https://github.com/doctrine/mongodb-odm/pull/1500">&#35;1500</a> - Documents
+with identifiers evaluating to <code>false</code> (e.g. empty string or 0) could
+not be reference using <code>createDBRef()</code> in DocumentManager.
+<a href="https://github.com/doctrine/mongodb-odm/pull/1503">&#35;1503</a></li>
+</ul>
+
+<h1 id="mongodb-odm-1.1.2">MongoDB ODM 1.1.2</h1>
+
+<ul>
+<li><p>This release contains the bugfixes outlined for ODM 1.0.8 above</p></li>
+<li><p>Querying for referenced objects in <code>findBy()</code> or <code>findOneBy()</code> did not
+work properly due to incorrect preparation of the DBRef objects.
+<a href="https://github.com/doctrine/mongodb-odm/pull/1481">&#35;1481</a></p></li>
+</ul>
+
+<h1 id="installation">Installation</h1>
+
+<p>You can install the latest version using the following <code>composer.json</code>
+definitions:</p>
+
+<pre><code class="sourceCode json">{
+    "require": {
+        "doctrine/mongodb-odm": "^1.1.2"
+    }
+}
+</code></pre>
+
+<h1 id="support-for-doctrine-odm-1.0.x">Support for Doctrine ODM 1.0.x</h1>
+
+<p>As outlined previously, support for MongoDB ODM 1.0.x will end on
+December 9th, 2016. If you have not upgraded to version 1.1 yet, please
+do so to receive future bug fixes.</p>
 
         </div>
 
