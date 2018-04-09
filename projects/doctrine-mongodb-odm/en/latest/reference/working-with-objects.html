@@ -299,16 +299,16 @@ the <code>prePersist</code> event.</p>
 </div>
 <p>The semantics of the persist operation, applied on a document X,
 are as follows:</p>
-<p>-
-   If X is a new document, it becomes managed. The document X will be
-   entered into the database as a result of the flush operation.
--
-   If X is a preexisting managed document, it is ignored by the
+<ul><li class="dash">   If X is a new document, it becomes managed. The document X will be
+   entered into the database as a result of the flush operation.</li>
+<li class="dash">   If X is a preexisting managed document, it is ignored by the
    persist operation. However, the persist operation is cascaded to
    documents referenced by X, if the relationships from X to these
-   other documents are mapped with cascade=PERSIST or cascade=ALL.
--  If X is a removed document, it becomes managed.
--  If X is a detached document, the behavior is undefined.</p>
+   other documents are mapped with cascade=PERSIST or cascade=ALL.</li>
+<li class="dash"> If X is a removed document, it becomes managed.</li>
+<li class="dash"> If X is a detached document, the behavior is undefined.</li>
+</ul>
+
 <div class="alert caution bg-light-yellow text-dark border"><i class="fas fa-exclamation-triangle text-danger mr-2"></i><p>Do not pass detached documents to the persist operation.</p>
 </div>
 <a id="flush_options"></a>
@@ -356,24 +356,21 @@ $dm-&gt;flush();
 </code></pre>
 <p>The semantics of the remove operation, applied to a document X are
 as follows:</p>
-<p>-
-   If X is a new document, it is ignored by the remove operation.
+<ul><li class="dash">   If X is a new document, it is ignored by the remove operation.
    However, the remove operation is cascaded to documents referenced
    by X, if the relationship from X to these other documents is mapped
-   with cascade=REMOVE or cascade=ALL.
--
-   If X is a managed document, the remove operation causes it to
+   with cascade=REMOVE or cascade=ALL.</li>
+<li class="dash">   If X is a managed document, the remove operation causes it to
    become removed. The remove operation is cascaded to documents
    referenced by X, if the relationships from X to these other
-   documents is mapped with cascade=REMOVE or cascade=ALL.
--
-   If X is a detached document, an InvalidArgumentException will be
-   thrown.
--
-   If X is a removed document, it is ignored by the remove operation.
--
-   A removed document X will be removed from the database as a result
-   of the flush operation.</p>
+   documents is mapped with cascade=REMOVE or cascade=ALL.</li>
+<li class="dash">   If X is a detached document, an InvalidArgumentException will be
+   thrown.</li>
+<li class="dash">   If X is a removed document, it is ignored by the remove operation.</li>
+<li class="dash">   A removed document X will be removed from the database as a result
+   of the flush operation.</li>
+</ul>
+
 <a class="section-anchor" id="title.1.5" name="title.1.5"></a><h2 class="section-header"><a href="#title.1.5">Detaching documents<i class="fas fa-link"></i></a></h2>
 <p>A document is detached from a DocumentManager and thus no longer
 managed by invoking the <code>DocumentManager#detach($document)</code>
@@ -390,30 +387,29 @@ $dm-&gt;detach($document);
 </code></pre>
 <p>The semantics of the detach operation, applied to a document X are
 as follows:</p>
-<p>-
-   If X is a managed document, the detach operation causes it to
+<ul><li class="dash">   If X is a managed document, the detach operation causes it to
    become detached. The detach operation is cascaded to documents
    referenced by X, if the relationships from X to these other
    documents is mapped with cascade=DETACH or cascade=ALL. Documents
-   which previously referenced X will continue to reference X.
--
-   If X is a new or detached document, it is ignored by the detach
-   operation.
--
-   If X is a removed document, the detach operation is cascaded to
+   which previously referenced X will continue to reference X.</li>
+<li class="dash">   If X is a new or detached document, it is ignored by the detach
+   operation.</li>
+<li class="dash">   If X is a removed document, the detach operation is cascaded to
    documents referenced by X, if the relationships from X to these
    other documents is mapped with cascade=DETACH or
    cascade=ALL/Documents which previously referenced X will continue
-   to reference X.</p>
+   to reference X.</li>
+</ul>
+
 <p>There are several situations in which a document is detached
 automatically without invoking the <code>detach</code> method:</p>
-<p>-
-   When <code>DocumentManager#clear()</code> is invoked, all documents that are
-   currently managed by the DocumentManager instance become detached.
--
-   When serializing a document. The document retrieved upon subsequent
+<ul><li class="dash">   When <code>DocumentManager#clear()</code> is invoked, all documents that are
+   currently managed by the DocumentManager instance become detached.</li>
+<li class="dash">   When serializing a document. The document retrieved upon subsequent
    unserialization will be detached (This is the case for all
-   documents that are serialized and stored in some cache).</p>
+   documents that are serialized and stored in some cache).</li>
+</ul>
+
 <p>The <code>detach</code> operation is usually not as frequently needed and
 used as <code>persist</code> and <code>remove</code>.</p>
 <a class="section-anchor" id="title.1.6" name="title.1.6"></a><h2 class="section-header"><a href="#title.1.6">Merging documents<i class="fas fa-link"></i></a></h2>
@@ -435,31 +431,27 @@ $document = $dm-&gt;merge($detachedDocument);
 The semantics of the merge operation, applied to a document X, are
 as follows:
 </code></pre>
-<p>-
-   If X is a detached document, the state of X is copied onto a
+<ul><li class="dash">   If X is a detached document, the state of X is copied onto a
    pre-existing managed document instance X' of the same iddocument or
-   a new managed copy X' of X is created.
--
-   If X is a new document instance, an InvalidArgumentException will
-   be thrown.
--
-   If X is a removed document instance, an InvalidArgumentException
-   will be thrown.
--
-   If X is a managed document, it is ignored by the merge operation,
+   a new managed copy X' of X is created.</li>
+<li class="dash">   If X is a new document instance, an InvalidArgumentException will
+   be thrown.</li>
+<li class="dash">   If X is a removed document instance, an InvalidArgumentException
+   will be thrown.</li>
+<li class="dash">   If X is a managed document, it is ignored by the merge operation,
    however, the merge operation is cascaded to documents referenced by
    relationships from X if these relationships have been mapped with
-   the cascade element value MERGE or ALL.
--
-   For all documents Y referenced by relationships from X having the
+   the cascade element value MERGE or ALL.</li>
+<li class="dash">   For all documents Y referenced by relationships from X having the
    cascade element value MERGE or ALL, Y is merged recursively as Y'.
    For all such Y referenced by X, X' is set to reference Y'. (Note
-   that if X is managed then X is the same object as X'.)
--
-   If X is a document merged to X', with a reference to another
+   that if X is managed then X is the same object as X'.)</li>
+<li class="dash">   If X is a document merged to X', with a reference to another
    document Y, where cascade=MERGE or cascade=ALL is not specified,
    then navigation of the same association from X' yields a reference
-   to a managed object Y' with the same persistent iddocument as Y.</p>
+   to a managed object Y' with the same persistent iddocument as Y.</li>
+</ul>
+
 <p>The <code>merge</code> operation is usually not as frequently needed and
 used as <code>persist</code> and <code>remove</code>. The most common scenario for
 the <code>merge</code> operation is to reattach documents to an
@@ -521,14 +513,14 @@ operations. Each reference to another document or a collection of
 documents can be configured to automatically cascade certain
 operations. By default, no operations are cascaded.</p>
 <p>The following cascade options exist:</p>
-<p>-
-   persist : Cascades persist operations to the associated documents.
--  remove : Cascades remove operations to the associated documents.
--  merge : Cascades merge operations to the associated documents.
--  detach : Cascades detach operations to the associated documents.
--
-   all : Cascades persist, remove, merge and detach operations to
-   associated documents.</p>
+<ul><li class="dash">   persist : Cascades persist operations to the associated documents.</li>
+<li class="dash"> remove : Cascades remove operations to the associated documents.</li>
+<li class="dash"> merge : Cascades merge operations to the associated documents.</li>
+<li class="dash"> detach : Cascades detach operations to the associated documents.</li>
+<li class="dash">   all : Cascades persist, remove, merge and detach operations to
+   associated documents.</li>
+</ul>
+
 <p>The following example shows an association to a number of
 addresses. If persist() or remove() is invoked on any User
 document, it will be cascaded to all associated Address documents

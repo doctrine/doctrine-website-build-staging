@@ -584,12 +584,12 @@ class MyType extends Type
 }
 </code></pre>
 <p>Restrictions to keep in mind:</p>
-<p>-
-   If the value of the field is <em>NULL</em> the method
-   <code>convertToDatabaseValue()</code> is not called.
--
-   The <code>UnitOfWork</code> never passes values to the database convert
-   method that did not change in the request.</p>
+<ul><li class="dash">   If the value of the field is <em>NULL</em> the method
+   <code>convertToDatabaseValue()</code> is not called.</li>
+<li class="dash">   The <code>UnitOfWork</code> never passes values to the database convert
+   method that did not change in the request.</li>
+</ul>
+
 <p>When you have implemented the type you still need to let Doctrine
 know about it. This can be achieved through the
 <code>Doctrine\ODM\MongoDB\Types\Type#registerType($name, $class)</code>
