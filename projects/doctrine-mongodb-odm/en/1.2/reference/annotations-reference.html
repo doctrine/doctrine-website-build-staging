@@ -484,23 +484,28 @@ echo $city-&gt;distance;
 <p>Required annotation to mark a PHP class as a document, whose peristence will be
 managed by ODM.</p>
 <p>Optional attributes:</p>
-<ul><li class="dash">   db - By default, the document manager will use the MongoDB database defined
+<p>-
+   db - By default, the document manager will use the MongoDB database defined
    in the configuration, but this option may be used to override the database
-   for a particular document class.</li>
-<li class="dash">   collection - By default, the collection name is derived from the document's
-   class name, but this option may be used to override that behavior.</li>
-<li class="dash">   repositoryClass - Specifies a custom repository class to use.</li>
-<li class="dash">   indexes - Specifies an array of indexes for this document.</li>
-<li class="dash">   readOnly - Prevents document from being updated: it can only be inserted,
-   upserted or removed.</li>
-<li class="dash">   requireIndexes - Specifies whether or not queries for this document should
-   require indexes by default. This may also be specified per query.</li>
-<li class="dash">   writeConcern - Specifies the write concern for this document that overwrites
+   for a particular document class.
+-
+   collection - By default, the collection name is derived from the document's
+   class name, but this option may be used to override that behavior.
+-
+   repositoryClass - Specifies a custom repository class to use.
+-
+   indexes - Specifies an array of indexes for this document.
+-
+   readOnly - Prevents document from being updated: it can only be inserted,
+   upserted or removed.
+-
+   requireIndexes - Specifies whether or not queries for this document should
+   require indexes by default. This may also be specified per query.
+-
+   writeConcern - Specifies the write concern for this document that overwrites
    the default write concern specified in the configuration. It does not overwrite
    a write concern given as <a href="../">option</a> to the <code>flush</code>
-   method when committing your documents.</li>
-</ul>
-
+   method when committing your documents.</p>
 <pre><code class="php">&lt;?php
 
 /**
@@ -526,21 +531,25 @@ class User
 <p>This annotation is similar to <a href="">@EmbedOne</a>, but instead of embedding one
 document, it embeds a collection of documents.</p>
 <p>Optional attributes:</p>
-<ul><li class="dash">    targetDocument - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
- of the target document.</li>
-<li class="dash">    discriminatorField - The database field name to store the discriminator
-    value within the embedded document.</li>
-<li class="dash">    discriminatorMap - Map of discriminator values to class names.</li>
-<li class="dash">    defaultDiscriminatorValue - A default value for discriminatorField if no value
-    has been set in the embedded document.</li>
-<li class="dash">    strategy - The strategy used to persist changes to the collection. Possible
+<p>-
+    targetDocument - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
+ of the target document.
+-
+    discriminatorField - The database field name to store the discriminator
+    value within the embedded document.
+-
+    discriminatorMap - Map of discriminator values to class names.
+-
+    defaultDiscriminatorValue - A default value for discriminatorField if no value
+    has been set in the embedded document.
+-
+    strategy - The strategy used to persist changes to the collection. Possible
     values are <code>addToSet</code>, <code>pushAll</code>, <code>set</code>, and <code>setArray</code>. <code>pushAll</code>
-    is the default. See <a href="../"></a> for more information.</li>
-<li class="dash">    collectionClass - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
+    is the default. See <a href="../"></a> for more information.
+-
+    collectionClass - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
  of class that implements <code>Collection</code> interface
-    and is used to hold documents. Doctrine's <code>ArrayCollection</code> is used by default.</li>
-</ul>
-
+    and is used to hold documents. Doctrine's <code>ArrayCollection</code> is used by default.</p>
 <pre><code class="php">&lt;?php
 
 /**
@@ -574,15 +583,17 @@ are eliminated. So in general, the question to ask is, &quot;why would I not wan
 to embed this object?&quot;</p>
 </blockquote>
 <p>Optional attributes:</p>
-<ul><li class="dash">    targetDocument - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
- of the target document.</li>
-<li class="dash">    discriminatorField - The database field name to store the discriminator
-    value within the embedded document.</li>
-<li class="dash">    discriminatorMap - Map of discriminator values to class names.</li>
-<li class="dash">    defaultDiscriminatorValue - A default value for discriminatorField if no value
-    has been set in the embedded document.</li>
-</ul>
-
+<p>-
+    targetDocument - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
+ of the target document.
+-
+    discriminatorField - The database field name to store the discriminator
+    value within the embedded document.
+-
+    discriminatorMap - Map of discriminator values to class names.
+-
+    defaultDiscriminatorValue - A default value for discriminatorField if no value
+    has been set in the embedded document.</p>
 <pre><code class="php">&lt;?php
 
 /**
@@ -641,25 +652,25 @@ $dm-&gt;flush();
 collection. That said, a single embedded document class may be used with
 multiple document classes, and even other embedded documents!</p>
 <p>Optional attributes:</p>
-<ul><li class="dash">   indexes - Specifies an array of indexes for this embedded document, to be
-   included in the schemas of any embedding documents.</li>
-</ul>
-
+<p>-
+   indexes - Specifies an array of indexes for this embedded document, to be
+   included in the schemas of any embedding documents.</p>
 <a class="section-anchor" id="title.1.21" name="title.1.21"></a><h2 class="section-header"><a href="#title.1.21">@Field<i class="fas fa-link"></i></a></h2>
 <p>Marks an annotated instance variable for persistence. Values for this field will
 be saved to and loaded from the document store as part of the document class'
 lifecycle.</p>
 <p>Optional attributes:</p>
-<ul><li class="dash">   type - Name of the ODM type, which will determine the value's representation
+<p>-
+   type - Name of the ODM type, which will determine the value's representation
    in PHP and BSON (i.e. MongoDB). See <a href="../"></a> for a list
-   of types. Defaults to &quot;string&quot;.</li>
-<li class="dash">   name - By default, the property name is used for the field name in MongoDB;
-   however, this option may be used to specify a database field name.</li>
-<li class="dash">   nullable - By default, ODM will <code>$unset</code> fields in MongoDB if the PHP value
+   of types. Defaults to &quot;string&quot;.
+-
+   name - By default, the property name is used for the field name in MongoDB;
+   however, this option may be used to specify a database field name.
+-
+   nullable - By default, ODM will <code>$unset</code> fields in MongoDB if the PHP value
    is null. Specify true for this option to force ODM to store a null value in
-   the database instead of unsetting the field.</li>
-</ul>
-
+   the database instead of unsetting the field.</p>
 <p>Examples:</p>
 <pre><code class="php">&lt;?php
 
@@ -795,13 +806,13 @@ collection (or embedding document's collection in the case of
 <a href="">@EmbeddedDocument</a>). It may also be used at the property-level to define
 single-field indexes.</p>
 <p>Optional attributes:</p>
-<ul><li class="dash">    keys - Mapping of indexed fields to their ordering or index type. ODM will
+<p>-
+    keys - Mapping of indexed fields to their ordering or index type. ODM will
     allow &quot;asc&quot; and &quot;desc&quot; to be used in place of <code>1</code> and <code>-1</code>,
     respectively. Special index types (e.g. &quot;2dsphere&quot;) should be specified as
-    strings. This is required when <a href="">@Index</a> is used at the class level.</li>
-<li class="dash">    options - Options for creating the index</li>
-</ul>
-
+    strings. This is required when <a href="">@Index</a> is used at the class level.
+-
+    options - Options for creating the index</p>
 <p>The <code>keys</code> and <code>options</code> attributes correspond to the arguments for
 <a href="http://php.net/manual/en/mongocollection.createindex.php">MongoCollection::createIndex()</a>.
 ODM allows mapped field names (i.e. PHP property names) to be used when defining
@@ -1132,39 +1143,54 @@ produce a <code>MappingException</code> error.</p>
 <p>Defines that the annotated instance variable holds a collection of referenced
 documents.</p>
 <p>Optional attributes:</p>
-<ul><li class="dash">    targetDocument - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
+<p>-
+    targetDocument - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
  of the target document. A <code>targetDocument</code> is
-    required when using <code>storeAs: id</code>.</li>
-<li class="dash">    simple - deprecated (use <code>storeAs: id</code>)</li>
-<li class="dash">    storeAs - Indicates how to store the reference. <code>id</code> stores the identifier,
+    required when using <code>storeAs: id</code>.
+-
+    simple - deprecated (use <code>storeAs: id</code>)
+-
+    storeAs - Indicates how to store the reference. <code>id</code> stores the identifier,
     <code>ref</code> an embedded object containing the <code>id</code> field and (optionally) a
     discriminator. <code>dbRef</code> and <code>dbRefWithDb</code> store a <a href="https://docs.mongodb.com/manual/reference/database-references/#dbrefs">DBRef</a> object and
     are deprecated in favor of <code>ref</code>. Note that <code>id</code> references are not
-    compatible with the discriminators.</li>
-<li class="dash">    cascade - Cascade Option</li>
-<li class="dash">    discriminatorField - The field name to store the discriminator value within
-    the reference object.</li>
-<li class="dash">    discriminatorMap - Map of discriminator values to class names.</li>
-<li class="dash">    defaultDiscriminatorValue - A default value for discriminatorField if no value
-    has been set in the referenced document.</li>
-<li class="dash">    inversedBy - The field name of the inverse side. Only allowed on owning side.</li>
-<li class="dash">    mappedBy - The field name of the owning side. Only allowed on the inverse side.</li>
-<li class="dash">    repositoryMethod - The name of the repository method to call to populate this reference.</li>
-<li class="dash">    sort - The default sort for the query that loads the reference.</li>
-<li class="dash">    criteria - Array of default criteria for the query that loads the reference.</li>
-<li class="dash">    limit - Limit for the query that loads the reference.</li>
-<li class="dash">    skip - Skip for the query that loads the reference.</li>
-<li class="dash">    strategy - The strategy used to persist changes to the collection. Possible
+    compatible with the discriminators.
+-
+    cascade - Cascade Option
+-
+    discriminatorField - The field name to store the discriminator value within
+    the reference object.
+-
+    discriminatorMap - Map of discriminator values to class names.
+-
+    defaultDiscriminatorValue - A default value for discriminatorField if no value
+    has been set in the referenced document.
+-
+    inversedBy - The field name of the inverse side. Only allowed on owning side.
+-
+    mappedBy - The field name of the owning side. Only allowed on the inverse side.
+-
+    repositoryMethod - The name of the repository method to call to populate this reference.
+-
+    sort - The default sort for the query that loads the reference.
+-
+    criteria - Array of default criteria for the query that loads the reference.
+-
+    limit - Limit for the query that loads the reference.
+-
+    skip - Skip for the query that loads the reference.
+-
+    strategy - The strategy used to persist changes to the collection. Possible
     values are <code>addToSet</code>, <code>pushAll</code>, <code>set</code>, and <code>setArray</code>. <code>pushAll</code>
-    is the default. See <a href="../"></a> for more information.</li>
-<li class="dash">    collectionClass - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
+    is the default. See <a href="../"></a> for more information.
+-
+    collectionClass - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
  of class that implements <code>Collection</code> interface
-    and is used to hold documents. Doctrine's <code>ArrayCollection</code> is used by default</li>
-<li class="dash">    prime - A list of references contained in the target document that will be
+    and is used to hold documents. Doctrine's <code>ArrayCollection</code> is used by default
+-
+    prime - A list of references contained in the target document that will be
     initialized when the collection is loaded. Only allowed for inverse
-    references.</li>
-</ul>
-
+    references.</p>
 <pre><code class="php">&lt;?php
 
 /**
@@ -1187,30 +1213,42 @@ private $cart;
 <a class="section-anchor" id="title.1.48" name="title.1.48"></a><h2 class="section-header"><a href="#title.1.48">@ReferenceOne<i class="fas fa-link"></i></a></h2>
 <p>Defines an instance variable holds a related document instance.</p>
 <p>Optional attributes:</p>
-<ul><li class="dash">    targetDocument - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
+<p>-
+    targetDocument - A <abbr title="Fully-Qualified Class Name">FQCN</abbr>
  of the target document. A <code>targetDocument</code> is
-    required when using <code>storeAs: id</code>.</li>
-<li class="dash">    simple - deprecated (use <code>storeAs: id</code>)</li>
-<li class="dash">    storeAs - Indicates how to store the reference. <code>id</code> stores the identifier,
+    required when using <code>storeAs: id</code>.
+-
+    simple - deprecated (use <code>storeAs: id</code>)
+-
+    storeAs - Indicates how to store the reference. <code>id</code> stores the identifier,
     <code>ref</code> an embedded object containing the <code>id</code> field and (optionally) a
     discriminator. <code>dbRef</code> and <code>dbRefWithDb</code> store a <a href="https://docs.mongodb.com/manual/reference/database-references/#dbrefs">DBRef</a> object and
     are deprecated in favor of <code>ref</code>. Note that <code>id</code> references are not
-    compatible with the discriminators.</li>
-<li class="dash">    cascade - Cascade Option</li>
-<li class="dash">    discriminatorField - The field name to store the discriminator value within
-    the reference object.</li>
-<li class="dash">    discriminatorMap - Map of discriminator values to class names.</li>
-<li class="dash">    defaultDiscriminatorValue - A default value for discriminatorField if no value
-    has been set in the referenced document.</li>
-<li class="dash">    inversedBy - The field name of the inverse side. Only allowed on owning side.</li>
-<li class="dash">    mappedBy - The field name of the owning side. Only allowed on the inverse side.</li>
-<li class="dash">    repositoryMethod - The name of the repository method to call to populate this reference.</li>
-<li class="dash">    sort - The default sort for the query that loads the reference.</li>
-<li class="dash">    criteria - Array of default criteria for the query that loads the reference.</li>
-<li class="dash">    limit - Limit for the query that loads the reference.</li>
-<li class="dash">    skip - Skip for the query that loads the reference.</li>
-</ul>
-
+    compatible with the discriminators.
+-
+    cascade - Cascade Option
+-
+    discriminatorField - The field name to store the discriminator value within
+    the reference object.
+-
+    discriminatorMap - Map of discriminator values to class names.
+-
+    defaultDiscriminatorValue - A default value for discriminatorField if no value
+    has been set in the referenced document.
+-
+    inversedBy - The field name of the inverse side. Only allowed on owning side.
+-
+    mappedBy - The field name of the owning side. Only allowed on the inverse side.
+-
+    repositoryMethod - The name of the repository method to call to populate this reference.
+-
+    sort - The default sort for the query that loads the reference.
+-
+    criteria - Array of default criteria for the query that loads the reference.
+-
+    limit - Limit for the query that loads the reference.
+-
+    skip - Skip for the query that loads the reference.</p>
 <pre><code class="php">&lt;?php
 
 /**
@@ -1363,7 +1401,7 @@ versioned parent document.</p>
             new Search(projectSlug, versionSlug);
         </script>
 
-            <script src="https://staging.doctrine-project.org/js/sidebar.js?6349dd"></script>
+            <script src="https://staging.doctrine-project.org/js/sidebar.js?482a20"></script>
 
     <script type="text/javascript">
         new Sidebar();
