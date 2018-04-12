@@ -1,56 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PHP 7.1 requirement for Doctrine packages - Doctrine - PHP Database Tools</title>
+        <title>Plug and Play Schema Information with Templates - Doctrine1 ORM (Doctrine1)</title>
 
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <meta name="description" content="The Doctrine Project is the home to several PHP libraries primarily focused on database storage and object mapping. The core projects are the Object Relational Mapper (ORM) and the Database Abstraction Layer (DBAL) it is built upon.
+        <meta name="description" content="PHP 5 Doctrine1 Object Relational Mapper (ORM)
 ">
 
-        <meta name="keywords" content="php,mysql,orm,dbal,database,mongodb,odm,annotations,migrations,cache,couchdb">
+        <meta name="keywords" content="php,doctrine1,orm">
 
                     <meta name="robots" content="noindex">
         
-            <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "NewsArticle",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://staging.doctrine-project.org/2017/07/25/php-7.html"
-        },
-        "headline": "PHP 7.1 requirement for Doctrine packages",
-        "image": [
-            "https://staging.doctrine-project.org/images/og.png"
-        ],
-        "datePublished": "2017-07-25T00:00:00+00:00",
-        "dateModified": "2017-07-25T00:00:00+00:00",
-        "author": {
-            "@type": "Person",
-            "name": "Andreas Braun"
-        },
-         "publisher": {
-            "@type": "Organization",
-            "name": "Doctrine",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://staging.doctrine-project.org/images/og.png"
-            }
-        },
-        "description": "A few days ago, the Doctrine team released new versions of many
-packages, dropping support for PHP 5"
-    }
-    </script>
-
+                    <link rel="canonical" href="https://staging.doctrine-project.org/projects/doctrine1/en/latest/cookbook/plug-and-play-schema-information-with-templates.html" />
+    
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?ab4e16" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?49bbdd" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -85,9 +56,9 @@ packages, dropping support for PHP 5"
         <meta name="twitter:site" content="@doctrineorm" />
         <meta name="twitter:creator" content="@doctrineorm" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://staging.doctrine-project.org/2017/07/25/php-7.html" />
-        <meta property="og:title" content="PHP 7.1 requirement for Doctrine packages - Doctrine - PHP Database Tools" />
-        <meta property="og:description" content="The Doctrine Project is the home to several PHP libraries primarily focused on database storage and object mapping. The core projects are the Object Relational Mapper (ORM) and the Database Abstraction Layer (DBAL) it is built upon.
+        <meta property="og:url" content="https://staging.doctrine-project.org/projects/doctrine1/en/latest/cookbook/plug-and-play-schema-information-with-templates.html" />
+        <meta property="og:title" content="Plug and Play Schema Information with Templates - Doctrine1 ORM (Doctrine1)" />
+        <meta property="og:description" content="PHP 5 Doctrine1 Object Relational Mapper (ORM)
 " />
         <meta property="og:image" content="https://staging.doctrine-project.org/images/og.png" />
         <meta property="og:image:width" content="1200" />
@@ -129,7 +100,20 @@ packages, dropping support for PHP 5"
         }
         </script>
 
-        
+                    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Course",
+            "name": "Doctrine Doctrine1 ORM",
+            "description": "Plug and Play Schema Information with Templates",
+            "provider": {
+                "@type": "Organization",
+                "name": "Doctrine",
+                "sameAs": "https://staging.doctrine-project.org"
+            }
+        }
+        </script>
+    
         
             </head>
     <body>
@@ -140,7 +124,7 @@ packages, dropping support for PHP 5"
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/projects.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Projects
                             </a>
@@ -169,7 +153,7 @@ packages, dropping support for PHP 5"
                         <li class="nav-item">
                             <a class="nav-link" href="https://staging.doctrine-project.org/community/">Community</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="https://staging.doctrine-project.org/blog/">Blog</a>
                         </li>
                         <li class="nav-item">
@@ -191,112 +175,119 @@ packages, dropping support for PHP 5"
                 </div>
             </nav>
         
-            <main role="main" class="container-wrapper container">
-            <article>
-        <header>
-            <h2>PHP 7.1 requirement for Doctrine packages <small>post</small></h2>
-        </header>
+            <div class="container-wrapper container-fluid">
+        <div class="row row-offcanvas row-offcanvas-right">
+                            <nav class="col-md-3 d-sm-block bg-light sidebar sidebar-offcanvas" id="sidebar">
+                    <div class="sidebar-sticky">
+                        
+<div class="toc"><ul><li id="code-igniter-and-doctrine-html-codeigniter-and-doctrine" class="toc-item"><a href="code-igniter-and-doctrine.html#codeigniter-and-doctrine">CodeIgniter and Doctrine</a></li><ul><li id="code-igniter-and-doctrine-html-download-doctrine" class="toc-item"><a href="code-igniter-and-doctrine.html#download-doctrine">Download Doctrine</a></li><li id="code-igniter-and-doctrine-html-setup-doctrine" class="toc-item"><a href="code-igniter-and-doctrine.html#setup-doctrine">Setup Doctrine</a></li><li id="code-igniter-and-doctrine-html-setup-command-line-interface" class="toc-item"><a href="code-igniter-and-doctrine.html#setup-command-line-interface">Setup Command Line Interface</a></li><li id="code-igniter-and-doctrine-html-start-using-doctrine" class="toc-item"><a href="code-igniter-and-doctrine.html#start-using-doctrine">Start Using Doctrine</a></li></ul><li id="creating-a-unit-of-work-using-doctrine-html-writing-a-unit-of-work-in-php-doctrine" class="toc-item"><a href="creating-a-unit-of-work-using-doctrine.html#writing-a-unit-of-work-in-php-doctrine">Writing a Unit of Work in PHP Doctrine</a></li><li id="index-html-cookbook" class="toc-item"><a href="index.html#cookbook">Cookbook</a></li><li id="master-and-slave-connections-html-master-and-slave-connections" class="toc-item"><a href="master-and-slave-connections.html#master-and-slave-connections">Master and Slave Connections</a></li><li id="my-first-project-html-introduction" class="toc-item"><a href="my-first-project.html#introduction">Introduction</a></li><li id="my-first-project-html-download" class="toc-item"><a href="my-first-project.html#download">Download</a></li><li id="my-first-project-html-running-the-cli" class="toc-item"><a href="my-first-project.html#running-the-cli">Running the CLI</a></li><li id="my-first-project-html-defining-schema" class="toc-item"><a href="my-first-project.html#defining-schema">Defining Schema</a></li><li id="my-first-project-html-test-data-fixtures" class="toc-item"><a href="my-first-project.html#test-data-fixtures">Test Data Fixtures</a></li><li id="my-first-project-html-building-everything-now-that-you-have-written-your-schema-files-and" class="toc-item"><a href="my-first-project.html#building-everything-now-that-you-have-written-your-schema-files-and">Building Everything Now that you have written your schema files and</a></li><li id="my-first-project-html-running-tests" class="toc-item"><a href="my-first-project.html#running-tests">Running Tests</a></li><li id="plug-and-play-schema-information-with-templates-html-plug-and-play-schema-information-with-templates" class="toc-item"><a href="plug-and-play-schema-information-with-templates.html#plug-and-play-schema-information-with-templates">Plug and Play Schema Information with Templates</a></li><li id="record-based-retrieval-security-template-html-record-based-retrieval-security-template" class="toc-item"><a href="record-based-retrieval-security-template.html#record-based-retrieval-security-template">Record-based Retrieval Security Template</a></li><ul><li id="record-based-retrieval-security-template-html-introduction" class="toc-item"><a href="record-based-retrieval-security-template.html#introduction">Introduction</a></li><li id="record-based-retrieval-security-template-html-template" class="toc-item"><a href="record-based-retrieval-security-template.html#template">Template</a></li><li id="record-based-retrieval-security-template-html-yaml-schema-syntax" class="toc-item"><a href="record-based-retrieval-security-template.html#yaml-schema-syntax">YAML schema syntax</a></li><li id="record-based-retrieval-security-template-html-using-the-template" class="toc-item"><a href="record-based-retrieval-security-template.html#using-the-template">Using the template</a></li><li id="record-based-retrieval-security-template-html-user-setup" class="toc-item"><a href="record-based-retrieval-security-template.html#user-setup">User setup</a></li><li id="record-based-retrieval-security-template-html-querying" class="toc-item"><a href="record-based-retrieval-security-template.html#querying">Querying</a></li><li id="record-based-retrieval-security-template-html-restrictions" class="toc-item"><a href="record-based-retrieval-security-template.html#restrictions">Restrictions</a></li></ul><li id="taking-advantage-of-column-aggregation-inheritance-html-taking-advantage-of-column-aggregation-inheritance" class="toc-item"><a href="taking-advantage-of-column-aggregation-inheritance.html#taking-advantage-of-column-aggregation-inheritance">Taking Advantage of Column Aggregation Inheritance</a></li></ul></div>
+                    </div>
+                </nav>
+            
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4">
+                <div class="row">
+                                        
+                                                                <nav class="breadcrumbs d-none d-sm-block d-md-block d-lg-block d-xl-block" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="https://staging.doctrine-project.org/projects.html">Projects</a></li>
+                                <li class="breadcrumb-item"><a href="https://staging.doctrine-project.org/projects/doctrine1.html">Doctrine1</a></li>
+                                <li class="breadcrumb-item"><a href="https://staging.doctrine-project.org/projects/doctrine1/en/latest/">Documentation</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Plug and Play Schema Information with Templates</li>
+                            </ol>
+                        </nav>
+                                    </div>
 
-        <p class="lead">
-            Posted on 2017-07-25
-                            by
-                                    <a href="mailto:alcaeus@alcaeus.org">Andreas Braun</a>
-                                    </p>
+                                    <div class="alert caution bg-light-yellow text-dark border"><i class="fas fa-exclamation-circle text-warning mr-2"></i> This project is no longer maintained and has been archived.</div>
+                
+                <div class="row">
+                    <div class="col-12">
+                                                    <button type="button" class="btn btn-primary btn-sm float-right toc-toggle" data-toggle="offcanvas" id="toc-toggle">Table of Contents</button>
 
-        <div>
-            <p>A few days ago, the Doctrine team released new versions of many
-packages, dropping support for PHP 5.6 and 7.0, as well as HHVM. The
-affected packages are:</p>
+                                                            <ul class="list-inline">
+                                                                            <li class="list-inline-item mr-0">
+                                            <a href="/projects/doctrine1/en/latest/cookbook/plug-and-play-schema-information-with-templates.html" class="project-version-switcher badge badge-warning">master</a>
+                                        </li>
+                                    
+                                    
+                                    <li class="list-inline-item ml-2"><a href="https://github.com/doctrine/doctrine1-documentation/edit/master/source/en/cookbook/plug-and-play-schema-information-with-templates.rst" class="badge badge-primary">Edit</a></li>
 
-<ul>
-<li>doctrine/common 2.8.0</li>
-<li>doctrine/dbal 2.6.0</li>
-<li>doctrine/collections 1.5.0</li>
-<li>doctrine/inflector 1.2.0</li>
-<li>doctrine/cache 1.7.0</li>
-<li>doctrine/instantiator 1.1.0</li>
-<li>doctrine/annotations 1.5.0</li>
-</ul>
+                                </ul>
+                            
+                            
+<p></p>
+<hr />
+<a class="section-anchor" id="plug-and-play-schema-information-with-templates" name="plug-and-play-schema-information-with-templates"></a><h1 class="section-header"><a href="#plug-and-play-schema-information-with-templates">Plug and Play Schema Information with Templates<i class="fas fa-link"></i></a></h1>
+<p>Doctrine templates essentially allow you to extract schema information
+so that it can be plugged in to multiple Doctrine classes without having
+to duplicate any code. Below we will show some examples of what a
+template could be used for and how it can make your schema easier to
+maintain.</p>
+<p>Let's get started. Imagine a project where you have multiple records
+which must have address attributes. Their are two basic approaches to
+solving this problem. One is to have a single table to store all
+addresses and each record will store a foreign key to the address record
+it owns. This is the &quot;normalized&quot; way of solving the problem. The
+&quot;de-normalized&quot; way would be to store the address attributes with each
+record. In this example a template will extract the attributes of an
+address and allow you to plug them in to as many Doctrine classes as you
+like.</p>
+<p>First we must define the template so that we can use it in our Doctrine
+classes.</p>
+<blockquote><p>class Doctrine\_Template\_Address extends Doctrine\_Template { public</p>
+</blockquote>
+<p>function setTableDefinition() { $this-&gt;hasColumn('address1', 'string',
+255); $this-&gt;hasColumn('address2', 'string', 255);
+$this-&gt;hasColumn('address3', 'string', 255); $this-&gt;hasColumn('city',
+'string', 255); $this-&gt;hasColumn('state', 'string', 2);
+$this-&gt;hasColumn('zipcode', 'string', 15); } }</p>
+<p>Now that we have our template defined, lets define some basic models
+that need to have address attributes added to them. Lets start first
+with a User.</p>
+<blockquote><p>class User extends Doctrine\_Record { public function</p>
+</blockquote>
+<p>setTableDefinition() { $this-&gt;hasColumn('username', 'string', 255);
+$this-&gt;hasColumn('password', 'string', 255); }</p>
 
-<p>Since many people are encountering issues with these updates, here are a
-few suggestions to ensure your code continues working as usual.</p>
-
-<h1 id="composer-version-constraints">Composer version constraints</h1>
-
-<p>Chances are your version constraints in <code>composer.json</code> look something
-like this:</p>
-
-<pre><code class="sourceCode json">{
-    "require": {
-        "doctrine/orm": "^2.5"
-    }
+<pre><code class="">public function setUp()
+{
+    $this-&gt;actAs('Address');
 }
 </code></pre>
+<p>}</p>
+<p>Now we also have a Company model which also must contain an address.</p>
+<blockquote><p>class Company extends Doctrine\_Record { public function</p>
+</blockquote>
+<p>setTableDefinition() { $this-&gt;hasColumn('name', 'string', 255);
+$this-&gt;hasColumn('description', 'clob'); }</p>
 
-<p>The <code>^2.5</code> constraint resolves to: <code>&gt;= 2.5.0 &amp;&amp; &lt;= 2.999999.999999</code>.
-This is intended: our projects all follow <a href="http://semver.org/">Semantic
-Versioning</a>, so you can safely install a new minor
-version without having to fear BC breaks.</p>
-
-<p>When determining what version to install, composer employs a SAT solver
-to make sure all dependencies are fulfilled. In our example above, the
-SAT solver finds a version newer than 2.5 that satisfies all
-requirements.</p>
-
-<h1 id="making-sure-you-get-a-compatible-version">Making sure you get a compatible version</h1>
-
-<p>When you run <code>composer update</code> the next time, you'll automatically
-receive updates for the packages mentioned above, provided that you are
-running on PHP 7.1. If you are running an older PHP version, composer
-will not install a version that requires PHP 7.1, since its requirements
-are not fulfilled.</p>
-
-<p>A common problem is people running a newer PHP version on their
-developer machines than on their production servers. In this case,
-running <code>composer update</code> on a developer machine (with PHP 7.1) might
-happily pull in an update that simply won't work when deployed on a
-production machine running PHP 5.6.</p>
-
-<p>To make sure this doesn't happen to you, there are two choices:</p>
-
-<ul>
-<li>run <code>composer update</code> on a machine with the same PHP version that
-you use in production</li>
-<li>use the
-<a href="https://getcomposer.org/doc/06-config.md#platform">platform.config</a>
-config setting in <code>composer.json</code> to override your local PHP
-version.</li>
-</ul>
-
-<h1 id="why-dropping-php-support-in-a-minor-version-is-not-a-bc-break">Why dropping PHP support in a minor version is not a BC break</h1>
-
-<p>One question we frequently hear is, "isn't dropping support for a PHP
-version a BC break"? In a nutshell, no. A BC break happens when there is
-an incompatible change that your package manager can't handle. For
-example, changing a method signature in a minor version is a no-go,
-since the composer version constraints mentioned above assume any minor
-upgrade can safely be used.</p>
-
-<p>However, when we drop support for an older version of PHP, composer will
-not consider the new version if the PHP version requirement is no longer
-fulfilled. Thus, you won't end up with a fatal error due to a wrong
-method signature, you just won't get the new version.</p>
-
+<pre><code class="">public function setUp()
+{
+    $this-&gt;actAs('Address');
+}
+</code></pre>
+<p>}</p>
+<p>Now lets generate the SQL to create the tables for the User and Company
+model. You will see that the attributes from the template are
+automatically added to each table.</p>
+<blockquote><p>CREATE TABLE user (id BIGINT AUTO\_INCREMENT, username VARCHAR(255),</p>
+</blockquote>
+<p>password VARCHAR(255), address1 VARCHAR(255), address2 VARCHAR(255),
+address3 VARCHAR(255), city VARCHAR(255), state VARCHAR(2), zipcode
+VARCHAR(15), PRIMARY KEY(id)) ENGINE = INNODB</p>
+<p>CREATE TABLE company (id BIGINT AUTO\_INCREMENT, name VARCHAR(255),
+description LONGTEXT, address1 VARCHAR(255), address2 VARCHAR(255),
+address3 VARCHAR(255), city VARCHAR(255), state VARCHAR(2), zipcode
+VARCHAR(15), PRIMARY KEY(id)) ENGINE = INNODB</p>
+<p>That's it. Now you can maintain your Address schema information from one
+place and use the address functionality in as many places as you like.</p>
+<p></p>
+                                            </div>
+                </div>
+            </main>
         </div>
-                
-                    <nav class="article">
-                <ul class="pagination">
-                                            <li class="page-item"><a class="page-link previous" href="https://staging.doctrine-project.org/2016/11/22/doctrine-mongodb-release-1.html" title="Doctrine MongoDB 1.4.0"><span class="title">Previous: Doctrine MongoDB 1.4.0</span></a></li>
-                                                                <li class="page-item"><a class="page-link next" href="https://staging.doctrine-project.org/2017/10/24/odm-1-2-0-and-1-1-7.html" title="Doctrine MongoDB ODM 1.2.0 and 1.1.7 Released"><span class="title">Next: Doctrine MongoDB ODM 1.2.0 and 1.1.7 Released</span></a></li>
-                                    </ul>
-            </nav>
-            </article>
+    </div>
 
-
-
-    </main>
-
-        
+                            
         <button id="back-to-top" title="Go to top">Top</button>
 
         <script
@@ -358,7 +349,7 @@ method signature, you just won't get the new version.</p>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">
-            var projectSlug = '';
+            var projectSlug = 'doctrine1';
             var versionSlug = 'latest';
 
             new Main();
@@ -366,7 +357,12 @@ method signature, you just won't get the new version.</p>
             new Search(projectSlug, versionSlug);
         </script>
 
-        
+            <script src="https://staging.doctrine-project.org/js/sidebar.js?482a20"></script>
+
+    <script type="text/javascript">
+        new Sidebar();
+    </script>
+
         
         
             </body>
