@@ -1,1 +1,1 @@
-/data/doctrine-website-build-staging/projects/doctrine-mongodb-odm/en/1.0
+1.0
