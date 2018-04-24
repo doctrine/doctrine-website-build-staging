@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?2ff3c6" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?3250f0" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -152,6 +152,16 @@
                             <a class="nav-link" href="https://staging.doctrine-project.org/team/">Team</a>
                         </li>
                     </ul>
+
+                    <div class="google-translate-dropdown dropdown show d-inline-block mr-2">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="translateDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Translate
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="translateDropdown">
+                            <div class="dropdown-item" id="google_translate_element"></div>
+                        </div>
+                    </div>
 
                     <div id="search-box">
                         <!-- SearchBox widget will appear here -->
@@ -313,7 +323,15 @@ so sign up now!</p>
             new Main();
 
             new Search(projectSlug, versionSlug);
+
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                    {pageLanguage: 'en'}, 'google_translate_element'
+                );
+            }
         </script>
+
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
         
         
