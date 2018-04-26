@@ -329,7 +329,7 @@ class Person
     public $lastName;
 
     /** @AlsoLoad({&quot;name&quot;, &quot;fullName&quot;}) */
-    public function populateFirstAndLastName($fullName)
+    public function populateFirstAndLastName($fullName): void
     {
         list($this-&gt;firstName, $this-&gt;lastName) = explode(' ', $fullName);
     }
@@ -408,7 +408,7 @@ class Person
     public $address;
 
     /** @PostLoad */
-    public function postLoad()
+    public function postLoad(): void
     {
         if ($this-&gt;street !== null || $this-&gt;city !== null)
         {
@@ -429,7 +429,7 @@ class Person
     // ...
 
     /** @PrePersist */
-    public function prePersist()
+    public function prePersist(): void
     {
         if ($this-&gt;street !== null || $this-&gt;city !== null)
         {
@@ -523,7 +523,7 @@ which the method is declared for the lifecycle callback to be registered.</p>
             }
         </script>
 
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
             <script src="https://staging.doctrine-project.org/js/sidebar.js?01f3db"></script>
 
