@@ -129,7 +129,6 @@
                             <div class="dropdown-menu" aria-labelledby="navbarProjectsDropdown">
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/annotations.html">Annotations</a>
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/cache.html">Cache</a>
-                                                                    <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/coding-standard.html">Coding Standard</a>
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/collections.html">Collections</a>
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/common.html">Common</a>
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/dbal.html">DBAL</a>
@@ -443,7 +442,7 @@ class User
                 xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                 http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd&quot;&gt;
   &lt;document name=&quot;Documents\User&quot;&gt;
-        &lt;field fieldName=&quot;id&quot; id=&quot;true&quot; /&gt;
+    &lt;id /&gt;
   &lt;/document&gt;
 &lt;/doctrine-mongo-mapping&gt;
 </code></pre></div></li></ul></div>
@@ -479,7 +478,7 @@ class MyPersistentClass
                                             http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd&quot;&gt;
 
     &lt;document name=&quot;MyPersistentClass&quot;&gt;
-        &lt;field name=&quot;id&quot; id=&quot;true&quot; strategy=&quot;NONE&quot; type=&quot;string&quot; /&gt;
+        &lt;id strategy=&quot;NONE&quot; type=&quot;string&quot; /&gt;
     &lt;/document&gt;
 &lt;/doctrine-mongo-mapping&gt;
 </code></pre></div></li></ul></div>
@@ -524,9 +523,9 @@ class MyPersistentClass
                                             http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd&quot;&gt;
 
     &lt;document name=&quot;MyPersistentClass&quot;&gt;
-        &lt;field name=&quot;id&quot; id=&quot;true&quot; strategy=&quot;CUSTOM&quot; type=&quot;string&quot;&gt;
-            &lt;id-generator-option name=&quot;class&quot; value=&quot;Vendor\Specific\Generator&quot; /&gt;
-        &lt;/field&gt;
+        &lt;id strategy=&quot;CUSTOM&quot; type=&quot;string&quot;&gt;
+            &lt;generator-option name=&quot;class&quot; value=&quot;Vendor\Specific\Generator&quot; /&gt;
+        &lt;/id&gt;
     &lt;/document&gt;
 &lt;/doctrine-mongo-mapping&gt;
 </code></pre></div></li></ul></div>
@@ -556,7 +555,7 @@ class User
                 xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                 http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd&quot;&gt;
   &lt;document name=&quot;Documents\User&quot;&gt;
-        &lt;field fieldName=&quot;id&quot; id=&quot;true&quot; /&gt;
+        &lt;id /&gt;
         &lt;field fieldName=&quot;username&quot; type=&quot;string&quot; /&gt;
   &lt;/document&gt;
 &lt;/doctrine-mongo-mapping&gt;
