@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -295,84 +292,112 @@ so in a production environment the parsing and populating only ever
 happens once. You can configure the metadata cache implementation
 using the <code>setMetadataCacheImpl()</code> method on the
 <code>Doctrine\ORM\Configuration</code> class:</p>
-<pre><code class="php">&lt;?php
-$em-&gt;getConfiguration()-&gt;setMetadataCacheImpl(new ApcuCache());
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0c1aa65de009debdc128175d6bfe9e5abb054fe4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0c1aa65de009debdc128175d6bfe9e5abb054fe4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$em-&gt;getConfiguration()-&gt;setMetadataCacheImpl(<span class="hljs-keyword">new</span> ApcuCache());
+</td></tr></table></div></code></pre>
 </div>
 <p>If you want to use one of the included core metadata drivers you
 just need to configure it. All the drivers are in the
 <code>Doctrine\ORM\Mapping\Driver</code> namespace:</p>
-<pre><code class="php">&lt;?php
-$driver = new \Doctrine\ORM\Mapping\Driver\XmlDriver('/path/to/mapping/files');
-$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="713edea0dac1efe5add02e15453c8f1b1201cd51"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="713edea0dac1efe5add02e15453c8f1b1201cd51"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> \Doctrine\ORM\Mapping\Driver\XmlDriver(<span class="hljs-string">'/path/to/mapping/files'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="implementing-metadata-drivers" name="implementing-metadata-drivers"></a><h2 class="section-header"><a href="#implementing-metadata-drivers">Implementing Metadata Drivers<i class="fas fa-link"></i></a></h2>
 <p>In addition to the included metadata drivers you can very easily
 implement your own. All you need to do is define a class which
 implements the <code>Driver</code> interface:</p>
-<pre><code class="php">&lt;?php
-namespace Doctrine\ORM\Mapping\Driver;
-
-use Doctrine\ORM\Mapping\ClassMetadata;
-
-interface Driver
-{
-    /**
-     * Loads the metadata for the specified class into the provided container.
-     *
-     * @param string $className
-     * @param ClassMetadata $metadata
-     */
-    function loadMetadataForClass($className, ClassMetadata $metadata);
-
-    /**
-     * Gets the names of all mapped classes known to this driver.
-     *
-     * @return array The names of all mapped classes known to this driver.
-     */
-    function getAllClassNames();
-
-    /**
-     * Whether the class with the specified name should have its metadata loaded.
-     * This is only the case if it is either mapped as an Entity or a
-     * MappedSuperclass.
-     *
-     * @param string $className
-     * @return boolean
-     */
-    function isTransient($className);
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="49b75324a5e5680a8cf2e0f6657c985328ba53b0"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="49b75324a5e5680a8cf2e0f6657c985328ba53b0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">ClassMetadata</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Driver</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * Loads the metadata <span class="hljs-keyword">for</span> the specified <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">into</span> <span class="hljs-title">the</span> <span class="hljs-title">provided</span> <span class="hljs-title">container</span>.</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     *
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @param string $className
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     * @param ClassMetadata $metadata
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadataForClass</span><span class="hljs-params">($className, ClassMetadata $metadata)</span></span>;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     * Gets the names of all mapped classes known to this driver.
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     *
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     * @<span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span> The names of all mapped classes known to this driver.
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAllClassNames</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">     * Whether the <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">with</span> <span class="hljs-title">the</span> <span class="hljs-title">specified</span> <span class="hljs-title">name</span> <span class="hljs-title">should</span> <span class="hljs-title">have</span> <span class="hljs-title">its</span> <span class="hljs-title">metadata</span> <span class="hljs-title">loaded</span>.</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     * This is only the <span class="hljs-keyword">case</span> <span class="hljs-keyword">if</span> it is either mapped <span class="hljs-keyword">as</span> an Entity <span class="hljs-keyword">or</span> a
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     * MappedSuperclass.
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     *
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     * @param string $className
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">     * @<span class="hljs-keyword">return</span> boolean
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isTransient</span><span class="hljs-params">($className)</span></span>;
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>If you want to write a metadata driver to parse information from
 some file format we've made your life a little easier by providing
 the <code>AbstractFileDriver</code> implementation for you to extend from:</p>
-<pre><code class="php">&lt;?php
-class MyMetadataDriver extends AbstractFileDriver
-{
-    /**
-     * {@inheritdoc}
-     */
-    protected $fileExtension = '.dcm.ext';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function loadMetadataForClass($className, ClassMetadata $metadata)
-    {
-        $data = $this-&gt;loadMappingFile($file);
-
-        // populate ClassMetadata instance from $data
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function loadMappingFile($file)
-    {
-        // parse contents of $file and return php data structure
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6ebdb32276e3840fe0021c4e4a21f1b456a426db"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6ebdb32276e3840fe0021c4e4a21f1b456a426db"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyMetadataDriver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractFileDriver</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">     * {@inheritdoc}
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">protected</span> $fileExtension = <span class="hljs-string">'.dcm.ext'</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * {@inheritdoc}
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadataForClass</span><span class="hljs-params">($className, ClassMetadata $metadata)</span></span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        $data = <span class="hljs-keyword">$this</span>-&gt;loadMappingFile($file);
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-comment">// populate ClassMetadata instance from $data</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * {@inheritdoc}
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMappingFile</span><span class="hljs-params">($file)</span></span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-comment">// parse contents of $file and return php data structure</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>When using the <code>AbstractFileDriver</code> it requires that you
 only have one entity defined per file and the file named after the
 class described inside where namespace separators are replaced by
@@ -383,10 +408,17 @@ recognized.</p>
 </div>
 <p>Now you can use your <code>MyMetadataDriver</code> implementation by setting
 it with the <code>setMetadataDriverImpl()</code> method:</p>
-<pre><code class="php">&lt;?php
-$driver = new MyMetadataDriver('/path/to/mapping/files');
-$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="760aa6b6e0a17b24b1afada10c0399dee4e30fa1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="760aa6b6e0a17b24b1afada10c0399dee4e30fa1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> MyMetadataDriver(<span class="hljs-string">'/path/to/mapping/files'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="classmetadata" name="classmetadata"></a><h2 class="section-header"><a href="#classmetadata">ClassMetadata<i class="fas fa-link"></i></a></h2>
 <p>The last piece you need to know and understand about metadata in
 Doctrine 2 is the API of the <code>ClassMetadata</code> classes. You need to
@@ -407,18 +439,32 @@ the PHP Mapping chapter.</p>
 your project to programmatically use some mapping information to
 generate some HTML or something similar you can retrieve it through
 the <code>ClassMetadataFactory</code>:</p>
-<pre><code class="php">&lt;?php
-$cmf = $em-&gt;getMetadataFactory();
-$class = $cmf-&gt;getMetadataFor('MyEntityName');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5dd20fca16aa1587300e5551fd4d5f8f84e7dbea"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5dd20fca16aa1587300e5551fd4d5f8f84e7dbea"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$cmf = $em-&gt;getMetadataFactory();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$class = $cmf-&gt;getMetadataFor(<span class="hljs-string">'MyEntityName'</span>);
+</td></tr></table></div></code></pre>
 <p>Now you can learn about the entity and use the data stored in the
 <code>ClassMetadata</code> instance to get all mapped fields for example and
 iterate over them:</p>
-<pre><code class="php">&lt;?php
-foreach ($class-&gt;fieldMappings as $fieldMapping) {
-    echo $fieldMapping['fieldName'] . &quot;\n&quot;;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="af2a7cd714855aa558a6c8587837e945bb67240e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="af2a7cd714855aa558a6c8587837e945bb67240e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($class-&gt;fieldMappings <span class="hljs-keyword">as</span> $fieldMapping) {
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">echo</span> $fieldMapping[<span class="hljs-string">'fieldName'</span>] . <span class="hljs-string">"\n"</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -443,8 +489,6 @@ foreach ($class-&gt;fieldMappings as $fieldMapping) {
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -490,7 +534,7 @@ foreach ($class-&gt;fieldMappings as $fieldMapping) {
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -267,65 +264,79 @@ relationships based on column names. In the example below Doctrine
 knows that <code>User</code> has one <code>Contact</code> and will automatically
 define the relationship between the models.</p>
 </div>
-<pre><code class="yaml">---
-detect_relations: true
-
-User:
-  columns:
-    username: string
-    password: string
-    contact_id: integer
-
-Contact:
-  columns:
-    first_name: string
-    last_name: string
-    phone: string
-    email: string
-    address: string
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6746237b4626a2a763dcc4015df418cb91bef8a3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6746237b4626a2a763dcc4015df418cb91bef8a3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">detect_relations:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    username:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    password:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    contact_id:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">Contact:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    first_name:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">    last_name:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">    phone:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">    email:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">    address:</span> <span class="hljs-string">string</span>
+</td></tr></table></div></code></pre>
 <hr />
 <a class="section-anchor" id="verbose-syntax" name="verbose-syntax"></a><h2 class="section-header"><a href="#verbose-syntax">Verbose Syntax<i class="fas fa-link"></i></a></h2>
 <p>Here is the 100% verbose form of the above schema:</p>
-<pre><code class="yaml">---
-User:
-  columns:
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-    contact_id:
-      type: integer
-  relations:
-    Contact:
-      class: Contact
-      local: contact_id
-      foreign: id
-      foreignAlias: User
-      foreignType: one
-      type: one
-
-Contact:
-  columns:
-    first_name:
-      type: string(255)
-    last_name:
-      type: string(255)
-    phone:
-      type: string(255)
-    email:
-      type: string(255)
-    address:
-      type: string(255)
-  relations:
-    User:
-      class: User
-      local: id
-      foreign: contact_id
-      foreignAlias: Contact
-      foreignType: one
-      type: one
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="417d9b7b2b36c23e9bc756d81038e3ce111ca87e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="417d9b7b2b36c23e9bc756d81038e3ce111ca87e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    contact_id:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    Contact:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Contact</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      local:</span> <span class="hljs-string">contact_id</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      foreign:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">      foreignAlias:</span> <span class="hljs-string">User</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">      foreignType:</span> <span class="hljs-string">one</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">one</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">Contact:</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">    first_name:</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">    last_name:</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">    phone:</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-attr">    email:</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-attr">    address:</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"><span class="hljs-attr">    User:</span>
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">User</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-attr">      local:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"><span class="hljs-attr">      foreign:</span> <span class="hljs-string">contact_id</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"><span class="hljs-attr">      foreignAlias:</span> <span class="hljs-string">Contact</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"><span class="hljs-attr">      foreignType:</span> <span class="hljs-string">one</span>
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">one</span>
+</td></tr></table></div></code></pre>
 <p>In the above example we do not define the <code>detect_relations</code> option,
 instead we manually define the relationships so we have complete control
 over the configuration of the local/foreign key, type and alias of the
@@ -358,168 +369,203 @@ relationship. It demonstrates the relationships <code>User</code> has one
 it would have automatically generated <code>User</code> has one <code>Contact</code> and
 <code>Contact</code> has many <code>User</code>. The <code>foreignType</code> and <code>foreignAlias</code>
 options allow you to customize the opposite end of the relationship.</p>
-<pre><code class="yaml">---
-User:
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    contact_id:
-      type: integer(4)
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-  relations:
-    Contact:
-      foreignType: one
-      foreignAlias: UserModel
-
-Contact:
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    name:
-      type: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="396aac3dc6b8be4759d4901c1e61d57b6ad097e9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="396aac3dc6b8be4759d4901c1e61d57b6ad097e9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    contact_id:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">    Contact:</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">      foreignType:</span> <span class="hljs-string">one</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">      foreignAlias:</span> <span class="hljs-string">UserModel</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">Contact:</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">    name:</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <p>You can quickly detect and create the relationships between two models
 with the detect_relations option like below.</p>
-<pre><code class="yaml">---
-detect_relations: true
-
-User:
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    avatar_id:
-      type: integer(4)
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-
-Avatar:
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    name:
-      type: string(255)
-    image_file:
-      type: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f63730230ebb768a991f94ac4a354455bcea519c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f63730230ebb768a991f94ac4a354455bcea519c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">detect_relations:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    avatar_id:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">Avatar:</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">    name:</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">    image_file:</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <p>The resulting relationships would be <code>User</code> has one <code>Avatar</code> and
 <code>Avatar</code> has many <code>User</code>.</p>
 <hr />
 <a class="section-anchor" id="one-to-one" name="one-to-one"></a><h3 class="section-header"><a href="#one-to-one">One to One<i class="fas fa-link"></i></a></h3>
-<pre><code class="yaml">---
-User:
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    contact_id:
-      type: integer(4)
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-  relations:
-    Contact:
-      foreignType: one
-
-Contact:
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    name:
-      type: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="22a62546deffdd22249f1eb4d062bc84e721b8ba"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="22a62546deffdd22249f1eb4d062bc84e721b8ba"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    contact_id:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">    Contact:</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">      foreignType:</span> <span class="hljs-string">one</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">Contact:</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">    name:</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <hr />
 <a class="section-anchor" id="one-to-many" name="one-to-many"></a><h3 class="section-header"><a href="#one-to-many">One to Many<i class="fas fa-link"></i></a></h3>
-<pre><code class="yaml">---
-User:
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    contact_id:
-      type: integer(4)
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-
-Phonenumber:
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    name:
-      type: string(255)
-    user_id:
-      type: integer(4)
-  relations:
-    User:
-      foreignAlias: Phonenumbers
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4a2f38bbcf8d54b20c7a2d4798fea73d3c53459a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4a2f38bbcf8d54b20c7a2d4798fea73d3c53459a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    contact_id:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">Phonenumber:</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">    name:</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">    user_id:</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-attr">    User:</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-attr">      foreignAlias:</span> <span class="hljs-string">Phonenumbers</span>
+</td></tr></table></div></code></pre>
 <hr />
 <a class="section-anchor" id="many-to-many" name="many-to-many"></a><h3 class="section-header"><a href="#many-to-many">Many to Many<i class="fas fa-link"></i></a></h3>
-<pre><code class="yaml">---
-User:
-  columns:
-    id:
-      type: integer(4)
-      autoincrement: true
-      primary: true
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-  attributes:
-    export: all
-    validate: true
-
-Group:
-  tableName: group_table
-  columns:
-    id:
-      type: integer(4)
-      autoincrement: true
-      primary: true
-    name:
-      type: string(255)
-  relations:
-    Users:
-      foreignAlias: Groups
-      class: User
-      refClass: GroupUser
-
-GroupUser:
-  columns:
-    group_id:
-      type: integer(4)
-      primary: true
-    user_id:
-      type: integer(4)
-      primary: true
-  relations:
-    Group:
-      foreignAlias: GroupUsers
-    User:
-      foreignAlias: GroupUsers
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e549e26962338eadeae5f7723aeeba71fdc0ee10"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e549e26962338eadeae5f7723aeeba71fdc0ee10"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">  attributes:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">    export:</span> <span class="hljs-string">all</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">    validate:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">Group:</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">  tableName:</span> <span class="hljs-string">group_table</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">    name:</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-attr">    Users:</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-attr">      foreignAlias:</span> <span class="hljs-string">Groups</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">User</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-attr">      refClass:</span> <span class="hljs-string">GroupUser</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-attr">GroupUser:</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-attr">    group_id:</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"><span class="hljs-attr">    user_id:</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line"><span class="hljs-attr">    Group:</span>
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line"><span class="hljs-attr">      foreignAlias:</span> <span class="hljs-string">GroupUsers</span>
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line"><span class="hljs-attr">    User:</span>
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line"><span class="hljs-attr">      foreignAlias:</span> <span class="hljs-string">GroupUsers</span>
+</td></tr></table></div></code></pre>
 <p>This creates a set of models where <code>User</code> has many <code>Groups</code>,
 <code>Group</code> has many <code>Users</code>, <code>GroupUser</code> has one <code>User</code> and
 <code>GroupUser</code> has one <code>Group</code>.</p>
@@ -542,120 +588,162 @@ the model to that connection:</p>
 <p>Schema files offer the ability to bind it to a specific connection by
 specifying the connection parameter. If you do not specify the
 connection the model will just use the current connection set on the Doctrine_Manager instance.</p>
-<pre><code class="yaml">---
-User:
-  connection: connection1
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    contact_id:
-      type: integer(4)
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="641c77f4320099173956743a7c216bde7e1c943e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="641c77f4320099173956743a7c216bde7e1c943e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  connection:</span> <span class="hljs-string">connection1</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    contact_id:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <hr />
 <a class="section-anchor" id="attributes" name="attributes"></a><h3 class="section-header"><a href="#attributes">Attributes<i class="fas fa-link"></i></a></h3>
 <p>Doctrine offers the ability to set attributes for your generated models
 directly in your schema files similar to how you would if you were
 manually writing your Doctrine_Record child classes.</p>
-<pre><code class="yaml">---
-User:
-  connection: connection1
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    contact_id:
-      type: integer(4)
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-  attributes:
-    export: none
-    validate: false
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b1058fb770dedb42ddca0c532614fa3505c5735d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b1058fb770dedb42ddca0c532614fa3505c5735d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  connection:</span> <span class="hljs-string">connection1</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    contact_id:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">  attributes:</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">    export:</span> <span class="hljs-string">none</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">    validate:</span> <span class="hljs-literal">false</span>
+</td></tr></table></div></code></pre>
 <hr />
 <a class="section-anchor" id="enums" name="enums"></a><h3 class="section-header"><a href="#enums">Enums<i class="fas fa-link"></i></a></h3>
 <p>To use enum columns in your schema file you must specify the type as
 enum and specify an array of values for the possible enum values.</p>
-<pre><code class="yaml">---
-TvListing:
-  tableName: tv_listing
-  actAs: [Timestampable]
-  columns:
-    notes:
-      type: string
-    taping:
-      type: enum
-      length: 4
-      values: ['live', 'tape']
-    region:
-      type: enum
-      length: 4
-      values: ['US', 'CA']
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f4a92cf5fe446db55df0461291d817ba109c2c21"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f4a92cf5fe446db55df0461291d817ba109c2c21"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">TvListing:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  tableName:</span> <span class="hljs-string">tv_listing</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  actAs:</span> <span class="hljs-string">[Timestampable]</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    notes:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    taping:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">enum</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">4</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      values:</span> <span class="hljs-string">['live',</span> <span class="hljs-string">'tape'</span><span class="hljs-string">]</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    region:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">enum</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">4</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">      values:</span> <span class="hljs-string">['US',</span> <span class="hljs-string">'CA'</span><span class="hljs-string">]</span>
+</td></tr></table></div></code></pre>
 <hr />
 <a class="section-anchor" id="actas-behaviors" name="actas-behaviors"></a><h3 class="section-header"><a href="#actas-behaviors">ActAs Behaviors<i class="fas fa-link"></i></a></h3>
 <p>You can attach behaviors to your models with the <code>actAs</code> option. You
 can specify something like the following:</p>
-<pre><code class="yaml">---
-User:
-  connection: connection1
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    contact_id:
-      type: integer(4)
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-  actAs:
-    Timestampable:
-    Sluggable:
-      fields: [username]
-      name: slug # defaults to 'slug'
-      type: string # defaults to 'clob'
-      length: 255 # defaults to null. clob doesn't require a length
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4e5a5db6eff6b1e851340f4db4e2e874b735b790"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4e5a5db6eff6b1e851340f4db4e2e874b735b790"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  connection:</span> <span class="hljs-string">connection1</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    contact_id:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">  actAs:</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">    Timestampable:</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">    Sluggable:</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">      fields:</span> <span class="hljs-string">[username]</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">      name:</span> <span class="hljs-string">slug</span> <span class="hljs-comment"># defaults to 'slug'</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span> <span class="hljs-comment"># defaults to 'clob'</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">255</span> <span class="hljs-comment"># defaults to null. clob doesn't require a length</span>
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The options specified on the Sluggable behavior above are
 optional as they will use defaults values if you do not specify
 anything. Since they are defaults it is not necessary to type it out
 all the time.</p>
 </div>
-<pre><code class="yaml">---
-User:
-  connection: connection1
-  columns: # ...
-  actAs: [Timestampable, Sluggable]
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="79819660484a1751e42480d8e569475d834944bd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="79819660484a1751e42480d8e569475d834944bd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  connection:</span> <span class="hljs-string">connection1</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  columns:</span> <span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">  actAs:</span> <span class="hljs-string">[Timestampable,</span> <span class="hljs-string">Sluggable]</span>
+</td></tr></table></div></code></pre>
 <hr />
 <a class="section-anchor" id="listeners" name="listeners"></a><h3 class="section-header"><a href="#listeners">Listeners<i class="fas fa-link"></i></a></h3>
 <p>If you have a listener you'd like attached to a model, you can specify
 them directly in the yml as well.</p>
-<pre><code class="yaml">---
-User:
-  listeners: [ MyCustomListener ]
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    contact_id:
-      type: integer(4)
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cd3afa3d3a2737d4d2a1e92a986535f56c366181"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cd3afa3d3a2737d4d2a1e92a986535f56c366181"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  listeners:</span> <span class="hljs-string">[</span> <span class="hljs-string">MyCustomListener</span> <span class="hljs-string">]</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    contact_id:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <p>The above syntax will generated a base class that looks something like
 the following:</p>
 
@@ -673,54 +761,68 @@ the following:</p>
 <a class="section-anchor" id="options" name="options"></a><h3 class="section-header"><a href="#options">Options<i class="fas fa-link"></i></a></h3>
 <p>Specify options for your tables and when Doctrine creates your tables
 from your models the options will be set on the create table statement.</p>
-<pre><code class="yaml">---
-User:
-  connection: connection1
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    contact_id:
-      type: integer(4)
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-  options:
-    type: INNODB
-    collate: utf8_unicode_ci
-    charset: utf8
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e44ad2911643727d592a4ac4ec603772036675a7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e44ad2911643727d592a4ac4ec603772036675a7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  connection:</span> <span class="hljs-string">connection1</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    contact_id:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">  options:</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">INNODB</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">    collate:</span> <span class="hljs-string">utf8_unicode_ci</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">    charset:</span> <span class="hljs-string">utf8</span>
+</td></tr></table></div></code></pre>
 <hr />
 <a class="section-anchor" id="indexes" name="indexes"></a><h3 class="section-header"><a href="#indexes">Indexes<i class="fas fa-link"></i></a></h3>
 <p>Please see the <a href=""></a> section of the
 <a href="defining-models.html">Defining Models</a> for more information about indexes and their
 options.</p>
-<pre><code class="yaml">---
-UserProfile:
-  columns:
-    user_id:
-      type: integer
-      length: 4
-      primary: true
-      autoincrement: true
-    first_name:
-      type: string
-      length: 20
-    last_name:
-      type: string
-      length: 20
-  indexes:
-    name_index:
-      fields:
-        first_name:
-          sorting: ASC
-          length: 10
-          primary: true
-        last_name: []
-      type: unique
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ffb7734ddd12804955bdddd4f0df7c184ab31be7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ffb7734ddd12804955bdddd4f0df7c184ab31be7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">UserProfile:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    user_id:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">4</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    first_name:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">20</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    last_name:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">20</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">  indexes:</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">    name_index:</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">      fields:</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">        first_name:</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">          sorting:</span> <span class="hljs-string">ASC</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">          length:</span> <span class="hljs-number">10</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">          primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">        last_name:</span> <span class="hljs-string">[]</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">unique</span>
+</td></tr></table></div></code></pre>
 <p>This is the PHP line of code that is auto-generated inside
 <code>setTableDefinition()</code> inside your base model class for the index
 definition used above:</p>
@@ -743,23 +845,30 @@ definition used above:</p>
 inheritance using YAML schema files.</p>
 <hr />
 <a class="section-anchor" id="simple-inheritance" name="simple-inheritance"></a><h4 class="section-header"><a href="#simple-inheritance">Simple Inheritance<i class="fas fa-link"></i></a></h4>
-<pre><code class="yaml">---
-Entity:
-  columns:
-    name: string(255)
-    username: string(255)
-    password: string(255)
-
-User:
-  inheritance:
-    extends: Entity
-    type: simple
-
-Group:
-  inheritance:
-    extends: Entity
-    type: simple
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8d09d77be538463d3362ea52d00ddf319260bb5a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8d09d77be538463d3362ea52d00ddf319260bb5a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">Entity:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    name:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    username:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    password:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">  inheritance:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    extends:</span> <span class="hljs-string">Entity</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">simple</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">Group:</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">  inheritance:</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">    extends:</span> <span class="hljs-string">Entity</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">simple</span>
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Any columns or relationships defined in models that extend
 another in simple inheritance will be moved to the parent when the
 PHP classes are built.</p>
@@ -767,18 +876,25 @@ PHP classes are built.</p>
 <p>You can read more about this topic in the <a href="inheritance.html">Inheritance</a> chapter.</p>
 <hr />
 <a class="section-anchor" id="concrete-inheritance" name="concrete-inheritance"></a><h4 class="section-header"><a href="#concrete-inheritance">Concrete Inheritance<i class="fas fa-link"></i></a></h4>
-<pre><code class="yaml">---
-TextItem:
-  columns:
-    topic: string(255)
-
-Comment:
-  inheritance:
-    extends: TextItem
-    type: concrete
-    columns:
-     content: string(300)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2211c4e59fb6ceccc59d93d1d2eb6f439235c300"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2211c4e59fb6ceccc59d93d1d2eb6f439235c300"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">TextItem:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    topic:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">Comment:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">  inheritance:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    extends:</span> <span class="hljs-string">TextItem</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">concrete</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    columns:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">     content:</span> <span class="hljs-string">string(300)</span>
+</td></tr></table></div></code></pre>
 <p>You can read more about this topic in the <a href="inheritance.html">Inheritance</a> chapter.</p>
 <hr />
 <a class="section-anchor" id="column-aggregation-inheritance" name="column-aggregation-inheritance"></a><h4 class="section-header"><a href="#column-aggregation-inheritance">Column Aggregation Inheritance<i class="fas fa-link"></i></a></h4>
@@ -788,27 +904,41 @@ parent when the PHP classes are built.</p>
 </div>
 <p>First lets defined a model named <code>Entity</code> that our other models will
 extend from:</p>
-<pre><code class="yaml">---
-Entity:
-  columns:
-    name: string(255)
-    type: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4c544a3de203a53632e711518bd540be7216eef7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4c544a3de203a53632e711518bd540be7216eef7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">Entity:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    name:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The type column above is optional. It will be automatically
 added when it is specified in the child class.</p>
 </div>
 <p>Now lets create a <code>User</code> model that extends the <code>Entity</code> model:</p>
-<pre><code class="yaml">---
-User:
-  inheritance:
-    extends: Entity
-    type: column_aggregation
-    keyField: type
-    keyValue: User
-  columns:
-    username: string(255)
-    password: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3ddc04f2ed1bfa78ade88e711ff6d0de172b8ed1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3ddc04f2ed1bfa78ade88e711ff6d0de172b8ed1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  inheritance:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    extends:</span> <span class="hljs-string">Entity</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">column_aggregation</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    keyField:</span> <span class="hljs-string">type</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    keyValue:</span> <span class="hljs-string">User</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    username:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    password:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The <code>type</code> option under the <code>inheritance</code> definition is
 optional as it is implied if you specify a <code>keyField</code> or
 <code>keyValue</code>. If the <code>keyField</code> is not specified it will default
@@ -816,16 +946,23 @@ to add a column named <code>type</code>. The <code>keyValue</code> will default 
 name of the model if you do not specify anything.</p>
 </div>
 <p>Again lets create another model that extends <code>Entity</code> named <code>Group</code>:</p>
-<pre><code class="yaml">---
-Group:
-  inheritance:
-    extends: Entity
-    type: column_aggregation
-    keyField: type
-    keyValue: Group
-  columns:
-    description: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c9a9456b94a6c59ef95c59216a86c6d52e2de093"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c9a9456b94a6c59ef95c59216a86c6d52e2de093"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">Group:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  inheritance:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    extends:</span> <span class="hljs-string">Entity</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">column_aggregation</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    keyField:</span> <span class="hljs-string">type</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    keyValue:</span> <span class="hljs-string">Group</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    description:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The <code>User</code> <code>username</code> and <code>password</code> and the
 <code>Group</code> <code>description</code> columns will be automatically moved to the
 parent <code>Entity</code>.</p>
@@ -837,15 +974,22 @@ parent <code>Entity</code>.</p>
 column name in the database this is easy to accomplish with Doctrine. We
 simple use the syntax &quot;<code>column_name as field_name</code>&quot; in the name of
 our column:</p>
-<pre><code class="yaml">---
-User:
-  columns:
-    login:
-      name: login as username
-      type: string(255)
-    password:
-      type: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3e4266c42f0c15e2495e8bb626d66b2ecdd2328f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3e4266c42f0c15e2495e8bb626d66b2ecdd2328f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    login:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      name:</span> <span class="hljs-string">login</span> <span class="hljs-string">as</span> <span class="hljs-string">username</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <p>The above example would allow you to access the column named <code>login</code>
 from the alias <code>username</code>.</p>
 <hr />
@@ -853,12 +997,19 @@ from the alias <code>username</code>.</p>
 <p>Doctrine offers the &quot;package&quot; parameter which will generate the models
 in to sub folders. With large schema files this will allow you to better
 organize your schemas in to folders.</p>
-<pre><code class="yaml">---
-User:
-  package: User
-  columns:
-    username: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a30ac70e947691ff20c6660c2a8b477406871f3b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a30ac70e947691ff20c6660c2a8b477406871f3b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  package:</span> <span class="hljs-string">User</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    username:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <p>The model files from this schema file would be put in a folder named
 User. You can specify more sub folders by doing &quot;package: User.Models&quot;
 and the models would be in User/Models</p>
@@ -867,13 +1018,20 @@ and the models would be in User/Models</p>
 <p>You can also completely by pass the automatic generation of packages to
 the appropriate path by specifying a completely custom path to generate
 the package files:</p>
-<pre><code class="yaml">---
-User:
-  package: User
-  package_custom_path: /path/to/generate/package
-  columns:
-    username: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4a1537a44e2ba0e84e6607a53317d17a7d94794a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4a1537a44e2ba0e84e6607a53317d17a7d94794a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  package:</span> <span class="hljs-string">User</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  package_custom_path:</span> <span class="hljs-string">/path/to/generate/package</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    username:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <hr />
 <a class="section-anchor" id="global-schema-information" name="global-schema-information"></a><h3 class="section-header"><a href="#global-schema-information">Global Schema Information<i class="fas fa-link"></i></a></h3>
 <p>Doctrine schemas allow you to specify certain parameters that will apply
@@ -883,36 +1041,43 @@ example on what global parameters you can set for schema files.</p>
 <table class="table table-bordered"><tr><td>Name</td><td>Description</td></tr><tr><td><code>connection</code> <code>attributes</code> <code>actAs</code> <code>options</code> <code>package</code> <code>inheritance</code> <code>detect_relations</code></td><td>Name of connection to bind the models to. Array of attributes for models. Array of behaviors for the models to act as. Array of tables options for the models. Package to put the models in. Array of inheritance information for models Whether or not to try and detect foreign key relations</td></tr></table>
 <p>Now here is an example schema where we use some of the above global
 parameters:</p>
-<pre><code class="yaml">---
-connection: conn_name1
-actAs: [Timestampable]
-options:
-  type: INNODB
-  package: User
-  detect_relations: true
-
-User:
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    contact_id:
-      type: integer(4)
-    username:
-      type: string(255)
-    password:
-      type: string(255)
-
-Contact:
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    name:
-      type: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="70a0132c3b79ea3b9fa0ab358a34cb7a0659fc5f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="70a0132c3b79ea3b9fa0ab358a34cb7a0659fc5f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">connection:</span> <span class="hljs-string">conn_name1</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">actAs:</span> <span class="hljs-string">[Timestampable]</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">options:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">INNODB</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  package:</span> <span class="hljs-string">User</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">  detect_relations:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">    contact_id:</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">    password:</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">Contact:</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer(4)</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-attr">      autoincrement:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-attr">    name:</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <p>All of the settings at the top will be applied to every model which is
 defined in that YAML file.</p>
 <hr />
@@ -966,8 +1131,6 @@ to the database.</p>
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
         <script id="instantsearch-template" type="text/template">
@@ -1012,7 +1175,7 @@ to the database.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

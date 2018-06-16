@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -279,32 +276,46 @@ the <a href="https://github.com/objectify/objectify/wiki/SchemaMigration">Object
 </div>
 <a class="section-anchor" id="renaming-a-field" name="renaming-a-field"></a><h2 class="section-header"><a href="#renaming-a-field">Renaming a Field<i class="fas fa-link"></i></a></h2>
 <p>Let's say you have a simple document that starts off with the following fields:</p>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class Person
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $name;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="35b554e0146276d4bbbf61fc9527165157eae562"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="35b554e0146276d4bbbf61fc9527165157eae562"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $name;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Later on, you need rename <code>name</code> to <code>fullName</code>; however, you'd like to
 hydrate <code>fullName</code> from <code>name</code> if the new field doesn't exist.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class Person
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;string&quot;) @AlsoLoad(&quot;name&quot;) */
-    public $fullName;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6613a15c747590139ee943a9cd305f8fac296530"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6613a15c747590139ee943a9cd305f8fac296530"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") <span class="hljs-doctag">@AlsoLoad</span>("name") */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $fullName;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>When a Person is loaded, the <code>fullName</code> field will be populated with the value
 of <code>name</code> if <code>fullName</code> is not found. When the Person is persisted, this
 value will then be stored in the <code>fullName</code> field.</p>
@@ -318,27 +329,34 @@ find older documents. The <a href="https://docs.mongodb.com/manual/reference/ope
 <code>firstName</code> and <code>lastName</code> fields. This is also possible by specifying the
 <code>@AlsoLoad</code> annotation on a method, which will then be invoked immediately
 before normal hydration.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class Person
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $firstName;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $lastName;
-
-    /** @AlsoLoad({&quot;name&quot;, &quot;fullName&quot;}) */
-    public function populateFirstAndLastName($fullName): void
-    {
-        list($this-&gt;firstName, $this-&gt;lastName) = explode(' ', $fullName);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="55d232957eb3f396a5fe60a76065aad93aa96499"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="55d232957eb3f396a5fe60a76065aad93aa96499"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $firstName;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $lastName;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@AlsoLoad</span>({"name", "fullName"}) */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">populateFirstAndLastName</span><span class="hljs-params">($fullName)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        <span class="hljs-keyword">list</span>(<span class="hljs-keyword">$this</span>-&gt;firstName, <span class="hljs-keyword">$this</span>-&gt;lastName) = explode(<span class="hljs-string">' '</span>, $fullName);
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The annotation is defined with one or a list of field names. During hydration,
 these fields will be checked in order and, for each field present, the annotated
 method will be invoked with its value as a single argument. Since the
@@ -356,92 +374,113 @@ different methods for dealing with it:</p>
 </ul>
 
 <p>Imagine you have some address-related fields on a Person document:</p>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class Person
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $name;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $street;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $city;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5eba3a8739413b7a83f08e1034bd86e90f653b12"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5eba3a8739413b7a83f08e1034bd86e90f653b12"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $name;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $street;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> $city;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Later on, you may want to migrate this data into an embedded Address document:</p>
-<pre><code class="php">&lt;?php
-
-/** @EmbeddedDocument */
-class Address
-{
-    /** @Field(type=&quot;string&quot;) */
-    public $street;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $city;
-
-    public function __construct($street, $city)
-    {
-        $this-&gt;street = $street;
-        $this-&gt;city = $city;
-    }
-}
-
-/** @Document @HasLifecycleCallbacks */
-class Person
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $name;
-
-    /** @NotSaved */
-    public $street;
-
-    /** @NotSaved */
-    public $city;
-
-    /** @EmbedOne(targetDocument=&quot;Address&quot;) */
-    public $address;
-
-    /** @PostLoad */
-    public function postLoad(): void
-    {
-        if ($this-&gt;street !== null || $this-&gt;city !== null)
-        {
-            $this-&gt;address = new Address($this-&gt;street, $this-&gt;city);
-        }
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="768a1c0093950a3c079d5c68787c85ebabc594ef"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="768a1c0093950a3c079d5c68787c85ebabc594ef"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@EmbeddedDocument</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> $street;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $city;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($street, $city)</span></span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;street = $street;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;city = $city;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-keyword">public</span> $name;
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@NotSaved</span> */</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> $street;
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@NotSaved</span> */</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    <span class="hljs-keyword">public</span> $city;
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedOne</span>(targetDocument="Address") */</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-keyword">public</span> $address;
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostLoad</span> */</span>
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postLoad</span><span class="hljs-params">()</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;street !== <span class="hljs-keyword">null</span> || <span class="hljs-keyword">$this</span>-&gt;city !== <span class="hljs-keyword">null</span>)
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">        {
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">            <span class="hljs-keyword">$this</span>-&gt;address = <span class="hljs-keyword">new</span> Address(<span class="hljs-keyword">$this</span>-&gt;street, <span class="hljs-keyword">$this</span>-&gt;city);
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Person's <code>street</code> and <code>city</code> fields will be hydrated, but not saved. Once
 the Person has loaded, the <code>postLoad()</code> method will be invoked and construct
 a new Address object, which is mapped and will be persisted.</p>
 <p>Alternatively, you could defer this migration until the Person is saved:</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class Person
-{
-    // ...
-
-    /** @PrePersist */
-    public function prePersist(): void
-    {
-        if ($this-&gt;street !== null || $this-&gt;city !== null)
-        {
-            $this-&gt;address = new Address($this-&gt;street, $this-&gt;city);
-        }
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e52ee521028d5cc6b0865748a09b69d42f7fbe76"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e52ee521028d5cc6b0865748a09b69d42f7fbe76"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PrePersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prePersist</span><span class="hljs-params">()</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;street !== <span class="hljs-keyword">null</span> || <span class="hljs-keyword">$this</span>-&gt;city !== <span class="hljs-keyword">null</span>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        {
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            <span class="hljs-keyword">$this</span>-&gt;address = <span class="hljs-keyword">new</span> Address(<span class="hljs-keyword">$this</span>-&gt;street, <span class="hljs-keyword">$this</span>-&gt;city);
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The <a href=""></a> annotation must be present on the class in
 which the method is declared for the lifecycle callback to be registered.</p>
 <p></p>
@@ -468,8 +507,6 @@ which the method is declared for the lifecycle callback to be registered.</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -515,7 +552,7 @@ which the method is declared for the lifecycle callback to be registered.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

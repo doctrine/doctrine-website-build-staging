@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -263,54 +260,74 @@ by modifying your mapping information and running the diff task to compare it
 to your current database schema.</p>
 <p>If you are using the sandbox you can modify the provided `yaml/Entities.User.dcm.yml`
 and add a new column:</p>
-<pre><code class="yaml">Entities\User:
-  # ...
-  fields:
-    # ...
-    test:
-      type: string
-      length: 255
-  # ...
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7f85a8ea1db872439b638670b2f851fdf7ac9c1b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7f85a8ea1db872439b638670b2f851fdf7ac9c1b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-string">Entities\User:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">  <span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  fields:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    test:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">255</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">  <span class="hljs-comment"># ...</span>
+</td></tr></table></div></code></pre>
 <p>Be sure that you add the property to the `Entities/User.php` file:</p>
-<pre><code class="php">namespace Entities;
-
-/** @Entity @Table(name=&quot;users&quot;) */
-class User
-{
-    /**
-     * @var string $test
-     */
-    private $test;
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c6f6087225f6503e988edbe40a8330f532c600ff"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c6f6087225f6503e988edbe40a8330f532c600ff"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Entities</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> <span class="hljs-doctag">@Table</span>(name="users") */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     * @<span class="hljs-keyword">var</span> string $test
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $test;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Now if you run the diff task you will get a nicely generated migration with the
 changes required to update your database!</p>
-<pre><code class="bash">$ ./doctrine migrations:diff
-Generated new migration class to &quot;/path/to/migrations/DoctrineMigrations/Version20100416130459.php&quot; from schema differences.
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>./doctrine migrations:diff
+Generated new migration class to "/path/to/migrations/DoctrineMigrations/Version20100416130459.php" from schema differences.</code></pre></div>
 <p>The migration class that is generated contains the SQL statements required to
 update your database:</p>
-<pre><code class="php">namespace DoctrineMigrations;
-
-use Doctrine\DBAL\Migrations\AbstractMigration,
-    Doctrine\DBAL\Schema\Schema;
-
-class Version20100416130459 extends AbstractMigration
-{
-    public function up(Schema $schema)
-    {
-        $this-&gt;addSql('ALTER TABLE users ADD test VARCHAR(255) NOT NULL');
-    }
-
-    public function down(Schema $schema)
-    {
-        $this-&gt;addSql('ALTER TABLE users DROP test');
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f25cf9eb78995410a3afb58f928d5380be35c32b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f25cf9eb78995410a3afb58f928d5380be35c32b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">DoctrineMigrations</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">AbstractMigration</span>,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    Doctrine\DBAL\Schema\Schema;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Version20100416130459</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractMigration</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">(Schema $schema)</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;addSql(<span class="hljs-string">'ALTER TABLE users ADD test VARCHAR(255) NOT NULL'</span>);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">down</span><span class="hljs-params">(Schema $schema)</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;addSql(<span class="hljs-string">'ALTER TABLE users DROP test'</span>);
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The SQL generated here is the exact same SQL that would be executed if you were
 using the `orm:schema-tool` task and the `--update` option. This just allows you to
 capture that SQL and maybe tweak it or add to it and trigger the deployment
@@ -320,68 +337,89 @@ later across multiple database servers.</p>
 from your entity's metadata using an implementation of
 <code>Doctrine\DBAL\Migrations\Provider\SchemaProvider</code>. To use the Schema representation
 directly, without the ORM, you must implement this interface yourself.</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\DBAL\Schema\Schema;
-use Doctrine\DBAL\Migrations\Provider\SchemaProvider;
-
-final class CustomSchemaProvider implements SchemaProvider
-{
-    /**
-     * The schema provider only has one method: `createSchema`. This should
-     * return an Schema object that represents the state to which you'd like
-     * to migrate your database.
-     * {@inheritdoc}
-     */
-    public function createSchema()
-    {
-        $schema = new Schema();
-
-        $table = $schema-&gt;createTable('foo');
-        $table-&gt;addColumn('id', 'integer', array(
-            'autoincrement' =&gt; true,
-        ));
-        $table-&gt;setPrimaryKey(array('id'));
-
-        return $schema;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="13e2fbae9a410505ea91370d028d6d22054711dc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="13e2fbae9a410505ea91370d028d6d22054711dc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Schema</span>\<span class="hljs-title">Schema</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">Provider</span>\<span class="hljs-title">SchemaProvider</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomSchemaProvider</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">SchemaProvider</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * The schema provider only has one method: `createSchema`. This should
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * <span class="hljs-keyword">return</span> an Schema object that represents the state to which you<span class="hljs-string">'d like</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * to migrate your database.
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     * {@inheritdoc}
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createSchema</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        $schema = <span class="hljs-keyword">new</span> Schema();
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        $table = $schema-&gt;createTable(<span class="hljs-string">'foo'</span>);
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        $table-&gt;addColumn(<span class="hljs-string">'id'</span>, <span class="hljs-string">'integer'</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">            <span class="hljs-string">'autoincrement'</span> =&gt; <span class="hljs-keyword">true</span>,
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        ));
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        $table-&gt;setPrimaryKey(<span class="hljs-keyword">array</span>(<span class="hljs-string">'id'</span>));
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-keyword">return</span> $schema;
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The <code>StubSchemaProvider</code> provided with the migrations library is another option.
 It simply takes a schema object to its constructor and returns it from <code>createSchema</code>.</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\DBAL\Schema\Schema;
-use Doctrine\DBAL\Migrations\Provider\StubSchemaProvider;
-
-$schema = new Schema();
-
-$table = $schema-&gt;createTable('foo');
-$table-&gt;addColumn('id', 'integer', array(
-    'autoincrement' =&gt; true,
-));
-$table-&gt;setPrimaryKey(array('id'));
-
-$provider = new StubSchemaProvider($schema);
-$provider-&gt;createSchema() === $schema; // true
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="939c1a08fec6fb774976ba5a81302582b4812c8a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="939c1a08fec6fb774976ba5a81302582b4812c8a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Schema</span>\<span class="hljs-title">Schema</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">Provider</span>\<span class="hljs-title">StubSchemaProvider</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$schema = <span class="hljs-keyword">new</span> Schema();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$table = $schema-&gt;createTable(<span class="hljs-string">'foo'</span>);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$table-&gt;addColumn(<span class="hljs-string">'id'</span>, <span class="hljs-string">'integer'</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-string">'autoincrement'</span> =&gt; <span class="hljs-keyword">true</span>,
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$table-&gt;setPrimaryKey(<span class="hljs-keyword">array</span>(<span class="hljs-string">'id'</span>));
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$provider = <span class="hljs-keyword">new</span> StubSchemaProvider($schema);
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$provider-&gt;createSchema() === $schema; <span class="hljs-comment">// true</span>
+</td></tr></table></div></code></pre>
 <p>By default the <code>doctrine-migrations</code> command line tool will only add the diff
 command if the ORM is present. Without the ORM, you'll have to add the diff command
 to your <a href="http://symfony.com/doc/current/components/console/introduction.html">console application</a>
 manually, passing in your schema provider implementation to the diff command's constructor.</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\DBAL\Migrations\Tools\Console\Command\DiffCommand;
-
-$schemaProvider = new CustomSchemaProvider();
-
-/** @var Symfony\Component\Console\Application */
-$app-&gt;add(new DiffCommand($schemaProvider));
-
-// ...
-
-$app-&gt;run();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bd239caf1d4f4f621509264246b1ddccad849a4e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bd239caf1d4f4f621509264246b1ddccad849a4e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Command</span>\<span class="hljs-title">DiffCommand</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$schemaProvider = <span class="hljs-keyword">new</span> CustomSchemaProvider();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> Symfony\Component\Console\Application */</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$app-&gt;add(<span class="hljs-keyword">new</span> DiffCommand($schemaProvider));
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$app-&gt;run();
+</td></tr></table></div></code></pre>
 <p>With the custom provider in place the diff command will compare the current database
 state to the one provided. If there's a mismatch, the differences will be put
 into the generated migration just like the ORM examples above.</p>
@@ -390,17 +428,23 @@ into the generated migration just like the ORM examples above.</p>
 that with every diff task you are executing you get the remove statements for those tables
 added to the migration class.</p>
 <p>Therefore you can configure doctrine with a schema filter.</p>
-<pre><code class="php">$connection-&gt;getConfiguration()-&gt;setFilterSchemaAssetsExpression(&quot;~^(?!t_)~&quot;);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c3017e02d61d392be81702522203b4d59be8243b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c3017e02d61d392be81702522203b4d59be8243b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$connection-&gt;getConfiguration()-&gt;setFilterSchemaAssetsExpression(<span class="hljs-string">"~^(?!t_)~"</span>);
+</td></tr></table></div></code></pre>
 <p>With this expression all tables prefixed with <a href="#t">t</a> will ignored by the schema tool.</p>
 <p>If you use the DoctrineBundle with Symfony2 you can set the schema_filter option
 in your configuration. You can find more information in the documentation of the
 DoctrineMigationsBundle.</p>
 <a class="section-anchor" id="creating-empty-migrations" name="creating-empty-migrations"></a><h2 class="section-header"><a href="#creating-empty-migrations">Creating Empty Migrations<i class="fas fa-link"></i></a></h2>
 <p>Use the <code>migrations:generate</code> command to create an empty migration class.</p>
-<pre><code class="bash">$ ./doctrine migrations:generate
-Generated new migration class to /path/to/migrations/DoctrineMigrations/Version20180107080000.php
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>./doctrine migrations:generate
+Generated new migration class to /path/to/migrations/DoctrineMigrations/Version20180107080000.php</code></pre></div>
 <p></p>
                                             </div>
                 </div>
@@ -425,8 +469,6 @@ Generated new migration class to /path/to/migrations/DoctrineMigrations/Version2
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -472,7 +514,7 @@ Generated new migration class to /path/to/migrations/DoctrineMigrations/Version2
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

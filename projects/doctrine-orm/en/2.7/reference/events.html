@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -274,91 +271,140 @@ You can also use it for your own custom events.</p>
 central point of Doctrine's event listener system. Listeners are
 registered on the manager and events are dispatched through the
 manager.</p>
-<pre><code class="php">&lt;?php
-$evm = new EventManager();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7b6a72894218345ed272d9adfeda3f47a8920ae2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7b6a72894218345ed272d9adfeda3f47a8920ae2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr></table></div></code></pre>
 <p>Now we can add some event listeners to the <code>$evm</code>. Let's create a
 <code>TestEvent</code> class to play around with.</p>
-<pre><code class="php">&lt;?php
-class TestEvent
-{
-    const preFoo = 'preFoo';
-    const postFoo = 'postFoo';
-
-    private $_evm;
-
-    public $preFooInvoked = false;
-    public $postFooInvoked = false;
-
-    public function __construct($evm)
-    {
-        $evm-&gt;addEventListener(array(self::preFoo, self::postFoo), $this);
-    }
-
-    public function preFoo(EventArgs $e)
-    {
-        $this-&gt;preFooInvoked = true;
-    }
-
-    public function postFoo(EventArgs $e)
-    {
-        $this-&gt;postFooInvoked = true;
-    }
-}
-
-// Create a new instance
-$test = new TestEvent($evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="601bdf0ff87e6e3ca8c4d55e5c78956fb51e4ee8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="601bdf0ff87e6e3ca8c4d55e5c78956fb51e4ee8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEvent</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">const</span> preFoo = <span class="hljs-string">'preFoo'</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">const</span> postFoo = <span class="hljs-string">'postFoo'</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $_evm;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> $preFooInvoked = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $postFooInvoked = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($evm)</span></span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        $evm-&gt;addEventListener(<span class="hljs-keyword">array</span>(<span class="hljs-keyword">self</span>::preFoo, <span class="hljs-keyword">self</span>::postFoo), <span class="hljs-keyword">$this</span>);
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFoo</span><span class="hljs-params">(EventArgs $e)</span></span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;preFooInvoked = <span class="hljs-keyword">true</span>;
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postFoo</span><span class="hljs-params">(EventArgs $e)</span></span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;postFooInvoked = <span class="hljs-keyword">true</span>;
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-comment">// Create a new instance</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">$test = <span class="hljs-keyword">new</span> TestEvent($evm);
+</td></tr></table></div></code></pre>
 <p>Events can be dispatched by using the <code>dispatchEvent()</code> method.</p>
-<pre><code class="php">&lt;?php
-$evm-&gt;dispatchEvent(TestEvent::preFoo);
-$evm-&gt;dispatchEvent(TestEvent::postFoo);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="be466495ba15aff1315470a96dd0f0794652312d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="be466495ba15aff1315470a96dd0f0794652312d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$evm-&gt;dispatchEvent(TestEvent::preFoo);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$evm-&gt;dispatchEvent(TestEvent::postFoo);
+</td></tr></table></div></code></pre>
 <p>You can easily remove a listener with the <code>removeEventListener()</code>
 method.</p>
-<pre><code class="php">&lt;?php
-$evm-&gt;removeEventListener(array(self::preFoo, self::postFoo), $this);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f0ed8ec817020862400719c14948e592e7dfdf6c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f0ed8ec817020862400719c14948e592e7dfdf6c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$evm-&gt;removeEventListener(<span class="hljs-keyword">array</span>(<span class="hljs-keyword">self</span>::preFoo, <span class="hljs-keyword">self</span>::postFoo), <span class="hljs-keyword">$this</span>);
+</td></tr></table></div></code></pre>
 <p>The Doctrine 2 event system also has a simple concept of event
 subscribers. We can define a simple <code>TestEventSubscriber</code> class
 which implements the <code>\Doctrine\Common\EventSubscriber</code> interface
 and implements a <code>getSubscribedEvents()</code> method which returns an
 array of events it should be subscribed to.</p>
-<pre><code class="php">&lt;?php
-class TestEventSubscriber implements \Doctrine\Common\EventSubscriber
-{
-    public $preFooInvoked = false;
-
-    public function preFoo()
-    {
-        $this-&gt;preFooInvoked = true;
-    }
-
-    public function getSubscribedEvents()
-    {
-        return array(TestEvent::preFoo);
-    }
-}
-
-$eventSubscriber = new TestEventSubscriber();
-$evm-&gt;addEventSubscriber($eventSubscriber);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5568c5cecb11bb7bc5f908e7e2781aabd7ea984a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5568c5cecb11bb7bc5f908e7e2781aabd7ea984a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEventSubscriber</span> <span class="hljs-keyword">implements</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> $preFooInvoked = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFoo</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;preFooInvoked = <span class="hljs-keyword">true</span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(TestEvent::preFoo);
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">$eventSubscriber = <span class="hljs-keyword">new</span> TestEventSubscriber();
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$evm-&gt;addEventSubscriber($eventSubscriber);
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The array to return in the <code>getSubscribedEvents</code> method is a simple array
 with the values being the event names. The subscriber must have a method
 that is named exactly like the event.</p>
 </div>
 <p>Now when you dispatch an event, any event subscribers will be
 notified for that event.</p>
-<pre><code class="php">&lt;?php
-$evm-&gt;dispatchEvent(TestEvent::preFoo);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dd427ae1ca3691c5871517569ea055471556cc69"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dd427ae1ca3691c5871517569ea055471556cc69"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$evm-&gt;dispatchEvent(TestEvent::preFoo);
+</td></tr></table></div></code></pre>
 <p>Now you can test the <code>$eventSubscriber</code> instance to see if the
 <code>preFoo()</code> method was invoked.</p>
-<pre><code class="php">&lt;?php
-if ($eventSubscriber-&gt;preFooInvoked) {
-    echo 'pre foo invoked!';
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="461afdbc85f047626b1cb13788f8e789986c2832"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="461afdbc85f047626b1cb13788f8e789986c2832"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">if</span> ($eventSubscriber-&gt;preFooInvoked) {
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">echo</span> <span class="hljs-string">'pre foo invoked!'</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="naming-convention" name="naming-convention"></a><h3 class="section-header"><a href="#naming-convention">Naming convention<i class="fas fa-link"></i></a></h3>
 <p>Events being used with the Doctrine 2 EventManager are best named
 with camelcase and the value of the corresponding constant should
@@ -432,10 +478,17 @@ the associated pre event.</p>
 </div>
 <p>You can access the Event constants from the <code>Events</code> class in the
 ORM package.</p>
-<pre><code class="php">&lt;?php
-use Doctrine\ORM\Events;
-echo Events::preUpdate;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d92b4f734fdd718deb8fcde2e0c572dfcaeba4f7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d92b4f734fdd718deb8fcde2e0c572dfcaeba4f7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Events</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">echo</span> Events::preUpdate;
+</td></tr></table></div></code></pre>
 <p>These can be hooked into by two different types of event
 listeners:</p>
 <ul><li class="dash"> Lifecycle Callbacks are methods on the entity classes that are
@@ -459,89 +512,110 @@ trigger callbacks whenever an instance of that entity class experiences
 a relevant lifecycle event. More than one callback can be defined for each
 lifecycle event. Lifecycle Callbacks are best used for simple operations
 specific to a particular entity class's lifecycle.</p>
-<pre><code class="php">&lt;?php
-
-/** @Entity @HasLifecycleCallbacks */
-class User
-{
-    // ...
-
-    /**
-     * @Column(type=&quot;string&quot;, length=255)
-     */
-    public $value;
-
-    /** @Column(name=&quot;created_at&quot;, type=&quot;string&quot;, length=255) */
-    private $createdAt;
-
-    /** @PrePersist */
-    public function doStuffOnPrePersist()
-    {
-        $this-&gt;createdAt = date('Y-m-d H:i:s');
-    }
-
-    /** @PrePersist */
-    public function doOtherStuffOnPrePersist()
-    {
-        $this-&gt;value = 'changed from prePersist callback!';
-    }
-
-    /** @PostPersist */
-    public function doStuffOnPostPersist()
-    {
-        $this-&gt;value = 'changed from postPersist callback!';
-    }
-
-    /** @PostLoad */
-    public function doStuffOnPostLoad()
-    {
-        $this-&gt;value = 'changed from postLoad callback!';
-    }
-
-    /** @PreUpdate */
-    public function doStuffOnPreUpdate()
-    {
-        $this-&gt;value = 'changed from preUpdate callback!';
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f5b976aa57f740bbc680fabfd4b0398842caf2b7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f5b976aa57f740bbc680fabfd4b0398842caf2b7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @Column(type=<span class="hljs-string">"string"</span>, length=<span class="hljs-number">255</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> $value;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(name="created_at", type="string", length=255) */</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">private</span> $createdAt;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PrePersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPrePersist</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;createdAt = date(<span class="hljs-string">'Y-m-d H:i:s'</span>);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PrePersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doOtherStuffOnPrePersist</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from prePersist callback!'</span>;
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostPersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPostPersist</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from postPersist callback!'</span>;
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostLoad</span> */</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPostLoad</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from postLoad callback!'</span>;
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PreUpdate</span> */</span>
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPreUpdate</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from preUpdate callback!'</span>;
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Note that the methods set as lifecycle callbacks need to be public and,
 when using these annotations, you have to apply the
 <code>@HasLifecycleCallbacks</code> marker annotation on the entity class.</p>
 <p>If you want to register lifecycle callbacks from YAML or XML you
 can do it with the following.</p>
-<pre><code class="yaml">User:
-  type: entity
-  fields:
-# ...
-    name:
-      type: string(50)
-  lifecycleCallbacks:
-    prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersist ]
-    postPersist: [ doStuffOnPostPersist ]
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f7e93fc2fb82007f31136cf0485c92f0feeec824"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f7e93fc2fb82007f31136cf0485c92f0feeec824"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  fields:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    name:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(50)</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">  lifecycleCallbacks:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    prePersist:</span> <span class="hljs-string">[</span> <span class="hljs-string">doStuffOnPrePersist,</span> <span class="hljs-string">doOtherStuffOnPrePersist</span> <span class="hljs-string">]</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    postPersist:</span> <span class="hljs-string">[</span> <span class="hljs-string">doStuffOnPostPersist</span> <span class="hljs-string">]</span>
+</td></tr></table></div></code></pre>
 <p>In YAML the <code>key</code> of the lifecycleCallbacks entry is the event that you
 are triggering on and the value is the method (or methods) to call. The allowed
 event types are the ones listed in the previous Lifecycle Events section.</p>
 <p>XML would look something like this:</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-
-&lt;doctrine-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping&quot;
-      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-      xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping
-                          /Users/robo/dev/php/Doctrine/doctrine-mapping.xsd&quot;&gt;
-
-    &lt;entity name=&quot;User&quot;&gt;
-
-        &lt;lifecycle-callbacks&gt;
-            &lt;lifecycle-callback type=&quot;prePersist&quot; method=&quot;doStuffOnPrePersist&quot;/&gt;
-            &lt;lifecycle-callback type=&quot;postPersist&quot; method=&quot;doStuffOnPostPersist&quot;/&gt;
-        &lt;/lifecycle-callbacks&gt;
-
-    &lt;/entity&gt;
-
-&lt;/doctrine-mapping&gt;
-</code></pre>
+<pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bbe87d6fb6f88dd66d462ce3b4cebbd71eab3fa1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bbe87d6fb6f88dd66d462ce3b4cebbd71eab3fa1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">                          /Users/robo/dev/php/Doctrine/doctrine-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callbacks</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"prePersist"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"doStuffOnPrePersist"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"postPersist"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"doStuffOnPostPersist"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">lifecycle-callbacks</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre>
 <p>In XML the <code>type</code> of the lifecycle-callback entry is the event that you
 are triggering on and the <code>method</code> is the method to call. The allowed event
 types are the ones listed in the previous Lifecycle Events section.</p>
@@ -549,47 +623,60 @@ types are the ones listed in the previous Lifecycle Events section.</p>
 callback names you defined. E.g. in these examples <code>doStuffOnPrePersist()</code>,
 <code>doOtherStuffOnPrePersist()</code> and <code>doStuffOnPostPersist()</code> methods need to be
 defined on your <code>User</code> model.</p>
-<pre><code class="php">&lt;?php
-// ...
-
-class User
-{
-    // ...
-
-    public function doStuffOnPrePersist()
-    {
-        // ...
-    }
-
-    public function doOtherStuffOnPrePersist()
-    {
-        // ...
-    }
-
-    public function doStuffOnPostPersist()
-    {
-        // ...
-    }
-}
-
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8b25ba6c58b3ec05bf0619062d78665bacfff11d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8b25ba6c58b3ec05bf0619062d78665bacfff11d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPrePersist</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doOtherStuffOnPrePersist</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPostPersist</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="lifecycle-callbacks-event-argument" name="lifecycle-callbacks-event-argument"></a><h2 class="section-header"><a href="#lifecycle-callbacks-event-argument">Lifecycle Callbacks Event Argument<i class="fas fa-link"></i></a></h2>
 <div class="version-added"><p>Since 2.4 the triggered event is given to the lifecycle-callback.</p></div>
 <p>With the additional argument you have access to the
 <code>EntityManager</code> and <code>UnitOfWork</code> APIs inside these callback methods.</p>
-<pre><code class="php">&lt;?php
-// ...
-
-class User
-{
-    public function preUpdate(PreUpdateEventArgs $event)
-    {
-        if ($event-&gt;hasChangedField('username')) {
-            // Do something when the username is changed.
-        }
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="88323b3830e2029e7d75c45de170a481cca64a2c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="88323b3830e2029e7d75c45de170a481cca64a2c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preUpdate</span><span class="hljs-params">(PreUpdateEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-keyword">if</span> ($event-&gt;hasChangedField(<span class="hljs-string">'username'</span>)) {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            <span class="hljs-comment">// Do something when the username is changed.</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="listening-and-subscribing-to-lifecycle-events" name="listening-and-subscribing-to-lifecycle-events"></a><h2 class="section-header"><a href="#listening-and-subscribing-to-lifecycle-events">Listening and subscribing to Lifecycle Events<i class="fas fa-link"></i></a></h2>
 <p>Lifecycle event listeners are much more powerful than the simple
 lifecycle callbacks that are defined on the entity classes. They
@@ -603,68 +690,96 @@ are trying to write your own listener.</p>
 lifecycle events in their <code>getSubscribedEvents</code> method and provide
 public methods that expect the relevant arguments.</p>
 <p>A lifecycle event listener looks like the following:</p>
-<pre><code class="php">&lt;?php
-use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
-
-class MyEventListener
-{
-    public function preUpdate(LifecycleEventArgs $args)
-    {
-        $entity = $args-&gt;getObject();
-        $entityManager = $args-&gt;getObjectManager();
-
-        // perhaps you only want to act on some &quot;Product&quot; entity
-        if ($entity instanceof Product) {
-            // do something with the Product
-        }
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3fd6515d7ea85c266c754ab4630bee0c6134a872"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3fd6515d7ea85c266c754ab4630bee0c6134a872"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Event</span>\<span class="hljs-title">LifecycleEventArgs</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventListener</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preUpdate</span><span class="hljs-params">(LifecycleEventArgs $args)</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $entity = $args-&gt;getObject();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        $entityManager = $args-&gt;getObjectManager();
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// perhaps you only want to act on some "Product" entity</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-keyword">if</span> ($entity <span class="hljs-keyword">instanceof</span> Product) {
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            <span class="hljs-comment">// do something with the Product</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>A lifecycle event subscriber may look like this:</p>
-<pre><code class="php">&lt;?php
-use Doctrine\ORM\Events;
-use Doctrine\Common\EventSubscriber;
-use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
-
-class MyEventSubscriber implements EventSubscriber
-{
-    public function getSubscribedEvents()
-    {
-        return array(
-            Events::postUpdate,
-        );
-    }
-
-    public function postUpdate(LifecycleEventArgs $args)
-    {
-        $entity = $args-&gt;getObject();
-        $entityManager = $args-&gt;getObjectManager();
-
-        // perhaps you only want to act on some &quot;Product&quot; entity
-        if ($entity instanceof Product) {
-            // do something with the Product
-        }
-    }
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e3db3d781604f7dcad9f47f0fe9e9106d9136903"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e3db3d781604f7dcad9f47f0fe9e9106d9136903"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Events</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Event</span>\<span class="hljs-title">LifecycleEventArgs</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventSubscriber</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">EventSubscriber</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            Events::postUpdate,
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        );
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postUpdate</span><span class="hljs-params">(LifecycleEventArgs $args)</span></span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        $entity = $args-&gt;getObject();
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        $entityManager = $args-&gt;getObjectManager();
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-comment">// perhaps you only want to act on some "Product" entity</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-keyword">if</span> ($entity <span class="hljs-keyword">instanceof</span> Product) {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">            <span class="hljs-comment">// do something with the Product</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    }
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Lifecycle events are triggered for all entities. It is the responsibility
 of the listeners and subscribers to check if the entity is of a type
 it wants to handle.</p>
 </div>
 <p>To register an event listener or subscriber, you have to hook it into the
 EventManager that is passed to the EntityManager factory:</p>
-<pre><code class="php">&lt;?php
-$eventManager = new EventManager();
-$eventManager-&gt;addEventListener(array(Events::preUpdate), new MyEventListener());
-$eventManager-&gt;addEventSubscriber(new MyEventSubscriber());
-
-$entityManager = EntityManager::create($dbOpts, $config, $eventManager);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="17e6ba5ce5c2077e7fa504b8990098202c199b78"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="17e6ba5ce5c2077e7fa504b8990098202c199b78"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$eventManager = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$eventManager-&gt;addEventListener(<span class="hljs-keyword">array</span>(Events::preUpdate), <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$eventManager-&gt;addEventSubscriber(<span class="hljs-keyword">new</span> MyEventSubscriber());
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$entityManager = EntityManager::create($dbOpts, $config, $eventManager);
+</td></tr></table></div></code></pre>
 <p>You can also retrieve the event manager instance after the
 EntityManager was created:</p>
-<pre><code class="php">&lt;?php
-$entityManager-&gt;getEventManager()-&gt;addEventListener(array(Events::preUpdate), new MyEventListener());
-$entityManager-&gt;getEventManager()-&gt;addEventSubscriber(new MyEventSubscriber());
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="60950e4987eaa371a8d4856702f76bbc55d867fc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="60950e4987eaa371a8d4856702f76bbc55d867fc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$entityManager-&gt;getEventManager()-&gt;addEventListener(<span class="hljs-keyword">array</span>(Events::preUpdate), <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$entityManager-&gt;getEventManager()-&gt;addEventSubscriber(<span class="hljs-keyword">new</span> MyEventSubscriber());
+</td></tr></table></div></code></pre>
 <a id="reference-events-implementing-listeners"></a>
 <a class="section-anchor" id="implementing-event-listeners" name="implementing-event-listeners"></a><h2 class="section-header"><a href="#implementing-event-listeners">Implementing Event Listeners<i class="fas fa-link"></i></a></h2>
 <p>This section explains what is and what is not allowed during
@@ -708,18 +823,25 @@ called during a flush operation.</p>
 <p><code>preFlush</code> is called at <code>EntityManager#flush()</code> before
 anything else. <code>EntityManager#flush()</code> can be called safely
 inside its listeners.</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\ORM\Event\PreFlushEventArgs;
-
-class PreFlushExampleListener
-{
-    public function preFlush(PreFlushEventArgs $args)
-    {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2c00736be8a86dd000da3024c5ec9565d54269bd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2c00736be8a86dd000da3024c5ec9565d54269bd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Event</span>\<span class="hljs-title">PreFlushEventArgs</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PreFlushExampleListener</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFlush</span><span class="hljs-params">(PreFlushEventArgs $args)</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="onflush" name="onflush"></a><h3 class="section-header"><a href="#onflush">onFlush<i class="fas fa-link"></i></a></h3>
 <p>OnFlush is a very powerful event. It is called inside
 <code>EntityManager#flush()</code> after the changes to all the managed
@@ -735,36 +857,43 @@ entities and their associations have been computed. This means, the
 <p>To make use of the onFlush event you have to be familiar with the
 internal UnitOfWork API, which grants you access to the previously
 mentioned sets. See this example:</p>
-<pre><code class="php">&lt;?php
-class FlushExampleListener
-{
-    public function onFlush(OnFlushEventArgs $eventArgs)
-    {
-        $em = $eventArgs-&gt;getEntityManager();
-        $uow = $em-&gt;getUnitOfWork();
-
-        foreach ($uow-&gt;getScheduledEntityInsertions() as $entity) {
-
-        }
-
-        foreach ($uow-&gt;getScheduledEntityUpdates() as $entity) {
-
-        }
-
-        foreach ($uow-&gt;getScheduledEntityDeletions() as $entity) {
-
-        }
-
-        foreach ($uow-&gt;getScheduledCollectionDeletions() as $col) {
-
-        }
-
-        foreach ($uow-&gt;getScheduledCollectionUpdates() as $col) {
-
-        }
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="02162ee7e39560b14d2133634d783546bb8d1df2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="02162ee7e39560b14d2133634d783546bb8d1df2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FlushExampleListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onFlush</span><span class="hljs-params">(OnFlushEventArgs $eventArgs)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        $em = $eventArgs-&gt;getEntityManager();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $uow = $em-&gt;getUnitOfWork();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">foreach</span> ($uow-&gt;getScheduledEntityInsertions() <span class="hljs-keyword">as</span> $entity) {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-keyword">foreach</span> ($uow-&gt;getScheduledEntityUpdates() <span class="hljs-keyword">as</span> $entity) {
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-keyword">foreach</span> ($uow-&gt;getScheduledEntityDeletions() <span class="hljs-keyword">as</span> $entity) {
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-keyword">foreach</span> ($uow-&gt;getScheduledCollectionDeletions() <span class="hljs-keyword">as</span> $col) {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">foreach</span> ($uow-&gt;getScheduledCollectionUpdates() <span class="hljs-keyword">as</span> $col) {
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The following restrictions apply to the onFlush event:</p>
 <ul><li class="dash"> If you create and persist a new entity in <code>onFlush</code>, then
    calling <code>EntityManager#persist()</code> is not enough.
@@ -779,18 +908,25 @@ class FlushExampleListener
 <a class="section-anchor" id="postflush" name="postflush"></a><h3 class="section-header"><a href="#postflush">postFlush<i class="fas fa-link"></i></a></h3>
 <p><code>postFlush</code> is called at the end of <code>EntityManager#flush()</code>.
 <code>EntityManager#flush()</code> can <strong>NOT</strong> be called safely inside its listeners.</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\ORM\Event\PostFlushEventArgs;
-
-class PostFlushExampleListener
-{
-    public function postFlush(PostFlushEventArgs $args)
-    {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ce0e8ab523545e8031a313bf0a24f4c4e4d75b5d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ce0e8ab523545e8031a313bf0a24f4c4e4d75b5d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Event</span>\<span class="hljs-title">PostFlushEventArgs</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PostFlushExampleListener</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postFlush</span><span class="hljs-params">(PostFlushEventArgs $args)</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="preupdate" name="preupdate"></a><h3 class="section-header"><a href="#preupdate">preUpdate<i class="fas fa-link"></i></a></h3>
 <p>PreUpdate is the most restrictive to use event, since it is called
 right before an update statement is called for an entity inside the
@@ -817,40 +953,54 @@ available on the <code>PreUpdateEventArgs</code>:</p>
 </ul>
 
 <p>A simple example for this event looks like:</p>
-<pre><code class="php">&lt;?php
-class NeverAliceOnlyBobListener
-{
-    public function preUpdate(PreUpdateEventArgs $eventArgs)
-    {
-        if ($eventArgs-&gt;getEntity() instanceof User) {
-            if ($eventArgs-&gt;hasChangedField('name') &amp;&amp; $eventArgs-&gt;getNewValue('name') == 'Alice') {
-                $eventArgs-&gt;setNewValue('name', 'Bob');
-            }
-        }
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ff8af204247d44b882ec83f2adc95a4109e4e207"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ff8af204247d44b882ec83f2adc95a4109e4e207"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NeverAliceOnlyBobListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preUpdate</span><span class="hljs-params">(PreUpdateEventArgs $eventArgs)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-keyword">if</span> ($eventArgs-&gt;getEntity() <span class="hljs-keyword">instanceof</span> User) {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            <span class="hljs-keyword">if</span> ($eventArgs-&gt;hasChangedField(<span class="hljs-string">'name'</span>) &amp;&amp; $eventArgs-&gt;getNewValue(<span class="hljs-string">'name'</span>) == <span class="hljs-string">'Alice'</span>) {
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                $eventArgs-&gt;setNewValue(<span class="hljs-string">'name'</span>, <span class="hljs-string">'Bob'</span>);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            }
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>You could also use this listener to implement validation of all the
 fields that have changed. This is more efficient than using a
 lifecycle callback when there are expensive validations to call:</p>
-<pre><code class="php">&lt;?php
-class ValidCreditCardListener
-{
-    public function preUpdate(PreUpdateEventArgs $eventArgs)
-    {
-        if ($eventArgs-&gt;getEntity() instanceof Account) {
-            if ($eventArgs-&gt;hasChangedField('creditCard')) {
-                $this-&gt;validateCreditCard($eventArgs-&gt;getNewValue('creditCard'));
-            }
-        }
-    }
-
-    private function validateCreditCard($no)
-    {
-        // throw an exception to interrupt flush event. Transaction will be rolled back.
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cb19a1cc4a243eb7e12d1746970ba44d98899c60"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cb19a1cc4a243eb7e12d1746970ba44d98899c60"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ValidCreditCardListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preUpdate</span><span class="hljs-params">(PreUpdateEventArgs $eventArgs)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-keyword">if</span> ($eventArgs-&gt;getEntity() <span class="hljs-keyword">instanceof</span> Account) {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            <span class="hljs-keyword">if</span> ($eventArgs-&gt;hasChangedField(<span class="hljs-string">'creditCard'</span>)) {
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                <span class="hljs-keyword">$this</span>-&gt;validateCreditCard($eventArgs-&gt;getNewValue(<span class="hljs-string">'creditCard'</span>));
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            }
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateCreditCard</span><span class="hljs-params">($no)</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-comment">// throw an exception to interrupt flush event. Transaction will be rolled back.</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Restrictions for this event:</p>
 <ul><li class="dash"> Changes to associations of the passed entities are not
    recognized by the flush operation anymore.</li>
@@ -879,26 +1029,49 @@ EntityManager.</p>
 <li class="dash">An entity listener is defined by mapping the entity class with the corresponding mapping.</li>
 </ul>
 
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-namespace MyProject\Entity;
-
-/** @Entity @EntityListeners({&quot;UserListener&quot;}) */
-class User
-{
-    // ....
-}</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;MyProject\Entity\User&quot;&gt;
-        &lt;entity-listeners&gt;
-            &lt;entity-listener class=&quot;UserListener&quot;/&gt;
-        &lt;/entity-listeners&gt;
-        &lt;!-- .... --&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">MyProject\Entity\User:
-  type: entity
-  entityListeners:
-    UserListener:
-  # ....
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7a0ca2add33828b0210e805a4e5d97c741ee1b47"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7a0ca2add33828b0210e805a4e5d97c741ee1b47"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Entity</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> <span class="hljs-doctag">@EntityListeners</span>({"UserListener"}) */</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">// ....</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="245658551823ca58273e96d8ecede55b1d9c5ce1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="245658551823ca58273e96d8ecede55b1d9c5ce1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyProject\Entity\User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">entity-listeners</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">entity-listener</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"UserListener"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">entity-listeners</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">&lt;!-- .... --&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c9b0cf4ee9e39aeadf0ef944fda5dabd27f80212"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c9b0cf4ee9e39aeadf0ef944fda5dabd27f80212"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-string">MyProject\Entity\User:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  entityListeners:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    UserListener:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">  <span class="hljs-comment"># ....</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <a id="reference-entity-listeners"></a>
 <a class="section-anchor" id="entity-listeners-class" name="entity-listeners-class"></a><h3 class="section-header"><a href="#entity-listeners-class">Entity listeners class<i class="fas fa-link"></i></a></h3>
 <p>An <code>Entity Listener</code> could be any class, by default it should be a class with a no-arg constructor.</p>
@@ -910,79 +1083,109 @@ class User
 <li class="dash">When a listener mapping is given the parser will not look for any methods using the naming convention.</li>
 </ul>
 
-<pre><code class="php">&lt;?php
-class UserListener
-{
-    public function preUpdate(User $user, PreUpdateEventArgs $event)
-    {
-        // Do something on pre update.
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="559dad9f30984916a7f07c89f7e3ace97569c61e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="559dad9f30984916a7f07c89f7e3ace97569c61e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preUpdate</span><span class="hljs-params">(User $user, PreUpdateEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Do something on pre update.</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>To define a specific event listener method (one that does not follow the naming convention)
 you need to map the listener method using the event type mapping:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-class UserListener
-{
-    /** @PrePersist */
-    public function prePersistHandler(User $user, LifecycleEventArgs $event) { // ... }
-
-    /** @PostPersist */
-    public function postPersistHandler(User $user, LifecycleEventArgs $event) { // ... }
-
-    /** @PreUpdate */
-    public function preUpdateHandler(User $user, PreUpdateEventArgs $event) { // ... }
-
-    /** @PostUpdate */
-    public function postUpdateHandler(User $user, LifecycleEventArgs $event) { // ... }
-
-    /** @PostRemove */
-    public function postRemoveHandler(User $user, LifecycleEventArgs $event) { // ... }
-
-    /** @PreRemove */
-    public function preRemoveHandler(User $user, LifecycleEventArgs $event) { // ... }
-
-    /** @PreFlush */
-    public function preFlushHandler(User $user, PreFlushEventArgs $event) { // ... }
-
-    /** @PostLoad */
-    public function postLoadHandler(User $user, LifecycleEventArgs $event) { // ... }
-}</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;MyProject\Entity\User&quot;&gt;
-         &lt;entity-listeners&gt;
-            &lt;entity-listener class=&quot;UserListener&quot;&gt;
-                &lt;lifecycle-callback type=&quot;preFlush&quot;      method=&quot;preFlushHandler&quot;/&gt;
-                &lt;lifecycle-callback type=&quot;postLoad&quot;      method=&quot;postLoadHandler&quot;/&gt;
-
-                &lt;lifecycle-callback type=&quot;postPersist&quot;   method=&quot;postPersistHandler&quot;/&gt;
-                &lt;lifecycle-callback type=&quot;prePersist&quot;    method=&quot;prePersistHandler&quot;/&gt;
-
-                &lt;lifecycle-callback type=&quot;postUpdate&quot;    method=&quot;postUpdateHandler&quot;/&gt;
-                &lt;lifecycle-callback type=&quot;preUpdate&quot;     method=&quot;preUpdateHandler&quot;/&gt;
-
-                &lt;lifecycle-callback type=&quot;postRemove&quot;    method=&quot;postRemoveHandler&quot;/&gt;
-                &lt;lifecycle-callback type=&quot;preRemove&quot;     method=&quot;preRemoveHandler&quot;/&gt;
-            &lt;/entity-listener&gt;
-        &lt;/entity-listeners&gt;
-        &lt;!-- .... --&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">MyProject\Entity\User:
-  type: entity
-  entityListeners:
-    UserListener:
-      preFlush: [preFlushHandler]
-      postLoad: [postLoadHandler]
-
-      postPersist: [postPersistHandler]
-      prePersist: [prePersistHandler]
-
-      postUpdate: [postUpdateHandler]
-      preUpdate: [preUpdateHandler]
-
-      postRemove: [postRemoveHandler]
-      preRemove: [preRemoveHandler]
-  # ....
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a747a2202b5b02529af0027cc7a5b7cbd17d6d3d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a747a2202b5b02529af0027cc7a5b7cbd17d6d3d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PrePersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prePersistHandler</span><span class="hljs-params">(User $user, LifecycleEventArgs $event)</span> </span>{ <span class="hljs-comment">// ... }</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostPersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postPersistHandler</span><span class="hljs-params">(User $user, LifecycleEventArgs $event)</span> </span>{ <span class="hljs-comment">// ... }</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PreUpdate</span> */</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preUpdateHandler</span><span class="hljs-params">(User $user, PreUpdateEventArgs $event)</span> </span>{ <span class="hljs-comment">// ... }</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostUpdate</span> */</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postUpdateHandler</span><span class="hljs-params">(User $user, LifecycleEventArgs $event)</span> </span>{ <span class="hljs-comment">// ... }</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostRemove</span> */</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postRemoveHandler</span><span class="hljs-params">(User $user, LifecycleEventArgs $event)</span> </span>{ <span class="hljs-comment">// ... }</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PreRemove</span> */</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preRemoveHandler</span><span class="hljs-params">(User $user, LifecycleEventArgs $event)</span> </span>{ <span class="hljs-comment">// ... }</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PreFlush</span> */</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFlushHandler</span><span class="hljs-params">(User $user, PreFlushEventArgs $event)</span> </span>{ <span class="hljs-comment">// ... }</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostLoad</span> */</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postLoadHandler</span><span class="hljs-params">(User $user, LifecycleEventArgs $event)</span> </span>{ <span class="hljs-comment">// ... }</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="32c1cd0397531bbebf399c215e9a1d76760b74bc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="32c1cd0397531bbebf399c215e9a1d76760b74bc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyProject\Entity\User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">         <span class="hljs-tag">&lt;<span class="hljs-name">entity-listeners</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">entity-listener</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"UserListener"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"preFlush"</span>      <span class="hljs-attr">method</span>=<span class="hljs-string">"preFlushHandler"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"postLoad"</span>      <span class="hljs-attr">method</span>=<span class="hljs-string">"postLoadHandler"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"postPersist"</span>   <span class="hljs-attr">method</span>=<span class="hljs-string">"postPersistHandler"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"prePersist"</span>    <span class="hljs-attr">method</span>=<span class="hljs-string">"prePersistHandler"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"postUpdate"</span>    <span class="hljs-attr">method</span>=<span class="hljs-string">"postUpdateHandler"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"preUpdate"</span>     <span class="hljs-attr">method</span>=<span class="hljs-string">"preUpdateHandler"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"postRemove"</span>    <span class="hljs-attr">method</span>=<span class="hljs-string">"postRemoveHandler"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"preRemove"</span>     <span class="hljs-attr">method</span>=<span class="hljs-string">"preRemoveHandler"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">entity-listener</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">entity-listeners</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        <span class="hljs-comment">&lt;!-- .... --&gt;</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6a900b7283881fbd38172472e587e4ff45e188fe"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6a900b7283881fbd38172472e587e4ff45e188fe"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-string">MyProject\Entity\User:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  entityListeners:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    UserListener:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      preFlush:</span> <span class="hljs-string">[preFlushHandler]</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      postLoad:</span> <span class="hljs-string">[postLoadHandler]</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      postPersist:</span> <span class="hljs-string">[postPersistHandler]</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      prePersist:</span> <span class="hljs-string">[prePersistHandler]</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      postUpdate:</span> <span class="hljs-string">[postUpdateHandler]</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">      preUpdate:</span> <span class="hljs-string">[preUpdateHandler]</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      postRemove:</span> <span class="hljs-string">[postRemoveHandler]</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">      preRemove:</span> <span class="hljs-string">[preRemoveHandler]</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">  <span class="hljs-comment"># ....</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The order of execution of multiple methods for the same event (e.g. multiple @PrePersist) is not guaranteed.</p>
 </div>
 <a class="section-anchor" id="entity-listeners-resolver" name="entity-listeners-resolver"></a><h3 class="section-header"><a href="#entity-listeners-resolver">Entity listeners resolver<i class="fas fa-link"></i></a></h3>
@@ -992,79 +1195,100 @@ class UserListener
 </ul>
 
 <p>Specifying an entity listener instance :</p>
-<pre><code class="php">&lt;?php
-// User.php
-
-/** @Entity @EntityListeners({&quot;UserListener&quot;}) */
-class User
-{
-    // ....
-}
-
-// UserListener.php
-class UserListener
-{
-    public function __construct(MyService $service)
-    {
-        $this-&gt;service = $service;
-    }
-
-    public function preUpdate(User $user, PreUpdateEventArgs $event)
-    {
-        $this-&gt;service-&gt;doSomething($user);
-    }
-}
-
-// register a entity listener.
-$listener = $container-&gt;get('user_listener');
-$em-&gt;getConfiguration()-&gt;getEntityListenerResolver()-&gt;register($listener);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="40d383088a544fe24b1ec03c60bb134ff13e79e3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="40d383088a544fe24b1ec03c60bb134ff13e79e3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// User.php</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> <span class="hljs-doctag">@EntityListeners</span>({"UserListener"}) */</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">// ....</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">// UserListener.php</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserListener</span></span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(MyService $service)</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;service = $service;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preUpdate</span><span class="hljs-params">(User $user, PreUpdateEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;service-&gt;doSomething($user);
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-comment">// register a entity listener.</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">$listener = $container-&gt;get(<span class="hljs-string">'user_listener'</span>);
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">$em-&gt;getConfiguration()-&gt;getEntityListenerResolver()-&gt;register($listener);
+</td></tr></table></div></code></pre>
 <p>Implementing your own resolver :</p>
-<pre><code class="php">&lt;?php
-class MyEntityListenerResolver extends \Doctrine\ORM\Mapping\DefaultEntityListenerResolver
-{
-    public function __construct($container)
-    {
-        $this-&gt;container = $container;
-    }
-
-    public function resolve($className)
-    {
-        // resolve the service id by the given class name;
-        $id = 'user_listener';
-
-        return $this-&gt;container-&gt;get($id);
-    }
-}
-
-// Configure the listener resolver only before instantiating the EntityManager
-$configurations-&gt;setEntityListenerResolver(new MyEntityListenerResolver);
-EntityManager::create(.., $configurations, ..);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ef6d096877712370d42b58e2577987977f1d1408"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ef6d096877712370d42b58e2577987977f1d1408"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEntityListenerResolver</span> <span class="hljs-keyword">extends</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">DefaultEntityListenerResolver</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($container)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;container = $container;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolve</span><span class="hljs-params">($className)</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// resolve the service id by the given class name;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        $id = <span class="hljs-string">'user_listener'</span>;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;container-&gt;get($id);
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-comment">// Configure the listener resolver only before instantiating the EntityManager</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$configurations-&gt;setEntityListenerResolver(<span class="hljs-keyword">new</span> MyEntityListenerResolver);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">EntityManager::create(.., $configurations, ..);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="load-classmetadata-event" name="load-classmetadata-event"></a><h2 class="section-header"><a href="#load-classmetadata-event">Load ClassMetadata Event<i class="fas fa-link"></i></a></h2>
 <p>When the mapping information for an entity is read, it is populated
 in to a <code>ClassMetadataInfo</code> instance. You can hook in to this
 process and manipulate the instance.</p>
-<pre><code class="php">&lt;?php
-$test = new TestEvent();
-$metadataFactory = $em-&gt;getMetadataFactory();
-$evm = $em-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::loadClassMetadata, $test);
-
-class TestEvent
-{
-    public function loadClassMetadata(\Doctrine\ORM\Event\LoadClassMetadataEventArgs $eventArgs)
-    {
-        $classMetadata = $eventArgs-&gt;getClassMetadata();
-        $fieldMapping = array(
-            'fieldName' =&gt; 'about',
-            'type' =&gt; 'string',
-            'length' =&gt; 255
-        );
-        $classMetadata-&gt;mapField($fieldMapping);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f52c1a674def42d8ba3a5380997901e0c2cd8157"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f52c1a674def42d8ba3a5380997901e0c2cd8157"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$test = <span class="hljs-keyword">new</span> TestEvent();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$metadataFactory = $em-&gt;getMetadataFactory();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $em-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::loadClassMetadata, $test);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEvent</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadClassMetadata</span><span class="hljs-params">(\Doctrine\ORM\Event\LoadClassMetadataEventArgs $eventArgs)</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        $classMetadata = $eventArgs-&gt;getClassMetadata();
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        $fieldMapping = <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            <span class="hljs-string">'fieldName'</span> =&gt; <span class="hljs-string">'about'</span>,
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">            <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'string'</span>,
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">            <span class="hljs-string">'length'</span> =&gt; <span class="hljs-number">255</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        );
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        $classMetadata-&gt;mapField($fieldMapping);
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -1089,8 +1313,6 @@ class TestEvent
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -1136,7 +1358,7 @@ class TestEvent
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

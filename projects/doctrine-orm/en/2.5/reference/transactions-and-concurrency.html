@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -288,13 +285,20 @@ Doctrine ORM and are now described in more detail.</p>
 <p>The first approach is to use the implicit transaction handling
 provided by the Doctrine ORM EntityManager. Given the following
 code snippet, without any explicit transaction demarcation:</p>
-<pre><code class="php">&lt;?php
-// $em instanceof EntityManager
-$user = new User;
-$user-&gt;setName('George');
-$em-&gt;persist($user);
-$em-&gt;flush();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="84f1dc2ebe37f5eebee9d23fefb1aaab075b6e45"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="84f1dc2ebe37f5eebee9d23fefb1aaab075b6e45"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em instanceof EntityManager</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = <span class="hljs-keyword">new</span> User;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$user-&gt;setName(<span class="hljs-string">'George'</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$em-&gt;persist($user);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$em-&gt;flush();
+</td></tr></table></div></code></pre>
 <p>Since we do not do any custom transaction demarcation in the above
 code, <code>EntityManager#flush()</code> will begin and commit/rollback a
 transaction. This behavior is made possible by the aggregation of
@@ -305,21 +309,28 @@ the domain model and thus the ORM.</p>
 <p>The explicit alternative is to use the <code>Doctrine\DBAL\Connection</code>
 API directly to control the transaction boundaries. The code then
 looks like this:</p>
-<pre><code class="php">&lt;?php
-// $em instanceof EntityManager
-$em-&gt;getConnection()-&gt;beginTransaction(); // suspend auto-commit
-try {
-    //... do some work
-    $user = new User;
-    $user-&gt;setName('George');
-    $em-&gt;persist($user);
-    $em-&gt;flush();
-    $em-&gt;getConnection()-&gt;commit();
-} catch (Exception $e) {
-    $em-&gt;getConnection()-&gt;rollback();
-    throw $e;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="195233d123f7ab12ed448dda61253e4ef986070c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="195233d123f7ab12ed448dda61253e4ef986070c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em instanceof EntityManager</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em-&gt;getConnection()-&gt;beginTransaction(); <span class="hljs-comment">// suspend auto-commit</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">try</span> {
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">//... do some work</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    $user = <span class="hljs-keyword">new</span> User;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    $user-&gt;setName(<span class="hljs-string">'George'</span>);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    $em-&gt;persist($user);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    $em-&gt;flush();
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    $em-&gt;getConnection()-&gt;commit();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">} <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    $em-&gt;getConnection()-&gt;rollback();
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">throw</span> $e;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Explicit transaction demarcation is required when you want to
 include custom DBAL operations in a unit of work or when you want
 to make use of some methods of the <code>EntityManager</code> API that
@@ -332,15 +343,22 @@ of provided control abstractions in the form of
 When used, these control abstractions ensure that you never forget to rollback
 the transaction, in addition to the obvious code reduction. An example that is
 functionally equivalent to the previously shown code looks as follows:</p>
-<pre><code class="php">&lt;?php
-// $em instanceof EntityManager
-$em-&gt;transactional(function($em) {
-    //... do some work
-    $user = new User;
-    $user-&gt;setName('George');
-    $em-&gt;persist($user);
-});
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f8a3dfc0e5fd366b29eda1f85025e1a77888e643"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f8a3dfc0e5fd366b29eda1f85025e1a77888e643"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em instanceof EntityManager</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em-&gt;transactional(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($em)</span> </span>{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">//... do some work</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    $user = <span class="hljs-keyword">new</span> User;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    $user-&gt;setName(<span class="hljs-string">'George'</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    $em-&gt;persist($user);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">});
+</td></tr></table></div></code></pre>
 <p>The difference between <code>Connection#transactional($func)</code> and
 <code>EntityManager#transactional($func)</code> is that the latter
 abstraction flushes the <code>EntityManager</code> prior to transaction
@@ -396,26 +414,40 @@ compared to the version in the database and if they don't match, an
 has been modified by someone else already.</p>
 <p>You designate a version field in an entity as follows. In this
 example we'll use an integer.</p>
-<pre><code class="php">&lt;?php
-class User
-{
-    // ...
-    /** @Version @Column(type=&quot;integer&quot;) */
-    private $version;
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b80770c7099c08261dff8e0bb57a6c96253899fe"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b80770c7099c08261dff8e0bb57a6c96253899fe"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Version</span> <span class="hljs-doctag">@Column</span>(type="integer") */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $version;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Alternatively a datetime type can be used (which maps to a SQL
 timestamp or datetime):</p>
-<pre><code class="php">&lt;?php
-class User
-{
-    // ...
-    /** @Version @Column(type=&quot;datetime&quot;) */
-    private $version;
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3fc0cfedca3c118d336cc57203f358172a45d435"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3fc0cfedca3c118d336cc57203f358172a45d435"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Version</span> <span class="hljs-doctag">@Column</span>(type="datetime") */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $version;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Version numbers (not timestamps) should however be preferred as
 they can not potentially conflict in a highly concurrent
 environment, unlike timestamps where this is a possibility,
@@ -436,41 +468,55 @@ directly when retrieving the entity that you will hit an optimistic
 locking exception:</p>
 <p>You can always verify the version of an entity during a request
 either when calling <code>EntityManager#find()</code>:</p>
-<pre><code class="php">&lt;?php
-use Doctrine\DBAL\LockMode;
-use Doctrine\ORM\OptimisticLockException;
-
-$theEntityId = 1;
-$expectedVersion = 184;
-
-try {
-    $entity = $em-&gt;find('User', $theEntityId, LockMode::OPTIMISTIC, $expectedVersion);
-
-    // do the work
-
-    $em-&gt;flush();
-} catch(OptimisticLockException $e) {
-    echo &quot;Sorry, but someone else has already changed this entity. Please apply the changes again!&quot;;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="992a42c6ee7670253ef9b74c927ceb9af1f3b200"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="992a42c6ee7670253ef9b74c927ceb9af1f3b200"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">LockMode</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">OptimisticLockException</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$theEntityId = <span class="hljs-number">1</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$expectedVersion = <span class="hljs-number">184</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">try</span> {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    $entity = $em-&gt;find(<span class="hljs-string">'User'</span>, $theEntityId, LockMode::OPTIMISTIC, $expectedVersion);
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">// do the work</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    $em-&gt;flush();
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">} <span class="hljs-keyword">catch</span>(OptimisticLockException $e) {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Sorry, but someone else has already changed this entity. Please apply the changes again!"</span>;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Or you can use <code>EntityManager#lock()</code> to find out:</p>
-<pre><code class="php">&lt;?php
-use Doctrine\DBAL\LockMode;
-use Doctrine\ORM\OptimisticLockException;
-
-$theEntityId = 1;
-$expectedVersion = 184;
-
-$entity = $em-&gt;find('User', $theEntityId);
-
-try {
-    // assert version
-    $em-&gt;lock($entity, LockMode::OPTIMISTIC, $expectedVersion);
-
-} catch(OptimisticLockException $e) {
-    echo &quot;Sorry, but someone else has already changed this entity. Please apply the changes again!&quot;;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c873f433f85ce36adace0738a6a78c2629f41d45"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c873f433f85ce36adace0738a6a78c2629f41d45"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">LockMode</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">OptimisticLockException</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$theEntityId = <span class="hljs-number">1</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$expectedVersion = <span class="hljs-number">184</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$entity = $em-&gt;find(<span class="hljs-string">'User'</span>, $theEntityId);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">try</span> {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">// assert version</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    $em-&gt;lock($entity, LockMode::OPTIMISTIC, $expectedVersion);
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">} <span class="hljs-keyword">catch</span>(OptimisticLockException $e) {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Sorry, but someone else has already changed this entity. Please apply the changes again!"</span>;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="important-implementation-notes" name="important-implementation-notes"></a><h4 class="section-header"><a href="#important-implementation-notes">Important Implementation Notes<i class="fas fa-link"></i></a></h4>
 <p>You can easily get the optimistic locking workflow wrong if you
 compare the wrong versions. Say you have Alice and Bob editing a
@@ -496,19 +542,33 @@ being originally read from the database when Alice performed her
 GET request for the blog post. If this happens you might see lost
 updates you wanted to prevent with Optimistic Locking.</p>
 <p>See the example code, The form (GET Request):</p>
-<pre><code class="php">&lt;?php
-$post = $em-&gt;find('BlogPost', 123456);
-
-echo '&lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;' . $post-&gt;getId() . '&quot; /&gt;';
-echo '&lt;input type=&quot;hidden&quot; name=&quot;version&quot; value=&quot;' . $post-&gt;getCurrentVersion() . '&quot; /&gt;';
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e15b6d1769621a0ae8597029af1e179fbbd2e367"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e15b6d1769621a0ae8597029af1e179fbbd2e367"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$post = $em-&gt;find(<span class="hljs-string">'BlogPost'</span>, <span class="hljs-number">123456</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;input type="hidden" name="id" value="'</span> . $post-&gt;getId() . <span class="hljs-string">'" /&gt;'</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;input type="hidden" name="version" value="'</span> . $post-&gt;getCurrentVersion() . <span class="hljs-string">'" /&gt;'</span>;
+</td></tr></table></div></code></pre>
 <p>And the change headline action (POST Request):</p>
-<pre><code class="php">&lt;?php
-$postId = (int)$_GET['id'];
-$postVersion = (int)$_GET['version'];
-
-$post = $em-&gt;find('BlogPost', $postId, \Doctrine\DBAL\LockMode::OPTIMISTIC, $postVersion);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b8a3a394d83623c9505a7927e60cdfc7e2f58323"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b8a3a394d83623c9505a7927e60cdfc7e2f58323"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$postId = (int)$_GET[<span class="hljs-string">'id'</span>];
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$postVersion = (int)$_GET[<span class="hljs-string">'version'</span>];
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$post = $em-&gt;find(<span class="hljs-string">'BlogPost'</span>, $postId, \Doctrine\DBAL\LockMode::OPTIMISTIC, $postVersion);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="pessimistic-locking" name="pessimistic-locking"></a><h3 class="section-header"><a href="#pessimistic-locking">Pessimistic Locking<i class="fas fa-link"></i></a></h3>
 <p>Doctrine 2 supports Pessimistic Locking at the database level. No
 attempt is being made to implement pessimistic locking inside
@@ -570,8 +630,6 @@ transaction is running.</p>
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
         <script id="instantsearch-template" type="text/template">
@@ -616,7 +674,7 @@ transaction is running.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

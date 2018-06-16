@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -286,15 +283,21 @@ instance.</p>
 
 <p>You can register events by subscribing them to the <code>EventManager</code>
 instance passed to the Connection factory:</p>
-<pre><code class="php">&lt;?php
-$evm = new EventManager();
-$evm-&gt;addEventSubscriber(new OracleSessionInit(array(
-    'NLS_TIME_FORMAT' =&gt; 'HH24:MI:SS',
-)));
-
-$conn = DriverManager::getConnection($connectionParams, null, $evm);
-
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0107f0143e4774b27adfe24c65d1c33b5a54fa5a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0107f0143e4774b27adfe24c65d1c33b5a54fa5a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$evm-&gt;addEventSubscriber(<span class="hljs-keyword">new</span> OracleSessionInit(<span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">'NLS_TIME_FORMAT'</span> =&gt; <span class="hljs-string">'HH24:MI:SS'</span>,
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">)));
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$conn = DriverManager::getConnection($connectionParams, <span class="hljs-keyword">null</span>, $evm);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="schema-events" name="schema-events"></a><h2 class="section-header"><a href="#schema-events">Schema Events<i class="fas fa-link"></i></a></h2>
 <p>There are multiple events in Doctrine DBAL that are triggered on schema changes
 of the database. It is possible to add your own event listener to be able to run
@@ -302,36 +305,57 @@ your own code before changes to the database are commited. An instance of
 <code>Doctrine\Common\EventManager</code> can also be added to <a href="platforms.html">Platforms</a>.</p>
 <p>A event listener class can contain one or more methods to schema events. These
 methods must be named like the events itself.</p>
-<pre><code class="php">&lt;?php
-$evm = new EventManager();
-$eventName = Events::onSchemaCreateTable;
-$evm-&gt;addEventListener($eventName, new MyEventListener());
-</code></pre>
-<pre><code class="php">&lt;?php
-$evm = new EventManager();
-$eventNames = array(Events::onSchemaCreateTable, Events::onSchemaCreateTableColumn);
-$evm-&gt;addEventListener($eventNames, new MyEventListener());
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="712a4ba7595749611789efc991733d4ee51fe1d1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="712a4ba7595749611789efc991733d4ee51fe1d1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$eventName = Events::onSchemaCreateTable;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm-&gt;addEventListener($eventName, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr></table></div></code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="35fe85e850a8d2fe4752f2e994b51c5d3a000c7a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="35fe85e850a8d2fe4752f2e994b51c5d3a000c7a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$eventNames = <span class="hljs-keyword">array</span>(Events::onSchemaCreateTable, Events::onSchemaCreateTableColumn);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm-&gt;addEventListener($eventNames, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr></table></div></code></pre>
 <p>The following events are available.</p>
 <a class="section-anchor" id="onschemacreatetable-event" name="onschemacreatetable-event"></a><h3 class="section-header"><a href="#onschemacreatetable-event">OnSchemaCreateTable Event<i class="fas fa-link"></i></a></h3>
 <p><code>Doctrine\DBAL\Events::onSchemaCreateTable</code> is triggered before every
 create statement that is executed by one of the Platform instances and injects
 an instance of <code>Doctrine\DBAL\Event\SchemaCreateTableEventArgs</code> as event argument
 for event listeners.</p>
-<pre><code class="php">&lt;?php
-class MyEventListener
-{
-    public function onSchemaCreateTable(SchemaCreateTableEventArgs $event)
-    {
-        // Your EventListener code
-    }
-}
-
-$evm = new EventManager();
-$evm-&gt;addEventListener(Events::onSchemaCreateTable, new MyEventListener());
-
-$conn = DriverManager::getConnection($connectionParams, null, $evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="74997ddedff6ed045c56bdde51b26bae6eb037f2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="74997ddedff6ed045c56bdde51b26bae6eb037f2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onSchemaCreateTable</span><span class="hljs-params">(SchemaCreateTableEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Your EventListener code</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm-&gt;addEventListener(Events::onSchemaCreateTable, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$conn = DriverManager::getConnection($connectionParams, <span class="hljs-keyword">null</span>, $evm);
+</td></tr></table></div></code></pre>
 <p>It allows you to access the <code>Doctrine\DBAL\Schema\Table</code> instance and its columns, the used Platform and
 provides a way to add additional SQL statements.</p>
 <a class="section-anchor" id="onschemacreatetablecolumn-event" name="onschemacreatetablecolumn-event"></a><h3 class="section-header"><a href="#onschemacreatetablecolumn-event">OnSchemaCreateTableColumn Event<i class="fas fa-link"></i></a></h3>
@@ -339,20 +363,27 @@ provides a way to add additional SQL statements.</p>
 create statement that is executed by one of the Platform instances and injects
 an instance of <code>Doctrine\DBAL\Event\SchemaCreateTableColumnEventArgs</code> as event argument
 for event listeners.</p>
-<pre><code class="php">&lt;?php
-class MyEventListener
-{
-    public function onSchemaCreateTableColumn(SchemaCreateTableColumnEventArgs $event)
-    {
-        // Your EventListener code
-    }
-}
-
-$evm = new EventManager();
-$evm-&gt;addEventListener(Events::onSchemaCreateTableColumn, new MyEventListener());
-
-$conn = DriverManager::getConnection($connectionParams, null, $evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8a379e84658a45211d48b749affa7911c622a6d8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8a379e84658a45211d48b749affa7911c622a6d8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onSchemaCreateTableColumn</span><span class="hljs-params">(SchemaCreateTableColumnEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Your EventListener code</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm-&gt;addEventListener(Events::onSchemaCreateTableColumn, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$conn = DriverManager::getConnection($connectionParams, <span class="hljs-keyword">null</span>, $evm);
+</td></tr></table></div></code></pre>
 <p>It allows you to access the <code>Doctrine\DBAL\Schema\Table</code> instance, the affected <code>Doctrine\DBAL\Schema\Column</code>,
 the used Platform and provides a way to add additional SQL statements.</p>
 <a class="section-anchor" id="onschemadroptable-event" name="onschemadroptable-event"></a><h3 class="section-header"><a href="#onschemadroptable-event">OnSchemaDropTable Event<i class="fas fa-link"></i></a></h3>
@@ -360,20 +391,27 @@ the used Platform and provides a way to add additional SQL statements.</p>
 statement that is executed by one of the Platform instances and injects
 an instance of <code>Doctrine\DBAL\Event\SchemaDropTableEventArgs</code> as event argument
 for event listeners.</p>
-<pre><code class="php">&lt;?php
-class MyEventListener
-{
-    public function onSchemaDropTable(SchemaDropTableEventArgs $event)
-    {
-        // Your EventListener code
-    }
-}
-
-$evm = new EventManager();
-$evm-&gt;addEventListener(Events::onSchemaDropTable, new MyEventListener());
-
-$conn = DriverManager::getConnection($connectionParams, null, $evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d39a14dfa5497e8f274d5935869fcf679d3ab0ca"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d39a14dfa5497e8f274d5935869fcf679d3ab0ca"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onSchemaDropTable</span><span class="hljs-params">(SchemaDropTableEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Your EventListener code</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm-&gt;addEventListener(Events::onSchemaDropTable, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$conn = DriverManager::getConnection($connectionParams, <span class="hljs-keyword">null</span>, $evm);
+</td></tr></table></div></code></pre>
 <p>It allows you to access the <code>Doctrine\DBAL\Schema\Table</code> instance, the used Platform and
 provides a way to set an additional SQL statement.</p>
 <a class="section-anchor" id="onschemaaltertable-event" name="onschemaaltertable-event"></a><h3 class="section-header"><a href="#onschemaaltertable-event">OnSchemaAlterTable Event<i class="fas fa-link"></i></a></h3>
@@ -381,20 +419,27 @@ provides a way to set an additional SQL statement.</p>
 alter statement that is executed by one of the Platform instances and injects
 an instance of <code>Doctrine\DBAL\Event\SchemaAlterTableEventArgs</code> as event argument
 for event listeners.</p>
-<pre><code class="php">&lt;?php
-class MyEventListener
-{
-    public function onSchemaAlterTable(SchemaAlterTableEventArgs $event)
-    {
-        // Your EventListener code
-    }
-}
-
-$evm = new EventManager();
-$evm-&gt;addEventListener(Events::onSchemaAlterTable, new MyEventListener());
-
-$conn = DriverManager::getConnection($connectionParams, null, $evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7b59976ddd6c5b8ff62c1622519901fcd722fabb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7b59976ddd6c5b8ff62c1622519901fcd722fabb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onSchemaAlterTable</span><span class="hljs-params">(SchemaAlterTableEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Your EventListener code</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm-&gt;addEventListener(Events::onSchemaAlterTable, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$conn = DriverManager::getConnection($connectionParams, <span class="hljs-keyword">null</span>, $evm);
+</td></tr></table></div></code></pre>
 <p>It allows you to access the <code>Doctrine\DBAL\Schema\TableDiff</code> instance, the used Platform and
 provides a way to add additional SQL statements.</p>
 <a class="section-anchor" id="onschemaaltertableaddcolumn-event" name="onschemaaltertableaddcolumn-event"></a><h3 class="section-header"><a href="#onschemaaltertableaddcolumn-event">OnSchemaAlterTableAddColumn Event<i class="fas fa-link"></i></a></h3>
@@ -402,20 +447,27 @@ provides a way to add additional SQL statements.</p>
 alter statement that is executed by one of the Platform instances and injects
 an instance of <code>Doctrine\DBAL\Event\SchemaAlterTableAddColumnEventArgs</code> as event argument
 for event listeners.</p>
-<pre><code class="php">&lt;?php
-class MyEventListener
-{
-    public function onSchemaAlterTableAddColumn(SchemaAlterTableAddColumnEventArgs $event)
-    {
-        // Your EventListener code
-    }
-}
-
-$evm = new EventManager();
-$evm-&gt;addEventListener(Events::onSchemaAlterTableAddColumn, new MyEventListener());
-
-$conn = DriverManager::getConnection($connectionParams, null, $evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="88ec3abe13321b8ef4f8b4a96b3aef97cff2e1ee"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="88ec3abe13321b8ef4f8b4a96b3aef97cff2e1ee"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onSchemaAlterTableAddColumn</span><span class="hljs-params">(SchemaAlterTableAddColumnEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Your EventListener code</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm-&gt;addEventListener(Events::onSchemaAlterTableAddColumn, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$conn = DriverManager::getConnection($connectionParams, <span class="hljs-keyword">null</span>, $evm);
+</td></tr></table></div></code></pre>
 <p>It allows you to access the <code>Doctrine\DBAL\Schema\TableDiff</code> instance, the affected <code>Doctrine\DBAL\Schema\Column</code>,
 the used Platform and provides a way to add additional SQL statements.</p>
 <a class="section-anchor" id="onschemaaltertableremovecolumn-event" name="onschemaaltertableremovecolumn-event"></a><h3 class="section-header"><a href="#onschemaaltertableremovecolumn-event">OnSchemaAlterTableRemoveColumn Event<i class="fas fa-link"></i></a></h3>
@@ -423,20 +475,27 @@ the used Platform and provides a way to add additional SQL statements.</p>
 before every alter-drop statement that is executed by one of the Platform instances and injects
 an instance of <code>Doctrine\DBAL\Event\SchemaAlterTableRemoveColumnEventArgs</code> as event argument
 for event listeners.</p>
-<pre><code class="php">&lt;?php
-class MyEventListener
-{
-    public function onSchemaAlterTableRemoveColumn(SchemaAlterTableRemoveColumnEventArgs $event)
-    {
-        // Your EventListener code
-    }
-}
-
-$evm = new EventManager();
-$evm-&gt;addEventListener(Events::onSchemaAlterTableRemoveColumn, new MyEventListener());
-
-$conn = DriverManager::getConnection($connectionParams, null, $evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="21731f475277b79f1732ab1e77ec46a0bf2916bc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="21731f475277b79f1732ab1e77ec46a0bf2916bc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onSchemaAlterTableRemoveColumn</span><span class="hljs-params">(SchemaAlterTableRemoveColumnEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Your EventListener code</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm-&gt;addEventListener(Events::onSchemaAlterTableRemoveColumn, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$conn = DriverManager::getConnection($connectionParams, <span class="hljs-keyword">null</span>, $evm);
+</td></tr></table></div></code></pre>
 <p>It allows you to access the <code>Doctrine\DBAL\Schema\TableDiff</code> instance, the affected <code>Doctrine\DBAL\Schema\Column</code>,
 the used Platform and provides a way to add additional SQL statements.</p>
 <a class="section-anchor" id="onschemaaltertablechangecolumn-event" name="onschemaaltertablechangecolumn-event"></a><h3 class="section-header"><a href="#onschemaaltertablechangecolumn-event">OnSchemaAlterTableChangeColumn Event<i class="fas fa-link"></i></a></h3>
@@ -444,20 +503,27 @@ the used Platform and provides a way to add additional SQL statements.</p>
 before every alter statement that is executed by one of the Platform instances and injects
 an instance of <code>Doctrine\DBAL\Event\SchemaAlterTableRemoveColumnEventArgs</code> as event argument
 for event listeners.</p>
-<pre><code class="php">&lt;?php
-class MyEventListener
-{
-    public function onSchemaAlterTableChangeColumn(SchemaAlterTableChangeColumnEventArgs $event)
-    {
-        // Your EventListener code
-    }
-}
-
-$evm = new EventManager();
-$evm-&gt;addEventListener(Events::onSchemaAlterTableChangeColumn, new MyEventListener());
-
-$conn = DriverManager::getConnection($connectionParams, null, $evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="71914d4e17ebd44a393ed210d30da5d8a0694414"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="71914d4e17ebd44a393ed210d30da5d8a0694414"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onSchemaAlterTableChangeColumn</span><span class="hljs-params">(SchemaAlterTableChangeColumnEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Your EventListener code</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm-&gt;addEventListener(Events::onSchemaAlterTableChangeColumn, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$conn = DriverManager::getConnection($connectionParams, <span class="hljs-keyword">null</span>, $evm);
+</td></tr></table></div></code></pre>
 <p>It allows you to access the <code>Doctrine\DBAL\Schema\TableDiff</code> instance, a <code>Doctrine\DBAL\Schema\ColumnDiff</code> of
 the affected column, the used Platform and provides a way to add additional SQL statements.</p>
 <a class="section-anchor" id="onschemaaltertablerenamecolumn-event" name="onschemaaltertablerenamecolumn-event"></a><h3 class="section-header"><a href="#onschemaaltertablerenamecolumn-event">OnSchemaAlterTableRenameColumn Event<i class="fas fa-link"></i></a></h3>
@@ -465,20 +531,27 @@ the affected column, the used Platform and provides a way to add additional SQL 
 before every alter statement that is executed by one of the Platform instances and injects
 an instance of <code>Doctrine\DBAL\Event\SchemaAlterTableRenameColumnEventArgs</code> as event argument
 for event listeners.</p>
-<pre><code class="php">&lt;?php
-class MyEventListener
-{
-    public function onSchemaAlterTableRenameColumn(SchemaAlterTableRenameColumnEventArgs $event)
-    {
-        // Your EventListener code
-    }
-}
-
-$evm = new EventManager();
-$evm-&gt;addEventListener(Events::onSchemaAlterTableRenameColumn, new MyEventListener());
-
-$conn = DriverManager::getConnection($connectionParams, null, $evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="66b7118a0f0d2f2945c14976c33bf2cb43ebae31"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="66b7118a0f0d2f2945c14976c33bf2cb43ebae31"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onSchemaAlterTableRenameColumn</span><span class="hljs-params">(SchemaAlterTableRenameColumnEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Your EventListener code</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm-&gt;addEventListener(Events::onSchemaAlterTableRenameColumn, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$conn = DriverManager::getConnection($connectionParams, <span class="hljs-keyword">null</span>, $evm);
+</td></tr></table></div></code></pre>
 <p>It allows you to access the <code>Doctrine\DBAL\Schema\TableDiff</code> instance, the old column name and
 the new column in form of a <code>Doctrine\DBAL\Schema\Column</code> object, the used Platform and provides
 a way to add additional SQL statements.</p>
@@ -487,20 +560,27 @@ a way to add additional SQL statements.</p>
 executed for every existing column definition of the database before changes are applied.
 An instance of <code>Doctrine\DBAL\Event\SchemaColumnDefinitionEventArgs</code> is injected as argument
 for event listeners.</p>
-<pre><code class="php">&lt;?php
-class MyEventListener
-{
-    public function onSchemaColumnDefinition(SchemaColumnDefinitionEventArgs $event)
-    {
-        // Your EventListener code
-    }
-}
-
-$evm = new EventManager();
-$evm-&gt;addEventListener(Events::onSchemaColumnDefinition, new MyEventListener());
-
-$conn = DriverManager::getConnection($connectionParams, null, $evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3ec0fb4fbe10a5ae1bb21cfe9957bdb0468b4cf1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3ec0fb4fbe10a5ae1bb21cfe9957bdb0468b4cf1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onSchemaColumnDefinition</span><span class="hljs-params">(SchemaColumnDefinitionEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Your EventListener code</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm-&gt;addEventListener(Events::onSchemaColumnDefinition, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$conn = DriverManager::getConnection($connectionParams, <span class="hljs-keyword">null</span>, $evm);
+</td></tr></table></div></code></pre>
 <p>It allows you to access the table column definitions of the current database, table name, Platform and
 <code>Doctrine\DBAL\Connection</code> instance. Columns, that are about to be added, are not listed.</p>
 <a class="section-anchor" id="onschemaindexdefinition-event" name="onschemaindexdefinition-event"></a><h3 class="section-header"><a href="#onschemaindexdefinition-event">OnSchemaIndexDefinition Event<i class="fas fa-link"></i></a></h3>
@@ -508,20 +588,27 @@ $conn = DriverManager::getConnection($connectionParams, null, $evm);
 executed for every existing index definition of the database before changes are applied.
 An instance of <code>Doctrine\DBAL\Event\SchemaIndexDefinitionEventArgs</code> is injected as argument
 for event listeners.</p>
-<pre><code class="php">&lt;?php
-class MyEventListener
-{
-    public function onSchemaIndexDefinition(SchemaIndexDefinitionEventArgs $event)
-    {
-        // Your EventListener code
-    }
-}
-
-$evm = new EventManager();
-$evm-&gt;addEventListener(Events::onSchemaIndexDefinition, new MyEventListener());
-
-$conn = DriverManager::getConnection($connectionParams, null, $evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="91bddd366eb8ef43b5af73a7bc9be4a4ed5a6ee2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="91bddd366eb8ef43b5af73a7bc9be4a4ed5a6ee2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventListener</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onSchemaIndexDefinition</span><span class="hljs-params">(SchemaIndexDefinitionEventArgs $event)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Your EventListener code</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm-&gt;addEventListener(Events::onSchemaIndexDefinition, <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$conn = DriverManager::getConnection($connectionParams, <span class="hljs-keyword">null</span>, $evm);
+</td></tr></table></div></code></pre>
 <p>It allows you to access the table index definitions of the current database, table name, Platform and
 <code>Doctrine\DBAL\Connection</code> instance. Indexes, that are about to be added, are not listed.</p>
 <p></p>
@@ -548,8 +635,6 @@ $conn = DriverManager::getConnection($connectionParams, null, $evm);
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -595,7 +680,7 @@ $conn = DriverManager::getConnection($connectionParams, null, $evm);
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

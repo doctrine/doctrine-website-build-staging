@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -298,61 +295,68 @@ for Doctrine 2.</p>
 <a class="section-anchor" id="creating-your-doctrine-codeigniter-library" name="creating-your-doctrine-codeigniter-library"></a><h2 class="section-header"><a href="#creating-your-doctrine-codeigniter-library">Creating your Doctrine CodeIgniter library<i class="fas fa-link"></i></a></h2>
 <p>Now, here is what your Doctrine.php file should look like.
 Customize it to your needs.</p>
-<pre><code class="php">&lt;?php
-use Doctrine\Common\ClassLoader,
-    Doctrine\ORM\Configuration,
-    Doctrine\ORM\EntityManager,
-    Doctrine\Common\Cache\ArrayCache,
-    Doctrine\DBAL\Logging\EchoSQLLogger;
-
-class Doctrine {
-
-  public $em = null;
-
-  public function __construct()
-  {
-    // load database configuration from CodeIgniter
-    require_once APPPATH.'config/database.php';
-
-    // Set up class loading. You could use different autoloaders, provided by your favorite framework,
-    // if you want to.
-    require_once APPPATH.'libraries/Doctrine/Common/ClassLoader.php';
-
-    $doctrineClassLoader = new ClassLoader('Doctrine',  APPPATH.'libraries');
-    $doctrineClassLoader-&gt;register();
-    $entitiesClassLoader = new ClassLoader('models', rtrim(APPPATH, &quot;/&quot; ));
-    $entitiesClassLoader-&gt;register();
-
-    // Set up caches
-    $config = new Configuration;
-    $cache = new ArrayCache;
-    $config-&gt;setMetadataCacheImpl($cache);
-    $driverImpl = $config-&gt;newDefaultAnnotationDriver(array(APPPATH.'models/Entities'));
-    $config-&gt;setMetadataDriverImpl($driverImpl);
-    $config-&gt;setQueryCacheImpl($cache);
-
-    $config-&gt;setQueryCacheImpl($cache);
-
-    $config-&gt;setProxyDir(APPPATH.'/models/proxies');
-
-    // Set up logger
-    $logger = new EchoSQLLogger;
-    $config-&gt;setSQLLogger($logger);
-
-    // Database connection information
-    $connectionOptions = array(
-        'driver' =&gt; 'pdo_mysql',
-        'user' =&gt;     $db['default']['username'],
-        'password' =&gt; $db['default']['password'],
-        'host' =&gt;     $db['default']['hostname'],
-        'dbname' =&gt;   $db['default']['database']
-    );
-
-    // Create EntityManager
-    $this-&gt;em = EntityManager::create($connectionOptions, $config);
-  }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d8750014ba9ed404dfbbcdb8613e49aad3297361"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d8750014ba9ed404dfbbcdb8613e49aad3297361"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">ClassLoader</span>,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    Doctrine\ORM\Configuration,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    Doctrine\ORM\EntityManager,
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    Doctrine\Common\Cache\ArrayCache,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    Doctrine\DBAL\Logging\EchoSQLLogger;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Doctrine</span> </span>{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">  <span class="hljs-keyword">public</span> $em = <span class="hljs-keyword">null</span>;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">  {
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">// load database configuration from CodeIgniter</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">require_once</span> APPPATH.<span class="hljs-string">'config/database.php'</span>;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">// Set up class loading. You could use different autoloaders, provided by your favorite framework,</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">// if you want to.</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">require_once</span> APPPATH.<span class="hljs-string">'libraries/Doctrine/Common/ClassLoader.php'</span>;
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    $doctrineClassLoader = <span class="hljs-keyword">new</span> ClassLoader(<span class="hljs-string">'Doctrine'</span>,  APPPATH.<span class="hljs-string">'libraries'</span>);
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    $doctrineClassLoader-&gt;register();
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    $entitiesClassLoader = <span class="hljs-keyword">new</span> ClassLoader(<span class="hljs-string">'models'</span>, rtrim(APPPATH, <span class="hljs-string">"/"</span> ));
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    $entitiesClassLoader-&gt;register();
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-comment">// Set up caches</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    $config = <span class="hljs-keyword">new</span> Configuration;
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    $cache = <span class="hljs-keyword">new</span> ArrayCache;
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    $config-&gt;setMetadataCacheImpl($cache);
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    $driverImpl = $config-&gt;newDefaultAnnotationDriver(<span class="hljs-keyword">array</span>(APPPATH.<span class="hljs-string">'models/Entities'</span>));
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    $config-&gt;setMetadataDriverImpl($driverImpl);
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    $config-&gt;setQueryCacheImpl($cache);
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    $config-&gt;setQueryCacheImpl($cache);
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    $config-&gt;setProxyDir(APPPATH.<span class="hljs-string">'/models/proxies'</span>);
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    <span class="hljs-comment">// Set up logger</span>
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    $logger = <span class="hljs-keyword">new</span> EchoSQLLogger;
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    $config-&gt;setSQLLogger($logger);
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    <span class="hljs-comment">// Database connection information</span>
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    $connectionOptions = <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">        <span class="hljs-string">'driver'</span> =&gt; <span class="hljs-string">'pdo_mysql'</span>,
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">        <span class="hljs-string">'user'</span> =&gt;     $db[<span class="hljs-string">'default'</span>][<span class="hljs-string">'username'</span>],
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">        <span class="hljs-string">'password'</span> =&gt; $db[<span class="hljs-string">'default'</span>][<span class="hljs-string">'password'</span>],
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">        <span class="hljs-string">'host'</span> =&gt;     $db[<span class="hljs-string">'default'</span>][<span class="hljs-string">'hostname'</span>],
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">        <span class="hljs-string">'dbname'</span> =&gt;   $db[<span class="hljs-string">'default'</span>][<span class="hljs-string">'database'</span>]
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    );
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    <span class="hljs-comment">// Create EntityManager</span>
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;em = EntityManager::create($connectionOptions, $config);
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">  }
+</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Please note that this is a development configuration; for a
 production system you'll want to use a real caching system like
 APC, get rid of EchoSqlLogger, and turn off
@@ -362,16 +366,30 @@ proxy auto-generation.</p>
 <a class="section-anchor" id="now-to-use-it" name="now-to-use-it"></a><h2 class="section-header"><a href="#now-to-use-it">Now to use it<i class="fas fa-link"></i></a></h2>
 <p>Whenever you need a reference to the entity manager inside one of
 your controllers, views, or models you can do this:</p>
-<pre><code class="php">&lt;?php
-$em = $this-&gt;doctrine-&gt;em;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7604fc44c37f620ff33968f9b2bfd760f9bf27eb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7604fc44c37f620ff33968f9b2bfd760f9bf27eb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$em = <span class="hljs-keyword">$this</span>-&gt;doctrine-&gt;em;
+</td></tr></table></div></code></pre>
 <p>That's all there is to it. Once you get the reference to your
 EntityManager do your Doctrine 2.0 voodoo as normal.</p>
 <p>Note: If you do not choose to autoload the Doctrine library, you
 will need to put this line before you get a reference to it:</p>
-<pre><code class="php">&lt;?php
-$this-&gt;load-&gt;library('doctrine');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="39ac7995aa4f2eff60b987af3878d4b378d0d645"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="39ac7995aa4f2eff60b987af3878d4b378d0d645"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">$this</span>-&gt;load-&gt;library(<span class="hljs-string">'doctrine'</span>);
+</td></tr></table></div></code></pre>
 <p>Good luck!</p>
 <p></p>
                                             </div>
@@ -397,8 +415,6 @@ $this-&gt;load-&gt;library('doctrine');
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -444,7 +460,7 @@ $this-&gt;load-&gt;library('doctrine');
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

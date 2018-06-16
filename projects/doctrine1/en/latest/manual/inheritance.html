@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -253,10 +250,9 @@ inheritance and how to use them in this chapter.</p>
 <p>For this chapter lets delete all our existing schemas and models from
 our test environment we created and have been using in the earlier
 chapters:</p>
-<pre><code class="sh">$ rm schema.yml
-$ touch schema.yml
-$ rm -rf models/*
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>rm schema.yml
+<span class="noselect">$ </span>touch schema.yml
+<span class="noselect">$ </span>rm -rf models/*</code></pre></div>
 <hr />
 <a class="section-anchor" id="simple" name="simple"></a><h2 class="section-header"><a href="#simple">Simple<i class="fas fa-link"></i></a></h2>
 <p>Simple inheritance is the easiest and simplest inheritance to use. In
@@ -290,28 +286,35 @@ class Group extends Entity
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-# schema.yml
-
-# ...
-Entity:
-  columns:
-    name: string(30)
-    username: string(20)
-    password: string(16)
-    created_at: timestamp
-    updated_at: timestamp
-
-User:
-  inheritance:
-    extends: Entity
-    type: simple
-
-Group:
-  inheritance:
-    extends: Entity
-    type: simple
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3f9c51636ada8ce5089ce43e3de593295ce29cfc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3f9c51636ada8ce5089ce43e3de593295ce29cfc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment"># schema.yml</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">Entity:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    name:</span> <span class="hljs-string">string(30)</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    username:</span> <span class="hljs-string">string(20)</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    password:</span> <span class="hljs-string">string(16)</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    created_at:</span> <span class="hljs-string">timestamp</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    updated_at:</span> <span class="hljs-string">timestamp</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">  inheritance:</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">    extends:</span> <span class="hljs-string">Entity</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">simple</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">Group:</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">  inheritance:</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">    extends:</span> <span class="hljs-string">Entity</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">simple</span>
+</td></tr></table></div></code></pre>
 <p>Lets check the SQL that is generated by the above models:</p>
 
 <pre><code class="">// test.php
@@ -368,20 +371,27 @@ class Comment extends TextItem
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-# schema.yml
-
-TextItem:
-  columns:
-    topic: string(100)
-
-Comment:
-  inheritance:
-    extends: TextItem
-    type: concrete
-  columns:
-    content: string(300)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0293ecccf61d4aa8d945f1241daf85291e31ad26"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0293ecccf61d4aa8d945f1241daf85291e31ad26"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment"># schema.yml</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">TextItem:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    topic:</span> <span class="hljs-string">string(100)</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">Comment:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">  inheritance:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    extends:</span> <span class="hljs-string">TextItem</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">concrete</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">    content:</span> <span class="hljs-string">string(300)</span>
+</td></tr></table></div></code></pre>
 <p>Lets check the SQL that is generated by the above models:</p>
 
 <pre><code class="">// test.php
@@ -446,25 +456,32 @@ class Group extends Entity
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-Entity:
-  columns:
-    name: string(30)
-    username: string(20)
-    password: string(16)
-    created: integer(11)
-
-User:
-  inheritance:
-    extends: Entity
-    type: concrete
-
-Group:
-  tableName: groups
-  inheritance:
-    extends: Entity
-    type: concrete
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3ec73c1be67b62f109c80a3c3cb15e3aa3bf1019"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3ec73c1be67b62f109c80a3c3cb15e3aa3bf1019"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">Entity:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    name:</span> <span class="hljs-string">string(30)</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    username:</span> <span class="hljs-string">string(20)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    password:</span> <span class="hljs-string">string(16)</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    created:</span> <span class="hljs-string">integer(11)</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">  inheritance:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    extends:</span> <span class="hljs-string">Entity</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">concrete</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">Group:</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">  tableName:</span> <span class="hljs-string">groups</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">  inheritance:</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">    extends:</span> <span class="hljs-string">Entity</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">concrete</span>
+</td></tr></table></div></code></pre>
 <p>Lets check the SQL that is generated by the above models:</p>
 
 <pre><code class="">// test.php
@@ -537,28 +554,35 @@ class Group extends Entity
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-Entity:
-  columns:
-    username: string(20)
-    password: string(16)
-    created_at: timestamp
-    updated_at: timestamp
-
-    User:
-        inheritance:
-          extends: Entity
-          type: column_aggregation
-          keyField: type
-          keyValue: 1
-
-    Group:
-      inheritance:
-        extends: Entity
-        type: column_aggregation
-        keyField: type
-        keyValue: 2
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8dcdd0e2f3f2c1f2e383fbcba1988701cd7b4bce"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8dcdd0e2f3f2c1f2e383fbcba1988701cd7b4bce"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">Entity:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    username:</span> <span class="hljs-string">string(20)</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    password:</span> <span class="hljs-string">string(16)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    created_at:</span> <span class="hljs-string">timestamp</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    updated_at:</span> <span class="hljs-string">timestamp</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    User:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">        inheritance:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">          extends:</span> <span class="hljs-string">Entity</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">          type:</span> <span class="hljs-string">column_aggregation</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">          keyField:</span> <span class="hljs-string">type</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">          keyValue:</span> <span class="hljs-number">1</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">    Group:</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">      inheritance:</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">        extends:</span> <span class="hljs-string">Entity</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">        type:</span> <span class="hljs-string">column_aggregation</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">        keyField:</span> <span class="hljs-string">type</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">        keyValue:</span> <span class="hljs-number">2</span>
+</td></tr></table></div></code></pre>
 <p>Lets check the SQL that is generated by the above models:</p>
 
 <pre><code class="">// test.php
@@ -689,8 +713,6 @@ easy to maintain code.</p>
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
         <script id="instantsearch-template" type="text/template">
@@ -735,7 +757,7 @@ easy to maintain code.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

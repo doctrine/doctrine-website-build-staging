@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -249,132 +246,173 @@ object mappers share. You can use these interfaces and abstract classes to build
 want to use the full data mappers provided by Doctrine.</p>
 <a class="section-anchor" id="installation" name="installation"></a><h1 class="section-header"><a href="#installation">Installation<i class="fas fa-link"></i></a></h1>
 <p>The library can easily be installed with composer.</p>
-<pre><code class="sh">$ composer require doctrine/persistence
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>composer require doctrine/persistence</code></pre></div>
 <a class="section-anchor" id="overview" name="overview"></a><h1 class="section-header"><a href="#overview">Overview<i class="fas fa-link"></i></a></h1>
 <p>The interfaces and functionality in this project evolved from building several different implementations of Doctrine
 object mappers. The first implementation was the <a href="https://www.doctrine-project.org/projects/orm.html">ORM</a> then came the <a href="https://www.doctrine-project.org/projects/mongodb-odm.html">MongoDB ODM</a>. A set of common interfaces were
 extracted from both projects and released in the <a href="https://www.doctrine-project.org/projects/common.html">Doctrine Common</a> project. Over the years, more common functionality
 was extracted and eventually moved to this standalone project.</p>
 <p>A Doctrine object mapper looks like this when implemented.</p>
-<pre><code class="php">final class User
-{
-    /** @var string */
-    private $username;
-
-    public function __construct(string $username)
-    {
-        $this-&gt;username = $username;
-    }
-
-    // ...
-}
-
-$objectManager = new ObjectManager();
-$userRepository = $objectManager-&gt;getRepository(User::class);
-
-$newUser = new User('jwage');
-
-$objectManager-&gt;persist($newUser);
-$objectManager-&gt;flush();
-
-$user = $objectManager-&gt;find(User::class, 1);
-
-$objectManager-&gt;remove($user);
-$objectManager-&gt;flush();
-
-$users = $userRepository-&gt;findAll();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="50d7403b65b36acbba1821fb50bc8de09b6eeadf"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="50d7403b65b36acbba1821fb50bc8de09b6eeadf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> string */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">private</span> $username;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(string $username)</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;username = $username;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$objectManager = <span class="hljs-keyword">new</span> ObjectManager();
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$userRepository = $objectManager-&gt;getRepository(User::class);
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">$newUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">'jwage'</span>);
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$objectManager-&gt;persist($newUser);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">$objectManager-&gt;flush();
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">$user = $objectManager-&gt;find(User::class, <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">$objectManager-&gt;remove($user);
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">$objectManager-&gt;flush();
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">$users = $userRepository-&gt;findAll();
+</td></tr></table></div></code></pre>
 <p>To learn more about the full interfaces and functionality continue reading!</p>
 <a class="section-anchor" id="object-manager" name="object-manager"></a><h1 class="section-header"><a href="#object-manager">Object Manager<i class="fas fa-link"></i></a></h1>
 <p>The main public interface that an end user will use is the <code>Doctrine\Common\Persistence\ObjectManager</code> interface.</p>
-<pre><code class="php">namespace Doctrine\Common\Persistence;
-
-interface ObjectManager
-{
-    public function find($className, $id);
-    public function persist($object);
-    public function remove($object);
-    public function merge($object);
-    public function clear($objectName = null);
-    public function detach($object);
-    public function refresh($object);
-    public function flush();
-    public function getRepository($className);
-    public function getClassMetadata($className);
-    public function getMetadataFactory();
-    public function initializeObject($obj);
-    public function contains($object);
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="adb9710c30047e2738da567fb1f97cc4e73a78eb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="adb9710c30047e2738da567fb1f97cc4e73a78eb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ObjectManager</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">find</span><span class="hljs-params">($className, $id)</span></span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">persist</span><span class="hljs-params">($object)</span></span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">remove</span><span class="hljs-params">($object)</span></span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">merge</span><span class="hljs-params">($object)</span></span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clear</span><span class="hljs-params">($objectName = null)</span></span>;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">detach</span><span class="hljs-params">($object)</span></span>;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">refresh</span><span class="hljs-params">($object)</span></span>;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flush</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRepository</span><span class="hljs-params">($className)</span></span>;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClassMetadata</span><span class="hljs-params">($className)</span></span>;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMetadataFactory</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initializeObject</span><span class="hljs-params">($obj)</span></span>;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">contains</span><span class="hljs-params">($object)</span></span>;
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="objectrepository" name="objectrepository"></a><h1 class="section-header"><a href="#objectrepository">ObjectRepository<i class="fas fa-link"></i></a></h1>
 <p>The object repository is used to retrieve instances of your mapped objects from the mapper.</p>
-<pre><code class="php">namespace Doctrine\Common\Persistence;
-
-interface ObjectRepository
-{
-    public function find($id);
-    public function findAll();
-    public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null);
-    public function findOneBy(array $criteria);
-    public function getClassName();
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3159a7759b25c2620772b1330d4015285161f04b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3159a7759b25c2620772b1330d4015285161f04b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ObjectRepository</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">find</span><span class="hljs-params">($id)</span></span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findAll</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findBy</span><span class="hljs-params">(array $criteria, ?array $orderBy = null, $limit = null, $offset = null)</span></span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findOneBy</span><span class="hljs-params">(array $criteria)</span></span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClassName</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="mapping" name="mapping"></a><h1 class="section-header"><a href="#mapping">Mapping<i class="fas fa-link"></i></a></h1>
 <p>In order for Doctrine to be able to persist your objects to a data store, you have to map the classes and class
 properties so they can be properly stored and retrieved while maintaining a consistent state.</p>
 <a class="section-anchor" id="classmetadata" name="classmetadata"></a><h2 class="section-header"><a href="#classmetadata">ClassMetadata<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">namespace Doctrine\Common\Persistence\Mapping;
-
-interface ClassMetadata
-{
-    public function getName();
-    public function getIdentifier();
-    public function getReflectionClass();
-    public function isIdentifier($fieldName);
-    public function hasField($fieldName);
-    public function hasAssociation($fieldName);
-    public function isSingleValuedAssociation($fieldName);
-    public function isCollectionValuedAssociation($fieldName);
-    public function getFieldNames();
-    public function getIdentifierFieldNames();
-    public function getAssociationNames();
-    public function getTypeOfField($fieldName);
-    public function getAssociationTargetClass($assocName);
-    public function isAssociationInverseSide($assocName);
-    public function getAssociationMappedByTargetField($assocName);
-    public function getIdentifierValues($object);
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5e1db670156c43a68a563d8c333729e575083fdc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5e1db670156c43a68a563d8c333729e575083fdc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Mapping</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ClassMetadata</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getIdentifier</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getReflectionClass</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isIdentifier</span><span class="hljs-params">($fieldName)</span></span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasField</span><span class="hljs-params">($fieldName)</span></span>;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasAssociation</span><span class="hljs-params">($fieldName)</span></span>;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isSingleValuedAssociation</span><span class="hljs-params">($fieldName)</span></span>;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isCollectionValuedAssociation</span><span class="hljs-params">($fieldName)</span></span>;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFieldNames</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getIdentifierFieldNames</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAssociationNames</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTypeOfField</span><span class="hljs-params">($fieldName)</span></span>;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAssociationTargetClass</span><span class="hljs-params">($assocName)</span></span>;
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isAssociationInverseSide</span><span class="hljs-params">($assocName)</span></span>;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAssociationMappedByTargetField</span><span class="hljs-params">($assocName)</span></span>;
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getIdentifierValues</span><span class="hljs-params">($object)</span></span>;
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="classmetadatafactory" name="classmetadatafactory"></a><h2 class="section-header"><a href="#classmetadatafactory">ClassMetadataFactory<i class="fas fa-link"></i></a></h2>
 <p>The <code>Doctrine\Common\Persistence\Mapping\ClassMetadataFactory</code> class can be used to manage the instances for each of
 your mapped PHP classes.</p>
-<pre><code class="php">namespace Doctrine\Common\Persistence\Mapping;
-
-interface ClassMetadataFactory
-{
-    public function getAllMetadata();
-    public function getMetadataFor($className);
-    public function hasMetadataFor($className);
-    public function setMetadataFor($className, $class);
-    public function isTransient($className);
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="42525ec360a7a823095f697efbb3d7113bb7b05a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="42525ec360a7a823095f697efbb3d7113bb7b05a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Mapping</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ClassMetadataFactory</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAllMetadata</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMetadataFor</span><span class="hljs-params">($className)</span></span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasMetadataFor</span><span class="hljs-params">($className)</span></span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setMetadataFor</span><span class="hljs-params">($className, $class)</span></span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isTransient</span><span class="hljs-params">($className)</span></span>;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="mapping-driver" name="mapping-driver"></a><h1 class="section-header"><a href="#mapping-driver">Mapping Driver<i class="fas fa-link"></i></a></h1>
 <p>In order to load <code>ClassMetadata</code> instances you can use the <code>Doctrine\Common\Persistence\Mapping\Driver\MappingDriver</code>
 interface. This is the interface that does the core loading of mapping information from wherever they are stored.
 That may be in files, annotations, yaml, xml, etc.</p>
-<pre><code class="php">namespace Doctrine\Common\Persistence\Mapping\Driver;
-
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
-
-interface MappingDriver
-{
-    public function loadMetadataForClass($className, ClassMetadata $metadata);
-    public function getAllClassNames();
-    public function isTransient($className);
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="263d833979061142d4ffce22d84325b3e4544783"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="263d833979061142d4ffce22d84325b3e4544783"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">ClassMetadata</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">MappingDriver</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadataForClass</span><span class="hljs-params">($className, ClassMetadata $metadata)</span></span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAllClassNames</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isTransient</span><span class="hljs-params">($className)</span></span>;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The Doctrine Persistence project offers a few base implementations that make it easy to implement your own XML,
 Annotations or YAML drivers.</p>
 <a class="section-anchor" id="filedriver" name="filedriver"></a><h2 class="section-header"><a href="#filedriver">FileDriver<i class="fas fa-link"></i></a></h2>
@@ -383,134 +421,218 @@ the user to adhere to the convention of 1 mapping file per class and the file na
 correspond to the full class name, including namespace, with the namespace delimiters '\', replaced by dots '.'.</p>
 <p>Extend the <code>Doctrine\Common\Persistence\Mapping\Driver\FileDriver</code> class to implement your own file driver.
 Here is an example JSON file driver implementation.</p>
-<pre><code class="php">use Doctrine\Common\Persistence\Mapping\Driver\FileDriver;
-
-final class JSONFileDriver extends FileDriver
-{
-    public function loadMetadataForClass($className, ClassMetadata $metadata)
-    {
-        $mappingFileData = $this-&gt;getElement($className);
-
-        // use the array of mapping information from the file to populate the $metadata instance
-    }
-
-    protected function loadMappingFile($file)
-    {
-        return json_decode($file, true);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ab009efc038cc273127f9a835dd467d6bb792787"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ab009efc038cc273127f9a835dd467d6bb792787"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">FileDriver</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JSONFileDriver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">FileDriver</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadataForClass</span><span class="hljs-params">($className, ClassMetadata $metadata)</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $mappingFileData = <span class="hljs-keyword">$this</span>-&gt;getElement($className);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-comment">// use the array of mapping information from the file to populate the $metadata instance</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMappingFile</span><span class="hljs-params">($file)</span></span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-keyword">return</span> json_decode($file, <span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Now you can use it like the following.</p>
-<pre><code class="php">use Doctrine\Common\Persistence\Mapping\Driver\DefaultFileLocator;
-
-$fileLocator = new DefaultFileLocator('/path/to/mapping/files', 'json');
-
-$jsonFileDriver = new JSONFileDriver($fileLocator);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e26566ea901ebb2b0eead39691b76ab8643fb42c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e26566ea901ebb2b0eead39691b76ab8643fb42c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">DefaultFileLocator</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$fileLocator = <span class="hljs-keyword">new</span> DefaultFileLocator(<span class="hljs-string">'/path/to/mapping/files'</span>, <span class="hljs-string">'json'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$jsonFileDriver = <span class="hljs-keyword">new</span> JSONFileDriver($fileLocator);
+</td></tr></table></div></code></pre>
 <p>Now if you have a class named <code>App\Model\User</code> and you can load the mapping information like this.</p>
-<pre><code class="php">use App\Model\User;
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
-
-$classMetadata = new ClassMetadata();
-
-// looks for a file at /path/to/mapping/files/App.Model.User.json
-$jsonFileDriver-&gt;loadMetadataForClass(User::class, $classMetadata);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8d3e7216aad9fc5586fc98178fda7db4a05b0a84"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8d3e7216aad9fc5586fc98178fda7db4a05b0a84"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">User</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">ClassMetadata</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$classMetadata = <span class="hljs-keyword">new</span> ClassMetadata();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">// looks for a file at /path/to/mapping/files/App.Model.User.json</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$jsonFileDriver-&gt;loadMetadataForClass(User::class, $classMetadata);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="annotationdriver" name="annotationdriver"></a><h2 class="section-header"><a href="#annotationdriver">AnnotationDriver<i class="fas fa-link"></i></a></h2>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>This driver requires the <code>doctrine/annotations</code> project. You can install it with composer.</p>
-<pre><code class="php">composer require doctrine/annotations
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="425a3e6ad644eac8948c60cf1bebcd42e321cd39"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="425a3e6ad644eac8948c60cf1bebcd42e321cd39"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">composer <span class="hljs-keyword">require</span> doctrine/annotations
+</td></tr></table></div></code></pre>
 </div>
 <p>The AnnotationDriver reads the mapping metadata from docblock annotations.</p>
-<pre><code class="php">final class MyAnnotationDriver extends AnnotationDriver
-{
-    public function loadMetadataForClass($className, ClassMetadata $metadata)
-    {
-        /** @var ClassMetadata $class */
-        $reflClass = $class-&gt;getReflectionClass();
-
-        $classAnnotations = $this-&gt;reader-&gt;getClassAnnotations($reflClass);
-
-        // Use the reader to read annotations from your classes to then populate the $metadata instance.
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5bdaea173119fa3c2c1b8f67629123b829ed49e9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5bdaea173119fa3c2c1b8f67629123b829ed49e9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAnnotationDriver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AnnotationDriver</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadataForClass</span><span class="hljs-params">($className, ClassMetadata $metadata)</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> ClassMetadata $class */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        $reflClass = $class-&gt;getReflectionClass();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $classAnnotations = <span class="hljs-keyword">$this</span>-&gt;reader-&gt;getClassAnnotations($reflClass);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-comment">// Use the reader to read annotations from your classes to then populate the $metadata instance.</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Now you can use it like the following:</p>
-<pre><code class="php">use App\Model\User;
-use Doctrine\Common\Annotations\AnnotationReader;
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
-
-$annotationReader = new AnnotationReader();
-
-$annotationDriver = new AnnotationDriver($annotationReader, '/path/to/classes/with/annotations');
-
-$classMetadata = new ClassMetadata();
-
-// looks for a PHP file at /path/to/classes/with/annotations/App/Model/User.php
-$annotationDriver-&gt;loadMetadataForClass(User::class, $classMetadata);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6d3ce9abc1386683a2107fd6256418c02ed7695d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6d3ce9abc1386683a2107fd6256418c02ed7695d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">User</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Annotations</span>\<span class="hljs-title">AnnotationReader</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">ClassMetadata</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$annotationReader = <span class="hljs-keyword">new</span> AnnotationReader();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$annotationDriver = <span class="hljs-keyword">new</span> AnnotationDriver($annotationReader, <span class="hljs-string">'/path/to/classes/with/annotations'</span>);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$classMetadata = <span class="hljs-keyword">new</span> ClassMetadata();
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-comment">// looks for a PHP file at /path/to/classes/with/annotations/App/Model/User.php</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$annotationDriver-&gt;loadMetadataForClass(User::class, $classMetadata);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="phpdriver" name="phpdriver"></a><h2 class="section-header"><a href="#phpdriver">PHPDriver<i class="fas fa-link"></i></a></h2>
 <p>The PHPDriver includes PHP files which just populate <code>ClassMetadata</code> instances with plain PHP code.</p>
-<pre><code class="php">use Doctrine\Common\Persistence\Mapping\Driver\PHPDriver;
-
-$phpDriver = new PHPDriver('/path/to/mapping/files');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="76f5c487a7ef26cd092f7830b9707df4cdbe35ae"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="76f5c487a7ef26cd092f7830b9707df4cdbe35ae"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">PHPDriver</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$phpDriver = <span class="hljs-keyword">new</span> PHPDriver(<span class="hljs-string">'/path/to/mapping/files'</span>);
+</td></tr></table></div></code></pre>
 <p>Now you can use it like the following:</p>
-<pre><code class="php">use App\Model\User;
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
-
-$classMetadata = new ClassMetadata();
-
-// looks for a PHP file at /path/to/mapping/files/App.Model.User.php
-$phpDriver-&gt;loadMetadataForClass(User::class, $classMetadata);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7c5bba647a3b20585f3798314fa80623140e35d8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7c5bba647a3b20585f3798314fa80623140e35d8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">User</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">ClassMetadata</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$classMetadata = <span class="hljs-keyword">new</span> ClassMetadata();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">// looks for a PHP file at /path/to/mapping/files/App.Model.User.php</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$phpDriver-&gt;loadMetadataForClass(User::class, $classMetadata);
+</td></tr></table></div></code></pre>
 <p>Inside the <code>/path/to/mapping/files/App.Model.User.php</code> file you can write raw PHP code to populate a <code>ClassMetadata</code>
 instance. You will have access to a variable named <code>$metadata</code> inside the file that you can use to populate the
 mapping metadata.</p>
-<pre><code class="php">use App\Model\User;
-
-$metadata-&gt;name = User::class;
-
-// ...
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="506128b4ffceac99ce6e1fa320abf990100f98d2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="506128b4ffceac99ce6e1fa320abf990100f98d2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">User</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$metadata-&gt;name = User::class;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// ...</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="staticphpdriver" name="staticphpdriver"></a><h2 class="section-header"><a href="#staticphpdriver">StaticPHPDriver<i class="fas fa-link"></i></a></h2>
 <p>The StaticPHPDriver calls a static <code>loadMetadata()</code> method on your model classes where you can manually populate the
 <code>ClassMetadata</code> instance.</p>
-<pre><code class="php">$staticPHPDriver = new StaticPHPDriver('/path/to/classes');
-
-$classMetadata = new ClassMetadata();
-
-// looks for a PHP file at /path/to/classes/App/Model/User.php
-$phpDriver-&gt;loadMetadataForClass(User::class, $classMetadata);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="94cae61bd61b2d9290465278b153637d0ea76256"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="94cae61bd61b2d9290465278b153637d0ea76256"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$staticPHPDriver = <span class="hljs-keyword">new</span> StaticPHPDriver(<span class="hljs-string">'/path/to/classes'</span>);
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$classMetadata = <span class="hljs-keyword">new</span> ClassMetadata();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// looks for a PHP file at /path/to/classes/App/Model/User.php</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$phpDriver-&gt;loadMetadataForClass(User::class, $classMetadata);
+</td></tr></table></div></code></pre>
 <p>Your class in <code>App\Model\User</code> would look like the following.</p>
-<pre><code class="php">namespace App\Model;
-
-final class User
-{
-    // ...
-
-    public static function loadMetadata(ClassMetadata $metadata)
-    {
-        // populate the $metadata instance
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b92e85787c66621340afa5c23ce7a7997b3ef026"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b92e85787c66621340afa5c23ce7a7997b3ef026"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadata</span><span class="hljs-params">(ClassMetadata $metadata)</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-comment">// populate the $metadata instance</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="reflection" name="reflection"></a><h1 class="section-header"><a href="#reflection">Reflection<i class="fas fa-link"></i></a></h1>
 <p>Doctrine uses reflection to set and get the data inside your objects. The
 <code>Doctrine\Common\Persistence\Mapping\ReflectionService</code> is the primary interface needed for a Doctrine mapper.</p>
-<pre><code class="php">namespace Doctrine\Common\Persistence\Mapping;
-
-interface ReflectionService
-{
-    public function getParentClasses($class);
-    public function getClassShortName($class);
-    public function getClassNamespace($class);
-    public function getClass($class);
-    public function getAccessibleProperty($class, $property);
-    public function hasPublicMethod($class, $method);
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9d2b63e3d99e992bd6459fd25bc79a6448aefccb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9d2b63e3d99e992bd6459fd25bc79a6448aefccb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">Mapping</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ReflectionService</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getParentClasses</span><span class="hljs-params">($class)</span></span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClassShortName</span><span class="hljs-params">($class)</span></span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClassNamespace</span><span class="hljs-params">($class)</span></span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClass</span><span class="hljs-params">($class)</span></span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAccessibleProperty</span><span class="hljs-params">($class, $property)</span></span>;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasPublicMethod</span><span class="hljs-params">($class, $method)</span></span>;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Doctrine provides an implementation of this interface in the class named
 <code>Doctrine\Common\Persistence\Mapping\RuntimeReflectionService</code>.</p>
 <a class="section-anchor" id="implementations" name="implementations"></a><h1 class="section-header"><a href="#implementations">Implementations<i class="fas fa-link"></i></a></h1>
@@ -544,8 +666,6 @@ interface ReflectionService
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -591,7 +711,7 @@ interface ReflectionService
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

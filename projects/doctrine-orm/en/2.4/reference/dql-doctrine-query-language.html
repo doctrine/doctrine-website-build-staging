@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -302,10 +299,17 @@ update into memory.</p>
 query result. The composition of all the expressions in the select
 clause also influences the nature of the query result.</p>
 <p>Here is an example that selects all users with an age &gt; 20:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM MyProject\Model\User u WHERE u.age &gt; 20');
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5b94f612fa970c6c603a021a7eacb1d320b2dafd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5b94f612fa970c6c603a021a7eacb1d320b2dafd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM MyProject\Model\User u WHERE u.age &gt; 20'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>Lets examine the query:</p>
 <ul><li class="dash"> <code>u</code> is a so called identification variable or alias that
    refers to the <code>MyProject\Model\User</code> class. By placing this alias
@@ -349,15 +353,29 @@ SELECT part of the DQL query outside of an aggregate function.
 Otherwise its a &quot;regular join&quot;.</p>
 <p>Example:</p>
 <p>Regular join of the address:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery(&quot;SELECT u FROM User u JOIN u.address a WHERE a.city = 'Berlin'&quot;);
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3341b2b8d4d95602f5be2b10072d5b45206d67e4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3341b2b8d4d95602f5be2b10072d5b45206d67e4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">"SELECT u FROM User u JOIN u.address a WHERE a.city = 'Berlin'"</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>Fetch join of the address:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery(&quot;SELECT u, a FROM User u JOIN u.address a WHERE a.city = 'Berlin'&quot;);
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="14ebb0fd5f3074824c2a59db6ae3bed30cf59a4f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="14ebb0fd5f3074824c2a59db6ae3bed30cf59a4f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">"SELECT u, a FROM User u JOIN u.address a WHERE a.city = 'Berlin'"</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>When Doctrine hydrates a query with fetch-join it returns the class
 in the FROM clause on the root level of the result array. In the
 previous example an array of User instances is returned and the
@@ -387,183 +405,385 @@ both named and positional parameters are used <strong>without</strong> their pre
 explanations of what is happening. The actual result also depends
 on the hydration mode.</p>
 <p>Hydrate all User entities:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM MyProject\Model\User u');
-$users = $query-&gt;getResult(); // array of User objects
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="14d2fbe6679131431fae677c7d073ac607577406"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="14d2fbe6679131431fae677c7d073ac607577406"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM MyProject\Model\User u'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of User objects</span>
+</td></tr></table></div></code></pre>
 <p>Retrieve the IDs of all CmsUsers:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u.id FROM CmsUser u');
-$ids = $query-&gt;getResult(); // array of CmsUser ids
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f378ca22cde29932292c741e941bc4220258311e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f378ca22cde29932292c741e941bc4220258311e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u.id FROM CmsUser u'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$ids = $query-&gt;getResult(); <span class="hljs-comment">// array of CmsUser ids</span>
+</td></tr></table></div></code></pre>
 <p>Retrieve the IDs of all users that have written an article:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT DISTINCT u.id FROM CmsArticle a JOIN a.user u');
-$ids = $query-&gt;getResult(); // array of CmsUser ids
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="fabb139098b0d0b52f134528e6f3e573c67d553c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="fabb139098b0d0b52f134528e6f3e573c67d553c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT DISTINCT u.id FROM CmsArticle a JOIN a.user u'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$ids = $query-&gt;getResult(); <span class="hljs-comment">// array of CmsUser ids</span>
+</td></tr></table></div></code></pre>
 <p>Retrieve all articles and sort them by the name of the articles
 users instance:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT a FROM CmsArticle a JOIN a.user u ORDER BY u.name ASC');
-$articles = $query-&gt;getResult(); // array of CmsArticle objects
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="eb79c0452479916b0fae0ec3e9211b2d9005f86c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="eb79c0452479916b0fae0ec3e9211b2d9005f86c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT a FROM CmsArticle a JOIN a.user u ORDER BY u.name ASC'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$articles = $query-&gt;getResult(); <span class="hljs-comment">// array of CmsArticle objects</span>
+</td></tr></table></div></code></pre>
 <p>Retrieve the Username and Name of a CmsUser:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u.username, u.name FROM CmsUser u');
-$users = $query-&gt;getResult(); // array of CmsUser username and name values
-echo $users[0]['username'];
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="22375d3c9d2e092a246390c489890d4f2fa7a975"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="22375d3c9d2e092a246390c489890d4f2fa7a975"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u.username, u.name FROM CmsUser u'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of CmsUser username and name values</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">echo</span> $users[<span class="hljs-number">0</span>][<span class="hljs-string">'username'</span>];
+</td></tr></table></div></code></pre>
 <p>Retrieve a ForumUser and his single associated entity:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u, a FROM ForumUser u JOIN u.avatar a');
-$users = $query-&gt;getResult(); // array of ForumUser objects with the avatar association loaded
-echo get_class($users[0]-&gt;getAvatar());
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="27894d62479b62bfda0c183b8961e5d19be96115"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="27894d62479b62bfda0c183b8961e5d19be96115"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u, a FROM ForumUser u JOIN u.avatar a'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of ForumUser objects with the avatar association loaded</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">echo</span> get_class($users[<span class="hljs-number">0</span>]-&gt;getAvatar());
+</td></tr></table></div></code></pre>
 <p>Retrieve a CmsUser and fetch join all the phonenumbers he has:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u, p FROM CmsUser u JOIN u.phonenumbers p');
-$users = $query-&gt;getResult(); // array of CmsUser objects with the phonenumbers association loaded
-$phonenumbers = $users[0]-&gt;getPhonenumbers();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d17c73069c74baee8baecad679ba55d02613fa22"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d17c73069c74baee8baecad679ba55d02613fa22"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u, p FROM CmsUser u JOIN u.phonenumbers p'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of CmsUser objects with the phonenumbers association loaded</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$phonenumbers = $users[<span class="hljs-number">0</span>]-&gt;getPhonenumbers();
+</td></tr></table></div></code></pre>
 <p>Hydrate a result in Ascending:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM ForumUser u ORDER BY u.id ASC');
-$users = $query-&gt;getResult(); // array of ForumUser objects
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="264e68b2f1e84d997a846b60a4a10e1369b245b3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="264e68b2f1e84d997a846b60a4a10e1369b245b3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM ForumUser u ORDER BY u.id ASC'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of ForumUser objects</span>
+</td></tr></table></div></code></pre>
 <p>Or in Descending Order:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM ForumUser u ORDER BY u.id DESC');
-$users = $query-&gt;getResult(); // array of ForumUser objects
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e884a5e617ca5f15aecdfbc9d874fb34fb171f0b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e884a5e617ca5f15aecdfbc9d874fb34fb171f0b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM ForumUser u ORDER BY u.id DESC'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of ForumUser objects</span>
+</td></tr></table></div></code></pre>
 <p>Using Aggregate Functions:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT COUNT(u.id) FROM Entities\User u');
-$count = $query-&gt;getSingleScalarResult();
-
-$query = $em-&gt;createQuery('SELECT u, count(g.id) FROM Entities\User u JOIN u.groups g GROUP BY u.id');
-$result = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="baf680ffbf4bdd2d0e2f15e5883c73546e41c07e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="baf680ffbf4bdd2d0e2f15e5883c73546e41c07e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT COUNT(u.id) FROM Entities\User u'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$count = $query-&gt;getSingleScalarResult();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u, count(g.id) FROM Entities\User u JOIN u.groups g GROUP BY u.id'</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$result = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>With WHERE Clause and Positional Parameter:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM ForumUser u WHERE u.id = ?1');
-$query-&gt;setParameter(1, 321);
-$users = $query-&gt;getResult(); // array of ForumUser objects
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7ade7e02e1a993d1cf5c7bf4bf7a6e91057cf710"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7ade7e02e1a993d1cf5c7bf4bf7a6e91057cf710"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM ForumUser u WHERE u.id = ?1'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-number">321</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of ForumUser objects</span>
+</td></tr></table></div></code></pre>
 <p>With WHERE Clause and Named Parameter:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM ForumUser u WHERE u.username = :name');
-$query-&gt;setParameter('name', 'Bob');
-$users = $query-&gt;getResult(); // array of ForumUser objects
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c9c63e138edce2bcde1a60ab70255bc03f17977a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c9c63e138edce2bcde1a60ab70255bc03f17977a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM ForumUser u WHERE u.username = :name'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-string">'name'</span>, <span class="hljs-string">'Bob'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of ForumUser objects</span>
+</td></tr></table></div></code></pre>
 <p>With Nested Conditions in WHERE Clause:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u from ForumUser u WHERE (u.username = :name OR u.username = :name2) AND u.id = :id');
-$query-&gt;setParameters(array(
-    'name' =&gt; 'Bob',
-    'name2' =&gt; 'Alice',
-    'id' =&gt; 321,
-));
-$users = $query-&gt;getResult(); // array of ForumUser objects
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bd8b7f9fbda9bd6e8bb05883c4e15851cfa28b87"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bd8b7f9fbda9bd6e8bb05883c4e15851cfa28b87"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u from ForumUser u WHERE (u.username = :name OR u.username = :name2) AND u.id = :id'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query-&gt;setParameters(<span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Bob'</span>,
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-string">'name2'</span> =&gt; <span class="hljs-string">'Alice'</span>,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">321</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of ForumUser objects</span>
+</td></tr></table></div></code></pre>
 <p>With COUNT DISTINCT:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT COUNT(DISTINCT u.name) FROM CmsUser');
-$users = $query-&gt;getResult(); // array of ForumUser objects
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5dace1fdd798cf687e3501550a22297999f8a29a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5dace1fdd798cf687e3501550a22297999f8a29a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT COUNT(DISTINCT u.name) FROM CmsUser'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of ForumUser objects</span>
+</td></tr></table></div></code></pre>
 <p>With Arithmetic Expression in WHERE clause:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM CmsUser u WHERE ((u.id + 5000) * u.id + 3) &lt; 10000000');
-$users = $query-&gt;getResult(); // array of ForumUser objects
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="25bdeb16050f270d3b1f5efde6b06c1e7335acde"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="25bdeb16050f270d3b1f5efde6b06c1e7335acde"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM CmsUser u WHERE ((u.id + 5000) * u.id + 3) &lt; 10000000'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of ForumUser objects</span>
+</td></tr></table></div></code></pre>
 <p>Using a LEFT JOIN to hydrate all user-ids and optionally associated
 article-ids:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u.id, a.id as article_id FROM CmsUser u LEFT JOIN u.articles a');
-$results = $query-&gt;getResult(); // array of user ids and every article_id for each user
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3760b5ac587c94223d23220f44fdb6abbe31e6f6"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3760b5ac587c94223d23220f44fdb6abbe31e6f6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u.id, a.id as article_id FROM CmsUser u LEFT JOIN u.articles a'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$results = $query-&gt;getResult(); <span class="hljs-comment">// array of user ids and every article_id for each user</span>
+</td></tr></table></div></code></pre>
 <p>Restricting a JOIN clause by additional conditions:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery(&quot;SELECT u FROM CmsUser u LEFT JOIN u.articles a WITH a.topic LIKE :foo&quot;);
-$query-&gt;setParameter('foo', '%foo%');
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7fc5a39658b98d6038ee7c067aa93872bf45ce3f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7fc5a39658b98d6038ee7c067aa93872bf45ce3f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">"SELECT u FROM CmsUser u LEFT JOIN u.articles a WITH a.topic LIKE :foo"</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'%foo%'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>Using several Fetch JOINs:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u, a, p, c FROM CmsUser u JOIN u.articles a JOIN u.phonenumbers p JOIN a.comments c');
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9ca28f3cd0b30adeec97e5ccb6ec58d3151d7f04"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9ca28f3cd0b30adeec97e5ccb6ec58d3151d7f04"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u, a, p, c FROM CmsUser u JOIN u.articles a JOIN u.phonenumbers p JOIN a.comments c'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>BETWEEN in WHERE clause:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u.name FROM CmsUser u WHERE u.id BETWEEN ?1 AND ?2');
-$query-&gt;setParameter(1, 123);
-$query-&gt;setParameter(2, 321);
-$usernames = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e1096c8f058892a4170fb222de67b672fa055c88"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e1096c8f058892a4170fb222de67b672fa055c88"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u.name FROM CmsUser u WHERE u.id BETWEEN ?1 AND ?2'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-number">123</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">2</span>, <span class="hljs-number">321</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$usernames = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>DQL Functions in WHERE clause:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery(&quot;SELECT u.name FROM CmsUser u WHERE TRIM(u.name) = 'someone'&quot;);
-$usernames = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cb0bbcd3719ab0c6d9595040d504ef74390c868a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cb0bbcd3719ab0c6d9595040d504ef74390c868a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">"SELECT u.name FROM CmsUser u WHERE TRIM(u.name) = 'someone'"</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$usernames = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>IN() Expression:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u.name FROM CmsUser u WHERE u.id IN(46)');
-$usernames = $query-&gt;getResult();
-
-$query = $em-&gt;createQuery('SELECT u FROM CmsUser u WHERE u.id IN (1, 2)');
-$users = $query-&gt;getResult();
-
-$query = $em-&gt;createQuery('SELECT u FROM CmsUser u WHERE u.id NOT IN (1)');
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="343681a2261ed5993dd8dc1f71e2d59f33ca6b66"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="343681a2261ed5993dd8dc1f71e2d59f33ca6b66"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u.name FROM CmsUser u WHERE u.id IN(46)'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$usernames = $query-&gt;getResult();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM CmsUser u WHERE u.id IN (1, 2)'</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM CmsUser u WHERE u.id NOT IN (1)'</span>);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>CONCAT() DQL Function:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery(&quot;SELECT u.id FROM CmsUser u WHERE CONCAT(u.name, 's') = ?1&quot;);
-$query-&gt;setParameter(1, 'Jess');
-$ids = $query-&gt;getResult();
-
-$query = $em-&gt;createQuery('SELECT CONCAT(u.id, u.name) FROM CmsUser u WHERE u.id = ?1');
-$query-&gt;setParameter(1, 321);
-$idUsernames = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4d9714e782e158997a7c4d0be04aa76e67501e0c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4d9714e782e158997a7c4d0be04aa76e67501e0c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">"SELECT u.id FROM CmsUser u WHERE CONCAT(u.name, 's') = ?1"</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-string">'Jess'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$ids = $query-&gt;getResult();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT CONCAT(u.id, u.name) FROM CmsUser u WHERE u.id = ?1'</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-number">321</span>);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$idUsernames = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>EXISTS in WHERE clause with correlated Subquery</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u.id FROM CmsUser u WHERE EXISTS (SELECT p.phonenumber FROM CmsPhonenumber p WHERE p.user = u.id)');
-$ids = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1f1811e291a4a725366252d3a358dce4dd51120a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1f1811e291a4a725366252d3a358dce4dd51120a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u.id FROM CmsUser u WHERE EXISTS (SELECT p.phonenumber FROM CmsPhonenumber p WHERE p.user = u.id)'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$ids = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>Get all users who are members of $group.</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u.id FROM CmsUser u WHERE :groupId MEMBER OF u.groups');
-$query-&gt;setParameter('groupId', $group);
-$ids = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1f6285265eaf822acfb706b145a8a22dc38872ee"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1f6285265eaf822acfb706b145a8a22dc38872ee"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u.id FROM CmsUser u WHERE :groupId MEMBER OF u.groups'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-string">'groupId'</span>, $group);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$ids = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>Get all users that have more than 1 phonenumber</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM CmsUser u WHERE SIZE(u.phonenumbers) &gt; 1');
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f015c65716fdf1d596a743fce7edd95a55429053"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f015c65716fdf1d596a743fce7edd95a55429053"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM CmsUser u WHERE SIZE(u.phonenumbers) &gt; 1'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>Get all users that have no phonenumber</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM CmsUser u WHERE u.phonenumbers IS EMPTY');
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="48622ccc026943d09617ffa9167a700f3afc280a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="48622ccc026943d09617ffa9167a700f3afc280a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM CmsUser u WHERE u.phonenumbers IS EMPTY'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>Get all instances of a specific type, for use with inheritance
 hierarchies:</p>
 <div class="version-added"></div>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM Doctrine\Tests\Models\Company\CompanyPerson u WHERE u INSTANCE OF Doctrine\Tests\Models\Company\CompanyEmployee');
-$query = $em-&gt;createQuery('SELECT u FROM Doctrine\Tests\Models\Company\CompanyPerson u WHERE u INSTANCE OF ?1');
-$query = $em-&gt;createQuery('SELECT u FROM Doctrine\Tests\Models\Company\CompanyPerson u WHERE u NOT INSTANCE OF ?1');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="326df63c56492fc95a5c3cee1fa1613a774a67e9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="326df63c56492fc95a5c3cee1fa1613a774a67e9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM Doctrine\Tests\Models\Company\CompanyPerson u WHERE u INSTANCE OF Doctrine\Tests\Models\Company\CompanyEmployee'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM Doctrine\Tests\Models\Company\CompanyPerson u WHERE u INSTANCE OF ?1'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM Doctrine\Tests\Models\Company\CompanyPerson u WHERE u NOT INSTANCE OF ?1'</span>);
+</td></tr></table></div></code></pre>
 <p>Get all users visible on a given website that have chosen certain gender:</p>
 <div class="version-added"></div>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM User u WHERE u.gender IN (SELECT IDENTITY(agl.gender) FROM Site s JOIN s.activeGenderList agl WHERE s.id = ?1)');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cac3323a735352bd15078c7a254d7941de4b6e76"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cac3323a735352bd15078c7a254d7941de4b6e76"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM User u WHERE u.gender IN (SELECT IDENTITY(agl.gender) FROM Site s JOIN s.activeGenderList agl WHERE s.id = ?1)'</span>);
+</td></tr></table></div></code></pre>
 <p>Starting with 2.4, the IDENTITY() DQL function also works for composite primary keys:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT IDENTITY(c.location, 'latitude') AS latitude, IDENTITY(c.location, 'longitude') AS longitude FROM Checkpoint c WHERE c.user = ?1');
-
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1bb98e2bdb7a0a28105ab4e85fa6ff5eb7bf410a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1bb98e2bdb7a0a28105ab4e85fa6ff5eb7bf410a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT IDENTITY(c.location, '</span>latitude<span class="hljs-string">') AS latitude, IDENTITY(c.location, '</span>longitude<span class="hljs-string">') AS longitude FROM Checkpoint c WHERE c.user = ?1'</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="partial-object-syntax" name="partial-object-syntax"></a><h4 class="section-header"><a href="#partial-object-syntax">Partial Object Syntax<i class="fas fa-link"></i></a></h4>
 <p>By default when you run a DQL query in Doctrine and select only a
 subset of the fields for a given entity, you do not receive objects
@@ -572,15 +792,29 @@ set, similar to how you would if you were just using SQL directly
 and joining some data.</p>
 <p>If you want to select partial objects you can use the <code>partial</code>
 DQL keyword:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT partial u.{id, username} FROM CmsUser u');
-$users = $query-&gt;getResult(); // array of partially loaded CmsUser objects
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e950fc2abe95e61dbf98b9a53d294adce2e524ed"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e950fc2abe95e61dbf98b9a53d294adce2e524ed"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT partial u.{id, username} FROM CmsUser u'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of partially loaded CmsUser objects</span>
+</td></tr></table></div></code></pre>
 <p>You use the partial syntax when joining as well:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT partial u.{id, username}, partial a.{id, name} FROM CmsUser u JOIN u.articles a');
-$users = $query-&gt;getResult(); // array of partially loaded CmsUser objects
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="02c7f16f815825f0751a5719a886a8967862e5d7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="02c7f16f815825f0751a5719a886a8967862e5d7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT partial u.{id, username}, partial a.{id, name} FROM CmsUser u JOIN u.articles a'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of partially loaded CmsUser objects</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="quot-new-quot-operator-syntax" name="quot-new-quot-operator-syntax"></a><h4 class="section-header"><a href="#quot-new-quot-operator-syntax">&quot;NEW&quot; Operator Syntax<i class="fas fa-link"></i></a></h4>
 <div class="version-added"><p>Using the <code>NEW</code> operator you can construct Data Transfer Objects (DTOs) directly from DQL queries.</p></div>
 <ul><li class="dash">When using <code>SELECT NEW</code> you don't need to specify a mapped entity.</li>
@@ -590,24 +824,45 @@ $users = $query-&gt;getResult(); // array of partially loaded CmsUser objects
 </ul>
 
 <p>If you want to select data-transfer objects you should create a class:</p>
-<pre><code class="php">&lt;?php
-class CustomerDTO
-{
-    public function __construct($name, $email, $city, $value = null)
-    {
-        // Bind values to the object properties.
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d380508b42dbda546cfdcb21ab7aec16050301ab"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d380508b42dbda546cfdcb21ab7aec16050301ab"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomerDTO</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($name, $email, $city, $value = null)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Bind values to the object properties.</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>And then use the <code>NEW</code> DQL keyword :</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT NEW CustomerDTO(c.name, e.email, a.city) FROM Customer c JOIN c.email e JOIN c.address a');
-$users = $query-&gt;getResult(); // array of CustomerDTO
-</code></pre>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT NEW CustomerDTO(c.name, e.email, a.city, SUM(o.value)) FROM Customer c JOIN c.email e JOIN c.address a JOIN c.orders o GROUP BY c');
-$users = $query-&gt;getResult(); // array of CustomerDTO
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="53fbf4a884fdfd21729534230edce526affbccdb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="53fbf4a884fdfd21729534230edce526affbccdb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT NEW CustomerDTO(c.name, e.email, a.city) FROM Customer c JOIN c.email e JOIN c.address a'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of CustomerDTO</span>
+</td></tr></table></div></code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dd433d2fff2fdf84d93a5d3185cb6645df0b0800"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dd433d2fff2fdf84d93a5d3185cb6645df0b0800"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT NEW CustomerDTO(c.name, e.email, a.city, SUM(o.value)) FROM Customer c JOIN c.email e JOIN c.address a JOIN c.orders o GROUP BY c'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(); <span class="hljs-comment">// array of CustomerDTO</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="using-index-by" name="using-index-by"></a><h3 class="section-header"><a href="#using-index-by">Using INDEX BY<i class="fas fa-link"></i></a></h3>
 <p>The INDEX BY construct is nothing that directly translates into SQL
 but that affects object and array hydration. After each FROM and
@@ -616,36 +871,57 @@ in the result. By default a result is incremented by numerical keys
 starting with 0. However with INDEX BY you can specify any other
 column to be the key of your result, it really only makes sense
 with primary or unique fields though:</p>
-<pre><code class="sql">SELECT u.id, u.status, upper(u.name) nameUpper FROM User u INDEX BY u.id
-JOIN u.phonenumbers p INDEX BY p.phonenumber
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5b944320aedd057a44c06836bed53d7186312695"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5b944320aedd057a44c06836bed53d7186312695"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">SELECT</span> u.id, u.status, <span class="hljs-keyword">upper</span>(u.name) nameUpper <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">User</span> u <span class="hljs-keyword">INDEX</span> <span class="hljs-keyword">BY</span> u.id
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">JOIN u.phonenumbers p INDEX BY p.phonenumber
+</td></tr></table></div></code></pre>
 <p>Returns an array of the following kind, indexed by both user-id
 then phonenumber-id:</p>
-<pre><code class="php">array
-  0 =&gt;
-    array
-      1 =&gt;
-        object(stdClass)[299]
-          public '__CLASS__' =&gt; string 'Doctrine\Tests\Models\CMS\CmsUser' (length=33)
-          public 'id' =&gt; int 1
-          ..
-      'nameUpper' =&gt; string 'ROMANB' (length=6)
-  1 =&gt;
-    array
-      2 =&gt;
-        object(stdClass)[298]
-          public '__CLASS__' =&gt; string 'Doctrine\Tests\Models\CMS\CmsUser' (length=33)
-          public 'id' =&gt; int 2
-          ...
-      'nameUpper' =&gt; string 'JWAGE' (length=5)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f09b6d72a838c9b63208b5214edad3ceb5cc506f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f09b6d72a838c9b63208b5214edad3ceb5cc506f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">array</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">  <span class="hljs-number">0</span> =&gt;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">array</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">      <span class="hljs-number">1</span> =&gt;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        object(stdClass)[<span class="hljs-number">299</span>]
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">          <span class="hljs-keyword">public</span> <span class="hljs-string">'__CLASS__'</span> =&gt; string <span class="hljs-string">'Doctrine\Tests\Models\CMS\CmsUser'</span> (length=<span class="hljs-number">33</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">          <span class="hljs-keyword">public</span> <span class="hljs-string">'id'</span> =&gt; int <span class="hljs-number">1</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">          ..
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">      <span class="hljs-string">'nameUpper'</span> =&gt; string <span class="hljs-string">'ROMANB'</span> (length=<span class="hljs-number">6</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">  <span class="hljs-number">1</span> =&gt;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">array</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">      <span class="hljs-number">2</span> =&gt;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        object(stdClass)[<span class="hljs-number">298</span>]
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">          <span class="hljs-keyword">public</span> <span class="hljs-string">'__CLASS__'</span> =&gt; string <span class="hljs-string">'Doctrine\Tests\Models\CMS\CmsUser'</span> (length=<span class="hljs-number">33</span>)
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">          <span class="hljs-keyword">public</span> <span class="hljs-string">'id'</span> =&gt; int <span class="hljs-number">2</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">          ...
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">      <span class="hljs-string">'nameUpper'</span> =&gt; string <span class="hljs-string">'JWAGE'</span> (length=<span class="hljs-number">5</span>)
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="update-queries" name="update-queries"></a><h2 class="section-header"><a href="#update-queries">UPDATE queries<i class="fas fa-link"></i></a></h2>
 <p>DQL not only allows to select your Entities using field names, you
 can also execute bulk updates on a set of entities using an
 DQL-UPDATE query. The Syntax of an UPDATE query works as expected,
 as the following example shows:</p>
-<pre><code class="sql">UPDATE MyProject\Model\User u SET u.password = 'new' WHERE u.id IN (1, 2, 3)
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7cd3aa0a3a304eae24c8c18e1fd320f8a139bfd6"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7cd3aa0a3a304eae24c8c18e1fd320f8a139bfd6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">UPDATE</span> MyProject\<span class="hljs-keyword">Model</span>\<span class="hljs-keyword">User</span> u <span class="hljs-keyword">SET</span> u.password = <span class="hljs-string">'new'</span> <span class="hljs-keyword">WHERE</span> u.id <span class="hljs-keyword">IN</span> (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+</td></tr></table></div></code></pre>
 <p>References to related entities are only possible in the WHERE
 clause and using sub-selects.</p>
 <div class="alert warning bg-light-yellow text-dark border"><i class="fas fa-exclamation-circle text-warning mr-2"></i><p>DQL UPDATE statements are ported directly into a
@@ -659,8 +935,15 @@ affected entity.</p>
 <a class="section-anchor" id="delete-queries" name="delete-queries"></a><h2 class="section-header"><a href="#delete-queries">DELETE queries<i class="fas fa-link"></i></a></h2>
 <p>DELETE queries can also be specified using DQL and their syntax is
 as simple as the UPDATE syntax:</p>
-<pre><code class="sql">DELETE MyProject\Model\User u WHERE u.id = 4
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1934710e0a9c244ab2f5ab388de3244e429339d8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1934710e0a9c244ab2f5ab388de3244e429339d8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">DELETE</span> MyProject\<span class="hljs-keyword">Model</span>\<span class="hljs-keyword">User</span> u <span class="hljs-keyword">WHERE</span> u.id = <span class="hljs-number">4</span>
+</td></tr></table></div></code></pre>
 <p>The same restrictions apply for the reference of related entities.</p>
 <div class="alert warning bg-light-yellow text-dark border"><i class="fas fa-exclamation-circle text-warning mr-2"></i><p>DQL DELETE statements are ported directly into a
 Database DELETE statement and therefore bypass any events and checks for the
@@ -699,8 +982,15 @@ clauses:</p>
 
 <a class="section-anchor" id="arithmetic-operators" name="arithmetic-operators"></a><h3 class="section-header"><a href="#arithmetic-operators">Arithmetic operators<i class="fas fa-link"></i></a></h3>
 <p>You can do math in DQL using numeric values, for example:</p>
-<pre><code class="sql">SELECT person.salary * 1.5 FROM CompanyPerson person WHERE person.salary &lt; 100000
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bdb9c5a3d1a640ced55342141ec99f0b594e9624"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bdb9c5a3d1a640ced55342141ec99f0b594e9624"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">SELECT</span> person.salary * <span class="hljs-number">1.5</span> <span class="hljs-keyword">FROM</span> CompanyPerson person <span class="hljs-keyword">WHERE</span> person.salary &lt; <span class="hljs-number">100000</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="aggregate-functions" name="aggregate-functions"></a><h3 class="section-header"><a href="#aggregate-functions">Aggregate Functions<i class="fas fa-link"></i></a></h3>
 <p>The following aggregate functions are allowed in SELECT and GROUP
 BY clauses: AVG, COUNT, MIN, MAX, SUM</p>
@@ -726,55 +1016,76 @@ database platform at the beginning of your project and most likely
 never change it. For this cases you can easily extend the DQL
 parser with own specialized platform functions.</p>
 <p>You can register custom DQL functions in your ORM Configuration:</p>
-<pre><code class="php">&lt;?php
-$config = new \Doctrine\ORM\Configuration();
-$config-&gt;addCustomStringFunction($name, $class);
-$config-&gt;addCustomNumericFunction($name, $class);
-$config-&gt;addCustomDatetimeFunction($name, $class);
-
-$em = EntityManager::create($dbParams, $config);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="782be305cb36de3575903efed19b2f3fa79538e6"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="782be305cb36de3575903efed19b2f3fa79538e6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config = <span class="hljs-keyword">new</span> \Doctrine\ORM\Configuration();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;addCustomStringFunction($name, $class);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$config-&gt;addCustomNumericFunction($name, $class);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$config-&gt;addCustomDatetimeFunction($name, $class);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$em = EntityManager::create($dbParams, $config);
+</td></tr></table></div></code></pre>
 <p>The functions have to return either a string, numeric or datetime
 value depending on the registered function type. As an example we
 will add a MySQL specific FLOOR() functionality. All the given
 classes have to implement the base class :</p>
-<pre><code class="php">&lt;?php
-namespace MyProject\Query\AST;
-
-use \Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use \Doctrine\ORM\Query\Lexer;
-
-class MysqlFloor extends FunctionNode
-{
-    public $simpleArithmeticExpression;
-
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
-    {
-        return 'FLOOR(' . $sqlWalker-&gt;walkSimpleArithmeticExpression(
-            $this-&gt;simpleArithmeticExpression
-        ) . ')';
-    }
-
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
-    {
-        $lexer = $parser-&gt;getLexer();
-
-        $parser-&gt;match(Lexer::T_IDENTIFIER);
-        $parser-&gt;match(Lexer::T_OPEN_PARENTHESIS);
-
-        $this-&gt;simpleArithmeticExpression = $parser-&gt;SimpleArithmeticExpression();
-
-        $parser-&gt;match(Lexer::T_CLOSE_PARENTHESIS);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="908a168780620dd8cd6ade4af3c5b3b0d0a25b18"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="908a168780620dd8cd6ade4af3c5b3b0d0a25b18"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Query</span>\<span class="hljs-title">AST</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Query</span>\<span class="hljs-title">AST</span>\<span class="hljs-title">Functions</span>\<span class="hljs-title">FunctionNode</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Query</span>\<span class="hljs-title">Lexer</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MysqlFloor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">FunctionNode</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> $simpleArithmeticExpression;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSql</span><span class="hljs-params">(\Doctrine\ORM\Query\SqlWalker $sqlWalker)</span></span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-string">'FLOOR('</span> . $sqlWalker-&gt;walkSimpleArithmeticExpression(
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">            <span class="hljs-keyword">$this</span>-&gt;simpleArithmeticExpression
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        ) . <span class="hljs-string">')'</span>;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parse</span><span class="hljs-params">(\Doctrine\ORM\Query\Parser $parser)</span></span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        $lexer = $parser-&gt;getLexer();
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        $parser-&gt;match(Lexer::T_IDENTIFIER);
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        $parser-&gt;match(Lexer::T_OPEN_PARENTHESIS);
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;simpleArithmeticExpression = $parser-&gt;SimpleArithmeticExpression();
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        $parser-&gt;match(Lexer::T_CLOSE_PARENTHESIS);
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>We will register the function by calling and can then use it:</p>
-<pre><code class="php">&lt;?php
-$config = $em-&gt;getConfiguration();
-$config-&gt;registerNumericFunction('FLOOR', 'MyProject\Query\MysqlFloor');
-
-$dql = &quot;SELECT FLOOR(person.salary * 1.75) FROM CompanyPerson person&quot;;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2844a7d35ded34fa5f20c9191bc8ff2a8a268967"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2844a7d35ded34fa5f20c9191bc8ff2a8a268967"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config = $em-&gt;getConfiguration();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;registerNumericFunction(<span class="hljs-string">'FLOOR'</span>, <span class="hljs-string">'MyProject\Query\MysqlFloor'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$dql = <span class="hljs-string">"SELECT FLOOR(person.salary * 1.75) FROM CompanyPerson person"</span>;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="querying-inherited-classes" name="querying-inherited-classes"></a><h2 class="section-header"><a href="#querying-inherited-classes">Querying Inherited Classes<i class="fas fa-link"></i></a></h2>
 <p>This section demonstrates how you can query inherited classes and
 what type of results to expect.</p>
@@ -786,73 +1097,108 @@ which row represents which type in the hierarchy a so-called
 discriminator column is used.</p>
 <p>First we need to setup an example set of entities to use. In this
 scenario it is a generic Person and Employee example:</p>
-<pre><code class="php">&lt;?php
-namespace Entities;
-
-/**
- * @Entity
- * @InheritanceType(&quot;SINGLE_TABLE&quot;)
- * @DiscriminatorColumn(name=&quot;discr&quot;, type=&quot;string&quot;)
- * @DiscriminatorMap({&quot;person&quot; = &quot;Person&quot;, &quot;employee&quot; = &quot;Employee&quot;})
- */
-class Person
-{
-    /**
-     * @Id @Column(type=&quot;integer&quot;)
-     * @GeneratedValue
-     */
-    protected $id;
-
-    /**
-     * @Column(type=&quot;string&quot;, length=50)
-     */
-    protected $name;
-
-    // ...
-}
-
-/**
- * @Entity
- */
-class Employee extends Person
-{
-    /**
-     * @Column(type=&quot;string&quot;, length=50)
-     */
-    private $department;
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="887e616a3e945ed770ef87d40d7ba02d0e91e2e7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="887e616a3e945ed770ef87d40d7ba02d0e91e2e7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Entities</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @InheritanceType(<span class="hljs-string">"SINGLE_TABLE"</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @DiscriminatorColumn(name=<span class="hljs-string">"discr"</span>, type=<span class="hljs-string">"string"</span>)
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @DiscriminatorMap({<span class="hljs-string">"person"</span> = <span class="hljs-string">"Person"</span>, <span class="hljs-string">"employee"</span> = <span class="hljs-string">"Employee"</span>})
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     * @Id @Column(type=<span class="hljs-string">"integer"</span>)
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     * @GeneratedValue
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">protected</span> $id;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     * @Column(type=<span class="hljs-string">"string"</span>, length=<span class="hljs-number">50</span>)
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">protected</span> $name;
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">     * @Column(type=<span class="hljs-string">"string"</span>, length=<span class="hljs-number">50</span>)
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-keyword">private</span> $department;
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>First notice that the generated SQL to create the tables for these
 entities looks like the following:</p>
-<pre><code class="sql">CREATE TABLE Person (
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    discr VARCHAR(255) NOT NULL,
-    department VARCHAR(50) NOT NULL
-)
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f104fb4a9449ecc18ec7ce78089739aa5a923e5f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f104fb4a9449ecc18ec7ce78089739aa5a923e5f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Person (
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    name VARCHAR(50) NOT NULL,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    discr VARCHAR(255) NOT NULL,
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    department VARCHAR(50) NOT NULL
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">)
+</td></tr></table></div></code></pre>
 <p>Now when persist a new <code>Employee</code> instance it will set the
 discriminator value for us automatically:</p>
-<pre><code class="php">&lt;?php
-$employee = new \Entities\Employee();
-$employee-&gt;setName('test');
-$employee-&gt;setDepartment('testing');
-$em-&gt;persist($employee);
-$em-&gt;flush();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7da164df1616e675846eccf25c645be062602769"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7da164df1616e675846eccf25c645be062602769"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$employee = <span class="hljs-keyword">new</span> \Entities\Employee();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$employee-&gt;setName(<span class="hljs-string">'test'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$employee-&gt;setDepartment(<span class="hljs-string">'testing'</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$em-&gt;persist($employee);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$em-&gt;flush();
+</td></tr></table></div></code></pre>
 <p>Now lets run a simple query to retrieve the <code>Employee</code> we just
 created:</p>
-<pre><code class="sql">SELECT e FROM Entities\Employee e WHERE e.name = 'test'
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7725d4b2103e1d6da85b4e00cef3044f0f1086a9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7725d4b2103e1d6da85b4e00cef3044f0f1086a9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">SELECT</span> e <span class="hljs-keyword">FROM</span> Entities\Employee e <span class="hljs-keyword">WHERE</span> e.name = <span class="hljs-string">'test'</span>
+</td></tr></table></div></code></pre>
 <p>If we check the generated SQL you will notice it has some special
 conditions added to ensure that we will only get back <code>Employee</code>
 entities:</p>
-<pre><code class="sql">SELECT p0_.id AS id0, p0_.name AS name1, p0_.department AS department2,
-       p0_.discr AS discr3 FROM Person p0_
-WHERE (p0_.name = ?) AND p0_.discr IN ('employee')
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="74d87336de5dccdf29ffaf1bba85a507c7032f7f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="74d87336de5dccdf29ffaf1bba85a507c7032f7f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">SELECT</span> p0_.id <span class="hljs-keyword">AS</span> id0, p0_.name <span class="hljs-keyword">AS</span> name1, p0_.department <span class="hljs-keyword">AS</span> department2,
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">       p0_.discr AS discr3 FROM Person p0_
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">WHERE (p0_.name = ?) AND p0_.discr IN ('employee')
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="class-table-inheritance" name="class-table-inheritance"></a><h3 class="section-header"><a href="#class-table-inheritance">Class Table Inheritance<i class="fas fa-link"></i></a></h3>
 <p><a href="http://martinfowler.com/eaaCatalog/classTableInheritance.html">Class Table Inheritance</a>
 is an inheritance mapping strategy where each class in a hierarchy
@@ -865,34 +1211,47 @@ way to achieve polymorphic queries with Class Table Inheritance.</p>
 <p>The example for class table inheritance is the same as single
 table, you just need to change the inheritance type from
 <code>SINGLE_TABLE</code> to <code>JOINED</code>:</p>
-<pre><code class="php">&lt;?php
-/**
- * @Entity
- * @InheritanceType(&quot;JOINED&quot;)
- * @DiscriminatorColumn(name=&quot;discr&quot;, type=&quot;string&quot;)
- * @DiscriminatorMap({&quot;person&quot; = &quot;Person&quot;, &quot;employee&quot; = &quot;Employee&quot;})
- */
-class Person
-{
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="75c33f724c02446b59c137cbb771eff0717226b3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="75c33f724c02446b59c137cbb771eff0717226b3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @InheritanceType(<span class="hljs-string">"JOINED"</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @DiscriminatorColumn(name=<span class="hljs-string">"discr"</span>, type=<span class="hljs-string">"string"</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @DiscriminatorMap({<span class="hljs-string">"person"</span> = <span class="hljs-string">"Person"</span>, <span class="hljs-string">"employee"</span> = <span class="hljs-string">"Employee"</span>})
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Now take a look at the SQL which is generated to create the table,
 you'll notice some differences:</p>
-<pre><code class="sql">CREATE TABLE Person (
-    id INT AUTO_INCREMENT NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    discr VARCHAR(255) NOT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-CREATE TABLE Employee (
-    id INT NOT NULL,
-    department VARCHAR(50) NOT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-ALTER TABLE Employee ADD FOREIGN KEY (id) REFERENCES Person(id) ON DELETE CASCADE
-
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a8215300fd03e8c3fc2da2d6754835a085ccd73d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a8215300fd03e8c3fc2da2d6754835a085ccd73d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Person (
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    name VARCHAR(50) NOT NULL,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    discr VARCHAR(255) NOT NULL,
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Employee (
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    id INT NOT NULL,
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    department VARCHAR(50) NOT NULL,
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> Employee <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (<span class="hljs-keyword">id</span>) <span class="hljs-keyword">REFERENCES</span> Person(<span class="hljs-keyword">id</span>) <span class="hljs-keyword">ON</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">CASCADE</span>
+</td></tr></table></div></code></pre>
 <ul><li class="dash"> The data is split between two tables</li>
 <li class="dash"> A foreign key exists between the two tables</li>
 </ul>
@@ -901,28 +1260,41 @@ ALTER TABLE Employee ADD FOREIGN KEY (id) REFERENCES Person(id) ON DELETE CASCAD
 <code>SINGLE_TABLE</code> example and run the same example query it will
 generate different SQL joining the <code>Person</code> information
 automatically for you:</p>
-<pre><code class="sql">SELECT p0_.id AS id0, p0_.name AS name1, e1_.department AS department2,
-       p0_.discr AS discr3
-FROM Employee e1_ INNER JOIN Person p0_ ON e1_.id = p0_.id
-WHERE p0_.name = ?
-
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="90b5de422a7c4ed2b63c998eca0a013b78410456"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="90b5de422a7c4ed2b63c998eca0a013b78410456"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">SELECT</span> p0_.id <span class="hljs-keyword">AS</span> id0, p0_.name <span class="hljs-keyword">AS</span> name1, e1_.department <span class="hljs-keyword">AS</span> department2,
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">       p0_.discr AS discr3
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">FROM Employee e1_ INNER JOIN Person p0_ ON e1_.id = p0_.id
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">WHERE p0_.name = ?
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="the-query-class" name="the-query-class"></a><h2 class="section-header"><a href="#the-query-class">The Query class<i class="fas fa-link"></i></a></h2>
 <p>An instance of the <code>Doctrine\ORM\Query</code> class represents a DQL
 query. You create a Query instance be calling
 <code>EntityManager#createQuery($dql)</code>, passing the DQL query string.
 Alternatively you can create an empty <code>Query</code> instance and invoke
 <code>Query#setDql($dql)</code> afterwards. Here are some examples:</p>
-<pre><code class="php">&lt;?php
-// $em instanceof EntityManager
-
-// example1: passing a DQL string
-$q = $em-&gt;createQuery('select u from MyProject\Model\User u');
-
-// example2: using setDql
-$q = $em-&gt;createQuery();
-$q-&gt;setDql('select u from MyProject\Model\User u');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a49f66156f057d9a1e0fcdfac073bb3e3e358ead"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a49f66156f057d9a1e0fcdfac073bb3e3e358ead"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em instanceof EntityManager</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// example1: passing a DQL string</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$q = $em-&gt;createQuery(<span class="hljs-string">'select u from MyProject\Model\User u'</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">// example2: using setDql</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$q = $em-&gt;createQuery();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$q-&gt;setDql(<span class="hljs-string">'select u from MyProject\Model\User u'</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="query-result-formats" name="query-result-formats"></a><h3 class="section-header"><a href="#query-result-formats">Query Result Formats<i class="fas fa-link"></i></a></h3>
 <p>The format in which the result of a DQL SELECT query is returned
 can be influenced by a so-called <code>hydration mode</code>. A hydration
@@ -974,34 +1346,55 @@ By default, the result type is <strong>pure</strong> but
 A mixed result has a different structure than a pure result in
 order to accommodate for the scalar values.</p>
 <p>A pure result usually looks like this:</p>
-<pre><code class="php">$dql = &quot;SELECT u FROM User u&quot;;
-
-array
-    [0] =&gt; Object
-    [1] =&gt; Object
-    [2] =&gt; Object
-    ...
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f8584502180e35cbcb38a22320f60139deed3f37"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f8584502180e35cbcb38a22320f60139deed3f37"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$dql = <span class="hljs-string">"SELECT u FROM User u"</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">array</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    [<span class="hljs-number">0</span>] =&gt; Object
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    [<span class="hljs-number">1</span>] =&gt; Object
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    [<span class="hljs-number">2</span>] =&gt; Object
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    ...
+</td></tr></table></div></code></pre>
 <p>A mixed result on the other hand has the following general
 structure:</p>
-<pre><code class="php">$dql = &quot;SELECT u, 'some scalar string', count(u.groups) AS num FROM User u JOIN u.groups g GROUP BY u.id&quot;;
-
-array
-    [0]
-        [0] =&gt; Object
-        [1] =&gt; &quot;some scalar string&quot;
-        ['num'] =&gt; 42
-        // ... more scalar values, either indexed numerically or with a name
-    [1]
-        [0] =&gt; Object
-        [1] =&gt; &quot;some scalar string&quot;
-        ['num'] =&gt; 42
-        // ... more scalar values, either indexed numerically or with a name
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="be8eb75fb5bbe740b02b00f2328fafada9883813"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="be8eb75fb5bbe740b02b00f2328fafada9883813"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$dql = <span class="hljs-string">"SELECT u, 'some scalar string', count(u.groups) AS num FROM User u JOIN u.groups g GROUP BY u.id"</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">array</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    [<span class="hljs-number">0</span>]
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        [<span class="hljs-number">0</span>] =&gt; Object
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        [<span class="hljs-number">1</span>] =&gt; <span class="hljs-string">"some scalar string"</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        [<span class="hljs-string">'num'</span>] =&gt; <span class="hljs-number">42</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-comment">// ... more scalar values, either indexed numerically or with a name</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    [<span class="hljs-number">1</span>]
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        [<span class="hljs-number">0</span>] =&gt; Object
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        [<span class="hljs-number">1</span>] =&gt; <span class="hljs-string">"some scalar string"</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        [<span class="hljs-string">'num'</span>] =&gt; <span class="hljs-number">42</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-comment">// ... more scalar values, either indexed numerically or with a name</span>
+</td></tr></table></div></code></pre>
 <p>To better understand mixed results, consider the following DQL
 query:</p>
-<pre><code class="sql">SELECT u, UPPER(u.name) nameUpper FROM MyProject\Model\User u
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8deea953a89b2197c42b11787f8d389d0ccdc7c5"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8deea953a89b2197c42b11787f8d389d0ccdc7c5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">SELECT</span> u, <span class="hljs-keyword">UPPER</span>(u.name) nameUpper <span class="hljs-keyword">FROM</span> MyProject\<span class="hljs-keyword">Model</span>\<span class="hljs-keyword">User</span> u
+</td></tr></table></div></code></pre>
 <p>This query makes use of the <code>UPPER</code> DQL function that returns a
 scalar value and because there is now a scalar value in the SELECT
 clause, we get a mixed result.</p>
@@ -1013,34 +1406,54 @@ clause, we get a mixed result.</p>
 </ul>
 
 <p>Here is how the result could look like:</p>
-<pre><code class="php">array
-    array
-        [0] =&gt; User (Object)
-        ['nameUpper'] =&gt; &quot;ROMAN&quot;
-    array
-        [0] =&gt; User (Object)
-        ['nameUpper'] =&gt; &quot;JONATHAN&quot;
-    ...
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f277a5236645a114e19bba3562df47e26843fcea"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f277a5236645a114e19bba3562df47e26843fcea"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">array</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-keyword">array</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        [<span class="hljs-number">0</span>] =&gt; User (Object)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        [<span class="hljs-string">'nameUpper'</span>] =&gt; <span class="hljs-string">"ROMAN"</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">array</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        [<span class="hljs-number">0</span>] =&gt; User (Object)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        [<span class="hljs-string">'nameUpper'</span>] =&gt; <span class="hljs-string">"JONATHAN"</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    ...
+</td></tr></table></div></code></pre>
 <p>And here is how you would access it in PHP code:</p>
-<pre><code class="php">&lt;?php
-foreach ($results as $row) {
-    echo &quot;Name: &quot; . $row[0]-&gt;getName();
-    echo &quot;Name UPPER: &quot; . $row['nameUpper'];
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="39071a5aebcee42108c075fe2f60e329765262c4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="39071a5aebcee42108c075fe2f60e329765262c4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($results <span class="hljs-keyword">as</span> $row) {
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Name: "</span> . $row[<span class="hljs-number">0</span>]-&gt;getName();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Name UPPER: "</span> . $row[<span class="hljs-string">'nameUpper'</span>];
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="fetching-multiple-from-entities" name="fetching-multiple-from-entities"></a><h3 class="section-header"><a href="#fetching-multiple-from-entities">Fetching Multiple FROM Entities<i class="fas fa-link"></i></a></h3>
 <p>If you fetch multiple entities that are listed in the FROM clause then the hydration
 will return the rows iterating the different top-level entities.</p>
-<pre><code class="php">$dql = &quot;SELECT u, g FROM User u, Group g&quot;;
-
-array
-    [0] =&gt; Object (User)
-    [1] =&gt; Object (Group)
-    [2] =&gt; Object (User)
-    [3] =&gt; Object (Group)
-
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="985476307e1c012d75d8efefdc4992876a0e23c3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="985476307e1c012d75d8efefdc4992876a0e23c3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$dql = <span class="hljs-string">"SELECT u, g FROM User u, Group g"</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">array</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    [<span class="hljs-number">0</span>] =&gt; Object (User)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    [<span class="hljs-number">1</span>] =&gt; Object (Group)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    [<span class="hljs-number">2</span>] =&gt; Object (User)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    [<span class="hljs-number">3</span>] =&gt; Object (Group)
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="hydration-modes" name="hydration-modes"></a><h3 class="section-header"><a href="#hydration-modes">Hydration Modes<i class="fas fa-link"></i></a></h3>
 <p>Each of the Hydration Modes makes assumptions about how the result
 is returned to user land. You should know about all the details to
@@ -1054,29 +1467,57 @@ make best use of the different result formats:</p>
 
 <a class="section-anchor" id="object-hydration" name="object-hydration"></a><h4 class="section-header"><a href="#object-hydration">Object Hydration<i class="fas fa-link"></i></a></h4>
 <p>Object hydration hydrates the result set into the object graph:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM CmsUser u');
-$users = $query-&gt;getResult(Query::HYDRATE_OBJECT);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f7f0bdc9fa0e00aed6a69e3874da9b7d745f711e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f7f0bdc9fa0e00aed6a69e3874da9b7d745f711e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM CmsUser u'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(Query::HYDRATE_OBJECT);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="array-hydration" name="array-hydration"></a><h4 class="section-header"><a href="#array-hydration">Array Hydration<i class="fas fa-link"></i></a></h4>
 <p>You can run the same query with array hydration and the result set
 is hydrated into an array that represents the object graph:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM CmsUser u');
-$users = $query-&gt;getResult(Query::HYDRATE_ARRAY);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a7bb2529b09bde39e01329d513c36795ac50c41f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a7bb2529b09bde39e01329d513c36795ac50c41f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM CmsUser u'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(Query::HYDRATE_ARRAY);
+</td></tr></table></div></code></pre>
 <p>You can use the <code>getArrayResult()</code> shortcut as well:</p>
-<pre><code class="php">&lt;?php
-$users = $query-&gt;getArrayResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="62cd6c9c65a41e242686b4c83e22fee7f37e67f1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="62cd6c9c65a41e242686b4c83e22fee7f37e67f1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$users = $query-&gt;getArrayResult();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="scalar-hydration" name="scalar-hydration"></a><h4 class="section-header"><a href="#scalar-hydration">Scalar Hydration<i class="fas fa-link"></i></a></h4>
 <p>If you want to return a flat rectangular result set instead of an
 object graph you can use scalar hydration:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM CmsUser u');
-$users = $query-&gt;getResult(Query::HYDRATE_SCALAR);
-echo $users[0]['u_id'];
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e78130e201ce9840012df4f61e9aa7fe2b8ce7d2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e78130e201ce9840012df4f61e9aa7fe2b8ce7d2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM CmsUser u'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;getResult(Query::HYDRATE_SCALAR);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">echo</span> $users[<span class="hljs-number">0</span>][<span class="hljs-string">'u_id'</span>];
+</td></tr></table></div></code></pre>
 <p>The following assumptions are made about selected fields using
 Scalar Hydration:</p>
 <ol><li>Fields from classes are prefixed by the DQL alias in the result.
@@ -1087,40 +1528,75 @@ Scalar Hydration:</p>
 <a class="section-anchor" id="single-scalar-hydration" name="single-scalar-hydration"></a><h4 class="section-header"><a href="#single-scalar-hydration">Single Scalar Hydration<i class="fas fa-link"></i></a></h4>
 <p>If you a query which returns just a single scalar value you can use
 single scalar hydration:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT COUNT(a.id) FROM CmsUser u LEFT JOIN u.articles a WHERE u.username = ?1 GROUP BY u.id');
-$query-&gt;setParameter(1, 'jwage');
-$numArticles = $query-&gt;getResult(Query::HYDRATE_SINGLE_SCALAR);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b2403aa9dc77adfa28fce6696da93eace2882dc4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b2403aa9dc77adfa28fce6696da93eace2882dc4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT COUNT(a.id) FROM CmsUser u LEFT JOIN u.articles a WHERE u.username = ?1 GROUP BY u.id'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-string">'jwage'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$numArticles = $query-&gt;getResult(Query::HYDRATE_SINGLE_SCALAR);
+</td></tr></table></div></code></pre>
 <p>You can use the <code>getSingleScalarResult()</code> shortcut as well:</p>
-<pre><code class="php">&lt;?php
-$numArticles = $query-&gt;getSingleScalarResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e7bbf66bec1cf62b4260e81afbbff9e1c72833b0"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e7bbf66bec1cf62b4260e81afbbff9e1c72833b0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$numArticles = $query-&gt;getSingleScalarResult();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="custom-hydration-modes" name="custom-hydration-modes"></a><h4 class="section-header"><a href="#custom-hydration-modes">Custom Hydration Modes<i class="fas fa-link"></i></a></h4>
 <p>You can easily add your own custom hydration modes by first
 creating a class which extends <code>AbstractHydrator</code>:</p>
-<pre><code class="php">&lt;?php
-namespace MyProject\Hydrators;
-
-use Doctrine\ORM\Internal\Hydration\AbstractHydrator;
-
-class CustomHydrator extends AbstractHydrator
-{
-    protected function _hydrateAll()
-    {
-        return $this-&gt;_stmt-&gt;fetchAll(PDO::FETCH_ASSOC);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5be61e192aee5dfeb6f08f4af391dbf767daab37"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5be61e192aee5dfeb6f08f4af391dbf767daab37"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Hydrators</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Internal</span>\<span class="hljs-title">Hydration</span>\<span class="hljs-title">AbstractHydrator</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomHydrator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractHydrator</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_hydrateAll</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;_stmt-&gt;fetchAll(PDO::FETCH_ASSOC);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Next you just need to add the class to the ORM configuration:</p>
-<pre><code class="php">&lt;?php
-$em-&gt;getConfiguration()-&gt;addCustomHydrationMode('CustomHydrator', 'MyProject\Hydrators\CustomHydrator');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bd380d978bdfd977e0f99cb988d656614fdd8853"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bd380d978bdfd977e0f99cb988d656614fdd8853"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$em-&gt;getConfiguration()-&gt;addCustomHydrationMode(<span class="hljs-string">'CustomHydrator'</span>, <span class="hljs-string">'MyProject\Hydrators\CustomHydrator'</span>);
+</td></tr></table></div></code></pre>
 <p>Now the hydrator is ready to be used in your queries:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM CmsUser u');
-$results = $query-&gt;getResult('CustomHydrator');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2a10c5774d232022a4da3b138fc93ee3d7556110"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2a10c5774d232022a4da3b138fc93ee3d7556110"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM CmsUser u'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$results = $query-&gt;getResult(<span class="hljs-string">'CustomHydrator'</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="iterating-large-result-sets" name="iterating-large-result-sets"></a><h3 class="section-header"><a href="#iterating-large-result-sets">Iterating Large Result Sets<i class="fas fa-link"></i></a></h3>
 <p>There are situations when a query you want to execute returns a
 very large result-set that needs to be processed. All the
@@ -1151,33 +1627,40 @@ user-defined cache keys. However by default query results are not
 cached at all. You have to enable the result cache on a per query
 basis. The following example shows a complete workflow using the
 Result Cache API:</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery('SELECT u FROM MyProject\Model\User u WHERE u.id = ?1');
-$query-&gt;setParameter(1, 12);
-
-$query-&gt;setResultCacheDriver(new ApcCache());
-
-$query-&gt;useResultCache(true)
-      -&gt;setResultCacheLifeTime($seconds = 3600);
-
-$result = $query-&gt;getResult(); // cache miss
-
-$query-&gt;expireResultCache(true);
-$result = $query-&gt;getResult(); // forced expire, cache miss
-
-$query-&gt;setResultCacheId('my_query_result');
-$result = $query-&gt;getResult(); // saved in given result cache id.
-
-// or call useResultCache() with all parameters:
-$query-&gt;useResultCache(true, $seconds = 3600, 'my_query_result');
-$result = $query-&gt;getResult(); // cache hit!
-
-// Introspection
-$queryCacheProfile = $query-&gt;getQueryCacheProfile();
-$cacheDriver = $query-&gt;getResultCacheDriver();
-$lifetime = $query-&gt;getLifetime();
-$key = $query-&gt;getCacheKey();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b14fa44dd5de74bc78962392b19e0be4c5a5fbc1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b14fa44dd5de74bc78962392b19e0be4c5a5fbc1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM MyProject\Model\User u WHERE u.id = ?1'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-number">12</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query-&gt;setResultCacheDriver(<span class="hljs-keyword">new</span> ApcCache());
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$query-&gt;useResultCache(<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">      -&gt;setResultCacheLifeTime($seconds = <span class="hljs-number">3600</span>);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$result = $query-&gt;getResult(); <span class="hljs-comment">// cache miss</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$query-&gt;expireResultCache(<span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$result = $query-&gt;getResult(); <span class="hljs-comment">// forced expire, cache miss</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$query-&gt;setResultCacheId(<span class="hljs-string">'my_query_result'</span>);
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$result = $query-&gt;getResult(); <span class="hljs-comment">// saved in given result cache id.</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-comment">// or call useResultCache() with all parameters:</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$query-&gt;useResultCache(<span class="hljs-keyword">true</span>, $seconds = <span class="hljs-number">3600</span>, <span class="hljs-string">'my_query_result'</span>);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">$result = $query-&gt;getResult(); <span class="hljs-comment">// cache hit!</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-comment">// Introspection</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$queryCacheProfile = $query-&gt;getQueryCacheProfile();
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">$cacheDriver = $query-&gt;getResultCacheDriver();
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">$lifetime = $query-&gt;getLifetime();
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">$key = $query-&gt;getCacheKey();
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>You can set the Result Cache Driver globally on the
 <code>Doctrine\ORM\Configuration</code> instance so that it is passed to
 every <code>Query</code> and <code>NativeQuery</code> instance.</p>
@@ -1252,16 +1735,29 @@ the specified number of results.</p>
 <p>While normally all your associations are marked as lazy or extra lazy you will have cases where you are using DQL and don't want to
 fetch join a second, third or fourth level of entities into your result, because of the increased cost of the SQL JOIN. You
 can mark a many-to-one or one-to-one association as fetched temporarily to batch fetch these entities using a WHERE .. IN query.</p>
-<pre><code class="php">&lt;?php
-$query = $em-&gt;createQuery(&quot;SELECT u FROM MyProject\User u&quot;);
-$query-&gt;setFetchMode(&quot;MyProject\User&quot;, &quot;address&quot;, &quot;EAGER&quot;);
-$query-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="906f79dd5c09cfa019eec3759e474addab995f97"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="906f79dd5c09cfa019eec3759e474addab995f97"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">"SELECT u FROM MyProject\User u"</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query-&gt;setFetchMode(<span class="hljs-string">"MyProject\User"</span>, <span class="hljs-string">"address"</span>, <span class="hljs-string">"EAGER"</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$query-&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Given that there are 10 users and corresponding addresses in the database the executed queries will look something like:</p>
-<pre><code class="sql">SELECT * FROM users;
-SELECT * FROM address WHERE id IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b8bac2aab935517c08fbc8da9d54098b40d275fb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b8bac2aab935517c08fbc8da9d54098b40d275fb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">users</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> address <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">IN</span> (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="ebnf" name="ebnf"></a><h2 class="section-header"><a href="#ebnf">EBNF<i class="fas fa-link"></i></a></h2>
 <p>The following context-free grammar, written in an EBNF variant,
 describes the Doctrine Query Language. You can consult this grammar
@@ -1289,204 +1785,329 @@ correct syntax for a particular query should be.</p>
 </ul>
 
 <a class="section-anchor" id="query-language" name="query-language"></a><h3 class="section-header"><a href="#query-language">Query Language<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">QueryLanguage ::= SelectStatement | UpdateStatement | DeleteStatement
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="30c23719163012c65cf48f39d0044e300ca7cd11"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="30c23719163012c65cf48f39d0044e300ca7cd11"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">QueryLanguage ::= SelectStatement | UpdateStatement | DeleteStatement
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="statements" name="statements"></a><h3 class="section-header"><a href="#statements">Statements<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">SelectStatement ::= SelectClause FromClause [WhereClause] [GroupByClause] [HavingClause] [OrderByClause]
-UpdateStatement ::= UpdateClause [WhereClause]
-DeleteStatement ::= DeleteClause [WhereClause]
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9dadc74a365d160a449c4a340b45bd5ecce90275"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9dadc74a365d160a449c4a340b45bd5ecce90275"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">SelectStatement ::= SelectClause FromClause [WhereClause] [GroupByClause] [HavingClause] [OrderByClause]
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">UpdateStatement ::= UpdateClause [WhereClause]
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">DeleteStatement ::= DeleteClause [WhereClause]
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="identifiers" name="identifiers"></a><h3 class="section-header"><a href="#identifiers">Identifiers<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">/* Alias Identification usage (the &quot;u&quot; of &quot;u.name&quot;) */
-IdentificationVariable ::= identifier
-
-/* Alias Identification declaration (the &quot;u&quot; of &quot;FROM User u&quot;) */
-AliasIdentificationVariable :: = identifier
-
-/* identifier that must be a class name (the &quot;User&quot; of &quot;FROM User u&quot;) */
-AbstractSchemaName ::= identifier
-
-/* identifier that must be a field (the &quot;name&quot; of &quot;u.name&quot;) */
-/* This is responsible to know if the field exists in Object, no matter if it's a relation or a simple field */
-FieldIdentificationVariable ::= identifier
-
-/* identifier that must be a collection-valued association field (to-many) (the &quot;Phonenumbers&quot; of &quot;u.Phonenumbers&quot;) */
-CollectionValuedAssociationField ::= FieldIdentificationVariable
-
-/* identifier that must be a single-valued association field (to-one) (the &quot;Group&quot; of &quot;u.Group&quot;) */
-SingleValuedAssociationField ::= FieldIdentificationVariable
-
-/* identifier that must be an embedded class state field (for the future) */
-EmbeddedClassStateField ::= FieldIdentificationVariable
-
-/* identifier that must be a simple state field (name, email, ...) (the &quot;name&quot; of &quot;u.name&quot;) */
-/* The difference between this and FieldIdentificationVariable is only semantical, because it points to a single field (not mapping to a relation) */
-SimpleStateField ::= FieldIdentificationVariable
-
-/* Alias ResultVariable declaration (the &quot;total&quot; of &quot;COUNT(*) AS total&quot;) */
-AliasResultVariable = identifier
-
-/* ResultVariable identifier usage of mapped field aliases (the &quot;total&quot; of &quot;COUNT(*) AS total&quot;) */
-ResultVariable = identifier
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="95a2923ef3e96b8ec36b2d30457664c0aadf1d5a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="95a2923ef3e96b8ec36b2d30457664c0aadf1d5a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">/* Alias Identification usage (the "u" of "u.name") */</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">IdentificationVariable ::= identifier
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/* Alias Identification declaration (the "u" of "FROM User u") */</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">AliasIdentificationVariable :: = identifier
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/* identifier that must be a class name (the "User" of "FROM User u") */</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">AbstractSchemaName ::= identifier
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">/* identifier that must be a field (the "name" of "u.name") */</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-comment">/* This is responsible to know if the field exists in Object, no matter if it's a relation or a simple field */</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">FieldIdentificationVariable ::= identifier
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">/* identifier that must be a collection-valued association field (to-many) (the "Phonenumbers" of "u.Phonenumbers") */</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">CollectionValuedAssociationField ::= FieldIdentificationVariable
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-comment">/* identifier that must be a single-valued association field (to-one) (the "Group" of "u.Group") */</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">SingleValuedAssociationField ::= FieldIdentificationVariable
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-comment">/* identifier that must be an embedded class state field (for the future) */</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">EmbeddedClassStateField ::= FieldIdentificationVariable
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-comment">/* identifier that must be a simple state field (name, email, ...) (the "name" of "u.name") */</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-comment">/* The difference between this and FieldIdentificationVariable is only semantical, because it points to a single field (not mapping to a relation) */</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">SimpleStateField ::= FieldIdentificationVariable
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-comment">/* Alias ResultVariable declaration (the "total" of "COUNT(*) AS total") */</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">AliasResultVariable = identifier
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-comment">/* ResultVariable identifier usage of mapped field aliases (the "total" of "COUNT(*) AS total") */</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">ResultVariable = identifier
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="path-expressions" name="path-expressions"></a><h3 class="section-header"><a href="#path-expressions">Path Expressions<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">/* &quot;u.Group&quot; or &quot;u.Phonenumbers&quot; declarations */
-JoinAssociationPathExpression             ::= IdentificationVariable &quot;.&quot; (CollectionValuedAssociationField | SingleValuedAssociationField)
-
-/* &quot;u.Group&quot; or &quot;u.Phonenumbers&quot; usages */
-AssociationPathExpression                 ::= CollectionValuedPathExpression | SingleValuedAssociationPathExpression
-
-/* &quot;u.name&quot; or &quot;u.Group&quot; */
-SingleValuedPathExpression                ::= StateFieldPathExpression | SingleValuedAssociationPathExpression
-
-/* &quot;u.name&quot; or &quot;u.Group.name&quot; */
-StateFieldPathExpression                  ::= IdentificationVariable &quot;.&quot; StateField
-
-/* &quot;u.Group&quot; */
-SingleValuedAssociationPathExpression     ::= IdentificationVariable &quot;.&quot; SingleValuedAssociationField
-
-/* &quot;u.Group.Permissions&quot; */
-CollectionValuedPathExpression            ::= IdentificationVariable &quot;.&quot; CollectionValuedAssociationField
-
-/* &quot;name&quot; */
-StateField                                ::= {EmbeddedClassStateField &quot;.&quot;}* SimpleStateField
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4a93489480ae1d554458e73e1eb6b2339aedb6cc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4a93489480ae1d554458e73e1eb6b2339aedb6cc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">/* "u.Group" or "u.Phonenumbers" declarations */</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">JoinAssociationPathExpression             ::= IdentificationVariable <span class="hljs-string">"."</span> (CollectionValuedAssociationField | SingleValuedAssociationField)
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/* "u.Group" or "u.Phonenumbers" usages */</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">AssociationPathExpression                 ::= CollectionValuedPathExpression | SingleValuedAssociationPathExpression
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/* "u.name" or "u.Group" */</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">SingleValuedPathExpression                ::= StateFieldPathExpression | SingleValuedAssociationPathExpression
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">/* "u.name" or "u.Group.name" */</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">StateFieldPathExpression                  ::= IdentificationVariable <span class="hljs-string">"."</span> StateField
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-comment">/* "u.Group" */</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">SingleValuedAssociationPathExpression     ::= IdentificationVariable <span class="hljs-string">"."</span> SingleValuedAssociationField
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-comment">/* "u.Group.Permissions" */</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">CollectionValuedPathExpression            ::= IdentificationVariable <span class="hljs-string">"."</span> CollectionValuedAssociationField
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-comment">/* "name" */</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">StateField                                ::= {EmbeddedClassStateField <span class="hljs-string">"."</span>}* SimpleStateField
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="clauses" name="clauses"></a><h3 class="section-header"><a href="#clauses">Clauses<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">SelectClause        ::= &quot;SELECT&quot; [&quot;DISTINCT&quot;] SelectExpression {&quot;,&quot; SelectExpression}*
-SimpleSelectClause  ::= &quot;SELECT&quot; [&quot;DISTINCT&quot;] SimpleSelectExpression
-UpdateClause        ::= &quot;UPDATE&quot; AbstractSchemaName [&quot;AS&quot;] AliasIdentificationVariable &quot;SET&quot; UpdateItem {&quot;,&quot; UpdateItem}*
-DeleteClause        ::= &quot;DELETE&quot; [&quot;FROM&quot;] AbstractSchemaName [&quot;AS&quot;] AliasIdentificationVariable
-FromClause          ::= &quot;FROM&quot; IdentificationVariableDeclaration {&quot;,&quot; IdentificationVariableDeclaration}*
-SubselectFromClause ::= &quot;FROM&quot; SubselectIdentificationVariableDeclaration {&quot;,&quot; SubselectIdentificationVariableDeclaration}*
-WhereClause         ::= &quot;WHERE&quot; ConditionalExpression
-HavingClause        ::= &quot;HAVING&quot; ConditionalExpression
-GroupByClause       ::= &quot;GROUP&quot; &quot;BY&quot; GroupByItem {&quot;,&quot; GroupByItem}*
-OrderByClause       ::= &quot;ORDER&quot; &quot;BY&quot; OrderByItem {&quot;,&quot; OrderByItem}*
-Subselect           ::= SimpleSelectClause SubselectFromClause [WhereClause] [GroupByClause] [HavingClause] [OrderByClause]
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bcb2961aaad749e5ddd223d13fae36db8b87d8a4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bcb2961aaad749e5ddd223d13fae36db8b87d8a4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">SelectClause        ::= <span class="hljs-string">"SELECT"</span> [<span class="hljs-string">"DISTINCT"</span>] SelectExpression {<span class="hljs-string">","</span> SelectExpression}*
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">SimpleSelectClause  ::= <span class="hljs-string">"SELECT"</span> [<span class="hljs-string">"DISTINCT"</span>] SimpleSelectExpression
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">UpdateClause        ::= <span class="hljs-string">"UPDATE"</span> AbstractSchemaName [<span class="hljs-string">"AS"</span>] AliasIdentificationVariable <span class="hljs-string">"SET"</span> UpdateItem {<span class="hljs-string">","</span> UpdateItem}*
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">DeleteClause        ::= <span class="hljs-string">"DELETE"</span> [<span class="hljs-string">"FROM"</span>] AbstractSchemaName [<span class="hljs-string">"AS"</span>] AliasIdentificationVariable
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">FromClause          ::= <span class="hljs-string">"FROM"</span> IdentificationVariableDeclaration {<span class="hljs-string">","</span> IdentificationVariableDeclaration}*
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">SubselectFromClause ::= <span class="hljs-string">"FROM"</span> SubselectIdentificationVariableDeclaration {<span class="hljs-string">","</span> SubselectIdentificationVariableDeclaration}*
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">WhereClause         ::= <span class="hljs-string">"WHERE"</span> ConditionalExpression
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">HavingClause        ::= <span class="hljs-string">"HAVING"</span> ConditionalExpression
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">GroupByClause       ::= <span class="hljs-string">"GROUP"</span> <span class="hljs-string">"BY"</span> GroupByItem {<span class="hljs-string">","</span> GroupByItem}*
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">OrderByClause       ::= <span class="hljs-string">"ORDER"</span> <span class="hljs-string">"BY"</span> OrderByItem {<span class="hljs-string">","</span> OrderByItem}*
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">Subselect           ::= SimpleSelectClause SubselectFromClause [WhereClause] [GroupByClause] [HavingClause] [OrderByClause]
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="items" name="items"></a><h3 class="section-header"><a href="#items">Items<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">UpdateItem  ::= SingleValuedPathExpression &quot;=&quot; NewValue
-OrderByItem ::= (SimpleArithmeticExpression | SingleValuedPathExpression | ScalarExpression | ResultVariable) [&quot;ASC&quot; | &quot;DESC&quot;]
-GroupByItem ::= IdentificationVariable | ResultVariable | SingleValuedPathExpression
-NewValue    ::= SimpleArithmeticExpression | &quot;NULL&quot;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2a88762ed30a96813c583caa4f1942874c54d10f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2a88762ed30a96813c583caa4f1942874c54d10f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">UpdateItem  ::= SingleValuedPathExpression <span class="hljs-string">"="</span> NewValue
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">OrderByItem ::= (SimpleArithmeticExpression | SingleValuedPathExpression | ScalarExpression | ResultVariable) [<span class="hljs-string">"ASC"</span> | <span class="hljs-string">"DESC"</span>]
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">GroupByItem ::= IdentificationVariable | ResultVariable | SingleValuedPathExpression
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">NewValue    ::= SimpleArithmeticExpression | <span class="hljs-string">"NULL"</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="from-join-and-index-by" name="from-join-and-index-by"></a><h3 class="section-header"><a href="#from-join-and-index-by">From, Join and Index by<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">IdentificationVariableDeclaration          ::= RangeVariableDeclaration [IndexBy] {JoinVariableDeclaration}*
-SubselectIdentificationVariableDeclaration ::= IdentificationVariableDeclaration | (AssociationPathExpression [&quot;AS&quot;] AliasIdentificationVariable)
-JoinVariableDeclaration                    ::= Join [IndexBy]
-RangeVariableDeclaration                   ::= AbstractSchemaName [&quot;AS&quot;] AliasIdentificationVariable
-Join                                       ::= [&quot;LEFT&quot; [&quot;OUTER&quot;] | &quot;INNER&quot;] &quot;JOIN&quot; JoinAssociationPathExpression [&quot;AS&quot;] AliasIdentificationVariable [&quot;WITH&quot; ConditionalExpression]
-IndexBy                                    ::= &quot;INDEX&quot; &quot;BY&quot; StateFieldPathExpression
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="737eff23c3c16cce9c1edfccb271669eeb9b1702"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="737eff23c3c16cce9c1edfccb271669eeb9b1702"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">IdentificationVariableDeclaration          ::= RangeVariableDeclaration [IndexBy] {JoinVariableDeclaration}*
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">SubselectIdentificationVariableDeclaration ::= IdentificationVariableDeclaration | (AssociationPathExpression [<span class="hljs-string">"AS"</span>] AliasIdentificationVariable)
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">JoinVariableDeclaration                    ::= Join [IndexBy]
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">RangeVariableDeclaration                   ::= AbstractSchemaName [<span class="hljs-string">"AS"</span>] AliasIdentificationVariable
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">Join                                       ::= [<span class="hljs-string">"LEFT"</span> [<span class="hljs-string">"OUTER"</span>] | <span class="hljs-string">"INNER"</span>] <span class="hljs-string">"JOIN"</span> JoinAssociationPathExpression [<span class="hljs-string">"AS"</span>] AliasIdentificationVariable [<span class="hljs-string">"WITH"</span> ConditionalExpression]
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">IndexBy                                    ::= <span class="hljs-string">"INDEX"</span> <span class="hljs-string">"BY"</span> StateFieldPathExpression
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="select-expressions" name="select-expressions"></a><h3 class="section-header"><a href="#select-expressions">Select Expressions<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">SelectExpression        ::= (IdentificationVariable | ScalarExpression | AggregateExpression | FunctionDeclaration | PartialObjectExpression | &quot;(&quot; Subselect &quot;)&quot; | CaseExpression) [[&quot;AS&quot;] [&quot;HIDDEN&quot;] AliasResultVariable]
-SimpleSelectExpression  ::= (StateFieldPathExpression | IdentificationVariable | FunctionDeclaration | AggregateExpression | &quot;(&quot; Subselect &quot;)&quot; | ScalarExpression) [[&quot;AS&quot;] AliasResultVariable]
-PartialObjectExpression ::= &quot;PARTIAL&quot; IdentificationVariable &quot;.&quot; PartialFieldSet
-PartialFieldSet         ::= &quot;{&quot; SimpleStateField {&quot;,&quot; SimpleStateField}* &quot;}&quot;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="44a772c8ce32e707ebf03111c313cc6951af1797"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="44a772c8ce32e707ebf03111c313cc6951af1797"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">SelectExpression        ::= (IdentificationVariable | ScalarExpression | AggregateExpression | FunctionDeclaration | PartialObjectExpression | <span class="hljs-string">"("</span> Subselect <span class="hljs-string">")"</span> | CaseExpression) [[<span class="hljs-string">"AS"</span>] [<span class="hljs-string">"HIDDEN"</span>] AliasResultVariable]
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">SimpleSelectExpression  ::= (StateFieldPathExpression | IdentificationVariable | FunctionDeclaration | AggregateExpression | <span class="hljs-string">"("</span> Subselect <span class="hljs-string">")"</span> | ScalarExpression) [[<span class="hljs-string">"AS"</span>] AliasResultVariable]
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">PartialObjectExpression ::= <span class="hljs-string">"PARTIAL"</span> IdentificationVariable <span class="hljs-string">"."</span> PartialFieldSet
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">PartialFieldSet         ::= <span class="hljs-string">"{"</span> SimpleStateField {<span class="hljs-string">","</span> SimpleStateField}* <span class="hljs-string">"}"</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="conditional-expressions" name="conditional-expressions"></a><h3 class="section-header"><a href="#conditional-expressions">Conditional Expressions<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">ConditionalExpression       ::= ConditionalTerm {&quot;OR&quot; ConditionalTerm}*
-ConditionalTerm             ::= ConditionalFactor {&quot;AND&quot; ConditionalFactor}*
-ConditionalFactor           ::= [&quot;NOT&quot;] ConditionalPrimary
-ConditionalPrimary          ::= SimpleConditionalExpression | &quot;(&quot; ConditionalExpression &quot;)&quot;
-SimpleConditionalExpression ::= ComparisonExpression | BetweenExpression | LikeExpression |
-                                InExpression | NullComparisonExpression | ExistsExpression |
-                                EmptyCollectionComparisonExpression | CollectionMemberExpression |
-                                InstanceOfExpression
-
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="39fd23cdc397866b861ae74b304af42f1474e8e7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="39fd23cdc397866b861ae74b304af42f1474e8e7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">ConditionalExpression       ::= ConditionalTerm {<span class="hljs-string">"OR"</span> ConditionalTerm}*
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">ConditionalTerm             ::= ConditionalFactor {<span class="hljs-string">"AND"</span> ConditionalFactor}*
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">ConditionalFactor           ::= [<span class="hljs-string">"NOT"</span>] ConditionalPrimary
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">ConditionalPrimary          ::= SimpleConditionalExpression | <span class="hljs-string">"("</span> ConditionalExpression <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">SimpleConditionalExpression ::= ComparisonExpression | BetweenExpression | LikeExpression |
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">                                InExpression | NullComparisonExpression | ExistsExpression |
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">                                EmptyCollectionComparisonExpression | CollectionMemberExpression |
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                                InstanceOfExpression
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="collection-expressions" name="collection-expressions"></a><h3 class="section-header"><a href="#collection-expressions">Collection Expressions<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">EmptyCollectionComparisonExpression ::= CollectionValuedPathExpression &quot;IS&quot; [&quot;NOT&quot;] &quot;EMPTY&quot;
-CollectionMemberExpression          ::= EntityExpression [&quot;NOT&quot;] &quot;MEMBER&quot; [&quot;OF&quot;] CollectionValuedPathExpression
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dd65b6b2d87127b28217a21a93560b387583189c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dd65b6b2d87127b28217a21a93560b387583189c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">EmptyCollectionComparisonExpression ::= CollectionValuedPathExpression <span class="hljs-string">"IS"</span> [<span class="hljs-string">"NOT"</span>] <span class="hljs-string">"EMPTY"</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">CollectionMemberExpression          ::= EntityExpression [<span class="hljs-string">"NOT"</span>] <span class="hljs-string">"MEMBER"</span> [<span class="hljs-string">"OF"</span>] CollectionValuedPathExpression
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="literal-values" name="literal-values"></a><h3 class="section-header"><a href="#literal-values">Literal Values<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">Literal     ::= string | char | integer | float | boolean
-InParameter ::= Literal | InputParameter
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="199741639c9458be1b085d2876c7ca7c9044c09a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="199741639c9458be1b085d2876c7ca7c9044c09a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">Literal     ::= string | char | integer | float | boolean
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">InParameter ::= Literal | InputParameter
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="input-parameter" name="input-parameter"></a><h3 class="section-header"><a href="#input-parameter">Input Parameter<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">InputParameter      ::= PositionalParameter | NamedParameter
-PositionalParameter ::= &quot;?&quot; integer
-NamedParameter      ::= &quot;:&quot; string
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="260e266860a20800a8ceb2021c54d7680bd39561"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="260e266860a20800a8ceb2021c54d7680bd39561"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">InputParameter      ::= PositionalParameter | NamedParameter
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">PositionalParameter ::= <span class="hljs-string">"?"</span> integer
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">NamedParameter      ::= <span class="hljs-string">":"</span> string
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="arithmetic-expressions" name="arithmetic-expressions"></a><h3 class="section-header"><a href="#arithmetic-expressions">Arithmetic Expressions<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">ArithmeticExpression       ::= SimpleArithmeticExpression | &quot;(&quot; Subselect &quot;)&quot;
-SimpleArithmeticExpression ::= ArithmeticTerm {(&quot;+&quot; | &quot;-&quot;) ArithmeticTerm}*
-ArithmeticTerm             ::= ArithmeticFactor {(&quot;*&quot; | &quot;/&quot;) ArithmeticFactor}*
-ArithmeticFactor           ::= [(&quot;+&quot; | &quot;-&quot;)] ArithmeticPrimary
-ArithmeticPrimary          ::= SingleValuedPathExpression | Literal | &quot;(&quot; SimpleArithmeticExpression &quot;)&quot;
-                               | FunctionsReturningNumerics | AggregateExpression | FunctionsReturningStrings
-                               | FunctionsReturningDatetime | IdentificationVariable | ResultVariable
-                               | InputParameter | CaseExpression
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="045763525fc74398179cde82803ce3f551df96fa"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="045763525fc74398179cde82803ce3f551df96fa"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">ArithmeticExpression       ::= SimpleArithmeticExpression | <span class="hljs-string">"("</span> Subselect <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">SimpleArithmeticExpression ::= ArithmeticTerm {(<span class="hljs-string">"+"</span> | <span class="hljs-string">"-"</span>) ArithmeticTerm}*
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">ArithmeticTerm             ::= ArithmeticFactor {(<span class="hljs-string">"*"</span> | <span class="hljs-string">"/"</span>) ArithmeticFactor}*
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">ArithmeticFactor           ::= [(<span class="hljs-string">"+"</span> | <span class="hljs-string">"-"</span>)] ArithmeticPrimary
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">ArithmeticPrimary          ::= SingleValuedPathExpression | Literal | <span class="hljs-string">"("</span> SimpleArithmeticExpression <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">                               | FunctionsReturningNumerics | AggregateExpression | FunctionsReturningStrings
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">                               | FunctionsReturningDatetime | IdentificationVariable | ResultVariable
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                               | InputParameter | CaseExpression
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="scalar-and-type-expressions" name="scalar-and-type-expressions"></a><h3 class="section-header"><a href="#scalar-and-type-expressions">Scalar and Type Expressions<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">ScalarExpression       ::= SimpleArithmeticExpression | StringPrimary | DateTimePrimary | StateFieldPathExpression | BooleanPrimary | CaseExpression | InstanceOfExpression
-StringExpression       ::= StringPrimary | &quot;(&quot; Subselect &quot;)&quot;
-StringPrimary          ::= StateFieldPathExpression | string | InputParameter | FunctionsReturningStrings | AggregateExpression | CaseExpression
-BooleanExpression      ::= BooleanPrimary | &quot;(&quot; Subselect &quot;)&quot;
-BooleanPrimary         ::= StateFieldPathExpression | boolean | InputParameter
-EntityExpression       ::= SingleValuedAssociationPathExpression | SimpleEntityExpression
-SimpleEntityExpression ::= IdentificationVariable | InputParameter
-DatetimeExpression     ::= DatetimePrimary | &quot;(&quot; Subselect &quot;)&quot;
-DatetimePrimary        ::= StateFieldPathExpression | InputParameter | FunctionsReturningDatetime | AggregateExpression
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="94e7651b00cfe11eebd1eca2847f26dd5177bc13"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="94e7651b00cfe11eebd1eca2847f26dd5177bc13"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">ScalarExpression       ::= SimpleArithmeticExpression | StringPrimary | DateTimePrimary | StateFieldPathExpression | BooleanPrimary | CaseExpression | InstanceOfExpression
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">StringExpression       ::= StringPrimary | <span class="hljs-string">"("</span> Subselect <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">StringPrimary          ::= StateFieldPathExpression | string | InputParameter | FunctionsReturningStrings | AggregateExpression | CaseExpression
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">BooleanExpression      ::= BooleanPrimary | <span class="hljs-string">"("</span> Subselect <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">BooleanPrimary         ::= StateFieldPathExpression | boolean | InputParameter
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">EntityExpression       ::= SingleValuedAssociationPathExpression | SimpleEntityExpression
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">SimpleEntityExpression ::= IdentificationVariable | InputParameter
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">DatetimeExpression     ::= DatetimePrimary | <span class="hljs-string">"("</span> Subselect <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">DatetimePrimary        ::= StateFieldPathExpression | InputParameter | FunctionsReturningDatetime | AggregateExpression
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Parts of CASE expressions are not yet implemented.</p>
 </div>
 <a class="section-anchor" id="aggregate-expressions" name="aggregate-expressions"></a><h3 class="section-header"><a href="#aggregate-expressions">Aggregate Expressions<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">AggregateExpression ::= (&quot;AVG&quot; | &quot;MAX&quot; | &quot;MIN&quot; | &quot;SUM&quot;) &quot;(&quot; [&quot;DISTINCT&quot;] StateFieldPathExpression &quot;)&quot; |
-                        &quot;COUNT&quot; &quot;(&quot; [&quot;DISTINCT&quot;] (IdentificationVariable | SingleValuedPathExpression) &quot;)&quot;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3e85c2da5f975beed58b3968af30c206584a3ae6"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3e85c2da5f975beed58b3968af30c206584a3ae6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">AggregateExpression ::= (<span class="hljs-string">"AVG"</span> | <span class="hljs-string">"MAX"</span> | <span class="hljs-string">"MIN"</span> | <span class="hljs-string">"SUM"</span>) <span class="hljs-string">"("</span> [<span class="hljs-string">"DISTINCT"</span>] StateFieldPathExpression <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">                        <span class="hljs-string">"COUNT"</span> <span class="hljs-string">"("</span> [<span class="hljs-string">"DISTINCT"</span>] (IdentificationVariable | SingleValuedPathExpression) <span class="hljs-string">")"</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="case-expressions" name="case-expressions"></a><h3 class="section-header"><a href="#case-expressions">Case Expressions<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">CaseExpression        ::= GeneralCaseExpression | SimpleCaseExpression | CoalesceExpression | NullifExpression
-GeneralCaseExpression ::= &quot;CASE&quot; WhenClause {WhenClause}* &quot;ELSE&quot; ScalarExpression &quot;END&quot;
-WhenClause            ::= &quot;WHEN&quot; ConditionalExpression &quot;THEN&quot; ScalarExpression
-SimpleCaseExpression  ::= &quot;CASE&quot; CaseOperand SimpleWhenClause {SimpleWhenClause}* &quot;ELSE&quot; ScalarExpression &quot;END&quot;
-CaseOperand           ::= StateFieldPathExpression | TypeDiscriminator
-SimpleWhenClause      ::= &quot;WHEN&quot; ScalarExpression &quot;THEN&quot; ScalarExpression
-CoalesceExpression    ::= &quot;COALESCE&quot; &quot;(&quot; ScalarExpression {&quot;,&quot; ScalarExpression}* &quot;)&quot;
-NullifExpression      ::= &quot;NULLIF&quot; &quot;(&quot; ScalarExpression &quot;,&quot; ScalarExpression &quot;)&quot;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d4759836ca7a66d94952b8feef7be2df0d4217d2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d4759836ca7a66d94952b8feef7be2df0d4217d2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">CaseExpression        ::= GeneralCaseExpression | SimpleCaseExpression | CoalesceExpression | NullifExpression
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">GeneralCaseExpression ::= <span class="hljs-string">"CASE"</span> WhenClause {WhenClause}* <span class="hljs-string">"ELSE"</span> ScalarExpression <span class="hljs-string">"END"</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">WhenClause            ::= <span class="hljs-string">"WHEN"</span> ConditionalExpression <span class="hljs-string">"THEN"</span> ScalarExpression
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">SimpleCaseExpression  ::= <span class="hljs-string">"CASE"</span> CaseOperand SimpleWhenClause {SimpleWhenClause}* <span class="hljs-string">"ELSE"</span> ScalarExpression <span class="hljs-string">"END"</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">CaseOperand           ::= StateFieldPathExpression | TypeDiscriminator
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">SimpleWhenClause      ::= <span class="hljs-string">"WHEN"</span> ScalarExpression <span class="hljs-string">"THEN"</span> ScalarExpression
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">CoalesceExpression    ::= <span class="hljs-string">"COALESCE"</span> <span class="hljs-string">"("</span> ScalarExpression {<span class="hljs-string">","</span> ScalarExpression}* <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">NullifExpression      ::= <span class="hljs-string">"NULLIF"</span> <span class="hljs-string">"("</span> ScalarExpression <span class="hljs-string">","</span> ScalarExpression <span class="hljs-string">")"</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="other-expressions" name="other-expressions"></a><h3 class="section-header"><a href="#other-expressions">Other Expressions<i class="fas fa-link"></i></a></h3>
 <p>QUANTIFIED/BETWEEN/COMPARISON/LIKE/NULL/EXISTS</p>
-<pre><code class="php">QuantifiedExpression     ::= (&quot;ALL&quot; | &quot;ANY&quot; | &quot;SOME&quot;) &quot;(&quot; Subselect &quot;)&quot;
-BetweenExpression        ::= ArithmeticExpression [&quot;NOT&quot;] &quot;BETWEEN&quot; ArithmeticExpression &quot;AND&quot; ArithmeticExpression
-ComparisonExpression     ::= ArithmeticExpression ComparisonOperator ( QuantifiedExpression | ArithmeticExpression )
-InExpression             ::= SingleValuedPathExpression [&quot;NOT&quot;] &quot;IN&quot; &quot;(&quot; (InParameter {&quot;,&quot; InParameter}* | Subselect) &quot;)&quot;
-InstanceOfExpression     ::= IdentificationVariable [&quot;NOT&quot;] &quot;INSTANCE&quot; [&quot;OF&quot;] (InstanceOfParameter | &quot;(&quot; InstanceOfParameter {&quot;,&quot; InstanceOfParameter}* &quot;)&quot;)
-InstanceOfParameter      ::= AbstractSchemaName | InputParameter
-LikeExpression           ::= StringExpression [&quot;NOT&quot;] &quot;LIKE&quot; StringPrimary [&quot;ESCAPE&quot; char]
-NullComparisonExpression ::= (SingleValuedPathExpression | InputParameter) &quot;IS&quot; [&quot;NOT&quot;] &quot;NULL&quot;
-ExistsExpression         ::= [&quot;NOT&quot;] &quot;EXISTS&quot; &quot;(&quot; Subselect &quot;)&quot;
-ComparisonOperator       ::= &quot;=&quot; | &quot;&lt;&quot; | &quot;&lt;=&quot; | &quot;&lt;&gt;&quot; | &quot;&gt;&quot; | &quot;&gt;=&quot; | &quot;!=&quot;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3477d84f0f3c055d31dd6a5e1bdc3a1c2c27ab41"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3477d84f0f3c055d31dd6a5e1bdc3a1c2c27ab41"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">QuantifiedExpression     ::= (<span class="hljs-string">"ALL"</span> | <span class="hljs-string">"ANY"</span> | <span class="hljs-string">"SOME"</span>) <span class="hljs-string">"("</span> Subselect <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">BetweenExpression        ::= ArithmeticExpression [<span class="hljs-string">"NOT"</span>] <span class="hljs-string">"BETWEEN"</span> ArithmeticExpression <span class="hljs-string">"AND"</span> ArithmeticExpression
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">ComparisonExpression     ::= ArithmeticExpression ComparisonOperator ( QuantifiedExpression | ArithmeticExpression )
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">InExpression             ::= SingleValuedPathExpression [<span class="hljs-string">"NOT"</span>] <span class="hljs-string">"IN"</span> <span class="hljs-string">"("</span> (InParameter {<span class="hljs-string">","</span> InParameter}* | Subselect) <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">InstanceOfExpression     ::= IdentificationVariable [<span class="hljs-string">"NOT"</span>] <span class="hljs-string">"INSTANCE"</span> [<span class="hljs-string">"OF"</span>] (InstanceOfParameter | <span class="hljs-string">"("</span> InstanceOfParameter {<span class="hljs-string">","</span> InstanceOfParameter}* <span class="hljs-string">")"</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">InstanceOfParameter      ::= AbstractSchemaName | InputParameter
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">LikeExpression           ::= StringExpression [<span class="hljs-string">"NOT"</span>] <span class="hljs-string">"LIKE"</span> StringPrimary [<span class="hljs-string">"ESCAPE"</span> char]
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">NullComparisonExpression ::= (SingleValuedPathExpression | InputParameter) <span class="hljs-string">"IS"</span> [<span class="hljs-string">"NOT"</span>] <span class="hljs-string">"NULL"</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">ExistsExpression         ::= [<span class="hljs-string">"NOT"</span>] <span class="hljs-string">"EXISTS"</span> <span class="hljs-string">"("</span> Subselect <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">ComparisonOperator       ::= <span class="hljs-string">"="</span> | <span class="hljs-string">"&lt;"</span> | <span class="hljs-string">"&lt;="</span> | <span class="hljs-string">"&lt;&gt;"</span> | <span class="hljs-string">"&gt;"</span> | <span class="hljs-string">"&gt;="</span> | <span class="hljs-string">"!="</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="functions" name="functions"></a><h3 class="section-header"><a href="#functions">Functions<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">FunctionDeclaration ::= FunctionsReturningStrings | FunctionsReturningNumerics | FunctionsReturningDateTime
-
-FunctionsReturningNumerics ::=
-        &quot;LENGTH&quot; &quot;(&quot; StringPrimary &quot;)&quot; |
-        &quot;LOCATE&quot; &quot;(&quot; StringPrimary &quot;,&quot; StringPrimary [&quot;,&quot; SimpleArithmeticExpression]&quot;)&quot; |
-        &quot;ABS&quot; &quot;(&quot; SimpleArithmeticExpression &quot;)&quot; |
-        &quot;SQRT&quot; &quot;(&quot; SimpleArithmeticExpression &quot;)&quot; |
-        &quot;MOD&quot; &quot;(&quot; SimpleArithmeticExpression &quot;,&quot; SimpleArithmeticExpression &quot;)&quot; |
-        &quot;SIZE&quot; &quot;(&quot; CollectionValuedPathExpression &quot;)&quot; |
-        &quot;DATE_DIFF&quot; &quot;(&quot; ArithmeticPrimary &quot;,&quot; ArithmeticPrimary &quot;)&quot; |
-        &quot;BIT_AND&quot; &quot;(&quot; ArithmeticPrimary &quot;,&quot; ArithmeticPrimary &quot;)&quot; |
-        &quot;BIT_OR&quot; &quot;(&quot; ArithmeticPrimary &quot;,&quot; ArithmeticPrimary &quot;)&quot;
-
-FunctionsReturningDateTime ::=
-        &quot;CURRENT_DATE&quot; |
-        &quot;CURRENT_TIME&quot; |
-        &quot;CURRENT_TIMESTAMP&quot; |
-        &quot;DATE_ADD&quot; &quot;(&quot; ArithmeticPrimary &quot;,&quot; ArithmeticPrimary &quot;,&quot; StringPrimary &quot;)&quot; |
-        &quot;DATE_SUB&quot; &quot;(&quot; ArithmeticPrimary &quot;,&quot; ArithmeticPrimary &quot;,&quot; StringPrimary &quot;)&quot;
-
-FunctionsReturningStrings ::=
-        &quot;CONCAT&quot; &quot;(&quot; StringPrimary &quot;,&quot; StringPrimary &quot;)&quot; |
-        &quot;SUBSTRING&quot; &quot;(&quot; StringPrimary &quot;,&quot; SimpleArithmeticExpression &quot;,&quot; SimpleArithmeticExpression &quot;)&quot; |
-        &quot;TRIM&quot; &quot;(&quot; [[&quot;LEADING&quot; | &quot;TRAILING&quot; | &quot;BOTH&quot;] [char] &quot;FROM&quot;] StringPrimary &quot;)&quot; |
-        &quot;LOWER&quot; &quot;(&quot; StringPrimary &quot;)&quot; |
-        &quot;UPPER&quot; &quot;(&quot; StringPrimary &quot;)&quot; |
-        &quot;IDENTITY&quot; &quot;(&quot; SingleValuedAssociationPathExpression &quot;)&quot;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="37083e4ccb88bd9c1ac3900bc1c7047f59166c6c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="37083e4ccb88bd9c1ac3900bc1c7047f59166c6c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">FunctionDeclaration ::= FunctionsReturningStrings | FunctionsReturningNumerics | FunctionsReturningDateTime
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">FunctionsReturningNumerics ::=
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-string">"LENGTH"</span> <span class="hljs-string">"("</span> StringPrimary <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-string">"LOCATE"</span> <span class="hljs-string">"("</span> StringPrimary <span class="hljs-string">","</span> StringPrimary [<span class="hljs-string">","</span> SimpleArithmeticExpression]<span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-string">"ABS"</span> <span class="hljs-string">"("</span> SimpleArithmeticExpression <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-string">"SQRT"</span> <span class="hljs-string">"("</span> SimpleArithmeticExpression <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-string">"MOD"</span> <span class="hljs-string">"("</span> SimpleArithmeticExpression <span class="hljs-string">","</span> SimpleArithmeticExpression <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-string">"SIZE"</span> <span class="hljs-string">"("</span> CollectionValuedPathExpression <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-string">"DATE_DIFF"</span> <span class="hljs-string">"("</span> ArithmeticPrimary <span class="hljs-string">","</span> ArithmeticPrimary <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-string">"BIT_AND"</span> <span class="hljs-string">"("</span> ArithmeticPrimary <span class="hljs-string">","</span> ArithmeticPrimary <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-string">"BIT_OR"</span> <span class="hljs-string">"("</span> ArithmeticPrimary <span class="hljs-string">","</span> ArithmeticPrimary <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">FunctionsReturningDateTime ::=
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-string">"CURRENT_DATE"</span> |
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-string">"CURRENT_TIME"</span> |
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-string">"CURRENT_TIMESTAMP"</span> |
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        <span class="hljs-string">"DATE_ADD"</span> <span class="hljs-string">"("</span> ArithmeticPrimary <span class="hljs-string">","</span> ArithmeticPrimary <span class="hljs-string">","</span> StringPrimary <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-string">"DATE_SUB"</span> <span class="hljs-string">"("</span> ArithmeticPrimary <span class="hljs-string">","</span> ArithmeticPrimary <span class="hljs-string">","</span> StringPrimary <span class="hljs-string">")"</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">FunctionsReturningStrings ::=
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-string">"CONCAT"</span> <span class="hljs-string">"("</span> StringPrimary <span class="hljs-string">","</span> StringPrimary <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        <span class="hljs-string">"SUBSTRING"</span> <span class="hljs-string">"("</span> StringPrimary <span class="hljs-string">","</span> SimpleArithmeticExpression <span class="hljs-string">","</span> SimpleArithmeticExpression <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-string">"TRIM"</span> <span class="hljs-string">"("</span> [[<span class="hljs-string">"LEADING"</span> | <span class="hljs-string">"TRAILING"</span> | <span class="hljs-string">"BOTH"</span>] [char] <span class="hljs-string">"FROM"</span>] StringPrimary <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-string">"LOWER"</span> <span class="hljs-string">"("</span> StringPrimary <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">        <span class="hljs-string">"UPPER"</span> <span class="hljs-string">"("</span> StringPrimary <span class="hljs-string">")"</span> |
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        <span class="hljs-string">"IDENTITY"</span> <span class="hljs-string">"("</span> SingleValuedAssociationPathExpression <span class="hljs-string">")"</span>
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -1511,8 +2132,6 @@ FunctionsReturningStrings ::=
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -1558,7 +2177,7 @@ FunctionsReturningStrings ::=
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

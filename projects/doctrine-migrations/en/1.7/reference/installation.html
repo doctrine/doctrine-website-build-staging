@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -255,22 +252,19 @@
 <p>You have two options, you can either use composer to install doctrine migrations or you can use the standalone Phar package.</p>
 <a class="section-anchor" id="composer" name="composer"></a><h2 class="section-header"><a href="#composer">Composer<i class="fas fa-link"></i></a></h2>
 <p>Install it with composer:</p>
-<pre><code class="sh">composer require doctrine/migrations
-
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>composer require doctrine/migrations
+</code></pre></div>
 <a class="section-anchor" id="php-binary-phar" name="php-binary-phar"></a><h2 class="section-header"><a href="#php-binary-phar">PHP Binary / PHAR<i class="fas fa-link"></i></a></h2>
 <p>You can download the Migrations PHP Binary, which is a standalone PHAR package
 file with all the required dependencies. You can drop that single file onto any server
 and start using the Doctrine Migrations.</p>
 <p>To register a system command for the migrations you can create a simple batch
 script, for example on a \*nix Environment creating a `/usr/local/bin/doctrine-migrations`:</p>
-<pre><code class="bash">#!/bin/sh
-php /path/to/doctrine-migrations.phar &quot;$@&quot;
-</code></pre>
+<div class="console"><pre><code class="console">#!/bin/sh
+php /path/to/doctrine-migrations.phar "$@"</code></pre></div>
 <p>You could now go and use the migrations like:</p>
-<pre><code class="bash">[shell]
-myshell&gt; doctrine-migrations
-</code></pre>
+<div class="console"><pre><code class="console">[shell]
+myshell> doctrine-migrations</code></pre></div>
 <p>Because the PHAR file is standalone it does not rely on the Symfony Console 'db' Helper,
 but you have to pass a `--db-configuration` parameter that points to a PHP file
 which returns the parameters for `Doctrine\DBAL\DriverManager::getConnection($dbParams)`.
@@ -284,28 +278,42 @@ to a configuration file. If you don't specify any configuration file the tasks w
 look for a file named <em>migrations.xml</em> or <em>migrations.yml</em> at the root of
 your command line. For the upcoming examples you can use a <em>migrations.xml</em>
 file like the following:</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;doctrine-migrations xmlns=&quot;http://doctrine-project.org/schemas/migrations/configuration&quot;
-      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-      xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/migrations/configuration
-                    http://doctrine-project.org/schemas/migrations/configuration.xsd&quot;&gt;
-
-    &lt;name&gt;Doctrine Sandbox Migrations&lt;/name&gt;
-
-    &lt;migrations-namespace&gt;DoctrineMigrations&lt;/migrations-namespace&gt;
-
-    &lt;table name=&quot;doctrine_migration_versions&quot; /&gt;
-
-    &lt;migrations-directory&gt;/path/to/migrations/classes/DoctrineMigrations&lt;/migrations-directory&gt;
-
-&lt;/doctrine-migrations&gt;
-</code></pre>
+<pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7adc067e85e454f4e6f55675c7fb661548316818"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7adc067e85e454f4e6f55675c7fb661548316818"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-migrations</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/migrations/configuration"</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/migrations/configuration
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                    http://doctrine-project.org/schemas/migrations/configuration.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Doctrine Sandbox Migrations<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">migrations-namespace</span>&gt;</span>DoctrineMigrations<span class="hljs-tag">&lt;/<span class="hljs-name">migrations-namespace</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"doctrine_migration_versions"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">migrations-directory</span>&gt;</span>/path/to/migrations/classes/DoctrineMigrations<span class="hljs-tag">&lt;/<span class="hljs-name">migrations-directory</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-migrations</span>&gt;</span>
+</td></tr></table></div></code></pre>
 <p>Of course you could do the same thing with a <em>configuration.yml</em> file:</p>
-<pre><code class="yaml">name: Doctrine Sandbox Migrations
-migrations_namespace: DoctrineMigrations
-table_name: doctrine_migration_versions
-migrations_directory: /path/to/migrations/classes/DoctrineMigrations
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="51a7140c1c2e20b41b962b4222cfcc302a873cff"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="51a7140c1c2e20b41b962b4222cfcc302a873cff"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">name:</span> <span class="hljs-string">Doctrine</span> <span class="hljs-string">Sandbox</span> <span class="hljs-string">Migrations</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">migrations_namespace:</span> <span class="hljs-string">DoctrineMigrations</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">table_name:</span> <span class="hljs-string">doctrine_migration_versions</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">migrations_directory:</span> <span class="hljs-string">/path/to/migrations/classes/DoctrineMigrations</span>
+</td></tr></table></div></code></pre>
 <p>With the above example, the migrations tool will search the <code>migrations_directory</code>
 recursively for files that begin with <code>Version</code> followed one to 255 characters
 and a <code>.php</code> suffix. <code>Version.{1,255}\.php</code> is the regular expression that's
@@ -319,13 +327,20 @@ the migrations are executed in the correct order.</p>
 <p>While you <em>can</em> use custom filenames, it's probably a good idea to the Doctrine
 <a href="generating_migrations.html">generate migration files</a> for you.</p>
 <p>And if you want to specify each migration manually in YAML you can:</p>
-<pre><code class="yaml">table_name: doctrine_migration_versions
-migrations_directory: /path/to/migrations/classes/DoctrineMigrations
-migrations:
-  migration1:
-    version: 20100704000000
-    class: DoctrineMigrations\NewMigration
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="35822adfe5230aba73f11968ef5dc172da785763"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="35822adfe5230aba73f11968ef5dc172da785763"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">table_name:</span> <span class="hljs-string">doctrine_migration_versions</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">migrations_directory:</span> <span class="hljs-string">/path/to/migrations/classes/DoctrineMigrations</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">migrations:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  migration1:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    version:</span> <span class="hljs-number">20100704000000</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    class:</span> <span class="hljs-string">DoctrineMigrations\NewMigration</span>
+</td></tr></table></div></code></pre>
 <p>If you specify your own migration classes (like `DoctrineMigrations\NewMigration` in the previous
 example) you will need an autoloader unless all those classes begin with the prefix Version*,
 for example path/to/migrations/classes/VersionNewMigration.php.</p>
@@ -353,8 +368,6 @@ for example path/to/migrations/classes/VersionNewMigration.php.</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -400,7 +413,7 @@ for example path/to/migrations/classes/VersionNewMigration.php.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

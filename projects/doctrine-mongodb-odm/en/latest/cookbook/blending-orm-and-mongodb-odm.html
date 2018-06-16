@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -270,169 +267,232 @@
 <p>This example will have a `Product` that is stored in MongoDB and the `Order` stored in a MySQL database.</p>
 <a class="section-anchor" id="define-product" name="define-product"></a><h2 class="section-header"><a href="#define-product">Define Product<i class="fas fa-link"></i></a></h2>
 <p>First lets define our `Product` document:</p>
-<pre><code class="php">&lt;?php
-
-namespace Documents;
-
-/** @Document */
-class Product
-{
-    /** @Id */
-    private $id;
-
-    /** @Field(type=&quot;string&quot;) */
-    private $title;
-
-    public function getId(): ?string
-    {
-        return $this-&gt;id;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this-&gt;title;
-    }
-
-    public function setTitle(string $title): void
-    {
-        $this-&gt;title = $title;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="610ce71b0b9c49b3ecfe207f8fc2d5813ad900ea"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="610ce71b0b9c49b3ecfe207f8fc2d5813ad900ea"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Product</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $title;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span>: ?<span class="hljs-title">string</span></span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTitle</span><span class="hljs-params">()</span>: ?<span class="hljs-title">string</span></span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;title;
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setTitle</span><span class="hljs-params">(string $title)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;title = $title;
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="define-entity" name="define-entity"></a><h2 class="section-header"><a href="#define-entity">Define Entity<i class="fas fa-link"></i></a></h2>
 <p>Next create the `Order` entity that has a `$product` and `$productId` property linking it to the `Product` that is stored with MongoDB:</p>
-<pre><code class="php">&lt;?php
-
-namespace Entities;
-
-use Documents\Product;
-
-/**
- * @Entity
- * @Table(name=&quot;orders&quot;)
- */
-class Order
-{
-    /**
-     * @Id @Column(type=&quot;integer&quot;)
-     * @GeneratedValue(strategy=&quot;AUTO&quot;)
-     */
-    private $id;
-
-    /**
-     * @Column(type=&quot;string&quot;)
-     */
-    private $productId;
-
-    /**
-     * @var Documents\Product
-     */
-    private $product;
-
-    public function getId(): ?int
-    {
-        return $this-&gt;id;
-    }
-
-    public function getProductId(): ?string
-    {
-        return $this-&gt;productId;
-    }
-
-    public function setProduct(Product $product)
-    {
-        $this-&gt;productId = $product-&gt;getId();
-        $this-&gt;product = $product;
-    }
-
-    public function getProduct(): ?Product
-    {
-        return $this-&gt;product;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f5e5cfabaea21c9b7754bde5a4017039103b9652"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f5e5cfabaea21c9b7754bde5a4017039103b9652"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Entities</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Documents</span>\<span class="hljs-title">Product</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> * @Table(name=<span class="hljs-string">"orders"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Order</span></span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     * @Id @Column(type=<span class="hljs-string">"integer"</span>)
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     * @GeneratedValue(strategy=<span class="hljs-string">"AUTO"</span>)
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * @Column(type=<span class="hljs-string">"string"</span>)
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">private</span> $productId;
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     * @<span class="hljs-keyword">var</span> Documents\Product
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-keyword">private</span> $product;
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span>: ?<span class="hljs-title">int</span></span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id;
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProductId</span><span class="hljs-params">()</span>: ?<span class="hljs-title">string</span></span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;productId;
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setProduct</span><span class="hljs-params">(Product $product)</span></span>
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;productId = $product-&gt;getId();
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;product = $product;
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProduct</span><span class="hljs-params">()</span>: ?<span class="hljs-title">Product</span></span>
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;product;
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="event-subscriber" name="event-subscriber"></a><h2 class="section-header"><a href="#event-subscriber">Event Subscriber<i class="fas fa-link"></i></a></h2>
 <p>Now we need to setup an event subscriber that will set the `$product` property of all `Order` instances to a reference to the document product so it can be lazily loaded when it is accessed the first time. So first register a new event subscriber:</p>
-<pre><code class="php">&lt;?php
-
-$eventManager = $em-&gt;getEventManager();
-$eventManager-&gt;addEventListener(
-    array(\Doctrine\ORM\Events::postLoad), new MyEventSubscriber($dm)
-);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="90e29e388b081e0ad95d35042fdcac9318fa78fd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="90e29e388b081e0ad95d35042fdcac9318fa78fd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$eventManager = $em-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$eventManager-&gt;addEventListener(
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">array</span>(\Doctrine\ORM\Events::postLoad), <span class="hljs-keyword">new</span> MyEventSubscriber($dm)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">);
+</td></tr></table></div></code></pre>
 <p>So now we need to define a class named `MyEventSubscriber` and pass a dependency to the `DocumentManager`. It will have a `postLoad()` method that sets the product document reference:</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\ODM\MongoDB\DocumentManager;
-use Doctrine\ORM\Event\LifecycleEventArgs;
-
-class MyEventSubscriber
-{
-    public function __construct(DocumentManager $dm)
-    {
-        $this-&gt;dm = $dm;
-    }
-
-    public function postLoad(LifecycleEventArgs $eventArgs): void
-    {
-        $order = $eventArgs-&gt;getEntity();
-        $em = $eventArgs-&gt;getEntityManager();
-        $productReflProp = $em-&gt;getClassMetadata('Entities\Order')
-            -&gt;reflClass-&gt;getProperty('product');
-        $productReflProp-&gt;setAccessible(true);
-        $productReflProp-&gt;setValue(
-            $order, $this-&gt;dm-&gt;getReference('Documents\Product', $order-&gt;getProductId())
-        );
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="35cb20cdef3092aaf25b1c22301143ec9cf6d05c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="35cb20cdef3092aaf25b1c22301143ec9cf6d05c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">DocumentManager</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Event</span>\<span class="hljs-title">LifecycleEventArgs</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEventSubscriber</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(DocumentManager $dm)</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;dm = $dm;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postLoad</span><span class="hljs-params">(LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        $order = $eventArgs-&gt;getEntity();
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        $em = $eventArgs-&gt;getEntityManager();
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        $productReflProp = $em-&gt;getClassMetadata(<span class="hljs-string">'Entities\Order'</span>)
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">            -&gt;reflClass-&gt;getProperty(<span class="hljs-string">'product'</span>);
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        $productReflProp-&gt;setAccessible(<span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        $productReflProp-&gt;setValue(
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">            $order, <span class="hljs-keyword">$this</span>-&gt;dm-&gt;getReference(<span class="hljs-string">'Documents\Product'</span>, $order-&gt;getProductId())
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        );
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The `postLoad` method will be invoked after an ORM entity is loaded from the database. This allows us to use the `DocumentManager` to set the `$product` property with a reference to the `Product` document with the product id we previously stored.</p>
 <a class="section-anchor" id="working-with-products-and-orders" name="working-with-products-and-orders"></a><h2 class="section-header"><a href="#working-with-products-and-orders">Working with Products and Orders<i class="fas fa-link"></i></a></h2>
 <p>First create a new `Product`:</p>
-<pre><code class="php">&lt;?php
-
-$product = new \Documents\Product();
-$product-&gt;setTitle('Test Product');
-$dm-&gt;persist($product);
-$dm-&gt;flush();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9407883614168e949b891f41e9d6b8c8f9a27d63"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9407883614168e949b891f41e9d6b8c8f9a27d63"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$product = <span class="hljs-keyword">new</span> \Documents\Product();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$product-&gt;setTitle(<span class="hljs-string">'Test Product'</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$dm-&gt;persist($product);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$dm-&gt;flush();
+</td></tr></table></div></code></pre>
 <p>Now create a new `Order` and link it to a `Product` in MySQL:</p>
-<pre><code class="php">&lt;?php
-
-$order = new \Entities\Order();
-$order-&gt;setProduct($product);
-$em-&gt;persist($order);
-$em-&gt;flush();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5d1f74f3e70b58ad256a51a3d6715184109376af"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5d1f74f3e70b58ad256a51a3d6715184109376af"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$order = <span class="hljs-keyword">new</span> \Entities\Order();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$order-&gt;setProduct($product);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$em-&gt;persist($order);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$em-&gt;flush();
+</td></tr></table></div></code></pre>
 <p>Later we can retrieve the entity and lazily load the reference to the document in MongoDB:</p>
-<pre><code class="php">&lt;?php
-
-$order = $em-&gt;find('Order', $order-&gt;getId());
-
-// Instance of an uninitialized product proxy
-$product = $order-&gt;getProduct();
-
-// Initializes proxy and queries the database
-echo &quot;Order Title: &quot; . $product-&gt;getTitle();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cacf2e1beba5f40e0f9538d0870a625a70fdb6ea"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cacf2e1beba5f40e0f9538d0870a625a70fdb6ea"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$order = $em-&gt;find(<span class="hljs-string">'Order'</span>, $order-&gt;getId());
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// Instance of an uninitialized product proxy</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$product = $order-&gt;getProduct();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">// Initializes proxy and queries the database</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-keyword">echo</span> <span class="hljs-string">"Order Title: "</span> . $product-&gt;getTitle();
+</td></tr></table></div></code></pre>
 <p>If you were to print the `$order` you would see that we got back regular PHP objects:</p>
-<pre><code class="php">&lt;?php
-
-print_r($order);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f3a48ce5bc3540b07b9233b5f88fae9aabca844e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f3a48ce5bc3540b07b9233b5f88fae9aabca844e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">print_r($order);
+</td></tr></table></div></code></pre>
 <p>The above would output the following:</p>
-<pre><code class="php">Order Object
-(
-    [id:Entities\Order:private] =&gt; 53
-    [productId:Entities\Order:private] =&gt; 4c74a1868ead0ed7a9000000
-    [product:Entities\Order:private] =&gt; Proxies\DocumentsProductProxy Object
-        (
-            [__isInitialized__] =&gt; 1
-            [id:Documents\Product:private] =&gt; 4c74a1868ead0ed7a9000000
-            [title:Documents\Product:private] =&gt; Test Product
-        )
-)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b040a9ba52915a1428b081288a714c0a175f87f9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b040a9ba52915a1428b081288a714c0a175f87f9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">Order Object
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">(
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    [id:Entities\Order:<span class="hljs-keyword">private</span>] =&gt; <span class="hljs-number">53</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    [productId:Entities\Order:<span class="hljs-keyword">private</span>] =&gt; <span class="hljs-number">4</span>c74a1868ead0ed7a9000000
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    [product:Entities\Order:<span class="hljs-keyword">private</span>] =&gt; Proxies\DocumentsProductProxy Object
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        (
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            [__isInitialized__] =&gt; <span class="hljs-number">1</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">            [id:Documents\Product:<span class="hljs-keyword">private</span>] =&gt; <span class="hljs-number">4</span>c74a1868ead0ed7a9000000
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            [title:Documents\Product:<span class="hljs-keyword">private</span>] =&gt; Test Product
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        )
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">)
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -457,8 +517,6 @@ print_r($order);
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -504,7 +562,7 @@ print_r($order);
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

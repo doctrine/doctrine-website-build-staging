@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -275,13 +272,20 @@ favourite mechanism for defining metadata.</p>
 <p>In order to mark a class for CouchDB persistence it needs
 to be designated as an document. This can be done through the
 <code>@Document</code> marker annotation.</p>
-<pre><code class="php">&lt;?php
-/** @Document */
-class MyPersistentClass
-{
-    //...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f2253190ef894faf4afde5bdbcb7411fbeb396ab"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f2253190ef894faf4afde5bdbcb7411fbeb396ab"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPersistentClass</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="doctrine-mapping-types" name="doctrine-mapping-types"></a><h2 class="section-header"><a href="#doctrine-mapping-types">Doctrine Mapping Types<i class="fas fa-link"></i></a></h2>
 <p>A Doctrine Mapping Type defines the mapping between a PHP type and
 an JSON type. Since CouchDB speaks JSON there has to be a transformation
@@ -308,48 +312,76 @@ least one attribute to be set, the <code>type</code>. The <code>type</code> attr
 specifies the Doctrine Mapping Type to use for the field. If the
 type is not specified, 'mixed' is used as the default mapping type
 since it is the most flexible.</p>
-<pre><code class="php">&lt;?php
-/** @Document */
-class MyPersistentClass
-{
-    /** @Field(type=&quot;string&quot;) */
-    private $name;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4a3071cfefa1f7eac4b19e294968449b71e4b9f1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4a3071cfefa1f7eac4b19e294968449b71e4b9f1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPersistentClass</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="indexing-fields" name="indexing-fields"></a><h3 class="section-header"><a href="#indexing-fields">Indexing Fields<i class="fas fa-link"></i></a></h3>
 <p>CouchDB uses map-reduce to query documents. Except querying for the ID of a document
 there is no additional query capability available for fields. Doctrine CouchDB ODM
 allows you to use a predefined view that allows equality comparisons on fields:</p>
-<pre><code class="php">&lt;?php
-/** @Document */
-class MyPersistentClass
-{
-    /**
-     * @Index
-     * @Field(type=&quot;string&quot;)
-     */
-    private $name;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bf5e84f8a7f418193d179017578d7be234d388eb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bf5e84f8a7f418193d179017578d7be234d388eb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPersistentClass</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     * @Index
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     * @Field(type=<span class="hljs-string">"string"</span>)
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>All indexed fields can be queried in <code>DocumentRepository::findBy()</code> and <code>DocumentRepository:findOneBy()</code>:</p>
-<pre><code class="php">&lt;?php
-$repository = $documentManager-&gt;getRepository(&quot;MyApp\Document\MyPersistentClass&quot;);
-$john = $repository-&gt;findOneBy(array(&quot;name&quot; =&gt; &quot;John Galt&quot;));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e38f88aa0e21276114b89d362051e5a2e32e0b53"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e38f88aa0e21276114b89d362051e5a2e32e0b53"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$repository = $documentManager-&gt;getRepository(<span class="hljs-string">"MyApp\Document\MyPersistentClass"</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$john = $repository-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">"name"</span> =&gt; <span class="hljs-string">"John Galt"</span>));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="json-names" name="json-names"></a><h3 class="section-header"><a href="#json-names">Json Names<i class="fas fa-link"></i></a></h3>
 <p>If your fields for some reason have different names in the PHP class and CouchDB document you<br />can use the attribute &quot;jsonName&quot; to specify the name of the key in the json document.</p>
 <a class="section-anchor" id="id-mapping" name="id-mapping"></a><h2 class="section-header"><a href="#id-mapping">Id Mapping<i class="fas fa-link"></i></a></h2>
 <p>CouchDB documents have a special field &quot;_id&quot; that contains the globally
 unique identifier of a document in the database. This is always a string,
 so it suffices to specify only the @Id annotation on the property:</p>
-<pre><code class="php">&lt;?php
-/** @Document */
-class MyPersistentClass
-{
-    /** @Id */
-    private $id;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="865c0fabe714af696a88755ee0b4e2aa2bae9dee"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="865c0fabe714af696a88755ee0b4e2aa2bae9dee"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPersistentClass</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="id-generation-strategies" name="id-generation-strategies"></a><h3 class="section-header"><a href="#id-generation-strategies">Id Generation Strategies<i class="fas fa-link"></i></a></h3>
 <p>By default the ODM uses CouchDBs batch UUID generation mechanism
 to generate a UUID for a document as soon as it is registered with
@@ -363,32 +395,53 @@ IDs, here is a list:</p>
 
 <a class="section-anchor" id="attachments" name="attachments"></a><h2 class="section-header"><a href="#attachments">Attachments<i class="fas fa-link"></i></a></h2>
 <p>You can map an array of all CouchDB attachments to a document to a field in your PHP class:</p>
-<pre><code class="php">&lt;?php
-/** @Document */
-class MyPersistentClass
-{
-    /** @Attachments */
-    private $attachments;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="588aab597d6f943b24e4665a4abfb43adc5ccc41"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="588aab597d6f943b24e4665a4abfb43adc5ccc41"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPersistentClass</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Attachments</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $attachments;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The mapped field is indexed by filename and contains instances of <code>Doctrine\CouchDB\Attachment</code>.
 Contents of the attachments are loaded lazily by using the stub details inside the CouchDB document.</p>
 <a class="section-anchor" id="document-repositories" name="document-repositories"></a><h2 class="section-header"><a href="#document-repositories">Document Repositories<i class="fas fa-link"></i></a></h2>
 <p>A repository is a finder class for your documents. Every document automatically has a repository
 of the type <code>Doctrine\ODM\CouchDB\DocumentRepository</code>. You can specify your own repository classes
 that extend the base repository and provide additional finder methods:</p>
-<pre><code class="php">&lt;?php
-/** @Document(repositoryClass=&quot;MyApp\Repository\MyPersistentRepository&quot;) */
-class MyPersistentClass
-{
-    /** @Attachments */
-    private $attachments;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8ddaa7226f1593ebed83079625ae9aa58d9cfc5d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8ddaa7226f1593ebed83079625ae9aa58d9cfc5d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span>(repositoryClass="MyApp\Repository\MyPersistentRepository") */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPersistentClass</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Attachments</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $attachments;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Then when calling <code>DocumentManager#getRepository</code> you will get an instance of your repository subclass:</p>
-<pre><code class="php">&lt;?php
-$repository = $documentManager-&gt;getRepository(&quot;MyApp\Document\MyPersistentClass&quot;);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5d6cff2ec3440ccf94a769a4cdf6377d2faca3d3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5d6cff2ec3440ccf94a769a4cdf6377d2faca3d3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$repository = $documentManager-&gt;getRepository(<span class="hljs-string">"MyApp\Document\MyPersistentClass"</span>);
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -413,8 +466,6 @@ $repository = $documentManager-&gt;getRepository(&quot;MyApp\Document\MyPersiste
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -460,7 +511,7 @@ $repository = $documentManager-&gt;getRepository(&quot;MyApp\Document\MyPersiste
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

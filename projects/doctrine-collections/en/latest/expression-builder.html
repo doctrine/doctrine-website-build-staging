@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -247,126 +244,238 @@
 <p>The Expression Builder is a convenient fluent interface for
 building expressions to be used with the <code>Doctrine\Common\Collections\Criteria</code>
 class:</p>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$criteria = new Criteria();
-$criteria-&gt;where($expressionBuilder-&gt;eq('name', 'jwage'));
-$criteria-&gt;orWhere($expressionBuilder-&gt;eq('name', 'romanb'));
-
-$collection-&gt;matching($criteria);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4bdccc12307c6776af39e7322562a485825e92e3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4bdccc12307c6776af39e7322562a485825e92e3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$criteria = <span class="hljs-keyword">new</span> Criteria();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$criteria-&gt;where($expressionBuilder-&gt;eq(<span class="hljs-string">'name'</span>, <span class="hljs-string">'jwage'</span>));
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$criteria-&gt;orWhere($expressionBuilder-&gt;eq(<span class="hljs-string">'name'</span>, <span class="hljs-string">'romanb'</span>));
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$collection-&gt;matching($criteria);
+</td></tr></table></div></code></pre>
 <p>The <code>ExpressionBuilder</code> has the following API:</p>
 <a class="section-anchor" id="andx" name="andx"></a><h2 class="section-header"><a href="#andx">andX<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;andX(
-    $expressionBuilder-&gt;eq('foo', 1),
-    $expressionBuilder-&gt;eq('bar', 1)
-);
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="efd7d1b5e7a6930043765c4762491a1dba8c260e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="efd7d1b5e7a6930043765c4762491a1dba8c260e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;andX(
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    $expressionBuilder-&gt;eq(<span class="hljs-string">'foo'</span>, <span class="hljs-number">1</span>),
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    $expressionBuilder-&gt;eq(<span class="hljs-string">'bar'</span>, <span class="hljs-number">1</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="orx" name="orx"></a><h2 class="section-header"><a href="#orx">orX<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;orX(
-    $expressionBuilder-&gt;eq('foo', 1),
-    $expressionBuilder-&gt;eq('bar', 1)
-);
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="946a0340ff0dfdf064c94f7a7412affd11703671"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="946a0340ff0dfdf064c94f7a7412affd11703671"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;orX(
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    $expressionBuilder-&gt;eq(<span class="hljs-string">'foo'</span>, <span class="hljs-number">1</span>),
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    $expressionBuilder-&gt;eq(<span class="hljs-string">'bar'</span>, <span class="hljs-number">1</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="eq" name="eq"></a><h2 class="section-header"><a href="#eq">eq<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;eq('foo', 1);
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5f2da4f0c2422e6a105163318ca0ff9933d63268"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5f2da4f0c2422e6a105163318ca0ff9933d63268"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;eq(<span class="hljs-string">'foo'</span>, <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="gt" name="gt"></a><h2 class="section-header"><a href="#gt">gt<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;gt('foo', 1);
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f29ec1b6fa5c97e497f18bb060012575d5d74576"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f29ec1b6fa5c97e497f18bb060012575d5d74576"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;gt(<span class="hljs-string">'foo'</span>, <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="lt" name="lt"></a><h2 class="section-header"><a href="#lt">lt<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;lt('foo', 1);
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7de5469e42f027a7c6864a93e364f6af135aa0a8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7de5469e42f027a7c6864a93e364f6af135aa0a8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;lt(<span class="hljs-string">'foo'</span>, <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="gte" name="gte"></a><h2 class="section-header"><a href="#gte">gte<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;gte('foo', 1);
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="560e22022c9b388e6a448177a917387c16bdae1b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="560e22022c9b388e6a448177a917387c16bdae1b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;gte(<span class="hljs-string">'foo'</span>, <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="lte" name="lte"></a><h2 class="section-header"><a href="#lte">lte<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;lte('foo', 1);
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="330fd2d7cd95d6a3e223151a673024fff2bee83e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="330fd2d7cd95d6a3e223151a673024fff2bee83e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;lte(<span class="hljs-string">'foo'</span>, <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="neq" name="neq"></a><h2 class="section-header"><a href="#neq">neq<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;neq('foo', 1);
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e7f76cbb50bdea2ac3f71059fff58486f1fb9753"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e7f76cbb50bdea2ac3f71059fff58486f1fb9753"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;neq(<span class="hljs-string">'foo'</span>, <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="isnull" name="isnull"></a><h2 class="section-header"><a href="#isnull">isNull<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;isNull('foo');
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="17ff1b1889ebfe57e55d9547cc1cde4abb4ffa98"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="17ff1b1889ebfe57e55d9547cc1cde4abb4ffa98"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;isNull(<span class="hljs-string">'foo'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="in" name="in"></a><h2 class="section-header"><a href="#in">in<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;in('foo', ['value1', 'value2']);
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b27f1c9da062b444544d788acb6a89f8bb7d0b7b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b27f1c9da062b444544d788acb6a89f8bb7d0b7b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;in(<span class="hljs-string">'foo'</span>, [<span class="hljs-string">'value1'</span>, <span class="hljs-string">'value2'</span>]);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="notin" name="notin"></a><h2 class="section-header"><a href="#notin">notIn<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;notIn('foo', ['value1', 'value2']);
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8446574f96c58d27218352418ddacbf93411a715"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8446574f96c58d27218352418ddacbf93411a715"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;notIn(<span class="hljs-string">'foo'</span>, [<span class="hljs-string">'value1'</span>, <span class="hljs-string">'value2'</span>]);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="contains" name="contains"></a><h2 class="section-header"><a href="#contains">contains<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;contains('foo', 'value1');
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e3b189cc4443a3b8c6bf48cffa1adc30fbad6c8b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e3b189cc4443a3b8c6bf48cffa1adc30fbad6c8b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;contains(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'value1'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="memberof" name="memberof"></a><h2 class="section-header"><a href="#memberof">memberOf<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;memberOf('foo', ['value1', 'value2']);
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5abe2987310a4c91f9eb6f2acf604283ff855113"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5abe2987310a4c91f9eb6f2acf604283ff855113"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;memberOf(<span class="hljs-string">'foo'</span>, [<span class="hljs-string">'value1'</span>, <span class="hljs-string">'value2'</span>]);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="startswith" name="startswith"></a><h2 class="section-header"><a href="#startswith">startsWith<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;startsWith('foo', 'hello');
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c5fc010ae7bd9dc4ba825c71461d7a704abdbde8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c5fc010ae7bd9dc4ba825c71461d7a704abdbde8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;startsWith(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'hello'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="endswith" name="endswith"></a><h2 class="section-header"><a href="#endswith">endsWith<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$expressionBuilder = Criteria::expr();
-
-$expression = $expressionBuilder-&gt;endsWith('foo', 'world');
-
-$collection-&gt;matching(new Criteria($expression));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c9b111e1b9828af3235a3067408bb8d4f6190e15"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c9b111e1b9828af3235a3067408bb8d4f6190e15"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$expressionBuilder = Criteria::expr();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$expression = $expressionBuilder-&gt;endsWith(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'world'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$collection-&gt;matching(<span class="hljs-keyword">new</span> Criteria($expression));
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -391,8 +500,6 @@ $collection-&gt;matching(new Criteria($expression));
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -438,7 +545,7 @@ $collection-&gt;matching(new Criteria($expression));
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

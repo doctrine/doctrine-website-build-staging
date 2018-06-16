@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -280,15 +277,29 @@ should be executed.</p></div>
 <a class="section-anchor" id="finding-documents" name="finding-documents"></a><h2 class="section-header"><a href="#finding-documents">Finding Documents<i class="fas fa-link"></i></a></h2>
 <p>You have a few different ways to find documents. You can use the <code>find()</code> method
 to find a document by its identifier:</p>
-<pre><code class="php">&lt;?php
-
-$users = $dm-&gt;find('User', $id);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="fa15c77cbaddf68481e7ffc537d9bc6b500bfa7d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="fa15c77cbaddf68481e7ffc537d9bc6b500bfa7d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $dm-&gt;find(<span class="hljs-string">'User'</span>, $id);
+</td></tr></table></div></code></pre>
 <p>The <code>find()</code> method is just a convenience shortcut method to:</p>
-<pre><code class="php">&lt;?php
-
-$user = $dm-&gt;getRepository('User')-&gt;find($id);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e09fed717b0634736d174003608b42234084ede6"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e09fed717b0634736d174003608b42234084ede6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = $dm-&gt;getRepository(<span class="hljs-string">'User'</span>)-&gt;find($id);
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The <code>find()</code> method checks the local in memory identity map for the document
 before querying the database for the document.</p>
 </div>
@@ -297,89 +308,159 @@ before querying the database for the document.</p>
 <li class="dash"><code>findOneBy</code> - find one document by an array of criteria</li>
 </ul>
 
-<pre><code class="php">&lt;?php
-
-$users = $dm-&gt;getRepository('User')-&gt;findBy(array('type' =&gt; 'employee'));
-$user = $dm-&gt;getRepository('User')-&gt;findOneBy(array('username' =&gt; 'jwage'));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4527a2f87fef44e89cc7920372b8d9b9ef57694c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4527a2f87fef44e89cc7920372b8d9b9ef57694c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $dm-&gt;getRepository(<span class="hljs-string">'User'</span>)-&gt;findBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'employee'</span>));
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$user = $dm-&gt;getRepository(<span class="hljs-string">'User'</span>)-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'jwage'</span>));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="creating-a-query-builder" name="creating-a-query-builder"></a><h2 class="section-header"><a href="#creating-a-query-builder">Creating a Query Builder<i class="fas fa-link"></i></a></h2>
 <p>You can easily create a new <code>Query\Builder</code> object with the
 <code>DocumentManager::createQueryBuilder()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a193a5763dabceca1018d6f117268d493ee7bb71"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a193a5763dabceca1018d6f117268d493ee7bb71"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>);
+</td></tr></table></div></code></pre>
 <p>The first and only argument is optional, you can specify it later
 with the <code>find()</code>, <code>update()</code> or <code>remove()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder();
-
-// ...
-
-$qb-&gt;find('User');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ee6cf0d39829299f258cb22e6309e07dd83e5d1b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ee6cf0d39829299f258cb22e6309e07dd83e5d1b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$qb-&gt;find(<span class="hljs-string">'User'</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="executing-queries" name="executing-queries"></a><h3 class="section-header"><a href="#executing-queries">Executing Queries<i class="fas fa-link"></i></a></h3>
 <p>You can execute a query by getting a <code>Query</code> through the <code>getQuery()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User');
-$query = $qb-&gt;getQuery();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="86b536a95f0a83d6c095b6db961cb512cb872c25"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="86b536a95f0a83d6c095b6db961cb512cb872c25"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr></table></div></code></pre>
 <p>Now you can <code>execute()</code> that query and it will return a cursor for you to iterator over the results:</p>
-<pre><code class="php">&lt;?php
-
-$users = $query-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6726e8e8e5474d21a10d23963b8319da853fdd1a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6726e8e8e5474d21a10d23963b8319da853fdd1a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $query-&gt;execute();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="eager-cursors" name="eager-cursors"></a><h3 class="section-header"><a href="#eager-cursors">Eager Cursors<i class="fas fa-link"></i></a></h3>
 <p>You can configure queries to return an eager cursor instead of a normal mongodb cursor using the <code>Builder#eagerCursor()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;eagerCursor(true);
-$query = $qb-&gt;getQuery();
-$cursor = $query-&gt;execute(); // instanceof Doctrine\ODM\MongoDB\EagerCursor
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1384642b4dee94cd559556a8e620495535a2c2c7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1384642b4dee94cd559556a8e620495535a2c2c7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;eagerCursor(<span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$cursor = $query-&gt;execute(); <span class="hljs-comment">// instanceof Doctrine\ODM\MongoDB\EagerCursor</span>
+</td></tr></table></div></code></pre>
 <p>Iterating over the <code>$cursor</code> will fetch all the data in a short and small cursor all at once and will hydrate
 one document at a time in to an object as you iterate:</p>
-<pre><code class="php">&lt;?php
-
-foreach ($cursor as $user) { // queries for all users and data is held internally
-    // each User object is hydrated from the data one at a time.
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5a1c4855e7fcee7380a1bd76708cd7a817f67b2b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5a1c4855e7fcee7380a1bd76708cd7a817f67b2b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($cursor <span class="hljs-keyword">as</span> $user) { <span class="hljs-comment">// queries for all users and data is held internally</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">// each User object is hydrated from the data one at a time.</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="getting-single-result" name="getting-single-result"></a><h3 class="section-header"><a href="#getting-single-result">Getting Single Result<i class="fas fa-link"></i></a></h3>
 <p>If you want to just get a single result you can use the <code>Query#getSingleResult()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-$user = $dm-&gt;createQueryBuilder('User')
-    -&gt;field('username')-&gt;equals('jwage')
-    -&gt;getQuery()
-    -&gt;getSingleResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6dc969a60a1b807aa094962c4a03e2afd637821a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6dc969a60a1b807aa094962c4a03e2afd637821a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'username'</span>)-&gt;equals(<span class="hljs-string">'jwage'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getSingleResult();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="selecting-fields" name="selecting-fields"></a><h3 class="section-header"><a href="#selecting-fields">Selecting Fields<i class="fas fa-link"></i></a></h3>
 <p>You can limit the fields that are returned in the results by using
 the <code>select()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;select('username', 'password');
-$query = $qb-&gt;getQuery();
-$users = $query-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a3a0438eabc25fdb349431440e23514826c791a3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a3a0438eabc25fdb349431440e23514826c791a3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;select(<span class="hljs-string">'username'</span>, <span class="hljs-string">'password'</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$users = $query-&gt;execute();
+</td></tr></table></div></code></pre>
 <p>In the results only the data from the username and password will be
 returned.</p>
 <a class="section-anchor" id="selecting-distinct-values" name="selecting-distinct-values"></a><h3 class="section-header"><a href="#selecting-distinct-values">Selecting Distinct Values<i class="fas fa-link"></i></a></h3>
 <p>Sometimes you may want to get an array of distinct values in a
 collection. You can accomplish this using the <code>distinct()</code>
 method:</p>
-<pre><code class="php">&lt;?php
-
-$ages = $dm-&gt;createQueryBuilder('User')
-    -&gt;distinct('age')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5d9a85b47ba79b6ee8d076a8851af69f51b13fb0"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5d9a85b47ba79b6ee8d076a8851af69f51b13fb0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$ages = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;distinct(<span class="hljs-string">'age'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>The above would give you an <code>ArrayCollection</code> of all the distinct user ages!</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>MongoDB's <a href="http://docs.mongodb.org/manual/reference/command/distinct/">distinct command</a>
 does not support sorting, so you cannot combine <code>distinct()</code> with
@@ -395,87 +476,136 @@ from whatever was just returned by the database query.</p>
 the managed document with data from the query result. This is comparable to
 calling <code>DocumentManager::refresh()</code> for a managed document. The document's
 changeset will be reset in the process.</p>
-<pre><code class="php">&lt;?php
-
-$user = $dm-&gt;createQueryBuilder('User')
-    -&gt;field('username')-&gt;equals('jwage')
-    -&gt;refresh()
-    -&gt;getQuery()
-    -&gt;getSingleResult();
-
-// Jon's user will have the latest data, even if it was already managed
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="40aefbb5a8909f537403887172c86a889b9b9170"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="40aefbb5a8909f537403887172c86a889b9b9170"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'username'</span>)-&gt;equals(<span class="hljs-string">'jwage'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;refresh()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getSingleResult();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-comment">// Jon's user will have the latest data, even if it was already managed</span>
+</td></tr></table></div></code></pre>
 <p>Refreshing is not applicable if hydration is disabled.</p>
 <a class="section-anchor" id="disabling-hydration" name="disabling-hydration"></a><h3 class="section-header"><a href="#disabling-hydration">Disabling Hydration<i class="fas fa-link"></i></a></h3>
 <p>For find queries the results by default are hydrated and you get
 document objects back instead of arrays. You can disable this and
 get the raw results directly back from mongo by using the
 <code>hydrate(false)</code> method:</p>
-<pre><code class="php">&lt;?php
-
-$users = $dm-&gt;createQueryBuilder('User')
-    -&gt;hydrate(false)
-    -&gt;getQuery()
-    -&gt;execute();
-
-print_r($users);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="73c18a1f88b19efd601b3ed1619319e727d91c44"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="73c18a1f88b19efd601b3ed1619319e727d91c44"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$users = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;hydrate(<span class="hljs-keyword">false</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;execute();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">print_r($users);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="limiting-results" name="limiting-results"></a><h3 class="section-header"><a href="#limiting-results">Limiting Results<i class="fas fa-link"></i></a></h3>
 <p>You can limit results similar to how you would in a relational
 database with a limit and offset by using the <code>limit()</code> and
 <code>skip()</code> method.</p>
 <p>Here is an example where we get the third page of blog posts when
 we show twenty at a time:</p>
-<pre><code class="php">&lt;?php
-
-$blogPosts = $dm-&gt;createQueryBuilder('BlogPost')
-    -&gt;limit(20)
-    -&gt;skip(40)
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8d8444ee1f10f1d01415e7bf17fa2dbb05024b9e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8d8444ee1f10f1d01415e7bf17fa2dbb05024b9e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$blogPosts = $dm-&gt;createQueryBuilder(<span class="hljs-string">'BlogPost'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;limit(<span class="hljs-number">20</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;skip(<span class="hljs-number">40</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="sorting-results" name="sorting-results"></a><h3 class="section-header"><a href="#sorting-results">Sorting Results<i class="fas fa-link"></i></a></h3>
 <p>You can sort the results by using the <code>sort()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Article')
-    -&gt;sort('createdAt', 'desc');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c63b9700676d5fb19a9144abf85894381ee96484"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c63b9700676d5fb19a9144abf85894381ee96484"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;sort(<span class="hljs-string">'createdAt'</span>, <span class="hljs-string">'desc'</span>);
+</td></tr></table></div></code></pre>
 <p>If you want to an additional sort you can call <code>sort()</code> again. The calls are stacked and ordered
 in the order you call the method:</p>
-<pre><code class="php">&lt;?php
-
-$query-&gt;sort('featured', 'desc');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="eae3e2691643eb062a366ab9df415c90e87a9948"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="eae3e2691643eb062a366ab9df415c90e87a9948"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query-&gt;sort(<span class="hljs-string">'featured'</span>, <span class="hljs-string">'desc'</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="map-reduce" name="map-reduce"></a><h3 class="section-header"><a href="#map-reduce">Map Reduce<i class="fas fa-link"></i></a></h3>
 <p>You can also run map reduced find queries using the <code>Query</code>
 object:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $this-&gt;dm-&gt;createQueryBuilder('Event')
-    -&gt;field('type')-&gt;equals('sale')
-    -&gt;map('function() { emit(this.userId, 1); }')
-    -&gt;reduce(&quot;function(k, vals) {
-        var sum = 0;
-        for (var i in vals) {
-            sum += vals[i]; 
-        }
-        return sum;
-    }&quot;);
-$query = $qb-&gt;getQuery();
-$results = $query-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="308a6006f9d122bcb38d2e432660aacac02ee126"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="308a6006f9d122bcb38d2e432660aacac02ee126"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = <span class="hljs-keyword">$this</span>-&gt;dm-&gt;createQueryBuilder(<span class="hljs-string">'Event'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'type'</span>)-&gt;equals(<span class="hljs-string">'sale'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;map(<span class="hljs-string">'function() { emit(this.userId, 1); }'</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;reduce(<span class="hljs-string">"function(k, vals) {</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i in vals) {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            sum += vals[i]; 
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">return</span> sum;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }<span class="hljs-string">");</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$results = $query-&gt;execute();
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>When you specify a <code>map()</code> and <code>reduce()</code> operation
 the results will not be hydrated and the raw results from the map
 reduce operation will be returned.</p>
 </div>
 <p>If you just want to reduce the results using a javascript function
 you can just call the <code>where()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;where(&quot;function() { return this.type == 'admin'; }&quot;);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="766730510079ec4aaadd76c02fd4ed8399336e9e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="766730510079ec4aaadd76c02fd4ed8399336e9e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;where(<span class="hljs-string">"function() { return this.type == 'admin'; }"</span>);
+</td></tr></table></div></code></pre>
 <p>You can read more about the <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-JavascriptExpressionsand%7B%7B%24where%7D%7D">$where operator</a> in the Mongo docs.</p>
 <a class="section-anchor" id="conditional-operators" name="conditional-operators"></a><h3 class="section-header"><a href="#conditional-operators">Conditional Operators<i class="fas fa-link"></i></a></h3>
 <p>The conditional operators in Mongo are available to limit the returned results through a easy to use API. Doctrine abstracts this to a fluent object oriented interface with a fluent API. Here is a list of all the conditional operation methods you can use on the `Query\Builder` object.</p>
@@ -500,143 +630,262 @@ $qb = $dm-&gt;createQueryBuilder('User')
 </ul>
 
 <p>Query for active administrator users:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;field('type')-&gt;equals('admin')
-    -&gt;field('active')-&gt;equals(true);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="84eafb3dd87226359d7b1292b3316f65f640ac9e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="84eafb3dd87226359d7b1292b3316f65f640ac9e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'type'</span>)-&gt;equals(<span class="hljs-string">'admin'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'active'</span>)-&gt;equals(<span class="hljs-keyword">true</span>);
+</td></tr></table></div></code></pre>
 <p>Query for articles that have some tags:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Article')
-    -&gt;field('tags.name')-&gt;in(array('tag1', 'tag2'));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="07d87d849b66223c589ffeb13547cb4dff2a1e29"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="07d87d849b66223c589ffeb13547cb4dff2a1e29"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'tags.name'</span>)-&gt;in(<span class="hljs-keyword">array</span>(<span class="hljs-string">'tag1'</span>, <span class="hljs-string">'tag2'</span>));
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-ConditionalOperator%3A%24in">$in operator</a>
 in the Mongo docs</p>
 <p>Query for articles that do not have some tags:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Article')
-    -&gt;field('tags.name')-&gt;notIn(array('tag3'));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="100be37b33659972c8310a0649cf6a890d4e8db7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="100be37b33659972c8310a0649cf6a890d4e8db7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'tags.name'</span>)-&gt;notIn(<span class="hljs-keyword">array</span>(<span class="hljs-string">'tag3'</span>));
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-ConditionalOperator%3A%24nin">$nin operator</a>
 in the Mongo docs.</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;field('type')-&gt;notEqual('admin');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2a17bce710608e4023932fd1aba719f65f498fa4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2a17bce710608e4023932fd1aba719f65f498fa4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'type'</span>)-&gt;notEqual(<span class="hljs-string">'admin'</span>);
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-ConditionalOperator%3A%24ne">$ne operator</a>
 in the Mongo docs.</p>
 <p>Query for accounts with an amount due greater than 30:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Account')
-    -&gt;field('amount_due')-&gt;gt(30);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="40c54fcadad446683c98cdf1dda39152c9c5965f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="40c54fcadad446683c98cdf1dda39152c9c5965f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Account'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'amount_due'</span>)-&gt;gt(<span class="hljs-number">30</span>);
+</td></tr></table></div></code></pre>
 <p>Query for accounts with an amount due greater than or equal to 30:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Account')
-    -&gt;field('amount_due')-&gt;gte(30);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="95455d00399b1c8cb04e3e7337c59eb407b3ac2d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="95455d00399b1c8cb04e3e7337c59eb407b3ac2d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Account'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'amount_due'</span>)-&gt;gte(<span class="hljs-number">30</span>);
+</td></tr></table></div></code></pre>
 <p>Query for accounts with an amount due less than 30:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Account')
-    -&gt;field('amount_due')-&gt;lt(30);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d99b43541bd22ea4d2f26db14e3691d54e9dec5e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d99b43541bd22ea4d2f26db14e3691d54e9dec5e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Account'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'amount_due'</span>)-&gt;lt(<span class="hljs-number">30</span>);
+</td></tr></table></div></code></pre>
 <p>Query for accounts with an amount due less than or equal to 30:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Account')
-    -&gt;field('amount_due')-&gt;lte(30);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0e19f9d6311e6a2d7ef6ad0af25f895aa4d81ac8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0e19f9d6311e6a2d7ef6ad0af25f895aa4d81ac8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Account'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'amount_due'</span>)-&gt;lte(<span class="hljs-number">30</span>);
+</td></tr></table></div></code></pre>
 <p>Query for accounts with an amount due between 10 and 20:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Account')
-    -&gt;field('amount_due')-&gt;range(10, 20);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="01d0da675b2a04dec1d2670cbbd309c729a34167"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="01d0da675b2a04dec1d2670cbbd309c729a34167"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Account'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'amount_due'</span>)-&gt;range(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>);
+</td></tr></table></div></code></pre>
 <p>Read more about
 <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-ConditionalOperators%3A%3C%2C%3C%3D%2C%3E%2C%3E%3D">conditional operators</a>
 in the Mongo docs.</p>
 <p>Query for articles with no comments:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Article')
-    -&gt;field('comments')-&gt;size(0);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="65e4f88a137f27c41572f071e8b1d71413ac230f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="65e4f88a137f27c41572f071e8b1d71413ac230f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'comments'</span>)-&gt;size(<span class="hljs-number">0</span>);
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-ConditionalOperator%3A%24size">$size operator</a>
 in the Mongo docs.</p>
 <p>Query for users that have a login field before it was renamed to
 username:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;field('login')-&gt;exists(true);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c9b3832b4748a22b1a3390c785f10ddaa93cd4ed"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c9b3832b4748a22b1a3390c785f10ddaa93cd4ed"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'login'</span>)-&gt;exists(<span class="hljs-keyword">true</span>);
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-ConditionalOperator%3A%24exists">$exists operator</a>
 in the Mongo docs.</p>
 <p>Query for users that have a type field that is of integer bson
 type:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;field('type')-&gt;type('integer');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5aa8b510fbf3df434fae14c843b945d985a430cb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5aa8b510fbf3df434fae14c843b945d985a430cb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'type'</span>)-&gt;type(<span class="hljs-string">'integer'</span>);
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-ConditionalOperator%3A%24type">$type operator</a>
 in the Mongo docs.</p>
 <p>Query for users that are in all the specified Groups:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;field('groups')-&gt;all(array('Group 1', 'Group 2'));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="06ac4087011e8066c3a6be9f4926a3ae86672998"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="06ac4087011e8066c3a6be9f4926a3ae86672998"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'groups'</span>)-&gt;all(<span class="hljs-keyword">array</span>(<span class="hljs-string">'Group 1'</span>, <span class="hljs-string">'Group 2'</span>));
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-ConditionalOperator%3A%24all">$all operator</a>
 in the Mongo docs.</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Transaction')
-    -&gt;field('field')-&gt;mod('field', array(10, 1));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="38650409bc01d4e5e4b2bad327af58d5f24696b4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="38650409bc01d4e5e4b2bad327af58d5f24696b4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Transaction'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'field'</span>)-&gt;mod(<span class="hljs-string">'field'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-number">10</span>, <span class="hljs-number">1</span>));
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-ConditionalOperator%3A%24mod">$mod operator</a> in the Mongo docs.</p>
 <p>Query for users who have subscribed or are in a trial.</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User');
-$qb-&gt;addOr($qb-&gt;expr()-&gt;field('subscriber')-&gt;equals(true));
-$qb-&gt;addOr($qb-&gt;expr()-&gt;field('inTrial')-&gt;equals(true));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5ed9ee55798ae0f76bb9964673056db64ccf7899"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5ed9ee55798ae0f76bb9964673056db64ccf7899"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$qb-&gt;addOr($qb-&gt;expr()-&gt;field(<span class="hljs-string">'subscriber'</span>)-&gt;equals(<span class="hljs-keyword">true</span>));
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$qb-&gt;addOr($qb-&gt;expr()-&gt;field(<span class="hljs-string">'inTrial'</span>)-&gt;equals(<span class="hljs-keyword">true</span>));
+</td></tr></table></div></code></pre>
 <p>Read more about the<br /><a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%24or">$or operator</a> in the Mongo docs.</p>
 <p>The <code>references()</code> method may be used to query the owning side of a
 <a href="annotations-reference.html#annotations_reference_reference_one">@ReferenceOne</a> relationship. In the
 following example, we query for all articles written by a particular user.</p>
-<pre><code class="php">&lt;?php
-
-// Suppose $user has already been fetched from the database
-$qb = $dm-&gt;createQueryBuilder('Article')
-    -&gt;field('user')-&gt;references($user);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="173da1acfe944aac19ec249fb645b92332a36e1d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="173da1acfe944aac19ec249fb645b92332a36e1d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// Suppose $user has already been fetched from the database</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'user'</span>)-&gt;references($user);
+</td></tr></table></div></code></pre>
 <p>The <code>includesReferenceTo()</code> method may be used to query the owning side of a
 <a href="annotations-reference.html#annotations_reference_reference_many">@ReferenceMany</a> relationship. In
 the following example, we query for the user(s) that have access to a particular
 account.</p>
-<pre><code class="php">&lt;?php
-
-// Suppose $account has already been fetched from the database
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;field('accounts')-&gt;includesReferenceTo($account);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ae4da785a13ba889abf99dda1cd07c9db9107496"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ae4da785a13ba889abf99dda1cd07c9db9107496"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// Suppose $account has already been fetched from the database</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'accounts'</span>)-&gt;includesReferenceTo($account);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="update-queries" name="update-queries"></a><h3 class="section-header"><a href="#update-queries">Update Queries<i class="fas fa-link"></i></a></h3>
 <p>Doctrine also supports executing atomic update queries using the `Query\Builder` object. You can use the conditional operations in combination with the ability to change document field values atomically. You have several modifier operations available to you that make it easy to update documents in Mongo:</p>
 <ul><li><code>set($name, $value, $atomic = true)</code></li>
@@ -655,178 +904,276 @@ $qb = $dm-&gt;createQueryBuilder('User')
 
 <a class="section-anchor" id="updating-multiple-documents" name="updating-multiple-documents"></a><h2 class="section-header"><a href="#updating-multiple-documents">Updating multiple documents<i class="fas fa-link"></i></a></h2>
 <p>By default only one document is updated. You need to pass <code>true</code> to the <code>multiple()</code> method to update all documents matched by the query.</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('User')
-    -&gt;update()
-    -&gt;multiple(true)
-    -&gt;field('someField')-&gt;set('newValue')
-    -&gt;field('username')-&gt;equals('sgoettschkes')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d4525b13c4e925633740cd16ff7de86a09725c34"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d4525b13c4e925633740cd16ff7de86a09725c34"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;multiple(<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'someField'</span>)-&gt;set(<span class="hljs-string">'newValue'</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;field(<span class="hljs-string">'username'</span>)-&gt;equals(<span class="hljs-string">'sgoettschkes'</span>)
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="modifier-operations" name="modifier-operations"></a><h2 class="section-header"><a href="#modifier-operations">Modifier Operations<i class="fas fa-link"></i></a></h2>
 <p>Change a users password:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('User')
-    -&gt;update()
-    -&gt;field('password')-&gt;set('newpassword')
-    -&gt;field('username')-&gt;equals('jwage')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dbc8924f9d6bcd8c8c56cc57f22718eb030b48f0"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dbc8924f9d6bcd8c8c56cc57f22718eb030b48f0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'password'</span>)-&gt;set(<span class="hljs-string">'newpassword'</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'username'</span>)-&gt;equals(<span class="hljs-string">'jwage'</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>If you want to just set the values of an entirely new object you
 can do so by passing false as the third argument of <code>set()</code> to
 tell it the update is not an atomic one:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('User')
-    -&gt;update()
-    -&gt;field('username')-&gt;set('jwage', false)
-    -&gt;field('password')-&gt;set('password', false)
-    // ... set other remaining fields
-    -&gt;field('username')-&gt;equals('jwage')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0681cf9baf7e47b95f7cb729b2050b4666defbd9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0681cf9baf7e47b95f7cb729b2050b4666defbd9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'username'</span>)-&gt;set(<span class="hljs-string">'jwage'</span>, <span class="hljs-keyword">false</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'password'</span>)-&gt;set(<span class="hljs-string">'password'</span>, <span class="hljs-keyword">false</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">// ... set other remaining fields</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;field(<span class="hljs-string">'username'</span>)-&gt;equals(<span class="hljs-string">'jwage'</span>)
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-%24set">$set modifier</a>
 in the Mongo docs.</p>
 <p>You can set an entirely new object to update as well:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('User')
-    -&gt;setNewObj(array(
-        'username' =&gt; 'jwage',
-        'password' =&gt; 'password',
-        // ... other fields
-    ))
-    -&gt;field('username')-&gt;equals('jwage')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d6c700a52fdc6258a3284b11b03caf066f5789e7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d6c700a52fdc6258a3284b11b03caf066f5789e7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;setNewObj(<span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'jwage'</span>,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">'password'</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-comment">// ... other fields</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    ))
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    -&gt;field(<span class="hljs-string">'username'</span>)-&gt;equals(<span class="hljs-string">'jwage'</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Increment the value of a document:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('Package')
-    -&gt;field('id')-&gt;equals('theid')
-    -&gt;field('downloads')-&gt;inc(1)
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="92659921ebd6ca377b5c2d0f616b4c5e40f39d3e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="92659921ebd6ca377b5c2d0f616b4c5e40f39d3e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'Package'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'downloads'</span>)-&gt;inc(<span class="hljs-number">1</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-%24inc">$inc modifier</a>
 in the Mongo docs.</p>
 <p>Unset the login field from users where the login field still
 exists:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('User')
-    -&gt;update()
-    -&gt;field('login')-&gt;unsetField()-&gt;exists(true)
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="43672f9a84a2a2124c56b92c61bfe282f3552a09"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="43672f9a84a2a2124c56b92c61bfe282f3552a09"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'login'</span>)-&gt;unsetField()-&gt;exists(<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-%24unset">$unset modifier</a>
 in the Mongo docs.</p>
 <p>Append new tag to the tags array:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('Article')
-    -&gt;update()
-    -&gt;field('tags')-&gt;push('tag5')
-    -&gt;field('id')-&gt;equals('theid')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ebcb9398b93ef767004cc4b4bdf44aca421898bf"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ebcb9398b93ef767004cc4b4bdf44aca421898bf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'tags'</span>)-&gt;push(<span class="hljs-string">'tag5'</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-%24push">$push modifier</a>
 in the Mongo docs.</p>
 <p>Append new tags to the tags array:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('Article')
-    -&gt;update()
-    -&gt;field('tags')-&gt;pushAll(array('tag6', 'tag7'))
-    -&gt;field('id')-&gt;equals('theid')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="241b1e13e217e3e7362537e36e8bff31e29db949"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="241b1e13e217e3e7362537e36e8bff31e29db949"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'tags'</span>)-&gt;pushAll(<span class="hljs-keyword">array</span>(<span class="hljs-string">'tag6'</span>, <span class="hljs-string">'tag7'</span>))
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-%24pushAll">$pushAll modifier</a>
 in the Mongo docs.</p>
 <p>Add value to array only if its not in the array already:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('Article')
-    -&gt;update()
-    -&gt;field('tags')-&gt;addToSet('tag1')
-    -&gt;field('id')-&gt;equals('theid')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0b62b98da6f79c483ec5f95529906dded254d7cb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0b62b98da6f79c483ec5f95529906dded254d7cb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'tags'</span>)-&gt;addToSet(<span class="hljs-string">'tag1'</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-%24addToSet">$addToSet modifier</a>
 in the Mongo docs.</p>
 <p>Add many values to the array only if they do not exist in the array
 already:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('Article')
-    -&gt;update()
-    -&gt;field('tags')-&gt;addManyToSet(array('tag6', 'tag7'))
-    -&gt;field('id')-&gt;equals('theid')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3bf0dc6569864753f5627e4fb920bbe2536c9def"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3bf0dc6569864753f5627e4fb920bbe2536c9def"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'tags'</span>)-&gt;addManyToSet(<span class="hljs-keyword">array</span>(<span class="hljs-string">'tag6'</span>, <span class="hljs-string">'tag7'</span>))
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-%24addManyToSet">$addManyToSet modifier</a>
 in the Mongo docs.</p>
 <p>Remove first element in an array:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('Article')
-    -&gt;update()
-    -&gt;field('tags')-&gt;popFirst()
-    -&gt;field('id')-&gt;equals('theid')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="820727a8d3f0246c037616059d80d8840f3e180c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="820727a8d3f0246c037616059d80d8840f3e180c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'tags'</span>)-&gt;popFirst()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Remove last element in an array:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('Article')
-    -&gt;update()
-    -&gt;field('tags')-&gt;popLast()
-    -&gt;field('id')-&gt;equals('theid')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d2fe0ca7780f215d00399688014a0076a846ba57"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d2fe0ca7780f215d00399688014a0076a846ba57"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'tags'</span>)-&gt;popLast()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-%24pop">$pop modifier</a>
 in the Mongo docs.</p>
 <p>Remove all occurrences of value from array:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('Article')
-    -&gt;update()
-    -&gt;field('tags')-&gt;pull('tag1')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cc53addede7c563e43456e32099e7a7767811547"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cc53addede7c563e43456e32099e7a7767811547"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'tags'</span>)-&gt;pull(<span class="hljs-string">'tag1'</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-%24pull">$pull modifier</a>
 in the Mongo docs.</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('Article')
-    -&gt;update()
-    -&gt;field('tags')-&gt;pullAll(array('tag1', 'tag2'))
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c01dee1ce6507d2fd4e53d69c00a7c3cc78eb115"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c01dee1ce6507d2fd4e53d69c00a7c3cc78eb115"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'Article'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'tags'</span>)-&gt;pullAll(<span class="hljs-keyword">array</span>(<span class="hljs-string">'tag1'</span>, <span class="hljs-string">'tag2'</span>))
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Read more about the
 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-%24pullAll">$pullAll modifier</a>
 in the Mongo docs.</p>
@@ -836,34 +1183,55 @@ documents from a collection. It works pretty much the same way as
 everything else and you can use the conditional operations to
 specify which documents you want to remove.</p>
 <p>Here is an example where we remove users who have never logged in:</p>
-<pre><code class="php">&lt;?php
-
-$dm-&gt;createQueryBuilder('User')
-    -&gt;remove()
-    -&gt;field('num_logins')-&gt;equals(0)
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="86ea85b76fd637df75ca77c1306616208bdcdd11"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="86ea85b76fd637df75ca77c1306616208bdcdd11"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;remove()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;field(<span class="hljs-string">'num_logins'</span>)-&gt;equals(<span class="hljs-number">0</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="group-queries" name="group-queries"></a><h2 class="section-header"><a href="#group-queries">Group Queries<i class="fas fa-link"></i></a></h2>
 <p>The last type of supported query is a group query. It performs an
 operation similar to SQL's GROUP BY command.</p>
-<pre><code class="php">&lt;?php
-
-$result = $this-&gt;dm-&gt;createQueryBuilder('Documents\User')
-    -&gt;group(array(), array('count' =&gt; 0))
-    -&gt;reduce('function (obj, prev) { prev.count++; }')
-    -&gt;field('a')-&gt;gt(1)
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b7e9a87edf70ed51d6097fff78d0930b870d4066"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b7e9a87edf70ed51d6097fff78d0930b870d4066"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$result = <span class="hljs-keyword">$this</span>-&gt;dm-&gt;createQueryBuilder(<span class="hljs-string">'Documents\User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;group(<span class="hljs-keyword">array</span>(), <span class="hljs-keyword">array</span>(<span class="hljs-string">'count'</span> =&gt; <span class="hljs-number">0</span>))
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;reduce(<span class="hljs-string">'function (obj, prev) { prev.count++; }'</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'a'</span>)-&gt;gt(<span class="hljs-number">1</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>This is the same as if we were to do the group with the raw PHP
 code:</p>
-<pre><code class="php">&lt;?php
-
-$reduce = 'function (obj, prev) { prev.count++; }';
-$condition = array('a' =&gt; array( '$gt' =&gt; 1));
-$result = $collection-&gt;group(array(), array('count' =&gt; 0), $reduce, $condition);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ab1c1783f34715fd73299debd64b73a78bf4133a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ab1c1783f34715fd73299debd64b73a78bf4133a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$reduce = <span class="hljs-string">'function (obj, prev) { prev.count++; }'</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$condition = <span class="hljs-keyword">array</span>(<span class="hljs-string">'a'</span> =&gt; <span class="hljs-keyword">array</span>( <span class="hljs-string">'$gt'</span> =&gt; <span class="hljs-number">1</span>));
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$result = $collection-&gt;group(<span class="hljs-keyword">array</span>(), <span class="hljs-keyword">array</span>(<span class="hljs-string">'count'</span> =&gt; <span class="hljs-number">0</span>), $reduce, $condition);
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -888,8 +1256,6 @@ $result = $collection-&gt;group(array(), array('count' =&gt; 0), $reduce, $condi
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -935,7 +1301,7 @@ $result = $collection-&gt;group(array(), array('count' =&gt; 0), $reduce, $condi
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -383,70 +380,77 @@ class UserPermission extends Doctrine_Record
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-User:
-  columns:
-    username: string(255)
-    password: string(255)
-  relations:
-    Roles:
-      class: Role
-      refClass: UserRole
-      foreignAlias: Users
-    Permissions:
-      class: Permission
-      refClass: UserPermission
-      foreignAlias: Users
-
-Role:
-  columns:
-    name: string(255)
-  relations:
-    Permissions:
-      class: Permission
-      refClass: RolePermission
-      foreignAlias: Roles
-
-Permission:
-  columns:
-    name: string(255)
-
-RolePermission:
-  columns:
-    role_id:
-      type: integer
-      primary: true
-    permission_id:
-      type: integer
-      primary: true
-  relations:
-    Role:
-    Permission:
-
-UserRole:
-  columns:
-    user_id:
-      type: integer
-      primary: true
-    role_id:
-      type: integer
-      primary: true
-  relations:
-    User:
-    Role:
-
-UserPermission:
-  columns:
-    user_id:
-      type: integer
-      primary: true
-    permission_id:
-      type: integer
-      primary: true
-  relations:
-    User:
-    Permission:
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ec1167d8832443ac66db06cfca0416535045935f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ec1167d8832443ac66db06cfca0416535045935f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    username:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    password:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    Roles:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Role</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      refClass:</span> <span class="hljs-string">UserRole</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      foreignAlias:</span> <span class="hljs-string">Users</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    Permissions:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Permission</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      refClass:</span> <span class="hljs-string">UserPermission</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      foreignAlias:</span> <span class="hljs-string">Users</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">Role:</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">    name:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">    Permissions:</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Permission</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">      refClass:</span> <span class="hljs-string">RolePermission</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">      foreignAlias:</span> <span class="hljs-string">Roles</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">Permission:</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-attr">    name:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-attr">RolePermission:</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-attr">    role_id:</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-attr">    permission_id:</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"><span class="hljs-attr">    Role:</span>
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"><span class="hljs-attr">    Permission:</span>
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line"><span class="hljs-attr">UserRole:</span>
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line"><span class="hljs-attr">    user_id:</span>
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line"><span class="hljs-attr">    role_id:</span>
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line"><span class="hljs-attr">    User:</span>
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line"><span class="hljs-attr">    Role:</span>
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line"><span class="hljs-attr">UserPermission:</span>
+</td></tr><tr><td class="line-number noselect">54</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">55</td><td class="code-line"><span class="hljs-attr">    user_id:</span>
+</td></tr><tr><td class="line-number noselect">56</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">57</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">58</td><td class="code-line"><span class="hljs-attr">    permission_id:</span>
+</td></tr><tr><td class="line-number noselect">59</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">60</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">61</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">62</td><td class="code-line"><span class="hljs-attr">    User:</span>
+</td></tr><tr><td class="line-number noselect">63</td><td class="code-line"><span class="hljs-attr">    Permission:</span>
+</td></tr></table></div></code></pre>
 <hr />
 <a class="section-anchor" id="forum-application" name="forum-application"></a><h2 class="section-header"><a href="#forum-application">Forum Application<i class="fas fa-link"></i></a></h2>
 <p>Below is an example of a forum application where you have categories,
@@ -562,71 +566,78 @@ class Forum_Thread extends Doctrine_Record
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-Forum_Category:
-  columns:
-    root_category_id: integer(10)
-    parent_category_id: integer(10)
-    name: string(50)
-    description: string(99999)
-  relations:
-    Subcategory:
-      class: Forum_Category
-      local: parent_category_id
-      foreign: id
-    Rootcategory:
-      class: Forum_Category
-      local: root_category_id
-      foreign: id
-
-Forum_Board:
-  columns:
-    category_id: integer(10)
-    name: string(100)
-    description: string(5000)
-  relations:
-    Category:
-      class: Forum_Category
-      local: category_id
-      foreign: id
-    Threads:
-      class: Forum_Thread
-      local: id
-      foreign: board_id
-
-Forum_Entry:
-  columns:
-    author: string(50)
-    topic: string(100)
-    message: string(99999)
-    parent_entry_id: integer(10)
-    thread_id: integer(10)
-    date: integer(10)
-  relations:
-    Parent:
-      class: Forum_Entry
-      local: parent_entry_id
-      foreign: id
-    Thread:
-      class: Forum_Thread
-      local: thread_id
-      foreign: id
-
-Forum_Thread:
-  columns:
-    board_id: integer(10)
-    updated: integer(10)
-    closed: integer(1)
-  relations:
-    Board:
-      class: Forum_Board
-      local: board_id
-      foreign: id
-    Entries:
-      class: Forum_Entry
-      local: id
-      foreign: thread_id
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6f694758f2023a9f1fe97bb7256a40a6c9754672"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6f694758f2023a9f1fe97bb7256a40a6c9754672"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">Forum_Category:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    root_category_id:</span> <span class="hljs-string">integer(10)</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    parent_category_id:</span> <span class="hljs-string">integer(10)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    name:</span> <span class="hljs-string">string(50)</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    description:</span> <span class="hljs-string">string(99999)</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    Subcategory:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Forum_Category</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      local:</span> <span class="hljs-string">parent_category_id</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">      foreign:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">    Rootcategory:</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Forum_Category</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">      local:</span> <span class="hljs-string">root_category_id</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">      foreign:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">Forum_Board:</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">    category_id:</span> <span class="hljs-string">integer(10)</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">    name:</span> <span class="hljs-string">string(100)</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">    description:</span> <span class="hljs-string">string(5000)</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">    Category:</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Forum_Category</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-attr">      local:</span> <span class="hljs-string">category_id</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-attr">      foreign:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-attr">    Threads:</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Forum_Thread</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-attr">      local:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-attr">      foreign:</span> <span class="hljs-string">board_id</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-attr">Forum_Entry:</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"><span class="hljs-attr">    author:</span> <span class="hljs-string">string(50)</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"><span class="hljs-attr">    topic:</span> <span class="hljs-string">string(100)</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"><span class="hljs-attr">    message:</span> <span class="hljs-string">string(99999)</span>
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"><span class="hljs-attr">    parent_entry_id:</span> <span class="hljs-string">integer(10)</span>
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"><span class="hljs-attr">    thread_id:</span> <span class="hljs-string">integer(10)</span>
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line"><span class="hljs-attr">    date:</span> <span class="hljs-string">integer(10)</span>
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line"><span class="hljs-attr">    Parent:</span>
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Forum_Entry</span>
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line"><span class="hljs-attr">      local:</span> <span class="hljs-string">parent_entry_id</span>
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line"><span class="hljs-attr">      foreign:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line"><span class="hljs-attr">    Thread:</span>
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Forum_Thread</span>
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line"><span class="hljs-attr">      local:</span> <span class="hljs-string">thread_id</span>
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line"><span class="hljs-attr">      foreign:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line"><span class="hljs-attr">Forum_Thread:</span>
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line"><span class="hljs-attr">    board_id:</span> <span class="hljs-string">integer(10)</span>
+</td></tr><tr><td class="line-number noselect">54</td><td class="code-line"><span class="hljs-attr">    updated:</span> <span class="hljs-string">integer(10)</span>
+</td></tr><tr><td class="line-number noselect">55</td><td class="code-line"><span class="hljs-attr">    closed:</span> <span class="hljs-string">integer(1)</span>
+</td></tr><tr><td class="line-number noselect">56</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">57</td><td class="code-line"><span class="hljs-attr">    Board:</span>
+</td></tr><tr><td class="line-number noselect">58</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Forum_Board</span>
+</td></tr><tr><td class="line-number noselect">59</td><td class="code-line"><span class="hljs-attr">      local:</span> <span class="hljs-string">board_id</span>
+</td></tr><tr><td class="line-number noselect">60</td><td class="code-line"><span class="hljs-attr">      foreign:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">61</td><td class="code-line"><span class="hljs-attr">    Entries:</span>
+</td></tr><tr><td class="line-number noselect">62</td><td class="code-line"><span class="hljs-attr">      class:</span> <span class="hljs-string">Forum_Entry</span>
+</td></tr><tr><td class="line-number noselect">63</td><td class="code-line"><span class="hljs-attr">      local:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">64</td><td class="code-line"><span class="hljs-attr">      foreign:</span> <span class="hljs-string">thread_id</span>
+</td></tr></table></div></code></pre>
 <hr />
 <a class="section-anchor" id="conclusion" name="conclusion"></a><h2 class="section-header"><a href="#conclusion">Conclusion<i class="fas fa-link"></i></a></h2>
 <p>I hope that these real world schema examples will help you with using
@@ -658,8 +669,6 @@ Remember, consistency in your code is key!</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -705,7 +714,7 @@ Remember, consistency in your code is key!</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

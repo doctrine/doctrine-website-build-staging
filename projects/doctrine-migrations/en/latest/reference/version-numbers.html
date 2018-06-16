@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -260,61 +257,75 @@ is important as it allows the migrations to be correctly ordered.</p>
 <code>sort($versions, SORT_STRING)</code> on version numbers. This can cause
 problems with custom version numbers:</p>
 </div>
-<pre><code class="php">&lt;?php
-
-$versions = [
-    'Version1',
-    'Version2',
-    // ...
-    'Version10',
-];
-
-sort($versions, SORT_STRING);
-
-var_dump($versions);
-
-/*
-array(3) {
-  [0] =&gt;
-  string(8) &quot;Version1&quot;
-  [1] =&gt;
-  string(9) &quot;Version10&quot;
-  [2] =&gt;
-  string(8) &quot;Version2&quot;
-}
-*/
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dc13a7f42bb153ad6316a10ff8bbda161c88682d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dc13a7f42bb153ad6316a10ff8bbda161c88682d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$versions = [
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">'Version1'</span>,
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-string">'Version2'</span>,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-string">'Version10'</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">];
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">sort($versions, SORT_STRING);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">var_dump($versions);
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">/*</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-keyword">array</span>(<span class="hljs-number">3</span>) {
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">  [<span class="hljs-number">0</span>] =&gt;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">  string(<span class="hljs-number">8</span>) <span class="hljs-string">"Version1"</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">  [<span class="hljs-number">1</span>] =&gt;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">  string(<span class="hljs-number">9</span>) <span class="hljs-string">"Version10"</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">  [<span class="hljs-number">2</span>] =&gt;
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">  string(<span class="hljs-number">8</span>) <span class="hljs-string">"Version2"</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">*/
+</td></tr></table></div></code></pre>
 <p>The custom version numbers above end up out of order which may cause damage to a database.</p>
 <p>It is <strong>strongly recommended</strong> that the <code>Version{date}</code> migration class name format is used and that the various
 <a href="generating-migrations.html">tools for generating migrations</a> are used.</p>
 <p>Should some custom migration numbers be necessary, keeping the version number the same length as the date format
 (14 total characters) and padding it to the left with zeros should work.</p>
-<pre><code class="php">&lt;?php
-
-$versions = [
-    'Version00000000000001',
-    'Version00000000000002',
-    // ...
-    'Version00000000000010',
-    'Version20180107070000', // generated version
-];
-
-sort($versions, SORT_STRING);
-
-var_dump($versions);
-/*
-array(4) {
-  [0] =&gt;
-  string(21) &quot;Version00000000000001&quot;
-  [1] =&gt;
-  string(21) &quot;Version00000000000002&quot;
-  [2] =&gt;
-  string(21) &quot;Version00000000000010&quot;
-  [3] =&gt;
-  string(21) &quot;Version20180107070000&quot;
-}
-*/
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cac2f0b3ac31e3aa1527a996b3b23184c7078889"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cac2f0b3ac31e3aa1527a996b3b23184c7078889"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$versions = [
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">'Version00000000000001'</span>,
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-string">'Version00000000000002'</span>,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-string">'Version00000000000010'</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-string">'Version20180107070000'</span>, <span class="hljs-comment">// generated version</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">];
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">sort($versions, SORT_STRING);
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">var_dump($versions);
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">/*</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-keyword">array</span>(<span class="hljs-number">4</span>) {
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">  [<span class="hljs-number">0</span>] =&gt;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">  string(<span class="hljs-number">21</span>) <span class="hljs-string">"Version00000000000001"</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">  [<span class="hljs-number">1</span>] =&gt;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">  string(<span class="hljs-number">21</span>) <span class="hljs-string">"Version00000000000002"</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">  [<span class="hljs-number">2</span>] =&gt;
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">  string(<span class="hljs-number">21</span>) <span class="hljs-string">"Version00000000000010"</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">  [<span class="hljs-number">3</span>] =&gt;
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">  string(<span class="hljs-number">21</span>) <span class="hljs-string">"Version20180107070000"</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">*/
+</td></tr></table></div></code></pre>
 <p>Please note that migrating to this new, zero-padded format may require
 <a href="managing-migrations.html#managing-the-version-table">manual version table intervention</a> if the
 versions have previously been applied.</p>
@@ -343,8 +354,6 @@ versions have previously been applied.</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -390,7 +399,7 @@ versions have previously been applied.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

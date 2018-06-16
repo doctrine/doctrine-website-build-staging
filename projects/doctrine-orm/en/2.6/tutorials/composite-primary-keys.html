@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -277,76 +274,111 @@ the ID fields have to have their values set before you call <code>EntityManager#
 <p>Even in version 2.0 you can have composite keys as long as they only consist of the primitive types
 <code>integer</code> and <code>string</code>. Suppose you want to create a database of cars and use the model-name
 and year of production as primary keys:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-namespace VehicleCatalogue\Model;
-
-/**
- * @Entity
- */
-class Car
-{
-    /** @Id @Column(type=&quot;string&quot;) */
-    private $name;
-    /** @Id @Column(type=&quot;integer&quot;) */
-    private $year;
-
-    public function __construct($name, $year)
-    {
-        $this-&gt;name = $name;
-        $this-&gt;year = $year;
-    }
-
-    public function getModelName()
-    {
-        return $this-&gt;name;
-    }
-
-    public function getYearOfProduction()
-    {
-        return $this-&gt;year;
-    }
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;doctrine-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping&quot;
-      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-      xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping
-                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd&quot;&gt;
-
-    &lt;entity name=&quot;VehicleCatalogue\Model\Car&quot;&gt;
-        &lt;id field=&quot;name&quot; type=&quot;string&quot; /&gt;
-        &lt;id field=&quot;year&quot; type=&quot;integer&quot; /&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">VehicleCatalogue\Model\Car:
-  type: entity
-  id:
-    name:
-      type: string
-    year:
-      type: integer
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="27e084b63943adf9e8c1d9b77e0a4a263a16f2d9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="27e084b63943adf9e8c1d9b77e0a4a263a16f2d9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">VehicleCatalogue</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") */</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $year;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($name, $year)</span></span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;name = $name;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;year = $year;
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getModelName</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name;
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getYearOfProduction</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;year;
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="26912d3d615d7eff426d7411b636c7da40ae7930"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="26912d3d615d7eff426d7411b636c7da40ae7930"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"VehicleCatalogue\Model\Car"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"year"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"integer"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6885505b67799904604750293a735cbc66f5aa19"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6885505b67799904604750293a735cbc66f5aa19"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-string">VehicleCatalogue\Model\Car:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  id:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    name:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    year:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Now you can use this entity:</p>
-<pre><code class="php">&lt;?php
-namespace VehicleCatalogue\Model;
-
-// $em is the EntityManager
-
-$car = new Car(&quot;Audi A8&quot;, 2010);
-$em-&gt;persist($car);
-$em-&gt;flush();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4a83d59189aa428a729b9e3f9edaf38095a5eebc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4a83d59189aa428a729b9e3f9edaf38095a5eebc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">VehicleCatalogue</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// $em is the EntityManager</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$car = <span class="hljs-keyword">new</span> Car(<span class="hljs-string">"Audi A8"</span>, <span class="hljs-number">2010</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$em-&gt;persist($car);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$em-&gt;flush();
+</td></tr></table></div></code></pre>
 <p>And for querying you can use arrays to both DQL and EntityRepositories:</p>
-<pre><code class="php">&lt;?php
-namespace VehicleCatalogue\Model;
-
-// $em is the EntityManager
-$audi = $em-&gt;find(&quot;VehicleCatalogue\Model\Car&quot;, array(&quot;name&quot; =&gt; &quot;Audi A8&quot;, &quot;year&quot; =&gt; 2010));
-
-$dql = &quot;SELECT c FROM VehicleCatalogue\Model\Car c WHERE c.id = ?1&quot;;
-$audi = $em-&gt;createQuery($dql)
-           -&gt;setParameter(1, array(&quot;name&quot; =&gt; &quot;Audi A8&quot;, &quot;year&quot; =&gt; 2010))
-           -&gt;getSingleResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9826d312165cc7be19c5f78708f79513663780c4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9826d312165cc7be19c5f78708f79513663780c4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">VehicleCatalogue</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// $em is the EntityManager</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$audi = $em-&gt;find(<span class="hljs-string">"VehicleCatalogue\Model\Car"</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">"name"</span> =&gt; <span class="hljs-string">"Audi A8"</span>, <span class="hljs-string">"year"</span> =&gt; <span class="hljs-number">2010</span>));
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$dql = <span class="hljs-string">"SELECT c FROM VehicleCatalogue\Model\Car c WHERE c.id = ?1"</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$audi = $em-&gt;createQuery($dql)
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">           -&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">"name"</span> =&gt; <span class="hljs-string">"Audi A8"</span>, <span class="hljs-string">"year"</span> =&gt; <span class="hljs-number">2010</span>))
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">           -&gt;getSingleResult();
+</td></tr></table></div></code></pre>
 <p>You can also use this entity in associations. Doctrine will then generate two foreign keys one for <code>name</code>
 and to <code>year</code> to the related entities.</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>This example shows how you can nicely solve the requirement for existing
@@ -374,197 +406,238 @@ of one or many parent entities.</p>
 
 <a class="section-anchor" id="use-case-1-dynamic-attributes" name="use-case-1-dynamic-attributes"></a><h2 class="section-header"><a href="#use-case-1-dynamic-attributes">Use-Case 1: Dynamic Attributes<i class="fas fa-link"></i></a></h2>
 <p>We keep up the example of an Article with arbitrary attributes, the mapping looks like this:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-namespace Application\Model;
-
-use Doctrine\Common\Collections\ArrayCollection;
-
-/**
- * @Entity
- */
-class Article
-{
-    /** @Id @Column(type=&quot;integer&quot;) @GeneratedValue */
-    private $id;
-    /** @Column(type=&quot;string&quot;) */
-    private $title;
-
-    /**
-     * @OneToMany(targetEntity=&quot;ArticleAttribute&quot;, mappedBy=&quot;article&quot;, cascade={&quot;ALL&quot;}, indexBy=&quot;attribute&quot;)
-     */
-    private $attributes;
-
-    public function addAttribute($name, $value)
-    {
-        $this-&gt;attributes[$name] = new ArticleAttribute($name, $value, $this);
-    }
-}
-
-/**
- * @Entity
- */
-class ArticleAttribute
-{
-    /** @Id @ManyToOne(targetEntity=&quot;Article&quot;, inversedBy=&quot;attributes&quot;) */
-    private $article;
-
-    /** @Id @Column(type=&quot;string&quot;) */
-    private $attribute;
-
-    /** @Column(type=&quot;string&quot;) */
-    private $value;
-
-    public function __construct($name, $value, $article)
-    {
-        $this-&gt;attribute = $name;
-        $this-&gt;value = $value;
-        $this-&gt;article = $article;
-    }
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping&quot;
-      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-      xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping
-                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd&quot;&gt;
-
-     &lt;entity name=&quot;Application\Model\ArticleAttribute&quot;&gt;
-        &lt;id name=&quot;article&quot; association-key=&quot;true&quot; /&gt;
-        &lt;id name=&quot;attribute&quot; type=&quot;string&quot; /&gt;
-        
-        &lt;field name=&quot;value&quot; type=&quot;string&quot; /&gt;
-
-        &lt;many-to-one field=&quot;article&quot; target-entity=&quot;Article&quot; inversed-by=&quot;attributes&quot; /&gt;
-     &lt;entity&gt;
-
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">Application\Model\ArticleAttribute:
-  type: entity
-  id:
-    article:
-      associationKey: true
-    attribute:
-      type: string
-  fields:
-    value:
-      type: string
-  manyToOne:
-    article:
-      targetEntity: Article
-      inversedBy: attributes
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c0296d9318f207c281db4469c5d887d066880b8d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c0296d9318f207c281db4469c5d887d066880b8d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Application</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">private</span> $title;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     * @OneToMany(targetEntity=<span class="hljs-string">"ArticleAttribute"</span>, mappedBy=<span class="hljs-string">"article"</span>, cascade={<span class="hljs-string">"ALL"</span>}, indexBy=<span class="hljs-string">"attribute"</span>)
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">private</span> $attributes;
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addAttribute</span><span class="hljs-params">($name, $value)</span></span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;attributes[$name] = <span class="hljs-keyword">new</span> ArticleAttribute($name, $value, <span class="hljs-keyword">$this</span>);
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ArticleAttribute</span></span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@ManyToOne</span>(targetEntity="Article", inversedBy="attributes") */</span>
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    <span class="hljs-keyword">private</span> $article;
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-keyword">private</span> $attribute;
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    <span class="hljs-keyword">private</span> $value;
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($name, $value, $article)</span></span>
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;attribute = $name;
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;value = $value;
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;article = $article;
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bb5c50ac9efec0d89e0360c21aa8ae4b82fdb636"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bb5c50ac9efec0d89e0360c21aa8ae4b82fdb636"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Application\Model\ArticleAttribute"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"article"</span> <span class="hljs-attr">association-key</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"attribute"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"value"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"article"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Article"</span> <span class="hljs-attr">inversed-by</span>=<span class="hljs-string">"attributes"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     <span class="hljs-tag">&lt;<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c1ff115ebc15c3a7710287e638b2ba18522cc7ad"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c1ff115ebc15c3a7710287e638b2ba18522cc7ad"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-string">Application\Model\ArticleAttribute:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  id:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    article:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      associationKey:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    attribute:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">  fields:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    value:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">  manyToOne:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    article:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Article</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      inversedBy:</span> <span class="hljs-string">attributes</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <a class="section-anchor" id="use-case-2-simple-derived-identity" name="use-case-2-simple-derived-identity"></a><h2 class="section-header"><a href="#use-case-2-simple-derived-identity">Use-Case 2: Simple Derived Identity<i class="fas fa-link"></i></a></h2>
 <p>Sometimes you have the requirement that two objects are related by a One-To-One association
 and that the dependent class should re-use the primary key of the class it depends on.
 One good example for this is a user-address relationship:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/**
- * @Entity
- */
-class User
-{
-    /** @Id @Column(type=&quot;integer&quot;) @GeneratedValue */
-    private $id;
-}
-
-/**
- * @Entity
- */
-class Address
-{
-    /** @Id @OneToOne(targetEntity=&quot;User&quot;) */
-    private $user;
-}
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">User:
-  type: entity
-  id:
-    id:
-      type: integer
-      generator:
-        strategy: AUTO
-
-Address:
-  type: entity
-  id:
-    user:
-      associationKey: true
-  oneToOne:
-    user:
-      targetEntity: User
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="26cbd1e2905c7cdc71eea2dbac4b9d495cd1cdec"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="26cbd1e2905c7cdc71eea2dbac4b9d495cd1cdec"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span></span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@OneToOne</span>(targetEntity="User") */</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">private</span> $user;
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e326e358ae4a156261b0f2f2cee9a2dfaf92fd26"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e326e358ae4a156261b0f2f2cee9a2dfaf92fd26"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  id:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      generator:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">        strategy:</span> <span class="hljs-string">AUTO</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">Address:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">  id:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    user:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      associationKey:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">  oneToOne:</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">    user:</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">User</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <a class="section-anchor" id="use-case-3-join-table-with-metadata" name="use-case-3-join-table-with-metadata"></a><h2 class="section-header"><a href="#use-case-3-join-table-with-metadata">Use-Case 3: Join-Table with Metadata<i class="fas fa-link"></i></a></h2>
 <p>In the classic order product shop example there is the concept of the order item
 which contains references to order and product and additional data such as the amount
 of products purchased and maybe even the current price.</p>
-<pre><code class="php">&lt;?php
-use Doctrine\Common\Collections\ArrayCollection;
-
-/** @Entity */
-class Order
-{
-    /** @Id @Column(type=&quot;integer&quot;) @GeneratedValue */
-    private $id;
-
-    /** @ManyToOne(targetEntity=&quot;Customer&quot;) */
-    private $customer;
-    /** @OneToMany(targetEntity=&quot;OrderItem&quot;, mappedBy=&quot;order&quot;) */
-    private $items;
-
-    /** @Column(type=&quot;boolean&quot;) */
-    private $payed = false;
-    /** @Column(type=&quot;boolean&quot;) */
-    private $shipped = false;
-    /** @Column(type=&quot;datetime&quot;) */
-    private $created;
-
-    public function __construct(Customer $customer)
-    {
-        $this-&gt;customer = $customer;
-        $this-&gt;items = new ArrayCollection();
-        $this-&gt;created = new \DateTime(&quot;now&quot;);
-    }
-}
-
-/** @Entity */
-class Product
-{
-    /** @Id @Column(type=&quot;integer&quot;) @GeneratedValue */
-    private $id;
-
-    /** @Column(type=&quot;string&quot;) */
-    private $name;
-
-    /** @Column(type=&quot;decimal&quot;) */
-    private $currentPrice;
-
-    public function getCurrentPrice()
-    {
-        return $this-&gt;currentPrice;
-    }
-}
-
-/** @Entity */
-class OrderItem
-{
-    /** @Id @ManyToOne(targetEntity=&quot;Order&quot;) */
-    private $order;
-
-    /** @Id @ManyToOne(targetEntity=&quot;Product&quot;) */
-    private $product;
-
-    /** @Column(type=&quot;integer&quot;) */
-    private $amount = 1;
-
-    /** @Column(type=&quot;decimal&quot;) */
-    private $offeredPrice;
-
-    public function __construct(Order $order, Product $product, $amount = 1)
-    {
-        $this-&gt;order = $order;
-        $this-&gt;product = $product;
-        $this-&gt;offeredPrice = $product-&gt;getCurrentPrice();
-    }
-}
-
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="956de3429a6fb7a7dca02cd8dfaf71959a64fb52"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="956de3429a6fb7a7dca02cd8dfaf71959a64fb52"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Order</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ManyToOne</span>(targetEntity="Customer") */</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">private</span> $customer;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@OneToMany</span>(targetEntity="OrderItem", mappedBy="order") */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">private</span> $items;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="boolean") */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">private</span> $payed = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="boolean") */</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">private</span> $shipped = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="datetime") */</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">private</span> $created;
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Customer $customer)</span></span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;customer = $customer;
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;items = <span class="hljs-keyword">new</span> ArrayCollection();
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;created = <span class="hljs-keyword">new</span> \DateTime(<span class="hljs-string">"now"</span>);
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Product</span></span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="decimal") */</span>
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-keyword">private</span> $currentPrice;
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCurrentPrice</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;currentPrice;
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OrderItem</span></span>
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@ManyToOne</span>(targetEntity="Order") */</span>
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">    <span class="hljs-keyword">private</span> $order;
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@ManyToOne</span>(targetEntity="Product") */</span>
+</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">    <span class="hljs-keyword">private</span> $product;
+</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="integer") */</span>
+</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">    <span class="hljs-keyword">private</span> $amount = <span class="hljs-number">1</span>;
+</td></tr><tr><td class="line-number noselect">59</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">60</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="decimal") */</span>
+</td></tr><tr><td class="line-number noselect">61</td><td class="code-line">    <span class="hljs-keyword">private</span> $offeredPrice;
+</td></tr><tr><td class="line-number noselect">62</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">63</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Order $order, Product $product, $amount = <span class="hljs-number">1</span>)</span></span>
+</td></tr><tr><td class="line-number noselect">64</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">65</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;order = $order;
+</td></tr><tr><td class="line-number noselect">66</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;product = $product;
+</td></tr><tr><td class="line-number noselect">67</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;offeredPrice = $product-&gt;getCurrentPrice();
+</td></tr><tr><td class="line-number noselect">68</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">69</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="performance-considerations" name="performance-considerations"></a><h2 class="section-header"><a href="#performance-considerations">Performance Considerations<i class="fas fa-link"></i></a></h2>
 <p>Using composite keys always comes with a performance hit compared to using entities with
 a simple surrogate key. This performance impact is mostly due to additional PHP code that is
@@ -595,8 +668,6 @@ executed to manage entities with derived foreign keys.</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -642,7 +713,7 @@ executed to manage entities with derived foreign keys.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

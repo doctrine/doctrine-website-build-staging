@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -262,157 +259,227 @@ for the document with the same ID.</p>
 
 <a class="section-anchor" id="referenceone" name="referenceone"></a><h3 class="section-header"><a href="#referenceone">ReferenceOne<i class="fas fa-link"></i></a></h3>
 <p>You can have a reference between two documents by a reference one relationship in the following way:</p>
-<pre><code class="php">&lt;?php
-/** @Document */
-class Article
-{
-    /** @Id */
-    private $id;
-
-    /** @ReferenceOne(targetDocument=&quot;User&quot;) */
-    private $author;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="452199ba093f2911baaf351fc8044033a37ef366"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="452199ba093f2911baaf351fc8044033a37ef366"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="User") */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $author;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>This mapping definition would save the author id or null in the CouchDB document but let
 you work with a Author object in PHP.</p>
 <p>In CouchDB two documents with this relationship will look like:</p>
-<pre><code class="javascript">{
-    &quot;_id&quot;: &quot;1234&quot;,
-    &quot;doctrine_metadata&quot;:
-    {
-        &quot;associations&quot;:
-        {
-            &quot;author&quot;: &quot;54321&quot;
-        }
-    },
-    &quot;title&quot;: &quot;An article&quot;,
-    &quot;type&quot;: &quot;Article&quot;
-}
-
-{
-    &quot;_id&quot;: &quot;54321&quot;,
-    &quot;name&quot;: &quot;Benjamin&quot;,
-    &quot;type&quot;: &quot;User&quot;
-}
-</code></pre>
+<pre class="code-block-table"><code class="javascript"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6ed071b60963502efaab7bfbff58aab29aef1dcc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6ed071b60963502efaab7bfbff58aab29aef1dcc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"1234"</span>,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-string">"doctrine_metadata"</span>:
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-string">"associations"</span>:
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            <span class="hljs-string">"author"</span>: <span class="hljs-string">"54321"</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    },
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-string">"title"</span>: <span class="hljs-string">"An article"</span>,
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Article"</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"54321"</span>,
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Benjamin"</span>,
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-string">"type"</span>: <span class="hljs-string">"User"</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="referencemany" name="referencemany"></a><h3 class="section-header"><a href="#referencemany">ReferenceMany<i class="fas fa-link"></i></a></h3>
 <p>You can have a reference between a document and a set of related documents in the following way</p>
-<pre><code class="php">&lt;?php
-/**
- * @Document
- */
-class Article
-{
-    /** @Id */
-    private $id;
-
-    /** @ReferenceMany(targetDocument=&quot;Comment&quot;) */
-    private $comments;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b9e2cca67d58b1a35aa1e70ec2e64c2b61aaac6b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b9e2cca67d58b1a35aa1e70ec2e64c2b61aaac6b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceMany</span>(targetDocument="Comment") */</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">private</span> $comments;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>This mapping definition will save an array of comment ids in every article document and
 will present you with a <code>Doctrine\Common\Collections\Collection</code> containing Comment instances
 in PHP.</p>
 <p>In CouchDB documents with this relationship will look like:</p>
-<pre><code class="javascript">{
-    &quot;_id&quot;: &quot;1234&quot;,
-    &quot;comments&quot;: [&quot;55555&quot;, &quot;44444&quot;],
-    &quot;doctrine_metadata&quot;:
-    {
-        &quot;associations&quot;: [&quot;comments&quot;]
-    },
-    &quot;title&quot;: &quot;An article&quot;,
-    &quot;type&quot;: &quot;Article&quot;
-}
-
-{
-    &quot;_id&quot;: &quot;55555&quot;,
-    &quot;text&quot;: &quot;Thank you!&quot;,
-    &quot;type&quot;: &quot;Comment&quot;
-}
-
-{
-    &quot;_id&quot;: &quot;44444&quot;,
-    &quot;text&quot;: &quot;Very informative!&quot;,
-    &quot;type&quot;: &quot;Comment&quot;
-}
-</code></pre>
+<pre class="code-block-table"><code class="javascript"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="fc4e96673fd701b647449c25d52bddfd245b0f8b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="fc4e96673fd701b647449c25d52bddfd245b0f8b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"1234"</span>,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-string">"comments"</span>: [<span class="hljs-string">"55555"</span>, <span class="hljs-string">"44444"</span>],
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">"doctrine_metadata"</span>:
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-string">"associations"</span>: [<span class="hljs-string">"comments"</span>]
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    },
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-string">"title"</span>: <span class="hljs-string">"An article"</span>,
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Article"</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"55555"</span>,
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-string">"text"</span>: <span class="hljs-string">"Thank you!"</span>,
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Comment"</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"44444"</span>,
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-string">"text"</span>: <span class="hljs-string">"Very informative!"</span>,
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Comment"</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="inverse-referencemany" name="inverse-referencemany"></a><h3 class="section-header"><a href="#inverse-referencemany">Inverse ReferenceMany<i class="fas fa-link"></i></a></h3>
 <p>You can define the inverse side of a reference one or reference many association, which will
 use a view to access which owning side documents point to the current document by holding
 a reference to their id:</p>
-<pre><code class="php">&lt;?php
-/** @Document */
-class User
-{
-    /** @Id */
-    private $id;
-
-    /**
-     * @ReferenceMany(targetDocument=&quot;Article&quot;, mappedBy=&quot;author&quot;)
-     */
-    private $articles;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8e9f4e5c2bd7492f957e503934e8bf2ef4fe10fa"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8e9f4e5c2bd7492f957e503934e8bf2ef4fe10fa"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @ReferenceMany(targetDocument=<span class="hljs-string">"Article"</span>, mappedBy=<span class="hljs-string">"author"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">private</span> $articles;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>See the difference between the previous reference many definition by using the mappedBy attribute.
 This specifies which association on the target document contains the id reference.</p>
 <p>In CouchDB documents with this relationship will look like:</p>
-<pre><code class="javascript">{
-    &quot;_id&quot;: &quot;54321&quot;,
-    &quot;name&quot;: &quot;Benjamin&quot;,
-    &quot;type&quot;: &quot;User&quot;
-}
-</code></pre>
+<pre class="code-block-table"><code class="javascript"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9f4ba40e17e7f33cfcaac89be3304a99798d108c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9f4ba40e17e7f33cfcaac89be3304a99798d108c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"54321"</span>,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Benjamin"</span>,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">"type"</span>: <span class="hljs-string">"User"</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>A view is used to lookup the related articles. The view emits type, all
 associations and their ids.</p>
 <a class="section-anchor" id="embedone" name="embedone"></a><h3 class="section-header"><a href="#embedone">EmbedOne<i class="fas fa-link"></i></a></h3>
 <p>You can embed a class into a document. Both will be saved in the same CouchDB document:</p>
-<pre><code class="php">&lt;?php
-/** @Document */
-class User
-{
-    /** @Id */
-    private $id;
-
-    /** @EmbedOne */
-    private $address;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9674ad6e7caa232c3fd65fa396305b7798b54504"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9674ad6e7caa232c3fd65fa396305b7798b54504"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedOne</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $address;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The embed one mapping definition does not necessarily need a &quot;targetDocument&quot; attribute,
 it can detect and save this automatically.</p>
 <p>In CouchDB documents with this relationship will look like:</p>
-<pre><code class="javascript">{
-    &quot;_id&quot;: &quot;1234&quot;,
-    &quot;address&quot;:
-    {
-        &quot;zipcode&quot;: &quot;12345&quot;,
-        &quot;city&quot;: &quot;Berlin&quot;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="javascript"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="56b081899d1f3783d5c91d86aa36554854f6c497"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="56b081899d1f3783d5c91d86aa36554854f6c497"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"1234"</span>,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-string">"address"</span>:
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-string">"zipcode"</span>: <span class="hljs-string">"12345"</span>,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-string">"city"</span>: <span class="hljs-string">"Berlin"</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="embedmany" name="embedmany"></a><h3 class="section-header"><a href="#embedmany">EmbedMany<i class="fas fa-link"></i></a></h3>
 <p>You can embed an array of classes into a document.</p>
-<pre><code class="php">&lt;?php
-/** @Document */
-class User
-{
-    /** @Id */
-    private $id;
-
-    /** @EmbedMany */
-    private $phonenumbers;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b95d0ed44bf9417799f71c07be938223d4cba9eb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b95d0ed44bf9417799f71c07be938223d4cba9eb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedMany</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $phonenumbers;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>In CouchDB documents with this relationship will look like:</p>
-<pre><code class="javascript">{
-    &quot;_id&quot;: &quot;1234&quot;,
-    &quot;phonenumbers&quot;:
-    [
-        {&quot;number&quot;: &quot;+1234567890&quot;},
-        {&quot;number&quot;: &quot;+1234567891&quot;}
-    ]
-}
-</code></pre>
+<pre class="code-block-table"><code class="javascript"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d41fc8d702618d912f16e707a9a33c6479ab608c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d41fc8d702618d912f16e707a9a33c6479ab608c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"1234"</span>,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-string">"phonenumbers"</span>:
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    [
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        {<span class="hljs-string">"number"</span>: <span class="hljs-string">"+1234567890"</span>},
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        {<span class="hljs-string">"number"</span>: <span class="hljs-string">"+1234567891"</span>}
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    ]
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -437,8 +504,6 @@ class User
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -484,7 +549,7 @@ class User
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -299,30 +296,37 @@ the following content:</p>
 we don't have to care about this.</p>
 <a class="section-anchor" id="setup-connection" name="setup-connection"></a><h2 class="section-header"><a href="#setup-connection">Setup Connection<i class="fas fa-link"></i></a></h2>
 <p>The first thing to start with is setting up Doctrine and the database connection:</p>
-<pre><code class="php">&lt;?php
-// bootstrap.php
-use Doctrine\DBAL\DriverManager;
-use Doctrine\Shards\DBAL\SQLAzure\SQLAzureShardManager;
-
-require_once &quot;vendor/autoload.php&quot;;
-
-$conn = DriverManager::getConnection(array(
-    'driver'   =&gt; 'pdo_sqlsrv',
-    'dbname'   =&gt; 'SalesDB',
-    'host'     =&gt; 'tcp:dbname.windows.net',
-    'user'     =&gt; 'user@dbname',
-    'password' =&gt; 'XXX',
-    'platform'       =&gt; new \Doctrine\DBAL\Platforms\SQLAzurePlatform(),
-    'driverOptions'  =&gt; array('MultipleActiveResultSets' =&gt; false),
-    'sharding' =&gt; array(
-        'federationName'   =&gt; 'Orders_Federation',
-        'distributionKey'  =&gt; 'CustId',
-        'distributionType' =&gt; 'integer',
-    )
-));
-
-$shardManager = new SQLAzureShardManager($conn);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d73c1faf5caa315c33be87e5a001d0bb5d38ab42"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d73c1faf5caa315c33be87e5a001d0bb5d38ab42"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// bootstrap.php</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Shards</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">SQLAzure</span>\<span class="hljs-title">SQLAzureShardManager</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">"vendor/autoload.php"</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$conn = DriverManager::getConnection(<span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-string">'driver'</span>   =&gt; <span class="hljs-string">'pdo_sqlsrv'</span>,
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-string">'dbname'</span>   =&gt; <span class="hljs-string">'SalesDB'</span>,
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-string">'host'</span>     =&gt; <span class="hljs-string">'tcp:dbname.windows.net'</span>,
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-string">'user'</span>     =&gt; <span class="hljs-string">'user@dbname'</span>,
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">'XXX'</span>,
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-string">'platform'</span>       =&gt; <span class="hljs-keyword">new</span> \Doctrine\DBAL\Platforms\SQLAzurePlatform(),
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-string">'driverOptions'</span>  =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">'MultipleActiveResultSets'</span> =&gt; <span class="hljs-keyword">false</span>),
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-string">'sharding'</span> =&gt; <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-string">'federationName'</span>   =&gt; <span class="hljs-string">'Orders_Federation'</span>,
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        <span class="hljs-string">'distributionKey'</span>  =&gt; <span class="hljs-string">'CustId'</span>,
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-string">'distributionType'</span> =&gt; <span class="hljs-string">'integer'</span>,
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    )
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$shardManager = <span class="hljs-keyword">new</span> SQLAzureShardManager($conn);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="create-database" name="create-database"></a><h2 class="section-header"><a href="#create-database">Create Database<i class="fas fa-link"></i></a></h2>
 <p>Create a new database using the Azure/SQL Azure management console.</p>
 <a class="section-anchor" id="create-schema" name="create-schema"></a><h2 class="section-header"><a href="#create-schema">Create Schema<i class="fas fa-link"></i></a></h2>
@@ -333,207 +337,228 @@ statements.</p>
 <p>We will recreate Brians example schema with Doctrine DBAL. Instead of having to
 create federations and schema seperately as in his example, Doctrine will do it
 all in one step:</p>
-<pre><code class="php">&lt;?php
-// create_schema.php
-use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Shards\DBAL\SQLAzure\SQLAzureSchemaSynchronizer;
-
-require_once 'bootstrap.php';
-
-$schema = new Schema();
-
-$products = $schema-&gt;createTable('Products');
-$products-&gt;addColumn('ProductID', 'integer');
-$products-&gt;addColumn('SupplierID', 'integer');
-$products-&gt;addColumn('ProductName', 'string');
-$products-&gt;addColumn('Price', 'decimal', array('scale' =&gt; 2, 'precision' =&gt; 12));
-$products-&gt;setPrimaryKey(array('ProductID'));
-$products-&gt;addOption('azure.federated', true);
-
-$customers = $schema-&gt;createTable('Customers');
-$customers-&gt;addColumn('CustomerID', 'integer');
-$customers-&gt;addColumn('CompanyName', 'string');
-$customers-&gt;addColumn('FirstName', 'string');
-$customers-&gt;addColumn('LastName', 'string');
-$customers-&gt;setPrimaryKey(array('CustomerID'));
-$customers-&gt;addOption('azure.federated', true);
-$customers-&gt;addOption('azure.federatedOnColumnName', 'CustomerID');
-
-$orders = $schema-&gt;createTable('Orders');
-$orders-&gt;addColumn('CustomerID', 'integer');
-$orders-&gt;addColumn('OrderID', 'integer');
-$orders-&gt;addColumn('OrderDate', 'datetime');
-$orders-&gt;setPrimaryKey(array('CustomerID', 'OrderID'));
-$orders-&gt;addOption('azure.federated', true);
-$orders-&gt;addOption('azure.federatedOnColumnName', 'CustomerID');
-
-$orderItems = $schema-&gt;createTable('OrderItems');
-$orderItems-&gt;addColumn('CustomerID', 'integer');
-$orderItems-&gt;addColumn('OrderID', 'integer');
-$orderItems-&gt;addColumn('ProductID', 'integer');
-$orderItems-&gt;addColumn('Quantity', 'integer');
-$orderItems-&gt;setPrimaryKey(array('CustomerID', 'OrderID', 'ProductID'));
-$orderItems-&gt;addOption('azure.federated', true);
-$orderItems-&gt;addOption('azure.federatedOnColumnName', 'CustomerID');
-
-// Create the Schema + Federation:
-$synchronizer = new SQLAzureSchemaSynchronizer($conn, $shardManager);
-$synchronizer-&gt;createSchema($schema);
-
-// Or jut look at the SQL:
-echo implode(&quot;\n&quot;, $synchronizer-&gt;getCreateSchema($schema));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8e2ba894c32eb564508933a2073309831b681bee"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8e2ba894c32eb564508933a2073309831b681bee"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// create_schema.php</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Schema</span>\<span class="hljs-title">Schema</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Shards</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">SQLAzure</span>\<span class="hljs-title">SQLAzureSchemaSynchronizer</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'bootstrap.php'</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$schema = <span class="hljs-keyword">new</span> Schema();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$products = $schema-&gt;createTable(<span class="hljs-string">'Products'</span>);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$products-&gt;addColumn(<span class="hljs-string">'ProductID'</span>, <span class="hljs-string">'integer'</span>);
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$products-&gt;addColumn(<span class="hljs-string">'SupplierID'</span>, <span class="hljs-string">'integer'</span>);
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$products-&gt;addColumn(<span class="hljs-string">'ProductName'</span>, <span class="hljs-string">'string'</span>);
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$products-&gt;addColumn(<span class="hljs-string">'Price'</span>, <span class="hljs-string">'decimal'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'scale'</span> =&gt; <span class="hljs-number">2</span>, <span class="hljs-string">'precision'</span> =&gt; <span class="hljs-number">12</span>));
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$products-&gt;setPrimaryKey(<span class="hljs-keyword">array</span>(<span class="hljs-string">'ProductID'</span>));
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$products-&gt;addOption(<span class="hljs-string">'azure.federated'</span>, <span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$customers = $schema-&gt;createTable(<span class="hljs-string">'Customers'</span>);
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$customers-&gt;addColumn(<span class="hljs-string">'CustomerID'</span>, <span class="hljs-string">'integer'</span>);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">$customers-&gt;addColumn(<span class="hljs-string">'CompanyName'</span>, <span class="hljs-string">'string'</span>);
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">$customers-&gt;addColumn(<span class="hljs-string">'FirstName'</span>, <span class="hljs-string">'string'</span>);
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">$customers-&gt;addColumn(<span class="hljs-string">'LastName'</span>, <span class="hljs-string">'string'</span>);
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$customers-&gt;setPrimaryKey(<span class="hljs-keyword">array</span>(<span class="hljs-string">'CustomerID'</span>));
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">$customers-&gt;addOption(<span class="hljs-string">'azure.federated'</span>, <span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">$customers-&gt;addOption(<span class="hljs-string">'azure.federatedOnColumnName'</span>, <span class="hljs-string">'CustomerID'</span>);
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">$orders = $schema-&gt;createTable(<span class="hljs-string">'Orders'</span>);
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">$orders-&gt;addColumn(<span class="hljs-string">'CustomerID'</span>, <span class="hljs-string">'integer'</span>);
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">$orders-&gt;addColumn(<span class="hljs-string">'OrderID'</span>, <span class="hljs-string">'integer'</span>);
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">$orders-&gt;addColumn(<span class="hljs-string">'OrderDate'</span>, <span class="hljs-string">'datetime'</span>);
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">$orders-&gt;setPrimaryKey(<span class="hljs-keyword">array</span>(<span class="hljs-string">'CustomerID'</span>, <span class="hljs-string">'OrderID'</span>));
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">$orders-&gt;addOption(<span class="hljs-string">'azure.federated'</span>, <span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">$orders-&gt;addOption(<span class="hljs-string">'azure.federatedOnColumnName'</span>, <span class="hljs-string">'CustomerID'</span>);
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">$orderItems = $schema-&gt;createTable(<span class="hljs-string">'OrderItems'</span>);
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">$orderItems-&gt;addColumn(<span class="hljs-string">'CustomerID'</span>, <span class="hljs-string">'integer'</span>);
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">$orderItems-&gt;addColumn(<span class="hljs-string">'OrderID'</span>, <span class="hljs-string">'integer'</span>);
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">$orderItems-&gt;addColumn(<span class="hljs-string">'ProductID'</span>, <span class="hljs-string">'integer'</span>);
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">$orderItems-&gt;addColumn(<span class="hljs-string">'Quantity'</span>, <span class="hljs-string">'integer'</span>);
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">$orderItems-&gt;setPrimaryKey(<span class="hljs-keyword">array</span>(<span class="hljs-string">'CustomerID'</span>, <span class="hljs-string">'OrderID'</span>, <span class="hljs-string">'ProductID'</span>));
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">$orderItems-&gt;addOption(<span class="hljs-string">'azure.federated'</span>, <span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">$orderItems-&gt;addOption(<span class="hljs-string">'azure.federatedOnColumnName'</span>, <span class="hljs-string">'CustomerID'</span>);
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line"><span class="hljs-comment">// Create the Schema + Federation:</span>
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">$synchronizer = <span class="hljs-keyword">new</span> SQLAzureSchemaSynchronizer($conn, $shardManager);
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">$synchronizer-&gt;createSchema($schema);
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line"><span class="hljs-comment">// Or jut look at the SQL:</span>
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line"><span class="hljs-keyword">echo</span> implode(<span class="hljs-string">"\n"</span>, $synchronizer-&gt;getCreateSchema($schema));
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="view-federation-members" name="view-federation-members"></a><h2 class="section-header"><a href="#view-federation-members">View Federation Members<i class="fas fa-link"></i></a></h2>
 <p>To see how many shard instances (called Federation Members) your SQLAzure database currently has
 you can ask the <code>ShardManager</code> to enumerate all shards:</p>
-<pre><code class="php">&lt;?php
-// view_federation_members.php
-require_once &quot;bootstrap.php&quot;;
-
-$shards = $shardManager-&gt;getShards();
-foreach ($shards as $shard) {
-    print_r($shard);
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="134d1df8669c070bf2347203e62a39e1a7c85137"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="134d1df8669c070bf2347203e62a39e1a7c85137"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// view_federation_members.php</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">"bootstrap.php"</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$shards = $shardManager-&gt;getShards();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($shards <span class="hljs-keyword">as</span> $shard) {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    print_r($shard);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="insert-data" name="insert-data"></a><h2 class="section-header"><a href="#insert-data">Insert Data<i class="fas fa-link"></i></a></h2>
 <p>Now we want to insert some test data into the database to see the behavior when
 we split the shards. We use the same test data as Brian, but use the Doctrine
 API to insert them. To insert data into federated tables we have to select the
 shard we want to put the data into. We can use the ShardManager to execute this
 operation for us:</p>
-<pre><code class="php">&lt;?php
-// insert_data.php
-require_once &quot;bootstrap.php&quot;;
-
-$shardManager-&gt;selectShard(0);
-
-$conn-&gt;insert(&quot;Products&quot;, array(
-    &quot;ProductID&quot; =&gt; 386,
-    &quot;SupplierID&quot; =&gt; 1001,
-    &quot;ProductName&quot; =&gt; 'Titanium Extension Bracket Left Hand',
-    &quot;Price&quot; =&gt; 5.25,
-));
-$conn-&gt;insert(&quot;Products&quot;, array(
-    &quot;ProductID&quot; =&gt; 387,
-    &quot;SupplierID&quot; =&gt; 1001,
-    &quot;ProductName&quot; =&gt; 'Titanium Extension Bracket Right Hand',
-    &quot;Price&quot; =&gt; 5.25,
-));
-$conn-&gt;insert(&quot;Products&quot;, array(
-    &quot;ProductID&quot; =&gt; 388,
-    &quot;SupplierID&quot; =&gt; 1001,
-    &quot;ProductName&quot; =&gt; 'Fusion Generator Module 5 kV',
-    &quot;Price&quot; =&gt; 10.50,
-));
-$conn-&gt;insert(&quot;Products&quot;, array(
-    &quot;ProductID&quot; =&gt; 388,
-    &quot;SupplierID&quot; =&gt; 1001,
-    &quot;ProductName&quot; =&gt; 'Bypass Filter 400 MHz Low Pass',
-    &quot;Price&quot; =&gt; 10.50,
-));
-
-$conn-&gt;insert(&quot;Customers&quot;, array(
-    'CustomerID' =&gt; 10,
-    'CompanyName' =&gt; 'Van Nuys',
-    'FirstName' =&gt; 'Catherine',
-    'LastName' =&gt; 'Abel',
-));
-$conn-&gt;insert(&quot;Customers&quot;, array(
-    'CustomerID' =&gt; 20,
-    'CompanyName' =&gt; 'Abercrombie',
-    'FirstName' =&gt; 'Kim',
-    'LastName' =&gt; 'Branch',
-));
-$conn-&gt;insert(&quot;Customers&quot;, array(
-    'CustomerID' =&gt; 30,
-    'CompanyName' =&gt; 'Contoso',
-    'FirstName' =&gt; 'Frances',
-    'LastName' =&gt; 'Adams',
-));
-$conn-&gt;insert(&quot;Customers&quot;, array(
-    'CustomerID' =&gt; 40,
-    'CompanyName' =&gt; 'A. Datum Corporation',
-    'FirstName' =&gt; 'Mark',
-    'LastName' =&gt; 'Harrington',
-));
-$conn-&gt;insert(&quot;Customers&quot;, array(
-    'CustomerID' =&gt; 50,
-    'CompanyName' =&gt; 'Adventure Works',
-    'FirstName' =&gt; 'Keith',
-    'LastName' =&gt; 'Harris',
-));
-$conn-&gt;insert(&quot;Customers&quot;, array(
-    'CustomerID' =&gt; 60,
-    'CompanyName' =&gt; 'Alpine Ski House',
-    'FirstName' =&gt; 'Wilson',
-    'LastName' =&gt; 'Pais',
-));
-$conn-&gt;insert(&quot;Customers&quot;, array(
-    'CustomerID' =&gt; 70,
-    'CompanyName' =&gt; 'Baldwin Museum of Science',
-    'FirstName' =&gt; 'Roger',
-    'LastName' =&gt; 'Harui',
-));
-$conn-&gt;insert(&quot;Customers&quot;, array(
-    'CustomerID' =&gt; 80,
-    'CompanyName' =&gt; 'Blue Yonder Airlines',
-    'FirstName' =&gt; 'Pilar',
-    'LastName' =&gt; 'Pinilla',
-));
-$conn-&gt;insert(&quot;Customers&quot;, array(
-    'CustomerID' =&gt; 90,
-    'CompanyName' =&gt; 'City Power &amp; Light',
-    'FirstName' =&gt; 'Kari',
-    'LastName' =&gt; 'Hensien',
-));
-$conn-&gt;insert(&quot;Customers&quot;, array(
-    'CustomerID' =&gt; 100,
-    'CompanyName' =&gt; 'Coho Winery',
-    'FirstName' =&gt; 'Peter',
-    'LastName' =&gt; 'Brehm',
-));
-
-$conn-&gt;executeUpdate(&quot;DECLARE @orderId INT
-
-    DECLARE @customerId INT
-
-    SET @orderId = 10
-    SELECT @customerId = CustomerId FROM Customers WHERE LastName = 'Hensien' and FirstName = 'Kari'
-
-    INSERT INTO Orders (CustomerId, OrderId, OrderDate)
-    VALUES (@customerId, @orderId, GetDate())
-
-    INSERT INTO OrderItems (CustomerID, OrderID, ProductID, Quantity)
-    VALUES (@customerId, @orderId, 388, 4)
-
-    SET @orderId = 20
-    SELECT @customerId = CustomerId FROM Customers WHERE LastName = 'Harui' and FirstName = 'Roger'
-
-    INSERT INTO Orders (CustomerId, OrderId, OrderDate)
-    VALUES (@customerId, @orderId, GetDate())
-
-    INSERT INTO OrderItems (CustomerID, OrderID, ProductID, Quantity)
-    VALUES (@customerId, @orderId, 389, 2)
-
-    SET @orderId = 30
-    SELECT @customerId = CustomerId FROM Customers WHERE LastName = 'Brehm' and FirstName = 'Peter'
-
-    INSERT INTO Orders (CustomerId, OrderId, OrderDate)
-    VALUES (@customerId, @orderId, GetDate())
-
-    INSERT INTO OrderItems (CustomerID, OrderID, ProductID, Quantity)
-    VALUES (@customerId, @orderId, 387, 3)
-
-    SET @orderId = 40
-    SELECT @customerId = CustomerId FROM Customers WHERE LastName = 'Pais' and FirstName = 'Wilson'
-
-    INSERT INTO Orders (CustomerId, OrderId, OrderDate)
-    VALUES (@customerId, @orderId, GetDate())
-
-    INSERT INTO OrderItems (CustomerID, OrderID, ProductID, Quantity)
-    VALUES (@customerId, @orderId, 388, 1)&quot;
-);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5c7ceae42fd38886d673b8b41d880dd28bc3c7ec"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5c7ceae42fd38886d673b8b41d880dd28bc3c7ec"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// insert_data.php</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">"bootstrap.php"</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$shardManager-&gt;selectShard(<span class="hljs-number">0</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Products"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-string">"ProductID"</span> =&gt; <span class="hljs-number">386</span>,
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-string">"SupplierID"</span> =&gt; <span class="hljs-number">1001</span>,
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-string">"ProductName"</span> =&gt; <span class="hljs-string">'Titanium Extension Bracket Left Hand'</span>,
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-string">"Price"</span> =&gt; <span class="hljs-number">5.25</span>,
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Products"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-string">"ProductID"</span> =&gt; <span class="hljs-number">387</span>,
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-string">"SupplierID"</span> =&gt; <span class="hljs-number">1001</span>,
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-string">"ProductName"</span> =&gt; <span class="hljs-string">'Titanium Extension Bracket Right Hand'</span>,
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-string">"Price"</span> =&gt; <span class="hljs-number">5.25</span>,
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Products"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-string">"ProductID"</span> =&gt; <span class="hljs-number">388</span>,
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-string">"SupplierID"</span> =&gt; <span class="hljs-number">1001</span>,
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-string">"ProductName"</span> =&gt; <span class="hljs-string">'Fusion Generator Module 5 kV'</span>,
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-string">"Price"</span> =&gt; <span class="hljs-number">10.50</span>,
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Products"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-string">"ProductID"</span> =&gt; <span class="hljs-number">388</span>,
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-string">"SupplierID"</span> =&gt; <span class="hljs-number">1001</span>,
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-string">"ProductName"</span> =&gt; <span class="hljs-string">'Bypass Filter 400 MHz Low Pass'</span>,
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-string">"Price"</span> =&gt; <span class="hljs-number">10.50</span>,
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Customers"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    <span class="hljs-string">'CustomerID'</span> =&gt; <span class="hljs-number">10</span>,
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-string">'CompanyName'</span> =&gt; <span class="hljs-string">'Van Nuys'</span>,
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-string">'FirstName'</span> =&gt; <span class="hljs-string">'Catherine'</span>,
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-string">'LastName'</span> =&gt; <span class="hljs-string">'Abel'</span>,
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Customers"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    <span class="hljs-string">'CustomerID'</span> =&gt; <span class="hljs-number">20</span>,
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-string">'CompanyName'</span> =&gt; <span class="hljs-string">'Abercrombie'</span>,
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-string">'FirstName'</span> =&gt; <span class="hljs-string">'Kim'</span>,
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    <span class="hljs-string">'LastName'</span> =&gt; <span class="hljs-string">'Branch'</span>,
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Customers"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">    <span class="hljs-string">'CustomerID'</span> =&gt; <span class="hljs-number">30</span>,
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    <span class="hljs-string">'CompanyName'</span> =&gt; <span class="hljs-string">'Contoso'</span>,
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">    <span class="hljs-string">'FirstName'</span> =&gt; <span class="hljs-string">'Frances'</span>,
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    <span class="hljs-string">'LastName'</span> =&gt; <span class="hljs-string">'Adams'</span>,
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Customers"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    <span class="hljs-string">'CustomerID'</span> =&gt; <span class="hljs-number">40</span>,
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">    <span class="hljs-string">'CompanyName'</span> =&gt; <span class="hljs-string">'A. Datum Corporation'</span>,
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">    <span class="hljs-string">'FirstName'</span> =&gt; <span class="hljs-string">'Mark'</span>,
+</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">    <span class="hljs-string">'LastName'</span> =&gt; <span class="hljs-string">'Harrington'</span>,
+</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Customers"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">    <span class="hljs-string">'CustomerID'</span> =&gt; <span class="hljs-number">50</span>,
+</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">    <span class="hljs-string">'CompanyName'</span> =&gt; <span class="hljs-string">'Adventure Works'</span>,
+</td></tr><tr><td class="line-number noselect">59</td><td class="code-line">    <span class="hljs-string">'FirstName'</span> =&gt; <span class="hljs-string">'Keith'</span>,
+</td></tr><tr><td class="line-number noselect">60</td><td class="code-line">    <span class="hljs-string">'LastName'</span> =&gt; <span class="hljs-string">'Harris'</span>,
+</td></tr><tr><td class="line-number noselect">61</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">62</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Customers"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">63</td><td class="code-line">    <span class="hljs-string">'CustomerID'</span> =&gt; <span class="hljs-number">60</span>,
+</td></tr><tr><td class="line-number noselect">64</td><td class="code-line">    <span class="hljs-string">'CompanyName'</span> =&gt; <span class="hljs-string">'Alpine Ski House'</span>,
+</td></tr><tr><td class="line-number noselect">65</td><td class="code-line">    <span class="hljs-string">'FirstName'</span> =&gt; <span class="hljs-string">'Wilson'</span>,
+</td></tr><tr><td class="line-number noselect">66</td><td class="code-line">    <span class="hljs-string">'LastName'</span> =&gt; <span class="hljs-string">'Pais'</span>,
+</td></tr><tr><td class="line-number noselect">67</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">68</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Customers"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">69</td><td class="code-line">    <span class="hljs-string">'CustomerID'</span> =&gt; <span class="hljs-number">70</span>,
+</td></tr><tr><td class="line-number noselect">70</td><td class="code-line">    <span class="hljs-string">'CompanyName'</span> =&gt; <span class="hljs-string">'Baldwin Museum of Science'</span>,
+</td></tr><tr><td class="line-number noselect">71</td><td class="code-line">    <span class="hljs-string">'FirstName'</span> =&gt; <span class="hljs-string">'Roger'</span>,
+</td></tr><tr><td class="line-number noselect">72</td><td class="code-line">    <span class="hljs-string">'LastName'</span> =&gt; <span class="hljs-string">'Harui'</span>,
+</td></tr><tr><td class="line-number noselect">73</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">74</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Customers"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">75</td><td class="code-line">    <span class="hljs-string">'CustomerID'</span> =&gt; <span class="hljs-number">80</span>,
+</td></tr><tr><td class="line-number noselect">76</td><td class="code-line">    <span class="hljs-string">'CompanyName'</span> =&gt; <span class="hljs-string">'Blue Yonder Airlines'</span>,
+</td></tr><tr><td class="line-number noselect">77</td><td class="code-line">    <span class="hljs-string">'FirstName'</span> =&gt; <span class="hljs-string">'Pilar'</span>,
+</td></tr><tr><td class="line-number noselect">78</td><td class="code-line">    <span class="hljs-string">'LastName'</span> =&gt; <span class="hljs-string">'Pinilla'</span>,
+</td></tr><tr><td class="line-number noselect">79</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">80</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Customers"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">81</td><td class="code-line">    <span class="hljs-string">'CustomerID'</span> =&gt; <span class="hljs-number">90</span>,
+</td></tr><tr><td class="line-number noselect">82</td><td class="code-line">    <span class="hljs-string">'CompanyName'</span> =&gt; <span class="hljs-string">'City Power &amp; Light'</span>,
+</td></tr><tr><td class="line-number noselect">83</td><td class="code-line">    <span class="hljs-string">'FirstName'</span> =&gt; <span class="hljs-string">'Kari'</span>,
+</td></tr><tr><td class="line-number noselect">84</td><td class="code-line">    <span class="hljs-string">'LastName'</span> =&gt; <span class="hljs-string">'Hensien'</span>,
+</td></tr><tr><td class="line-number noselect">85</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">86</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Customers"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">87</td><td class="code-line">    <span class="hljs-string">'CustomerID'</span> =&gt; <span class="hljs-number">100</span>,
+</td></tr><tr><td class="line-number noselect">88</td><td class="code-line">    <span class="hljs-string">'CompanyName'</span> =&gt; <span class="hljs-string">'Coho Winery'</span>,
+</td></tr><tr><td class="line-number noselect">89</td><td class="code-line">    <span class="hljs-string">'FirstName'</span> =&gt; <span class="hljs-string">'Peter'</span>,
+</td></tr><tr><td class="line-number noselect">90</td><td class="code-line">    <span class="hljs-string">'LastName'</span> =&gt; <span class="hljs-string">'Brehm'</span>,
+</td></tr><tr><td class="line-number noselect">91</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">92</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">93</td><td class="code-line">$conn-&gt;executeUpdate(<span class="hljs-string">"DECLARE @orderId INT</span>
+</td></tr><tr><td class="line-number noselect">94</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">95</td><td class="code-line">    <span class="hljs-keyword">DECLARE</span> @customerId INT
+</td></tr><tr><td class="line-number noselect">96</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">97</td><td class="code-line">    SET @orderId = <span class="hljs-number">10</span>
+</td></tr><tr><td class="line-number noselect">98</td><td class="code-line">    SELECT @customerId = CustomerId FROM Customers WHERE LastName = <span class="hljs-string">'Hensien'</span> <span class="hljs-keyword">and</span> FirstName = <span class="hljs-string">'Kari'</span>
+</td></tr><tr><td class="line-number noselect">99</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">100</td><td class="code-line">    INSERT INTO Orders (CustomerId, OrderId, OrderDate)
+</td></tr><tr><td class="line-number noselect">101</td><td class="code-line">    VALUES (@customerId, @orderId, GetDate())
+</td></tr><tr><td class="line-number noselect">102</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">103</td><td class="code-line">    INSERT INTO OrderItems (CustomerID, OrderID, ProductID, Quantity)
+</td></tr><tr><td class="line-number noselect">104</td><td class="code-line">    VALUES (@customerId, @orderId, <span class="hljs-number">388</span>, <span class="hljs-number">4</span>)
+</td></tr><tr><td class="line-number noselect">105</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">106</td><td class="code-line">    SET @orderId = <span class="hljs-number">20</span>
+</td></tr><tr><td class="line-number noselect">107</td><td class="code-line">    SELECT @customerId = CustomerId FROM Customers WHERE LastName = <span class="hljs-string">'Harui'</span> <span class="hljs-keyword">and</span> FirstName = <span class="hljs-string">'Roger'</span>
+</td></tr><tr><td class="line-number noselect">108</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">109</td><td class="code-line">    INSERT INTO Orders (CustomerId, OrderId, OrderDate)
+</td></tr><tr><td class="line-number noselect">110</td><td class="code-line">    VALUES (@customerId, @orderId, GetDate())
+</td></tr><tr><td class="line-number noselect">111</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">112</td><td class="code-line">    INSERT INTO OrderItems (CustomerID, OrderID, ProductID, Quantity)
+</td></tr><tr><td class="line-number noselect">113</td><td class="code-line">    VALUES (@customerId, @orderId, <span class="hljs-number">389</span>, <span class="hljs-number">2</span>)
+</td></tr><tr><td class="line-number noselect">114</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">115</td><td class="code-line">    SET @orderId = <span class="hljs-number">30</span>
+</td></tr><tr><td class="line-number noselect">116</td><td class="code-line">    SELECT @customerId = CustomerId FROM Customers WHERE LastName = <span class="hljs-string">'Brehm'</span> <span class="hljs-keyword">and</span> FirstName = <span class="hljs-string">'Peter'</span>
+</td></tr><tr><td class="line-number noselect">117</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">118</td><td class="code-line">    INSERT INTO Orders (CustomerId, OrderId, OrderDate)
+</td></tr><tr><td class="line-number noselect">119</td><td class="code-line">    VALUES (@customerId, @orderId, GetDate())
+</td></tr><tr><td class="line-number noselect">120</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">121</td><td class="code-line">    INSERT INTO OrderItems (CustomerID, OrderID, ProductID, Quantity)
+</td></tr><tr><td class="line-number noselect">122</td><td class="code-line">    VALUES (@customerId, @orderId, <span class="hljs-number">387</span>, <span class="hljs-number">3</span>)
+</td></tr><tr><td class="line-number noselect">123</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">124</td><td class="code-line">    SET @orderId = <span class="hljs-number">40</span>
+</td></tr><tr><td class="line-number noselect">125</td><td class="code-line">    SELECT @customerId = CustomerId FROM Customers WHERE LastName = <span class="hljs-string">'Pais'</span> <span class="hljs-keyword">and</span> FirstName = <span class="hljs-string">'Wilson'</span>
+</td></tr><tr><td class="line-number noselect">126</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">127</td><td class="code-line">    INSERT INTO Orders (CustomerId, OrderId, OrderDate)
+</td></tr><tr><td class="line-number noselect">128</td><td class="code-line">    VALUES (@customerId, @orderId, GetDate())
+</td></tr><tr><td class="line-number noselect">129</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">130</td><td class="code-line">    INSERT INTO OrderItems (CustomerID, OrderID, ProductID, Quantity)
+</td></tr><tr><td class="line-number noselect">131</td><td class="code-line">    VALUES (@customerId, @orderId, <span class="hljs-number">388</span>, <span class="hljs-number">1</span>)<span class="hljs-string">"</span>
+</td></tr><tr><td class="line-number noselect">132</td><td class="code-line">);
+</td></tr></table></div></code></pre>
 <p>This puts the data into the currently only existing federation member. We
 selected that federation member by picking 0 as distribution value, which is by
 definition part of the only existing federation.</p>
@@ -541,12 +566,19 @@ definition part of the only existing federation.</p>
 <p>Now lets split the federation, creating a second federation member. SQL Azure
 will automatically redistribute the data into the two federations after you
 executed this command.</p>
-<pre><code class="php">&lt;?php
-// split_federation.php
-require_once 'bootstrap.php';
-
-$shardManager-&gt;splitFederation(60);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8d4e896f2c3d60f9fa0484a299eb7660ae57ff16"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8d4e896f2c3d60f9fa0484a299eb7660ae57ff16"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// split_federation.php</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'bootstrap.php'</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$shardManager-&gt;splitFederation(<span class="hljs-number">60</span>);
+</td></tr></table></div></code></pre>
 <p>This little script uses the shard manager with a special method only existing
 on the SQL AZure implementation <code>splitFederation</code>. It accepts a value at
 at which the split is executed.</p>
@@ -558,34 +590,41 @@ related entries are now served by which federation.</p>
 <p>Now after we splitted the data we now have to make sure to be connected to the
 right federation before inserting data. Lets add a new customer with ID 55 and
 have him create an order.</p>
-<pre><code class="php">&lt;?php
-// insert_data_aftersplit.php
-require_once 'bootstrap.php';
-
-$newCustomerId = 55;
-
-$shardManager-&gt;selectShard($newCustomerId);
-
-$conn-&gt;insert(&quot;Customers&quot;, array(
-    &quot;CustomerID&quot; =&gt; $newCustomerId,
-    &quot;CompanyName&quot; =&gt; &quot;Microsoft&quot;,
-    &quot;FirstName&quot; =&gt; &quot;Brian&quot;,
-    &quot;LastName&quot; =&gt; &quot;Swan&quot;,
-));
-
-$conn-&gt;insert(&quot;Orders&quot;, array(
-    &quot;CustomerID&quot; =&gt; 55,
-    &quot;OrderID&quot; =&gt; 37,
-    &quot;OrderDate&quot; =&gt; date('Y-m-d H:i:s'),
-));
-
-$conn-&gt;insert(&quot;OrderItems&quot;, array(
-    &quot;CustomerID&quot; =&gt; 55,
-    &quot;OrderID&quot; =&gt; 37,
-    &quot;ProductID&quot; =&gt; 387,
-    &quot;Quantity&quot; =&gt; 1,
-));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0447aa55e1b88ce7f0010f083ab68493a2f07232"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0447aa55e1b88ce7f0010f083ab68493a2f07232"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// insert_data_aftersplit.php</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'bootstrap.php'</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$newCustomerId = <span class="hljs-number">55</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$shardManager-&gt;selectShard($newCustomerId);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Customers"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-string">"CustomerID"</span> =&gt; $newCustomerId,
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-string">"CompanyName"</span> =&gt; <span class="hljs-string">"Microsoft"</span>,
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-string">"FirstName"</span> =&gt; <span class="hljs-string">"Brian"</span>,
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-string">"LastName"</span> =&gt; <span class="hljs-string">"Swan"</span>,
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"Orders"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-string">"CustomerID"</span> =&gt; <span class="hljs-number">55</span>,
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-string">"OrderID"</span> =&gt; <span class="hljs-number">37</span>,
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-string">"OrderDate"</span> =&gt; date(<span class="hljs-string">'Y-m-d H:i:s'</span>),
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"OrderItems"</span>, <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-string">"CustomerID"</span> =&gt; <span class="hljs-number">55</span>,
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-string">"OrderID"</span> =&gt; <span class="hljs-number">37</span>,
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-string">"ProductID"</span> =&gt; <span class="hljs-number">387</span>,
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-string">"Quantity"</span> =&gt; <span class="hljs-number">1</span>,
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">));
+</td></tr></table></div></code></pre>
 <p>As you can see its very important to pick the right distribution key in your
 sharded application. Otherwise you have to switch the shards very often, which
 is not really easy to work with. If you pick the sharding key right then it
@@ -596,15 +635,22 @@ small number of queries, because these kind of queries are complex.</p>
 <a class="section-anchor" id="querying-data-with-filtering-off" name="querying-data-with-filtering-off"></a><h2 class="section-header"><a href="#querying-data-with-filtering-off">Querying data with filtering off<i class="fas fa-link"></i></a></h2>
 <p>To access the data you have to pick a shard again and then start selecting data
 from it.</p>
-<pre><code class="php">&lt;?php
-// query_filtering_off.php
-require_once &quot;bootstrap.php&quot;;
-
-$shardManager-&gt;selectShard(0);
-
-$data = $conn-&gt;fetchAll('SELECT * FROM Customers');
-print_r($data);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="085e0bdb72f512ff932e0088a32f3a1431922741"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="085e0bdb72f512ff932e0088a32f3a1431922741"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// query_filtering_off.php</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">"bootstrap.php"</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$shardManager-&gt;selectShard(<span class="hljs-number">0</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$data = $conn-&gt;fetchAll(<span class="hljs-string">'SELECT * FROM Customers'</span>);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">print_r($data);
+</td></tr></table></div></code></pre>
 <p>This returns all customers from the shard with distribution value 0. This will
 be all customers with id 10 to less than 60, since we split federations at 60.</p>
 <a class="section-anchor" id="querying-data-with-filtering-on" name="querying-data-with-filtering-on"></a><h2 class="section-header"><a href="#querying-data-with-filtering-on">Querying data with filtering on<i class="fas fa-link"></i></a></h2>
@@ -612,16 +658,23 @@ be all customers with id 10 to less than 60, since we split federations at 60.</
 based on the sharding distribution values. This means that SQL Azure will add
 WHERE clauses with distributionkey=current distribution value conditions to
 each distribution key.</p>
-<pre><code class="php">&lt;?php
-// query_filtering_on.php
-require_once &quot;bootstrap.php&quot;;
-
-$shardManager-&gt;setFilteringEnabled(true);
-$shardManager-&gt;selectShard(55);
-
-$data = $conn-&gt;fetchAll('SELECT * FROM Customers');
-print_r($data);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6053baf6c41405c77e73a84f7d62afa2f102a60b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6053baf6c41405c77e73a84f7d62afa2f102a60b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// query_filtering_on.php</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">"bootstrap.php"</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$shardManager-&gt;setFilteringEnabled(<span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$shardManager-&gt;selectShard(<span class="hljs-number">55</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$data = $conn-&gt;fetchAll(<span class="hljs-string">'SELECT * FROM Customers'</span>);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">print_r($data);
+</td></tr></table></div></code></pre>
 <p>Now you only get the customer with id = 55. The same holds for queries on the
 <code>Orders</code> and <code>OrderItems</code> table, which are restricted by customer id = 55.</p>
 <p></p>
@@ -648,8 +701,6 @@ print_r($data);
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -695,7 +746,7 @@ print_r($data);
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

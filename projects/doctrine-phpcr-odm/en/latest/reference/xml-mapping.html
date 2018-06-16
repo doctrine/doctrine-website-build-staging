@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -249,63 +246,77 @@ the attributes correspond to their annotation counterparts with the difference t
 the attribute names are slugified as opposed to being camelCase
 (<code>referring-document</code> instead of <code>referringDocument</code>). See <a href="annotations-mapping.html">Annotation Mapping</a>.</p>
 <p>The following example implements all of the possible XML mapping elements:</p>
-<pre><code class="xml">&lt;doctrine-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping&quot;
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-    xsi:schemaLocation=&quot;https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd&quot;&gt;
-
-    &lt;document name=&quot;App\Documents\ContentFolder&quot; referenceable=&quot;true&quot; translator=&quot;attribute&quot; versionable=&quot;simple&quot; is-leaf=&quot;false&quot;&gt;
-        &lt;!-- Identification --&gt;
-        &lt;uuid name=&quot;uuid&quot; /&gt;
-        &lt;id name=&quot;path&quot; /&gt;
-        &lt;nodename name=&quot;name&quot; /&gt;
-
-        &lt;!-- Hierarchy --&gt;
-        &lt;parent-document name=&quot;parent&quot; /&gt;
-        &lt;children name=&quot;children&quot; /&gt;
-        &lt;child name=&quot;block&quot; node-name=&quot;block&quot; /&gt;
-        &lt;depth name=&quot;depth&quot; /&gt;
-
-        &lt;!-- Valid child classes !--&gt;
-        &lt;child-class&gt;App\Documents\Article&lt;/child-class&gt;
-        &lt;child-class&gt;App\Documents\Page&lt;/child-class&gt;
-
-        &lt;!-- PHPCR --&gt;
-        &lt;node name=&quot;phpcrNode&quot; /&gt;
-
-        &lt;!-- Translation --&gt;
-        &lt;locale name=&quot;locale&quot; /&gt;
-
-        &lt;!-- Field mappings --&gt;
-        &lt;field name=&quot;title&quot; type=&quot;string&quot; translated=&quot;true&quot; /&gt;
-        &lt;field name=&quot;resourceLocator&quot; property=&quot;resource-locator&quot; type=&quot;string&quot; translated=&quot;true&quot; /&gt;
-        &lt;field name=&quot;creator&quot; type=&quot;long&quot; translated=&quot;true&quot; nullable=&quot;true&quot; /&gt;
-
-        &lt;!-- References --&gt;
-        &lt;reference-one name=&quot;anyDocumentReference&quot;/&gt;
-        &lt;reference-one name=&quot;user&quot; target-document=&quot;Acme\Document\User&quot;/&gt;
-        &lt;reference-many name=&quot;articles&quot; target-document=&quot;Acme\Document\Article&quot;/&gt;
-        &lt;referrers name=&quot;tags&quot; referring-document=&quot;Acme\Document\Tag&quot; /&gt;
-        &lt;mixed-referrers name=&quot;allReferrers&quot; /&gt;
-
-        &lt;!-- Versioning --&gt;
-        &lt;version-name name=&quot;versionName&quot; /&gt;
-        &lt;version-created name=&quot;versionCreated&quot; /&gt;
-
-    &lt;/document&gt;
-
-&lt;/document&gt;
-</code></pre>
+<pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="62bb1e70eefec242893b7f590498d37076d6186d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="62bb1e70eefec242893b7f590498d37076d6186d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    xsi:schemaLocation="https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"App\Documents\ContentFolder"</span> <span class="hljs-attr">referenceable</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">translator</span>=<span class="hljs-string">"attribute"</span> <span class="hljs-attr">versionable</span>=<span class="hljs-string">"simple"</span> <span class="hljs-attr">is-leaf</span>=<span class="hljs-string">"false"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">&lt;!-- Identification --&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">uuid</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"uuid"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"path"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">nodename</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">&lt;!-- Hierarchy --&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">parent-document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"parent"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">children</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"children"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">child</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"block"</span> <span class="hljs-attr">node-name</span>=<span class="hljs-string">"block"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">depth</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"depth"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-comment">&lt;!-- Valid child classes !--&gt;</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">child-class</span>&gt;</span>App\Documents\Article<span class="hljs-tag">&lt;/<span class="hljs-name">child-class</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">child-class</span>&gt;</span>App\Documents\Page<span class="hljs-tag">&lt;/<span class="hljs-name">child-class</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-comment">&lt;!-- PHPCR --&gt;</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">node</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"phpcrNode"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-comment">&lt;!-- Translation --&gt;</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">locale</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"locale"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        <span class="hljs-comment">&lt;!-- Field mappings --&gt;</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"title"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">translated</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"resourceLocator"</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"resource-locator"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">translated</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"creator"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"long"</span> <span class="hljs-attr">translated</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">nullable</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">        <span class="hljs-comment">&lt;!-- References --&gt;</span>
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">reference-one</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"anyDocumentReference"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">reference-one</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"user"</span> <span class="hljs-attr">target-document</span>=<span class="hljs-string">"Acme\Document\User"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">reference-many</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"articles"</span> <span class="hljs-attr">target-document</span>=<span class="hljs-string">"Acme\Document\Article"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">referrers</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"tags"</span> <span class="hljs-attr">referring-document</span>=<span class="hljs-string">"Acme\Document\Tag"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">mixed-referrers</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"allReferrers"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">        <span class="hljs-comment">&lt;!-- Versioning --&gt;</span>
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">version-name</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"versionName"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">version-created</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"versionCreated"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr></table></div></code></pre>
 <p>Mapped super-classes can be mapped as follows:</p>
-<pre><code class="xml">&lt;doctrine-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping&quot;
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-    xsi:schemaLocation=&quot;https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd&quot;&gt;
-
-    &lt;mapped-superclass name=&quot;Acme\Document\Example&quot; referenceable=&quot;true&quot; translator=&quot;attribute&quot; versionable=&quot;simple&quot;&gt;
-        &lt;!-- ... --&gt;
-    &lt;/mapped-superclass&gt;
-
-&lt;/doctrine-mapping&gt;
-</code></pre>
+<pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="637d15d6c576880c7775250e7d6b5e0522123332"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="637d15d6c576880c7775250e7d6b5e0522123332"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    xsi:schemaLocation="https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">mapped-superclass</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Acme\Document\Example"</span> <span class="hljs-attr">referenceable</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">translator</span>=<span class="hljs-string">"attribute"</span> <span class="hljs-attr">versionable</span>=<span class="hljs-string">"simple"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">&lt;!-- ... --&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">mapped-superclass</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -330,8 +341,6 @@ the attribute names are slugified as opposed to being camelCase
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -377,7 +386,7 @@ the attribute names are slugified as opposed to being camelCase
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

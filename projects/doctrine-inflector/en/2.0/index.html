@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -259,86 +256,148 @@ words.</p>
 class.</p>
 <a class="section-anchor" id="installation" name="installation"></a><h1 class="section-header"><a href="#installation">Installation<i class="fas fa-link"></i></a></h1>
 <p>You can install the Inflector with composer:</p>
-<pre><code class="">$ composer require doctrine/inflector
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>composer require doctrine/inflector</code></pre></div>
 <p>Here are the available methods that you can use:</p>
 <a class="section-anchor" id="default-setup" name="default-setup"></a><h1 class="section-header"><a href="#default-setup">Default Setup<i class="fas fa-link"></i></a></h1>
 <p>If you want to use the default rules that come with Doctrine you can use the following.</p>
-<pre><code class="php">use Doctrine\Inflector\InflectorFactory;
-
-$inflectorFactory = new InflectorFactory();
-
-$inflector = $inflectorFactory-&gt;createInflector();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a981b96a44eda032f8390f5a579064a810fdcc71"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a981b96a44eda032f8390f5a579064a810fdcc71"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Inflector</span>\<span class="hljs-title">InflectorFactory</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$inflectorFactory = <span class="hljs-keyword">new</span> InflectorFactory();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$inflector = $inflectorFactory-&gt;createInflector();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="custom-setup" name="custom-setup"></a><h1 class="section-header"><a href="#custom-setup">Custom Setup<i class="fas fa-link"></i></a></h1>
 <p>If you want to setup custom singular and plural rules, you can configure the inflector like this.</p>
-<pre><code class="php">use Doctrine\Inflector\InflectorFactory;
-use Doctrine\Inflector\Rules\Irregular;
-use Doctrine\Inflector\Rules\Rule;
-use Doctrine\Inflector\Rules\Rules;
-use Doctrine\Inflector\Rules\Uninflected;
-use Doctrine\Inflector\Rules\Word;
-
-$inflectorFactory = new InflectorFactory();
-
-$inflector = $inflectorFactory-&gt;createInflector(
-    $inflectorFactory-&gt;createSingularRuleset(
-        new Rules(
-            new Rule('/^(bil)er$/i', '\1'),
-            new Rule('/^(inflec|contribu)tors$/i', '\1ta')
-        ),
-        new Uninflected(new Word('singulars')),
-        new Irregular(new Rule('spins', 'spinor'))
-    ),
-    $inflectorFactory-&gt;createPluralRuleset(
-        new Rules(new Rule('/^(alert)$/i', '\1ables')),
-        new Uninflected(new Word('noflect'), new Word('abtuse')),
-        new Irregular(
-            new Rule('amaze', 'amazable'),
-            new Rule('phone', 'phonezes')
-        )
-    )
-);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3e16d606299d396f360d4ce3fa8994bc5c246924"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3e16d606299d396f360d4ce3fa8994bc5c246924"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Inflector</span>\<span class="hljs-title">InflectorFactory</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Inflector</span>\<span class="hljs-title">Rules</span>\<span class="hljs-title">Irregular</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Inflector</span>\<span class="hljs-title">Rules</span>\<span class="hljs-title">Rule</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Inflector</span>\<span class="hljs-title">Rules</span>\<span class="hljs-title">Rules</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Inflector</span>\<span class="hljs-title">Rules</span>\<span class="hljs-title">Uninflected</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Inflector</span>\<span class="hljs-title">Rules</span>\<span class="hljs-title">Word</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$inflectorFactory = <span class="hljs-keyword">new</span> InflectorFactory();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$inflector = $inflectorFactory-&gt;createInflector(
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    $inflectorFactory-&gt;createSingularRuleset(
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-keyword">new</span> Rules(
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            <span class="hljs-keyword">new</span> Rule(<span class="hljs-string">'/^(bil)er$/i'</span>, <span class="hljs-string">'\1'</span>),
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">            <span class="hljs-keyword">new</span> Rule(<span class="hljs-string">'/^(inflec|contribu)tors$/i'</span>, <span class="hljs-string">'\1ta'</span>)
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        ),
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-keyword">new</span> Uninflected(<span class="hljs-keyword">new</span> Word(<span class="hljs-string">'singulars'</span>)),
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-keyword">new</span> Irregular(<span class="hljs-keyword">new</span> Rule(<span class="hljs-string">'spins'</span>, <span class="hljs-string">'spinor'</span>))
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    ),
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    $inflectorFactory-&gt;createPluralRuleset(
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-keyword">new</span> Rules(<span class="hljs-keyword">new</span> Rule(<span class="hljs-string">'/^(alert)$/i'</span>, <span class="hljs-string">'\1ables'</span>)),
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-keyword">new</span> Uninflected(<span class="hljs-keyword">new</span> Word(<span class="hljs-string">'noflect'</span>), <span class="hljs-keyword">new</span> Word(<span class="hljs-string">'abtuse'</span>)),
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-keyword">new</span> Irregular(
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">            <span class="hljs-keyword">new</span> Rule(<span class="hljs-string">'amaze'</span>, <span class="hljs-string">'amazable'</span>),
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">            <span class="hljs-keyword">new</span> Rule(<span class="hljs-string">'phone'</span>, <span class="hljs-string">'phonezes'</span>)
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        )
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    )
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="tableize" name="tableize"></a><h1 class="section-header"><a href="#tableize">Tableize<i class="fas fa-link"></i></a></h1>
 <p>Converts <code>ModelName</code> to <code>model_name</code>:</p>
-<pre><code class="php">echo $inflector-&gt;tableize('ModelName'); // model_name
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f132930c708ab6bed0e9fdd94819d7e1e827c633"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f132930c708ab6bed0e9fdd94819d7e1e827c633"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">echo</span> $inflector-&gt;tableize(<span class="hljs-string">'ModelName'</span>); <span class="hljs-comment">// model_name</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="classify" name="classify"></a><h1 class="section-header"><a href="#classify">Classify<i class="fas fa-link"></i></a></h1>
 <p>Converts <code>model_name</code> to <code>ModelName</code>:</p>
-<pre><code class="php">echo $inflector-&gt;classify('model_name'); // ModelName
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="31469c7b983aa7a3214de899fb96596bfce9a723"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="31469c7b983aa7a3214de899fb96596bfce9a723"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">echo</span> $inflector-&gt;classify(<span class="hljs-string">'model_name'</span>); <span class="hljs-comment">// ModelName</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="camelize" name="camelize"></a><h1 class="section-header"><a href="#camelize">Camelize<i class="fas fa-link"></i></a></h1>
 <p>This method uses <a href="#classify">Classify</a> and then converts the first character to lowercase:</p>
-<pre><code class="php">echo $inflector-&gt;camelize('model_name'); // modelName
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9a8e22995b80ae58e9f767b37f16ec69bc6b51fb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9a8e22995b80ae58e9f767b37f16ec69bc6b51fb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">echo</span> $inflector-&gt;camelize(<span class="hljs-string">'model_name'</span>); <span class="hljs-comment">// modelName</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="capitalize" name="capitalize"></a><h1 class="section-header"><a href="#capitalize">capitalize<i class="fas fa-link"></i></a></h1>
 <p>Takes a string and capitalizes all of the words, like PHP's built-in
 <code>ucwords</code> function. This extends that behavior, however, by allowing the
 word delimiters to be configured, rather than only separating on
 whitespace.</p>
 <p>Here is an example:</p>
-<pre><code class="php">$string = 'top-o-the-morning to all_of_you!';
-
-echo $inflector-&gt;capitalize($string); // Top-O-The-Morning To All_of_you!
-
-echo $inflector-&gt;capitalize($string, '-_ '); // Top-O-The-Morning To All_Of_You!
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9849ca0bd8c323acf8c1b2e97d0876916a5d2698"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9849ca0bd8c323acf8c1b2e97d0876916a5d2698"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$string = <span class="hljs-string">'top-o-the-morning to all_of_you!'</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">echo</span> $inflector-&gt;capitalize($string); <span class="hljs-comment">// Top-O-The-Morning To All_of_you!</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">echo</span> $inflector-&gt;capitalize($string, <span class="hljs-string">'-_ '</span>); <span class="hljs-comment">// Top-O-The-Morning To All_Of_You!</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="pluralize" name="pluralize"></a><h1 class="section-header"><a href="#pluralize">Pluralize<i class="fas fa-link"></i></a></h1>
 <p>Returns a word in plural form.</p>
-<pre><code class="php">echo $inflector-&gt;pluralize('browser'); // browsers
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="82f6f55b9f85846b76fa30c7754afccbd75d10a7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="82f6f55b9f85846b76fa30c7754afccbd75d10a7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">echo</span> $inflector-&gt;pluralize(<span class="hljs-string">'browser'</span>); <span class="hljs-comment">// browsers</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="singularize" name="singularize"></a><h1 class="section-header"><a href="#singularize">Singularize<i class="fas fa-link"></i></a></h1>
-<pre><code class="php">echo $inflector-&gt;singularize('browsers'); // browser
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="855644bc017712c720e006014206864e3c33da9a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="855644bc017712c720e006014206864e3c33da9a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">echo</span> $inflector-&gt;singularize(<span class="hljs-string">'browsers'</span>); <span class="hljs-comment">// browser</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="slugify" name="slugify"></a><h1 class="section-header"><a href="#slugify">Slugify<i class="fas fa-link"></i></a></h1>
 <p>You can easily use the Inflector to create a slug from a string of text
 by using the <a href="#tableize">tableize</a> method and replacing underscores with hyphens:</p>
-<pre><code class="php">public static function slugify(string $text) : string
-{
-    return str_replace('_', '-', Inflector::tableize($text));
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2721acaadddb1abc35451aeeff5d01d390663c91"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2721acaadddb1abc35451aeeff5d01d390663c91"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">slugify</span><span class="hljs-params">(string $text)</span> : <span class="hljs-title">string</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">return</span> str_replace(<span class="hljs-string">'_'</span>, <span class="hljs-string">'-'</span>, Inflector::tableize($text));
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -363,8 +422,6 @@ by using the <a href="#tableize">tableize</a> method and replacing underscores w
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -410,7 +467,7 @@ by using the <a href="#tableize">tableize</a> method and replacing underscores w
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

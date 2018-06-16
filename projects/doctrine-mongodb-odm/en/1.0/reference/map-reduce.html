@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -269,60 +266,74 @@ key to a single object.</p>
 </div>
 <p>Imagine a situation where you had an application with a document
 named <code>Event</code> and it was related to a <code>User</code> document:</p>
-<pre><code class="php">&lt;?php
-
-namespace Documents;
-
-/** @Document */
-class Event
-{
-    /** @Id */
-    private $id;
-
-    /** @ReferenceOne(targetDocument=&quot;Documents\User&quot;) */
-    private $user;
-
-    /** @String */
-    private $type;
-
-    /** @Date */
-    private $date;
-
-    /** @String */
-    private $description;
-
-    // getters and setters
-}
-
-/** @Document */
-class User
-{
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="774e062d9a3a14dd9ff4d4b52d8fd44cb1f4acf9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="774e062d9a3a14dd9ff4d4b52d8fd44cb1f4acf9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Event</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="Documents\User") */</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $user;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">private</span> $type;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Date</span> */</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">private</span> $date;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">private</span> $description;
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-comment">// getters and setters</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>We may have a situation where we want to run a query that tells us how many
 sales events each user has had. We can easily use the map reduce functionality
 of MongoDB via the ODM's query builder. Here is a simple map reduce example:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Documents\User')
-    -&gt;field('type')
-    -&gt;equals('sale')
-    -&gt;map('function() { emit(this.user.$id, 1); }')
-    -&gt;reduce('function(k, vals) {
-        var sum = 0;
-        for (var i in vals) {
-            sum += vals[i];
-        }
-        return sum;
-    }');
-$query = $qb-&gt;getQuery();
-$results = $query-&gt;execute();
-
-foreach ($results as $user) {
-    printf(&quot;User %s had %d sale(s).\n&quot;, $user['_id'], $user['value']);
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a28264082cfd8ab0865811245450d50eae1f6a87"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a28264082cfd8ab0865811245450d50eae1f6a87"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Documents\User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'type'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;equals(<span class="hljs-string">'sale'</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;map(<span class="hljs-string">'function() { emit(this.user.$id, 1); }'</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;reduce(<span class="hljs-string">'function(k, vals) {</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i in vals) {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">            sum += vals[i];
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-keyword">return</span> sum;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    }<span class="hljs-string">');</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$results = $query-&gt;execute();
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($results <span class="hljs-keyword">as</span> $user) {
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    printf(<span class="hljs-string">"User %s had %d sale(s).\n"</span>, $user[<span class="hljs-string">'_id'</span>], $user[<span class="hljs-string">'value'</span>]);
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The query builder also has a <code>finalize()</code> method, which may be used to
 specify a <a href="http://docs.mongodb.org/master/reference/command/mapReduce/#mapreduce-finalize-cmd">finalize function</a> to be executed after the reduce step.</p>
 </div>
@@ -330,30 +341,37 @@ specify a <a href="http://docs.mongodb.org/master/reference/command/mapReduce/#m
 Instead, the raw results are returned directly from MongoDB.</p>
 <p>The preceding example is equivalent to executing the following command via the
 PHP driver directly:</p>
-<pre><code class="php">&lt;?php
-
-$db = $mongoClient-&gt;selectDB('my_db');
-
-$map = new MongoCode('function() { emit(this.user.$id, 1); }');
-$reduce = new MongoCode('function(k, vals) {
-    var sum = 0;
-    for (var i in vals) {
-        sum += vals[i]; 
-    }
-    return sum;
-}');
-
-$result = $db-&gt;command(array(
-    'mapreduce' =&gt; 'events', 
-    'map' =&gt; $map,
-    'reduce' =&gt; $reduce,
-    'query' =&gt; array('type' =&gt; 'sale'),
-));
-
-foreach ($result['results'] as $user) {
-    printf(&quot;User %s had %d sale(s).\n&quot;, $user['_id'], $user['value']);
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="aa8d4a1632012d7663e479f3ee07ab9a2d1ab514"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="aa8d4a1632012d7663e479f3ee07ab9a2d1ab514"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$db = $mongoClient-&gt;selectDB(<span class="hljs-string">'my_db'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$map = <span class="hljs-keyword">new</span> MongoCode(<span class="hljs-string">'function() { emit(this.user.$id, 1); }'</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$reduce = <span class="hljs-keyword">new</span> MongoCode(<span class="hljs-string">'function(k, vals) {</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i in vals) {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        sum += vals[i]; 
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">return</span> sum;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}<span class="hljs-string">');</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$result = $db-&gt;command(<span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-string">'mapreduce'</span> =&gt; <span class="hljs-string">'events'</span>, 
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-string">'map'</span> =&gt; $map,
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-string">'reduce'</span> =&gt; $reduce,
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-string">'query'</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'sale'</span>),
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($result[<span class="hljs-string">'results'</span>] <span class="hljs-keyword">as</span> $user) {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    printf(<span class="hljs-string">"User %s had %d sale(s).\n"</span>, $user[<span class="hljs-string">'_id'</span>], $user[<span class="hljs-string">'value'</span>]);
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -378,8 +396,6 @@ foreach ($result['results'] as $user) {
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -425,7 +441,7 @@ foreach ($result['results'] as $user) {
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

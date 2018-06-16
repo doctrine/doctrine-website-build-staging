@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -266,58 +263,79 @@ soon as at least one field in that locale exists.</p>
 <p>To make a document translated, you need to define the <code>translator</code> attribute on the document
 configuration, and you need to map the <code>locale</code> field. Then you can use the <code>translated</code>
 attribute on all fields that should be different depending on the locale.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-
-/**
- * @PHPCR\Document(translator=&quot;attribute&quot;)
- */
-class MyPersistentClass
-{
-    /**
-     * The language this document currently is in
-     * @Locale
-     */
-    private $locale;
-
-    /**
-     * Untranslated property
-     * @PHPCR\Field(type=&quot;date&quot;)
-     */
-    private $publishDate;
-
-    /**
-     * Translated property
-     * @PHPCR\Field(type=&quot;string&quot;, translated=true)
-     */
-    private $topic;
-
-    /**
-     * Language specific image
-     * @PHPCR\Field(type=&quot;binary&quot;, translated=true)
-     */
-    private $image;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;document class=&quot;MyPersistentClass&quot; translator=&quot;attribute&quot;&gt;
-        &lt;locale fieldName=&quot;locale&quot; /&gt;
-        &lt;field fieldName=&quot;publishDate&quot; type=&quot;date&quot; /&gt;
-        &lt;field fieldName=&quot;topic&quot; type=&quot;string&quot; translated=&quot;true&quot; /&gt;
-        &lt;field fieldName=&quot;image&quot; type=&quot;binary&quot; translated=&quot;true&quot; /&gt;
-    &lt;/document&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">MyPersistentClass:
-  translator: attribute
-  locale: locale
-  fields:
-    publishDate:
-        type: date
-    topic:
-        type: string
-        translated: true
-    image:
-        type: binary
-        translated: true
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="76012a18644623d685ec2396aa94cf71b07b57ac"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="76012a18644623d685ec2396aa94cf71b07b57ac"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">PHPCR</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Annotations</span> <span class="hljs-title">as</span> <span class="hljs-title">PHPCR</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @PHPCR\Document(translator=<span class="hljs-string">"attribute"</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPersistentClass</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * The language this document currently is in
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @Locale
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $locale;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     * Untranslated property
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * @PHPCR\Field(type=<span class="hljs-string">"date"</span>)
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">private</span> $publishDate;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     * Translated property
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     * @PHPCR\Field(type=<span class="hljs-string">"string"</span>, translated=<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">private</span> $topic;
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     * Language specific image
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     * @PHPCR\Field(type=<span class="hljs-string">"binary"</span>, translated=<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    <span class="hljs-keyword">private</span> $image;
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d391535f37e4e6f04d71b6570e232a3859116eac"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d391535f37e4e6f04d71b6570e232a3859116eac"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"MyPersistentClass"</span> <span class="hljs-attr">translator</span>=<span class="hljs-string">"attribute"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">locale</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"locale"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"publishDate"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"date"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"topic"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">translated</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"image"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"binary"</span> <span class="hljs-attr">translated</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="916fb91b541efbbd8396a7893de71ef6b3c1e4b9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="916fb91b541efbbd8396a7893de71ef6b3c1e4b9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">MyPersistentClass:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  translator:</span> <span class="hljs-string">attribute</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  locale:</span> <span class="hljs-string">locale</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  fields:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    publishDate:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">        type:</span> <span class="hljs-string">date</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    topic:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">        type:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">        translated:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    image:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">        type:</span> <span class="hljs-string">binary</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">        translated:</span> <span class="hljs-literal">true</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>The translation strategy is telling the document manager which strategy to use to store and load
 translations for this document. The <code>Locale</code> field holds the current locale of the document.
 It is populated when finding the document, updated whenever you call bindTranslation and also
@@ -411,50 +429,56 @@ $dm-&gt;setLocaleChooserStrategy(new LocaleChooser($localePrefs, 'en'));
 <p>You can write your own strategy by implementing <code>Doctrine\ODM\PHPCR\Translation\LocaleChooser\LocaleChooserInterface</code>.
 This is useful to determine the default language based on some logic, or provide fallback orders based on user preferences.</p>
 <a class="section-anchor" id="full-example" name="full-example"></a><h2 class="section-header"><a href="#full-example">Full Example<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">use Doctrine\ODM\PHPCR\DocumentManager;
-
-// bootstrap the DocumentManager as required (see above)
-
-$localePrefs = array(
-    'en' =&gt; array('fr'),
-    'fr' =&gt; array('en'),
-);
-
-$dm = new DocumentManager($session, $config);
-$dm-&gt;setLocaleChooserStrategy(new LocaleChooser($localePrefs, 'en'));
-
-// then to use translations:
-
-$doc = new Article();
-$doc-&gt;id = '/my_test_node';
-$doc-&gt;author = 'John Doe';
-$doc-&gt;topic = 'An interesting subject';
-$doc-&gt;text = 'Lorem ipsum...';
-
-// Persist the document in English
-$dm-&gt;persist($doc);
-$dm-&gt;bindTranslation($doc, 'en');
-
-// Change the content and persist the document in French
-$doc-&gt;topic = 'Un sujet intéressant';
-$dm-&gt;bindTranslation($doc, 'fr');
-
-// locale is updated automatically if there is such an annotation
-echo $doc-&gt;locale; // fr
-
-// Flush to write the changes to the phpcr backend
-$dm-&gt;flush();
-
-// Get the document in default language
-// (English if you bootstrapped as in the example)
-$doc = $dm-&gt;find(null, '/my_test_node');
-
-// Get the document in French
-$doc = $dm-&gt;findTranslation(null, '/my_test_node', 'fr');
-$doc-&gt;title = 'nouveau';
-$dm-&gt;flush(); // french is updated as the language is tracked by the dm
-
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e307e6f4b4cde8726d49342d3831df564cb7f0c2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e307e6f4b4cde8726d49342d3831df564cb7f0c2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">PHPCR</span>\<span class="hljs-title">DocumentManager</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// bootstrap the DocumentManager as required (see above)</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$localePrefs = <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-string">'en'</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">'fr'</span>),
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-string">'fr'</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">'en'</span>),
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$dm = <span class="hljs-keyword">new</span> DocumentManager($session, $config);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$dm-&gt;setLocaleChooserStrategy(<span class="hljs-keyword">new</span> LocaleChooser($localePrefs, <span class="hljs-string">'en'</span>));
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-comment">// then to use translations:</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$doc = <span class="hljs-keyword">new</span> Article();
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$doc-&gt;id = <span class="hljs-string">'/my_test_node'</span>;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">$doc-&gt;author = <span class="hljs-string">'John Doe'</span>;
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$doc-&gt;topic = <span class="hljs-string">'An interesting subject'</span>;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$doc-&gt;text = <span class="hljs-string">'Lorem ipsum...'</span>;
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-comment">// Persist the document in English</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">$dm-&gt;persist($doc);
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$dm-&gt;bindTranslation($doc, <span class="hljs-string">'en'</span>);
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-comment">// Change the content and persist the document in French</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">$doc-&gt;topic = <span class="hljs-string">'Un sujet intéressant'</span>;
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">$dm-&gt;bindTranslation($doc, <span class="hljs-string">'fr'</span>);
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-comment">// locale is updated automatically if there is such an annotation</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-keyword">echo</span> $doc-&gt;locale; <span class="hljs-comment">// fr</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"><span class="hljs-comment">// Flush to write the changes to the phpcr backend</span>
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">$dm-&gt;flush();
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"><span class="hljs-comment">// Get the document in default language</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"><span class="hljs-comment">// (English if you bootstrapped as in the example)</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">$doc = $dm-&gt;find(<span class="hljs-keyword">null</span>, <span class="hljs-string">'/my_test_node'</span>);
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"><span class="hljs-comment">// Get the document in French</span>
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">$doc = $dm-&gt;findTranslation(<span class="hljs-keyword">null</span>, <span class="hljs-string">'/my_test_node'</span>, <span class="hljs-string">'fr'</span>);
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">$doc-&gt;title = <span class="hljs-string">'nouveau'</span>;
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">$dm-&gt;flush(); <span class="hljs-comment">// french is updated as the language is tracked by the dm</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="querying-translated-properties" name="querying-translated-properties"></a><h2 class="section-header"><a href="#querying-translated-properties">Querying Translated Properties<i class="fas fa-link"></i></a></h2>
 <p>The translation strategy will store translated strings into specific
 properties. When using the PHPCR SQL2 queries, you will need to look
@@ -494,8 +518,6 @@ if both copies where modified?...).</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -541,7 +563,7 @@ if both copies where modified?...).</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

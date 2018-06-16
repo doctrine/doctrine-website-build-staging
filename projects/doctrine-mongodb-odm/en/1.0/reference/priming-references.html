@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -264,34 +261,48 @@ This is useful for avoiding the
 <a href="http://stackoverflow.com/q/97197/162228">n+1 problem</a> in your application.</p>
 <a class="section-anchor" id="query-builder" name="query-builder"></a><h2 class="section-header"><a href="#query-builder">Query Builder<i class="fas fa-link"></i></a></h2>
 <p>Consider the following abbreviated model:</p>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class User
-{
-    /** @ReferenceMany(targetDocument=&quot;Account&quot;) */
-    private $accounts;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="82eb2513f7d341252d89094115229488efe504bf"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="82eb2513f7d341252d89094115229488efe504bf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceMany</span>(targetDocument="Account") */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $accounts;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>We would like to query for 100 users and then iterate over their referenced
 accounts.</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;limit(100);
-$query = $qb-&gt;getQuery();
-$users = $query-&gt;execute();
-
-foreach ($users as $user) {
-    /* PersistentCollection::initialize() will be invoked when we begin
-     * iterating through the user's accounts. Any accounts not already
-     * managed by the unit of work will need to be queried.
-     */
-    foreach ($user-&gt;getAccounts() as $account) {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9bb7f9b91e8899ac6c708e53bd7ac24bc69c30d3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9bb7f9b91e8899ac6c708e53bd7ac24bc69c30d3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;limit(<span class="hljs-number">100</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$users = $query-&gt;execute();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($users <span class="hljs-keyword">as</span> $user) {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/* PersistentCollection::initialize() will be invoked when we begin</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * iterating through the user<span class="hljs-string">'s accounts. Any accounts not already</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * managed by the unit of work will need to be queried.
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">foreach</span> ($user-&gt;getAccounts() <span class="hljs-keyword">as</span> $account) {
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>In this example, ODM would query the database once for the result set of users
 and then, for each user, issue a separate query to load any accounts that are
 not already being managed by the unit of work. This could result in as many as
@@ -299,27 +310,34 @@ not already being managed by the unit of work. This could result in as many as
 <p>If we expect to iterate through all users and their accounts, we could optimize
 this process by loading all of the referenced accounts with one query. The query
 builder's <code>prime()</code> method allows us to do just that.</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;field('accounts')-&gt;prime(true)
-    -&gt;limit(100);
-$query = $qb-&gt;getQuery();
-
-/* After querying for the users, ODM will collect the IDs of all referenced
- * accounts and load them with a single additional query.
- */
-$users = $query-&gt;execute();
-
-foreach ($users as $user) {
-    /* Accounts have already been loaded, so iterating through accounts will
-     * not query an additional query.
-     */
-    foreach ($user-&gt;getAccounts() as $account) {
-        
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2622c504f35edfeeefc0b7f41bb7cd1dac7b5104"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2622c504f35edfeeefc0b7f41bb7cd1dac7b5104"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'accounts'</span>)-&gt;prime(<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;limit(<span class="hljs-number">100</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">/* After querying for the users, ODM will collect the IDs of all referenced</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> * accounts <span class="hljs-keyword">and</span> load them with a single additional query.
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$users = $query-&gt;execute();
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($users <span class="hljs-keyword">as</span> $user) {
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">/* Accounts have already been loaded, so iterating through accounts will</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     * not query an additional query.
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">foreach</span> ($user-&gt;getAccounts() <span class="hljs-keyword">as</span> $account) {
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>In this case, priming will allow us to load all users and referenced accounts in
 two database queries. If the accounts had used an
 <a href="">inhertiance mapping</a>, priming might require several
@@ -338,26 +356,33 @@ on its own; however, we can also pass a custom callable (e.g. Closure instance)
 to <code>prime()</code>, which allows more control over the priming query.</p>
 <p>As an example, we can look at the default callable, which is found in the
 <code>ReferencePrimer</code> class.</p>
-<pre><code class="php">&lt;?php
-
-function(DocumentManager $dm, ClassMetadata $class, array $ids, array $hints) {
-    $qb = $dm-&gt;createQueryBuilder($class-&gt;name)
-        -&gt;field($class-&gt;identifier)-&gt;in($ids);
-
-    if ( ! empty($hints[Query::HINT_SLAVE_OKAY])) {
-        $qb-&gt;slaveOkay(true);
-    }
-
-    if ( ! empty($hints[Query::HINT_READ_PREFERENCE])) {
-        $qb-&gt;setReadPreference(
-            $hints[Query::HINT_READ_PREFERENCE],
-            $hints[Query::HINT_READ_PREFERENCE_TAGS]
-        );
-    }
-
-    $qb-&gt;getQuery()-&gt;toArray();
-};
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6108c175c102a94cd458ed8d6ebbc1ac68cde2c1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6108c175c102a94cd458ed8d6ebbc1ac68cde2c1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(DocumentManager $dm, ClassMetadata $class, array $ids, array $hints)</span> </span>{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    $qb = $dm-&gt;createQueryBuilder($class-&gt;name)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        -&gt;field($class-&gt;identifier)-&gt;in($ids);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">if</span> ( ! <span class="hljs-keyword">empty</span>($hints[Query::HINT_SLAVE_OKAY])) {
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $qb-&gt;slaveOkay(<span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">if</span> ( ! <span class="hljs-keyword">empty</span>($hints[Query::HINT_READ_PREFERENCE])) {
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        $qb-&gt;setReadPreference(
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            $hints[Query::HINT_READ_PREFERENCE],
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">            $hints[Query::HINT_READ_PREFERENCE_TAGS]
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        );
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    $qb-&gt;getQuery()-&gt;toArray();
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">};
+</td></tr></table></div></code></pre>
 <p>Firstly, the callable is passed the <code>DocumentManager</code> of the main query. This
 is necessary to create the query used for priming, and ensures that the results
 will become managed in the same scope. The <code>ClassMetadata</code> argument provides
@@ -389,8 +414,6 @@ original query are provided so that the priming query can apply them as well.</p
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -436,7 +459,7 @@ original query are provided so that the priming query can apply them as well.</p
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

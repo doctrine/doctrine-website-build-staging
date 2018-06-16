@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -289,83 +286,111 @@ with a real object that implements that interface.</p>
 <p>We're going to use the following basic entities (which are incomplete
 for brevity) to explain how to set up and use the RTEL.</p>
 <p>A Customer entity</p>
-<pre><code class="php">// src/Acme/AppModule/Entity/Customer.php
-
-namespace Acme\AppModule\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-use Acme\CustomerModule\Entity\Customer as BaseCustomer;
-use Acme\InvoiceModule\Model\InvoiceSubjectInterface;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name=&quot;customer&quot;)
- */
-class Customer extends BaseCustomer implements InvoiceSubjectInterface
-{
-    // In our example, any methods defined in the InvoiceSubjectInterface
-    // are already implemented in the BaseCustomer
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c9b11b335ab05d10913cac6547c49d2c5e8df353"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c9b11b335ab05d10913cac6547c49d2c5e8df353"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">// src/Acme/AppModule/Entity/Customer.php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Acme</span>\<span class="hljs-title">AppModule</span>\<span class="hljs-title">Entity</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Acme</span>\<span class="hljs-title">CustomerModule</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Customer</span> <span class="hljs-title">as</span> <span class="hljs-title">BaseCustomer</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Acme</span>\<span class="hljs-title">InvoiceModule</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">InvoiceSubjectInterface</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> * @ORM\Entity
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> * @ORM\Table(name=<span class="hljs-string">"customer"</span>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Customer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseCustomer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InvoiceSubjectInterface</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">// In our example, any methods defined in the InvoiceSubjectInterface</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">// are already implemented in the BaseCustomer</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>An Invoice entity</p>
-<pre><code class="php">// src/Acme/InvoiceModule/Entity/Invoice.php
-
-namespace Acme\InvoiceModule\Entity;
-
-use Doctrine\ORM\Mapping AS ORM;
-use Acme\InvoiceModule\Model\InvoiceSubjectInterface;
-
-/**
- * Represents an Invoice.
- *
- * @ORM\Entity
- * @ORM\Table(name=&quot;invoice&quot;)
- */
-class Invoice
-{
-    /**
-     * @ORM\ManyToOne(targetEntity=&quot;Acme\InvoiceModule\Model\InvoiceSubjectInterface&quot;)
-     * @var InvoiceSubjectInterface
-     */
-    protected $subject;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9b0108e9e3e8d97832a3eccb666adaca7f6d6a94"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9b0108e9e3e8d97832a3eccb666adaca7f6d6a94"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">// src/Acme/InvoiceModule/Entity/Invoice.php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Acme</span>\<span class="hljs-title">InvoiceModule</span>\<span class="hljs-title">Entity</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span> <span class="hljs-title">AS</span> <span class="hljs-title">ORM</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Acme</span>\<span class="hljs-title">InvoiceModule</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">InvoiceSubjectInterface</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> * Represents an Invoice.
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> * @ORM\Entity
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> * @ORM\Table(name=<span class="hljs-string">"invoice"</span>)
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Invoice</span></span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     * @ORM\ManyToOne(targetEntity=<span class="hljs-string">"Acme\InvoiceModule\Model\InvoiceSubjectInterface"</span>)
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     * @<span class="hljs-keyword">var</span> InvoiceSubjectInterface
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">protected</span> $subject;
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>An InvoiceSubjectInterface</p>
-<pre><code class="php">// src/Acme/InvoiceModule/Model/InvoiceSubjectInterface.php
-
-namespace Acme\InvoiceModule\Model;
-
-/**
- * An interface that the invoice Subject object should implement.
- * In most circumstances, only a single object should implement
- * this interface as the ResolveTargetEntityListener can only
- * change the target to a single object.
- */
-interface InvoiceSubjectInterface
-{
-    // List any additional methods that your InvoiceModule
-    // will need to access on the subject so that you can
-    // be sure that you have access to those methods.
-
-    /**
-     * @return string
-     */
-    public function getName();
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="39e904960daf3f8ff1c8c7a62aeffa5225abfa16"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="39e904960daf3f8ff1c8c7a62aeffa5225abfa16"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">// src/Acme/InvoiceModule/Model/InvoiceSubjectInterface.php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Acme</span>\<span class="hljs-title">InvoiceModule</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * An <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">that</span> <span class="hljs-title">the</span> <span class="hljs-title">invoice</span> <span class="hljs-title">Subject</span> <span class="hljs-title">object</span> <span class="hljs-title">should</span> <span class="hljs-title">implement</span>.</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * In most circumstances, only a single object should implement
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * this <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">as</span> <span class="hljs-title">the</span> <span class="hljs-title">ResolveTargetEntityListener</span> <span class="hljs-title">can</span> <span class="hljs-title">only</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> * change the target to a single object.
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">InvoiceSubjectInterface</span></span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">// List any additional methods that your InvoiceModule</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">// will need to access on the subject so that you can</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">// be sure that you have access to those methods.</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Next, we need to configure the listener. Add this to the area you set up Doctrine. You
 must set this up in the way outlined below, otherwise you can not be guaranteed that
 the targetEntity resolution will occur reliably:</p>
-<pre><code class="php">$evm = new \Doctrine\Common\EventManager;
-
-$rtel = new \Doctrine\ORM\Tools\ResolveTargetEntityListener;
-$rtel-&gt;addResolveTargetEntity('Acme\\InvoiceModule\\Model\\InvoiceSubjectInterface', 'Acme\\CustomerModule\\Entity\\Customer', array());
-
-// Add the ResolveTargetEntityListener
-$evm-&gt;addEventSubscriber($rtel);
-
-$em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config, $evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="29209892348414db1879c9ce329089be25b1c0dd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="29209892348414db1879c9ce329089be25b1c0dd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> \Doctrine\Common\EventManager;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$rtel = <span class="hljs-keyword">new</span> \Doctrine\ORM\Tools\ResolveTargetEntityListener;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$rtel-&gt;addResolveTargetEntity(<span class="hljs-string">'Acme\\InvoiceModule\\Model\\InvoiceSubjectInterface'</span>, <span class="hljs-string">'Acme\\CustomerModule\\Entity\\Customer'</span>, <span class="hljs-keyword">array</span>());
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">// Add the ResolveTargetEntityListener</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$evm-&gt;addEventSubscriber($rtel);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config, $evm);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="final-thoughts" name="final-thoughts"></a><h2 class="section-header"><a href="#final-thoughts">Final Thoughts<i class="fas fa-link"></i></a></h2>
 <p>With the <code>ResolveTargetEntityListener</code>, we are able to decouple our
 bundles, keeping them usable by themselves, but still being able to
@@ -395,8 +420,6 @@ I've found my bundles end up being easier to maintain independently.</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -442,7 +465,7 @@ I've found my bundles end up being easier to maintain independently.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

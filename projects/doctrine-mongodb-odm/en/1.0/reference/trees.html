@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -261,216 +258,307 @@
 <p>MongoDB lends itself quite well to storing hierarchical data. This
 chapter will demonstrate some examples!</p>
 <a class="section-anchor" id="full-tree-in-single-document" name="full-tree-in-single-document"></a><h2 class="section-header"><a href="#full-tree-in-single-document">Full Tree in Single Document<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class BlogPost
-{
-    /** @Id */
-    private $id;
-
-    /** @String */
-    private $title;
-
-    /** @String */
-    private $body;
-
-    /** @EmbedMany(targetDocument=&quot;Comment&quot;) */
-    private $comments = array();
-
-    // ...
-}
-
-/** @EmbeddedDocument */
-class Comment
-{
-    /** @String */
-    private $by;
-
-    /** @String */
-    private $text;
-
-    /** @EmbedMany(targetDocument=&quot;Comment&quot;) */
-    private $replies = array();
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cd26849e8edb74e9cfaef5d6a745e88087fea95d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cd26849e8edb74e9cfaef5d6a745e88087fea95d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogPost</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $title;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">private</span> $body;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedMany</span>(targetDocument="Comment") */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">private</span> $comments = <span class="hljs-keyword">array</span>();
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@EmbeddedDocument</span> */</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comment</span></span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-keyword">private</span> $by;
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-keyword">private</span> $text;
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedMany</span>(targetDocument="Comment") */</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-keyword">private</span> $replies = <span class="hljs-keyword">array</span>();
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Retrieve a blog post and only select the first 10 comments:</p>
-<pre><code class="php">&lt;?php
-
-$post = $dm-&gt;createQueryBuilder('BlogPost')
-    -&gt;selectSlice('replies', 0, 10)
-    -&gt;getQuery()
-    -&gt;getSingleResult();
-
-$replies = $post-&gt;getReplies();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4b8cbdc80bab848a228603c963d4dc390f808a46"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4b8cbdc80bab848a228603c963d4dc390f808a46"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$post = $dm-&gt;createQueryBuilder(<span class="hljs-string">'BlogPost'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;selectSlice(<span class="hljs-string">'replies'</span>, <span class="hljs-number">0</span>, <span class="hljs-number">10</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getSingleResult();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$replies = $post-&gt;getReplies();
+</td></tr></table></div></code></pre>
 <p>You can read more about this pattern on the MongoDB documentation page &quot;Trees in MongoDB&quot; in the
 <a href="http://www.mongodb.org/display/DOCS/Trees+in+MongoDB#TreesinMongoDB-FullTreeinSingleDocument">Full Tree in Single Document</a> section.</p>
 <a class="section-anchor" id="parent-reference" name="parent-reference"></a><h2 class="section-header"><a href="#parent-reference">Parent Reference<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class Category
-{
-    /** @Id */
-    private $id;
-
-    /** @String */
-    private $name;
-
-    /**
-     * @ReferenceOne(targetDocument=&quot;Category&quot;)
-     * @Index
-     */
-    private $parent;
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1a759f3ea918dc1392f64e54943339bbf1187c6c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1a759f3ea918dc1392f64e54943339bbf1187c6c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     * @ReferenceOne(targetDocument=<span class="hljs-string">"Category"</span>)
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     * @Index
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">private</span> $parent;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Query for children by a specific parent id:</p>
-<pre><code class="php">&lt;?php
-
-$children = $dm-&gt;createQueryBuilder('Category')
-    -&gt;field('parent.id')-&gt;equals('theid')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="aad7c1c2aa69169d6168b206c61526f613226e50"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="aad7c1c2aa69169d6168b206c61526f613226e50"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$children = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Category'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'parent.id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>You can read more about this pattern on the MongoDB documentation page &quot;Trees in MongoDB&quot; in the
 <a href="http://www.mongodb.org/display/DOCS/Trees+in+MongoDB#TreesinMongoDB-ParentLinks">Parent Links</a> section.</p>
 <a class="section-anchor" id="child-reference" name="child-reference"></a><h2 class="section-header"><a href="#child-reference">Child Reference<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class Category
-{
-    /** @Id */
-    private $id;
-
-    /** @String */
-    private $name;
-
-    /**
-     * @ReferenceMany(targetDocument=&quot;Category&quot;)
-     * @Index
-     */
-    private $children = array();
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b7594cfe073f69b48ab3e43a84a1fbc913aece65"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b7594cfe073f69b48ab3e43a84a1fbc913aece65"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     * @ReferenceMany(targetDocument=<span class="hljs-string">"Category"</span>)
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     * @Index
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">private</span> $children = <span class="hljs-keyword">array</span>();
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Query for immediate children of a category:</p>
-<pre><code class="php">&lt;?php
-
-$category = $dm-&gt;createQueryBuilder('Category')
-    -&gt;field('id')-&gt;equals('theid')
-    -&gt;getQuery()
-    -&gt;getSingleResult();
-
-$children = $category-&gt;getChildren();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9b661a646e7f24a99ba6b369ba7a6738e4c397d1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9b661a646e7f24a99ba6b369ba7a6738e4c397d1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$category = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Category'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getSingleResult();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$children = $category-&gt;getChildren();
+</td></tr></table></div></code></pre>
 <p>Query for immediate parent of a category:</p>
-<pre><code class="php">&lt;?php
-
-$parent = $dm-&gt;createQueryBuilder('Category')
-    -&gt;field('children.id')-&gt;equals('theid')
-    -&gt;getQuery()
-    -&gt;getSingleResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="82f00d7b6402df386b68afe91d577634638212a4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="82f00d7b6402df386b68afe91d577634638212a4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$parent = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Category'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'children.id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getSingleResult();
+</td></tr></table></div></code></pre>
 <p>You can read more about this pattern on the MongoDB documentation page &quot;Trees in MongoDB&quot; in the
 <a href="http://www.mongodb.org/display/DOCS/Trees+in+MongoDB#TreesinMongoDB-ChildLinks">Child Links</a> section.</p>
 <a class="section-anchor" id="array-of-ancestors" name="array-of-ancestors"></a><h2 class="section-header"><a href="#array-of-ancestors">Array of Ancestors<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">&lt;?php
-
-/** @MappedSuperclass */
-class BaseCategory
-{
-    /** @String */
-    private $name;
-
-    // ...
-}
-
-/** @Document */
-class Category extends BaseCategory
-{
-    /** @Id */
-    private $id;
-
-    /**
-     * @ReferenceMany(targetDocument=&quot;Category&quot;)
-     * @Index
-     */
-    private $ancestors = array();
-
-    /**
-     * @ReferenceOne(targetDocument=&quot;Category&quot;)
-     * @Index
-     */
-    private $parent;
-
-    // ...
-}
-
-/** @EmbeddedDocument */
-class SubCategory extends BaseCategory
-{
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1e2afde83b465a989c1f6fec66d535652ac90013"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1e2afde83b465a989c1f6fec66d535652ac90013"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@MappedSuperclass</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseCategory</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseCategory</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     * @ReferenceMany(targetDocument=<span class="hljs-string">"Category"</span>)
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * @Index
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">private</span> $ancestors = <span class="hljs-keyword">array</span>();
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     * @ReferenceOne(targetDocument=<span class="hljs-string">"Category"</span>)
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     * @Index
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-keyword">private</span> $parent;
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@EmbeddedDocument</span> */</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SubCategory</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseCategory</span></span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Query for all descendants of a category:</p>
-<pre><code class="php">&lt;?php
-
-$categories = $dm-&gt;createQueryBuilder('Category')
-    -&gt;field('ancestors.id')-&gt;equals('theid')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c3e334adb71119bfcfc70acb63da6c83baafd02b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c3e334adb71119bfcfc70acb63da6c83baafd02b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$categories = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Category'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'ancestors.id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Query for all ancestors of a category:</p>
-<pre><code class="php">&lt;?php
-
-$category = $dm-&gt;createQuery('Category')
-    -&gt;field('id')-&gt;equals('theid')
-    -&gt;getQuery()
-    -&gt;getSingleResult();
-
-$ancestors = $category-&gt;getAncestors();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7db4b7b38c306ed1cba24b424a1cf82a80672ddd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7db4b7b38c306ed1cba24b424a1cf82a80672ddd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$category = $dm-&gt;createQuery(<span class="hljs-string">'Category'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'id'</span>)-&gt;equals(<span class="hljs-string">'theid'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getSingleResult();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$ancestors = $category-&gt;getAncestors();
+</td></tr></table></div></code></pre>
 <p>You can read more about this pattern on the MongoDB documentation page &quot;Trees in MongoDB&quot; in the
 <a href="http://www.mongodb.org/display/DOCS/Trees+in+MongoDB#TreesinMongoDB-ArrayofAncestors">Array of Ancestors</a> section.</p>
 <a class="section-anchor" id="materialized-paths" name="materialized-paths"></a><h2 class="section-header"><a href="#materialized-paths">Materialized Paths<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class Category
-{
-    /** @Id */
-    private $id;
-
-    /** @String */
-    private $name;
-
-    /** @String */
-    private $path;
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d0fe560ac3234c662241d1601cce1abcfaf15095"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d0fe560ac3234c662241d1601cce1abcfaf15095"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">private</span> $path;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Query for the entire tree:</p>
-<pre><code class="php">&lt;?php
-
-$categories = $dm-&gt;createQuery('Category')
-    -&gt;sort('path', 'asc')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f39c10a8a4c32eff8fa4eab6a564fde785276477"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f39c10a8a4c32eff8fa4eab6a564fde785276477"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$categories = $dm-&gt;createQuery(<span class="hljs-string">'Category'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;sort(<span class="hljs-string">'path'</span>, <span class="hljs-string">'asc'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Query for the node 'b' and all its descendants:</p>
-<pre><code class="php">&lt;?php
-$categories = $dm-&gt;createQuery('Category')
-    -&gt;field('path')-&gt;equals('/^a,b,/')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0dce2d3db13f666766ce84de8d585fbbdfc96b81"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0dce2d3db13f666766ce84de8d585fbbdfc96b81"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$categories = $dm-&gt;createQuery(<span class="hljs-string">'Category'</span>)
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    -&gt;field(<span class="hljs-string">'path'</span>)-&gt;equals(<span class="hljs-string">'/^a,b,/'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>You can read more about this pattern on the MongoDB documentation page &quot;Trees in MongoDB&quot; in the
 <a href="http://www.mongodb.org/display/DOCS/Trees+in+MongoDB#TreesinMongoDB-MaterializedPaths%28FullPathinEachNode%29">Materialized Paths (Full Path in Each Node)</a> section.</p>
 <p></p>
@@ -497,8 +585,6 @@ $categories = $dm-&gt;createQuery('Category')
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -544,7 +630,7 @@ $categories = $dm-&gt;createQuery('Category')
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

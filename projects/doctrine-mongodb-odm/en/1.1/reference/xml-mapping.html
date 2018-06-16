@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -269,15 +266,22 @@ IDE/editor that can provide code-completion based on such an XML
 Schema document. The following is an outline of a XML mapping
 document with the proper xmlns/xsi setup for the latest code in
 trunk.</p>
-<pre><code class="xml">&lt;doctrine-mongo-mapping xmlns=&quot;http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping&quot;
-      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-      xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
-                    http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd&quot;&gt;
-
-    ...
-
-&lt;/doctrine-mongo-mapping&gt;
-</code></pre>
+<pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="14aa2af28fe9751c4ba000f65afe89df6030bdcc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="14aa2af28fe9751c4ba000f65afe89df6030bdcc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mongo-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">                    http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    ...
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mongo-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>If you do not want to use latest XML Schema document please use link like
 <a href="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping-1.0.0-BETA12.xsd">http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping-1.0.0-BETA12.xsd</a>.
 You can change <code>1.0.0-BETA12</code> part of the URL to<br /><a href="https://github.com/doctrine/mongodb-odm/releases">any other ODM version</a>.</p>
@@ -294,21 +298,35 @@ In order to work, this requires certain conventions:</p>
    identify it as a Doctrine mapping file. This is more of a
    convention and you are not forced to do this. You can change the
    file extension easily enough.</p>
-<pre><code class="php">&lt;?php
-
-$driver-&gt;setFileExtension('.xml');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e943db5f08ab4e47433a28eee8204ac06381ab4e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e943db5f08ab4e47433a28eee8204ac06381ab4e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$driver-&gt;setFileExtension(<span class="hljs-string">'.xml'</span>);
+</td></tr></table></div></code></pre>
 <p>It is recommended to put all XML mapping documents in a single
 folder but you can spread the documents over several folders if you
 want to. In order to tell the XmlDriver where to look for your
 mapping documents, supply an array of paths as the first argument
 of the constructor, like this:</p>
-<pre><code class="php">&lt;?php
-
-// $config instanceof Doctrine\ODM\MongoDB\Configuration
-$driver = new XmlDriver(array('/path/to/files'));
-$config-&gt;setMetadataDriverImpl($driver);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="41a3d33b85f86ba245e9a00a0eaeebe6b951760d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="41a3d33b85f86ba245e9a00a0eaeebe6b951760d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// $config instanceof Doctrine\ODM\MongoDB\Configuration</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> XmlDriver(<span class="hljs-keyword">array</span>(<span class="hljs-string">'/path/to/files'</span>));
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$config-&gt;setMetadataDriverImpl($driver);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="simplified-xml-driver" name="simplified-xml-driver"></a><h2 class="section-header"><a href="#simplified-xml-driver">Simplified XML Driver<i class="fas fa-link"></i></a></h2>
 <p>The Symfony project sponsored a driver that simplifies usage of the XML Driver.
 The changes between the original driver are:</p>
@@ -318,57 +336,71 @@ The changes between the original driver are:</p>
 </ol>
 
 <p>Configuration of this client works a little bit different:</p>
-<pre><code class="php">&lt;?php
-$namespaces = array(
-    'MyProject\Documents' =&gt; '/path/to/files1',
-    'OtherProject\Documents' =&gt; '/path/to/files2'
-);
-$driver = new \Doctrine\ODM\MongoDB\Mapping\Driver\SimplifiedXmlDriver($namespaces);
-$driver-&gt;setGlobalBasename('global'); // global.mongodb-odm.xml
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="720e8c804ff79241a4a6ab3fb2fe1bc520bb75c3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="720e8c804ff79241a4a6ab3fb2fe1bc520bb75c3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$namespaces = <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-string">'MyProject\Documents'</span> =&gt; <span class="hljs-string">'/path/to/files1'</span>,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">'OtherProject\Documents'</span> =&gt; <span class="hljs-string">'/path/to/files2'</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Mapping\Driver\SimplifiedXmlDriver($namespaces);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$driver-&gt;setGlobalBasename(<span class="hljs-string">'global'</span>); <span class="hljs-comment">// global.mongodb-odm.xml</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="example" name="example"></a><h3 class="section-header"><a href="#example">Example<i class="fas fa-link"></i></a></h3>
 <p>As a quick start, here is a small example document that makes use
 of several common elements:</p>
-<pre><code class="xml">// Documents.User.dcm.xml
-
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-
-&lt;doctrine-mongo-mapping xmlns=&quot;http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping&quot;
-      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-      xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
-                    http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd&quot;&gt;
-
-    &lt;document name=&quot;Documents\User&quot; db=&quot;documents&quot; collection=&quot;users&quot;&gt;
-        &lt;field fieldName=&quot;id&quot; id=&quot;true&quot; /&gt;
-        &lt;field fieldName=&quot;username&quot; name=&quot;login&quot; type=&quot;string&quot; /&gt;
-        &lt;field fieldName=&quot;email&quot; type=&quot;string&quot; unique=&quot;true&quot; order=&quot;desc&quot; /&gt;
-        &lt;field fieldName=&quot;createdAt&quot; type=&quot;date&quot; /&gt;
-        &lt;indexes&gt;
-            &lt;index unique=&quot;true&quot; dropDups=&quot;true&quot;&gt;
-                &lt;key name=&quot;username&quot; order=&quot;desc&quot;&gt;
-                &lt;option name=&quot;safe&quot; value=&quot;true&quot; /&gt;
-            &lt;/index&gt;
-        &lt;/indexes&gt;
-        &lt;embed-one target-document=&quot;Documents\Address&quot; field=&quot;address&quot; /&gt;
-        &lt;reference-one target-document=&quot;Documents\Profile&quot; field=&quot;profile&quot;&gt;
-            &lt;cascade&gt;
-                &lt;all /&gt;
-            &lt;/cascade&gt;
-        &lt;/reference-one&gt;
-        &lt;embed-many target-document=&quot;Documents\Phonenumber&quot; field=&quot;phonenumbers&quot; /&gt;
-        &lt;reference-many target-document=&quot;Documents\Group&quot; field=&quot;groups&quot;&gt;
-            &lt;cascade&gt;
-                &lt;all /&gt;
-            &lt;/cascade&gt;
-        &lt;/reference-many&gt;
-        &lt;reference-one target-document=&quot;Documents\Account&quot; field=&quot;account&quot;&gt;
-            &lt;cascade&gt;
-                &lt;all /&gt;
-            &lt;/cascade&gt;
-        &lt;/reference-one&gt;
-    &lt;/document&gt;
-&lt;/doctrine-mongo-mapping&gt;
-</code></pre>
+<pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cb17fc92fdd4ef76737f0360b2d3662f1fd72a02"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cb17fc92fdd4ef76737f0360b2d3662f1fd72a02"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">// Documents.User.dcm.xml
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mongo-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                    http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Documents\User"</span> <span class="hljs-attr">db</span>=<span class="hljs-string">"documents"</span> <span class="hljs-attr">collection</span>=<span class="hljs-string">"users"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"login"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">unique</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"desc"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"createdAt"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"date"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">index</span> <span class="hljs-attr">unique</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">dropDups</span>=<span class="hljs-string">"true"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">key</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"desc"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"safe"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">embed-one</span> <span class="hljs-attr">target-document</span>=<span class="hljs-string">"Documents\Address"</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"address"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">reference-one</span> <span class="hljs-attr">target-document</span>=<span class="hljs-string">"Documents\Profile"</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"profile"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">cascade</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">all</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">cascade</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">reference-one</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">embed-many</span> <span class="hljs-attr">target-document</span>=<span class="hljs-string">"Documents\Phonenumber"</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"phonenumbers"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">reference-many</span> <span class="hljs-attr">target-document</span>=<span class="hljs-string">"Documents\Group"</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"groups"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">cascade</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">all</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">cascade</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">reference-many</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">reference-one</span> <span class="hljs-attr">target-document</span>=<span class="hljs-string">"Documents\Account"</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"account"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">cascade</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">all</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">cascade</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">reference-one</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mongo-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre>
 <p>Be aware that class-names specified in the XML files should be fully qualified.</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p><code>field-name</code> is the name of <strong>property in your object</strong> while <code>name</code> specifies
 name of the field <strong>in the database</strong>. Specifying latter is optional and defaults to
@@ -398,8 +430,6 @@ name of the field <strong>in the database</strong>. Specifying latter is optiona
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -445,7 +475,7 @@ name of the field <strong>in the database</strong>. Specifying latter is optiona
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

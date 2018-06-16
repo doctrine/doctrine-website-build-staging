@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -255,72 +252,91 @@
 <p>As now everything is setup and configured you are ready to start writing
 migration classes. You can easily generate your first migration class with the
 following command:</p>
-<pre><code class="bash">$ ./doctrine migrations:generate
-Generated new migration class to &quot;/path/to/migrations/classes/DoctrineMigrations/Version20100416130401.php&quot;
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>./doctrine migrations:generate
+Generated new migration class to "/path/to/migrations/classes/DoctrineMigrations/Version20100416130401.php"</code></pre></div>
 <p>Have a look and you will see a new class at the above location that looks like
 the following:</p>
-<pre><code class="php">namespace DoctrineMigrations;
-
-use Doctrine\DBAL\Migrations\AbstractMigration,
-    Doctrine\DBAL\Schema\Schema;
-
-class Version20100416130401 extends AbstractMigration
-{
-    public function up(Schema $schema)
-    {
-
-    }
-
-    public function down(Schema $schema)
-    {
-
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b720b8ef0f635f2f3763d23ea6db1432b7952609"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b720b8ef0f635f2f3763d23ea6db1432b7952609"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">DoctrineMigrations</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">AbstractMigration</span>,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    Doctrine\DBAL\Schema\Schema;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Version20100416130401</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractMigration</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">(Schema $schema)</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">down</span><span class="hljs-params">(Schema $schema)</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>You can now use the <em>addSql()</em> method within the up and down method.</p>
 <p>Internally the addSql call are passed to the <a href="#dbal-executequery-method">dbal executeQuery method</a>.
 This means that you can use the power of the prepared statement easilly and that you don't need to copy paste the same
 query with different parameters. You can just pass those differents parameters to the addSql method as parameters.</p>
-<pre><code class="php">public function up(Schema $schema)
-{
-    $users = array(
-            array('name' =&gt; 'mike', 'id' =&gt; 1),
-            array('name' =&gt; 'jwage', 'id' =&gt; 2),
-            array('name' =&gt; 'ocramius', 'id' =&gt; 3),
-            );
-    foreach ($users as $user) {
-        $this-&gt;addSql('UPDATE user SET happy = true WHERE name = :name AND id = :id', $user);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="22e191cdb50b7f19b04cbd0ceef9a8a3eb0bc016"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="22e191cdb50b7f19b04cbd0ceef9a8a3eb0bc016"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">(Schema $schema)</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    $users = <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-keyword">array</span>(<span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'mike'</span>, <span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">1</span>),
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">            <span class="hljs-keyword">array</span>(<span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'jwage'</span>, <span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">2</span>),
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">            <span class="hljs-keyword">array</span>(<span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'ocramius'</span>, <span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">3</span>),
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            );
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">foreach</span> ($users <span class="hljs-keyword">as</span> $user) {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;addSql(<span class="hljs-string">'UPDATE user SET happy = true WHERE name = :name AND id = :id'</span>, $user);
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>For more infos on <a href="#how-the-doctrine-dbal-executequery-method-works-go-tho-the-doctrine-dbal-documentation">how the doctrine dbal executeQuery method works go tho the doctrine dbal documentation</a>.</p>
 <p>Additionally, there is also the preUp, postUp and preDown, postDown method, that are respectivelly called before and
  after the up and down method are called.</p>
 <p>First you need to generate a new migration class:</p>
-<pre><code class="bash">$ ./doctrine migrations:generate
-Generated new migration class to &quot;/path/to/migrations/DoctrineMigrations/Version20100416130422.php&quot;
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>./doctrine migrations:generate
+Generated new migration class to "/path/to/migrations/DoctrineMigrations/Version20100416130422.php"</code></pre></div>
 <p>This newly generated migration class is the place where you can add your own
 custom SQL queries:</p>
-<pre><code class="php">namespace DoctrineMigrations;
-
-use Doctrine\DBAL\Migrations\AbstractMigration,
-    Doctrine\DBAL\Schema\Schema;
-
-class Version20100416130422 extends AbstractMigration
-{
-    public function up(Schema $schema)
-    {
-        $this-&gt;addSql('CREATE TABLE addresses (id INT NOT NULL, street VARCHAR(255) NOT NULL, PRIMARY KEY(id)) ENGINE = InnoDB');
-    }
-
-    public function down(Schema $schema)
-    {
-        $this-&gt;addSql('DROP TABLE addresses');
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6fc9c5addc11a7aa0f1d194ae7fe691bd75c3855"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6fc9c5addc11a7aa0f1d194ae7fe691bd75c3855"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">DoctrineMigrations</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">AbstractMigration</span>,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    Doctrine\DBAL\Schema\Schema;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Version20100416130422</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractMigration</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">(Schema $schema)</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;addSql(<span class="hljs-string">'CREATE TABLE addresses (id INT NOT NULL, street VARCHAR(255) NOT NULL, PRIMARY KEY(id)) ENGINE = InnoDB'</span>);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">down</span><span class="hljs-params">(Schema $schema)</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;addSql(<span class="hljs-string">'DROP TABLE addresses'</span>);
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -345,8 +361,6 @@ class Version20100416130422 extends AbstractMigration
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -392,7 +406,7 @@ class Version20100416130422 extends AbstractMigration
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

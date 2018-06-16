@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -283,134 +280,155 @@ to have to define the persistent inheritance. For this example, we
 will use Single Table Inheritance, but Class Table Inheritance
 would work as well. In the discriminator map, we will define two
 concrete subclasses, <code>ConcreteComponent</code> and <code>ConcreteDecorator</code>.</p>
-<pre><code class="php">&lt;?php
-
-namespace Test;
-
-use Doctrine\ORM\Annotation as ORM;
-
-/**
- * @ORM\Entity
- * @ORM\InheritanceType(&quot;SINGLE_TABLE&quot;)
- * @ORM\DiscriminatorColumn(name=&quot;discr&quot;, type=&quot;string&quot;)
- * @ORM\DiscriminatorMap({
- *   &quot;cc&quot; = &quot;Test\Component\ConcreteComponent&quot;,
- *   &quot;cd&quot; = &quot;Test\Decorator\ConcreteDecorator&quot;
- * })
- */
-abstract class Component
-{
-    /**
-     * @ORM\Id @ORM\Column(type=&quot;integer&quot;)
-     * @ORM\GeneratedValue(strategy=&quot;AUTO&quot;)
-     */
-    protected $id;
-
-    /** @ORM\Column(type=&quot;string&quot;, nullable=true) */
-    protected $name;
-
-    /**
-     * Get id
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this-&gt;id;
-    }
-
-    /**
-     * Set name
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this-&gt;name = $name;
-    }
-
-    /**
-     * Get name
-     * @return string $name
-     */
-    public function getName()
-    {
-        return $this-&gt;name;
-    }
-
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ab01eb90e1c1da0a84311e27fe3430c41b83946d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ab01eb90e1c1da0a84311e27fe3430c41b83946d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Test</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Annotation</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @ORM\Entity
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> * @ORM\InheritanceType(<span class="hljs-string">"SINGLE_TABLE"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> * @ORM\DiscriminatorColumn(name=<span class="hljs-string">"discr"</span>, type=<span class="hljs-string">"string"</span>)
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> * @ORM\DiscriminatorMap({
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> *   <span class="hljs-string">"cc"</span> = <span class="hljs-string">"Test\Component\ConcreteComponent"</span>,
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> *   <span class="hljs-string">"cd"</span> = <span class="hljs-string">"Test\Decorator\ConcreteDecorator"</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"> * })
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Component</span></span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     * @ORM\Id @ORM\Column(type=<span class="hljs-string">"integer"</span>)
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * @ORM\GeneratedValue(strategy=<span class="hljs-string">"AUTO"</span>)
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">protected</span> $id;
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="string", nullable=true) */</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-keyword">protected</span> $name;
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     * Get id
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">     * @<span class="hljs-keyword">return</span> integer $id
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id;
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">     * Set name
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">     * @param string $name
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">($name)</span></span>
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;name = $name;
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">     * Get name
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string $name
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name;
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="concretecomponent" name="concretecomponent"></a><h2 class="section-header"><a href="#concretecomponent">ConcreteComponent<i class="fas fa-link"></i></a></h2>
 <p>The <code>ConcreteComponent</code> class is pretty simple and doesn't do much
 more than extend the abstract <code>Component</code> class (only for the
 purpose of keeping this example simple).</p>
-<pre><code class="php">&lt;?php
-
-namespace Test\Component;
-
-use Doctrine\ORM\Annotation as ORM;
-use Test\Component;
-
-/** @ORM\Entity */
-class ConcreteComponent extends Component
-{}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="635a34aec7193094afa8cfca43e55ec9a0cc179e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="635a34aec7193094afa8cfca43e55ec9a0cc179e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Test</span>\<span class="hljs-title">Component</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Annotation</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Test</span>\<span class="hljs-title">Component</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Entity */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConcreteComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">{}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="decorator" name="decorator"></a><h2 class="section-header"><a href="#decorator">Decorator<i class="fas fa-link"></i></a></h2>
 <p>The <code>Decorator</code> class doesn't need to be persisted, but it does
 need to define an association with a persisted <code>Entity</code>. We can
 use a <code>MappedSuperclass</code> for this.</p>
-<pre><code class="php">&lt;?php
-
-namespace Test;
-
-use Doctrine\ORM\Annotation as ORM;
-
-/** @ORM\MappedSuperclass */
-abstract class Decorator extends Component
-{
-
-    /**
-     * @ORM\OneToOne(targetEntity=&quot;Test\Component&quot;, cascade={&quot;all&quot;})
-     * @ORM\JoinColumn(name=&quot;decorates&quot;, referencedColumnName=&quot;id&quot;)
-     */
-    protected $decorates;
-
-    /**
-     * initialize the decorator
-     * @param Component $c
-     */
-    public function __construct(Component $c)
-    {
-        $this-&gt;setDecorates($c);
-    }
-
-    /**
-     * (non-PHPdoc)
-     * @see Test.Component::getName()
-     */
-    public function getName()
-    {
-	    return 'Decorated ' . $this-&gt;getDecorates()-&gt;getName();
-    }
-
-    /**
-     * the component being decorated
-     * @return Component
-     */
-    protected function getDecorates()
-    {
-	    return $this-&gt;decorates;
-    }
-
-    /**
-     * sets the component being decorated
-     * @param Component $c
-     */
-    protected function setDecorates(Component $c)
-    {
-	    $this-&gt;decorates = $c;
-    }
-
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d6efedb087908bad437df36889825c78cef31013"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d6efedb087908bad437df36889825c78cef31013"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Test</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Annotation</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\MappedSuperclass */</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Decorator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     * @ORM\OneToOne(targetEntity=<span class="hljs-string">"Test\Component"</span>, cascade={<span class="hljs-string">"all"</span>})
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     * @ORM\JoinColumn(name=<span class="hljs-string">"decorates"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">protected</span> $decorates;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     * initialize the decorator
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     * @param Component $c
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Component $c)</span></span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;setDecorates($c);
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     * (non-PHPdoc)
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     * @see Test.Component::getName()
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">	    <span class="hljs-keyword">return</span> <span class="hljs-string">'Decorated '</span> . <span class="hljs-keyword">$this</span>-&gt;getDecorates()-&gt;getName();
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">     * the component being decorated
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Component
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDecorates</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">	    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;decorates;
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">     * sets the component being decorated
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">     * @param Component $c
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setDecorates</span><span class="hljs-params">(Component $c)</span></span>
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">	    <span class="hljs-keyword">$this</span>-&gt;decorates = $c;
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>All operations on the <code>Decorator</code> (i.e. persist, remove, etc) will
 cascade from the <code>Decorator</code> to the <code>Component</code>. This means that
 when we persist a <code>Decorator</code>, Doctrine will take care of
@@ -433,92 +451,106 @@ illustrate how the <code>Decorator</code> can alter data as it moves through
 the chain of decoration, a new field, &quot;special&quot;, has been added to
 this class. The getName() has been overridden and appends the value
 of the getSpecial() method to its return value.</p>
-<pre><code class="php">&lt;?php
-
-namespace Test\Decorator;
-
-use Doctrine\ORM\Annotation as ORM;
-use Test\Decorator;
-
-/** @ORM\Entity */
-class ConcreteDecorator extends Decorator
-{
-
-    /** @ORM\Column(type=&quot;string&quot;, nullable=true) */
-    protected $special;
-
-    /**
-     * Set special
-     * @param string $special
-     */
-    public function setSpecial($special)
-    {
-        $this-&gt;special = $special;
-    }
-
-    /**
-     * Get special
-     * @return string $special
-     */
-    public function getSpecial()
-    {
-        return $this-&gt;special;
-    }
-
-    /**
-     * (non-PHPdoc)
-     * @see Test.Component::getName()
-     */
-    public function getName()
-    {
-        return '[' . $this-&gt;getSpecial()
-            . '] ' . parent::getName();
-    }
-
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="35af1c9a174bc02fbe4d35c61f376e84b25df1f8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="35af1c9a174bc02fbe4d35c61f376e84b25df1f8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Test</span>\<span class="hljs-title">Decorator</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Annotation</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Test</span>\<span class="hljs-title">Decorator</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Entity */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConcreteDecorator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Decorator</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="string", nullable=true) */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">protected</span> $special;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * Set special
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     * @param string $special
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSpecial</span><span class="hljs-params">($special)</span></span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;special = $special;
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     * Get special
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string $special
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSpecial</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;special;
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">     * (non-PHPdoc)
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">     * @see Test.Component::getName()
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-string">'['</span> . <span class="hljs-keyword">$this</span>-&gt;getSpecial()
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">            . <span class="hljs-string">'] '</span> . <span class="hljs-keyword">parent</span>::getName();
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="examples" name="examples"></a><h2 class="section-header"><a href="#examples">Examples<i class="fas fa-link"></i></a></h2>
 <p>Here is an example of how to persist and retrieve your decorated
 objects</p>
-<pre><code class="php">&lt;?php
-
-use Test\Component\ConcreteComponent,
-    Test\Decorator\ConcreteDecorator;
-
-// assumes Doctrine 2 is configured and an instance of
-// an EntityManager is available as $em
-
-// create a new concrete component
-$c = new ConcreteComponent();
-$c-&gt;setName('Test Component 1');
-$em-&gt;persist($c); // assigned unique ID = 1
-
-// create a new concrete decorator
-$c = new ConcreteComponent();
-$c-&gt;setName('Test Component 2');
-
-$d = new ConcreteDecorator($c);
-$d-&gt;setSpecial('Really');
-$em-&gt;persist($d);
-// assigns c as unique ID = 2, and d as unique ID = 3
-
-$em-&gt;flush();
-
-$c = $em-&gt;find('Test\Component', 1);
-$d = $em-&gt;find('Test\Component', 3);
-
-echo get_class($c);
-// prints: Test\Component\ConcreteComponent
-
-echo $c-&gt;getName();
-// prints: Test Component 1
-
-echo get_class($d)
-// prints: Test\Component\ConcreteDecorator
-
-echo $d-&gt;getName();
-// prints: [Really] Decorated Test Component 2
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bd12d6740a839a7a7005888851fd5dc0e827f890"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bd12d6740a839a7a7005888851fd5dc0e827f890"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Test</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">ConcreteComponent</span>,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    Test\Decorator\ConcreteDecorator;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">// assumes Doctrine 2 is configured and an instance of</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">// an EntityManager is available as $em</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-comment">// create a new concrete component</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$c = <span class="hljs-keyword">new</span> ConcreteComponent();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$c-&gt;setName(<span class="hljs-string">'Test Component 1'</span>);
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$em-&gt;persist($c); <span class="hljs-comment">// assigned unique ID = 1</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">// create a new concrete decorator</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$c = <span class="hljs-keyword">new</span> ConcreteComponent();
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$c-&gt;setName(<span class="hljs-string">'Test Component 2'</span>);
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$d = <span class="hljs-keyword">new</span> ConcreteDecorator($c);
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$d-&gt;setSpecial(<span class="hljs-string">'Really'</span>);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">$em-&gt;persist($d);
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-comment">// assigns c as unique ID = 2, and d as unique ID = 3</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$em-&gt;flush();
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">$c = $em-&gt;find(<span class="hljs-string">'Test\Component'</span>, <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">$d = $em-&gt;find(<span class="hljs-string">'Test\Component'</span>, <span class="hljs-number">3</span>);
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-keyword">echo</span> get_class($c);
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-comment">// prints: Test\Component\ConcreteComponent</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-keyword">echo</span> $c-&gt;getName();
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"><span class="hljs-comment">// prints: Test Component 1</span>
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-keyword">echo</span> get_class($d)
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"><span class="hljs-comment">// prints: Test\Component\ConcreteDecorator</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"><span class="hljs-keyword">echo</span> $d-&gt;getName();
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"><span class="hljs-comment">// prints: [Really] Decorated Test Component 2</span>
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -543,8 +575,6 @@ echo $d-&gt;getName();
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -590,7 +620,7 @@ echo $d-&gt;getName();
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

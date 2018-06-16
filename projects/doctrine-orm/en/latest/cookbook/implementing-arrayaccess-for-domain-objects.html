@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -286,26 +283,33 @@ at runtime. Note that this implementation has 2 main caveats:</p>
 <li class="dash"> It will not go through any getters/setters</li>
 </ul>
 
-<pre><code class="php">&lt;?php
-abstract class DomainObject implements ArrayAccess
-{
-    public function offsetExists($offset) {
-        return isset($this-&gt;$offset);
-    }
-
-    public function offsetSet($offset, $value) {
-        $this-&gt;$offset = $value;
-    }
-
-    public function offsetGet($offset) {
-        return $this-&gt;$offset;
-    }
-
-    public function offsetUnset($offset) {
-        $this-&gt;$offset = null;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="14d47e6206cec8444a5849410e4592121903bc6c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="14d47e6206cec8444a5849410e4592121903bc6c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DomainObject</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ArrayAccess</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetExists</span><span class="hljs-params">($offset)</span> </span>{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">isset</span>(<span class="hljs-keyword">$this</span>-&gt;$offset);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetSet</span><span class="hljs-params">($offset, $value)</span> </span>{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;$offset = $value;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetGet</span><span class="hljs-params">($offset)</span> </span>{
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;$offset;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetUnset</span><span class="hljs-params">($offset)</span> </span>{
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;$offset = <span class="hljs-keyword">null</span>;
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="option-2" name="option-2"></a><h2 class="section-header"><a href="#option-2">Option 2<i class="fas fa-link"></i></a></h2>
 <p>In this implementation we will dynamically invoke getters/setters.
 Again we use PHPs dynamic nature to invoke methods on a subtype
@@ -316,53 +320,67 @@ caveats:</p>
 <li class="dash"> offsetUnset will not work with typehinted setters</li>
 </ul>
 
-<pre><code class="php">&lt;?php
-abstract class DomainObject implements ArrayAccess
-{
-    public function offsetExists($offset) {
-        // In this example we say that exists means it is not null
-        $value = $this-&gt;{&quot;get$offset&quot;}();
-        return $value !== null;
-    }
-
-    public function offsetSet($offset, $value) {
-        $this-&gt;{&quot;set$offset&quot;}($value);
-    }
-
-    public function offsetGet($offset) {
-        return $this-&gt;{&quot;get$offset&quot;}();
-    }
-
-    public function offsetUnset($offset) {
-        $this-&gt;{&quot;set$offset&quot;}(null);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2cb5f795e07c607af7e7f2c0ffbf270bef24a5f1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2cb5f795e07c607af7e7f2c0ffbf270bef24a5f1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DomainObject</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ArrayAccess</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetExists</span><span class="hljs-params">($offset)</span> </span>{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-comment">// In this example we say that exists means it is not null</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        $value = <span class="hljs-keyword">$this</span>-&gt;{<span class="hljs-string">"get$offset"</span>}();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-keyword">return</span> $value !== <span class="hljs-keyword">null</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetSet</span><span class="hljs-params">($offset, $value)</span> </span>{
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;{<span class="hljs-string">"set$offset"</span>}($value);
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetGet</span><span class="hljs-params">($offset)</span> </span>{
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;{<span class="hljs-string">"get$offset"</span>}();
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetUnset</span><span class="hljs-params">($offset)</span> </span>{
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;{<span class="hljs-string">"set$offset"</span>}(<span class="hljs-keyword">null</span>);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="read-only" name="read-only"></a><h2 class="section-header"><a href="#read-only">Read-only<i class="fas fa-link"></i></a></h2>
 <p>You can slightly tweak option 1 or option 2 in order to make array
 access read-only. This will also circumvent some of the caveats of
 each option. Simply make offsetSet and offsetUnset throw an
 exception (i.e. BadMethodCallException).</p>
-<pre><code class="php">&lt;?php
-abstract class DomainObject implements ArrayAccess
-{
-    public function offsetExists($offset) {
-        // option 1 or option 2
-    }
-
-    public function offsetSet($offset, $value) {
-        throw new BadMethodCallException(&quot;Array access of class &quot; . get_class($this) . &quot; is read-only!&quot;);
-    }
-
-    public function offsetGet($offset) {
-        // option 1 or option 2
-    }
-
-    public function offsetUnset($offset) {
-        throw new BadMethodCallException(&quot;Array access of class &quot; . get_class($this) . &quot; is read-only!&quot;);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8cc6a8ea8b310e205c13cb77f374d5a38bbb9ec4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8cc6a8ea8b310e205c13cb77f374d5a38bbb9ec4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DomainObject</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ArrayAccess</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetExists</span><span class="hljs-params">($offset)</span> </span>{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-comment">// option 1 or option 2</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetSet</span><span class="hljs-params">($offset, $value)</span> </span>{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> BadMethodCallException(<span class="hljs-string">"Array access of class "</span> . get_class(<span class="hljs-keyword">$this</span>) . <span class="hljs-string">" is read-only!"</span>);
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetGet</span><span class="hljs-params">($offset)</span> </span>{
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-comment">// option 1 or option 2</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">offsetUnset</span><span class="hljs-params">($offset)</span> </span>{
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> BadMethodCallException(<span class="hljs-string">"Array access of class "</span> . get_class(<span class="hljs-keyword">$this</span>) . <span class="hljs-string">" is read-only!"</span>);
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -387,8 +405,6 @@ abstract class DomainObject implements ArrayAccess
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -434,7 +450,7 @@ abstract class DomainObject implements ArrayAccess
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

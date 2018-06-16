@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -264,24 +261,45 @@ they can be unique and you can give them an order. In this chapter
 we'll show you examples of indexes using annotations.</p>
 <p>First here is an example where we put an index on a single
 property:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-namespace Documents;
-
-/** @Document */
-class User
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;string&quot;) @Index */
-    public $username;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;field name=&quot;username&quot; index=&quot;true&quot; /&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">fields:
-  username:
-    index: true
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a112d825e5faf54e89dcd2d6e6d3d9d102ca7816"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a112d825e5faf54e89dcd2d6e6d3d9d102ca7816"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") <span class="hljs-doctag">@Index</span> */</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> $username;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="82b1076ce3acee282546bbb0f485aa0bdc063ba7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="82b1076ce3acee282546bbb0f485aa0bdc063ba7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">index</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8f7fa2eab374cb5da106de690248986f57058e75"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8f7fa2eab374cb5da106de690248986f57058e75"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">fields:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  username:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">    index:</span> <span class="hljs-literal">true</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <a class="section-anchor" id="index-options" name="index-options"></a><h2 class="section-header"><a href="#index-options">Index Options<i class="fas fa-link"></i></a></h2>
 <p>You can customize the index with some additional options:</p>
 <p>-<br />   <strong>name</strong> - The name of the index. This can be useful if you are
@@ -314,182 +332,287 @@ class User
    and maintenance. This feature was introduced with MongoDB 3.2 and is not
    available on older versions.</p>
 <a class="section-anchor" id="unique-index" name="unique-index"></a><h2 class="section-header"><a href="#unique-index">Unique Index<i class="fas fa-link"></i></a></h2>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-namespace Documents;
-
-/** @Document */
-class User
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;string&quot;) @Index(unique=true, order=&quot;asc&quot;) */
-    public $username;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;field fieldName=&quot;username&quot; index=&quot;true&quot; unique=&quot;true&quot; order=&quot;asc&quot; /&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">fields:
-  username:
-    index: true
-    unique: true
-    order: true
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4117637e7dd70698e610105aa6ee67e745c62d83"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4117637e7dd70698e610105aa6ee67e745c62d83"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") <span class="hljs-doctag">@Index</span>(unique=true, order="asc") */</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> $username;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a37d74fb6442bcfc7f43008d6791308bb6d96131"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a37d74fb6442bcfc7f43008d6791308bb6d96131"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">index</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">unique</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"asc"</span> /&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5649afcced2c98ae4957cb69b9f3baaba8e7f4f6"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5649afcced2c98ae4957cb69b9f3baaba8e7f4f6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">fields:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  username:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">    index:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    unique:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    order:</span> <span class="hljs-literal">true</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>For your convenience you can quickly specify a unique index with
 <code>@UniqueIndex</code>:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-namespace Documents;
-
-/** @Document */
-class User
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;string&quot;) @UniqueIndex(order=&quot;asc&quot;) */
-    public $username;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;field fieldName=&quot;username&quot; unique=&quot;true&quot; order=&quot;asc&quot; /&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">fields:
-  username:
-    unique: true
-    order: true
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="17f787e815619b06de576698f882197f2c5b59cc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="17f787e815619b06de576698f882197f2c5b59cc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") <span class="hljs-doctag">@UniqueIndex</span>(order="asc") */</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> $username;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e8d64be0ff020c41e91fe898338132ec42842918"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e8d64be0ff020c41e91fe898338132ec42842918"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">unique</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"asc"</span> /&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f7fc68c45b1f7452dfde8704c5107d9de847f7d4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f7fc68c45b1f7452dfde8704c5107d9de847f7d4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">fields:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  username:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">    unique:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    order:</span> <span class="hljs-literal">true</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>If you want to specify an index that consists of multiple fields
 you can specify them on the class doc block:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-namespace Documents;
-
-/**
- * @Document
- * @UniqueIndex(keys={&quot;accountId&quot;=&quot;asc&quot;, &quot;username&quot;=&quot;asc&quot;})
- */
-class User
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;int&quot;) */
-    public $accountId;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $username;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mongo-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping&quot;
-      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-      xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping
-                    http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping.xsd&quot;&gt;
-
-    &lt;document name=&quot;Documents\User&quot;&gt;
-        &lt;indexes&gt;
-            &lt;index&gt;
-                &lt;option name=&quot;unique&quot; value=&quot;true&quot; /&gt;
-                &lt;key name=&quot;accountId&quot; order=&quot;asc&quot; /&gt;
-                &lt;key name=&quot;username&quot; order=&quot;asc&quot; /&gt;
-            &lt;/index&gt;
-        &lt;/indexes&gt;
-    &lt;/document&gt;
-&lt;/doctrine-mongo-mapping&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">Documents\User:
-  indexes:
-    usernameacctid:
-      options:
-        unique: true
-      keys:
-        accountId:
-          order: asc
-        username:
-          order: asc
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="864261afb77cfeb4e4fabc7f5491b33b668546a7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="864261afb77cfeb4e4fabc7f5491b33b668546a7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @UniqueIndex(keys={<span class="hljs-string">"accountId"</span>=<span class="hljs-string">"asc"</span>, <span class="hljs-string">"username"</span>=<span class="hljs-string">"asc"</span>})
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="int") */</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> $accountId;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> $username;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0d251928694a5e3cdb1d1883fdfede013a7d9258"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0d251928694a5e3cdb1d1883fdfede013a7d9258"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mongo-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">                    http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Documents\User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"unique"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">key</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"accountId"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"asc"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">key</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"asc"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mongo-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="93ef58fa8fc4cfa2218fc49d6231378581352a6e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="93ef58fa8fc4cfa2218fc49d6231378581352a6e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-string">Documents\User:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  indexes:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">    usernameacctid:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">      options:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">        unique:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      keys:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">        accountId:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">          order:</span> <span class="hljs-string">asc</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">        username:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">          order:</span> <span class="hljs-string">asc</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>To specify multiple indexes you must use the <code>@Indexes</code>
 annotation:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-/**
- * @Document
- * @Indexes({
- *   @Index(keys={&quot;accountId&quot;=&quot;asc&quot;}),
- *   @Index(keys={&quot;username&quot;=&quot;asc&quot;}) 
- * })
- */
-class User
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;int&quot;) */
-    public $accountId;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $username;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mongo-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping&quot;
-      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-      xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping
-                    http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping.xsd&quot;&gt;
-
-    &lt;document name=&quot;Documents\User&quot;&gt;
-        &lt;indexes&gt;
-            &lt;index&gt;
-                &lt;key name=&quot;accountId&quot; order=&quot;asc&quot; /&gt;
-            &lt;/index&gt;
-            &lt;index&gt;
-                &lt;key name=&quot;username&quot; order=&quot;asc&quot; /&gt;
-            &lt;/index&gt;
-        &lt;/indexes&gt;
-    &lt;/document&gt;
-&lt;/doctrine-mongo-mapping&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">Documents\User:
-  indexes:
-    accountId:
-      keys:
-        accountId:
-          order: asc
-    username:
-      keys:
-        username:
-          order: asc
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1cf9e814c042a86d4619d21b2fc95773b7e5dbb3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1cf9e814c042a86d4619d21b2fc95773b7e5dbb3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Indexes({
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *   @Index(keys={<span class="hljs-string">"accountId"</span>=<span class="hljs-string">"asc"</span>}),
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *   @Index(keys={<span class="hljs-string">"username"</span>=<span class="hljs-string">"asc"</span>}) 
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * })
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="int") */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> $accountId;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> $username;
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="933ce2df6af4f24329f848f767b2e0f4d3b9b007"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="933ce2df6af4f24329f848f767b2e0f4d3b9b007"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mongo-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">                    http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Documents\User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">key</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"accountId"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"asc"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">key</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"asc"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mongo-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="89c94a735e91f0f4976be8801bec8d4be77ed824"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="89c94a735e91f0f4976be8801bec8d4be77ed824"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-string">Documents\User:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  indexes:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">    accountId:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">      keys:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">        accountId:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">          order:</span> <span class="hljs-string">asc</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    username:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      keys:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">        username:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">          order:</span> <span class="hljs-string">asc</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <a class="section-anchor" id="embedded-indexes" name="embedded-indexes"></a><h2 class="section-header"><a href="#embedded-indexes">Embedded Indexes<i class="fas fa-link"></i></a></h2>
 <p>You can specify indexes on embedded documents just like you do on normal documents. When Doctrine
 creates the indexes for a document it will also create all the indexes from its mapped embedded
 documents.</p>
-<pre><code class="php">&lt;?php
-
-namespace Documents;
-
-/** @EmbeddedDocument */
-class Comment
-{
-    /** @Field(type=&quot;date&quot;) @Index */
-    private $date;
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4d9e84df02245aab2534f2eea84965413325fd31"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4d9e84df02245aab2534f2eea84965413325fd31"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@EmbeddedDocument</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comment</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="date") <span class="hljs-doctag">@Index</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $date;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Now if we had a <code>BlogPost</code> document with the <code>Comment</code> document embedded many times:</p>
-<pre><code class="php">&lt;?php
-
-namespace Documents;
-
-/** @Document */
-class BlogPost
-{
-    // ...
-
-    /** @Field(type=&quot;string&quot;) @Index */
-    private $slug;
-
-    /** @EmbedMany(targetDocument=&quot;Comment&quot;) */
-    private $comments;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f46c6373c1fd1d6f4ef9a74bab1d41b7cef04dc2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f46c6373c1fd1d6f4ef9a74bab1d41b7cef04dc2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogPost</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") <span class="hljs-doctag">@Index</span> */</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">private</span> $slug;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedMany</span>(targetDocument="Comment") */</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">private</span> $comments;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>If we were to create the indexes with the <code>SchemaManager</code>:</p>
-<pre><code class="php">&lt;?php
-
-$sm-&gt;ensureIndexes();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f312d0310a3e319651498f7e36423806d923098e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f312d0310a3e319651498f7e36423806d923098e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$sm-&gt;ensureIndexes();
+</td></tr></table></div></code></pre>
 <p>It will create the indexes from the <code>BlogPost</code> document but will also create the indexes that are
 defined on the <code>Comment</code> embedded document. The following would be executed on the underlying MongoDB
 database:</p>
@@ -509,76 +632,118 @@ or <a href="">embed-many</a> relationship.</p>
 <a class="section-anchor" id="geospatial-indexing" name="geospatial-indexing"></a><h2 class="section-header"><a href="#geospatial-indexing">Geospatial Indexing<i class="fas fa-link"></i></a></h2>
 <p>You can specify a geospatial index by just specifying the keys and
 options structures manually:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-/**
- * @Document
- * @Index(keys={&quot;coordinates&quot;=&quot;2d&quot;})
- */
-class Place
-{
-    /** @Id */
-    public $id;
-
-    /** @EmbedOne(targetDocument=&quot;Coordinates&quot;) */
-    public $coordinates;
-}
-
-/** @EmbeddedDocument */
-class Coordinates
-{
-    /** @Field(type=&quot;float&quot;) */
-    public $latitude;
-
-    /** @Field(type=&quot;float&quot;) */
-    public $longitude;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;indexes&gt;
-    &lt;index&gt;
-        &lt;key name=&quot;coordinates&quot; order=&quot;2d&quot; /&gt;
-    &lt;/index&gt;
-&lt;/indexes&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">indexes:
-  coordinates:
-    keys:
-      coordinates: 2d
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bb162d380ceffb0499695e4497b3b394397fef63"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bb162d380ceffb0499695e4497b3b394397fef63"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Index(keys={<span class="hljs-string">"coordinates"</span>=<span class="hljs-string">"2d"</span>})
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Place</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedOne</span>(targetDocument="Coordinates") */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $coordinates;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@EmbeddedDocument</span> */</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Coordinates</span></span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="float") */</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> $latitude;
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="float") */</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> $longitude;
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="abb864d48909d66a10d748adf4c78ecf733360e3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="abb864d48909d66a10d748adf4c78ecf733360e3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">key</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"coordinates"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"2d"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8a4445e8921a22d60b116b53369369f6a0b053af"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8a4445e8921a22d60b116b53369369f6a0b053af"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">indexes:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  coordinates:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">    keys:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">      coordinates:</span> <span class="hljs-number">2</span><span class="hljs-string">d</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <a class="section-anchor" id="partial-indexes" name="partial-indexes"></a><h2 class="section-header"><a href="#partial-indexes">Partial indexes<i class="fas fa-link"></i></a></h2>
 <p>You can create a partial index by adding a <code>partialFilterExpression</code> to any
 index.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-/**
- * @Document
- * @Index(keys={&quot;city&quot;=&quot;asc&quot;}, partialFilterExpression={&quot;version&quot;={&quot;$gt&quot;=1}})
- */
-class Place
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $city;
-
-    /** @Field(type=&quot;int&quot;) */
-    public $version;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;indexes&gt;
-    &lt;index&gt;
-        &lt;key name=&quot;city&quot; order=&quot;asc&quot; /&gt;
-        &lt;partial-filter-expression&gt;
-            &lt;field name=&quot;version&quot; value=&quot;1&quot; operator=&quot;gt&quot; /&gt;
-        &lt;/partial-filter-expression&gt;
-    &lt;/index&gt;
-&lt;/indexes&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">indexes:
-  partialIndexExample:
-    keys:
-      coordinates: asc
-    options:
-      partialFilterExpression:
-        version: { $gt: 1 }
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dd764da3d7d7a5a5a273f1674ce3a5f572320647"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dd764da3d7d7a5a5a273f1674ce3a5f572320647"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Index(keys={<span class="hljs-string">"city"</span>=<span class="hljs-string">"asc"</span>}, partialFilterExpression={<span class="hljs-string">"version"</span>={<span class="hljs-string">"$gt"</span>=<span class="hljs-number">1</span>}})
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Place</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $city;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="int") */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> $version;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f9a4456f089efeb33870cc3c6b66db8b6aa3a150"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f9a4456f089efeb33870cc3c6b66db8b6aa3a150"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">key</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"city"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"asc"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">partial-filter-expression</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"version"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span> <span class="hljs-attr">operator</span>=<span class="hljs-string">"gt"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">partial-filter-expression</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4a47915b46a58725e5253aa5eb730d9ebb3b3943"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4a47915b46a58725e5253aa5eb730d9ebb3b3943"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">indexes:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  partialIndexExample:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">    keys:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">      coordinates:</span> <span class="hljs-string">asc</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    options:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      partialFilterExpression:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">        version:</span> <span class="hljs-string">{</span> <span class="hljs-string">$gt:</span> <span class="hljs-number">1</span> <span class="hljs-string">}</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Partial indexes are only available with MongoDB 3.2 or newer. For more
 information on partial filter expressions, read the
 <a href="https://docs.mongodb.com/manual/core/index-partial/">official MongoDB documentation</a>.</p>
@@ -588,82 +753,131 @@ information on partial filter expressions, read the
 </div>
 <p>Sometimes you may want to require indexes for all your queries to ensure you don't let stray unindexed queries
 make it to the database and cause performance problems.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-/**
- * @Document(requireIndexes=true)
- */
-class Place
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;string&quot;) @Index */
-    public $city;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">// Documents.Place.dcm.xml
-
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-
-&lt;doctrine-mongo-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping&quot;
-      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-      xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping
-                    http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping.xsd&quot;&gt;
-
-    &lt;document name=&quot;Documents\Place&quot; require-indexes=&quot;true&quot;&gt;
-        &lt;field fieldName=&quot;id&quot; id=&quot;true&quot; /&gt;
-        &lt;field fieldName=&quot;city&quot; type=&quot;string&quot; /&gt;
-        &lt;indexes&gt;
-            &lt;index&gt;
-                &lt;key name=&quot;city&quot;&gt;
-            &lt;/index&gt;
-        &lt;/indexes&gt;
-    &lt;/document&gt;
-&lt;/doctrine-mongo-mapping&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml"># Documents.Place.dcm.yml
-
-Documents\Place:
-  fields:
-    id:
-      id: true
-    city:
-      type: string
-  indexes:
-    index1:
-      keys:
-        city: asc
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="93e9e86b29a1db526d5fa636da4062d243870a5c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="93e9e86b29a1db526d5fa636da4062d243870a5c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document(requireIndexes=<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Place</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") <span class="hljs-doctag">@Index</span> */</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> $city;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="405a715d54f4e0d22d3c2f360fea3e4102a10ffe"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="405a715d54f4e0d22d3c2f360fea3e4102a10ffe"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">// Documents.Place.dcm.xml
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mongo-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                    http://doctrine-project.org/schemas/orm/doctrine-mongo-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Documents\Place"</span> <span class="hljs-attr">require-indexes</span>=<span class="hljs-string">"true"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"city"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">key</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"city"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mongo-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bb7ee822d693b94cc4a0c426e4adff927279537c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bb7ee822d693b94cc4a0c426e4adff927279537c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment"># Documents.Place.dcm.yml</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-string">Documents\Place:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  fields:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      id:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    city:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">  indexes:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    index1:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      keys:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">        city:</span> <span class="hljs-string">asc</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>When you run queries it will check that it is indexed and throw an exception if it is not indexed:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('Documents\Place')
-    -&gt;field('city')-&gt;equals('Nashville');
-$query = $qb-&gt;getQuery();
-$places = $query-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="97f9c588d7b675a296ef878ffe131c3befcc6500"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="97f9c588d7b675a296ef878ffe131c3befcc6500"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Documents\Place'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'city'</span>)-&gt;equals(<span class="hljs-string">'Nashville'</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$places = $query-&gt;execute();
+</td></tr></table></div></code></pre>
 <p>When you execute the query it will throw an exception if `city` was not indexed in the database. You can control
 whether or not an exception will be thrown by using the `requireIndexes()` method:</p>
-<pre><code class="php">&lt;?php
-
-$qb-&gt;requireIndexes(false);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9b74eca8d1d710b43ab2b05168c9ca89bc077ff9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9b74eca8d1d710b43ab2b05168c9ca89bc077ff9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb-&gt;requireIndexes(<span class="hljs-keyword">false</span>);
+</td></tr></table></div></code></pre>
 <p>You can also check if the query is indexed and with the `isIndexed()` method and use it to display your
 own notification when a query is unindexed:</p>
-<pre><code class="php">&lt;?php
-
-$query = $qb-&gt;getQuery();
-if (!$query-&gt;isIndexed()) {
-    $notifier-&gt;addError('Cannot execute queries that are not indexed.');
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4655b8ee81bd35245d7bbda09816abc54905123f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4655b8ee81bd35245d7bbda09816abc54905123f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">if</span> (!$query-&gt;isIndexed()) {
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    $notifier-&gt;addError(<span class="hljs-string">'Cannot execute queries that are not indexed.'</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>If you don't want to require indexes for all queries you can set leave `requireIndexes` as false and control
 it on a per query basis:</p>
-<pre><code class="php">&lt;?php
-
-$qb-&gt;requireIndexes(true);
-$query = $qb-&gt;getQuery();
-$results = $query-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6b0515ac3cba684a8b57ed96779a036ff0989f3d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6b0515ac3cba684a8b57ed96779a036ff0989f3d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb-&gt;requireIndexes(<span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$results = $query-&gt;execute();
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -688,8 +902,6 @@ $results = $query-&gt;execute();
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -735,7 +947,7 @@ $results = $query-&gt;execute();
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

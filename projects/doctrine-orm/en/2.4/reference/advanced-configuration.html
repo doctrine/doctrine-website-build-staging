@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -269,39 +266,46 @@
 <code>Doctrine\ORM\Configuration</code> instance as well as some database
 connection parameters. This example shows all the potential
 steps of configuration.</p>
-<pre><code class="php">&lt;?php
-use Doctrine\ORM\EntityManager,
-    Doctrine\ORM\Configuration;
-
-// ...
-
-if ($applicationMode == &quot;development&quot;) {
-    $cache = new \Doctrine\Common\Cache\ArrayCache;
-} else {
-    $cache = new \Doctrine\Common\Cache\ApcCache;
-}
-
-$config = new Configuration;
-$config-&gt;setMetadataCacheImpl($cache);
-$driverImpl = $config-&gt;newDefaultAnnotationDriver('/path/to/lib/MyProject/Entities');
-$config-&gt;setMetadataDriverImpl($driverImpl);
-$config-&gt;setQueryCacheImpl($cache);
-$config-&gt;setProxyDir('/path/to/myproject/lib/MyProject/Proxies');
-$config-&gt;setProxyNamespace('MyProject\Proxies');
-
-if ($applicationMode == &quot;development&quot;) {
-    $config-&gt;setAutoGenerateProxyClasses(true);
-} else {
-    $config-&gt;setAutoGenerateProxyClasses(false);
-}
-
-$connectionOptions = array(
-    'driver' =&gt; 'pdo_sqlite',
-    'path' =&gt; 'database.sqlite'
-);
-
-$em = EntityManager::create($connectionOptions, $config);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4a7cac7f5074e6b28855fd7b1cb372df588e1a43"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4a7cac7f5074e6b28855fd7b1cb372df588e1a43"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">EntityManager</span>,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    Doctrine\ORM\Configuration;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">if</span> ($applicationMode == <span class="hljs-string">"development"</span>) {
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    $cache = <span class="hljs-keyword">new</span> \Doctrine\Common\Cache\ArrayCache;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">} <span class="hljs-keyword">else</span> {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    $cache = <span class="hljs-keyword">new</span> \Doctrine\Common\Cache\ApcCache;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$config = <span class="hljs-keyword">new</span> Configuration;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$config-&gt;setMetadataCacheImpl($cache);
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$driverImpl = $config-&gt;newDefaultAnnotationDriver(<span class="hljs-string">'/path/to/lib/MyProject/Entities'</span>);
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$config-&gt;setMetadataDriverImpl($driverImpl);
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">$config-&gt;setQueryCacheImpl($cache);
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$config-&gt;setProxyDir(<span class="hljs-string">'/path/to/myproject/lib/MyProject/Proxies'</span>);
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$config-&gt;setProxyNamespace(<span class="hljs-string">'MyProject\Proxies'</span>);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-keyword">if</span> ($applicationMode == <span class="hljs-string">"development"</span>) {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    $config-&gt;setAutoGenerateProxyClasses(<span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">} <span class="hljs-keyword">else</span> {
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    $config-&gt;setAutoGenerateProxyClasses(<span class="hljs-keyword">false</span>);
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">$connectionOptions = <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-string">'driver'</span> =&gt; <span class="hljs-string">'pdo_sqlite'</span>,
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-string">'path'</span> =&gt; <span class="hljs-string">'database.sqlite'</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">);
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">$em = EntityManager::create($connectionOptions, $config);
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Do not use Doctrine without a metadata and query cache!
 Doctrine is optimized for working with caches. The main
 parts in Doctrine that are optimized for caching are the metadata
@@ -318,27 +322,48 @@ query caches as seen in the previous code snippet.</p>
 <p>The following sections describe all the configuration options
 available on a <code>Doctrine\ORM\Configuration</code> instance.</p>
 <a class="section-anchor" id="proxy-directory-strong-em-required-strong-em" name="proxy-directory-strong-em-required-strong-em"></a><h3 class="section-header"><a href="#proxy-directory-strong-em-required-strong-em">Proxy Directory (<strong><em>REQUIRED</strong></em>)<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-$config-&gt;setProxyDir($dir);
-$config-&gt;getProxyDir();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f1405a5f02ee2c1945622963dcec303cc603b5f1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f1405a5f02ee2c1945622963dcec303cc603b5f1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setProxyDir($dir);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getProxyDir();
+</td></tr></table></div></code></pre>
 <p>Gets or sets the directory where Doctrine generates any proxy
 classes. For a detailed explanation on proxy classes and how they
 are used in Doctrine, refer to the &quot;Proxy Objects&quot; section further
 down.</p>
 <a class="section-anchor" id="proxy-namespace-strong-em-required-strong-em" name="proxy-namespace-strong-em-required-strong-em"></a><h3 class="section-header"><a href="#proxy-namespace-strong-em-required-strong-em">Proxy Namespace (<strong><em>REQUIRED</strong></em>)<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-$config-&gt;setProxyNamespace($namespace);
-$config-&gt;getProxyNamespace();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="87cb166f8e468c99dcf40e453fe3c922dbb8bc1a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="87cb166f8e468c99dcf40e453fe3c922dbb8bc1a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setProxyNamespace($namespace);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getProxyNamespace();
+</td></tr></table></div></code></pre>
 <p>Gets or sets the namespace to use for generated proxy classes. For
 a detailed explanation on proxy classes and how they are used in
 Doctrine, refer to the &quot;Proxy Objects&quot; section further down.</p>
 <a class="section-anchor" id="metadata-driver-strong-em-required-strong-em" name="metadata-driver-strong-em-required-strong-em"></a><h3 class="section-header"><a href="#metadata-driver-strong-em-required-strong-em">Metadata Driver (<strong><em>REQUIRED</strong></em>)<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-$config-&gt;setMetadataDriverImpl($driver);
-$config-&gt;getMetadataDriverImpl();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b869836c25ae2126608eff002b34255e66d90d30"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b869836c25ae2126608eff002b34255e66d90d30"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setMetadataDriverImpl($driver);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getMetadataDriverImpl();
+</td></tr></table></div></code></pre>
 <p>Gets or sets the metadata driver implementation that is used by
 Doctrine to acquire the object-relational metadata for your
 classes.</p>
@@ -355,10 +380,17 @@ or YamlDriver please refer to the dedicated chapters
 <code>XML Mapping</code> and <code>YAML Mapping</code>.</p>
 <p>The annotation driver can be configured with a factory method on
 the <code>Doctrine\ORM\Configuration</code>:</p>
-<pre><code class="php">&lt;?php
-$driverImpl = $config-&gt;newDefaultAnnotationDriver('/path/to/lib/MyProject/Entities');
-$config-&gt;setMetadataDriverImpl($driverImpl);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3f1c8f3f6b9c3b7a798b3e78225c8223173d4e4f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3f1c8f3f6b9c3b7a798b3e78225c8223173d4e4f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$driverImpl = $config-&gt;newDefaultAnnotationDriver(<span class="hljs-string">'/path/to/lib/MyProject/Entities'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;setMetadataDriverImpl($driverImpl);
+</td></tr></table></div></code></pre>
 <p>The path information to the entities is required for the annotation
 driver, because otherwise mass-operations on all entities through
 the console could not work correctly. All of metadata drivers
@@ -366,10 +398,17 @@ accept either a single directory as a string or an array of
 directories. With this feature a single driver can support multiple
 directories of Entities.</p>
 <a class="section-anchor" id="metadata-cache-strong-em-recommended-strong-em" name="metadata-cache-strong-em-recommended-strong-em"></a><h3 class="section-header"><a href="#metadata-cache-strong-em-recommended-strong-em">Metadata Cache (<strong><em>RECOMMENDED</strong></em>)<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-$config-&gt;setMetadataCacheImpl($cache);
-$config-&gt;getMetadataCacheImpl();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1bdec4bd0d4d4be9f0c16b5004bc9a633889564a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1bdec4bd0d4d4be9f0c16b5004bc9a633889564a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setMetadataCacheImpl($cache);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getMetadataCacheImpl();
+</td></tr></table></div></code></pre>
 <p>Gets or sets the cache implementation to use for caching metadata
 information, that is, all the information you supply via
 annotations, xml or yaml, so that they do not need to be parsed and
@@ -388,10 +427,17 @@ resources. The cache implementation must implement the
 <code>Doctrine\Common\Cache\ArrayCache</code> which only caches data on a
 per-request basis.</p>
 <a class="section-anchor" id="query-cache-strong-em-recommended-strong-em" name="query-cache-strong-em-recommended-strong-em"></a><h3 class="section-header"><a href="#query-cache-strong-em-recommended-strong-em">Query Cache (<strong><em>RECOMMENDED</strong></em>)<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-$config-&gt;setQueryCacheImpl($cache);
-$config-&gt;getQueryCacheImpl();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cef41adc767ae5d405bf047bd3b5bda26d4403a4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cef41adc767ae5d405bf047bd3b5bda26d4403a4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setQueryCacheImpl($cache);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getQueryCacheImpl();
+</td></tr></table></div></code></pre>
 <p>Gets or sets the cache implementation to use for caching DQL
 queries, that is, the result of a DQL parsing process that includes
 the final SQL as well as meta information about how to process the
@@ -411,10 +457,17 @@ minimal memory usage in your cache).</p>
 <code>Doctrine\Common\Cache\ArrayCache</code> which only caches data on a
 per-request basis.</p>
 <a class="section-anchor" id="sql-logger-strong-em-optional-strong-em" name="sql-logger-strong-em-optional-strong-em"></a><h3 class="section-header"><a href="#sql-logger-strong-em-optional-strong-em">SQL Logger (<strong><em>Optional</strong></em>)<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-$config-&gt;setSQLLogger($logger);
-$config-&gt;getSQLLogger();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5ffc96ce126ef89d36e271928b77c234ebd4ea7c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5ffc96ce126ef89d36e271928b77c234ebd4ea7c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setSQLLogger($logger);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getSQLLogger();
+</td></tr></table></div></code></pre>
 <p>Gets or sets the logger to use for logging all SQL statements
 executed by Doctrine. The logger class must implement the
 <code>Doctrine\DBAL\Logging\SQLLogger</code> interface. A simple default
@@ -422,10 +475,17 @@ implementation that logs to the standard output using <code>echo</code> and
 <code>var_dump</code> can be found at
 <code>Doctrine\DBAL\Logging\EchoSQLLogger</code>.</p>
 <a class="section-anchor" id="auto-generating-proxy-classes-strong-em-optional-strong-em" name="auto-generating-proxy-classes-strong-em-optional-strong-em"></a><h3 class="section-header"><a href="#auto-generating-proxy-classes-strong-em-optional-strong-em">Auto-generating Proxy Classes (<strong><em>OPTIONAL</strong></em>)<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-$config-&gt;setAutoGenerateProxyClasses($bool);
-$config-&gt;getAutoGenerateProxyClasses();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="af8979717020985b7cacc19251fc30d4c59aca72"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="af8979717020985b7cacc19251fc30d4c59aca72"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setAutoGenerateProxyClasses($bool);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getAutoGenerateProxyClasses();
+</td></tr></table></div></code></pre>
 <p>Gets or sets whether proxy classes should be generated
 automatically at runtime by Doctrine. If set to <code>FALSE</code>, proxy
 classes must be generated manually through the doctrine command
@@ -478,12 +538,19 @@ is known, without loading that entity from the database. This is
 useful, for example, as a performance enhancement, when you want to
 establish an association to an entity for which you have the
 identifier. You could simply do this:</p>
-<pre><code class="php">&lt;?php
-// $em instanceof EntityManager, $cart instanceof MyProject\Model\Cart
-// $itemId comes from somewhere, probably a request parameter
-$item = $em-&gt;getReference('MyProject\Model\Item', $itemId);
-$cart-&gt;addItem($item);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4eccef37f57ae512ce4dcd86d6d64e19ad6d2d70"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4eccef37f57ae512ce4dcd86d6d64e19ad6d2d70"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em instanceof EntityManager, $cart instanceof MyProject\Model\Cart</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// $itemId comes from somewhere, probably a request parameter</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$item = $em-&gt;getReference(<span class="hljs-string">'MyProject\Model\Item'</span>, $itemId);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$cart-&gt;addItem($item);
+</td></tr></table></div></code></pre>
 <p>Here, we added an Item to a Cart without loading the Item from the
 database. If you invoke any method on the Item instance, it would
 fully initialize its state transparently from the database. Here
@@ -508,10 +575,17 @@ that association, but only for that query.</p>
 <p>Proxy classes can either be generated manually through the Doctrine
 Console or automatically by Doctrine. The configuration option that
 controls this behavior is:</p>
-<pre><code class="php">&lt;?php
-$config-&gt;setAutoGenerateProxyClasses($bool);
-$config-&gt;getAutoGenerateProxyClasses();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="af8979717020985b7cacc19251fc30d4c59aca72"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="af8979717020985b7cacc19251fc30d4c59aca72"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setAutoGenerateProxyClasses($bool);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getAutoGenerateProxyClasses();
+</td></tr></table></div></code></pre>
 <p>The default value is <code>TRUE</code> for convenient development. However,
 this setting is not optimal for performance and therefore not
 recommended for a production environment. To eliminate the overhead
@@ -522,21 +596,35 @@ classes are not available or failing lazy-loads if new methods were
 added to the entity class that are not yet in the proxy class. In
 such a case, simply use the Doctrine Console to (re)generate the
 proxy classes like so:</p>
-<pre><code class="php">$ ./doctrine orm:generate-proxies
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a96d66b50cfc49ce4ede5500ff376513f96854b1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a96d66b50cfc49ce4ede5500ff376513f96854b1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$ ./doctrine orm:generate-proxies
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="autoloading-proxies" name="autoloading-proxies"></a><h2 class="section-header"><a href="#autoloading-proxies">Autoloading Proxies<i class="fas fa-link"></i></a></h2>
 <p>When you deserialize proxy objects from the session or any other storage
 it is necessary to have an autoloading mechanism in place for these classes.
 For implementation reasons Proxy class names are not PSR-0 compliant. This
 means that you have to register a special autoloader for these classes:</p>
-<pre><code class="php">&lt;?php
-use Doctrine\ORM\Proxy\Autoloader;
-
-$proxyDir = &quot;/path/to/proxies&quot;;
-$proxyNamespace = &quot;MyProxies&quot;;
-
-Autoloader::register($proxyDir, $proxyNamespace);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5f20be1948d8677663527ee5b7867b4f52d27469"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5f20be1948d8677663527ee5b7867b4f52d27469"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Proxy</span>\<span class="hljs-title">Autoloader</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$proxyDir = <span class="hljs-string">"/path/to/proxies"</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$proxyNamespace = <span class="hljs-string">"MyProxies"</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">Autoloader::register($proxyDir, $proxyNamespace);
+</td></tr></table></div></code></pre>
 <p>If you want to execute additional logic to intercept the proxy file not found
 state you can pass a closure as the third argument. It will be called with
 the arguments proxydir, namespace and className when the proxy file could not
@@ -546,13 +634,20 @@ be found.</p>
 with them using two different metadata drivers, for example XML and
 YAML. You can use the DriverChain Metadata implementations to
 aggregate these drivers based on namespaces:</p>
-<pre><code class="php">&lt;?php
-use Doctrine\ORM\Mapping\Driver\DriverChain;
-
-$chain = new DriverChain();
-$chain-&gt;addDriver($xmlDriver, 'Doctrine\Tests\Models\Company');
-$chain-&gt;addDriver($yamlDriver, 'Doctrine\Tests\ORM\Mapping');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7b15184f79ebdc4a9a13f5726a77925310805e7a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7b15184f79ebdc4a9a13f5726a77925310805e7a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">DriverChain</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$chain = <span class="hljs-keyword">new</span> DriverChain();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$chain-&gt;addDriver($xmlDriver, <span class="hljs-string">'Doctrine\Tests\Models\Company'</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$chain-&gt;addDriver($yamlDriver, <span class="hljs-string">'Doctrine\Tests\ORM\Mapping'</span>);
+</td></tr></table></div></code></pre>
 <p>Based on the namespace of the entity the loading of entities is
 delegated to the appropriate driver. The chain semantics come from
 the fact that the driver loops through all namespaces and matches
@@ -563,10 +658,17 @@ implementations.</p>
 <a class="section-anchor" id="default-repository-strong-em-optional-strong-em" name="default-repository-strong-em-optional-strong-em"></a><h2 class="section-header"><a href="#default-repository-strong-em-optional-strong-em">Default Repository (<strong><em>OPTIONAL</strong></em>)<i class="fas fa-link"></i></a></h2>
 <p>Specifies the FQCN of a subclass of the EntityRepository.
 That will be available for all entities without a custom repository class.</p>
-<pre><code class="php">&lt;?php
-$config-&gt;setDefaultRepositoryClassName($fqcn);
-$config-&gt;getDefaultRepositoryClassName();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d07f2be1259938b76beb9a5d9eb01ab8c8b1c5a0"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d07f2be1259938b76beb9a5d9eb01ab8c8b1c5a0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setDefaultRepositoryClassName($fqcn);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getDefaultRepositoryClassName();
+</td></tr></table></div></code></pre>
 <p>The default value is <code>Doctrine\ORM\EntityRepository</code>.
 Any repository class must be a subclass of EntityRepository otherwise you got an ORMException</p>
 <a class="section-anchor" id="setting-up-the-console" name="setting-up-the-console"></a><h2 class="section-header"><a href="#setting-up-the-console">Setting up the Console<i class="fas fa-link"></i></a></h2>
@@ -575,13 +677,20 @@ line interface. You can take a look at the <code>vendor/bin/doctrine.php</code>
 script and the <code>Doctrine\ORM\Tools\Console\ConsoleRunner</code> command
 for inspiration how to setup the cli.</p>
 <p>In general the required code looks like this:</p>
-<pre><code class="php">&lt;?php
-$cli = new Application('Doctrine Command Line Interface', \Doctrine\ORM\Version::VERSION);
-$cli-&gt;setCatchExceptions(true);
-$cli-&gt;setHelperSet($helperSet);
-Doctrine\ORM\Tools\Console\ConsoleRunner::addCommands($cli);
-$cli-&gt;run();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ead784ca016b6c7175901e6651b5dee799527273"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ead784ca016b6c7175901e6651b5dee799527273"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$cli = <span class="hljs-keyword">new</span> Application(<span class="hljs-string">'Doctrine Command Line Interface'</span>, \Doctrine\ORM\Version::VERSION);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cli-&gt;setCatchExceptions(<span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$cli-&gt;setHelperSet($helperSet);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">Doctrine\ORM\Tools\Console\ConsoleRunner::addCommands($cli);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$cli-&gt;run();
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -606,8 +715,6 @@ $cli-&gt;run();
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -653,7 +760,7 @@ $cli-&gt;run();
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

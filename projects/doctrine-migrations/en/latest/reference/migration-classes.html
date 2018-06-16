@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -254,154 +251,244 @@
 <a class="section-anchor" id="migration-classes" name="migration-classes"></a><h1 class="section-header"><a href="#migration-classes">Migration Classes<i class="fas fa-link"></i></a></h1>
 <p>Migration classes must extend <code>Doctrine\Migrations\AbstractMigration</code> and at a minimum they must implement the <code>up</code>
 and <code>down</code> methods. You can easily generate a blank migration to modify with the following command:</p>
-<pre><code class="sh">$ ./vendor/bin/doctrine-migrations generate
-Generated new migration class to &quot;/data/doctrine/migrations-docs-example/lib/MyProject/Migrations/Version20180601193057.php&quot;
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>./vendor/bin/doctrine-migrations generate
+Generated new migration class to "/data/doctrine/migrations-docs-example/lib/MyProject/Migrations/Version20180601193057.php"
 
 To run just this migration for testing purposes, you can use migrations:execute --up 20180601193057
 
-To revert the migration you can use migrations:execute --down 20180601193057
-</code></pre>
+To revert the migration you can use migrations:execute --down 20180601193057</code></pre></div>
 <p>The above command will generate a PHP class with the path to it visible like above. Here is what the blank
 migration looks like:</p>
-<pre><code class="php">&lt;?php
-
-declare(strict_types=1);
-
-namespace MyProject\Migrations;
-
-use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Migrations\AbstractMigration;
-
-/**
- * Auto-generated Migration: Please modify to your needs!
- */
-final class Version20180601193057 extends AbstractMigration
-{
-    public function getDescription() : string
-    {
-        return '';
-    }
-
-    public function up(Schema $schema) : void
-    {
-        // this up() migration is auto-generated, please modify it to your needs
-
-    }
-
-    public function down(Schema $schema) : void
-    {
-        // this down() migration is auto-generated, please modify it to your needs
-
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="82ee1d822fc3e9a1542e37bde51767a4f4586342"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="82ee1d822fc3e9a1542e37bde51767a4f4586342"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">declare</span>(strict_types=<span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Migrations</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Schema</span>\<span class="hljs-title">Schema</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">AbstractMigration</span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> * Auto-generated Migration: Please modify to your needs!
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Version20180601193057</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractMigration</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDescription</span><span class="hljs-params">()</span> : <span class="hljs-title">string</span></span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-comment">// this up() migration is auto-generated, please modify it to your needs</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">down</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        <span class="hljs-comment">// this down() migration is auto-generated, please modify it to your needs</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="methods-to-implement" name="methods-to-implement"></a><h2 class="section-header"><a href="#methods-to-implement">Methods to Implement<i class="fas fa-link"></i></a></h2>
 <p>The <code>AbstractMigration</code> class provides a few methods you can override to define additional behavior for the migration.</p>
 <a class="section-anchor" id="istransactional" name="istransactional"></a><h3 class="section-header"><a href="#istransactional">isTransactional<i class="fas fa-link"></i></a></h3>
 <p>Override this method if you want to disable transactions in a migration. It defaults to true.</p>
-<pre><code class="php">public function isTransactional() : bool
-{
-    return false;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8b65bc5fff0d6a0592af7fda5e20b313f40dcf2a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8b65bc5fff0d6a0592af7fda5e20b313f40dcf2a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isTransactional</span><span class="hljs-params">()</span> : <span class="hljs-title">bool</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="getdescription" name="getdescription"></a><h3 class="section-header"><a href="#getdescription">getDescription<i class="fas fa-link"></i></a></h3>
 <p>Override this method if you want to provide a description for your migration. The value returned here
 will get outputted when you run the <code>./vendor/bin/doctrine-migrations status --show-versions</code> command.</p>
-<pre><code class="php">public function getDescription() : string
-{
-    return 'The description of my awesome migration!';
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="68907958eb60e7e4c64cf81911fac7c2450e717b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="68907958eb60e7e4c64cf81911fac7c2450e717b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDescription</span><span class="hljs-params">()</span> : <span class="hljs-title">string</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">return</span> <span class="hljs-string">'The description of my awesome migration!'</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="preup" name="preup"></a><h3 class="section-header"><a href="#preup">preUp<i class="fas fa-link"></i></a></h3>
 <p>This method gets called before the <code>up()</code> is called.</p>
-<pre><code class="php">public function preUp(Schema $schema) : void
-{
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7f01ba39727dd5fb24d7d5de6d79ad9e20f8e4dd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7f01ba39727dd5fb24d7d5de6d79ad9e20f8e4dd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preUp</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="postup" name="postup"></a><h3 class="section-header"><a href="#postup">postUp<i class="fas fa-link"></i></a></h3>
 <p>This method gets called after the <code>up()</code> is called.</p>
-<pre><code class="php">public function postUp(Schema $schema) : void
-{
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="daaa4ae4808a157e153fecf09ecaefff2b9c5251"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="daaa4ae4808a157e153fecf09ecaefff2b9c5251"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postUp</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="predown" name="predown"></a><h3 class="section-header"><a href="#predown">preDown<i class="fas fa-link"></i></a></h3>
 <p>This method gets called before the <code>down()</code> is called.</p>
-<pre><code class="php">public function preDown(Schema $schema) : void
-{
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4d33435a5551644e04d407e1dfee693e3b27539a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4d33435a5551644e04d407e1dfee693e3b27539a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preDown</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="postdown" name="postdown"></a><h3 class="section-header"><a href="#postdown">postDown<i class="fas fa-link"></i></a></h3>
 <p>This method gets called after the <code>down()</code> is called.</p>
-<pre><code class="php">public function postDown(Schema $schema) : void
-{
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7c7bbcce379fcec3e77a37154d2bea47ba234eac"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7c7bbcce379fcec3e77a37154d2bea47ba234eac"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postDown</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="methods-to-call" name="methods-to-call"></a><h2 class="section-header"><a href="#methods-to-call">Methods to Call<i class="fas fa-link"></i></a></h2>
 <p>The <code>AbstractMigration</code> class provides a few methods you can call in your migrations to perform various functions.</p>
 <a class="section-anchor" id="warnif" name="warnif"></a><h3 class="section-header"><a href="#warnif">warnIf<i class="fas fa-link"></i></a></h3>
 <p>Warn with a message if some condition is met.</p>
-<pre><code class="php">public function up(Schema $schema) : void
-{
-    $this-&gt;warnIf(true, 'Something might be going wrong');
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="44f835080dbca7ab0fff80c8a0a08dea0c8b5b1d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="44f835080dbca7ab0fff80c8a0a08dea0c8b5b1d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;warnIf(<span class="hljs-keyword">true</span>, <span class="hljs-string">'Something might be going wrong'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="abortif" name="abortif"></a><h3 class="section-header"><a href="#abortif">abortIf<i class="fas fa-link"></i></a></h3>
 <p>Abort the migration if some condition is met:</p>
-<pre><code class="php">public function up(Schema $schema) : void
-{
-    $this-&gt;abortIf(true, 'Something went wrong. Aborting.');
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1134abab8e6e919d2b7ea81682e810f9e8480e7b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1134abab8e6e919d2b7ea81682e810f9e8480e7b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;abortIf(<span class="hljs-keyword">true</span>, <span class="hljs-string">'Something went wrong. Aborting.'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="skipif" name="skipif"></a><h3 class="section-header"><a href="#skipif">skipIf<i class="fas fa-link"></i></a></h3>
 <p>Skip the migration if some condition is met.</p>
-<pre><code class="php">public function up(Schema $schema) : void
-{
-    $this-&gt;skipIf(true, 'Skipping this migration.');
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="fff56f00aeed8a7c57a0bbb2ac3e05bd26d5317e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="fff56f00aeed8a7c57a0bbb2ac3e05bd26d5317e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;skipIf(<span class="hljs-keyword">true</span>, <span class="hljs-string">'Skipping this migration.'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="addsql" name="addsql"></a><h3 class="section-header"><a href="#addsql">addSql<i class="fas fa-link"></i></a></h3>
 <p>You can use the <code>addSql</code> method within the <code>up</code> and <code>down</code> methods. Internally the <code>addSql</code> calls are passed
 to the executeQuery method in the DBAL. This means that you can use the power of prepared statements easily and that
 you don't need to copy paste the same query with different parameters. You can just pass those differents parameters
 to the addSql method as parameters.</p>
-<pre><code class="php">public function up(Schema $schema) : void
-{
-    $users = [
-        ['name' =&gt; 'mike', 'id' =&gt; 1],
-        ['name' =&gt; 'jwage', 'id' =&gt; 2],
-        ['name' =&gt; 'ocramius', 'id' =&gt; 3],
-    ];
-
-    foreach ($users as $user) {
-        $this-&gt;addSql('UPDATE user SET happy = true WHERE name = :name AND id = :id', $user);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="75f3fe27506c2b180010c96d583a39652d069076"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="75f3fe27506c2b180010c96d583a39652d069076"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    $users = [
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        [<span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'mike'</span>, <span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">1</span>],
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        [<span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'jwage'</span>, <span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">2</span>],
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        [<span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'ocramius'</span>, <span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">3</span>],
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    ];
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">foreach</span> ($users <span class="hljs-keyword">as</span> $user) {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;addSql(<span class="hljs-string">'UPDATE user SET happy = true WHERE name = :name AND id = :id'</span>, $user);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="write" name="write"></a><h3 class="section-header"><a href="#write">write<i class="fas fa-link"></i></a></h3>
 <p>Write some debug information to the console.</p>
-<pre><code class="php">public function up(Schema $schema) : void
-{
-    $this-&gt;write('Doing some cool migration!');
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3c2137d82831af6a8a3dde3239238ad2733c800e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3c2137d82831af6a8a3dde3239238ad2733c800e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;write(<span class="hljs-string">'Doing some cool migration!'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="throwirreversiblemigrationexception" name="throwirreversiblemigrationexception"></a><h3 class="section-header"><a href="#throwirreversiblemigrationexception">throwIrreversibleMigrationException<i class="fas fa-link"></i></a></h3>
 <p>If a migration cannot be reversed, you can use this exception in the <code>down</code> method to indicate such.
 The <code>throwIrreversibleMigrationException</code> method accepts an optional message to output.</p>
-<pre><code class="php">public function down(Schema $schema) : void
-{
-    $this-&gt;throwIrreversibleMigrationException();
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d8e0f098f965b91a1842cd7a672ecdacef3eca45"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d8e0f098f965b91a1842cd7a672ecdacef3eca45"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">down</span><span class="hljs-params">(Schema $schema)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;throwIrreversibleMigrationException();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p><a href="managing-migrations.html">Next Chapter: Managing Migrations</a></p>
 <p></p>
                                             </div>
@@ -427,8 +514,6 @@ The <code>throwIrreversibleMigrationException</code> method accepts an optional 
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -474,7 +559,7 @@ The <code>throwIrreversibleMigrationException</code> method accepts an optional 
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

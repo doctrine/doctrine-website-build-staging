@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -260,50 +257,78 @@
 <a class="section-anchor" id="slave-okay-queries" name="slave-okay-queries"></a><h1 class="section-header"><a href="#slave-okay-queries">Slave Okay Queries<i class="fas fa-link"></i></a></h1>
 <a class="section-anchor" id="documents" name="documents"></a><h2 class="section-header"><a href="#documents">Documents<i class="fas fa-link"></i></a></h2>
 <p>You can configure an entire document to send all reads to the slaves by using the <code>slaveOkay</code> flag:</p>
-<pre><code class="php">&lt;?php
-
-/** @Document(slaveOkay=true) */
-class User
-{
-    /** @Id */
-    private $id;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1bee72c265b528b3f67e79cc68e1745059b93aae"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1bee72c265b528b3f67e79cc68e1745059b93aae"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span>(slaveOkay=true) */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Now all reads involving the <code>User</code> document will be sent to a slave.</p>
 <a class="section-anchor" id="queries" name="queries"></a><h2 class="section-header"><a href="#queries">Queries<i class="fas fa-link"></i></a></h2>
 <p>If you want to instruct individual queries to read from a slave you can use the <code>slaveOkay()</code> method
 on the query builder.</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;slaveOkay(true);
-$query = $qb-&gt;getQuery();
-$users = $query-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="79cd486569da2c25a3a17caf70fd9df644c9247d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="79cd486569da2c25a3a17caf70fd9df644c9247d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;slaveOkay(<span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$users = $query-&gt;execute();
+</td></tr></table></div></code></pre>
 <p>The data in the query above will be read from a slave. Even if you have a <code>@ReferenceOne</code> or<br /><code>@ReferenceMany</code> resulting from the query above it will be initialized and loaded from a slave.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class User
-{
-    /** @ReferenceMany(targetDocument=&quot;Account&quot;) */
-    private $accounts;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="82eb2513f7d341252d89094115229488efe504bf"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="82eb2513f7d341252d89094115229488efe504bf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceMany</span>(targetDocument="Account") */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $accounts;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Now when you query and iterate over the accounts, they will be loaded from a slave:</p>
-<pre><code class="php">&lt;?php
-
-$qb = $dm-&gt;createQueryBuilder('User')
-    -&gt;slaveOkay(true);
-$query = $qb-&gt;getQuery();
-$users = $query-&gt;execute();
-
-foreach ($users as $user) {
-    foreach ($user-&gt;getAccounts() as $account) {
-        echo $account-&gt;getName();
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="49c1358edb3a0b5bceadb69d28f04c04ffdbe9f1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="49c1358edb3a0b5bceadb69d28f04c04ffdbe9f1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;slaveOkay(<span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $qb-&gt;getQuery();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$users = $query-&gt;execute();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($users <span class="hljs-keyword">as</span> $user) {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">foreach</span> ($user-&gt;getAccounts() <span class="hljs-keyword">as</span> $account) {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">echo</span> $account-&gt;getName();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -328,8 +353,6 @@ foreach ($users as $user) {
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -375,7 +398,7 @@ foreach ($users as $user) {
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

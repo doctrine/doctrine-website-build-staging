@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -292,30 +289,51 @@ Each cache region resides in a specific cache namespace and has its own lifetime
 <p>Notice that when caching collection and queries only identifiers are stored.
 The entity values will be stored in its own region</p>
 <p>Something like below for an entity region :</p>
-<pre><code class="php">&lt;?php
-[
-  'region_name:entity_1_hash' =&gt; ['id'=&gt; 1, 'name' =&gt; 'FooBar', 'associationName'=&gt;null],
-  'region_name:entity_2_hash' =&gt; ['id'=&gt; 2, 'name' =&gt; 'Foo', 'associationName'=&gt;['id'=&gt;11]],
-  'region_name:entity_3_hash' =&gt; ['id'=&gt; 3, 'name' =&gt; 'Bar', 'associationName'=&gt;['id'=&gt;22]]
-];
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="240f7a0cff293b6a512615e76507a39b41d99254"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="240f7a0cff293b6a512615e76507a39b41d99254"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">[
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">  <span class="hljs-string">'region_name:entity_1_hash'</span> =&gt; [<span class="hljs-string">'id'</span>=&gt; <span class="hljs-number">1</span>, <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'FooBar'</span>, <span class="hljs-string">'associationName'</span>=&gt;<span class="hljs-keyword">null</span>],
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">  <span class="hljs-string">'region_name:entity_2_hash'</span> =&gt; [<span class="hljs-string">'id'</span>=&gt; <span class="hljs-number">2</span>, <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Foo'</span>, <span class="hljs-string">'associationName'</span>=&gt;[<span class="hljs-string">'id'</span>=&gt;<span class="hljs-number">11</span>]],
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">  <span class="hljs-string">'region_name:entity_3_hash'</span> =&gt; [<span class="hljs-string">'id'</span>=&gt; <span class="hljs-number">3</span>, <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Bar'</span>, <span class="hljs-string">'associationName'</span>=&gt;[<span class="hljs-string">'id'</span>=&gt;<span class="hljs-number">22</span>]]
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">];
+</td></tr></table></div></code></pre>
 <p>If the entity holds a collection that also needs to be cached.
 An collection region could look something like :</p>
-<pre><code class="php">&lt;?php
-[
-  'region_name:entity_1_coll_assoc_name_hash' =&gt; ['ownerId'=&gt; 1, 'list' =&gt; [1, 2, 3]],
-  'region_name:entity_2_coll_assoc_name_hash' =&gt; ['ownerId'=&gt; 2, 'list' =&gt; [2, 3]],
-  'region_name:entity_3_coll_assoc_name_hash' =&gt; ['ownerId'=&gt; 3, 'list' =&gt; [2, 4]]
-];
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f2ce098eaef9d34fd9bd11ac50e1cd254fb74c84"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f2ce098eaef9d34fd9bd11ac50e1cd254fb74c84"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">[
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">  <span class="hljs-string">'region_name:entity_1_coll_assoc_name_hash'</span> =&gt; [<span class="hljs-string">'ownerId'</span>=&gt; <span class="hljs-number">1</span>, <span class="hljs-string">'list'</span> =&gt; [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]],
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">  <span class="hljs-string">'region_name:entity_2_coll_assoc_name_hash'</span> =&gt; [<span class="hljs-string">'ownerId'</span>=&gt; <span class="hljs-number">2</span>, <span class="hljs-string">'list'</span> =&gt; [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>]],
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">  <span class="hljs-string">'region_name:entity_3_coll_assoc_name_hash'</span> =&gt; [<span class="hljs-string">'ownerId'</span>=&gt; <span class="hljs-number">3</span>, <span class="hljs-string">'list'</span> =&gt; [<span class="hljs-number">2</span>, <span class="hljs-number">4</span>]]
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">];
+</td></tr></table></div></code></pre>
 <p>A query region might be something like :</p>
-<pre><code class="php">&lt;?php
-[
-  'region_name:query_1_hash' =&gt; ['list' =&gt; [1, 2, 3]],
-  'region_name:query_2_hash' =&gt; ['list' =&gt; [2, 3]],
-  'region_name:query_3_hash' =&gt; ['list' =&gt; [2, 4]]
-];
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="20ba659b39e48af5fdb3903bb2679b4a29d4c697"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="20ba659b39e48af5fdb3903bb2679b4a29d4c697"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">[
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">  <span class="hljs-string">'region_name:query_1_hash'</span> =&gt; [<span class="hljs-string">'list'</span> =&gt; [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]],
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">  <span class="hljs-string">'region_name:query_2_hash'</span> =&gt; [<span class="hljs-string">'list'</span> =&gt; [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>]],
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">  <span class="hljs-string">'region_name:query_3_hash'</span> =&gt; [<span class="hljs-string">'list'</span> =&gt; [<span class="hljs-number">2</span>, <span class="hljs-number">4</span>]]
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">];
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The following data structures represents now the cache will looks like, this is not actual cached data.</p>
 </div>
 <a id="reference-second-level-cache-regions"></a>
@@ -371,19 +389,26 @@ By default, Doctrine provides a very simple implementation based on file locks <
 <a class="section-anchor" id="enable-second-level-cache" name="enable-second-level-cache"></a><h3 class="section-header"><a href="#enable-second-level-cache">Enable Second Level Cache<i class="fas fa-link"></i></a></h3>
 <p>To enable the second-level-cache, you should provide a cache factory
 <code>\Doctrine\ORM\Cache\DefaultCacheFactory</code> is the default implementation.</p>
-<pre><code class="php">&lt;?php
-/** @var \Doctrine\ORM\Cache\RegionsConfiguration $config */
-/** @var \Doctrine\Common\Cache\Cache $cache */
-
-$factory = new \Doctrine\ORM\Cache\DefaultCacheFactory($config, $cache);
-
-// Enable second-level-cache
-$config-&gt;setSecondLevelCacheEnabled();
-
-// Cache factory
-$config-&gt;getSecondLevelCacheConfiguration()
-    -&gt;setCacheFactory($factory);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="91dc9b6fc4111c7de28433fc4bcf817e6b1480a5"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="91dc9b6fc4111c7de28433fc4bcf817e6b1480a5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> \Doctrine\ORM\Cache\RegionsConfiguration $config */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> \Doctrine\Common\Cache\Cache $cache */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$factory = <span class="hljs-keyword">new</span> \Doctrine\ORM\Cache\DefaultCacheFactory($config, $cache);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">// Enable second-level-cache</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$config-&gt;setSecondLevelCacheEnabled();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">// Cache factory</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$config-&gt;getSecondLevelCacheConfiguration()
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    -&gt;setCacheFactory($factory);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="cache-factory" name="cache-factory"></a><h3 class="section-header"><a href="#cache-factory">Cache Factory<i class="fas fa-link"></i></a></h3>
 <p>Cache Factory is the main point of extension.</p>
 <p>It allows you to provide a specific implementation of the following components :</p>
@@ -397,48 +422,62 @@ $config-&gt;getSecondLevelCacheConfiguration()
 <p><a href="http://www.doctrine-project.org/api/orm/2.5/class-Doctrine.ORM.Cache.DefaultCacheFactory.html">See API Doc</a>.</p>
 <a class="section-anchor" id="region-lifetime" name="region-lifetime"></a><h3 class="section-header"><a href="#region-lifetime">Region Lifetime<i class="fas fa-link"></i></a></h3>
 <p>To specify a default lifetime for all regions or specify a different lifetime for a specific region.</p>
-<pre><code class="php">&lt;?php
-/** @var \Doctrine\ORM\Configuration $config */
-/** @var \Doctrine\ORM\Cache\CacheConfiguration $cacheConfig */
-$cacheConfig  =  $config-&gt;getSecondLevelCacheConfiguration();
-$regionConfig =  $cacheConfig-&gt;getRegionsConfiguration();
-
-// Cache Region lifetime
-$regionConfig-&gt;setLifetime('my_entity_region', 3600);   // Time to live for a specific region; In seconds
-$regionConfig-&gt;setDefaultLifetime(7200);                // Default time to live; In seconds
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="23f79768fb13763398f3188cb75c65ff62fa9517"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="23f79768fb13763398f3188cb75c65ff62fa9517"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> \Doctrine\ORM\Configuration $config */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> \Doctrine\ORM\Cache\CacheConfiguration $cacheConfig */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$cacheConfig  =  $config-&gt;getSecondLevelCacheConfiguration();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$regionConfig =  $cacheConfig-&gt;getRegionsConfiguration();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">// Cache Region lifetime</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$regionConfig-&gt;setLifetime(<span class="hljs-string">'my_entity_region'</span>, <span class="hljs-number">3600</span>);   <span class="hljs-comment">// Time to live for a specific region; In seconds</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$regionConfig-&gt;setDefaultLifetime(<span class="hljs-number">7200</span>);                <span class="hljs-comment">// Default time to live; In seconds</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="cache-log" name="cache-log"></a><h3 class="section-header"><a href="#cache-log">Cache Log<i class="fas fa-link"></i></a></h3>
 <p>By providing a cache logger you should be able to get information about all cache operations such as hits, misses and puts.</p>
 <p><code>\Doctrine\ORM\Cache\Logging\StatisticsCacheLogger</code> is a built-in implementation that provides basic statistics.</p>
-<blockquote><pre><code class="php">&lt;?php
-/** @var \Doctrine\ORM\Configuration $config */
-$logger = new \Doctrine\ORM\Cache\Logging\StatisticsCacheLogger();
-
-// Cache logger
-$config-&gt;setSecondLevelCacheEnabled(true);
-$config-&gt;getSecondLevelCacheConfiguration()
-    -&gt;setCacheLogger($logger);
-
-// Collect cache statistics
-
-// Get the number of entries successfully retrieved from a specific region.
-$logger-&gt;getRegionHitCount('my_entity_region');
-
-// Get the number of cached entries *not* found in a specific region.
-$logger-&gt;getRegionMissCount('my_entity_region');
-
-// Get the number of cacheable entries put in cache.
-$logger-&gt;getRegionPutCount('my_entity_region');
-
-// Get the total number of put in all regions.
-$logger-&gt;getPutCount();
-
-// Get the total number of entries successfully retrieved from all regions.
-$logger-&gt;getHitCount();
-
-// Get the total number of cached entries *not* found in all regions.
-$logger-&gt;getMissCount();
-</code></pre>
+<blockquote><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="73c55622cfb2101715866a82fb8c4d0bf148b05d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="73c55622cfb2101715866a82fb8c4d0bf148b05d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> \Doctrine\ORM\Configuration $config */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$logger = <span class="hljs-keyword">new</span> \Doctrine\ORM\Cache\Logging\StatisticsCacheLogger();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// Cache logger</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$config-&gt;setSecondLevelCacheEnabled(<span class="hljs-keyword">true</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$config-&gt;getSecondLevelCacheConfiguration()
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;setCacheLogger($logger);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">// Collect cache statistics</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">// Get the number of entries successfully retrieved from a specific region.</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$logger-&gt;getRegionHitCount(<span class="hljs-string">'my_entity_region'</span>);
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-comment">// Get the number of cached entries *not* found in a specific region.</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$logger-&gt;getRegionMissCount(<span class="hljs-string">'my_entity_region'</span>);
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-comment">// Get the number of cacheable entries put in cache.</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$logger-&gt;getRegionPutCount(<span class="hljs-string">'my_entity_region'</span>);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-comment">// Get the total number of put in all regions.</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">$logger-&gt;getPutCount();
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-comment">// Get the total number of entries successfully retrieved from all regions.</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">$logger-&gt;getHitCount();
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-comment">// Get the total number of cached entries *not* found in all regions.</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">$logger-&gt;getMissCount();
+</td></tr></table></div></code></pre>
 </blockquote>
 <p>If you want to get more information you should implement <code>\Doctrine\ORM\Cache\Logging\CacheLogger</code>.
 and collect all information you want.</p>
@@ -450,168 +489,210 @@ and collect all information you want.</p>
 </ul>
 </ul>
 
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/**
- * @Entity
- * @Cache(usage=&quot;READ_ONLY&quot;, region=&quot;my_entity_region&quot;)
- */
-class Country
-{
-    /**
-     * @Id
-     * @GeneratedValue
-     * @Column(type=&quot;integer&quot;)
-     */
-    protected $id;
-
-    /**
-     * @Column(unique=true)
-     */
-    protected $name;
-
-    // other properties and methods
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;doctrine-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd&quot;&gt;
-  &lt;entity name=&quot;Country&quot;&gt;
-    &lt;cache usage=&quot;READ_ONLY&quot; region=&quot;my_entity_region&quot; /&gt;
-    &lt;id name=&quot;id&quot; type=&quot;integer&quot; column=&quot;id&quot;&gt;
-      &lt;generator strategy=&quot;IDENTITY&quot;/&gt;
-    &lt;/id&gt;
-    &lt;field name=&quot;name&quot; type=&quot;string&quot; column=&quot;name&quot;/&gt;
-  &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="74b9f1b2437f7aad71a73bad361746ff5849e995"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="74b9f1b2437f7aad71a73bad361746ff5849e995"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Cache(usage=<span class="hljs-string">"READ_ONLY"</span>, region=<span class="hljs-string">"my_entity_region"</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Country</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @Id
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @GeneratedValue
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @Column(type=<span class="hljs-string">"integer"</span>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">protected</span> $id;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * @Column(unique=<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">protected</span> $name;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">// other properties and methods</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7e85ae6eb53b2ef56c9e8dadb858a8799e8b602c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7e85ae6eb53b2ef56c9e8dadb858a8799e8b602c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"utf-8"</span><span class="hljs-meta">?&gt;</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping"</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">  <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Country"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">cache</span> <span class="hljs-attr">usage</span>=<span class="hljs-string">"READ_ONLY"</span> <span class="hljs-attr">region</span>=<span class="hljs-string">"my_entity_region"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"integer"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"id"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">      <span class="hljs-tag">&lt;<span class="hljs-name">generator</span> <span class="hljs-attr">strategy</span>=<span class="hljs-string">"IDENTITY"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"name"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">  <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <a class="section-anchor" id="association-cache-definition" name="association-cache-definition"></a><h2 class="section-header"><a href="#association-cache-definition">Association cache definition<i class="fas fa-link"></i></a></h2>
 <p>The most common use case is to cache entities. But we can also cache relationships.
 It caches the primary keys of association and cache each element will be cached into its region.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/**
- * @Entity
- * @Cache(&quot;NONSTRICT_READ_WRITE&quot;)
- */
-class State
-{
-    /**
-     * @Id
-     * @GeneratedValue
-     * @Column(type=&quot;integer&quot;)
-     */
-    protected $id;
-
-    /**
-     * @Column(unique=true)
-     */
-    protected $name;
-
-    /**
-     * @Cache(&quot;NONSTRICT_READ_WRITE&quot;)
-     * @ManyToOne(targetEntity=&quot;Country&quot;)
-     * @JoinColumn(name=&quot;country_id&quot;, referencedColumnName=&quot;id&quot;)
-     */
-    protected $country;
-
-    /**
-     * @Cache(&quot;NONSTRICT_READ_WRITE&quot;)
-     * @OneToMany(targetEntity=&quot;City&quot;, mappedBy=&quot;state&quot;)
-     */
-    protected $cities;
-
-    // other properties and methods
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;doctrine-mapping xmlns=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd&quot;&gt;
-  &lt;entity name=&quot;State&quot;&gt;
-
-    &lt;cache usage=&quot;NONSTRICT_READ_WRITE&quot; /&gt;
-
-    &lt;id name=&quot;id&quot; type=&quot;integer&quot; column=&quot;id&quot;&gt;
-      &lt;generator strategy=&quot;IDENTITY&quot;/&gt;
-    &lt;/id&gt;
-
-    &lt;field name=&quot;name&quot; type=&quot;string&quot; column=&quot;name&quot;/&gt;
-
-    &lt;many-to-one field=&quot;country&quot; target-entity=&quot;Country&quot;&gt;
-      &lt;cache usage=&quot;NONSTRICT_READ_WRITE&quot; /&gt;
-
-      &lt;join-columns&gt;
-        &lt;join-column name=&quot;country_id&quot; referenced-column-name=&quot;id&quot;/&gt;
-      &lt;/join-columns&gt;
-    &lt;/many-to-one&gt;
-
-    &lt;one-to-many field=&quot;cities&quot; target-entity=&quot;City&quot; mapped-by=&quot;state&quot;&gt;
-      &lt;cache usage=&quot;NONSTRICT_READ_WRITE&quot;/&gt;
-    &lt;/one-to-many&gt;
-  &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c939d504b1c0c1273c4d3161793bc9d65498ca64"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c939d504b1c0c1273c4d3161793bc9d65498ca64"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Cache(<span class="hljs-string">"NONSTRICT_READ_WRITE"</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">State</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @Id
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @GeneratedValue
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @Column(type=<span class="hljs-string">"integer"</span>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">protected</span> $id;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * @Column(unique=<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">protected</span> $name;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     * @Cache(<span class="hljs-string">"NONSTRICT_READ_WRITE"</span>)
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     * @ManyToOne(targetEntity=<span class="hljs-string">"Country"</span>)
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"country_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-keyword">protected</span> $country;
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     * @Cache(<span class="hljs-string">"NONSTRICT_READ_WRITE"</span>)
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">     * @OneToMany(targetEntity=<span class="hljs-string">"City"</span>, mappedBy=<span class="hljs-string">"state"</span>)
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-keyword">protected</span> $cities;
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    <span class="hljs-comment">// other properties and methods</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c0355bfdfb193b116ccfdeb886f19939e8225689"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c0355bfdfb193b116ccfdeb886f19939e8225689"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"utf-8"</span><span class="hljs-meta">?&gt;</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping"</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">  <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"State"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">cache</span> <span class="hljs-attr">usage</span>=<span class="hljs-string">"NONSTRICT_READ_WRITE"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"integer"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"id"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">      <span class="hljs-tag">&lt;<span class="hljs-name">generator</span> <span class="hljs-attr">strategy</span>=<span class="hljs-string">"IDENTITY"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"name"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">many-to-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"country"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Country"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">      <span class="hljs-tag">&lt;<span class="hljs-name">cache</span> <span class="hljs-attr">usage</span>=<span class="hljs-string">"NONSTRICT_READ_WRITE"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">      <span class="hljs-tag">&lt;<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"country_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">      <span class="hljs-tag">&lt;/<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">many-to-one</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">one-to-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"cities"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"City"</span> <span class="hljs-attr">mapped-by</span>=<span class="hljs-string">"state"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">      <span class="hljs-tag">&lt;<span class="hljs-name">cache</span> <span class="hljs-attr">usage</span>=<span class="hljs-string">"NONSTRICT_READ_WRITE"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">one-to-many</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">  <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>&gt; Note: for this to work, the target entity must also be marked as cacheable.</p>
 <a class="section-anchor" id="cache-usage" name="cache-usage"></a><h3 class="section-header"><a href="#cache-usage">Cache usage<i class="fas fa-link"></i></a></h3>
 <p>Basic entity cache</p>
-<pre><code class="php">&lt;?php
-$em-&gt;persist(new Country($name));
-$em-&gt;flush();                         // Hit database to insert the row and put into cache
-
-$em-&gt;clear();                         // Clear entity manager
-
-$country1  = $em-&gt;find('Country', 1); // Retrieve item from cache
-
-$country-&gt;setName(&quot;New Name&quot;);
-$em-&gt;persist($country);
-$em-&gt;flush();                         // Hit database to update the row and update cache
-
-$em-&gt;clear();                         // Clear entity manager
-
-$country2  = $em-&gt;find('Country', 1); // Retrieve item from cache
-                                      // Notice that $country1 and $country2 are not the same instance.
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="41275b245e012d02498c3b95b5e02c5323fbfe3f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="41275b245e012d02498c3b95b5e02c5323fbfe3f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$em-&gt;persist(<span class="hljs-keyword">new</span> Country($name));
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em-&gt;flush();                         <span class="hljs-comment">// Hit database to insert the row and put into cache</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$em-&gt;clear();                         <span class="hljs-comment">// Clear entity manager</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$country1  = $em-&gt;find(<span class="hljs-string">'Country'</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">// Retrieve item from cache</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$country-&gt;setName(<span class="hljs-string">"New Name"</span>);
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$em-&gt;persist($country);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$em-&gt;flush();                         <span class="hljs-comment">// Hit database to update the row and update cache</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$em-&gt;clear();                         <span class="hljs-comment">// Clear entity manager</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$country2  = $em-&gt;find(<span class="hljs-string">'Country'</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">// Retrieve item from cache</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">                                      <span class="hljs-comment">// Notice that $country1 and $country2 are not the same instance.</span>
+</td></tr></table></div></code></pre>
 <p>Association cache</p>
-<pre><code class="php">&lt;?php
-// Hit database to insert the row and put into cache
-$em-&gt;persist(new State($name, $country));
-$em-&gt;flush();
-
-// Clear entity manager
-$em-&gt;clear();
-
-// Retrieve item from cache
-$state = $em-&gt;find('State', 1);
-
-// Hit database to update the row and update cache entry
-$state-&gt;setName(&quot;New Name&quot;);
-$em-&gt;persist($state);
-$em-&gt;flush();
-
-// Create a new collection item
-$city = new City($name, $state);
-$state-&gt;addCity($city);
-
-// Hit database to insert new collection item,
-// put entity and collection cache into cache.
-$em-&gt;persist($city);
-$em-&gt;persist($state);
-$em-&gt;flush();
-
-// Clear entity manager
-$em-&gt;clear();
-
-// Retrieve item from cache
-$state = $em-&gt;find('State', 1);
-
-// Retrieve association from cache
-$country = $state-&gt;getCountry();
-
-// Retrieve collection from cache
-$cities = $state-&gt;getCities();
-
-echo $country-&gt;getName();
-echo $state-&gt;getName();
-
-// Retrieve each collection item from cache
-foreach ($cities as $city) {
-    echo $city-&gt;getName();
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="54a2ed161fcaaa16e7542555ececc7fc7b1f2eeb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="54a2ed161fcaaa16e7542555ececc7fc7b1f2eeb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Hit database to insert the row and put into cache</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em-&gt;persist(<span class="hljs-keyword">new</span> State($name, $country));
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$em-&gt;flush();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">// Clear entity manager</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$em-&gt;clear();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-comment">// Retrieve item from cache</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$state = $em-&gt;find(<span class="hljs-string">'State'</span>, <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">// Hit database to update the row and update cache entry</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$state-&gt;setName(<span class="hljs-string">"New Name"</span>);
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$em-&gt;persist($state);
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$em-&gt;flush();
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-comment">// Create a new collection item</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$city = <span class="hljs-keyword">new</span> City($name, $state);
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$state-&gt;addCity($city);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-comment">// Hit database to insert new collection item,</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-comment">// put entity and collection cache into cache.</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$em-&gt;persist($city);
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">$em-&gt;persist($state);
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">$em-&gt;flush();
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-comment">// Clear entity manager</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">$em-&gt;clear();
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-comment">// Retrieve item from cache</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">$state = $em-&gt;find(<span class="hljs-string">'State'</span>, <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-comment">// Retrieve association from cache</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">$country = $state-&gt;getCountry();
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"><span class="hljs-comment">// Retrieve collection from cache</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">$cities = $state-&gt;getCities();
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"><span class="hljs-keyword">echo</span> $country-&gt;getName();
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line"><span class="hljs-keyword">echo</span> $state-&gt;getName();
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line"><span class="hljs-comment">// Retrieve each collection item from cache</span>
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($cities <span class="hljs-keyword">as</span> $city) {
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    <span class="hljs-keyword">echo</span> $city-&gt;getName();
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Notice that all entities should be marked as cacheable.</p>
 </div>
 <a class="section-anchor" id="using-the-query-cache" name="using-the-query-cache"></a><h2 class="section-header"><a href="#using-the-query-cache">Using the query cache<i class="fas fa-link"></i></a></h2>
@@ -619,21 +700,28 @@ foreach ($cities as $city) {
 The query cache stores the results of the query but as identifiers, entity values are actually stored in the 2nd level cache.</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Query cache should always be used in conjunction with the second-level-cache for those entities which should be cached.</p>
 </div>
-<pre><code class="php">&lt;?php
-/** @var \Doctrine\ORM\EntityManager $em */
-
-// Execute database query, store query cache and entity cache
-$result1 = $em-&gt;createQuery('SELECT c FROM Country c ORDER BY c.name')
-    -&gt;setCacheable(true)
-    -&gt;getResult();
-
-$em-&gt;clear()
-
-// Check if query result is valid and load entities from cache
-$result2 = $em-&gt;createQuery('SELECT c FROM Country c ORDER BY c.name')
-    -&gt;setCacheable(true)
-    -&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7e5ed6fc8281276eddc3ad08b4b854a46f2bfdf7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7e5ed6fc8281276eddc3ad08b4b854a46f2bfdf7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> \Doctrine\ORM\EntityManager $em */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// Execute database query, store query cache and entity cache</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$result1 = $em-&gt;createQuery(<span class="hljs-string">'SELECT c FROM Country c ORDER BY c.name'</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;setCacheable(<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getResult();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$em-&gt;clear()
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-comment">// Check if query result is valid and load entities from cache</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$result2 = $em-&gt;createQuery(<span class="hljs-string">'SELECT c FROM Country c ORDER BY c.name'</span>)
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    -&gt;setCacheable(<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    -&gt;getResult();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="cache-mode" name="cache-mode"></a><h3 class="section-header"><a href="#cache-mode">Cache mode<i class="fas fa-link"></i></a></h3>
 <p>The Cache Mode controls how a particular query interacts with the second-level cache:</p>
 <ul><li><code>Cache::MODE_GET</code> - May read items from the cache, but will not add items.</li>
@@ -642,14 +730,21 @@ $result2 = $em-&gt;createQuery('SELECT c FROM Country c ORDER BY c.name')
 <li><code>Cache::MODE_REFRESH</code> - The query will never read items from the cache, but will refresh items to the cache as it reads them from the database.</li>
 </ul>
 
-<pre><code class="php">&lt;?php
-/** @var \Doctrine\ORM\EntityManager $em */
-// Will refresh the query cache and all entities the cache as it reads from the database.
-$result1 = $em-&gt;createQuery('SELECT c FROM Country c ORDER BY c.name')
-    -&gt;setCacheMode(Cache::MODE_GET)
-    -&gt;setCacheable(true)
-    -&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="fa6805637a27ff23627ac15d42352023c2ab8227"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="fa6805637a27ff23627ac15d42352023c2ab8227"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> \Doctrine\ORM\EntityManager $em */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// Will refresh the query cache and all entities the cache as it reads from the database.</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$result1 = $em-&gt;createQuery(<span class="hljs-string">'SELECT c FROM Country c ORDER BY c.name'</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;setCacheMode(Cache::MODE_GET)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;setCacheable(<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getResult();
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The the default query cache mode is <code>`Cache::MODE_NORMAL`</code></p>
 </div>
 <a class="section-anchor" id="delete-update-queries" name="delete-update-queries"></a><h3 class="section-header"><a href="#delete-update-queries">DELETE / UPDATE queries<i class="fas fa-link"></i></a></h3>
@@ -657,106 +752,148 @@ $result1 = $em-&gt;createQuery('SELECT c FROM Country c ORDER BY c.name')
 Entities that are already cached will NOT be invalidated.
 However the cached data could be evicted using the cache API or an special query hint.</p>
 <p>Execute the <code>UPDATE</code> and invalidate <code>all cache entries</code> using <code>Query::HINT_CACHE_EVICT</code></p>
-<pre><code class="php">&lt;?php
-// Execute and invalidate
-$this-&gt;em-&gt;createQuery(&quot;UPDATE Entity\Country u SET u.name = 'unknown' WHERE u.id = 1&quot;)
-    -&gt;setHint(Query::HINT_CACHE_EVICT, true)
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6a2131d57b2f3f1fbd276b25a9479bb43ed339c6"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6a2131d57b2f3f1fbd276b25a9479bb43ed339c6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Execute and invalidate</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">$this</span>-&gt;em-&gt;createQuery(<span class="hljs-string">"UPDATE Entity\Country u SET u.name = 'unknown' WHERE u.id = 1"</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;setHint(Query::HINT_CACHE_EVICT, <span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Execute the <code>UPDATE</code> and invalidate <code>all cache entries</code> using the cache API</p>
-<pre><code class="php">&lt;?php
-// Execute
-$this-&gt;em-&gt;createQuery(&quot;UPDATE Entity\Country u SET u.name = 'unknown' WHERE u.id = 1&quot;)
-    -&gt;execute();
-// Invoke Cache API
-$em-&gt;getCache()-&gt;evictEntityRegion('Entity\Country');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="670ab33cd0b752f1c85e45a45f3df14e83ff8601"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="670ab33cd0b752f1c85e45a45f3df14e83ff8601"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Execute</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">$this</span>-&gt;em-&gt;createQuery(<span class="hljs-string">"UPDATE Entity\Country u SET u.name = 'unknown' WHERE u.id = 1"</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;execute();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// Invoke Cache API</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$em-&gt;getCache()-&gt;evictEntityRegion(<span class="hljs-string">'Entity\Country'</span>);
+</td></tr></table></div></code></pre>
 <p>Execute the <code>UPDATE</code> and invalidate <code>a specific cache entry</code> using the cache API</p>
-<pre><code class="php">&lt;?php
-// Execute
-$this-&gt;em-&gt;createQuery(&quot;UPDATE Entity\Country u SET u.name = 'unknown' WHERE u.id = 1&quot;)
-    -&gt;execute();
-// Invoke Cache API
-$em-&gt;getCache()-&gt;evictEntity('Entity\Country', 1);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e977e0b84bc9653a0fdfbd073123b6bd9dec51e1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e977e0b84bc9653a0fdfbd073123b6bd9dec51e1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Execute</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">$this</span>-&gt;em-&gt;createQuery(<span class="hljs-string">"UPDATE Entity\Country u SET u.name = 'unknown' WHERE u.id = 1"</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;execute();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// Invoke Cache API</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$em-&gt;getCache()-&gt;evictEntity(<span class="hljs-string">'Entity\Country'</span>, <span class="hljs-number">1</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="using-the-repository-query-cache" name="using-the-repository-query-cache"></a><h2 class="section-header"><a href="#using-the-repository-query-cache">Using the repository query cache<i class="fas fa-link"></i></a></h2>
 <p>As well as <code>Query Cache</code> all persister queries store only identifier values for an individual query.
 All persister use a single timestamps cache region keeps track of the last update for each persister,
 When a query is loaded from cache, the timestamp region is checked for the last update for that persister.
 Using the last update timestamps as part of the query key invalidate the cache key when an update occurs.</p>
-<pre><code class="php">&lt;?php
-// load from database and store cache query key hashing the query + parameters + last timestamp cache region..
-$entities   = $em-&gt;getRepository('Entity\Country')-&gt;findAll();
-
-// load from query and entities from cache..
-$entities   = $em-&gt;getRepository('Entity\Country')-&gt;findAll();
-
-// update the timestamp cache region for Country
-$em-&gt;persist(new Country('zombieland'));
-$em-&gt;flush();
-$em-&gt;clear();
-
-// Reload from database.
-// At this point the query cache key if not logger valid, the select goes straight
-$entities   = $em-&gt;getRepository('Entity\Country')-&gt;findAll();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="60f8a0a6e56d32c115a0b64cc3e9af1112d4a5b0"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="60f8a0a6e56d32c115a0b64cc3e9af1112d4a5b0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// load from database and store cache query key hashing the query + parameters + last timestamp cache region..</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$entities   = $em-&gt;getRepository(<span class="hljs-string">'Entity\Country'</span>)-&gt;findAll();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// load from query and entities from cache..</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$entities   = $em-&gt;getRepository(<span class="hljs-string">'Entity\Country'</span>)-&gt;findAll();
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">// update the timestamp cache region for Country</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$em-&gt;persist(<span class="hljs-keyword">new</span> Country(<span class="hljs-string">'zombieland'</span>));
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$em-&gt;flush();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$em-&gt;clear();
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-comment">// Reload from database.</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">// At this point the query cache key if not logger valid, the select goes straight</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$entities   = $em-&gt;getRepository(<span class="hljs-string">'Entity\Country'</span>)-&gt;findAll();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="cache-api" name="cache-api"></a><h2 class="section-header"><a href="#cache-api">Cache API<i class="fas fa-link"></i></a></h2>
 <p>Caches are not aware of changes made by another application.
 However, you can use the cache API to check / invalidate cache entries.</p>
-<pre><code class="php">&lt;?php
-/** @var \Doctrine\ORM\Cache $cache */
-$cache = $em-&gt;getCache();
-
-$cache-&gt;containsEntity('Entity\State', 1)      // Check if the cache exists
-$cache-&gt;evictEntity('Entity\State', 1);        // Remove an entity from cache
-$cache-&gt;evictEntityRegion('Entity\State');     // Remove all entities from cache
-
-$cache-&gt;containsCollection('Entity\State', 'cities', 1);   // Check if the cache exists
-$cache-&gt;evictCollection('Entity\State', 'cities', 1);      // Remove an entity collection from cache
-$cache-&gt;evictCollectionRegion('Entity\State', 'cities');   // Remove all collections from cache
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="be237e0ecfd6252981db0a83274be001fd129c6e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="be237e0ecfd6252981db0a83274be001fd129c6e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> \Doctrine\ORM\Cache $cache */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cache = $em-&gt;getCache();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$cache-&gt;containsEntity(<span class="hljs-string">'Entity\State'</span>, <span class="hljs-number">1</span>)      <span class="hljs-comment">// Check if the cache exists</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$cache-&gt;evictEntity(<span class="hljs-string">'Entity\State'</span>, <span class="hljs-number">1</span>);        <span class="hljs-comment">// Remove an entity from cache</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$cache-&gt;evictEntityRegion(<span class="hljs-string">'Entity\State'</span>);     <span class="hljs-comment">// Remove all entities from cache</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$cache-&gt;containsCollection(<span class="hljs-string">'Entity\State'</span>, <span class="hljs-string">'cities'</span>, <span class="hljs-number">1</span>);   <span class="hljs-comment">// Check if the cache exists</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$cache-&gt;evictCollection(<span class="hljs-string">'Entity\State'</span>, <span class="hljs-string">'cities'</span>, <span class="hljs-number">1</span>);      <span class="hljs-comment">// Remove an entity collection from cache</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$cache-&gt;evictCollectionRegion(<span class="hljs-string">'Entity\State'</span>, <span class="hljs-string">'cities'</span>);   <span class="hljs-comment">// Remove all collections from cache</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="limitations" name="limitations"></a><h2 class="section-header"><a href="#limitations">Limitations<i class="fas fa-link"></i></a></h2>
 <a class="section-anchor" id="composite-primary-key" name="composite-primary-key"></a><h3 class="section-header"><a href="#composite-primary-key">Composite primary key<i class="fas fa-link"></i></a></h3>
 <p>Composite primary key are supported by second level cache,
 however when one of the keys is an association the cached entity should always be retrieved using the association identifier.
 For performance reasons the cache API does not extract from composite primary key.</p>
-<pre><code class="php">&lt;?php
-/**
- * @Entity
- */
-class Reference
-{
-    /**
-     * @Id
-     * @ManyToOne(targetEntity=&quot;Article&quot;, inversedBy=&quot;references&quot;)
-     * @JoinColumn(name=&quot;source_id&quot;, referencedColumnName=&quot;article_id&quot;)
-     */
-    private $source;
-
-    /**
-     * @Id
-     * @ManyToOne(targetEntity=&quot;Article&quot;)
-     * @JoinColumn(name=&quot;target_id&quot;, referencedColumnName=&quot;article_id&quot;)
-     */
-    private $target;
-}
-
-// Supported
-/** @var Article $article */
-$article = $em-&gt;find('Article', 1);
-
-// Supported
-/** @var Article $article */
-$article = $em-&gt;find('Article', $article);
-
-// Supported
-$id        = array('source' =&gt; 1, 'target' =&gt; 2);
-$reference = $em-&gt;find('Reference', $id);
-
-// NOT Supported
-$id        = array('source' =&gt; new Article(1), 'target' =&gt; new Article(2));
-$reference = $em-&gt;find('Reference', $id);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="eb166317f6310c5e8c078f970183885082fe5a58"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="eb166317f6310c5e8c078f970183885082fe5a58"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Reference</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * @Id
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @ManyToOne(targetEntity=<span class="hljs-string">"Article"</span>, inversedBy=<span class="hljs-string">"references"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"source_id"</span>, referencedColumnName=<span class="hljs-string">"article_id"</span>)
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $source;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     * @Id
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * @ManyToOne(targetEntity=<span class="hljs-string">"Article"</span>)
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"target_id"</span>, referencedColumnName=<span class="hljs-string">"article_id"</span>)
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">private</span> $target;
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-comment">// Supported</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> Article $article */</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">$article = $em-&gt;find(<span class="hljs-string">'Article'</span>, <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-comment">// Supported</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> Article $article */</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">$article = $em-&gt;find(<span class="hljs-string">'Article'</span>, $article);
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-comment">// Supported</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">$id        = <span class="hljs-keyword">array</span>(<span class="hljs-string">'source'</span> =&gt; <span class="hljs-number">1</span>, <span class="hljs-string">'target'</span> =&gt; <span class="hljs-number">2</span>);
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">$reference = $em-&gt;find(<span class="hljs-string">'Reference'</span>, $id);
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-comment">// NOT Supported</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">$id        = <span class="hljs-keyword">array</span>(<span class="hljs-string">'source'</span> =&gt; <span class="hljs-keyword">new</span> Article(<span class="hljs-number">1</span>), <span class="hljs-string">'target'</span> =&gt; <span class="hljs-keyword">new</span> Article(<span class="hljs-number">2</span>));
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">$reference = $em-&gt;find(<span class="hljs-string">'Reference'</span>, $id);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="distributed-environments" name="distributed-environments"></a><h3 class="section-header"><a href="#distributed-environments">Distributed environments<i class="fas fa-link"></i></a></h3>
 <p>Some cache driver are not meant to be used in a distributed environment.
 Load-balancer for distributing workloads across multiple computing resources
@@ -790,8 +927,6 @@ Although entities and query result are cached count queries will hit the databas
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -837,7 +972,7 @@ Although entities and query result are cached count queries will hit the databas
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

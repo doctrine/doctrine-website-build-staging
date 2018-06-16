@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -273,98 +270,147 @@ Common package.</p>
 central point of Doctrine's event listener system. Listeners are
 registered on the manager and events are dispatched through the
 manager.</p>
-<pre><code class="php">&lt;?php
-
-$evm = new EventManager();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1d5c52de3c342fde88db9744c7db2328f282cc6b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1d5c52de3c342fde88db9744c7db2328f282cc6b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
+</td></tr></table></div></code></pre>
 <p>Now we can add some event listeners to the <code>$evm</code>. Let's create a
 <code>EventTest</code> class to play around with.</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\Common\EventManager;
-
-class EventTest
-{
-    const preFoo = 'preFoo';
-    const postFoo = 'postFoo';
-
-    private $_evm;
-
-    public $preFooInvoked = false;
-    public $postFooInvoked = false;
-
-    public function __construct(EventManager $evm)
-    {
-        $evm-&gt;addEventListener(array(self::preFoo, self::postFoo), $this);
-    }
-
-    public function preFoo(EventArgs $e): void 
-    {
-        $this-&gt;preFooInvoked = true;
-    }
-
-    public function postFoo(EventArgs $e): void
-    {
-        $this-&gt;postFooInvoked = true;
-    }
-}
-
-// Create a new instance
-$test = new EventTest($evm);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="77d47ab83c008a153d2c69ea756046aad179d70a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="77d47ab83c008a153d2c69ea756046aad179d70a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventManager</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">const</span> preFoo = <span class="hljs-string">'preFoo'</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">const</span> postFoo = <span class="hljs-string">'postFoo'</span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $_evm;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> $preFooInvoked = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $postFooInvoked = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(EventManager $evm)</span></span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        $evm-&gt;addEventListener(<span class="hljs-keyword">array</span>(<span class="hljs-keyword">self</span>::preFoo, <span class="hljs-keyword">self</span>::postFoo), <span class="hljs-keyword">$this</span>);
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFoo</span><span class="hljs-params">(EventArgs $e)</span>: <span class="hljs-title">void</span> </span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;preFooInvoked = <span class="hljs-keyword">true</span>;
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postFoo</span><span class="hljs-params">(EventArgs $e)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;postFooInvoked = <span class="hljs-keyword">true</span>;
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-comment">// Create a new instance</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest($evm);
+</td></tr></table></div></code></pre>
 <p>Events can be dispatched by using the <code>dispatchEvent()</code> method.</p>
-<pre><code class="php">&lt;?php
-
-$evm-&gt;dispatchEvent(EventTest::preFoo);
-$evm-&gt;dispatchEvent(EventTest::postFoo);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="52ebf10333db4cade83e69bbe682de3cda05e819"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="52ebf10333db4cade83e69bbe682de3cda05e819"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$evm-&gt;dispatchEvent(EventTest::preFoo);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm-&gt;dispatchEvent(EventTest::postFoo);
+</td></tr></table></div></code></pre>
 <p>You can easily remove a listener with the <code>removeEventListener()</code>
 method.</p>
-<pre><code class="php">&lt;?php
-
-$evm-&gt;removeEventListener(array(self::preFoo, self::postFoo), $this);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5c11d13b5947400bfd511cd24fc219cedc660cc5"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5c11d13b5947400bfd511cd24fc219cedc660cc5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$evm-&gt;removeEventListener(<span class="hljs-keyword">array</span>(<span class="hljs-keyword">self</span>::preFoo, <span class="hljs-keyword">self</span>::postFoo), <span class="hljs-keyword">$this</span>);
+</td></tr></table></div></code></pre>
 <p>The Doctrine event system also has a simple concept of event
 subscribers. We can define a simple <code>TestEventSubscriber</code> class
 which implements the <code>\Doctrine\Common\EventSubscriber</code> interface
 and implements a <code>getSubscribedEvents()</code> method which returns an
 array of events it should be subscribed to.</p>
-<pre><code class="php">&lt;?php
-
-class TestEventSubscriber implements \Doctrine\Common\EventSubscriber
-{
-    const preFoo = 'preFoo';
-
-    public $preFooInvoked = false;
-
-    public function preFoo(): void
-    {
-        $this-&gt;preFooInvoked = true;
-    }
-
-    public function getSubscribedEvents(): array
-    {
-        return array(self::preFoo);
-    }
-}
-
-$eventSubscriber = new TestEventSubscriber();
-$evm-&gt;addEventSubscriber($eventSubscriber);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3e0912a074d9b9debf35eacd7378d1ef79ec1196"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3e0912a074d9b9debf35eacd7378d1ef79ec1196"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEventSubscriber</span> <span class="hljs-keyword">implements</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">const</span> preFoo = <span class="hljs-string">'preFoo'</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> $preFooInvoked = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFoo</span><span class="hljs-params">()</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;preFooInvoked = <span class="hljs-keyword">true</span>;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span>: <span class="hljs-title">array</span></span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(<span class="hljs-keyword">self</span>::preFoo);
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">$eventSubscriber = <span class="hljs-keyword">new</span> TestEventSubscriber();
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">$evm-&gt;addEventSubscriber($eventSubscriber);
+</td></tr></table></div></code></pre>
 <p>Now when you dispatch an event any event subscribers will be
 notified for that event.</p>
-<pre><code class="php">&lt;?php
-
-$evm-&gt;dispatchEvent(TestEventSubscriber::preFoo);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4f428d51602fe265580955f17d3724da281bd8d2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4f428d51602fe265580955f17d3724da281bd8d2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$evm-&gt;dispatchEvent(TestEventSubscriber::preFoo);
+</td></tr></table></div></code></pre>
 <p>Now test the <code>$eventSubscriber</code> instance to see if the
 <code>preFoo()</code> method was invoked.</p>
-<pre><code class="php">&lt;?php
-
-if ($eventSubscriber-&gt;preFooInvoked) {
-    echo 'pre foo invoked!';
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="342c66a75899b8a70193e0d180fa01a4cfffb395"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="342c66a75899b8a70193e0d180fa01a4cfffb395"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">if</span> ($eventSubscriber-&gt;preFooInvoked) {
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">echo</span> <span class="hljs-string">'pre foo invoked!'</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a id="lifecycle_events"></a>
 <a class="section-anchor" id="lifecycle-events" name="lifecycle-events"></a><h2 class="section-header"><a href="#lifecycle-events">Lifecycle Events<i class="fas fa-link"></i></a></h2>
 <p>The DocumentManager and UnitOfWork trigger several events during
@@ -429,12 +475,19 @@ the life-time of their registered documents.</p>
 
 <p>You can access the Event constants from the <code>Events</code> class in the
 ODM package.</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\ODM\MongoDB\Events;
-
-echo Events::preUpdate;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6b43ba6d3ed73479906a0099d95a9078b5229357"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6b43ba6d3ed73479906a0099d95a9078b5229357"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Events</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">echo</span> Events::preUpdate;
+</td></tr></table></div></code></pre>
 <p>These can be hooked into by two different types of event
 listeners:</p>
 <ul><li class="dash">
@@ -461,65 +514,72 @@ which operations are allowed in which lifecycle event.</p>
 providing a mechanism to register direct callbacks inside the
 corresponding document classes that are executed when the lifecycle
 event occurs.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class User
-{
-    // ...
-
-    /**
-     * @Field
-     */
-    public $value;
-
-    /** @Field */
-    private $createdAt;
-
-    /** @PrePersist */
-    public function doStuffOnPrePersist(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs): void
-    {
-        $this-&gt;createdAt = date('Y-m-d H:i:s');
-    }
-
-    /** @PrePersist */
-    public function doOtherStuffOnPrePersist(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs): void
-    {
-        $this-&gt;value = 'changed from prePersist callback!';
-    }
-
-    /** @PostPersist */
-    public function doStuffOnPostPersist(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs): void
-    {
-        $this-&gt;value = 'changed from postPersist callback!';
-    }
-
-    /** @PreLoad */
-    public function doStuffOnPreLoad(\Doctrine\ODM\MongoDB\Event\PreLoadEventArgs $eventArgs): void
-    {
-        $data =&amp; $eventArgs-&gt;getData();
-        $data['value'] = 'changed from preLoad callback';
-    }
-
-    /** @PostLoad */
-    public function doStuffOnPostLoad(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs): void
-    {
-        $this-&gt;value = 'changed from postLoad callback!';
-    }
-
-    /** @PreUpdate */
-    public function doStuffOnPreUpdate(\Doctrine\ODM\MongoDB\Event\PreUpdateEventArgs $eventArgs): void
-    {
-        $this-&gt;value = 'changed from preUpdate callback!';
-    }
-
-    /** @PreFlush */
-    public function preFlush(\Doctrine\ODM\MongoDB\Event\PreFlushEventArgs $eventArgs): void
-    {
-        $this-&gt;value = 'changed from preFlush callback!';
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="48f814ae956d3eceaaf42d9f7fb2b74ddf7906f8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="48f814ae956d3eceaaf42d9f7fb2b74ddf7906f8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @Field
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> $value;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">private</span> $createdAt;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PrePersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPrePersist</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;createdAt = date(<span class="hljs-string">'Y-m-d H:i:s'</span>);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PrePersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doOtherStuffOnPrePersist</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from prePersist callback!'</span>;
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostPersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPostPersist</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from postPersist callback!'</span>;
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PreLoad</span> */</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPreLoad</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\PreLoadEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">        $data =&amp; $eventArgs-&gt;getData();
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">        $data[<span class="hljs-string">'value'</span>] = <span class="hljs-string">'changed from preLoad callback'</span>;
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostLoad</span> */</span>
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPostLoad</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from postLoad callback!'</span>;
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PreUpdate</span> */</span>
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPreUpdate</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\PreUpdateEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from preUpdate callback!'</span>;
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PreFlush</span> */</span>
+</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFlush</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\PreFlushEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from preFlush callback!'</span>;
+</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Note that when using annotations you have to apply the
 @HasLifecycleCallbacks marker annotation on the document class.</p>
 <a class="section-anchor" id="listening-to-lifecycle-events" name="listening-to-lifecycle-events"></a><h2 class="section-header"><a href="#listening-to-lifecycle-events">Listening to Lifecycle Events<i class="fas fa-link"></i></a></h2>
@@ -532,21 +592,35 @@ workings of the DocumentManager and UnitOfWork. Please read the
 to write your own listener.</p>
 <p>To register an event listener you have to hook it into the
 EventManager that is passed to the DocumentManager factory:</p>
-<pre><code class="php">&lt;?php
-
-$eventManager = new EventManager();
-$eventManager-&gt;addEventListener(array(Events::preUpdate), new MyEventListener());
-$eventManager-&gt;addEventSubscriber(new MyEventSubscriber());
-
-$documentManager = DocumentManager::create($mongo, $config, $eventManager);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="eb86368e64614b4f9f7286f77a5a018fa0a831e9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="eb86368e64614b4f9f7286f77a5a018fa0a831e9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$eventManager = <span class="hljs-keyword">new</span> EventManager();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$eventManager-&gt;addEventListener(<span class="hljs-keyword">array</span>(Events::preUpdate), <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$eventManager-&gt;addEventSubscriber(<span class="hljs-keyword">new</span> MyEventSubscriber());
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$documentManager = DocumentManager::create($mongo, $config, $eventManager);
+</td></tr></table></div></code></pre>
 <p>You can also retrieve the event manager instance after the
 DocumentManager was created:</p>
-<pre><code class="php">&lt;?php
-
-$documentManager-&gt;getEventManager()-&gt;addEventListener(array(Events::preUpdate), new MyEventListener());
-$documentManager-&gt;getEventManager()-&gt;addEventSubscriber(new MyEventSubscriber());
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="858f6f6c2ab733e63a379c5710b189eaaf9df678"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="858f6f6c2ab733e63a379c5710b189eaaf9df678"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$documentManager-&gt;getEventManager()-&gt;addEventListener(<span class="hljs-keyword">array</span>(Events::preUpdate), <span class="hljs-keyword">new</span> MyEventListener());
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$documentManager-&gt;getEventManager()-&gt;addEventSubscriber(<span class="hljs-keyword">new</span> MyEventSubscriber());
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="implementing-event-listeners" name="implementing-event-listeners"></a><h2 class="section-header"><a href="#implementing-event-listeners">Implementing Event Listeners<i class="fas fa-link"></i></a></h2>
 <p>This section explains what is and what is not allowed during
 specific lifecycle events of the UnitOfWork. Although you get
@@ -556,288 +630,463 @@ wrong event may produce lots of different errors, such as
 inconsistent data and lost updates/persists/removes.</p>
 <a class="section-anchor" id="prepersist" name="prepersist"></a><h3 class="section-header"><a href="#prepersist">prePersist<i class="fas fa-link"></i></a></h3>
 <p>Listen to the <code>prePersist</code> event:</p>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::prePersist, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="20e8e15c346de6e8edbc6b63a576b2387906c991"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="20e8e15c346de6e8edbc6b63a576b2387906c991"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::prePersist, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function prePersist(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs): void
-    {
-        $document = $eventArgs-&gt;getDocument();
-        $document-&gt;setSomething();
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dc3146e94f480952590d395eabe3e9e1fec565aa"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dc3146e94f480952590d395eabe3e9e1fec565aa"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prePersist</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $document = $eventArgs-&gt;getDocument();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $document-&gt;setSomething();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="preload" name="preload"></a><h3 class="section-header"><a href="#preload">preLoad<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::preLoad, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f352a7da7ddad47b5a6c715554f1836a038ff87f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f352a7da7ddad47b5a6c715554f1836a038ff87f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::preLoad, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class with a <code>preLoad()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function preLoad(\Doctrine\ODM\MongoDB\Event\PreLoadEventArgs $eventArgs): void
-    {
-        $data =&amp; $eventArgs-&gt;getData();
-        // do something
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dc9567dd5f2f286d242a6a50d9eb3445fc3017f1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dc9567dd5f2f286d242a6a50d9eb3445fc3017f1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preLoad</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\PreLoadEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $data =&amp; $eventArgs-&gt;getData();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-comment">// do something</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="postload" name="postload"></a><h3 class="section-header"><a href="#postload">postLoad<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::postLoad, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b72c2499e372d73c521695979338485a91be55a8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b72c2499e372d73c521695979338485a91be55a8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::postLoad, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class with a <code>postLoad()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function postLoad(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs): void
-    {
-        $document = $eventArgs-&gt;getDocument();
-        // do something
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e6f2871d34f4ec9da41af91c60b159e356dbec78"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e6f2871d34f4ec9da41af91c60b159e356dbec78"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postLoad</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $document = $eventArgs-&gt;getDocument();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-comment">// do something</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="preremove" name="preremove"></a><h3 class="section-header"><a href="#preremove">preRemove<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::preRemove, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a46e920b1f64fcce6d2ee8d206792300123737c1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a46e920b1f64fcce6d2ee8d206792300123737c1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::preRemove, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class with a <code>preRemove()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function preRemove(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs): void
-    {
-        $document = $eventArgs-&gt;getDocument();
-        // do something
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6a6af0960751465e88227b6e61fd7537aee06ded"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6a6af0960751465e88227b6e61fd7537aee06ded"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preRemove</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $document = $eventArgs-&gt;getDocument();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-comment">// do something</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="preflush" name="preflush"></a><h3 class="section-header"><a href="#preflush">preFlush<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::preFlush, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8dae77fc71767679f979ea369b488f3c12d95676"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8dae77fc71767679f979ea369b488f3c12d95676"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::preFlush, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class with a <code>preFlush()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function preFlush(\Doctrine\ODM\MongoDB\Event\PreFlushEventArgs $eventArgs): void
-    {
-        $dm = $eventArgs-&gt;getDocumentManager();
-        $uow = $dm-&gt;getUnitOfWork();
-        // do something
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ae88b91a0072c9f0b6744e1534f3e55c9dbfbfe6"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ae88b91a0072c9f0b6744e1534f3e55c9dbfbfe6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFlush</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\PreFlushEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $dm = $eventArgs-&gt;getDocumentManager();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $uow = $dm-&gt;getUnitOfWork();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-comment">// do something</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="onflush" name="onflush"></a><h3 class="section-header"><a href="#onflush">onFlush<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::onFlush, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="87844e51b829a8a611a4af60f8fc6f1d4c399265"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="87844e51b829a8a611a4af60f8fc6f1d4c399265"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::onFlush, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class with a <code>onFlush()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function onFlush(\Doctrine\ODM\MongoDB\Event\OnFlushEventArgs $eventArgs): void
-    {
-        $dm = $eventArgs-&gt;getDocumentManager();
-        $uow = $dm-&gt;getUnitOfWork();
-        // do something
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d5bb4d6d869bc8ca6a07f4c8174314bb4af4924d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d5bb4d6d869bc8ca6a07f4c8174314bb4af4924d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onFlush</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\OnFlushEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $dm = $eventArgs-&gt;getDocumentManager();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $uow = $dm-&gt;getUnitOfWork();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-comment">// do something</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="postflush" name="postflush"></a><h3 class="section-header"><a href="#postflush">postFlush<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::postFlush, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e38649242c2f17c009dd0deb8a4d4742ff747061"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e38649242c2f17c009dd0deb8a4d4742ff747061"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::postFlush, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class with a <code>postFlush()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function postFlush(\Doctrine\ODM\MongoDB\Event\PostFlushEventArgs $eventArgs): void
-    {
-        $dm = $eventArgs-&gt;getDocumentManager();
-        $uow = $dm-&gt;getUnitOfWork();
-        // do something
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f0aebfbc00e53ffc88c9692f997bf32eadf9e5dd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f0aebfbc00e53ffc88c9692f997bf32eadf9e5dd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postFlush</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\PostFlushEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $dm = $eventArgs-&gt;getDocumentManager();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $uow = $dm-&gt;getUnitOfWork();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-comment">// do something</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="preupdate" name="preupdate"></a><h3 class="section-header"><a href="#preupdate">preUpdate<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::preUpdate, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="12c24f7c935f5bffd123189d1653fc2c9fda4e1f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="12c24f7c935f5bffd123189d1653fc2c9fda4e1f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::preUpdate, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class with a <code>preUpdate()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function preUpdate(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs): void
-    {
-        $document = $eventArgs-&gt;getDocument();
-        $document-&gt;setSomething();
-        $dm = $eventArgs-&gt;getDocumentManager();
-        $class = $dm-&gt;getClassMetadata(get_class($document));
-        $dm-&gt;getUnitOfWork()-&gt;recomputeSingleDocumentChangeSet($class, $document);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="15d13d3e852eba2bbed3ad5514fb21f67df94188"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="15d13d3e852eba2bbed3ad5514fb21f67df94188"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preUpdate</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $document = $eventArgs-&gt;getDocument();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $document-&gt;setSomething();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        $dm = $eventArgs-&gt;getDocumentManager();
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        $class = $dm-&gt;getClassMetadata(get_class($document));
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        $dm-&gt;getUnitOfWork()-&gt;recomputeSingleDocumentChangeSet($class, $document);
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>If you modify a document in the preUpdate event you must call <code>recomputeSingleDocumentChangeSet</code>
 for the modified document in order for the changes to be persisted.</p>
 </div>
 <a class="section-anchor" id="onclear" name="onclear"></a><h3 class="section-header"><a href="#onclear">onClear<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::onClear, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4dc5c65d14ae96409400fb5cf41753573585fa1f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4dc5c65d14ae96409400fb5cf41753573585fa1f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::onClear, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class with a <code>onClear()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function onClear(\Doctrine\ODM\MongoDB\Event\OnClearEventArgs $eventArgs): void
-    {
-        $class = $eventArgs-&gt;getDocumentClass();
-        $dm = $eventArgs-&gt;getDocumentManager();
-        $uow = $dm-&gt;getUnitOfWork();
-
-        // Check if event clears all documents.
-        if ($eventArgs-&gt;clearsAllDocuments()) {
-            // do something
-        }
-        // do something
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bf3219fd894d377b92ddd11879c34043bfc8ec39"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bf3219fd894d377b92ddd11879c34043bfc8ec39"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onClear</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\OnClearEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $class = $eventArgs-&gt;getDocumentClass();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $dm = $eventArgs-&gt;getDocumentManager();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        $uow = $dm-&gt;getUnitOfWork();
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// Check if event clears all documents.</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-keyword">if</span> ($eventArgs-&gt;clearsAllDocuments()) {
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            <span class="hljs-comment">// do something</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-comment">// do something</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="documentnotfound" name="documentnotfound"></a><h3 class="section-header"><a href="#documentnotfound">documentNotFound<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::documentNotFound, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a74b7f772bc4a26f7b9f74adfa6f8b5a7e01796c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a74b7f772bc4a26f7b9f74adfa6f8b5a7e01796c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::documentNotFound, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class with a <code>documentNotFound()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function documentNotFound(\Doctrine\ODM\MongoDB\Event\DocumentNotFoundEventArgs $eventArgs): void
-    {
-        $proxy = $eventArgs-&gt;getObject();
-        $identifier = $eventArgs-&gt;getIdentifier();
-        // do something
-        // To prevent the documentNotFound exception from being thrown, call the disableException() method:
-        $eventArgs-&gt;disableException();
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="91c6651f84af96d6d89864377f7b90a120325899"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="91c6651f84af96d6d89864377f7b90a120325899"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">documentNotFound</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\DocumentNotFoundEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $proxy = $eventArgs-&gt;getObject();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $identifier = $eventArgs-&gt;getIdentifier();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-comment">// do something</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-comment">// To prevent the documentNotFound exception from being thrown, call the disableException() method:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        $eventArgs-&gt;disableException();
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="postupdate-postremove-postpersist" name="postupdate-postremove-postpersist"></a><h3 class="section-header"><a href="#postupdate-postremove-postpersist">postUpdate, postRemove, postPersist<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::postUpdate, $test);
-$evm-&gt;addEventListener(Events::postRemove, $test);
-$evm-&gt;addEventListener(Events::postPersist, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6499750b801b3ba7151cb4f5b30ac9e866ad8e49"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6499750b801b3ba7151cb4f5b30ac9e866ad8e49"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::postUpdate, $test);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$evm-&gt;addEventListener(Events::postRemove, $test);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$evm-&gt;addEventListener(Events::postPersist, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class with a <code>postUpdate()</code>, <code>postRemove()</code> and <code>postPersist()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function postUpdate(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs): void
-    {
-    }
-
-    public function postRemove(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs): void
-    {
-    }
-
-    public function postPersist(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs): void
-    {
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="64d5d323827dda89ede728030f70ae782d2d7b06"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="64d5d323827dda89ede728030f70ae782d2d7b06"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postUpdate</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postRemove</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postPersist</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="postcollectionload" name="postcollectionload"></a><h3 class="section-header"><a href="#postcollectionload">postCollectionLoad<i class="fas fa-link"></i></a></h3>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>This event was introduced in version 1.1</p>
 </div>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::postCollectionLoad, $test);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c2b939f139294d70bcc3b9d770fc4ae944c656c9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c2b939f139294d70bcc3b9d770fc4ae944c656c9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm-&gt;addEventListener(Events::postCollectionLoad, $test);
+</td></tr></table></div></code></pre>
 <p>Define the <code>EventTest</code> class with a <code>postCollectionLoad()</code> method:</p>
-<pre><code class="php">&lt;?php
-
-class EventTest
-{
-    public function postCollectionLoad(\Doctrine\ODM\MongoDB\Event\PostCollectionLoadEventArgs $eventArgs): void
-    {
-        $collection = $eventArgs-&gt;getCollection();
-        if ($collection instanceof \Malarzm\Collections\DiffableCollection) {
-            $collection-&gt;snapshot();
-        }
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4cc39ab43c61c3e501ef5b9e327895ee71a76ec2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4cc39ab43c61c3e501ef5b9e327895ee71a76ec2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postCollectionLoad</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\PostCollectionLoadEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $collection = $eventArgs-&gt;getCollection();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-keyword">if</span> ($collection <span class="hljs-keyword">instanceof</span> \Malarzm\Collections\DiffableCollection) {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            $collection-&gt;snapshot();
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="load-classmetadata-event" name="load-classmetadata-event"></a><h2 class="section-header"><a href="#load-classmetadata-event">Load ClassMetadata Event<i class="fas fa-link"></i></a></h2>
 <p>When the mapping information for a document is read, it is
 populated in to a <code>ClassMetadata</code> instance. You can hook in to
 this process and manipulate the instance with the <code>loadClassMetadata</code> event:</p>
-<pre><code class="php">&lt;?php
-
-$test = new EventTest();
-$metadataFactory = $dm-&gt;getMetadataFactory();
-$evm = $dm-&gt;getEventManager();
-$evm-&gt;addEventListener(Events::loadClassMetadata, $test);
-
-class EventTest
-{
-    public function loadClassMetadata(\Doctrine\ODM\MongoDB\Event\LoadClassMetadataEventArgs $eventArgs): void
-    {
-        $classMetadata = $eventArgs-&gt;getClassMetadata();
-        $fieldMapping = array(
-            'fieldName' =&gt; 'about',
-            'type' =&gt; 'string'
-        );
-        $classMetadata-&gt;mapField($fieldMapping);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c3d82e97c8d2982885d8dd527632545e56c735f8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c3d82e97c8d2982885d8dd527632545e56c735f8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$test = <span class="hljs-keyword">new</span> EventTest();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$metadataFactory = $dm-&gt;getMetadataFactory();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm = $dm-&gt;getEventManager();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$evm-&gt;addEventListener(Events::loadClassMetadata, $test);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventTest</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadClassMetadata</span><span class="hljs-params">(\Doctrine\ODM\MongoDB\Event\LoadClassMetadataEventArgs $eventArgs)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        $classMetadata = $eventArgs-&gt;getClassMetadata();
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        $fieldMapping = <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">            <span class="hljs-string">'fieldName'</span> =&gt; <span class="hljs-string">'about'</span>,
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">            <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'string'</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        );
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        $classMetadata-&gt;mapField($fieldMapping);
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -862,8 +1111,6 @@ class EventTest
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -909,7 +1156,7 @@ class EventTest
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

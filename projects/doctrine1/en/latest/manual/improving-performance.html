@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -285,8 +282,7 @@ Doctrine_Core::compile( 'Doctrine.compiled.php' );
 <p>Now we can execute compile.php and a file named
 Doctrine.compiled.php will be generated in the root of your
 <code>doctrine_test</code> folder:</p>
-<pre><code class="sh">$ php compile.php
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>php compile.php</code></pre></div>
 <p>If you wish to only compile in the database drivers you are using you
 can pass an array of drivers as the second argument to compile.
 For this example we are only using MySQL so lets tell Doctrine to only
@@ -322,10 +318,17 @@ record out of the database and populate the newly created object with that
 data. This not only means unnecessary network traffic but also means that
 Doctrine has to populate data into objects that is never used.</p>
 <p>I'm sure you all know why a query like the following is not ideal:</p>
-<pre><code class="sql">SELECT
-*
-FROM my_table
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="501c0dd5fa2575647f2654f54d61eec7bca15603"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="501c0dd5fa2575647f2654f54d61eec7bca15603"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">SELECT</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">*
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">FROM my_table
+</td></tr></table></div></code></pre>
 <p>The above is bad in any application and this is also true when using Doctrine.
 In fact it's even worse when using Doctrine because populating objects with
 data that is not needed is a waste of time.</p>
@@ -353,21 +356,28 @@ $blogPosts = $q-&gt;execute( array( 1 ) );
 </code></pre>
 <p>Now imagine you have a view or template that renders the most recent
 blog posts:</p>
-<pre><code class="html+php">&lt;?php foreach ( $blogPosts as $blogPost ): ?&gt;
-    &lt;li&gt;
-        &lt;strong&gt;
-            &lt;?php echo $blogPost['title'] ?&gt;
-        &lt;/strong&gt;
-
-        - Posted on &lt;?php echo $blogPost['created_at'] ?&gt;
-        by &lt;?php echo $blogPost['author'] ?&gt;.
-
-        &lt;small&gt;
-            (&lt;?php echo $blogPost['num_comments'] ?&gt;)
-        &lt;/small&gt;
-    &lt;/li&gt;
-&lt;?php endforeach; ?&gt;
-</code></pre>
+<pre class="code-block-table"><code class="html+php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="faa4241a819c6e02b30b941a2bc2ff5193918bdd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="faa4241a819c6e02b30b941a2bc2ff5193918bdd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><?php foreach ( $blogPosts as $blogPost ): ?>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <li>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <strong>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <?php echo $blogPost['title'] ?>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        </strong>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        - Posted on <?php echo $blogPost['created_at'] ?>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        by <?php echo $blogPost['author'] ?>.
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <small>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            (<?php echo $blogPost['num_comments'] ?>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        </small>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    </li>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><?php endforeach; ?>
+</td></tr></table></div></code></pre>
 <p>Can you think of any benefit of having objects in the view instead of
 arrays? You're not going to execute business logic in the view, are you?
 One parameter can save you a lot of unnecessary processing:</p>
@@ -544,8 +554,6 @@ used in Doctrine.</p>
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
         <script id="instantsearch-template" type="text/template">
@@ -590,7 +598,7 @@ used in Doctrine.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

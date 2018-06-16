@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -344,13 +341,20 @@ definition.</p>
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-BlogPost:
-  actAs: [TimestampBehavior]
-  columns:
-    title: string(200)
-    body: clob
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bdc6c44a8bb96a0b666a8dedba4fbf1d12138e4c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bdc6c44a8bb96a0b666a8dedba4fbf1d12138e4c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">BlogPost:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  actAs:</span> <span class="hljs-string">[TimestampBehavior]</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    title:</span> <span class="hljs-string">string(200)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    body:</span> <span class="hljs-string">clob</span>
+</td></tr></table></div></code></pre>
 <p>Now when we try and utilize the <code>BlogPost</code> model you will notice that
 the <code>created</code> and <code>updated</code> columns were added for you and
 automatically set when saved:</p>
@@ -363,16 +367,15 @@ $blogPost-&gt;save();
 print_r($blogPost-&gt;toArray());
 </code></pre>
 <p>The above example would produce the following output:</p>
-<pre><code class="sh">$ php test.php
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>php test.php
 Array
 (
-    [id] =&gt; 1
-    [title] =&gt; Test
-    [body] =&gt; test
-    [created] =&gt; 2009-01-22
-    [updated] =&gt; 2009-01-22
-)
-</code></pre>
+    [id] => 1
+    [title] => Test
+    [body] => test
+    [created] => 2009-01-22
+    [updated] => 2009-01-22
+)</code></pre></div>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The above described functionality is available via the
 <code>Timestampable</code> behavior that we have already talked about. You
 can go back and read more about it in the <a href=""></a> section of this
@@ -425,19 +428,26 @@ class Email extends Doctrine_Record
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-User:
-  columns:
-    username: string(255)
-    password: string(255)
-
-Email:
-  columns:
-    address: string
-    user_id: integer
-  relations:
-    User:
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bc951ae410422dbdbee8739fcf8162a9b39f49a3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bc951ae410422dbdbee8739fcf8162a9b39f49a3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    username:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    password:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">Email:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    address:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    user_id:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">  relations:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    User:</span>
+</td></tr></table></div></code></pre>
 <p>Now if we extend the <code>User</code> and <code>Email</code> classes and create, for
 example, classes <code>ExtendedUser</code> and <code>ExtendedEmail</code>, the
 <code>ExtendedUser</code> will still have a relation to the <code>Email</code> class and
@@ -515,13 +525,20 @@ class Email extends Doctrine_Record
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-User:
-  actAs: [UserTemplate]
-
-Email:
-  actAs: [EmailTemplate]
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6d05883380b8e6e7bc8d75d3513bff976fed7f54"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6d05883380b8e6e7bc8d75d3513bff976fed7f54"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  actAs:</span> <span class="hljs-string">[UserTemplate]</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">Email:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  actAs:</span> <span class="hljs-string">[EmailTemplate]</span>
+</td></tr></table></div></code></pre>
 <p>Now consider the following code snippet. This does NOT work since we
 haven't yet set any concrete implementations for the templates.</p>
 
@@ -549,23 +566,22 @@ $user-&gt;save();
 print_r($user-&gt;toArray(true));
 </code></pre>
 <p>The above example would produce the following output:</p>
-<pre><code class="sh">$ php test.php
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>php test.php
 Array
 (
-    [id] =&gt; 1
-    [username] =&gt;
-    [password] =&gt;
-    [Emails] =&gt; Array
+    [id] => 1
+    [username] =>
+    [password] =>
+    [Emails] => Array
         (
-            [0] =&gt; Array
+            [0] => Array
                 (
-                    [id] =&gt; 1
-                    [address] =&gt; jonwage@gmail.com
-                    [user_id] =&gt; 1
+                    [id] => 1
+                    [address] => jonwage@gmail.com
+                    [user_id] => 1
                 )
         )
-)
-</code></pre>
+)</code></pre></div>
 <div class="alert tip bg-success text-light"><i class="fas fa-question-circle mr-2"></i><p>The implementations for the templates can be set at manager,
 connection and even at the table level.</p>
 </div>
@@ -693,10 +709,9 @@ public function buildRelation() // calls buildForeignRelation() and buildLocalRe
 <p>For the next several examples using the core behaviors lets delete all
 our existing schemas and models from our test environment we created and
 have been using in the earlier chapters:</p>
-<pre><code class="sh">$ rm schema.yml
-$ touch schema.yml
-$ rm -rf models/*
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>rm schema.yml
+<span class="noselect">$ </span>touch schema.yml
+<span class="noselect">$ </span>rm -rf models/*</code></pre></div>
 <hr />
 <a class="section-anchor" id="introduction" name="introduction"></a><h3 class="section-header"><a href="#introduction">Introduction<i class="fas fa-link"></i></a></h3>
 <p>Doctrine comes bundled with some templates that offer out of the box
@@ -734,17 +749,24 @@ class BlogPost extends Doctrine_Record
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-BlogPost:
-  actAs:
-    Versionable:
-      versionColumn: version
-      className: %CLASS%Version
-      auditLog: true
-  columns:
-    title: string(255)
-    body: clob
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3b376af2978fb71bdb5bad12cd7c61bc25294a4d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3b376af2978fb71bdb5bad12cd7c61bc25294a4d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">BlogPost:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  actAs:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    Versionable:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      versionColumn:</span> <span class="hljs-string">version</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      className:</span> <span class="hljs-string">%CLASS%Version</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      auditLog:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    title:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    body:</span> <span class="hljs-string">clob</span>
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The <code>auditLog</code> option can be used to turn off the audit
 log history. This is when you want to maintain a version number but
 not maintain the data at each version.</p>
@@ -802,15 +824,14 @@ $blogPost-&gt;save();
 print_r($blogPost-&gt;toArray());
 </code></pre>
 <p>The above example would produce the following output:</p>
-<pre><code class="sh">$ php test.php
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>php test.php
 Array
 (
-    [id] =&gt; 1
-    [title] =&gt; Modified blog post title
-    [body] =&gt; test
-    [version] =&gt; 2
-)
-</code></pre>
+    [id] => 1
+    [title] => Modified blog post title
+    [body] => test
+    [version] => 2
+)</code></pre></div>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Notice how the value of the <code>version</code> column is <code>2</code>.
 This is because we have saved 2 versions of the <code>BlogPost</code> model.
 We can easily revert to another version by using the <code>revert()</code>
@@ -822,15 +843,14 @@ method that the behavior includes.</p>
 print_r($blogPost-&gt;toArray());
 </code></pre>
 <p>The above example would produce the following output:</p>
-<pre><code class="sh">$ php test.php
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>php test.php
 Array
 (
-    [id] =&gt; 2
-    [title] =&gt; Test blog post
-    [body] =&gt; test
-    [version] =&gt; 1
-)
-</code></pre>
+    [id] => 2
+    [title] => Test blog post
+    [body] => test
+    [version] => 1
+)</code></pre></div>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Notice how the value of the <code>version</code> column is set to 1
 and the <code>title</code> is back to the original value was set it to when
 creating the <code>BlogPost</code>.</p>
@@ -857,32 +877,46 @@ class BlogPost extends Doctrine_Record
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-# schema.yml
-
-# ...
-BlogPost:
-  actAs:
-# ...
-    Timestampable:
-# ...
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="999d20b1f0fcf7cb14877a9f03f3d26a637caf73"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="999d20b1f0fcf7cb14877a9f03f3d26a637caf73"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment"># schema.yml</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">BlogPost:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  actAs:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    Timestampable:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr></table></div></code></pre>
 <p>If you are only interested in using only one of the columns, such as a
 <code>created_at</code> timestamp, but not a an <code>updated_at</code> field, set the
 <code>disabled</code> to true for either of the fields as in the example below.</p>
-<pre><code class="yaml">---
-BlogPost:
-  actAs:
-# ...
-    Timestampable:
-      created:
-        name: created_at
-        type: timestamp
-        format: Y-m-d H:i:s
-      updated:
-        disabled: true
-# ...
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f8f7a0108f77157e49f7e34d8ba3e80ca387fd32"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f8f7a0108f77157e49f7e34d8ba3e80ca387fd32"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">BlogPost:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  actAs:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    Timestampable:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      created:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">        name:</span> <span class="hljs-string">created_at</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">        type:</span> <span class="hljs-string">timestamp</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">        format:</span> <span class="hljs-string">Y-m-d</span> <span class="hljs-attr">H:i:s</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      updated:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">        disabled:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr></table></div></code></pre>
 <p>Now look what happens when we create a new post:</p>
 
 <pre><code class="">$blogPost        = new BlogPost();
@@ -893,17 +927,16 @@ $blogPost-&gt;save();
 print_r($blogPost-&gt;toArray());
 </code></pre>
 <p>The above example would produce the following output:</p>
-<pre><code class="sh">$ php test.php
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>php test.php
 Array
 (
-    [id] =&gt; 1
-    [title] =&gt; Test blog post
-    [body] =&gt; test
-    [version] =&gt; 1
-    [created_at] =&gt; 2009-01-21 17:54:23
-    [updated_at] =&gt; 2009-01-21 17:54:23
-)
-</code></pre>
+    [id] => 1
+    [title] => Test blog post
+    [body] => test
+    [version] => 1
+    [created_at] => 2009-01-21 17:54:23
+    [updated_at] => 2009-01-21 17:54:23
+)</code></pre></div>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Look how the <code>created_at</code> and <code>updated_at</code> values
 were automatically set for you!</p>
 </div>
@@ -942,19 +975,26 @@ class BlogPost extends Doctrine_Record
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-# schema.yml
-
-# ...
-BlogPost:
-  actAs:
-# ...
-    Sluggable:
-      unique: true
-      fields: [title]
-      canUpdate: true
-# ...
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b25b70bf9a218e1a9dfc884c236f1bc7d2f11664"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b25b70bf9a218e1a9dfc884c236f1bc7d2f11664"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment"># schema.yml</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">BlogPost:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  actAs:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    Sluggable:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      unique:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      fields:</span> <span class="hljs-string">[title]</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      canUpdate:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr></table></div></code></pre>
 <p>Now look what happens when we create a new post. The slug column will
 automatically be set for us:</p>
 
@@ -966,18 +1006,17 @@ $blogPost-&gt;save();
 print_r($blogPost-&gt;toArray());
 </code></pre>
 <p>The above example would produce the following output:</p>
-<pre><code class="sh">$ php test.php
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>php test.php
 Array
 (
-    [id] =&gt; 1
-    [title] =&gt; Test blog post
-    [body] =&gt; test
-    [version] =&gt; 1
-    [created_at] =&gt; 2009-01-21 17:57:05
-    [updated_at] =&gt; 2009-01-21 17:57:05
-    [slug] =&gt; test-blog-post
-)
-</code></pre>
+    [id] => 1
+    [title] => Test blog post
+    [body] => test
+    [version] => 1
+    [created_at] => 2009-01-21 17:57:05
+    [updated_at] => 2009-01-21 17:57:05
+    [slug] => test-blog-post
+)</code></pre></div>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Notice how the value of the <code>slug</code> column was
 automatically set based on the value of the <code>title</code> column. When a
 slug is created, by default it is <code>urlized</code> which means all
@@ -1020,15 +1059,22 @@ languages support. This can be achieved as follows:</p>
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-NewsItem:
-  actAs:
-    I18n:
-      fields: [title, body]
-  columns:
-    title: string(255)
-    body: clob
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ad18fb1873fab964fab8f0b91ed7566bdd32f6b9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ad18fb1873fab964fab8f0b91ed7566bdd32f6b9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">NewsItem:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  actAs:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    I18n:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      fields:</span> <span class="hljs-string">[title,</span> <span class="hljs-string">body]</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    title:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    body:</span> <span class="hljs-string">clob</span>
+</td></tr></table></div></code></pre>
 <p>Below is a list of all the options you can use with the <code>I18n</code>
 behavior:</p>
 <table class="table table-bordered"><tr><td>Name</td><td>Default</td><td>Description</td></tr><tr><td><code>className</code> <code>fields</code> <code>type</code> <code>length</code> <code>options</code></td><td><code>%CLASS%Translation</code> <code>array()</code> <code>string</code> <code>2</code> <code>array()</code></td><td>The name pattern to use for generated class. The fields to internationalize. The type of <code>lang</code> column. The length of the <code>lang</code> column. Other options for the <code>lang</code> column.</td></tr></table>
@@ -1080,29 +1126,28 @@ $newsItem-&gt;Translation['fi']-&gt;body  = 'test'; $newsItem-&gt;save();
 print_r($newsItem-&gt;toArray());
 </code></pre>
 <p>The above example would produce the following output:</p>
-<pre><code class="sh">$ php test.php
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>php test.php
 Array
 (
-    [id] =&gt; 1
-    [Translation] =&gt; Array
+    [id] => 1
+    [Translation] => Array
         (
-            [en] =&gt; Array
+            [en] => Array
                 (
-                    [id] =&gt; 1
-                    [title] =&gt; some title
-                    [body] =&gt; test
-                    [lang] =&gt; en
+                    [id] => 1
+                    [title] => some title
+                    [body] => test
+                    [lang] => en
                 )
-            [fi] =&gt; Array
+            [fi] => Array
                 (
-                    [id] =&gt; 1
-                    [title] =&gt; joku otsikko
-                    [body] =&gt; test
-                    [lang] =&gt; fi
+                    [id] => 1
+                    [title] => joku otsikko
+                    [body] => test
+                    [lang] => fi
                 )
         )
-)
-</code></pre>
+)</code></pre></div>
 <p>How do we retrieve the translated data now? This is easy! Lets find all
 items and their Finnish translations:</p>
 
@@ -1118,9 +1163,8 @@ $newsItems = Doctrine_Query::create()
 echo $newsItems[0]-&gt;Translation['fi']-&gt;title;
 </code></pre>
 <p>The above example would produce the following output:</p>
-<pre><code class="sh">$ php test.php
-joku otsikko
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>php test.php
+joku otsikko</code></pre></div>
 <a id="behaviors-core-behaviors-nestedset"></a>
 <hr />
 <a class="section-anchor" id="nestedset" name="nestedset"></a><h3 class="section-header"><a href="#nestedset">NestedSet<i class="fas fa-link"></i></a></h3>
@@ -1151,18 +1195,25 @@ class Category extends Doctrine_Record
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-# schema.yml
-
-# ...
-Category:
-  actAs:
-    NestedSet:
-      hasManyRoots: true
-      rootColumnName: root_id
-  columns:
-    name: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="da55b66fe8fb3f759a0c118beea5aa2ad2f54abc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="da55b66fe8fb3f759a0c118beea5aa2ad2f54abc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment"># schema.yml</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">Category:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  actAs:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    NestedSet:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      hasManyRoots:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      rootColumnName:</span> <span class="hljs-string">root_id</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    name:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <p>Lets check the SQL that is generated by the above models:</p>
 
 <pre><code class="">// test.php
@@ -1215,15 +1266,22 @@ class Job extends Doctrine_Record
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-Job:
-  actAs:
-    Searchable:
-      fields: [title, description]
-  columns:
-    title: string(255)
-    description: clob
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7bde1ac7b502cd0dbd54be96da6bc84d400e16e0"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7bde1ac7b502cd0dbd54be96da6bc84d400e16e0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">Job:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  actAs:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    Searchable:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      fields:</span> <span class="hljs-string">[title,</span> <span class="hljs-string">description]</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    title:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    description:</span> <span class="hljs-string">clob</span>
+</td></tr></table></div></code></pre>
 <p>Lets check the SQL that is generated by the above models:</p>
 
 <pre><code class="">// test.php
@@ -1284,19 +1342,26 @@ class Zipcode extends Doctrine_Record
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-# schema.yml
-
-# ...
-Zipcode:
-  actAs: [Geographical]
-  columns:
-    zipcode: string(255)
-    city: string(255)
-    state: string(2)
-    county: string(255)
-    zip_class: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7e84b704d1f76051eda7dcc715f26d29948f9abc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7e84b704d1f76051eda7dcc715f26d29948f9abc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment"># schema.yml</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">Zipcode:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  actAs:</span> <span class="hljs-string">[Geographical]</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    zipcode:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    city:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    state:</span> <span class="hljs-string">string(2)</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    county:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    zip_class:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <p>Lets check the SQL that is generated by the above models:</p>
 
 <pre><code class="">// test.php
@@ -1459,17 +1524,24 @@ class SoftDeleteTest extends Doctrine_Record
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-# schema.yml
-
-# ...
-SoftDeleteTest:
-  actAs: [SoftDelete]
-  columns:
-    name:
-      type: string(255)
-      primary: true
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dbf3efcd050d392c19da27cd067a5a1c8bbcbf89"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dbf3efcd050d392c19da27cd067a5a1c8bbcbf89"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment"># schema.yml</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment"># ...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">SoftDeleteTest:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  actAs:</span> <span class="hljs-string">[SoftDelete]</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    name:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      primary:</span> <span class="hljs-literal">true</span>
+</td></tr></table></div></code></pre>
 <p>Lets check the SQL that is generated by the above models:</p>
 
 <pre><code class="">// test.php
@@ -1518,13 +1590,12 @@ $record-&gt;delete();
 print_r($record-&gt;toArray());
 </code></pre>
 <p>The above example would produce the following output:</p>
-<pre><code class="sh">$ php test.php
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>php test.php
 Array
 (
-    [name] =&gt; new record
-    [deleted_at] =&gt; 2009-09-01 00:59:01
-)
-</code></pre>
+    [name] => new record
+    [deleted_at] => 2009-09-01 00:59:01
+)</code></pre></div>
 <p>Also, when we select some data the query is modified for you:</p>
 
 <pre><code class="">// test.php
@@ -1592,22 +1663,29 @@ database that is versionable, searchable, sluggable, and full I18n.</p>
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-WikiTest:
-  actAs:
-    I18n:
-      fields: [title, content]
-      actAs:
-        Versionable:
-          fields: [title, content]
-        Searchable:
-          fields: [title, content]
-        Sluggable:
-          fields: [title]
-  columns:
-    title: string(255)
-    content: string
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b7f2f6981842383cd9cdda35e60c775491b80ed9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b7f2f6981842383cd9cdda35e60c775491b80ed9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">WikiTest:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  actAs:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    I18n:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      fields:</span> <span class="hljs-string">[title,</span> <span class="hljs-string">content]</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      actAs:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">        Versionable:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">          fields:</span> <span class="hljs-string">[title,</span> <span class="hljs-string">content]</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">        Searchable:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">          fields:</span> <span class="hljs-string">[title,</span> <span class="hljs-string">content]</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">        Sluggable:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">          fields:</span> <span class="hljs-string">[title]</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">    title:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">    content:</span> <span class="hljs-string">string</span>
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The above example of nesting behaviors is currently broken
 in Doctrine. We are working furiously to come up with a backwards
 compatible fix. We will announce when the fix is ready and update
@@ -1641,18 +1719,25 @@ and write them to files instead of evaluating them at run-time.</p>
 </code></pre>
 <p>Here is the same example in YAML format. You can read more about YAML in
 the <a href="yaml-schema-files.html">YAML Schema Files</a> chapter:</p>
-<pre><code class="yaml">---
-NewsArticle:
-  actAs:
-    I18n:
-      fields: [title, body]
-      generateFiles: true
-      generatePath: /path/to/generate
-  columns:
-    title: string(255)
-    body: string(255)
-    author: string(255)
-</code></pre>
+<pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="fa67b118c3fbe697ab47163111b93effad0d3afc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="fa67b118c3fbe697ab47163111b93effad0d3afc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">---</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">NewsArticle:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  actAs:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    I18n:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      fields:</span> <span class="hljs-string">[title,</span> <span class="hljs-string">body]</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      generateFiles:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      generatePath:</span> <span class="hljs-string">/path/to/generate</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">  columns:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    title:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    body:</span> <span class="hljs-string">string(255)</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">    author:</span> <span class="hljs-string">string(255)</span>
+</td></tr></table></div></code></pre>
 <p>Now the behavior will generate a file instead of generating the code and
 using <a href="http://www.php.net/eval">eval()</a> to evaluate it at runtime.</p>
 <hr />
@@ -1711,8 +1796,6 @@ large topic we have devoted an entire chapter to it.</p>
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
         <script id="instantsearch-template" type="text/template">
@@ -1757,7 +1840,7 @@ large topic we have devoted an entire chapter to it.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

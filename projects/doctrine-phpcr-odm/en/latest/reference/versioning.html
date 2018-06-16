@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -291,34 +288,55 @@ and can not be persisted.</p>
 <p>To version documents, you need to set the versionable attribute on the document mapping.
 You can choose between &quot;full&quot; and &quot;simple&quot; versionable. For PHPCR-ODM, both are equivalent.</p>
 <p>Due to implementation limitations, the Locale field is `required` on all translatable documents.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-
-/**
- * @PHPCR\Document(versionable=&quot;full&quot;)
- */
-class MyPersistentClass
-{
-    /**
-     * @PHPCR\VersionName
-     */
-    private $versionName;
-
-    /**
-     * @PHPCR\VersionCreated
-     */
-    private $versionCreated;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;document class=&quot;MyPersistentClass&quot; versionable=&quot;full&quot;&gt;
-        &lt;version-name fieldName=&quot;versionName&quot;/&gt;
-        &lt;version-created fieldName=&quot;versionCreated&quot;/&gt;
-    &lt;/document&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">MyPersistentClass:
-    versionable: full
-    versionName: versionName
-    versionCreated: versionCreated
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9ccdd254b912734845b27855f28d28ac21681364"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9ccdd254b912734845b27855f28d28ac21681364"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">PHPCR</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Annotations</span> <span class="hljs-title">as</span> <span class="hljs-title">PHPCR</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @PHPCR\Document(versionable=<span class="hljs-string">"full"</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPersistentClass</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @PHPCR\VersionName
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">private</span> $versionName;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     * @PHPCR\VersionCreated
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">private</span> $versionCreated;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9c1ba42e168ac6dd13c2de906fe0a8ad17e8f609"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9c1ba42e168ac6dd13c2de906fe0a8ad17e8f609"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"MyPersistentClass"</span> <span class="hljs-attr">versionable</span>=<span class="hljs-string">"full"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">version-name</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"versionName"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">version-created</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"versionCreated"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8a5e7304d019caed08c18c57cad5978475d0e52c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8a5e7304d019caed08c18c57cad5978475d0e52c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">MyPersistentClass:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">    versionable:</span> <span class="hljs-string">full</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">    versionName:</span> <span class="hljs-string">versionName</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    versionCreated:</span> <span class="hljs-string">versionCreated</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Be aware that these two are different things:</p>
 <ul><li class="dash"> The <code>document</code> that is `versionable`. This is <strong>the</strong> document and you can
    take snapshots of this document with the <code>checkin()</code> / <code>checkpoint()</code> methods.</li>
@@ -366,44 +384,51 @@ is declared &quot;hard&quot; can be null nontheless. Make sure to always check f
 </ul>
 
 <a class="section-anchor" id="full-example" name="full-example"></a><h2 class="section-header"><a href="#full-example">Full Example<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">$article = new Article();
-$article-&gt;id = '/test';
-$article-&gt;topic = 'Test';
-$dm-&gt;persist($article);
-$dm-&gt;flush();
-
-// generate a version snapshot of the document as currently stored
-$dm-&gt;checkpoint($article);
-
-$article-&gt;topic = 'Newvalue';
-$dm-&gt;flush();
-
-// get the version information
-$versioninfos = $dm-&gt;getAllLinearVersions($article);
-$firstVersion = reset($versioninfos);
-// and use it to find the snapshot of an old version
-$oldVersion = $dm-&gt;findVersionByName(null, $article-&gt;id, $firstVersion['name']);
-
-echo $oldVersion-&gt;topic; // &quot;Test&quot;
-
-// find the head version
-$article = $dm-&gt;find('/test');
-echo $article-&gt;topic; // &quot;Newvalue&quot;
-
-// restore the head to the old version
-$dm-&gt;restoreVersion($oldVersion);
-
-// the article document is refreshed
-echo $article-&gt;topic; // &quot;Test&quot;
-
-// create a second version to demo removing a version
-$article-&gt;topic = 'Newvalue';
-$dm-&gt;flush();
-$dm-&gt;checkpoint($article);
-
-// remove the old version from the history (not allowed for the last version)
-$dm-&gt;removeVersion($oldVersion);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cac1df4dc5f6428e9777a00a242e4d3b08c78d4b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cac1df4dc5f6428e9777a00a242e4d3b08c78d4b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$article = <span class="hljs-keyword">new</span> Article();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$article-&gt;id = <span class="hljs-string">'/test'</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$article-&gt;topic = <span class="hljs-string">'Test'</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$dm-&gt;persist($article);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$dm-&gt;flush();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">// generate a version snapshot of the document as currently stored</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$dm-&gt;checkpoint($article);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$article-&gt;topic = <span class="hljs-string">'Newvalue'</span>;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$dm-&gt;flush();
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-comment">// get the version information</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$versioninfos = $dm-&gt;getAllLinearVersions($article);
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$firstVersion = reset($versioninfos);
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-comment">// and use it to find the snapshot of an old version</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">$oldVersion = $dm-&gt;findVersionByName(<span class="hljs-keyword">null</span>, $article-&gt;id, $firstVersion[<span class="hljs-string">'name'</span>]);
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-keyword">echo</span> $oldVersion-&gt;topic; <span class="hljs-comment">// "Test"</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-comment">// find the head version</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">$article = $dm-&gt;find(<span class="hljs-string">'/test'</span>);
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-keyword">echo</span> $article-&gt;topic; <span class="hljs-comment">// "Newvalue"</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-comment">// restore the head to the old version</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">$dm-&gt;restoreVersion($oldVersion);
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-comment">// the article document is refreshed</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-keyword">echo</span> $article-&gt;topic; <span class="hljs-comment">// "Test"</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-comment">// create a second version to demo removing a version</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">$article-&gt;topic = <span class="hljs-string">'Newvalue'</span>;
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">$dm-&gt;flush();
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">$dm-&gt;checkpoint($article);
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"><span class="hljs-comment">// remove the old version from the history (not allowed for the last version)</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">$dm-&gt;removeVersion($oldVersion);
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -428,8 +453,6 @@ $dm-&gt;removeVersion($oldVersion);
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -475,7 +498,7 @@ $dm-&gt;removeVersion($oldVersion);
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

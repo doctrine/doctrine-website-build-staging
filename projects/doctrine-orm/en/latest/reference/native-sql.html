@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -299,17 +296,24 @@ execute and the <code>ResultSetMapping</code> that describes how the results wil
 mapped.</p>
 <p>Once you obtained an instance of a <code>NativeQuery</code>, you can bind parameters to
 it with the same API that <code>Query</code> has and execute it.</p>
-<pre><code class="php">&lt;?php
-use Doctrine\ORM\Query\ResultSetMapping;
-
-$rsm = new ResultSetMapping();
-// build rsm here
-
-$query = $entityManager-&gt;createNativeQuery('SELECT id, name, discr FROM users WHERE name = ?', $rsm);
-$query-&gt;setParameter(1, 'romanb');
-
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="49fb381c62a3f2da62bf41b485ebe8f51afe3450"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="49fb381c62a3f2da62bf41b485ebe8f51afe3450"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Query</span>\<span class="hljs-title">ResultSetMapping</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$rsm = <span class="hljs-keyword">new</span> ResultSetMapping();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// build rsm here</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$query = $entityManager-&gt;createNativeQuery(<span class="hljs-string">'SELECT id, name, discr FROM users WHERE name = ?'</span>, $rsm);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-string">'romanb'</span>);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="resultsetmappingbuilder" name="resultsetmappingbuilder"></a><h2 class="section-header"><a href="#resultsetmappingbuilder">ResultSetMappingBuilder<i class="fas fa-link"></i></a></h2>
 <p>An easy start into ResultSet mapping is the <code>ResultSetMappingBuilder</code> object.
 This has several benefits:</p>
@@ -322,31 +326,45 @@ This has several benefits:</p>
 
 <p>One downside is that the builder API does not yet support entities
 with inheritance hierarchies.</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\ORM\Query\ResultSetMappingBuilder;
-
-$sql = &quot;SELECT u.id, u.name, a.id AS address_id, a.street, a.city &quot; .
-       &quot;FROM users u INNER JOIN address a ON u.address_id = a.id&quot;;
-
-$rsm = new ResultSetMappingBuilder($entityManager);
-$rsm-&gt;addRootEntityFromClassMetadata('MyProject\User', 'u');
-$rsm-&gt;addJoinedEntityFromClassMetadata('MyProject\Address', 'a', 'u', 'address', array('id' =&gt; 'address_id'));
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e44b59e4ed829f0e2b1e4331078d22823fd74936"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e44b59e4ed829f0e2b1e4331078d22823fd74936"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Query</span>\<span class="hljs-title">ResultSetMappingBuilder</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$sql = <span class="hljs-string">"SELECT u.id, u.name, a.id AS address_id, a.street, a.city "</span> .
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">       <span class="hljs-string">"FROM users u INNER JOIN address a ON u.address_id = a.id"</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$rsm = <span class="hljs-keyword">new</span> ResultSetMappingBuilder($entityManager);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$rsm-&gt;addRootEntityFromClassMetadata(<span class="hljs-string">'MyProject\User'</span>, <span class="hljs-string">'u'</span>);
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$rsm-&gt;addJoinedEntityFromClassMetadata(<span class="hljs-string">'MyProject\Address'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'u'</span>, <span class="hljs-string">'address'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'address_id'</span>));
+</td></tr></table></div></code></pre>
 <p>The builder extends the <code>ResultSetMapping</code> class and as such has all the functionality of it as well.</p>
 <div class="version-added"><p>Starting with Doctrine ORM 2.4 you can generate the <code>SELECT</code> clause
 from a <code>ResultSetMappingBuilder</code>. You can either cast the builder
 object to <code>(string)</code> and the DQL aliases are used as SQL table aliases
 or use the <code>generateSelectClause($tableAliases)</code> method and pass
 a mapping from DQL alias (key) to SQL alias (value)</p></div>
-<pre><code class="php">&lt;?php
-
-$selectClause = $builder-&gt;generateSelectClause(array(
-    'u' =&gt; 't1',
-    'g' =&gt; 't2'
-));
-$sql = &quot;SELECT &quot; . $selectClause . &quot; FROM users t1 JOIN groups t2 ON t1.group_id = t2.id&quot;;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4e10de45a76141ee5b94eff588cac4fd05752f2d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4e10de45a76141ee5b94eff588cac4fd05752f2d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$selectClause = $builder-&gt;generateSelectClause(<span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">'u'</span> =&gt; <span class="hljs-string">'t1'</span>,
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-string">'g'</span> =&gt; <span class="hljs-string">'t2'</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">));
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$sql = <span class="hljs-string">"SELECT "</span> . $selectClause . <span class="hljs-string">" FROM users t1 JOIN groups t2 ON t1.group_id = t2.id"</span>;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="the-resultsetmapping" name="the-resultsetmapping"></a><h2 class="section-header"><a href="#the-resultsetmapping">The ResultSetMapping<i class="fas fa-link"></i></a></h2>
 <p>Understanding the <code>ResultSetMapping</code> is the key to using a
 <code>NativeQuery</code>. A Doctrine result can contain the following
@@ -382,16 +400,23 @@ ResultSetMapping in detail.</p>
 element in the transformed result. You add an entity result through
 <code>ResultSetMapping#addEntityResult()</code>. Let's take a look at the
 method signature in detail:</p>
-<pre><code class="php">&lt;?php
-/**
- * Adds an entity result to this ResultSetMapping.
- *
- * @param string $class The class name of the entity.
- * @param string $alias The alias for the class. The alias must be unique among all entity
- *                      results or joined entity results within this ResultSetMapping.
- */
-public function addEntityResult($class, $alias)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e648a6836f791bd52186211c1479493e2b72c288"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e648a6836f791bd52186211c1479493e2b72c288"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * Adds an entity result to this ResultSetMapping.
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @param string $class The <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">name</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">entity</span>.</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @param string $alias The alias <span class="hljs-keyword">for</span> the <span class="hljs-class"><span class="hljs-keyword">class</span>. <span class="hljs-title">The</span> <span class="hljs-title">alias</span> <span class="hljs-title">must</span> <span class="hljs-title">be</span> <span class="hljs-title">unique</span> <span class="hljs-title">among</span> <span class="hljs-title">all</span> <span class="hljs-title">entity</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *                      results <span class="hljs-keyword">or</span> joined entity results within this ResultSetMapping.
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addEntityResult</span><span class="hljs-params">($class, $alias)</span></span>
+</td></tr></table></div></code></pre>
 <p>The first parameter is the fully qualified name of the entity
 class. The second parameter is some arbitrary alias for this entity
 result that must be unique within a <code>ResultSetMapping</code>. You use
@@ -407,17 +432,24 @@ joined relationship element in the transformed result, attached to
 a (root) entity result. You add a joined entity result through
 <code>ResultSetMapping#addJoinedEntityResult()</code>. Let's take a look at
 the method signature in detail:</p>
-<pre><code class="php">&lt;?php
-/**
- * Adds a joined entity result.
- *
- * @param string $class The class name of the joined entity.
- * @param string $alias The unique alias to use for the joined entity.
- * @param string $parentAlias The alias of the entity result that is the parent of this joined result.
- * @param object $relation The association field that connects the parent entity result with the joined entity result.
- */
-public function addJoinedEntityResult($class, $alias, $parentAlias, $relation)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7d94c2c0049798bf6ebc8e55bf21886c7939599a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7d94c2c0049798bf6ebc8e55bf21886c7939599a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * Adds a joined entity result.
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @param string $class The <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">name</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">joined</span> <span class="hljs-title">entity</span>.</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @param string $alias The unique alias to <span class="hljs-keyword">use</span> <span class="hljs-title">for</span> <span class="hljs-title">the</span> <span class="hljs-title">joined</span> <span class="hljs-title">entity</span>.
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @param string $parentAlias The alias of the entity result that is the <span class="hljs-keyword">parent</span> of this joined result.
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @param object $relation The association field that connects the <span class="hljs-keyword">parent</span> entity result with the joined entity result.
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addJoinedEntityResult</span><span class="hljs-params">($class, $alias, $parentAlias, $relation)</span></span>
+</td></tr></table></div></code></pre>
 <p>The first parameter is the class name of the joined entity. The
 second parameter is an arbitrary alias for the joined entity that
 must be unique within the <code>ResultSetMapping</code>. You use this alias
@@ -432,16 +464,23 @@ result set to a field in an entity. As such, field results are
 inherently bound to entity results. You add a field result through
 <code>ResultSetMapping#addFieldResult()</code>. Again, let's examine the
 method signature in detail:</p>
-<pre><code class="php">&lt;?php
-/**
- * Adds a field result that is part of an entity result or joined entity result.
- *
- * @param string $alias The alias of the entity result or joined entity result.
- * @param string $columnName The name of the column in the SQL result set.
- * @param string $fieldName The name of the field on the (joined) entity.
- */
-public function addFieldResult($alias, $columnName, $fieldName)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5be76464e59c72bf2412a6ee474c42d5d7622c67"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5be76464e59c72bf2412a6ee474c42d5d7622c67"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * Adds a field result that is part of an entity result <span class="hljs-keyword">or</span> joined entity result.
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @param string $alias The alias of the entity result <span class="hljs-keyword">or</span> joined entity result.
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @param string $columnName The name of the column in the SQL result set.
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @param string $fieldName The name of the field on the (joined) entity.
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addFieldResult</span><span class="hljs-params">($alias, $columnName, $fieldName)</span></span>
+</td></tr></table></div></code></pre>
 <p>The first parameter is the alias of the entity result to which the
 field result will belong. The second parameter is the name of the
 column in the SQL result set. Note that this name is case
@@ -456,15 +495,22 @@ are typically used for aggregate values but any column in the SQL
 result set can be mapped as a scalar value. To add a scalar result
 use <code>ResultSetMapping#addScalarResult()</code>. The method signature in
 detail:</p>
-<pre><code class="php">&lt;?php
-/**
- * Adds a scalar result mapping.
- *
- * @param string $columnName The name of the column in the SQL result set.
- * @param string $alias The result alias with which the scalar result should be placed in the result structure.
- */
-public function addScalarResult($columnName, $alias)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9b1a4f70f4f2714490618085aba301da362e5943"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9b1a4f70f4f2714490618085aba301da362e5943"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * Adds a scalar result mapping.
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @param string $columnName The name of the column in the SQL result set.
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @param string $alias The result alias with which the scalar result should be placed in the result structure.
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addScalarResult</span><span class="hljs-params">($columnName, $alias)</span></span>
+</td></tr></table></div></code></pre>
 <p>The first parameter is the name of the column in the SQL result set
 and the second parameter is the result alias under which the value
 of the column will be placed in the transformed Doctrine result.</p>
@@ -475,17 +521,24 @@ are essential for Doctrine to properly construct objects out of SQL
 result sets. To add a column as a meta result use
 <code>ResultSetMapping#addMetaResult()</code>. The method signature in
 detail:</p>
-<pre><code class="php">&lt;?php
-/**
- * Adds a meta column (foreign key or discriminator column) to the result set.
- *
- * @param string  $alias
- * @param string  $columnAlias
- * @param string  $columnName
- * @param boolean $isIdentifierColumn
- */
-public function addMetaResult($alias, $columnAlias, $columnName, $isIdentifierColumn = false)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="370d6b45cd45d2ff9d710b518ad6ada7f55d3c14"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="370d6b45cd45d2ff9d710b518ad6ada7f55d3c14"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * Adds a meta column (foreign key <span class="hljs-keyword">or</span> discriminator column) to the result set.
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @param string  $alias
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @param string  $columnAlias
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @param string  $columnName
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @param boolean $isIdentifierColumn
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addMetaResult</span><span class="hljs-params">($alias, $columnAlias, $columnName, $isIdentifierColumn = false)</span></span>
+</td></tr></table></div></code></pre>
 <p>The first parameter is the alias of the entity result to which the
 meta column belongs. A meta result column (foreign key or
 discriminator column) always belongs to an entity result. The
@@ -497,41 +550,62 @@ of the entity is the foreign key you're adding.</p>
 <a class="section-anchor" id="discriminator-column" name="discriminator-column"></a><h3 class="section-header"><a href="#discriminator-column">Discriminator Column<i class="fas fa-link"></i></a></h3>
 <p>When joining an inheritance tree you have to give Doctrine a hint
 which meta-column is the discriminator column of this tree.</p>
-<pre><code class="php">&lt;?php
-/**
- * Sets a discriminator column for an entity result or joined entity result.
- * The discriminator column will be used to determine the concrete class name to
- * instantiate.
- *
- * @param string $alias The alias of the entity result or joined entity result the discriminator
- *                      column should be used for.
- * @param string $discrColumn The name of the discriminator column in the SQL result set.
- */
-public function setDiscriminatorColumn($alias, $discrColumn)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1c305ecf32c3a554fc85872eac70f9f9c9fd27f3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1c305ecf32c3a554fc85872eac70f9f9c9fd27f3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * Sets a discriminator column <span class="hljs-keyword">for</span> an entity result <span class="hljs-keyword">or</span> joined entity result.
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * The discriminator column will be used to determine the concrete <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">name</span> <span class="hljs-title">to</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * instantiate.
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @param string $alias The alias of the entity result <span class="hljs-keyword">or</span> joined entity result the discriminator
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> *                      column should be used <span class="hljs-keyword">for</span>.
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> * @param string $discrColumn The name of the discriminator column in the SQL result set.
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setDiscriminatorColumn</span><span class="hljs-params">($alias, $discrColumn)</span></span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="examples" name="examples"></a><h3 class="section-header"><a href="#examples">Examples<i class="fas fa-link"></i></a></h3>
 <p>Understanding a ResultSetMapping is probably easiest through
 looking at some examples.</p>
 <p>First a basic example that describes the mapping of a single
 entity.</p>
-<pre><code class="php">&lt;?php
-// Equivalent DQL query: &quot;select u from User u where u.name=?1&quot;
-// User owns no associations.
-$rsm = new ResultSetMapping;
-$rsm-&gt;addEntityResult('User', 'u');
-$rsm-&gt;addFieldResult('u', 'id', 'id');
-$rsm-&gt;addFieldResult('u', 'name', 'name');
-
-$query = $this-&gt;em-&gt;createNativeQuery('SELECT id, name FROM users WHERE name = ?', $rsm);
-$query-&gt;setParameter(1, 'romanb');
-
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c95d36208659f5e735223d8bda385bab3d81cc61"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c95d36208659f5e735223d8bda385bab3d81cc61"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Equivalent DQL query: "select u from User u where u.name=?1"</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// User owns no associations.</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$rsm = <span class="hljs-keyword">new</span> ResultSetMapping;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$rsm-&gt;addEntityResult(<span class="hljs-string">'User'</span>, <span class="hljs-string">'u'</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$rsm-&gt;addFieldResult(<span class="hljs-string">'u'</span>, <span class="hljs-string">'id'</span>, <span class="hljs-string">'id'</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$rsm-&gt;addFieldResult(<span class="hljs-string">'u'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'name'</span>);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$query = <span class="hljs-keyword">$this</span>-&gt;em-&gt;createNativeQuery(<span class="hljs-string">'SELECT id, name FROM users WHERE name = ?'</span>, $rsm);
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-string">'romanb'</span>);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>The result would look like this:</p>
-<pre><code class="php">array(
-    [0] =&gt; User (Object)
-)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="aa4f5cb2c8f9296fa706fff8e33cc7be8a2aaa43"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="aa4f5cb2c8f9296fa706fff8e33cc7be8a2aaa43"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    [<span class="hljs-number">0</span>] =&gt; User (Object)
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">)
+</td></tr></table></div></code></pre>
 <p>Note that this would be a partial object if the entity has more
 fields than just id and name. In the example above the column and
 field names are identical but that is not necessary, of course.
@@ -542,20 +616,27 @@ table the class is mapped to owns no foreign keys. The next example
 assumes User has a unidirectional or bidirectional one-to-one
 association to a CmsAddress, where the User is the owning side and
 thus owns the foreign key.</p>
-<pre><code class="php">&lt;?php
-// Equivalent DQL query: &quot;select u from User u where u.name=?1&quot;
-// User owns an association to an Address but the Address is not loaded in the query.
-$rsm = new ResultSetMapping;
-$rsm-&gt;addEntityResult('User', 'u');
-$rsm-&gt;addFieldResult('u', 'id', 'id');
-$rsm-&gt;addFieldResult('u', 'name', 'name');
-$rsm-&gt;addMetaResult('u', 'address_id', 'address_id');
-
-$query = $this-&gt;em-&gt;createNativeQuery('SELECT id, name, address_id FROM users WHERE name = ?', $rsm);
-$query-&gt;setParameter(1, 'romanb');
-
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6c4fe0d3c85f26549f4b4100f0d2b6f7a2bcf208"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6c4fe0d3c85f26549f4b4100f0d2b6f7a2bcf208"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Equivalent DQL query: "select u from User u where u.name=?1"</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// User owns an association to an Address but the Address is not loaded in the query.</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$rsm = <span class="hljs-keyword">new</span> ResultSetMapping;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$rsm-&gt;addEntityResult(<span class="hljs-string">'User'</span>, <span class="hljs-string">'u'</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$rsm-&gt;addFieldResult(<span class="hljs-string">'u'</span>, <span class="hljs-string">'id'</span>, <span class="hljs-string">'id'</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$rsm-&gt;addFieldResult(<span class="hljs-string">'u'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'name'</span>);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$rsm-&gt;addMetaResult(<span class="hljs-string">'u'</span>, <span class="hljs-string">'address_id'</span>, <span class="hljs-string">'address_id'</span>);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$query = <span class="hljs-keyword">$this</span>-&gt;em-&gt;createNativeQuery(<span class="hljs-string">'SELECT id, name, address_id FROM users WHERE name = ?'</span>, $rsm);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-string">'romanb'</span>);
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>Foreign keys are used by Doctrine for lazy-loading purposes when
 querying for objects. In the previous example, each user object in
 the result will have a proxy (a &quot;ghost&quot;) in place of the address
@@ -564,25 +645,32 @@ loads itself based on this key.</p>
 <p>Consequently, associations that are <em>fetch-joined</em> do not require
 the foreign keys to be present in the SQL result set, only
 associations that are lazy.</p>
-<pre><code class="php">&lt;?php
-// Equivalent DQL query: &quot;select u from User u join u.address a WHERE u.name = ?1&quot;
-// User owns association to an Address and the Address is loaded in the query.
-$rsm = new ResultSetMapping;
-$rsm-&gt;addEntityResult('User', 'u');
-$rsm-&gt;addFieldResult('u', 'id', 'id');
-$rsm-&gt;addFieldResult('u', 'name', 'name');
-$rsm-&gt;addJoinedEntityResult('Address' , 'a', 'u', 'address');
-$rsm-&gt;addFieldResult('a', 'address_id', 'id');
-$rsm-&gt;addFieldResult('a', 'street', 'street');
-$rsm-&gt;addFieldResult('a', 'city', 'city');
-
-$sql = 'SELECT u.id, u.name, a.id AS address_id, a.street, a.city FROM users u ' .
-       'INNER JOIN address a ON u.address_id = a.id WHERE u.name = ?';
-$query = $this-&gt;em-&gt;createNativeQuery($sql, $rsm);
-$query-&gt;setParameter(1, 'romanb');
-
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f1aa94dc874cb56adfed62fed838e39b37e6e79e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f1aa94dc874cb56adfed62fed838e39b37e6e79e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Equivalent DQL query: "select u from User u join u.address a WHERE u.name = ?1"</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// User owns association to an Address and the Address is loaded in the query.</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$rsm = <span class="hljs-keyword">new</span> ResultSetMapping;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$rsm-&gt;addEntityResult(<span class="hljs-string">'User'</span>, <span class="hljs-string">'u'</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$rsm-&gt;addFieldResult(<span class="hljs-string">'u'</span>, <span class="hljs-string">'id'</span>, <span class="hljs-string">'id'</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$rsm-&gt;addFieldResult(<span class="hljs-string">'u'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'name'</span>);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$rsm-&gt;addJoinedEntityResult(<span class="hljs-string">'Address'</span> , <span class="hljs-string">'a'</span>, <span class="hljs-string">'u'</span>, <span class="hljs-string">'address'</span>);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$rsm-&gt;addFieldResult(<span class="hljs-string">'a'</span>, <span class="hljs-string">'address_id'</span>, <span class="hljs-string">'id'</span>);
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$rsm-&gt;addFieldResult(<span class="hljs-string">'a'</span>, <span class="hljs-string">'street'</span>, <span class="hljs-string">'street'</span>);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$rsm-&gt;addFieldResult(<span class="hljs-string">'a'</span>, <span class="hljs-string">'city'</span>, <span class="hljs-string">'city'</span>);
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$sql = <span class="hljs-string">'SELECT u.id, u.name, a.id AS address_id, a.street, a.city FROM users u '</span> .
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">       <span class="hljs-string">'INNER JOIN address a ON u.address_id = a.id WHERE u.name = ?'</span>;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$query = <span class="hljs-keyword">$this</span>-&gt;em-&gt;createNativeQuery($sql, $rsm);
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-string">'romanb'</span>);
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>In this case the nested entity <code>Address</code> is registered with the
 <code>ResultSetMapping#addJoinedEntityResult</code> method, which notifies
 Doctrine that this entity is not hydrated at the root level, but as
@@ -597,21 +685,28 @@ concrete type. This is shown in the following example where we
 assume that there are one or more subclasses that extend User and
 either Class Table Inheritance or Single Table Inheritance is used
 to map the hierarchy (both use a discriminator column).</p>
-<pre><code class="php">&lt;?php
-// Equivalent DQL query: &quot;select u from User u where u.name=?1&quot;
-// User is a mapped base class for other classes. User owns no associations.
-$rsm = new ResultSetMapping;
-$rsm-&gt;addEntityResult('User', 'u');
-$rsm-&gt;addFieldResult('u', 'id', 'id');
-$rsm-&gt;addFieldResult('u', 'name', 'name');
-$rsm-&gt;addMetaResult('u', 'discr', 'discr'); // discriminator column
-$rsm-&gt;setDiscriminatorColumn('u', 'discr');
-
-$query = $this-&gt;em-&gt;createNativeQuery('SELECT id, name, discr FROM users WHERE name = ?', $rsm);
-$query-&gt;setParameter(1, 'romanb');
-
-$users = $query-&gt;getResult();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="129eec588c6629b455fe07b735653fb0a24e6e08"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="129eec588c6629b455fe07b735653fb0a24e6e08"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Equivalent DQL query: "select u from User u where u.name=?1"</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// User is a mapped base class for other classes. User owns no associations.</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$rsm = <span class="hljs-keyword">new</span> ResultSetMapping;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$rsm-&gt;addEntityResult(<span class="hljs-string">'User'</span>, <span class="hljs-string">'u'</span>);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$rsm-&gt;addFieldResult(<span class="hljs-string">'u'</span>, <span class="hljs-string">'id'</span>, <span class="hljs-string">'id'</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$rsm-&gt;addFieldResult(<span class="hljs-string">'u'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'name'</span>);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$rsm-&gt;addMetaResult(<span class="hljs-string">'u'</span>, <span class="hljs-string">'discr'</span>, <span class="hljs-string">'discr'</span>); <span class="hljs-comment">// discriminator column</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$rsm-&gt;setDiscriminatorColumn(<span class="hljs-string">'u'</span>, <span class="hljs-string">'discr'</span>);
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$query = <span class="hljs-keyword">$this</span>-&gt;em-&gt;createNativeQuery(<span class="hljs-string">'SELECT id, name, discr FROM users WHERE name = ?'</span>, $rsm);
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, <span class="hljs-string">'romanb'</span>);
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$users = $query-&gt;getResult();
+</td></tr></table></div></code></pre>
 <p>Note that in the case of Class Table Inheritance, an example as
 above would result in partial objects if any objects in the result
 are actually a subtype of User. When using DQL, Doctrine
@@ -624,90 +719,104 @@ using named native query (and sql resultset mappings if is a several resultset m
 <p>Like named query, a named native query can be defined at class level or in an XML file.</p>
 <p>A resultSetMapping parameter is defined in @NamedNativeQuery,
 it represents the name of a defined @SqlResultSetMapping.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-namespace MyProject\Model;
-/**
- * @NamedNativeQueries({
- *      @NamedNativeQuery(
- *          name            = &quot;fetchMultipleJoinsEntityResults&quot;,
- *          resultSetMapping= &quot;mappingMultipleJoinsEntityResults&quot;,
- *          query           = &quot;SELECT u.id AS u_id, u.name AS u_name, u.status AS u_status, a.id AS a_id, a.zip AS a_zip, a.country AS a_country, COUNT(p.phonenumber) AS numphones FROM users u INNER JOIN addresses a ON u.id = a.user_id INNER JOIN phonenumbers p ON u.id = p.user_id GROUP BY u.id, u.name, u.status, u.username, a.id, a.zip, a.country ORDER BY u.username&quot;
- *      ),
- * })
- * @SqlResultSetMappings({
- *      @SqlResultSetMapping(
- *          name    = &quot;mappingMultipleJoinsEntityResults&quot;,
- *          entities= {
- *              @EntityResult(
- *                  entityClass = &quot;__CLASS__&quot;,
- *                  fields      = {
- *                      @FieldResult(name = &quot;id&quot;,       column=&quot;u_id&quot;),
- *                      @FieldResult(name = &quot;name&quot;,     column=&quot;u_name&quot;),
- *                      @FieldResult(name = &quot;status&quot;,   column=&quot;u_status&quot;),
- *                  }
- *              ),
- *              @EntityResult(
- *                  entityClass = &quot;Address&quot;,
- *                  fields      = {
- *                      @FieldResult(name = &quot;id&quot;,       column=&quot;a_id&quot;),
- *                      @FieldResult(name = &quot;zip&quot;,      column=&quot;a_zip&quot;),
- *                      @FieldResult(name = &quot;country&quot;,  column=&quot;a_country&quot;),
- *                  }
- *              )
- *          },
- *          columns = {
- *              @ColumnResult(&quot;numphones&quot;)
- *          }
- *      )
- *})
- */
- class User
-{
-    /** @Id @Column(type=&quot;integer&quot;) @GeneratedValue */
-    public $id;
-
-    /** @Column(type=&quot;string&quot;, length=50, nullable=true) */
-    public $status;
-
-    /** @Column(type=&quot;string&quot;, length=255, unique=true) */
-    public $username;
-
-    /** @Column(type=&quot;string&quot;, length=255) */
-    public $name;
-
-    /** @OneToMany(targetEntity=&quot;Phonenumber&quot;) */
-    public $phonenumbers;
-
-    /** @OneToOne(targetEntity=&quot;Address&quot;) */
-    public $address;
-
-    // ....
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;MyProject\Model\User&quot;&gt;
-        &lt;named-native-queries&gt;
-            &lt;named-native-query name=&quot;fetchMultipleJoinsEntityResults&quot; result-set-mapping=&quot;mappingMultipleJoinsEntityResults&quot;&gt;
-                &lt;query&gt;SELECT u.id AS u_id, u.name AS u_name, u.status AS u_status, a.id AS a_id, a.zip AS a_zip, a.country AS a_country, COUNT(p.phonenumber) AS numphones FROM users u INNER JOIN addresses a ON u.id = a.user_id INNER JOIN phonenumbers p ON u.id = p.user_id GROUP BY u.id, u.name, u.status, u.username, a.id, a.zip, a.country ORDER BY u.username&lt;/query&gt;
-            &lt;/named-native-query&gt;
-        &lt;/named-native-queries&gt;
-        &lt;sql-result-set-mappings&gt;
-            &lt;sql-result-set-mapping name=&quot;mappingMultipleJoinsEntityResults&quot;&gt;
-                &lt;entity-result entity-class=&quot;__CLASS__&quot;&gt;
-                    &lt;field-result name=&quot;id&quot; column=&quot;u_id&quot;/&gt;
-                    &lt;field-result name=&quot;name&quot; column=&quot;u_name&quot;/&gt;
-                    &lt;field-result name=&quot;status&quot; column=&quot;u_status&quot;/&gt;
-                &lt;/entity-result&gt;
-                &lt;entity-result entity-class=&quot;Address&quot;&gt;
-                    &lt;field-result name=&quot;id&quot; column=&quot;a_id&quot;/&gt;
-                    &lt;field-result name=&quot;zip&quot; column=&quot;a_zip&quot;/&gt;
-                    &lt;field-result name=&quot;country&quot; column=&quot;a_country&quot;/&gt;
-                &lt;/entity-result&gt;
-                &lt;column-result name=&quot;numphones&quot;/&gt;
-            &lt;/sql-result-set-mapping&gt;
-        &lt;/sql-result-set-mappings&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3b235236985d267357e250aeac997f4810aaa181"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3b235236985d267357e250aeac997f4810aaa181"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @NamedNativeQueries({
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> *      @NamedNativeQuery(
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *          name            = <span class="hljs-string">"fetchMultipleJoinsEntityResults"</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *          resultSetMapping= <span class="hljs-string">"mappingMultipleJoinsEntityResults"</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> *          query           = <span class="hljs-string">"SELECT u.id AS u_id, u.name AS u_name, u.status AS u_status, a.id AS a_id, a.zip AS a_zip, a.country AS a_country, COUNT(p.phonenumber) AS numphones FROM users u INNER JOIN addresses a ON u.id = a.user_id INNER JOIN phonenumbers p ON u.id = p.user_id GROUP BY u.id, u.name, u.status, u.username, a.id, a.zip, a.country ORDER BY u.username"</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> *      ),
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> * })
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> * @SqlResultSetMappings({
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> *      @SqlResultSetMapping(
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> *          name    = <span class="hljs-string">"mappingMultipleJoinsEntityResults"</span>,
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"> *          entities= {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"> *              @EntityResult(
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"> *                  entityClass = <span class="hljs-string">"__CLASS__"</span>,
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"> *                  fields      = {
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"> *                      @FieldResult(name = <span class="hljs-string">"id"</span>,       column=<span class="hljs-string">"u_id"</span>),
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"> *                      @FieldResult(name = <span class="hljs-string">"name"</span>,     column=<span class="hljs-string">"u_name"</span>),
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"> *                      @FieldResult(name = <span class="hljs-string">"status"</span>,   column=<span class="hljs-string">"u_status"</span>),
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"> *                  }
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"> *              ),
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"> *              @EntityResult(
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"> *                  entityClass = <span class="hljs-string">"Address"</span>,
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"> *                  fields      = {
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"> *                      @FieldResult(name = <span class="hljs-string">"id"</span>,       column=<span class="hljs-string">"a_id"</span>),
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"> *                      @FieldResult(name = <span class="hljs-string">"zip"</span>,      column=<span class="hljs-string">"a_zip"</span>),
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"> *                      @FieldResult(name = <span class="hljs-string">"country"</span>,  column=<span class="hljs-string">"a_country"</span>),
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"> *                  }
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"> *              )
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"> *          },
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"> *          columns = {
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"> *              @ColumnResult(<span class="hljs-string">"numphones"</span>)
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"> *          }
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"> *      )
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"> *})
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string", length=50, nullable=true) */</span>
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    <span class="hljs-keyword">public</span> $status;
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string", length=255, unique=true) */</span>
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">    <span class="hljs-keyword">public</span> $username;
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string", length=255) */</span>
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">    <span class="hljs-keyword">public</span> $name;
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@OneToMany</span>(targetEntity="Phonenumber") */</span>
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">    <span class="hljs-keyword">public</span> $phonenumbers;
+</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@OneToOne</span>(targetEntity="Address") */</span>
+</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">    <span class="hljs-keyword">public</span> $address;
+</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">    <span class="hljs-comment">// ....</span>
+</td></tr><tr><td class="line-number noselect">59</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3a0aa4379e59dbc2adaabf8fe678536ae6fc331b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3a0aa4379e59dbc2adaabf8fe678536ae6fc331b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyProject\Model\User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">named-native-queries</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">named-native-query</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"fetchMultipleJoinsEntityResults"</span> <span class="hljs-attr">result-set-mapping</span>=<span class="hljs-string">"mappingMultipleJoinsEntityResults"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">query</span>&gt;</span>SELECT u.id AS u_id, u.name AS u_name, u.status AS u_status, a.id AS a_id, a.zip AS a_zip, a.country AS a_country, COUNT(p.phonenumber) AS numphones FROM users u INNER JOIN addresses a ON u.id = a.user_id INNER JOIN phonenumbers p ON u.id = p.user_id GROUP BY u.id, u.name, u.status, u.username, a.id, a.zip, a.country ORDER BY u.username<span class="hljs-tag">&lt;/<span class="hljs-name">query</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">named-native-query</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">named-native-queries</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">sql-result-set-mappings</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">sql-result-set-mapping</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"mappingMultipleJoinsEntityResults"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">entity-result</span> <span class="hljs-attr">entity-class</span>=<span class="hljs-string">"__CLASS__"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"u_id"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"u_name"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"status"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"u_status"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">entity-result</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">entity-result</span> <span class="hljs-attr">entity-class</span>=<span class="hljs-string">"Address"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"a_id"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"zip"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"a_zip"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"country"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"a_country"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">entity-result</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">column-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"numphones"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">sql-result-set-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">sql-result-set-mappings</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Things to note:
     - The resultset mapping declares the entities retrieved by this native query.
     - Each field of the entity is bound to a SQL alias (or column name).
@@ -721,58 +830,72 @@ the <code>fetchJoinedAddress</code> named query use the joinMapping result set m
 This mapping returns 2 entities, User and Address, each property is declared and associated to a column name,
 actually the column name retrieved by the query.</p>
 <p>Let's now see an implicit declaration of the property / column.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-namespace MyProject\Model;
-    /**
-     * @NamedNativeQueries({
-     *      @NamedNativeQuery(
-     *          name                = &quot;findAll&quot;,
-     *          resultSetMapping    = &quot;mappingFindAll&quot;,
-     *          query               = &quot;SELECT * FROM addresses&quot;
-     *      ),
-     * })
-     * @SqlResultSetMappings({
-     *      @SqlResultSetMapping(
-     *          name    = &quot;mappingFindAll&quot;,
-     *          entities= {
-     *              @EntityResult(
-     *                  entityClass = &quot;Address&quot;
-     *              )
-     *          }
-     *      )
-     * })
-     */
-   class Address
-   {
-        /**  @Id @Column(type=&quot;integer&quot;) @GeneratedValue */
-        public $id;
-
-        /** @Column() */
-        public $country;
-
-        /** @Column() */
-        public $zip;
-
-        /** @Column()*/
-        public $city;
-
-        // ....
-    }
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;MyProject\Model\Address&quot;&gt;
-        &lt;named-native-queries&gt;
-            &lt;named-native-query name=&quot;findAll&quot; result-set-mapping=&quot;mappingFindAll&quot;&gt;
-                &lt;query&gt;SELECT * FROM addresses&lt;/query&gt;
-            &lt;/named-native-query&gt;
-        &lt;/named-native-queries&gt;
-        &lt;sql-result-set-mappings&gt;
-            &lt;sql-result-set-mapping name=&quot;mappingFindAll&quot;&gt;
-                &lt;entity-result entity-class=&quot;Address&quot;/&gt;
-            &lt;/sql-result-set-mapping&gt;
-        &lt;/sql-result-set-mappings&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4f6228d8b62877a63b9c4366138faa4a1c6c8e12"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4f6228d8b62877a63b9c4366138faa4a1c6c8e12"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">     * @NamedNativeQueries({
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">     *      @NamedNativeQuery(
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     *          name                = <span class="hljs-string">"findAll"</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     *          resultSetMapping    = <span class="hljs-string">"mappingFindAll"</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     *          query               = <span class="hljs-string">"SELECT * FROM addresses"</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     *      ),
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * })
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @SqlResultSetMappings({
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     *      @SqlResultSetMapping(
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     *          name    = <span class="hljs-string">"mappingFindAll"</span>,
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     *          entities= {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     *              @EntityResult(
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     *                  entityClass = <span class="hljs-string">"Address"</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     *              )
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     *          }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     *      )
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * })
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">   <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span></span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">   {
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-comment">/**  <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>() */</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        <span class="hljs-keyword">public</span> $country;
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">        <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>() */</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">        <span class="hljs-keyword">public</span> $zip;
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>()*/</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">        <span class="hljs-keyword">public</span> $city;
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">        <span class="hljs-comment">// ....</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    }
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3618769d75e72926a886409114ad4f3d4e8cddee"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3618769d75e72926a886409114ad4f3d4e8cddee"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyProject\Model\Address"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">named-native-queries</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">named-native-query</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"findAll"</span> <span class="hljs-attr">result-set-mapping</span>=<span class="hljs-string">"mappingFindAll"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">query</span>&gt;</span>SELECT * FROM addresses<span class="hljs-tag">&lt;/<span class="hljs-name">query</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">named-native-query</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">named-native-queries</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">sql-result-set-mappings</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">sql-result-set-mapping</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"mappingFindAll"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">entity-result</span> <span class="hljs-attr">entity-class</span>=<span class="hljs-string">"Address"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">sql-result-set-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">sql-result-set-mappings</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>In this example, we only describe the entity member of the result set mapping.
 The property / column mappings is done using the entity mapping values.
 In this case the model property is bound to the model_txt column.
@@ -780,147 +903,189 @@ If the association to a related entity involve a composite primary key,
 a @FieldResult element should be used for each foreign key column.
 The @FieldResult name is composed of the property name for the relationship,
 followed by a dot (&quot;.&quot;), followed by the name or the field or property of the primary key.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-namespace MyProject\Model;
-    /**
-     * @NamedNativeQueries({
-     *      @NamedNativeQuery(
-     *          name            = &quot;fetchJoinedAddress&quot;,
-     *          resultSetMapping= &quot;mappingJoinedAddress&quot;,
-     *          query           = &quot;SELECT u.id, u.name, u.status, a.id AS a_id, a.country AS a_country, a.zip AS a_zip, a.city AS a_city FROM users u INNER JOIN addresses a ON u.id = a.user_id WHERE u.username = ?&quot;
-     *      ),
-     * })
-     * @SqlResultSetMappings({
-     *      @SqlResultSetMapping(
-     *          name    = &quot;mappingJoinedAddress&quot;,
-     *          entities= {
-     *              @EntityResult(
-     *                  entityClass = &quot;__CLASS__&quot;,
-     *                  fields      = {
-     *                      @FieldResult(name = &quot;id&quot;),
-     *                      @FieldResult(name = &quot;name&quot;),
-     *                      @FieldResult(name = &quot;status&quot;),
-     *                      @FieldResult(name = &quot;address.id&quot;, column = &quot;a_id&quot;),
-     *                      @FieldResult(name = &quot;address.zip&quot;, column = &quot;a_zip&quot;),
-     *                      @FieldResult(name = &quot;address.city&quot;, column = &quot;a_city&quot;),
-     *                      @FieldResult(name = &quot;address.country&quot;, column = &quot;a_country&quot;),
-     *                  }
-     *              )
-     *          }
-     *      )
-     * })
-     */
-    class User
-    {
-        /** @Id @Column(type=&quot;integer&quot;) @GeneratedValue */
-        public $id;
-
-        /** @Column(type=&quot;string&quot;, length=50, nullable=true) */
-        public $status;
-
-        /** @Column(type=&quot;string&quot;, length=255, unique=true) */
-        public $username;
-
-        /** @Column(type=&quot;string&quot;, length=255) */
-        public $name;
-
-        /** @OneToOne(targetEntity=&quot;Address&quot;) */
-        public $address;
-
-        // ....
-    }
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;MyProject\Model\User&quot;&gt;
-        &lt;named-native-queries&gt;
-            &lt;named-native-query name=&quot;fetchJoinedAddress&quot; result-set-mapping=&quot;mappingJoinedAddress&quot;&gt;
-                &lt;query&gt;SELECT u.id, u.name, u.status, a.id AS a_id, a.country AS a_country, a.zip AS a_zip, a.city AS a_city FROM users u INNER JOIN addresses a ON u.id = a.user_id WHERE u.username = ?&lt;/query&gt;
-            &lt;/named-native-query&gt;
-        &lt;/named-native-queries&gt;
-        &lt;sql-result-set-mappings&gt;
-            &lt;sql-result-set-mapping name=&quot;mappingJoinedAddress&quot;&gt;
-                &lt;entity-result entity-class=&quot;__CLASS__&quot;&gt;
-                    &lt;field-result name=&quot;id&quot;/&gt;
-                    &lt;field-result name=&quot;name&quot;/&gt;
-                    &lt;field-result name=&quot;status&quot;/&gt;
-                    &lt;field-result name=&quot;address.id&quot; column=&quot;a_id&quot;/&gt;
-                    &lt;field-result name=&quot;address.zip&quot;  column=&quot;a_zip&quot;/&gt;
-                    &lt;field-result name=&quot;address.city&quot;  column=&quot;a_city&quot;/&gt;
-                    &lt;field-result name=&quot;address.country&quot; column=&quot;a_country&quot;/&gt;
-                &lt;/entity-result&gt;
-            &lt;/sql-result-set-mapping&gt;
-        &lt;/sql-result-set-mappings&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="963047002c0dcc0877cd1f7c83dec7bbe13129b4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="963047002c0dcc0877cd1f7c83dec7bbe13129b4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">     * @NamedNativeQueries({
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">     *      @NamedNativeQuery(
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     *          name            = <span class="hljs-string">"fetchJoinedAddress"</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     *          resultSetMapping= <span class="hljs-string">"mappingJoinedAddress"</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     *          query           = <span class="hljs-string">"SELECT u.id, u.name, u.status, a.id AS a_id, a.country AS a_country, a.zip AS a_zip, a.city AS a_city FROM users u INNER JOIN addresses a ON u.id = a.user_id WHERE u.username = ?"</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     *      ),
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * })
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @SqlResultSetMappings({
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     *      @SqlResultSetMapping(
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     *          name    = <span class="hljs-string">"mappingJoinedAddress"</span>,
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     *          entities= {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     *              @EntityResult(
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     *                  entityClass = <span class="hljs-string">"__CLASS__"</span>,
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     *                  fields      = {
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     *                      @FieldResult(name = <span class="hljs-string">"id"</span>),
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     *                      @FieldResult(name = <span class="hljs-string">"name"</span>),
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     *                      @FieldResult(name = <span class="hljs-string">"status"</span>),
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     *                      @FieldResult(name = <span class="hljs-string">"address.id"</span>, column = <span class="hljs-string">"a_id"</span>),
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     *                      @FieldResult(name = <span class="hljs-string">"address.zip"</span>, column = <span class="hljs-string">"a_zip"</span>),
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     *                      @FieldResult(name = <span class="hljs-string">"address.city"</span>, column = <span class="hljs-string">"a_city"</span>),
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">     *                      @FieldResult(name = <span class="hljs-string">"address.country"</span>, column = <span class="hljs-string">"a_country"</span>),
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     *                  }
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     *              )
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     *          }
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     *      )
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">     * })
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">        <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">        <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string", length=50, nullable=true) */</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">        <span class="hljs-keyword">public</span> $status;
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">        <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string", length=255, unique=true) */</span>
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">        <span class="hljs-keyword">public</span> $username;
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">        <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string", length=255) */</span>
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">        <span class="hljs-keyword">public</span> $name;
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">        <span class="hljs-comment">/** <span class="hljs-doctag">@OneToOne</span>(targetEntity="Address") */</span>
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">        <span class="hljs-keyword">public</span> $address;
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">        <span class="hljs-comment">// ....</span>
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    }
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e489cd8596e6f5fd0d50ffda6f63c7cfbcf181ae"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e489cd8596e6f5fd0d50ffda6f63c7cfbcf181ae"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyProject\Model\User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">named-native-queries</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">named-native-query</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"fetchJoinedAddress"</span> <span class="hljs-attr">result-set-mapping</span>=<span class="hljs-string">"mappingJoinedAddress"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">query</span>&gt;</span>SELECT u.id, u.name, u.status, a.id AS a_id, a.country AS a_country, a.zip AS a_zip, a.city AS a_city FROM users u INNER JOIN addresses a ON u.id = a.user_id WHERE u.username = ?<span class="hljs-tag">&lt;/<span class="hljs-name">query</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">named-native-query</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">named-native-queries</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">sql-result-set-mappings</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">sql-result-set-mapping</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"mappingJoinedAddress"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">entity-result</span> <span class="hljs-attr">entity-class</span>=<span class="hljs-string">"__CLASS__"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"status"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"address.id"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"a_id"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"address.zip"</span>  <span class="hljs-attr">column</span>=<span class="hljs-string">"a_zip"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"address.city"</span>  <span class="hljs-attr">column</span>=<span class="hljs-string">"a_city"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">field-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"address.country"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"a_country"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">entity-result</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">sql-result-set-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">sql-result-set-mappings</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>If you retrieve a single entity and if you use the default mapping,
 you can use the resultClass attribute instead of resultSetMapping:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-namespace MyProject\Model;
-    /**
-     * @NamedNativeQueries({
-     *      @NamedNativeQuery(
-     *          name           = &quot;find-by-id&quot;,
-     *          resultClass    = &quot;Address&quot;,
-     *          query          = &quot;SELECT * FROM addresses&quot;
-     *      ),
-     * })
-     */
-   class Address
-   {
-        // ....
-   }
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;MyProject\Model\Address&quot;&gt;
-        &lt;named-native-queries&gt;
-            &lt;named-native-query name=&quot;find-by-id&quot; result-class=&quot;Address&quot;&gt;
-                &lt;query&gt;SELECT * FROM addresses WHERE id = ?&lt;/query&gt;
-            &lt;/named-native-query&gt;
-        &lt;/named-native-queries&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="db110118c061815852aa66c3258935643be8e998"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="db110118c061815852aa66c3258935643be8e998"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">     * @NamedNativeQueries({
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">     *      @NamedNativeQuery(
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     *          name           = <span class="hljs-string">"find-by-id"</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     *          resultClass    = <span class="hljs-string">"Address"</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     *          query          = <span class="hljs-string">"SELECT * FROM addresses"</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     *      ),
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * })
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">   <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span></span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">   {
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-comment">// ....</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">   }
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d6f9b431615e50090f17d8b81354b39cf41657e5"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d6f9b431615e50090f17d8b81354b39cf41657e5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyProject\Model\Address"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">named-native-queries</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">named-native-query</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"find-by-id"</span> <span class="hljs-attr">result-class</span>=<span class="hljs-string">"Address"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">query</span>&gt;</span>SELECT * FROM addresses WHERE id = ?<span class="hljs-tag">&lt;/<span class="hljs-name">query</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">named-native-query</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">named-native-queries</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>In some of your native queries, you'll have to return scalar values,
 for example when building report queries.
 You can map them in the @SqlResultsetMapping through @ColumnResult.
 You actually can even mix, entities and scalar returns in the same native query (this is probably not that common though).</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-namespace MyProject\Model;
-    /**
-     * @NamedNativeQueries({
-     *      @NamedNativeQuery(
-     *          name            = &quot;count&quot;,
-     *          resultSetMapping= &quot;mappingCount&quot;,
-     *          query           = &quot;SELECT COUNT(*) AS count FROM addresses&quot;
-     *      )
-     * })
-     * @SqlResultSetMappings({
-     *      @SqlResultSetMapping(
-     *          name    = &quot;mappingCount&quot;,
-     *          columns = {
-     *              @ColumnResult(
-     *                  name = &quot;count&quot;
-     *              )
-     *          }
-     *      )
-     * })
-     */
-   class Address
-   {
-        // ....
-   }
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;MyProject\Model\Address&quot;&gt;
-        &lt;named-native-query name=&quot;count&quot; result-set-mapping=&quot;mappingCount&quot;&gt;
-            &lt;query&gt;SELECT COUNT(*) AS count FROM addresses&lt;/query&gt;
-        &lt;/named-native-query&gt;
-        &lt;sql-result-set-mappings&gt;
-            &lt;sql-result-set-mapping name=&quot;mappingCount&quot;&gt;
-                &lt;column-result name=&quot;count&quot;/&gt;
-            &lt;/sql-result-set-mapping&gt;
-        &lt;/sql-result-set-mappings&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="31153841e3c87daf9606d116e803a5346819f1d7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="31153841e3c87daf9606d116e803a5346819f1d7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">     * @NamedNativeQueries({
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">     *      @NamedNativeQuery(
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     *          name            = <span class="hljs-string">"count"</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     *          resultSetMapping= <span class="hljs-string">"mappingCount"</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     *          query           = <span class="hljs-string">"SELECT COUNT(*) AS count FROM addresses"</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     *      )
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * })
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @SqlResultSetMappings({
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     *      @SqlResultSetMapping(
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     *          name    = <span class="hljs-string">"mappingCount"</span>,
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     *          columns = {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     *              @ColumnResult(
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     *                  name = <span class="hljs-string">"count"</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     *              )
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     *          }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     *      )
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * })
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">   <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span></span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">   {
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-comment">// ....</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">   }
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6c3fab787745a455e6bce49d0a0f14c80894e437"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6c3fab787745a455e6bce49d0a0f14c80894e437"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyProject\Model\Address"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">named-native-query</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"count"</span> <span class="hljs-attr">result-set-mapping</span>=<span class="hljs-string">"mappingCount"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">query</span>&gt;</span>SELECT COUNT(*) AS count FROM addresses<span class="hljs-tag">&lt;/<span class="hljs-name">query</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">named-native-query</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">sql-result-set-mappings</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">sql-result-set-mapping</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"mappingCount"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">column-result</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"count"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">sql-result-set-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">sql-result-set-mappings</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p></p>
                                             </div>
                 </div>
@@ -945,8 +1110,6 @@ namespace MyProject\Model;
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -992,7 +1155,7 @@ namespace MyProject\Model;
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

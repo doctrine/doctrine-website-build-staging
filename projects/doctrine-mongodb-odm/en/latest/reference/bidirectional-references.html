@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -269,90 +266,132 @@
 <p>By default when you map a bi-directional reference, the reference is maintained on both sides
 of the relationship and there is not a single &quot;owning side&quot;. Both sides are considered owning
 and changes are tracked and persisted separately. Here is an example:</p>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class BlogPost
-{
-    // ...
-
-    /** @ReferenceOne(targetDocument=&quot;User&quot;) */
-    private $user;
-}
-
-/** @Document */
-class User
-{
-    // ...
-
-    /** @ReferenceMany(targetDocument=&quot;BlogPost&quot;) */
-    private $posts;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="91ecaaa8b7ecaf1dac2ebf4efd5e7de24dae4876"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="91ecaaa8b7ecaf1dac2ebf4efd5e7de24dae4876"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogPost</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="User") */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $user;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceMany</span>(targetDocument="BlogPost") */</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">private</span> $posts;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>When I persist some instances of the above classes the references would exist on both sides! The
 <code>BlogPost</code> collection would have a <a href="https://docs.mongodb.com/manual/reference/database-references/#dbrefs">DBRef</a> stored on the <code>$user</code> property and the <code>User</code>
 collection would have a <a href="https://docs.mongodb.com/manual/reference/database-references/#dbrefs">DBRef</a> stored in the <code>$posts</code> property.</p>
 <a class="section-anchor" id="owning-and-inverse-sides" name="owning-and-inverse-sides"></a><h2 class="section-header"><a href="#owning-and-inverse-sides">Owning and Inverse Sides<i class="fas fa-link"></i></a></h2>
 <p>A user may have lots of posts and we don't need to store a reference to each post on the user, we
 can get the users post by running a query like the following:</p>
-<pre><code class="javascript">db.BlogPost.find({ 'user.$id' : user.id })
-</code></pre>
+<pre class="code-block-table"><code class="javascript"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="35a339c6a0380990ecb2c59e2cd8129b494a5bfb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="35a339c6a0380990ecb2c59e2cd8129b494a5bfb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">db.BlogPost.find({ <span class="hljs-string">'user.$id'</span> : user.id })
+</td></tr></table></div></code></pre>
 <p>In order to map this you can use the <code>inversedBy</code> and <code>mappedBy</code> options. Here is the same
 example above where we implement this:</p>
 <a class="section-anchor" id="one-to-many" name="one-to-many"></a><h3 class="section-header"><a href="#one-to-many">One to Many<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class BlogPost
-{
-    // ...
-
-    /** @ReferenceOne(targetDocument=&quot;User&quot;, inversedBy=&quot;posts&quot;) */
-    private $user;
-}
-
-/** @Document */
-class User
-{
-    // ...
-
-    /** @ReferenceMany(targetDocument=&quot;BlogPost&quot;, mappedBy=&quot;user&quot;) */
-    private $posts;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b364d44353761106a5ba25d812031fb3fc770e69"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b364d44353761106a5ba25d812031fb3fc770e69"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogPost</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="User", inversedBy="posts") */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $user;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceMany</span>(targetDocument="BlogPost", mappedBy="user") */</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">private</span> $posts;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>So now when we persist a <code>User</code> and multiple <code>BlogPost</code> instances for that <code>User</code>:</p>
-<pre><code class="php">&lt;?php
-
-$user = new User();
-
-$post1 = new BlogPost();
-$post1-&gt;setUser($user);
-
-$post2 = new BlogPost();
-$post2-&gt;setUser($user);
-
-$post3 = new BlogPost();
-$post3-&gt;setUser($user);
-
-$dm-&gt;persist($post1);
-$dm-&gt;persist($post2);
-$dm-&gt;persist($post3);
-$dm-&gt;flush();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b7568274e366651a963134798b5521a175398e0e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b7568274e366651a963134798b5521a175398e0e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = <span class="hljs-keyword">new</span> User();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$post1 = <span class="hljs-keyword">new</span> BlogPost();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$post1-&gt;setUser($user);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$post2 = <span class="hljs-keyword">new</span> BlogPost();
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$post2-&gt;setUser($user);
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$post3 = <span class="hljs-keyword">new</span> BlogPost();
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$post3-&gt;setUser($user);
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$dm-&gt;persist($post1);
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$dm-&gt;persist($post2);
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$dm-&gt;persist($post3);
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">$dm-&gt;flush();
+</td></tr></table></div></code></pre>
 <p>And we retrieve the <code>User</code> later to access the posts for that user:</p>
-<pre><code class="php">&lt;?php
-
-$user = $dm-&gt;find('User', $user-&gt;id);
-
-$posts = $user-&gt;getPosts();
-foreach ($posts as $post) {
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d87ab8ed3afa2c98617a44159ebed6181bd27963"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d87ab8ed3afa2c98617a44159ebed6181bd27963"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = $dm-&gt;find(<span class="hljs-string">'User'</span>, $user-&gt;id);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$posts = $user-&gt;getPosts();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($posts <span class="hljs-keyword">as</span> $post) {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The above will execute a query like the following to lazily load the collection of posts to
 iterate over:</p>
-<pre><code class="javascript">db.BlogPost.find( { 'user.$id' : user.id } )
-</code></pre>
+<pre class="code-block-table"><code class="javascript"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="442c9ca8b607b1626403a3f1803a0e663928b188"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="442c9ca8b607b1626403a3f1803a0e663928b188"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">db.BlogPost.find( { <span class="hljs-string">'user.$id'</span> : user.id } )
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Remember that the inverse side, the side which specified <code>mappedBy</code> is immutable and
 any changes to the state of the reference will not be persisted.</p>
 </div>
@@ -360,41 +399,62 @@ any changes to the state of the reference will not be persisted.</p>
 <p>Here are several examples which implement the <code>inversedBy</code> and <code>mappedBy</code> options:</p>
 <a class="section-anchor" id="one-to-one" name="one-to-one"></a><h3 class="section-header"><a href="#one-to-one">One to One<i class="fas fa-link"></i></a></h3>
 <p>Here is an example where we have a one to one relationship between <code>Cart</code> and <code>Customer</code>:</p>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class Cart
-{
-    // ...
-
-    /**
-     * @ReferenceOne(targetDocument=&quot;Customer&quot;, inversedBy=&quot;cart&quot;)
-     */
-    public $customer;
-}
-
-/** @Document */
-class Customer
-{
-    // ...
-
-    /**
-     * @ReferenceOne(targetDocument=&quot;Cart&quot;, mappedBy=&quot;customer&quot;)
-     */
-    public $cart;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2d9e56c895d230d4c3efb4b57fe994de78aad15b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2d9e56c895d230d4c3efb4b57fe994de78aad15b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cart</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @ReferenceOne(targetDocument=<span class="hljs-string">"Customer"</span>, inversedBy=<span class="hljs-string">"cart"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> $customer;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Customer</span></span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * @ReferenceOne(targetDocument=<span class="hljs-string">"Cart"</span>, mappedBy=<span class="hljs-string">"customer"</span>)
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">public</span> $cart;
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The owning side is on <code>Cart.customer</code> and the <code>Customer.cart</code> referenced is loaded with a query
 like this:</p>
-<pre><code class="javascript">db.Cart.find( { 'customer.$id' : customer.id } )
-</code></pre>
+<pre class="code-block-table"><code class="javascript"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5af4608d055912dd5f2b27f29ddb72f33dd26fc4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5af4608d055912dd5f2b27f29ddb72f33dd26fc4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">db.Cart.find( { <span class="hljs-string">'customer.$id'</span> : customer.id } )
+</td></tr></table></div></code></pre>
 <p>If you want to nullify the relationship between a <code>Cart</code> instance and <code>Customer</code> instance
 you must null it out on the <code>Cart.customer</code> side:</p>
-<pre><code class="php">&lt;?php
-
-$cart-&gt;setCustomer(null);
-$dm-&gt;flush();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c9609460dbc93fe21ff0314d970f42506e837a98"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c9609460dbc93fe21ff0314d970f42506e837a98"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cart-&gt;setCustomer(<span class="hljs-keyword">null</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$dm-&gt;flush();
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>When specifying inverse one-to-one relationships the referenced document is
 loaded directly when the owning document is hydrated instead of using a
 proxy. In the example above, loading a <code>Customer</code> object from the database
@@ -402,39 +462,46 @@ would also cause the corresponding <code>Cart</code> to be loaded. This can caus
 performance issues when loading many <code>Customer</code> objects at once.</p>
 </div>
 <a class="section-anchor" id="self-referencing-many-to-many" name="self-referencing-many-to-many"></a><h3 class="section-header"><a href="#self-referencing-many-to-many">Self-Referencing Many to Many<i class="fas fa-link"></i></a></h3>
-<pre><code class="php">&lt;?php
-
-namespace Documents;
-
-/** @Document */
-class User
-{
-    // ...
-
-    /**
-     * @ReferenceMany(targetDocument=&quot;User&quot;, mappedBy=&quot;myFriends&quot;)
-     */
-    public $friendsWithMe;
-
-    /**
-     * @ReferenceMany(targetDocument=&quot;User&quot;, inversedBy=&quot;friendsWithMe&quot;)
-     */
-    public $myFriends;
-
-    public function __construct($name)
-    {
-        $this-&gt;name = $name;
-        $this-&gt;friendsWithMe = new \Doctrine\Common\Collections\ArrayCollection();
-        $this-&gt;myFriends = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    public function addFriend(User $user): void
-    {
-        $user-&gt;friendsWithMe[] = $this;
-        $this-&gt;myFriends[] = $user;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a5f56524c8b83b18a23ba55a1787e5cec09b5246"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a5f56524c8b83b18a23ba55a1787e5cec09b5246"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @ReferenceMany(targetDocument=<span class="hljs-string">"User"</span>, mappedBy=<span class="hljs-string">"myFriends"</span>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $friendsWithMe;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * @ReferenceMany(targetDocument=<span class="hljs-string">"User"</span>, inversedBy=<span class="hljs-string">"friendsWithMe"</span>)
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> $myFriends;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($name)</span></span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;name = $name;
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;friendsWithMe = <span class="hljs-keyword">new</span> \Doctrine\Common\Collections\ArrayCollection();
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;myFriends = <span class="hljs-keyword">new</span> \Doctrine\Common\Collections\ArrayCollection();
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addFriend</span><span class="hljs-params">(User $user)</span>: <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">        $user-&gt;friendsWithMe[] = <span class="hljs-keyword">$this</span>;
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;myFriends[] = $user;
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -459,8 +526,6 @@ class User
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -506,7 +571,7 @@ class User
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -300,97 +297,139 @@ a property referring to the other side.</p>
 inverse sides of associations</a></p>
 <a class="section-anchor" id="many-to-one-unidirectional" name="many-to-one-unidirectional"></a><h2 class="section-header"><a href="#many-to-one-unidirectional">Many-To-One, Unidirectional<i class="fas fa-link"></i></a></h2>
 <p>A many-to-one association is the most common association between objects. Example: Many Users have One Address:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/** @Entity */
-class User
-{
-    // ...
-
-    /**
-     * @ManyToOne(targetEntity=&quot;Address&quot;)
-     * @JoinColumn(name=&quot;address_id&quot;, referencedColumnName=&quot;id&quot;)
-     */
-    private $address;
-}
-
-/** @Entity */
-class Address
-{
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;User&quot;&gt;
-        &lt;many-to-one field=&quot;address&quot; target-entity=&quot;Address&quot;&gt;
-            &lt;join-column name=&quot;address_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-        &lt;/many-to-one&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b2f4e07a92564dabcd411cefb0dff2805f479009"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b2f4e07a92564dabcd411cefb0dff2805f479009"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * @ManyToOne(targetEntity=<span class="hljs-string">"Address"</span>)
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"address_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">private</span> $address;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span></span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="40ea24dc4fa8a5e07a1ba070962b87aa4b005c01"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="40ea24dc4fa8a5e07a1ba070962b87aa4b005c01"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"address"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Address"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"address_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">many-to-one</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The above <code>@JoinColumn</code> is optional as it would default
 to <code>address_id</code> and <code>id</code> anyways. You can omit it and let it
 use the defaults.</p>
 </div>
 <p>Generated MySQL Schema:</p>
-<pre><code class="sql">CREATE TABLE User (
-    id INT AUTO_INCREMENT NOT NULL,
-    address_id INT DEFAULT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-
-CREATE TABLE Address (
-    id INT AUTO_INCREMENT NOT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-
-ALTER TABLE User ADD FOREIGN KEY (address_id) REFERENCES Address(id);
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d7b5fe45b0ee2ad2798f04c30ca0c5246fa4e1b8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d7b5fe45b0ee2ad2798f04c30ca0c5246fa4e1b8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">User</span> (
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    address_id INT DEFAULT NULL,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Address (
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">User</span> <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (address_id) <span class="hljs-keyword">REFERENCES</span> Address(<span class="hljs-keyword">id</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="one-to-one-unidirectional" name="one-to-one-unidirectional"></a><h2 class="section-header"><a href="#one-to-one-unidirectional">One-To-One, Unidirectional<i class="fas fa-link"></i></a></h2>
 <p>Here is an example of a one-to-one association with a <code>Product</code> entity that
 references one <code>Shipment</code> entity.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/** @Entity */
-class Product
-{
-    // ...
-
-    /**
-     * One Product has One Shipment.
-     * @OneToOne(targetEntity=&quot;Shipment&quot;)
-     * @JoinColumn(name=&quot;shipment_id&quot;, referencedColumnName=&quot;id&quot;)
-     */
-    private $shipment;
-
-    // ...
-}
-
-/** @Entity */
-class Shipment
-{
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity class=&quot;Product&quot;&gt;
-        &lt;one-to-one field=&quot;shipment&quot; target-entity=&quot;Shipment&quot;&gt;
-            &lt;join-column name=&quot;shipment_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-        &lt;/one-to-one&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dfc9b5f613b79f6199344a0e747ad7d968cbe4bb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dfc9b5f613b79f6199344a0e747ad7d968cbe4bb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Product</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * One Product has One Shipment.
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @OneToOne(targetEntity=<span class="hljs-string">"Shipment"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"shipment_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $shipment;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Shipment</span></span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dede0a0f732352080cc773659e1d6f6dea5f62e4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dede0a0f732352080cc773659e1d6f6dea5f62e4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"Product"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">one-to-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"shipment"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Shipment"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"shipment_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">one-to-one</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Note that the @JoinColumn is not really necessary in this example,
 as the defaults would be the same.</p>
 <p>Generated MySQL Schema:</p>
-<pre><code class="sql">CREATE TABLE Product (
-    id INT AUTO_INCREMENT NOT NULL,
-    shipment_id INT DEFAULT NULL,
-    UNIQUE INDEX UNIQ_6FBC94267FE4B2B (shipment_id),
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-CREATE TABLE Shipment (
-    id INT AUTO_INCREMENT NOT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-ALTER TABLE Product ADD FOREIGN KEY (shipment_id) REFERENCES Shipment(id);
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d16b3103bbee85bc1885bd7548d27399f9a9aa05"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d16b3103bbee85bc1885bd7548d27399f9a9aa05"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Product (
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    shipment_id INT DEFAULT NULL,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    UNIQUE INDEX UNIQ_6FBC94267FE4B2B (shipment_id),
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Shipment (
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> Product <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (shipment_id) <span class="hljs-keyword">REFERENCES</span> Shipment(<span class="hljs-keyword">id</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="one-to-one-bidirectional" name="one-to-one-bidirectional"></a><h2 class="section-header"><a href="#one-to-one-bidirectional">One-To-One, Bidirectional<i class="fas fa-link"></i></a></h2>
 <p>Here is a one-to-one relationship between a <code>Customer</code> and a
 <code>Cart</code>. The <code>Cart</code> has a reference back to the <code>Customer</code> so
@@ -398,92 +437,127 @@ it is bidirectional.</p>
 <p>Here we see the <code>mappedBy</code> and <code>inversedBy</code> annotations for the first time.
 They are used to tell Doctrine which property on the other side refers to the
 object.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/** @Entity */
-class Customer
-{
-    // ...
-
-    /**
-     * One Customer has One Cart.
-     * @OneToOne(targetEntity=&quot;Cart&quot;, mappedBy=&quot;customer&quot;)
-     */
-    private $cart;
-
-    // ...
-}
-
-/** @Entity */
-class Cart
-{
-    // ...
-
-    /**
-     * One Cart has One Customer.
-     * @OneToOne(targetEntity=&quot;Customer&quot;, inversedBy=&quot;cart&quot;)
-     * @JoinColumn(name=&quot;customer_id&quot;, referencedColumnName=&quot;id&quot;)
-     */
-    private $customer;
-
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;Customer&quot;&gt;
-        &lt;one-to-one field=&quot;cart&quot; target-entity=&quot;Cart&quot; mapped-by=&quot;customer&quot; /&gt;
-    &lt;/entity&gt;
-    &lt;entity name=&quot;Cart&quot;&gt;
-        &lt;one-to-one field=&quot;customer&quot; target-entity=&quot;Customer&quot; inversed-by=&quot;cart&quot;&gt;
-            &lt;join-column name=&quot;customer_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-        &lt;/one-to-one&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ffb5c97a684c7335c9d25581d65d575427527c44"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ffb5c97a684c7335c9d25581d65d575427527c44"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Customer</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * One Customer has One Cart.
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @OneToOne(targetEntity=<span class="hljs-string">"Cart"</span>, mappedBy=<span class="hljs-string">"customer"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">private</span> $cart;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cart</span></span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     * One Cart has One Customer.
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     * @OneToOne(targetEntity=<span class="hljs-string">"Customer"</span>, inversedBy=<span class="hljs-string">"cart"</span>)
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"customer_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-keyword">private</span> $customer;
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7a0e532155ba6841c81d973e9b4e014374c2f1b2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7a0e532155ba6841c81d973e9b4e014374c2f1b2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Customer"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">one-to-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"cart"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Cart"</span> <span class="hljs-attr">mapped-by</span>=<span class="hljs-string">"customer"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Cart"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">one-to-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"customer"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Customer"</span> <span class="hljs-attr">inversed-by</span>=<span class="hljs-string">"cart"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"customer_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">one-to-one</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Note that the @JoinColumn is not really necessary in this example,
 as the defaults would be the same.</p>
 <p>Generated MySQL Schema:</p>
-<pre><code class="sql">CREATE TABLE Cart (
-    id INT AUTO_INCREMENT NOT NULL,
-    customer_id INT DEFAULT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-CREATE TABLE Customer (
-    id INT AUTO_INCREMENT NOT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-ALTER TABLE Cart ADD FOREIGN KEY (customer_id) REFERENCES Customer(id);
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="afc3d2474e105c260997acc657e3731639b360af"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="afc3d2474e105c260997acc657e3731639b360af"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Cart (
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    customer_id INT DEFAULT NULL,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Customer (
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> Cart <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (customer_id) <span class="hljs-keyword">REFERENCES</span> Customer(<span class="hljs-keyword">id</span>);
+</td></tr></table></div></code></pre>
 <p>We had a choice of sides on which to place the <code>inversedBy</code> attribute. Because it
 is on the <code>Cart</code>, that is the owning side of the relation, and thus holds the
 foreign key.</p>
 <a class="section-anchor" id="one-to-one-self-referencing" name="one-to-one-self-referencing"></a><h2 class="section-header"><a href="#one-to-one-self-referencing">One-To-One, Self-referencing<i class="fas fa-link"></i></a></h2>
 <p>You can define a self-referencing one-to-one relationships like
 below.</p>
-<pre><code class="php">&lt;?php
-/** @Entity */
-class Student
-{
-    // ...
-
-    /**
-     * One Student has One Student.
-     * @OneToOne(targetEntity=&quot;Student&quot;)
-     * @JoinColumn(name=&quot;mentor_id&quot;, referencedColumnName=&quot;id&quot;)
-     */
-    private $mentor;
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8e43c179b9f7d0a3f9a4db283758dd13202c70e1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8e43c179b9f7d0a3f9a4db283758dd13202c70e1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * One Student has One Student.
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @OneToOne(targetEntity=<span class="hljs-string">"Student"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"mentor_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $mentor;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Note that the @JoinColumn is not really necessary in this example,
 as the defaults would be the same.</p>
 <p>With the generated MySQL Schema:</p>
-<pre><code class="sql">CREATE TABLE Student (
-    id INT AUTO_INCREMENT NOT NULL,
-    mentor_id INT DEFAULT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-ALTER TABLE Student ADD FOREIGN KEY (mentor_id) REFERENCES Student(id);
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b70ab406e7074dd7dc68ea5aa8d4229e7f0f079b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b70ab406e7074dd7dc68ea5aa8d4229e7f0f079b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Student (
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    mentor_id INT DEFAULT NULL,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> Student <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (mentor_id) <span class="hljs-keyword">REFERENCES</span> Student(<span class="hljs-keyword">id</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="one-to-many-bidirectional" name="one-to-many-bidirectional"></a><h2 class="section-header"><a href="#one-to-many-bidirectional">One-To-Many, Bidirectional<i class="fas fa-link"></i></a></h2>
 <p>A one-to-many association has to be bidirectional, unless you are using a
 join table. This is because the many side in a one-to-many association holds
@@ -493,243 +567,327 @@ defined in order to understand the association.</p>
 &quot;one&quot; side and the <code>inversedBy</code> attribute on the &quot;many&quot; side.</p>
 <p>This means there is no difference between a bidirectional one-to-many and a
 bidirectional many-to-one.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-use Doctrine\Common\Collections\ArrayCollection;
-
-/** @Entity */
-class Product
-{
-    // ...
-    /**
-     * One Product has Many Features.
-     * @OneToMany(targetEntity=&quot;Feature&quot;, mappedBy=&quot;product&quot;)
-     */
-    private $features;
-    // ...
-
-    public function __construct() {
-        $this-&gt;features = new ArrayCollection();
-    }
-}
-
-/** @Entity */
-class Feature
-{
-    // ...
-    /**
-     * Many Features have One Product.
-     * @ManyToOne(targetEntity=&quot;Product&quot;, inversedBy=&quot;features&quot;)
-     * @JoinColumn(name=&quot;product_id&quot;, referencedColumnName=&quot;id&quot;)
-     */
-    private $product;
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;Product&quot;&gt;
-        &lt;one-to-many field=&quot;features&quot; target-entity=&quot;Feature&quot; mapped-by=&quot;product&quot; /&gt;
-    &lt;/entity&gt;
-    &lt;entity name=&quot;Feature&quot;&gt;
-        &lt;many-to-one field=&quot;product&quot; target-entity=&quot;Product&quot; inversed-by=&quot;features&quot;&gt;
-            &lt;join-column name=&quot;product_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-        &lt;/many-to-one&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="456cd5955c20cee3856898caeade614214f689f5"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="456cd5955c20cee3856898caeade614214f689f5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Product</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * One Product has Many Features.
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @OneToMany(targetEntity=<span class="hljs-string">"Feature"</span>, mappedBy=<span class="hljs-string">"product"</span>)
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $features;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span> </span>{
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;features = <span class="hljs-keyword">new</span> ArrayCollection();
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Feature</span></span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     * Many Features have One Product.
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     * @ManyToOne(targetEntity=<span class="hljs-string">"Product"</span>, inversedBy=<span class="hljs-string">"features"</span>)
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"product_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">private</span> $product;
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="54c4b62a5aadbc0e2c01484d3296514890635341"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="54c4b62a5aadbc0e2c01484d3296514890635341"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Product"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">one-to-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"features"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Feature"</span> <span class="hljs-attr">mapped-by</span>=<span class="hljs-string">"product"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Feature"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"product"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Product"</span> <span class="hljs-attr">inversed-by</span>=<span class="hljs-string">"features"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"product_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">many-to-one</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Note that the @JoinColumn is not really necessary in this example,
 as the defaults would be the same.</p>
 <p>Generated MySQL Schema:</p>
-<pre><code class="sql">CREATE TABLE Product (
-    id INT AUTO_INCREMENT NOT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-CREATE TABLE Feature (
-    id INT AUTO_INCREMENT NOT NULL,
-    product_id INT DEFAULT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-ALTER TABLE Feature ADD FOREIGN KEY (product_id) REFERENCES Product(id);
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8cb7cacda59eea0cab89c01f4242b357135d0d2c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8cb7cacda59eea0cab89c01f4242b357135d0d2c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Product (
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Feature (
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    product_id INT DEFAULT NULL,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> Feature <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (product_id) <span class="hljs-keyword">REFERENCES</span> Product(<span class="hljs-keyword">id</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="one-to-many-unidirectional-with-join-table" name="one-to-many-unidirectional-with-join-table"></a><h2 class="section-header"><a href="#one-to-many-unidirectional-with-join-table">One-To-Many, Unidirectional with Join Table<i class="fas fa-link"></i></a></h2>
 <p>A unidirectional one-to-many association can be mapped through a
 join table. From Doctrine's point of view, it is simply mapped as a
 unidirectional many-to-many whereby a unique constraint on one of
 the join columns enforces the one-to-many cardinality.</p>
 <p>The following example sets up such a unidirectional one-to-many association:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/** @Entity */
-class User
-{
-    // ...
-
-    /**
-     * Many User have Many Phonenumbers.
-     * @ManyToMany(targetEntity=&quot;Phonenumber&quot;)
-     * @JoinTable(name=&quot;users_phonenumbers&quot;,
-     *      joinColumns={@JoinColumn(name=&quot;user_id&quot;, referencedColumnName=&quot;id&quot;)},
-     *      inverseJoinColumns={@JoinColumn(name=&quot;phonenumber_id&quot;, referencedColumnName=&quot;id&quot;, unique=true)}
-     *      )
-     */
-    private $phonenumbers;
-
-    public function __construct()
-    {
-        $this-&gt;phonenumbers = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    // ...
-}
-
-/** @Entity */
-class Phonenumber
-{
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;User&quot;&gt;
-        &lt;many-to-many field=&quot;phonenumbers&quot; target-entity=&quot;Phonenumber&quot;&gt;
-            &lt;join-table name=&quot;users_phonenumbers&quot;&gt;
-                &lt;join-columns&gt;
-                    &lt;join-column name=&quot;user_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-                &lt;/join-columns&gt;
-                &lt;inverse-join-columns&gt;
-                    &lt;join-column name=&quot;phonenumber_id&quot; referenced-column-name=&quot;id&quot; unique=&quot;true&quot; /&gt;
-                &lt;/inverse-join-columns&gt;
-            &lt;/join-table&gt;
-        &lt;/many-to-many&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e605988f17ef8076520327cdce8350e577dff136"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e605988f17ef8076520327cdce8350e577dff136"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * Many User have Many Phonenumbers.
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"Phonenumber"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @JoinTable(name=<span class="hljs-string">"users_phonenumbers"</span>,
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     *      joinColumns={@JoinColumn(name=<span class="hljs-string">"user_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)},
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     *      inverseJoinColumns={@JoinColumn(name=<span class="hljs-string">"phonenumber_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>, unique=<span class="hljs-keyword">true</span>)}
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     *      )
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">private</span> $phonenumbers;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;phonenumbers = <span class="hljs-keyword">new</span> \Doctrine\Common\Collections\ArrayCollection();
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Phonenumber</span></span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8c385c408ad0cb3b115facb94ea3bdf069c9f06b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8c385c408ad0cb3b115facb94ea3bdf069c9f06b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"phonenumbers"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Phonenumber"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">join-table</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"users_phonenumbers"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"user_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"phonenumber_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">unique</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">join-table</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">many-to-many</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Generates the following MySQL Schema:</p>
-<pre><code class="sql">CREATE TABLE User (
-    id INT AUTO_INCREMENT NOT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-
-CREATE TABLE users_phonenumbers (
-    user_id INT NOT NULL,
-    phonenumber_id INT NOT NULL,
-    UNIQUE INDEX users_phonenumbers_phonenumber_id_uniq (phonenumber_id),
-    PRIMARY KEY(user_id, phonenumber_id)
-) ENGINE = InnoDB;
-
-CREATE TABLE Phonenumber (
-    id INT AUTO_INCREMENT NOT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-
-ALTER TABLE users_phonenumbers ADD FOREIGN KEY (user_id) REFERENCES User(id);
-ALTER TABLE users_phonenumbers ADD FOREIGN KEY (phonenumber_id) REFERENCES Phonenumber(id);
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0906bc1aa997a82e80bfdd42119b7bcd4bc9ab59"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0906bc1aa997a82e80bfdd42119b7bcd4bc9ab59"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">User</span> (
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> users_phonenumbers (
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    user_id INT NOT NULL,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    phonenumber_id INT NOT NULL,
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    UNIQUE INDEX users_phonenumbers_phonenumber_id_uniq (phonenumber_id),
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    PRIMARY KEY(user_id, phonenumber_id)
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Phonenumber (
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> users_phonenumbers <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (user_id) <span class="hljs-keyword">REFERENCES</span> <span class="hljs-keyword">User</span>(<span class="hljs-keyword">id</span>);
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> users_phonenumbers <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (phonenumber_id) <span class="hljs-keyword">REFERENCES</span> Phonenumber(<span class="hljs-keyword">id</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="one-to-many-self-referencing" name="one-to-many-self-referencing"></a><h2 class="section-header"><a href="#one-to-many-self-referencing">One-To-Many, Self-referencing<i class="fas fa-link"></i></a></h2>
 <p>You can also setup a one-to-many association that is
 self-referencing. In this example we setup a hierarchy of
 <code>Category</code> objects by creating a self referencing relationship.
 This effectively models a hierarchy of categories and from the
 database perspective is known as an adjacency list approach.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/** @Entity */
-class Category
-{
-    // ...
-    /**
-     * One Category has Many Categories.
-     * @OneToMany(targetEntity=&quot;Category&quot;, mappedBy=&quot;parent&quot;)
-     */
-    private $children;
-
-    /**
-     * Many Categories have One Category.
-     * @ManyToOne(targetEntity=&quot;Category&quot;, inversedBy=&quot;children&quot;)
-     * @JoinColumn(name=&quot;parent_id&quot;, referencedColumnName=&quot;id&quot;)
-     */
-    private $parent;
-    // ...
-
-    public function __construct() {
-        $this-&gt;children = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;Category&quot;&gt;
-        &lt;one-to-many field=&quot;children&quot; target-entity=&quot;Category&quot; mapped-by=&quot;parent&quot; /&gt;
-        &lt;many-to-one field=&quot;parent&quot; target-entity=&quot;Category&quot; inversed-by=&quot;children&quot; /&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="74ec738f4c45b22ca4a143e1ac0fb2cbc6db8ed9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="74ec738f4c45b22ca4a143e1ac0fb2cbc6db8ed9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     * One Category has Many Categories.
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * @OneToMany(targetEntity=<span class="hljs-string">"Category"</span>, mappedBy=<span class="hljs-string">"parent"</span>)
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $children;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     * Many Categories have One Category.
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     * @ManyToOne(targetEntity=<span class="hljs-string">"Category"</span>, inversedBy=<span class="hljs-string">"children"</span>)
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"parent_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">private</span> $parent;
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span> </span>{
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;children = <span class="hljs-keyword">new</span> \Doctrine\Common\Collections\ArrayCollection();
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cb89379c29928c3b047dfc2c0f720cda4631b321"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cb89379c29928c3b047dfc2c0f720cda4631b321"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Category"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">one-to-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"children"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Category"</span> <span class="hljs-attr">mapped-by</span>=<span class="hljs-string">"parent"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"parent"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Category"</span> <span class="hljs-attr">inversed-by</span>=<span class="hljs-string">"children"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Note that the @JoinColumn is not really necessary in this example,
 as the defaults would be the same.</p>
 <p>Generated MySQL Schema:</p>
-<pre><code class="sql">CREATE TABLE Category (
-    id INT AUTO_INCREMENT NOT NULL,
-    parent_id INT DEFAULT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-ALTER TABLE Category ADD FOREIGN KEY (parent_id) REFERENCES Category(id);
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="659c3fd5d1b7d0aeda7b0bc94b5d2ce0dcab1435"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="659c3fd5d1b7d0aeda7b0bc94b5d2ce0dcab1435"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">Category</span> (
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    parent_id INT DEFAULT NULL,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">Category</span> <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (parent_id) <span class="hljs-keyword">REFERENCES</span> <span class="hljs-keyword">Category</span>(<span class="hljs-keyword">id</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="many-to-many-unidirectional" name="many-to-many-unidirectional"></a><h2 class="section-header"><a href="#many-to-many-unidirectional">Many-To-Many, Unidirectional<i class="fas fa-link"></i></a></h2>
 <p>Real many-to-many associations are less common. The following
 example shows a unidirectional association between User and Group
 entities:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/** @Entity */
-class User
-{
-    // ...
-
-    /**
-     * Many Users have Many Groups.
-     * @ManyToMany(targetEntity=&quot;Group&quot;)
-     * @JoinTable(name=&quot;users_groups&quot;,
-     *      joinColumns={@JoinColumn(name=&quot;user_id&quot;, referencedColumnName=&quot;id&quot;)},
-     *      inverseJoinColumns={@JoinColumn(name=&quot;group_id&quot;, referencedColumnName=&quot;id&quot;)}
-     *      )
-     */
-    private $groups;
-
-    // ...
-
-    public function __construct() {
-        $this-&gt;groups = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-}
-
-/** @Entity */
-class Group
-{
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;User&quot;&gt;
-        &lt;many-to-many field=&quot;groups&quot; target-entity=&quot;Group&quot;&gt;
-            &lt;join-table name=&quot;users_groups&quot;&gt;
-                &lt;join-columns&gt;
-                    &lt;join-column name=&quot;user_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-                &lt;/join-columns&gt;
-                &lt;inverse-join-columns&gt;
-                    &lt;join-column name=&quot;group_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-                &lt;/inverse-join-columns&gt;
-            &lt;/join-table&gt;
-        &lt;/many-to-many&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="07943b6afaea7306dd286ecc2bce9233ffd1eaa2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="07943b6afaea7306dd286ecc2bce9233ffd1eaa2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * Many Users have Many Groups.
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"Group"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @JoinTable(name=<span class="hljs-string">"users_groups"</span>,
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     *      joinColumns={@JoinColumn(name=<span class="hljs-string">"user_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)},
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     *      inverseJoinColumns={@JoinColumn(name=<span class="hljs-string">"group_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)}
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     *      )
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">private</span> $groups;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span> </span>{
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;groups = <span class="hljs-keyword">new</span> \Doctrine\Common\Collections\ArrayCollection();
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Group</span></span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="043cfc74f03cc2a9bb9a3c416dba46dda2ed1a03"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="043cfc74f03cc2a9bb9a3c416dba46dda2ed1a03"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"groups"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Group"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">join-table</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"users_groups"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"user_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"group_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">join-table</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">many-to-many</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Generated MySQL Schema:</p>
-<pre><code class="sql">CREATE TABLE User (
-    id INT AUTO_INCREMENT NOT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-CREATE TABLE users_groups (
-    user_id INT NOT NULL,
-    group_id INT NOT NULL,
-    PRIMARY KEY(user_id, group_id)
-) ENGINE = InnoDB;
-CREATE TABLE Group (
-    id INT AUTO_INCREMENT NOT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-ALTER TABLE users_groups ADD FOREIGN KEY (user_id) REFERENCES User(id);
-ALTER TABLE users_groups ADD FOREIGN KEY (group_id) REFERENCES Group(id);
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="fa1612a4c1a0c4dfcda607972b03c4301c7a7d98"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="fa1612a4c1a0c4dfcda607972b03c4301c7a7d98"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">User</span> (
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> users_groups (
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    user_id INT NOT NULL,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    group_id INT NOT NULL,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    PRIMARY KEY(user_id, group_id)
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">Group</span> (
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> users_groups <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (user_id) <span class="hljs-keyword">REFERENCES</span> <span class="hljs-keyword">User</span>(<span class="hljs-keyword">id</span>);
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> users_groups <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (<span class="hljs-keyword">group_id</span>) <span class="hljs-keyword">REFERENCES</span> <span class="hljs-keyword">Group</span>(<span class="hljs-keyword">id</span>);
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Why are many-to-many associations less common? Because
 frequently you want to associate additional attributes with an
 association, in which case you introduce an association class.
@@ -740,61 +898,75 @@ participating classes.</p>
 <a class="section-anchor" id="many-to-many-bidirectional" name="many-to-many-bidirectional"></a><h2 class="section-header"><a href="#many-to-many-bidirectional">Many-To-Many, Bidirectional<i class="fas fa-link"></i></a></h2>
 <p>Here is a similar many-to-many relationship as above except this
 one is bidirectional.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/** @Entity */
-class User
-{
-    // ...
-
-    /**
-     * Many Users have Many Groups.
-     * @ManyToMany(targetEntity=&quot;Group&quot;, inversedBy=&quot;users&quot;)
-     * @JoinTable(name=&quot;users_groups&quot;)
-     */
-    private $groups;
-
-    public function __construct() {
-        $this-&gt;groups = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    // ...
-}
-
-/** @Entity */
-class Group
-{
-    // ...
-    /**
-     * Many Groups have Many Users.
-     * @ManyToMany(targetEntity=&quot;User&quot;, mappedBy=&quot;groups&quot;)
-     */
-    private $users;
-
-    public function __construct() {
-        $this-&gt;users = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;User&quot;&gt;
-        &lt;many-to-many field=&quot;groups&quot; inversed-by=&quot;users&quot; target-entity=&quot;Group&quot;&gt;
-            &lt;join-table name=&quot;users_groups&quot;&gt;
-                &lt;join-columns&gt;
-                    &lt;join-column name=&quot;user_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-                &lt;/join-columns&gt;
-                &lt;inverse-join-columns&gt;
-                    &lt;join-column name=&quot;group_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-                &lt;/inverse-join-columns&gt;
-            &lt;/join-table&gt;
-        &lt;/many-to-many&gt;
-    &lt;/entity&gt;
-
-    &lt;entity name=&quot;Group&quot;&gt;
-        &lt;many-to-many field=&quot;users&quot; mapped-by=&quot;groups&quot; target-entity=&quot;User&quot;/&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8f5d3ac82df0571ddc52bef1f996c9a55a791e13"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8f5d3ac82df0571ddc52bef1f996c9a55a791e13"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * Many Users have Many Groups.
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"Group"</span>, inversedBy=<span class="hljs-string">"users"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @JoinTable(name=<span class="hljs-string">"users_groups"</span>)
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $groups;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span> </span>{
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;groups = <span class="hljs-keyword">new</span> \Doctrine\Common\Collections\ArrayCollection();
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Group</span></span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     * Many Groups have Many Users.
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"User"</span>, mappedBy=<span class="hljs-string">"groups"</span>)
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">private</span> $users;
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span> </span>{
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;users = <span class="hljs-keyword">new</span> \Doctrine\Common\Collections\ArrayCollection();
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7cee5f2979354f7dd89c361712a53f6acd95898d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7cee5f2979354f7dd89c361712a53f6acd95898d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"groups"</span> <span class="hljs-attr">inversed-by</span>=<span class="hljs-string">"users"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Group"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">join-table</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"users_groups"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"user_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"group_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">join-table</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">many-to-many</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Group"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"users"</span> <span class="hljs-attr">mapped-by</span>=<span class="hljs-string">"groups"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"User"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>The MySQL schema is exactly the same as for the Many-To-Many
 uni-directional case above.</p>
 <a class="section-anchor" id="owning-and-inverse-side-on-a-manytomany-association" name="owning-and-inverse-side-on-a-manytomany-association"></a><h3 class="section-header"><a href="#owning-and-inverse-side-on-a-manytomany-association">Owning and Inverse Side on a ManyToMany Association<i class="fas fa-link"></i></a></h3>
@@ -812,84 +984,112 @@ tags. Your &quot;Create Article&quot; form will probably support this notion
 and allow specifying the tags directly. This is why you should pick
 the Article as owning side, as it makes the code more
 understandable:</p>
-<pre><code class="php">&lt;?php
-class Article
-{
-    private $tags;
-
-    public function addTag(Tag $tag)
-    {
-        $tag-&gt;addArticle($this); // synchronously updating inverse side
-        $this-&gt;tags[] = $tag;
-    }
-}
-
-class Tag
-{
-    private $articles;
-
-    public function addArticle(Article $article)
-    {
-        $this-&gt;articles[] = $article;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f14187787420b2f86a0ccec922cce13dfae29243"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f14187787420b2f86a0ccec922cce13dfae29243"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">private</span> $tags;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addTag</span><span class="hljs-params">(Tag $tag)</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $tag-&gt;addArticle(<span class="hljs-keyword">$this</span>); <span class="hljs-comment">// synchronously updating inverse side</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;tags[] = $tag;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tag</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">private</span> $articles;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addArticle</span><span class="hljs-params">(Article $article)</span></span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;articles[] = $article;
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>This allows to group the tag adding on the <code>Article</code> side of the
 association:</p>
-<pre><code class="php">&lt;?php
-$article = new Article();
-$article-&gt;addTag($tagA);
-$article-&gt;addTag($tagB);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4b32bb857b0ca325527eb212bd0d55008218b772"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4b32bb857b0ca325527eb212bd0d55008218b772"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$article = <span class="hljs-keyword">new</span> Article();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$article-&gt;addTag($tagA);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$article-&gt;addTag($tagB);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="many-to-many-self-referencing" name="many-to-many-self-referencing"></a><h2 class="section-header"><a href="#many-to-many-self-referencing">Many-To-Many, Self-referencing<i class="fas fa-link"></i></a></h2>
 <p>You can even have a self-referencing many-to-many association. A
 common scenario is where a <code>User</code> has friends and the target
 entity of that relationship is a <code>User</code> so it is self
 referencing. In this example it is bidirectional so <code>User</code> has a
 field named <code>$friendsWithMe</code> and <code>$myFriends</code>.</p>
-<pre><code class="php">&lt;?php
-/** @Entity */
-class User
-{
-    // ...
-
-    /**
-     * Many Users have Many Users.
-     * @ManyToMany(targetEntity=&quot;User&quot;, mappedBy=&quot;myFriends&quot;)
-     */
-    private $friendsWithMe;
-
-    /**
-     * Many Users have many Users.
-     * @ManyToMany(targetEntity=&quot;User&quot;, inversedBy=&quot;friendsWithMe&quot;)
-     * @JoinTable(name=&quot;friends&quot;,
-     *      joinColumns={@JoinColumn(name=&quot;user_id&quot;, referencedColumnName=&quot;id&quot;)},
-     *      inverseJoinColumns={@JoinColumn(name=&quot;friend_user_id&quot;, referencedColumnName=&quot;id&quot;)}
-     *      )
-     */
-    private $myFriends;
-
-    public function __construct() {
-        $this-&gt;friendsWithMe = new \Doctrine\Common\Collections\ArrayCollection();
-        $this-&gt;myFriends = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a3256afc294961435f056c6ea47c06d00094bb8d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a3256afc294961435f056c6ea47c06d00094bb8d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * Many Users have Many Users.
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"User"</span>, mappedBy=<span class="hljs-string">"myFriends"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">private</span> $friendsWithMe;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     * Many Users have many Users.
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"User"</span>, inversedBy=<span class="hljs-string">"friendsWithMe"</span>)
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * @JoinTable(name=<span class="hljs-string">"friends"</span>,
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     *      joinColumns={@JoinColumn(name=<span class="hljs-string">"user_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)},
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     *      inverseJoinColumns={@JoinColumn(name=<span class="hljs-string">"friend_user_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)}
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     *      )
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">private</span> $myFriends;
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span> </span>{
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;friendsWithMe = <span class="hljs-keyword">new</span> \Doctrine\Common\Collections\ArrayCollection();
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;myFriends = <span class="hljs-keyword">new</span> \Doctrine\Common\Collections\ArrayCollection();
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Generated MySQL Schema:</p>
-<pre><code class="sql">CREATE TABLE User (
-    id INT AUTO_INCREMENT NOT NULL,
-    PRIMARY KEY(id)
-) ENGINE = InnoDB;
-CREATE TABLE friends (
-    user_id INT NOT NULL,
-    friend_user_id INT NOT NULL,
-    PRIMARY KEY(user_id, friend_user_id)
-) ENGINE = InnoDB;
-ALTER TABLE friends ADD FOREIGN KEY (user_id) REFERENCES User(id);
-ALTER TABLE friends ADD FOREIGN KEY (friend_user_id) REFERENCES User(id);
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8c9b645f6a41a58d34f85dd7cc798a19c0d42340"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8c9b645f6a41a58d34f85dd7cc798a19c0d42340"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">User</span> (
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id INT AUTO_INCREMENT NOT NULL,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    PRIMARY KEY(id)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> friends (
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    user_id INT NOT NULL,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    friend_user_id INT NOT NULL,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    PRIMARY KEY(user_id, friend_user_id)
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">) ENGINE = InnoDB;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> friends <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (user_id) <span class="hljs-keyword">REFERENCES</span> <span class="hljs-keyword">User</span>(<span class="hljs-keyword">id</span>);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> friends <span class="hljs-keyword">ADD</span> FOREIGN <span class="hljs-keyword">KEY</span> (friend_user_id) <span class="hljs-keyword">REFERENCES</span> <span class="hljs-keyword">User</span>(<span class="hljs-keyword">id</span>);
+</td></tr></table></div></code></pre>
 <a id="association_mapping_defaults"></a>
 <a class="section-anchor" id="mapping-defaults" name="mapping-defaults"></a><h2 class="section-header"><a href="#mapping-defaults">Mapping Defaults<i class="fas fa-link"></i></a></h2>
 <p>The <code>@JoinColumn</code> and <code>@JoinTable</code> definitions are usually optional and have
@@ -900,79 +1100,135 @@ one-to-one/many-to-one association is as follows:</p>
 referencedColumnName: &quot;id&quot;
 </code></pre>
 <p>As an example, consider this mapping:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/** @OneToOne(targetEntity=&quot;Shipment&quot;) */
-private $shipment;
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity class=&quot;Product&quot;&gt;
-        &lt;one-to-one field=&quot;shipment&quot; target-entity=&quot;Shipment&quot; /&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0c77312aa70905c6d9a6d4cc2834a002c1dd2e62"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0c77312aa70905c6d9a6d4cc2834a002c1dd2e62"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@OneToOne</span>(targetEntity="Shipment") */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">private</span> $shipment;
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ddb5d5b654fe791bc09533379f2d48c2da38ad97"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ddb5d5b654fe791bc09533379f2d48c2da38ad97"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"Product"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">one-to-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"shipment"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Shipment"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>This is essentially the same as the following, more verbose,
 mapping:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-/**
- * One Product has One Shipment.
- * @OneToOne(targetEntity=&quot;Shipment&quot;)
- * @JoinColumn(name=&quot;shipment_id&quot;, referencedColumnName=&quot;id&quot;)
- */
-private $shipment;
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity class=&quot;Product&quot;&gt;
-        &lt;one-to-one field=&quot;shipment&quot; target-entity=&quot;Shipment&quot;&gt;
-            &lt;join-column name=&quot;shipment_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-        &lt;/one-to-one&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2d887892dbbd8ccfc4b20b794f1525e0283e0746"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2d887892dbbd8ccfc4b20b794f1525e0283e0746"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * One Product has One Shipment.
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @OneToOne(targetEntity=<span class="hljs-string">"Shipment"</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @JoinColumn(name=<span class="hljs-string">"shipment_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">private</span> $shipment;
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dede0a0f732352080cc773659e1d6f6dea5f62e4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dede0a0f732352080cc773659e1d6f6dea5f62e4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"Product"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">one-to-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"shipment"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Shipment"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"shipment_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">one-to-one</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>The @JoinTable definition used for many-to-many mappings has
 similar defaults. As an example, consider this mapping:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-class User
-{
-    //...
-    /** @ManyToMany(targetEntity=&quot;Group&quot;) */
-    private $groups;
-    //...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity class=&quot;User&quot;&gt;
-        &lt;many-to-many field=&quot;groups&quot; target-entity=&quot;Group&quot; /&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="374715ea6501ff06230df35d4786586ac4164922"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="374715ea6501ff06230df35d4786586ac4164922"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ManyToMany</span>(targetEntity="Group") */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $groups;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c3c85a789681ba661e987e1cca12efbe353de2de"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c3c85a789681ba661e987e1cca12efbe353de2de"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"groups"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Group"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>This is essentially the same as the following, more verbose, mapping:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-class User
-{
-    //...
-    /**
-     * Many Users have Many Groups.
-     * @ManyToMany(targetEntity=&quot;Group&quot;)
-     * @JoinTable(name=&quot;User_Group&quot;,
-     *      joinColumns={@JoinColumn(name=&quot;User_id&quot;, referencedColumnName=&quot;id&quot;)},
-     *      inverseJoinColumns={@JoinColumn(name=&quot;Group_id&quot;, referencedColumnName=&quot;id&quot;)}
-     *      )
-     */
-    private $groups;
-    //...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;entity class=&quot;User&quot;&gt;
-        &lt;many-to-many field=&quot;groups&quot; target-entity=&quot;Group&quot;&gt;
-            &lt;join-table name=&quot;User_Group&quot;&gt;
-                &lt;join-columns&gt;
-                    &lt;join-column id=&quot;User_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-                &lt;/join-columns&gt;
-                &lt;inverse-join-columns&gt;
-                    &lt;join-column id=&quot;Group_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-                &lt;/inverse-join-columns&gt;
-            &lt;/join-table&gt;
-        &lt;/many-to-many&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5cf359ac9ffea07537ee438329e86f2696143d7e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5cf359ac9ffea07537ee438329e86f2696143d7e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     * Many Users have Many Groups.
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"Group"</span>)
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * @JoinTable(name=<span class="hljs-string">"User_Group"</span>,
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     *      joinColumns={@JoinColumn(name=<span class="hljs-string">"User_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)},
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     *      inverseJoinColumns={@JoinColumn(name=<span class="hljs-string">"Group_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)}
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     *      )
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">private</span> $groups;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="77c721773b7a6913c78617d13679031b8419f97f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="77c721773b7a6913c78617d13679031b8419f97f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"groups"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Group"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">join-table</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"User_Group"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"User_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"Group_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">join-table</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">many-to-many</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>In that case, the name of the join table defaults to a combination
 of the simple, unqualified class names of the participating
 classes, separated by an underscore character. The names of the
@@ -1000,38 +1256,52 @@ does not introduce a coupling to the ORM.</p>
 <a class="section-anchor" id="initializing-collections" name="initializing-collections"></a><h2 class="section-header"><a href="#initializing-collections">Initializing Collections<i class="fas fa-link"></i></a></h2>
 <p>You should always initialize the collections of your <code>@OneToMany</code>
 and <code>@ManyToMany</code> associations in the constructor of your entities:</p>
-<pre><code class="php">&lt;?php
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
-
-/** @Entity */
-class User
-{
-    /**
-     * Many Users have Many Groups.
-     * @var Collection
-     * @ManyToMany(targetEntity=&quot;Group&quot;)
-     */
-    private $groups;
-
-    public function __construct()
-    {
-        $this-&gt;groups = new ArrayCollection();
-    }
-
-    public function getGroups()
-    {
-        return $this-&gt;groups;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f6edef4b366278d1032e87aeb0a006114088d68e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f6edef4b366278d1032e87aeb0a006114088d68e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">Collection</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * Many Users have Many Groups.
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @<span class="hljs-keyword">var</span> Collection
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"Group"</span>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">private</span> $groups;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;groups = <span class="hljs-keyword">new</span> ArrayCollection();
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGroups</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;groups;
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The following code will then work even if the Entity hasn't
 been associated with an EntityManager yet:</p>
-<pre><code class="php">&lt;?php
-$group = new Group();
-$user = new User();
-$user-&gt;getGroups()-&gt;add($group);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="265f63d5288f7b3bc5fd37c91cc90ceed0f4eb6e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="265f63d5288f7b3bc5fd37c91cc90ceed0f4eb6e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$group = <span class="hljs-keyword">new</span> Group();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = <span class="hljs-keyword">new</span> User();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$user-&gt;getGroups()-&gt;add($group);
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -1056,8 +1326,6 @@ $user-&gt;getGroups()-&gt;add($group);
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -1103,7 +1371,7 @@ $user-&gt;getGroups()-&gt;add($group);
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

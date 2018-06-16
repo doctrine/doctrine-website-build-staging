@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -263,149 +260,247 @@ given with short explanations on their context and usage.</p>
 <a class="section-anchor" id="alsoload" name="alsoload"></a><h2 class="section-header"><a href="#alsoload">@AlsoLoad<i class="fas fa-link"></i></a></h2>
 <p>Specify one or more MongoDB fields to use for loading data if the original field
 does not exist.</p>
-<pre><code class="php">&lt;?php
-
-/** @String @AlsoLoad(&quot;name&quot;) */
-public $fullName;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bea5e2f9f963ce87d5ae19f993c65940b0913437"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bea5e2f9f963ce87d5ae19f993c65940b0913437"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@String</span> <span class="hljs-doctag">@AlsoLoad</span>("name") */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">public</span> $fullName;
+</td></tr></table></div></code></pre>
 <p>The <code>$fullName</code> property will be loaded from <code>fullName</code> if it exists, but
 fall back to <code>name</code> if it does not exist. If multiple fall back fields are
 specified, ODM will consider them in order until the first is found.</p>
 <p>Additionally, <a href="#alsoload">@AlsoLoad</a> may annotate a method with one or more field names.
 Before normal hydration, the field(s) will be considered in order and the method
 will be invoked with the first value found as its single argument.</p>
-<pre><code class="php">&lt;?php
-
-/** @AlsoLoad({&quot;name&quot;, &quot;fullName&quot;}) */
-public function populateFirstAndLastName($name)
-{
-    list($this-&gt;firstName, $this-&gt;lastName) = explode(' ', $name);
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c91b8a0bb8440250f1d075025848c76b4fa83d2d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c91b8a0bb8440250f1d075025848c76b4fa83d2d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@AlsoLoad</span>({"name", "fullName"}) */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">populateFirstAndLastName</span><span class="hljs-params">($name)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">list</span>(<span class="hljs-keyword">$this</span>-&gt;firstName, <span class="hljs-keyword">$this</span>-&gt;lastName) = explode(<span class="hljs-string">' '</span>, $name);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>For additional information on using <a href="#alsoload">@AlsoLoad</a>, see
 <a href="migrating-schemas.html">Migrations</a>.</p>
 <a class="section-anchor" id="bin" name="bin"></a><h2 class="section-header"><a href="#bin">@Bin<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;bin&quot;. Converts value to
 <a href="http://php.net/manual/en/class.mongobindata.php">MongoBinData</a> with <code>MongoBinData::GENERIC</code> sub-type.</p>
-<pre><code class="php">&lt;?php
-
-/** @Bin */
-private $data;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="334101353ae467200e7bb75127f8155cd0be9193"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="334101353ae467200e7bb75127f8155cd0be9193"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Bin</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $data;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="bincustom" name="bincustom"></a><h2 class="section-header"><a href="#bincustom">@BinCustom<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;bin\_custom&quot;. Converts
 value to <a href="http://php.net/manual/en/class.mongobindata.php">MongoBinData</a> with <code>MongoBinData::CUSTOM</code> sub-type.</p>
-<pre><code class="php">&lt;?php
-
-/** @BinCustom */
-private $data;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="08d6c6a4d9972cf440c55db479473e758efe4a96"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="08d6c6a4d9972cf440c55db479473e758efe4a96"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@BinCustom</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $data;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="binfunc" name="binfunc"></a><h2 class="section-header"><a href="#binfunc">@BinFunc<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;bin\_func&quot;. Converts value to
 <a href="http://php.net/manual/en/class.mongobindata.php">MongoBinData</a> with <code>MongoBinData::FUNC</code> sub-type.</p>
-<pre><code class="php">&lt;?php
-
-/** @BinFunc */
-private $data;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="65d6d8ffc55692bab93b893c4cfea08ed2fcd349"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="65d6d8ffc55692bab93b893c4cfea08ed2fcd349"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@BinFunc</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $data;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="binmd5" name="binmd5"></a><h2 class="section-header"><a href="#binmd5">@BinMD5<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;bin\_md5&quot;. Converts value to
 <a href="http://php.net/manual/en/class.mongobindata.php">MongoBinData</a> with <code>MongoBinData::MD5</code> sub-type.</p>
-<pre><code class="php">&lt;?php
-
-/** @BinMD5 */
-private $password;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cdac874577cdd46719801f71434bfc0814ccd641"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cdac874577cdd46719801f71434bfc0814ccd641"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@BinMD</span>5 */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $password;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="binuuid" name="binuuid"></a><h2 class="section-header"><a href="#binuuid">@BinUUID<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;bin\_uuid&quot;. Converts value to
 <a href="http://php.net/manual/en/class.mongobindata.php">MongoBinData</a> with <code>MongoBinData::UUID</code> sub-type.</p>
-<pre><code class="php">&lt;?php
-
-/** @BinUUID */
-private $uuid;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bd26d859de9229edec1bbf85679686d8b6d99115"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bd26d859de9229edec1bbf85679686d8b6d99115"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@BinUUID</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $uuid;
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Per the <a href="http://bsonspec.org/spec.html">BSON specification</a>, this sub-type is deprecated in favor of the
 RFC 4122 UUID sub-type. Consider using <a href="#binuuidrfc4122">@BinUUIDRFC4122</a> instead.</p>
 </div>
 <a class="section-anchor" id="binuuidrfc4122" name="binuuidrfc4122"></a><h2 class="section-header"><a href="#binuuidrfc4122">@BinUUIDRFC4122<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;bin\_uuid\_rfc4122&quot;. Converts
 value to <a href="http://php.net/manual/en/class.mongobindata.php">MongoBinData</a> with <code>MongoBinData::UUID_RFC4122</code> sub-type.</p>
-<pre><code class="php">&lt;?php
-
-/** @BinUUIDRFC4122 */
-private $uuid;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="882722efaceaed67b2ae638f1f020b81cf3aab90"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="882722efaceaed67b2ae638f1f020b81cf3aab90"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@BinUUIDRFC</span>4122 */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $uuid;
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>RFC 4122 UUIDs must be 16 bytes. The PHP driver will throw an exception if
 the binary data's size is invalid.</p>
 </div>
 <a class="section-anchor" id="bool" name="bool"></a><h2 class="section-header"><a href="#bool">@Bool<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;bool&quot;. Internally it uses
 exactly same logic as <a href="#boolean">@Boolean</a> annotation and &quot;boolean&quot; type.</p>
-<pre><code class="php">&lt;?php
-
-/** @Bool */
-private $active;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="481c099c52bed14b8067802b3fea58a6ece7d260"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="481c099c52bed14b8067802b3fea58a6ece7d260"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Bool</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $active;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="boolean" name="boolean"></a><h2 class="section-header"><a href="#boolean">@Boolean<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;boolean&quot;.</p>
-<pre><code class="php">&lt;?php
-
-/** @Boolean */
-private $active;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d6d06b69d92eb65ee30bb703f4f196047a150e21"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d6d06b69d92eb65ee30bb703f4f196047a150e21"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Boolean</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $active;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="collection" name="collection"></a><h2 class="section-header"><a href="#collection">@Collection<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;collection&quot;. Stores and
 retrieves the value as a numerically indexed array.</p>
-<pre><code class="php">&lt;?php
-
-/** @Collection */
-private $tags = array();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="00692702daa591a6f92c730e5d87e7d248c65ada"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="00692702daa591a6f92c730e5d87e7d248c65ada"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Collection</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $tags = <span class="hljs-keyword">array</span>();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="date" name="date"></a><h2 class="section-header"><a href="#date">@Date<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;date&quot;. Values of any type
 (e.g. integer, string, DateTime) will be converted to <a href="http://php.net/manual/en/class.mongodate.php">MongoDate</a> for storage
 in MongoDB. The property will be a DateTime when loaded from the database.</p>
-<pre><code class="php">&lt;?php
-
-/** @Date */
-private $createdAt;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7e81b2308306e18f0bfead0fe9b511dcd9713caf"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7e81b2308306e18f0bfead0fe9b511dcd9713caf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Date</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $createdAt;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="defaultdiscriminatorvalue" name="defaultdiscriminatorvalue"></a><h2 class="section-header"><a href="#defaultdiscriminatorvalue">@DefaultDiscriminatorValue<i class="fas fa-link"></i></a></h2>
 <p>This annotation can be used when using <a href="#discriminatorfield">@DiscriminatorField</a>. It will be used
 as a fallback value if a document has no discriminator field set. This must
 correspond to a value from the configured discriminator map.</p>
-<pre><code class="php">&lt;?php
-
-/**
- * @Document
- * @InheritanceType(&quot;SINGLE_COLLECTION&quot;)
- * @DiscriminatorField(&quot;type&quot;)
- * @DiscriminatorMap({&quot;person&quot; = &quot;Person&quot;, &quot;employee&quot; = &quot;Employee&quot;})
- * @DefaultDiscriminatorValue(&quot;person&quot;)
- */
-class Person
-{
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4ee71270b4aa19f0a10601fe283987c82c968622"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4ee71270b4aa19f0a10601fe283987c82c968622"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @InheritanceType(<span class="hljs-string">"SINGLE_COLLECTION"</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @DiscriminatorField(<span class="hljs-string">"type"</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @DiscriminatorMap({<span class="hljs-string">"person"</span> = <span class="hljs-string">"Person"</span>, <span class="hljs-string">"employee"</span> = <span class="hljs-string">"Employee"</span>})
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @DefaultDiscriminatorValue(<span class="hljs-string">"person"</span>)
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="discriminatorfield" name="discriminatorfield"></a><h2 class="section-header"><a href="#discriminatorfield">@DiscriminatorField<i class="fas fa-link"></i></a></h2>
 <p>This annotation is required for the top-most class in a
 <a href="">single collection inheritance</a> hierarchy.
 It takes a string as its only argument, which specifies the database field to
 store a class name or key (if a discriminator map is used). ODM uses this field
 during hydration to select the instantiation class.</p>
-<pre><code class="php">&lt;?php
-
-/**
- * @Document
- * @InheritanceType(&quot;SINGLE_COLLECTION&quot;)
- * @DiscriminatorField(&quot;type&quot;)
- */
-class SuperUser
-{
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1558e2f8c8fb9e30b7c9dfdb6078f97f3f273bd8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1558e2f8c8fb9e30b7c9dfdb6078f97f3f273bd8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @InheritanceType(<span class="hljs-string">"SINGLE_COLLECTION"</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @DiscriminatorField(<span class="hljs-string">"type"</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SuperUser</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>For backwards compatibility, the discriminator field may also be specified
 via either the <code>name</code> or <code>fieldName</code> annotation attributes.</p>
 </div>
@@ -416,64 +511,85 @@ It takes an array as its only argument, which maps keys to class names. The
 class names may be fully qualified or relative to the current namespace. When
 a document is persisted to the database, its class name key will be stored in
 the discriminator field instead of the fully qualified class name.</p>
-<pre><code class="php">&lt;?php
-
-/**
- * @Document
- * @InheritanceType(&quot;SINGLE_COLLECTION&quot;)
- * @DiscriminatorField(&quot;type&quot;)
- * @DiscriminatorMap({&quot;person&quot; = &quot;Person&quot;, &quot;employee&quot; = &quot;Employee&quot;})
- */
-class Person
-{
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="63d27eb19ff61d91bfd2997003cb8721524e52ed"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="63d27eb19ff61d91bfd2997003cb8721524e52ed"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @InheritanceType(<span class="hljs-string">"SINGLE_COLLECTION"</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @DiscriminatorField(<span class="hljs-string">"type"</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @DiscriminatorMap({<span class="hljs-string">"person"</span> = <span class="hljs-string">"Person"</span>, <span class="hljs-string">"employee"</span> = <span class="hljs-string">"Employee"</span>})
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a id="annotation_distance"></a>
 <a class="section-anchor" id="distance" name="distance"></a><h2 class="section-header"><a href="#distance">@Distance<i class="fas fa-link"></i></a></h2>
 <p>This annotation can be used in combination with geospatial indexes and the
 <a href="">geoNear()</a> query method to populate the property with the
 calculated distance value.</p>
-<pre><code class="php">&lt;?php
-
-/**
- * @Document
- * @Index(keys={&quot;coordinates&quot;=&quot;2d&quot;})
- */
-class Place
-{
-    /** @Id */
-    public $id;
-
-    /** @EmbedOne(targetDocument=&quot;Coordinates&quot;) */
-    public $coordinates;
-
-    /** @Distance */
-    public $distance;
-}
-
-/** @EmbeddedDocument */
-class Coordinates
-{
-    /** @Float */
-    public $latitude;
-
-    /** @Float */
-    public $longitude;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="71364197cffa21ee79237f0340cf738000c19078"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="71364197cffa21ee79237f0340cf738000c19078"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Index(keys={<span class="hljs-string">"coordinates"</span>=<span class="hljs-string">"2d"</span>})
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Place</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedOne</span>(targetDocument="Coordinates") */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $coordinates;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Distance</span> */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> $distance;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@EmbeddedDocument</span> */</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Coordinates</span></span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Float</span> */</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> $latitude;
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Float</span> */</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-keyword">public</span> $longitude;
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Now you can run a <a href="http://docs.mongodb.org/manual/reference/command/geoNear/">geoNear command</a> and access the computed distance. The
 following example would return the distance of the city nearest the query
 coordinates:</p>
-<pre><code class="php">&lt;?php
-
-$city = $this-&gt;dm-&gt;createQuery('City')
-    -&gt;geoNear(50, 60)
-    -&gt;limit(1)
-    -&gt;getQuery()
-    -&gt;getSingleResult();
-echo $city-&gt;distance;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2660dc4276770e4ea7a0fee4e9c34f5feedc980f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2660dc4276770e4ea7a0fee4e9c34f5feedc980f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$city = <span class="hljs-keyword">$this</span>-&gt;dm-&gt;createQuery(<span class="hljs-string">'City'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;geoNear(<span class="hljs-number">50</span>, <span class="hljs-number">60</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;limit(<span class="hljs-number">1</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;getSingleResult();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">echo</span> $city-&gt;distance;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="document" name="document"></a><h2 class="section-header"><a href="#document">@Document<i class="fas fa-link"></i></a></h2>
 <p>Required annotation to mark a PHP class as a document, whose peristence will be
 managed by ODM.</p>
@@ -494,24 +610,31 @@ managed by ODM.</p>
    require indexes by default. This may also be specified per query.</li>
 </ul>
 
-<pre><code class="php">&lt;?php
-
-/**
- * @Document(
- *     db=&quot;documents&quot;,
- *     collection=&quot;users&quot;,
- *     repositoryClass=&quot;MyProject\UserRepository&quot;,
- *     indexes={
- *         @Index(keys={&quot;username&quot;=&quot;desc&quot;}, options={&quot;unique&quot;=true})
- *     },
- *     requireIndexes=true
- * )
- */
-class User
-{
-    //...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ee5181ff286d051c59e2f3819d90483eb8304f48"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ee5181ff286d051c59e2f3819d90483eb8304f48"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document(
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> *     db=<span class="hljs-string">"documents"</span>,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *     collection=<span class="hljs-string">"users"</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *     repositoryClass=<span class="hljs-string">"MyProject\UserRepository"</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> *     indexes={
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> *         @Index(keys={<span class="hljs-string">"username"</span>=<span class="hljs-string">"desc"</span>}, options={<span class="hljs-string">"unique"</span>=<span class="hljs-keyword">true</span>})
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> *     },
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> *     requireIndexes=<span class="hljs-keyword">true</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> * )
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="embedmany" name="embedmany"></a><h2 class="section-header"><a href="#embedmany">@EmbedMany<i class="fas fa-link"></i></a></h2>
 <p>This annotation is similar to <a href="#embedone">@EmbedOne</a>, but instead of embedding one
 document, it embeds a collection of documents.</p>
@@ -532,21 +655,28 @@ document, it embeds a collection of documents.</p>
     is the default. See <a href=""></a> for more information.</li>
 </ul>
 
-<pre><code class="php">&lt;?php
-
-/**
- * @EmbedMany(
- *     strategy=&quot;set&quot;,
- *     discriminatorField=&quot;type&quot;,
- *     discriminatorMap={
- *         &quot;book&quot;=&quot;Documents\BookTag&quot;,
- *         &quot;song&quot;=&quot;Documents\SongTag&quot;
- *     },
- *     defaultDiscriminatorValue=&quot;book&quot;
- * )
- */
-private $tags = array();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c6263ddb9781320ec7cea526bb0217af912ceb77"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c6263ddb9781320ec7cea526bb0217af912ceb77"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @EmbedMany(
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> *     strategy=<span class="hljs-string">"set"</span>,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *     discriminatorField=<span class="hljs-string">"type"</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *     discriminatorMap={
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> *         <span class="hljs-string">"book"</span>=<span class="hljs-string">"Documents\BookTag"</span>,
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> *         <span class="hljs-string">"song"</span>=<span class="hljs-string">"Documents\SongTag"</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> *     },
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> *     defaultDiscriminatorValue=<span class="hljs-string">"book"</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> * )
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-keyword">private</span> $tags = <span class="hljs-keyword">array</span>();
+</td></tr></table></div></code></pre>
 <p>Depending on the embedded document's class, a value of <code>user</code> or <code>author</code>
 will be stored in the <code>type</code> field and used to reconstruct the proper class
 during hydration. The <code>type</code> field need not be mapped on the embedded
@@ -577,20 +707,27 @@ to embed this object?&quot;</p>
     has been set in the embedded document.</li>
 </ul>
 
-<pre><code class="php">&lt;?php
-
-/**
- * @EmbedOne(
- *     discriminatorField=&quot;type&quot;,
- *     discriminatorMap={
- *         &quot;user&quot;=&quot;Documents\User&quot;,
- *         &quot;author&quot;=&quot;Documents\Author&quot;
- *     },
- *     defaultDiscriminatorValue=&quot;user&quot;
- * )
- */
-private $creator;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="210cb1c50abad7fb3be2ac52eceacfd6b7588b81"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="210cb1c50abad7fb3be2ac52eceacfd6b7588b81"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @EmbedOne(
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> *     discriminatorField=<span class="hljs-string">"type"</span>,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *     discriminatorMap={
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *         <span class="hljs-string">"user"</span>=<span class="hljs-string">"Documents\User"</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> *         <span class="hljs-string">"author"</span>=<span class="hljs-string">"Documents\Author"</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> *     },
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> *     defaultDiscriminatorValue=<span class="hljs-string">"user"</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> * )
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-keyword">private</span> $creator;
+</td></tr></table></div></code></pre>
 <p>Depending on the embedded document's class, a value of <code>user</code> or <code>author</code>
 will be stored in the <code>type</code> field and used to reconstruct the proper class
 during hydration. The <code>type</code> field need not be mapped on the embedded
@@ -598,39 +735,46 @@ document classes.</p>
 <a class="section-anchor" id="embeddeddocument" name="embeddeddocument"></a><h2 class="section-header"><a href="#embeddeddocument">@EmbeddedDocument<i class="fas fa-link"></i></a></h2>
 <p>Marks the document as embeddable. This annotation is required for any documents
 to be stored within an <a href="#embedone">@EmbedOne</a> or <a href="#embedmany">@EmbedMany</a> relationship.</p>
-<pre><code class="php">&lt;?php
-
-/** @EmbeddedDocument */
-class Money
-{
-    /** @Float */
-    private $amount;
-
-    public function __construct($amount)
-    {
-        $this-&gt;amount = (float) $amount;
-    }
-    //...
-}
-
-/** @Document(db=&quot;finance&quot;, collection=&quot;wallets&quot;) */
-class Wallet
-{
-    /** @EmbedOne(targetDocument=&quot;Money&quot;) */
-    private $money;
-
-    public function setMoney(Money $money)
-    {
-        $this-&gt;money = $money;
-    }
-    //...
-}
-//...
-$wallet = new Wallet();
-$wallet-&gt;setMoney(new Money(34.39));
-$dm-&gt;persist($wallet);
-$dm-&gt;flush();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="abd28c924415cf920c97b0fe5a4fe6dbc58e7c40"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="abd28c924415cf920c97b0fe5a4fe6dbc58e7c40"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@EmbeddedDocument</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Money</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Float</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $amount;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($amount)</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;amount = (float) $amount;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span>(db="finance", collection="wallets") */</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wallet</span></span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedOne</span>(targetDocument="Money") */</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">private</span> $money;
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setMoney</span><span class="hljs-params">(Money $money)</span></span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;money = $money;
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">$wallet = <span class="hljs-keyword">new</span> Wallet();
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">$wallet-&gt;setMoney(<span class="hljs-keyword">new</span> Money(<span class="hljs-number">34.39</span>));
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">$dm-&gt;persist($wallet);
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">$dm-&gt;flush();
+</td></tr></table></div></code></pre>
 <p>Unlike normal documents, embedded documents cannot specify their own database or
 collection. That said, a single embedded document class may be used with
 multiple document classes, and even other embedded documents!</p>
@@ -659,23 +803,30 @@ lifecycle.</p>
 </ul>
 
 <p>Examples:</p>
-<pre><code class="php">&lt;?php
-
-/**
- * @Field(type=&quot;string&quot;)
- */
-protected $username;
-
-/**
- * @Field(type=&quot;string&quot;, name=&quot;co&quot;)
- */
-protected $country;
-
-/**
- * @Field(type=&quot;float&quot;)
- */
-protected $height;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="870a1b1bb1122d4e91484aa1d38fe9c9083a929c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="870a1b1bb1122d4e91484aa1d38fe9c9083a929c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Field(type=<span class="hljs-string">"string"</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">protected</span> $username;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> * @Field(type=<span class="hljs-string">"string"</span>, name=<span class="hljs-string">"co"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-keyword">protected</span> $country;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"> * @Field(type=<span class="hljs-string">"float"</span>)
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-keyword">protected</span> $height;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="file" name="file"></a><h2 class="section-header"><a href="#file">@File<i class="fas fa-link"></i></a></h2>
 <p>Marks an annotated instance variable as a file. Additionally, this instructs ODM
 to store the entire document in <a href="http://docs.mongodb.org/manual/core/gridfs/">GridFS</a>. Only a single field in a document may
@@ -684,34 +835,48 @@ be mapped as a file.</p>
 is a wrapper class for <a href="http://php.net/manual/en/class.mongogridfsfile.php">MongoGridFSFile</a> and facilitates access to the file
 data in GridFS. If the variable is a file path string when the document is first
 persisted, ODM will convert it to GridFSFile object automatically.</p>
-<pre><code class="php">&lt;?php
-
-/** @File */
-private $file;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cfd3044089ca6e9c9f9d921fafb7124203d6b10d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cfd3044089ca6e9c9f9d921fafb7124203d6b10d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@File</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $file;
+</td></tr></table></div></code></pre>
 <p>Additional fields can be mapped in GridFS documents like any other, but metadata
 fields set by the driver (e.g. <code>length</code>) should be mapped with <a href="#notsaved">@NotSaved</a> so
 as not to inadvertently overwrite them. Some metadata fields, such as
 <code>filename</code> may be modified and do not require <a href="#notsaved">@NotSaved</a>. In the following
 example, we also add a custom field to refer to the corresponding User document
 that created the file.</p>
-<pre><code class="php">&lt;?php
-
-/** @String */
-private $filename;
-
-/** @NotSaved(type=&quot;int&quot;) */
-private $length;
-
-/** @NotSaved(type=&quot;string&quot;) */
-private $md5;
-
-/** @NotSaved(type=&quot;date&quot;) */
-private $uploadDate;
-
-/** @ReferenceOne(targetDocument=&quot;Documents\User&quot;) */
-private $uploadedBy;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5beb28414687e32c0187137d1315efe839c8e3ae"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5beb28414687e32c0187137d1315efe839c8e3ae"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $filename;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@NotSaved</span>(type="int") */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">private</span> $length;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@NotSaved</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">private</span> $md5;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@NotSaved</span>(type="date") */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-keyword">private</span> $uploadDate;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="Documents\User") */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-keyword">private</span> $uploadedBy;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="float" name="float"></a><h2 class="section-header"><a href="#float">@Float<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;float&quot;.</p>
 <a id="haslifecyclecallbacks"></a>
@@ -721,15 +886,22 @@ for lifecycle callback annotations on public methods. Using <a href="#preflush">
 <a href="#preload">@PreLoad</a>, <a href="#postload">@PostLoad</a>, <a href="#prepersist">@PrePersist</a>, <a href="#postpersist">@PostPersist</a>, <a href="#preremove">@PreRemove</a>,
 <a href="#postremove">@PostRemove</a>, <a href="#preupdate">@PreUpdate</a>, or <a href="#postupdate">@PostUpdate</a> on methods without this
 annotation will cause Doctrine to ignore the callbacks.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class User
-{
-    /** @PostPersist */
-    public function sendWelcomeEmail() {}
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="50f9b7436febf61e741d9b570c4f291386ab6fe8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="50f9b7436febf61e741d9b570c4f291386ab6fe8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostPersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendWelcomeEmail</span><span class="hljs-params">()</span> </span>{}
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="hash" name="hash"></a><h2 class="section-header"><a href="#hash">@Hash<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;hash&quot;. Stores and retrieves
 the value as an associative array.</p>
@@ -737,42 +909,70 @@ the value as an associative array.</p>
 <p>The annotated instance variable will be marked as the document identifier. The
 default behavior is to store a <a href="http://php.net/manual/en/class.mongoid.php">MongoId</a> instance, but you may customize this
 via the <a href="">strategy</a> attribute.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document */
-class User
-{
-    /** @Id */
-    protected $id;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9019d8eba6e2721618a0911be86743fd51a3d7d4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9019d8eba6e2721618a0911be86743fd51a3d7d4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">protected</span> $id;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="increment" name="increment"></a><h2 class="section-header"><a href="#increment">@Increment<i class="fas fa-link"></i></a></h2>
 <p>The increment type is just like an integer field, except that it will be updated
 using the <code>$inc</code> operator instead of <code>$set</code>:</p>
-<pre><code class="php">&lt;?php
-
-class Package
-{
-    /** @Increment */
-    private $downloads = 0;
-
-    public function incrementDownloads()
-    {
-        $this-&gt;downloads++;
-    }
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f2344fe64a5642167261afd1d6b07245673e92d9"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f2344fe64a5642167261afd1d6b07245673e92d9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Package</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Increment</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $downloads = <span class="hljs-number">0</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">incrementDownloads</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;downloads++;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Now, update a Package instance like so:</p>
-<pre><code class="php">&lt;?php
-
-$package-&gt;incrementDownloads();
-$dm-&gt;flush();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="34ee33db02def7bb4cf70f89dd6f2d2d18ecf359"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="34ee33db02def7bb4cf70f89dd6f2d2d18ecf359"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$package-&gt;incrementDownloads();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$dm-&gt;flush();
+</td></tr></table></div></code></pre>
 <p>The query sent to Mongo would resemble the following:</p>
-<pre><code class="json">{ &quot;$inc&quot;: { &quot;downloads&quot;: 1 } }
-</code></pre>
+<pre class="code-block-table"><code class="json"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1df3bfe8482ebea1615d2ad05282db78b26206e8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1df3bfe8482ebea1615d2ad05282db78b26206e8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{ <span class="hljs-attr">"$inc"</span>: { <span class="hljs-attr">"downloads"</span>: <span class="hljs-number">1</span> } }
+</td></tr></table></div></code></pre>
 <p>The field will be incremented by the difference between the new and old values.
 This is useful if many requests are attempting to update the field concurrently.</p>
 <a class="section-anchor" id="index" name="index"></a><h2 class="section-header"><a href="#index">@Index<i class="fas fa-link"></i></a></h2>
@@ -795,86 +995,128 @@ single-field indexes.</p>
 <a href="http://php.net/manual/en/mongocollection.createindex.php">MongoCollection::createIndex()</a>.
 ODM allows mapped field names (i.e. PHP property names) to be used when defining
 <code>keys</code>.</p>
-<pre><code class="php">&lt;?php
-
-/**
- * @Document(
- *   indexes={
- *     @Index(keys={&quot;username&quot;=&quot;desc&quot;}, options={&quot;unique&quot;=true})
- *   }
- * )
- */
-class User
-{
-    //...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bbec2cbfa18b45169bb52c74c69cc5058d5bdc20"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bbec2cbfa18b45169bb52c74c69cc5058d5bdc20"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document(
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> *   indexes={
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *     @Index(keys={<span class="hljs-string">"username"</span>=<span class="hljs-string">"desc"</span>}, options={<span class="hljs-string">"unique"</span>=<span class="hljs-keyword">true</span>})
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *   }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * )
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>If you are creating a single-field index, you can simply specify an <a href="#index">@Index</a> or
 <a href="#uniqueindex">@UniqueIndex</a> on a mapped property:</p>
-<pre><code class="php">&lt;?php
-
-/** @String @UniqueIndex */
-private $username;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a2c61fcb35172d83295cf97ce0e5452a82f5e378"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a2c61fcb35172d83295cf97ce0e5452a82f5e378"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@String</span> <span class="hljs-doctag">@UniqueIndex</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $username;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="indexes" name="indexes"></a><h2 class="section-header"><a href="#indexes">@Indexes<i class="fas fa-link"></i></a></h2>
 <p>This annotation may be used at the class level to specify an array of <a href="#index">@Index</a>
 annotations. It is functionally equivalent to using the <code>indexes</code> option for
 the <a href="#document">@Document</a> or <a href="#embeddeddocument">@EmbeddedDocument</a> annotations.</p>
-<pre><code class="php">&lt;?php
-
-/**
- * @Document
- * @Indexes({
- *   @Index(keys={&quot;username&quot;=&quot;desc&quot;}, options={&quot;unique&quot;=true})
- * })
- */
-class User
-{
-    //...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b48e8bba54a85d5003344d4bfbcc856caa2d8052"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b48e8bba54a85d5003344d4bfbcc856caa2d8052"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Indexes({
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *   @Index(keys={<span class="hljs-string">"username"</span>=<span class="hljs-string">"desc"</span>}, options={<span class="hljs-string">"unique"</span>=<span class="hljs-keyword">true</span>})
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * })
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="inheritancetype" name="inheritancetype"></a><h2 class="section-header"><a href="#inheritancetype">@InheritanceType<i class="fas fa-link"></i></a></h2>
 <p>This annotation must appear on the top-most class in an
 <a href="">inheritance hierarchy</a>. <code>SINGLE_COLLECTION</code> and
 <code>COLLECTION_PER_CLASS</code> are currently supported.</p>
 <p>Examples:</p>
-<pre><code class="php">&lt;?php
-
-/**
- * @Document
- * @InheritanceType(&quot;COLLECTION_PER_CLASS&quot;)
- */
-class Person
-{
-    // ...
-}
-
-/**
- * @Document
- * @InheritanceType(&quot;SINGLE_COLLECTION&quot;)
- * @DiscriminatorField(&quot;type&quot;)
- * @DiscriminatorMap({&quot;person&quot;=&quot;Person&quot;, &quot;employee&quot;=&quot;Employee&quot;})
- */
-class Person
-{
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5f08958208d5823a1ae694c60754663014d648f7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5f08958208d5823a1ae694c60754663014d648f7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @InheritanceType(<span class="hljs-string">"COLLECTION_PER_CLASS"</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"> * @InheritanceType(<span class="hljs-string">"SINGLE_COLLECTION"</span>)
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"> * @DiscriminatorField(<span class="hljs-string">"type"</span>)
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"> * @DiscriminatorMap({<span class="hljs-string">"person"</span>=<span class="hljs-string">"Person"</span>, <span class="hljs-string">"employee"</span>=<span class="hljs-string">"Employee"</span>})
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="int" name="int"></a><h2 class="section-header"><a href="#int">@Int<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;int&quot;.</p>
-<pre><code class="php">&lt;?php
-
-/** @Int */
-private $columns;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4c55fa6d2e5bb78de2818ee54629a663fcbb7444"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4c55fa6d2e5bb78de2818ee54629a663fcbb7444"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Int</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $columns;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="integer" name="integer"></a><h2 class="section-header"><a href="#integer">@Integer<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;integer&quot;. Internally it uses
 exactly same logic as <a href="#int">@Int</a> annotation and &quot;int&quot; type.</p>
-<pre><code class="php">&lt;?php
-
-/** @Integer */
-private $columns;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cf5b37c755dc95431bd6dd296b50472c73d294ae"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cf5b37c755dc95431bd6dd296b50472c73d294ae"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Integer</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $columns;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="key" name="key"></a><h2 class="section-header"><a href="#key">@Key<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;key&quot;. The value will be
 converted to <a href="http://php.net/manual/en/class.mongomaxkey.php">MongoMaxKey</a> or <a href="http://php.net/manual/en/class.mongominkey.php">MongoMinKey</a> if it is true or false,
@@ -886,192 +1128,269 @@ and sharding. There is generally no reason to use these in an application.</p>
 <p>The annotation is used to specify classes that are parents of document classes
 and should not be managed directly. See
 <a href="">inheritance mapping</a> for additional information.</p>
-<pre><code class="php">&lt;?php
-
-/** @MappedSuperclass */
-class BaseDocument
-{
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="41177646336926efac5ff4697a3d0cb68572e23d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="41177646336926efac5ff4697a3d0cb68572e23d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@MappedSuperclass</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseDocument</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="notsaved" name="notsaved"></a><h2 class="section-header"><a href="#notsaved">@NotSaved<i class="fas fa-link"></i></a></h2>
 <p>The annotation is used to specify properties that are loaded if they exist in
 MongoDB; however, ODM will not save the property value back to the database.</p>
-<pre><code class="php">&lt;?php
-
-/** @NotSaved */
-public $field;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3c7d5c5fba9879a370cc1d1dce529bc0b71366ea"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3c7d5c5fba9879a370cc1d1dce529bc0b71366ea"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@NotSaved</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">public</span> $field;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="postload" name="postload"></a><h2 class="section-header"><a href="#postload">@PostLoad<i class="fas fa-link"></i></a></h2>
 <p>Marks a method on the document class to be called on the <code>postLoad</code> event. The
 <a href="#haslifecyclecallbacks">@HasLifecycleCallbacks</a> annotation must be present on the same class for the
 method to be registered.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class Article
-{
-    // ...
-
-    /** @PostLoad */
-    public function postLoad()
-    {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c0fa48850c3174cfb0848312c93f1d51668e4130"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c0fa48850c3174cfb0848312c93f1d51668e4130"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostLoad</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postLoad</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>See <a href=""></a> for more information.</p>
 <a class="section-anchor" id="postpersist" name="postpersist"></a><h2 class="section-header"><a href="#postpersist">@PostPersist<i class="fas fa-link"></i></a></h2>
 <p>Marks a method on the document class to be called on the <code>postPersist</code> event.
 The <a href="#haslifecyclecallbacks">@HasLifecycleCallbacks</a> annotation must be present on the same class for
 the method to be registered.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class Article
-{
-    // ...
-
-    /** @PostPersist */
-    public function postPersist()
-    {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a6b0452467352055aff3fe349620d1d756a3441a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a6b0452467352055aff3fe349620d1d756a3441a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostPersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postPersist</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>See <a href=""></a> for more information.</p>
 <a class="section-anchor" id="postremove" name="postremove"></a><h2 class="section-header"><a href="#postremove">@PostRemove<i class="fas fa-link"></i></a></h2>
 <p>Marks a method on the document class to be called on the <code>postRemove</code> event.
 The <a href="#haslifecyclecallbacks">@HasLifecycleCallbacks</a> annotation must be present on the same class for
 the method to be registered.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class Article
-{
-    // ...
-
-    /** @PostRemove */
-    public function postRemove()
-    {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="717da8fb2de4e9183553ecd621f33c8ff5c01d34"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="717da8fb2de4e9183553ecd621f33c8ff5c01d34"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostRemove</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postRemove</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>See <a href=""></a> for more information.</p>
 <a class="section-anchor" id="postupdate" name="postupdate"></a><h2 class="section-header"><a href="#postupdate">@PostUpdate<i class="fas fa-link"></i></a></h2>
 <p>Marks a method on the document class to be called on the <code>postUpdate</code> event.
 The <a href="#haslifecyclecallbacks">@HasLifecycleCallbacks</a> annotation must be present on the same class for
 the method to be registered.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class Article
-{
-    // ...
-
-    /** @PostUpdate */
-    public function postUpdate()
-    {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f1319952421c858829af4de85097369d9daed9a6"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f1319952421c858829af4de85097369d9daed9a6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PostUpdate</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postUpdate</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>See <a href=""></a> for more information.</p>
 <a class="section-anchor" id="preflush" name="preflush"></a><h2 class="section-header"><a href="#preflush">@PreFlush<i class="fas fa-link"></i></a></h2>
 <p>Marks a method on the document class to be called on the <code>preFlush</code> event. The
 <a href="#haslifecyclecallbacks">@HasLifecycleCallbacks</a> annotation must be present on the same class for the
 method to be registered.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class Article
-{
-    // ...
-
-    /** @PreFlush */
-    public function preFlush()
-    {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="799e7575478002876823faa08268fb5c201e85ee"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="799e7575478002876823faa08268fb5c201e85ee"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PreFlush</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFlush</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>See <a href=""></a> for more information.</p>
 <a class="section-anchor" id="preload" name="preload"></a><h2 class="section-header"><a href="#preload">@PreLoad<i class="fas fa-link"></i></a></h2>
 <p>Marks a method on the document class to be called on the <code>preLoad</code> event. The
 <a href="#haslifecyclecallbacks">@HasLifecycleCallbacks</a> annotation must be present on the same class for the
 method to be registered.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class Article
-{
-    // ...
-
-    /** @PreLoad */
-    public function preLoad(array &amp;$data)
-    {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="001243441e5c1a3ae970cb73f68a4056b1a279a7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="001243441e5c1a3ae970cb73f68a4056b1a279a7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PreLoad</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preLoad</span><span class="hljs-params">(array &amp;$data)</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>See <a href=""></a> for more information.</p>
 <a class="section-anchor" id="prepersist" name="prepersist"></a><h2 class="section-header"><a href="#prepersist">@PrePersist<i class="fas fa-link"></i></a></h2>
 <p>Marks a method on the document class to be called on the <code>prePersist</code> event.
 The <a href="#haslifecyclecallbacks">@HasLifecycleCallbacks</a> annotation must be present on the same class for
 the method to be registered.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class Article
-{
-    // ...
-
-    /** @PrePersist */
-    public function prePersist()
-    {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="47421e31918461ba466c56c69a26520ee2f368c7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="47421e31918461ba466c56c69a26520ee2f368c7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PrePersist</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prePersist</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>See <a href=""></a> for more information.</p>
 <a class="section-anchor" id="preremove" name="preremove"></a><h2 class="section-header"><a href="#preremove">@PreRemove<i class="fas fa-link"></i></a></h2>
 <p>Marks a method on the document class to be called on the <code>preRemove</code> event.
 The <a href="#haslifecyclecallbacks">@HasLifecycleCallbacks</a> annotation must be present on the same class for
 the method to be registered.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class Article
-{
-    // ...
-
-    /** @PreRemove */
-    public function preRemove()
-    {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6c226b67b7820ea97d05a0699341ad206b15fe54"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6c226b67b7820ea97d05a0699341ad206b15fe54"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PreRemove</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preRemove</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>See <a href=""></a> for more information.</p>
 <a class="section-anchor" id="preupdate" name="preupdate"></a><h2 class="section-header"><a href="#preupdate">@PreUpdate<i class="fas fa-link"></i></a></h2>
 <p>Marks a method on the document class to be called on the <code>preUpdate</code> event.
 The <a href="#haslifecyclecallbacks">@HasLifecycleCallbacks</a> annotation must be present on the same class for
 the method to be registered.</p>
-<pre><code class="php">&lt;?php
-
-/** @Document @HasLifecycleCallbacks */
-class Article
-{
-    // ...
-
-    /** @PreUpdate */
-    public function preUpdated()
-    {
-        // ...
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b25352e7f9a3e280b1bf4db85c582f57cb286186"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b25352e7f9a3e280b1bf4db85c582f57cb286186"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> <span class="hljs-doctag">@HasLifecycleCallbacks</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@PreUpdate</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preUpdated</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>See <a href=""></a> for more information.</p>
 <a id="annotations_reference_reference_many"></a>
 <a class="section-anchor" id="referencemany" name="referencemany"></a><h2 class="section-header"><a href="#referencemany">@ReferenceMany<i class="fas fa-link"></i></a></h2>
@@ -1114,24 +1433,31 @@ documents.</p>
     is the default. See <a href=""></a> for more information.</li>
 </ul>
 
-<pre><code class="php">&lt;?php
-
-/**
- * @ReferenceMany(
- *     strategy=&quot;set&quot;,
- *     targetDocument=&quot;Documents\Item&quot;,
- *     cascade=&quot;all&quot;,
- *     sort={&quot;sort_field&quot;: &quot;asc&quot;}
- *     discriminatorField=&quot;type&quot;,
- *     discriminatorMap={
- *         &quot;book&quot;=&quot;Documents\BookItem&quot;,
- *         &quot;song&quot;=&quot;Documents\SongItem&quot;
- *     },
- *     defaultDiscriminatorValue=&quot;book&quot;
- * )
- */
-private $cart;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="aca883584be91a14227ca7f68651d811526c4d6b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="aca883584be91a14227ca7f68651d811526c4d6b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @ReferenceMany(
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> *     strategy=<span class="hljs-string">"set"</span>,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *     targetDocument=<span class="hljs-string">"Documents\Item"</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *     cascade=<span class="hljs-string">"all"</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> *     sort={<span class="hljs-string">"sort_field"</span>: <span class="hljs-string">"asc"</span>}
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> *     discriminatorField=<span class="hljs-string">"type"</span>,
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> *     discriminatorMap={
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> *         <span class="hljs-string">"book"</span>=<span class="hljs-string">"Documents\BookItem"</span>,
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> *         <span class="hljs-string">"song"</span>=<span class="hljs-string">"Documents\SongItem"</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> *     },
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"> *     defaultDiscriminatorValue=<span class="hljs-string">"book"</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"> * )
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-keyword">private</span> $cart;
+</td></tr></table></div></code></pre>
 <a id="annotations_reference_reference_one"></a>
 <a class="section-anchor" id="referenceone" name="referenceone"></a><h2 class="section-header"><a href="#referenceone">@ReferenceOne<i class="fas fa-link"></i></a></h2>
 <p>Defines an instance variable holds a related document instance.</p>
@@ -1168,29 +1494,43 @@ private $cart;
     skip - Skip for the query that loads the reference.</li>
 </ul>
 
-<pre><code class="php">&lt;?php
-
-/**
- * @ReferenceOne(
- *     targetDocument=&quot;Documents\Item&quot;,
- *     cascade=&quot;all&quot;,
- *     discriminatorField=&quot;type&quot;,
- *     discriminatorMap={
- *         &quot;book&quot;=&quot;Documents\BookItem&quot;,
- *         &quot;song&quot;=&quot;Documents\SongItem&quot;
- *     },
- *     defaultDiscriminatorValue=&quot;book&quot;
- * )
- */
-private $cart;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="03b0c1ca74cec10aa5983fb3ac2136f1b26cfe74"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="03b0c1ca74cec10aa5983fb3ac2136f1b26cfe74"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @ReferenceOne(
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> *     targetDocument=<span class="hljs-string">"Documents\Item"</span>,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *     cascade=<span class="hljs-string">"all"</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *     discriminatorField=<span class="hljs-string">"type"</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> *     discriminatorMap={
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> *         <span class="hljs-string">"book"</span>=<span class="hljs-string">"Documents\BookItem"</span>,
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> *         <span class="hljs-string">"song"</span>=<span class="hljs-string">"Documents\SongItem"</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> *     },
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> *     defaultDiscriminatorValue=<span class="hljs-string">"book"</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> * )
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-keyword">private</span> $cart;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="string" name="string"></a><h2 class="section-header"><a href="#string">@String<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;string&quot;.</p>
-<pre><code class="php">&lt;?php
-
-/** @String */
-private $username;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9ffc37ed7f65944698d8d405ba223f9dfd9558a7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9ffc37ed7f65944698d8d405ba223f9dfd9558a7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@String</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $username;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="timestamp" name="timestamp"></a><h2 class="section-header"><a href="#timestamp">@Timestamp<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#field">@Field</a>, with &quot;type&quot; attribute set to &quot;timestamp&quot;. The value will be
 converted to <a href="http://php.net/manual/en/class.mongotimestamp.php">MongoTimestamp</a> for storage in MongoDB.</p>
@@ -1200,21 +1540,35 @@ the <a href="#date">@Date</a> annotation instead.</p>
 </div>
 <a class="section-anchor" id="uniqueindex" name="uniqueindex"></a><h2 class="section-header"><a href="#uniqueindex">@UniqueIndex<i class="fas fa-link"></i></a></h2>
 <p>Alias of <a href="#index">@Index</a>, with the <code>unique</code> option set by default.</p>
-<pre><code class="php">&lt;?php
-
-/** @String @UniqueIndex */
-private $email;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e11c726de79de2f74f5b42dc381ae0be76c0ad0e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e11c726de79de2f74f5b42dc381ae0be76c0ad0e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@String</span> <span class="hljs-doctag">@UniqueIndex</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $email;
+</td></tr></table></div></code></pre>
 <a id="annotations_reference_version"></a>
 <a class="section-anchor" id="version" name="version"></a><h2 class="section-header"><a href="#version">@Version<i class="fas fa-link"></i></a></h2>
 <p>The annotated instance variable will be used to store version information, which
 is used for pessimistic and optimistic locking. This is only compatible with
 <a href="#int">@Int</a> and <a href="#date">@Date</a> field types, and cannot be combined with <a href="#id">@Id</a>.</p>
-<pre><code class="php">&lt;?php
-
-/** @Int @Version */
-private $version;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5ef7c2e0bc5cf457f590da9c40be2d3f78acc08c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5ef7c2e0bc5cf457f590da9c40be2d3f78acc08c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Int</span> <span class="hljs-doctag">@Version</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">private</span> $version;
+</td></tr></table></div></code></pre>
 <p>By default, Doctrine ODM processes updates <a href="">embed-many</a> and
 <a href="">reference-many</a> collections in separate write operations,
 which do not bump the document version. Users employing document versioning are
@@ -1246,8 +1600,6 @@ versioned document.</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -1293,7 +1645,7 @@ versioned document.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

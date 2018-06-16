@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -276,49 +273,70 @@ include the modifications made on the update.</p>
 query builder object so you can easily run these types of queries!</p>
 <a class="section-anchor" id="update" name="update"></a><h2 class="section-header"><a href="#update">Update<i class="fas fa-link"></i></a></h2>
 <p>For example you can update a job and return it:</p>
-<pre><code class="php">&lt;?php
-
-$job = $dm-&gt;createQueryBuilder('Job')
-    // Find the job
-    -&gt;findAndUpdate()
-    -&gt;field('in_progress')-&gt;equals(false)
-    -&gt;sort('priority', 'desc')
-
-    // Update found job
-    -&gt;field('started')-&gt;set(new \MongoDB\BSON\UTCDateTime())
-    -&gt;field('in_progress')-&gt;set(true)
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dac549c2c14492ceb53dc8b040f12b2720a8958f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dac549c2c14492ceb53dc8b040f12b2720a8958f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$job = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Job'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">// Find the job</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;findAndUpdate()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;equals(<span class="hljs-keyword">false</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;sort(<span class="hljs-string">'priority'</span>, <span class="hljs-string">'desc'</span>)
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">// Update found job</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    -&gt;field(<span class="hljs-string">'started'</span>)-&gt;set(<span class="hljs-keyword">new</span> \MongoDB\BSON\UTCDateTime())
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;set(<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>If you want to update a job and return the new document you can
 call the <code>returnNew()</code> method.</p>
 <p>Here is an example where we return the new updated job document:</p>
-<pre><code class="php">&lt;?php
-$job = $dm-&gt;createQueryBuilder('Job')
-    // Find the job
-    -&gt;findAndUpdate()
-    -&gt;returnNew()
-    -&gt;field('in_progress')-&gt;equals(false)
-    -&gt;sort('priority', 'desc')
-
-    // Update found job
-    -&gt;field('started')-&gt;set(new \MongoDB\BSON\UTCDateTime())
-    -&gt;field('in_progress')-&gt;set(true)
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9218bbe225da33fd0a9644012d1d311a38bd4844"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9218bbe225da33fd0a9644012d1d311a38bd4844"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$job = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Job'</span>)
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-comment">// Find the job</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;findAndUpdate()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;returnNew()
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;equals(<span class="hljs-keyword">false</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;sort(<span class="hljs-string">'priority'</span>, <span class="hljs-string">'desc'</span>)
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">// Update found job</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    -&gt;field(<span class="hljs-string">'started'</span>)-&gt;set(<span class="hljs-keyword">new</span> \MongoDB\BSON\UTCDateTime())
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;set(<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>The returned <code>$job</code> will be a managed <code>Job</code> instance with the
 <code>started</code> and <code>in_progress</code> fields updated.</p>
 <a class="section-anchor" id="remove" name="remove"></a><h2 class="section-header"><a href="#remove">Remove<i class="fas fa-link"></i></a></h2>
 <p>You can also remove a document and return it:</p>
-<pre><code class="php">&lt;?php
-
-$job = $dm-&gt;createQueryBuilder('Job')
-    -&gt;findAndRemove()
-    -&gt;sort('priority', 'desc')
-    -&gt;getQuery()
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="321ac092dc4e52c8f57687445c3832d98ccad7b2"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="321ac092dc4e52c8f57687445c3832d98ccad7b2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$job = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Job'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;findAndRemove()
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;sort(<span class="hljs-string">'priority'</span>, <span class="hljs-string">'desc'</span>)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getQuery()
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <p>You can read more about the find and modify functionality on the
 <a href="https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/">MongoDB website</a>.</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>If you don't need to return the document, you can use just run a normal update which can
@@ -349,8 +367,6 @@ affect multiple documents, as well. For multiple update to happen you need to us
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -396,7 +412,7 @@ affect multiple documents, as well. For multiple update to happen you need to us
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

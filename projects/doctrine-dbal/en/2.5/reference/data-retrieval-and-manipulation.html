@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -281,23 +278,37 @@ through the <code>Doctrine\DBAL\DriverManager::getConnection()</code> method you
 can start using this API for data retrieval easily.</p>
 <p>Start writing an SQL query and pass it to the <code>query()</code> method of your
 connection:</p>
-<pre><code class="php">&lt;?php
-use Doctrine\DBAL\DriverManager;
-
-$conn = DriverManager::getConnection($params, $config);
-
-$sql = &quot;SELECT * FROM articles&quot;;
-$stmt = $conn-&gt;query($sql); // Simple, but has several drawbacks
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="bf49122f1563f8d80906968bd7b5f2a3c589b91c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="bf49122f1563f8d80906968bd7b5f2a3c589b91c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$conn = DriverManager::getConnection($params, $config);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$sql = <span class="hljs-string">"SELECT * FROM articles"</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$stmt = $conn-&gt;query($sql); <span class="hljs-comment">// Simple, but has several drawbacks</span>
+</td></tr></table></div></code></pre>
 <p>The query method executes the SQL and returns a database statement object.
 A database statement object can be iterated to retrieve all the rows that matched
 the query until there are no more rows:</p>
-<pre><code class="php">&lt;?php
-
-while ($row = $stmt-&gt;fetch()) {
-    echo $row['headline'];
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5e91f7055edf8e870149b8900508a8dc10c41fdd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5e91f7055edf8e870149b8900508a8dc10c41fdd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">while</span> ($row = $stmt-&gt;fetch()) {
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">echo</span> $row[<span class="hljs-string">'headline'</span>];
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The query method is the most simple one for fetching data, but it also has
 several drawbacks:</p>
 <ul><li class="dash">  There is no way to add dynamic parameters to the SQL query without modifying
@@ -317,46 +328,74 @@ prepared statements for accessing your database. </p>
 <p>Consider the previous query, now parameterized to fetch only a single article by id.
 Using <strong>ext/mysql</strong> (still the primary choice of MySQL access for many developers) you had to escape
 every value passed into the query using <code>mysql_real_escape_string()</code> to avoid SQL injection:</p>
-<pre><code class="php">&lt;?php
-$sql = &quot;SELECT * FROM articles WHERE id = '&quot; . mysql_real_escape_string($id, $link) . &quot;'&quot;;
-$rs = mysql_query($sql);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6f6355de23fadec2467bdee803ac480e8876f407"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6f6355de23fadec2467bdee803ac480e8876f407"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$sql = <span class="hljs-string">"SELECT * FROM articles WHERE id = '"</span> . mysql_real_escape_string($id, $link) . <span class="hljs-string">"'"</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$rs = mysql_query($sql);
+</td></tr></table></div></code></pre>
 <p>If you start adding more and more parameters to a query (for example in UPDATE or INSERT statements)
 this approach might lead to complex to maintain SQL queries. The reason is simple, the actual
 SQL query is not clearly separated from the input parameters. Prepared statements separate
 these two concepts by requiring the developer to add <strong>placeholders</strong> to the SQL query (prepare) which
 are then replaced by their actual values in a second step (execute).</p>
-<pre><code class="php">&lt;?php
-// $conn instanceof Doctrine\DBAL\Connection
-
-$sql = &quot;SELECT * FROM articles WHERE id = ?&quot;;
-$stmt = $conn-&gt;prepare($sql);
-$stmt-&gt;bindValue(1, $id);
-$stmt-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d07e6a232064e900f98bfeb5548de848146e126c"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d07e6a232064e900f98bfeb5548de848146e126c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $conn instanceof Doctrine\DBAL\Connection</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$sql = <span class="hljs-string">"SELECT * FROM articles WHERE id = ?"</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$stmt = $conn-&gt;prepare($sql);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$stmt-&gt;bindValue(<span class="hljs-number">1</span>, $id);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$stmt-&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Placeholders in prepared statements are either simple positional question marks (?) or named labels starting with
 a double-colon (:name1). You cannot mix the positional and the named approach. The approach
 using question marks is called positional, because the values are bound in order from left to right
 to any question mark found in the previously prepared SQL query. That is why you specify the
 position of the variable to bind into the <code>bindValue()</code> method:</p>
-<pre><code class="php">&lt;?php
-// $conn instanceof Doctrine\DBAL\Connection
-
-$sql = &quot;SELECT * FROM articles WHERE id = ? AND status = ?&quot;;
-$stmt = $conn-&gt;prepare($sql);
-$stmt-&gt;bindValue(1, $id);
-$stmt-&gt;bindValue(2, $status);
-$stmt-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4066c234b032349d47084237e8dcb01b40964c28"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4066c234b032349d47084237e8dcb01b40964c28"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $conn instanceof Doctrine\DBAL\Connection</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$sql = <span class="hljs-string">"SELECT * FROM articles WHERE id = ? AND status = ?"</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$stmt = $conn-&gt;prepare($sql);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$stmt-&gt;bindValue(<span class="hljs-number">1</span>, $id);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$stmt-&gt;bindValue(<span class="hljs-number">2</span>, $status);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$stmt-&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Named parameters have the advantage that their labels can be re-used and only need to be bound once:</p>
-<pre><code class="php">&lt;?php
-// $conn instanceof Doctrine\DBAL\Connection
-
-$sql = &quot;SELECT * FROM users WHERE name = :name OR username = :name&quot;;
-$stmt = $conn-&gt;prepare($sql);
-$stmt-&gt;bindValue(&quot;name&quot;, $name);
-$stmt-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9597654f7ef85b64a84ece5dc8fb2476086b6a9b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9597654f7ef85b64a84ece5dc8fb2476086b6a9b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $conn instanceof Doctrine\DBAL\Connection</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$sql = <span class="hljs-string">"SELECT * FROM users WHERE name = :name OR username = :name"</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$stmt = $conn-&gt;prepare($sql);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$stmt-&gt;bindValue(<span class="hljs-string">"name"</span>, $name);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$stmt-&gt;execute();
+</td></tr></table></div></code></pre>
 <p>The following section describes the API of Doctrine DBAL with regard to prepared statements.</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Support for positional and named prepared statements varies between the different
 database extensions. PDO implements its own client side parser so that both approaches
@@ -415,12 +454,19 @@ any of the parameter binding methods but a string, Doctrine DBAL will
 ask the type abstraction layer to convert the passed value from
 its PHP to a database representation. This way you can pass <code>\DateTime</code>
 instances to a prepared statement and have Doctrine convert them<br />to the appropriate vendors database format:</p>
-<pre><code class="php">&lt;?php
-$date = new \DateTime(&quot;2011-03-05 14:00:21&quot;);
-$stmt = $conn-&gt;prepare(&quot;SELECT * FROM articles WHERE publish_date &gt; ?&quot;);
-$stmt-&gt;bindValue(1, $date, &quot;datetime&quot;);
-$stmt-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a7ba4eaeed4b88c0db4dc087eb71937e121a2ba6"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a7ba4eaeed4b88c0db4dc087eb71937e121a2ba6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$date = <span class="hljs-keyword">new</span> \DateTime(<span class="hljs-string">"2011-03-05 14:00:21"</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$stmt = $conn-&gt;prepare(<span class="hljs-string">"SELECT * FROM articles WHERE publish_date &gt; ?"</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$stmt-&gt;bindValue(<span class="hljs-number">1</span>, $date, <span class="hljs-string">"datetime"</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$stmt-&gt;execute();
+</td></tr></table></div></code></pre>
 <p>If you take a look at <code>Doctrine\DBAL\Types\DateTimeType</code> you will see that
 parts of the conversion is delegated to a method on the current database platform,
 which means this code works independent of the database you are using.</p>
@@ -435,16 +481,30 @@ because this would not work with binding by reference.</p>
 <p>One rather annoying bit of missing functionality in SQL is the support for lists of parameters.
 You cannot bind an array of values into a single prepared statement parameter. Consider
 the following very common SQL statement:</p>
-<pre><code class="sql">SELECT * FROM articles WHERE id IN (?)
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="95eecd0936b19a83f0e9dcf64ab7f3277d330b8a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="95eecd0936b19a83f0e9dcf64ab7f3277d330b8a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> articles <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">IN</span> (?)
+</td></tr></table></div></code></pre>
 <p>Since you are using an <code>IN</code> expression you would really like to use it in the following way
 (and I guess everybody has tried to do this once in his life, before realizing it doesn't work):</p>
-<pre><code class="php">&lt;?php
-$stmt = $conn-&gt;prepare('SELECT * FROM articles WHERE id IN (?)');
-// THIS WILL NOT WORK:
-$stmt-&gt;bindValue(1, array(1, 2, 3, 4, 5, 6));
-$stmt-&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="16639bc54197ea88e44a33cd076aae59e52c8efc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="16639bc54197ea88e44a33cd076aae59e52c8efc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$stmt = $conn-&gt;prepare(<span class="hljs-string">'SELECT * FROM articles WHERE id IN (?)'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// THIS WILL NOT WORK:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$stmt-&gt;bindValue(<span class="hljs-number">1</span>, <span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>));
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$stmt-&gt;execute();
+</td></tr></table></div></code></pre>
 <p>Implementing a generic way to handle this kind of query is tedious work. This is why most
 developers fallback to inserting the parameters directly into the query, which can open
 SQL injection possibilities if not handled carefully.</p>
@@ -458,22 +518,36 @@ There are two special binding types that describe a list of integers or strings:
 
 <p>Using one of this constants as a type you can activate the SQLParser inside Doctrine that rewrites
 the SQL and flattens the specified values into the set of parameters. Consider our previous example:</p>
-<pre><code class="php">&lt;?php
-$stmt = $conn-&gt;executeQuery('SELECT * FROM articles WHERE id IN (?)',
-    array(array(1, 2, 3, 4, 5, 6)),
-    array(\Doctrine\DBAL\Connection::PARAM_INT_ARRAY)
-);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2f7a1b0ffb37e1c5bc0bde7ef902bb086f5f7d51"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2f7a1b0ffb37e1c5bc0bde7ef902bb086f5f7d51"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$stmt = $conn-&gt;executeQuery(<span class="hljs-string">'SELECT * FROM articles WHERE id IN (?)'</span>,
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">array</span>(<span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>)),
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">array</span>(\Doctrine\DBAL\Connection::PARAM_INT_ARRAY)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">);
+</td></tr></table></div></code></pre>
 <p>The SQL statement passed to <code>Connection#executeQuery</code> is not the one actually passed to the
 database. It is internally rewritten to look like the following explicit code that could
 be specified as well:</p>
-<pre><code class="php">&lt;?php
-// Same SQL WITHOUT usage of Doctrine\DBAL\Connection::PARAM_INT_ARRAY
-$stmt = $conn-&gt;executeQuery('SELECT * FROM articles WHERE id IN (?, ?, ?, ?, ?, ?)',
-    array(1, 2, 3, 4, 5, 6),
-    array(\PDO::PARAM_INT, \PDO::PARAM_INT, \PDO::PARAM_INT, \PDO::PARAM_INT, \PDO::PARAM_INT, \PDO::PARAM_INT)
-);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="507b022e86cc1f8f3d02e8014965ded62bfdf621"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="507b022e86cc1f8f3d02e8014965ded62bfdf621"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Same SQL WITHOUT usage of Doctrine\DBAL\Connection::PARAM_INT_ARRAY</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$stmt = $conn-&gt;executeQuery(<span class="hljs-string">'SELECT * FROM articles WHERE id IN (?, ?, ?, ?, ?, ?)'</span>,
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>),
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">array</span>(\PDO::PARAM_INT, \PDO::PARAM_INT, \PDO::PARAM_INT, \PDO::PARAM_INT, \PDO::PARAM_INT, \PDO::PARAM_INT)
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">);
+</td></tr></table></div></code></pre>
 <p>This is much more complicated and is ugly to write generically.</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The parameter list support only works with <code>Doctrine\DBAL\Connection::executeQuery()</code>
 and <code>Doctrine\DBAL\Connection::executeUpdate()</code>, NOT with the binding methods of
@@ -487,27 +561,41 @@ them.</p>
 <a class="section-anchor" id="prepare" name="prepare"></a><h3 class="section-header"><a href="#prepare">prepare()<i class="fas fa-link"></i></a></h3>
 <p>Prepare a given SQL statement and return the
 <code>\Doctrine\DBAL\Driver\Statement</code> instance:</p>
-<pre><code class="php">&lt;?php
-$statement = $conn-&gt;prepare('SELECT * FROM user');
-$statement-&gt;execute();
-$users = $statement-&gt;fetchAll();
-
-/*
-array(
-  0 =&gt; array(
-    'username' =&gt; 'jwage',
-    'password' =&gt; 'changeme'
-  )
-)
-*/
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="32f112b9aa5e183095bea92532ccfa74d74bd230"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="32f112b9aa5e183095bea92532ccfa74d74bd230"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$statement = $conn-&gt;prepare(<span class="hljs-string">'SELECT * FROM user'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$statement-&gt;execute();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$users = $statement-&gt;fetchAll();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">/*</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">  <span class="hljs-number">0</span> =&gt; <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'jwage'</span>,
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">'changeme'</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">  )
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">)
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">*/
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="executeupdate" name="executeupdate"></a><h3 class="section-header"><a href="#executeupdate">executeUpdate()<i class="fas fa-link"></i></a></h3>
 <p>Executes a prepared statement with the given SQL and parameters and
 returns the affected rows count:</p>
-<pre><code class="php">&lt;?php
-$count = $conn-&gt;executeUpdate('UPDATE user SET username = ? WHERE id = ?', array('jwage', 1));
-echo $count; // 1
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a670537bd95429fb259c73cf110d0398094bf4f1"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a670537bd95429fb259c73cf110d0398094bf4f1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$count = $conn-&gt;executeUpdate(<span class="hljs-string">'UPDATE user SET username = ? WHERE id = ?'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'jwage'</span>, <span class="hljs-number">1</span>));
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">echo</span> $count; <span class="hljs-comment">// 1</span>
+</td></tr></table></div></code></pre>
 <p>The <code>$types</code> variable contains the PDO or Doctrine Type constants
 to perform necessary type conversions between actual input
 parameters and expected database values. See the
@@ -515,86 +603,142 @@ parameters and expected database values. See the
 <a class="section-anchor" id="executequery" name="executequery"></a><h3 class="section-header"><a href="#executequery">executeQuery()<i class="fas fa-link"></i></a></h3>
 <p>Creates a prepared statement for the given SQL and passes the
 parameters to the execute method, then returning the statement:</p>
-<pre><code class="php">&lt;?php
-$statement = $conn-&gt;executeQuery('SELECT * FROM user WHERE username = ?', array('jwage'));
-$user = $statement-&gt;fetch();
-
-/*
-array(
-  0 =&gt; 'jwage',
-  1 =&gt; 'changeme'
-)
-*/
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="fa4e1f88d42cf1aaa21706348e9057f8a38582b4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="fa4e1f88d42cf1aaa21706348e9057f8a38582b4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$statement = $conn-&gt;executeQuery(<span class="hljs-string">'SELECT * FROM user WHERE username = ?'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'jwage'</span>));
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = $statement-&gt;fetch();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/*</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">  <span class="hljs-number">0</span> =&gt; <span class="hljs-string">'jwage'</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">  <span class="hljs-number">1</span> =&gt; <span class="hljs-string">'changeme'</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">*/
+</td></tr></table></div></code></pre>
 <p>The <code>$types</code> variable contains the PDO or Doctrine Type constants
 to perform necessary type conversions between actual input
 parameters and expected database values. See the
 <a href="./types#type-conversion">Types</a> section for more information.</p>
 <a class="section-anchor" id="fetchall" name="fetchall"></a><h3 class="section-header"><a href="#fetchall">fetchAll()<i class="fas fa-link"></i></a></h3>
 <p>Execute the query and fetch all results into an array:</p>
-<pre><code class="php">&lt;?php
-$users = $conn-&gt;fetchAll('SELECT * FROM user');
-
-/*
-array(
-  0 =&gt; array(
-    'username' =&gt; 'jwage',
-    'password' =&gt; 'changeme'
-  )
-)
-*/
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1d7562f1a410244528eb516900456ed6d389af9e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1d7562f1a410244528eb516900456ed6d389af9e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$users = $conn-&gt;fetchAll(<span class="hljs-string">'SELECT * FROM user'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/*</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">  <span class="hljs-number">0</span> =&gt; <span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'jwage'</span>,
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">'changeme'</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">  )
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">)
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">*/
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="fetcharray" name="fetcharray"></a><h3 class="section-header"><a href="#fetcharray">fetchArray()<i class="fas fa-link"></i></a></h3>
 <p>Numeric index retrieval of first result row of the given query:</p>
-<pre><code class="php">&lt;?php
-$user = $conn-&gt;fetchArray('SELECT * FROM user WHERE username = ?', array('jwage'));
-
-/*
-array(
-  0 =&gt; 'jwage',
-  1 =&gt; 'changeme'
-)
-*/
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c2da731370be32a6a1a427d62ed0d108171481d4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c2da731370be32a6a1a427d62ed0d108171481d4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$user = $conn-&gt;fetchArray(<span class="hljs-string">'SELECT * FROM user WHERE username = ?'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'jwage'</span>));
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/*</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">  <span class="hljs-number">0</span> =&gt; <span class="hljs-string">'jwage'</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">  <span class="hljs-number">1</span> =&gt; <span class="hljs-string">'changeme'</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">)
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">*/
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="fetchcolumn" name="fetchcolumn"></a><h3 class="section-header"><a href="#fetchcolumn">fetchColumn()<i class="fas fa-link"></i></a></h3>
 <p>Retrieve only the given column of the first result row.</p>
-<pre><code class="php">&lt;?php
-$username = $conn-&gt;fetchColumn('SELECT username FROM user WHERE id = ?', array(1), 0);
-echo $username; // jwage
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a26d207a7479393ad68c4b88ff3f728d01a88108"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a26d207a7479393ad68c4b88ff3f728d01a88108"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$username = $conn-&gt;fetchColumn(<span class="hljs-string">'SELECT username FROM user WHERE id = ?'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>), <span class="hljs-number">0</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">echo</span> $username; <span class="hljs-comment">// jwage</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="fetchassoc" name="fetchassoc"></a><h3 class="section-header"><a href="#fetchassoc">fetchAssoc()<i class="fas fa-link"></i></a></h3>
 <p>Retrieve assoc row of the first result row.</p>
-<pre><code class="php">&lt;?php
-$user = $conn-&gt;fetchAssoc('SELECT * FROM user WHERE username = ?', array('jwage'));
-/*
-array(
-  'username' =&gt; 'jwage',
-  'password' =&gt; 'changeme'
-)
-*/
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3e5a99eeae32616bb035978385d240d5d709104f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3e5a99eeae32616bb035978385d240d5d709104f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$user = $conn-&gt;fetchAssoc(<span class="hljs-string">'SELECT * FROM user WHERE username = ?'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'jwage'</span>));
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/*</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">array</span>(
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">  <span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'jwage'</span>,
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">  <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">'changeme'</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">)
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">*/
+</td></tr></table></div></code></pre>
 <p>There are also convenience methods for data manipulation queries:</p>
 <a class="section-anchor" id="delete" name="delete"></a><h3 class="section-header"><a href="#delete">delete()<i class="fas fa-link"></i></a></h3>
 <p>Delete all rows of a table matching the given identifier, where
 keys are column names.</p>
-<pre><code class="php">&lt;?php
-$conn-&gt;delete('user', array('id' =&gt; 1));
-// DELETE FROM user WHERE id = ? (1)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b986e9a2f554900ca7231e4860f44e53925cbd47"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b986e9a2f554900ca7231e4860f44e53925cbd47"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$conn-&gt;delete(<span class="hljs-string">'user'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">1</span>));
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// DELETE FROM user WHERE id = ? (1)</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="insert" name="insert"></a><h3 class="section-header"><a href="#insert">insert()<i class="fas fa-link"></i></a></h3>
 <p>Insert a row into the given table name using the key value pairs of
 data.</p>
-<pre><code class="php">&lt;?php
-$conn-&gt;insert('user', array('username' =&gt; 'jwage'));
-// INSERT INTO user (username) VALUES (?) (jwage)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="05986b48f1dae0268a89b1b420293de3741778d7"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="05986b48f1dae0268a89b1b420293de3741778d7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">'user'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'jwage'</span>));
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// INSERT INTO user (username) VALUES (?) (jwage)</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="update" name="update"></a><h3 class="section-header"><a href="#update">update()<i class="fas fa-link"></i></a></h3>
 <p>Update all rows for the matching key value identifiers with the
 given data.</p>
-<pre><code class="php">&lt;?php
-$conn-&gt;update('user', array('username' =&gt; 'jwage'), array('id' =&gt; 1));
-// UPDATE user (username) VALUES (?) WHERE id = ? (jwage, 1)
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7c68e33be8527be3970e7eb5f2d91dc745b47534"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7c68e33be8527be3970e7eb5f2d91dc745b47534"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$conn-&gt;update(<span class="hljs-string">'user'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'jwage'</span>), <span class="hljs-keyword">array</span>(<span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">1</span>));
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// UPDATE user (username) VALUES (?) WHERE id = ? (jwage, 1)</span>
+</td></tr></table></div></code></pre>
 <p>By default the Doctrine DBAL does no escaping. Escaping is a very
 tricky business to do automatically, therefore there is none by
 default. The ORM internally escapes all your values, because it has
@@ -603,15 +747,29 @@ the Doctrine DBAL as standalone, you have to take care of this
 yourself. The following methods help you with it:</p>
 <a class="section-anchor" id="quote" name="quote"></a><h3 class="section-header"><a href="#quote">quote()<i class="fas fa-link"></i></a></h3>
 <p>Quote a value:</p>
-<pre><code class="php">&lt;?php
-$quoted = $conn-&gt;quote('value');
-$quoted = $conn-&gt;quote('1234', \PDO::PARAM_INT);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e8aeca9e81439e8e5a1a3c51ccb9091204000020"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e8aeca9e81439e8e5a1a3c51ccb9091204000020"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$quoted = $conn-&gt;quote(<span class="hljs-string">'value'</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$quoted = $conn-&gt;quote(<span class="hljs-string">'1234'</span>, \PDO::PARAM_INT);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="quoteidentifier" name="quoteidentifier"></a><h3 class="section-header"><a href="#quoteidentifier">quoteIdentifier()<i class="fas fa-link"></i></a></h3>
 <p>Quote an identifier according to the platform details.</p>
-<pre><code class="php">&lt;?php
-$quoted = $conn-&gt;quoteIdentifier('id');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4f8335b942a9c17620e91592c03d9fe235da7c4b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4f8335b942a9c17620e91592c03d9fe235da7c4b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$quoted = $conn-&gt;quoteIdentifier(<span class="hljs-string">'id'</span>);
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -636,8 +794,6 @@ $quoted = $conn-&gt;quoteIdentifier('id');
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -683,7 +839,7 @@ $quoted = $conn-&gt;quoteIdentifier('id');
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

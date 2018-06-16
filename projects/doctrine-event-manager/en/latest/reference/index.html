@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -248,94 +245,142 @@
 for the DBAL and ORM but over time other projects adopted it and now it is available as a standalone library.</p>
 <a class="section-anchor" id="installation" name="installation"></a><h1 class="section-header"><a href="#installation">Installation<i class="fas fa-link"></i></a></h1>
 <p>The library can easily be installed with composer.</p>
-<pre><code class="sh">$ composer require doctrine/event-manager
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>composer require doctrine/event-manager</code></pre></div>
 <a class="section-anchor" id="setup" name="setup"></a><h1 class="section-header"><a href="#setup">Setup<i class="fas fa-link"></i></a></h1>
 <p>The event system is controlled by the <code>Doctrine\Common\EventManager</code> class.</p>
-<pre><code class="php">use Doctrine\Common\EventManager;
-
-$eventManager = new EventManager();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f5e4b820019fb216f1e77f595b7e1f45e3c0b1a3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f5e4b820019fb216f1e77f595b7e1f45e3c0b1a3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventManager</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$eventManager = <span class="hljs-keyword">new</span> EventManager();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="listeners" name="listeners"></a><h1 class="section-header"><a href="#listeners">Listeners<i class="fas fa-link"></i></a></h1>
 <p>Now you are ready to listen for events. Here is an example of a custom event listener named <code>TestEvent</code>.</p>
-<pre><code class="php">use Doctrine\Common\EventArgs;
-use Doctrine\Common\EventManager;
-
-final class TestEvent
-{
-    public const preFoo = 'preFoo';
-    public const postFoo = 'postFoo';
-
-    /** @var EventManager */
-    private $eventManager;
-
-    /** @var bool */
-    public $preFooInvoked = false;
-
-    /** @var bool */
-    public $postFooInvoked = false;
-
-    public function __construct(EventManager $eventManager)
-    {
-        $eventManager-&gt;addEventListener([self::preFoo, self::postFoo], $this);
-    }
-
-    public function preFoo(EventArgs $eventArgs) : void
-    {
-        $this-&gt;preFooInvoked = true;
-    }
-
-    public function postFoo(EventArgs $eventArgs) : void
-    {
-        $this-&gt;postFooInvoked = true;
-    }
-}
-
-// Create a new instance
-$testEvent = new TestEvent($eventManager);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8c6ee0e5bba9b3eb3c45c7ab5b9cb0403f88b909"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8c6ee0e5bba9b3eb3c45c7ab5b9cb0403f88b909"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventArgs</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventManager</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEvent</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> preFoo = <span class="hljs-string">'preFoo'</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> postFoo = <span class="hljs-string">'postFoo'</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> EventManager */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $eventManager;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> bool */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $preFooInvoked = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> bool */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> $postFooInvoked = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(EventManager $eventManager)</span></span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        $eventManager-&gt;addEventListener([<span class="hljs-keyword">self</span>::preFoo, <span class="hljs-keyword">self</span>::postFoo], <span class="hljs-keyword">$this</span>);
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFoo</span><span class="hljs-params">(EventArgs $eventArgs)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;preFooInvoked = <span class="hljs-keyword">true</span>;
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postFoo</span><span class="hljs-params">(EventArgs $eventArgs)</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;postFooInvoked = <span class="hljs-keyword">true</span>;
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-comment">// Create a new instance</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">$testEvent = <span class="hljs-keyword">new</span> TestEvent($eventManager);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="dispatching-events" name="dispatching-events"></a><h1 class="section-header"><a href="#dispatching-events">Dispatching Events<i class="fas fa-link"></i></a></h1>
 <p>Now you can dispatch events with the <code>dispatchEvent()</code> method.</p>
-<pre><code class="php">$eventManager-&gt;dispatchEvent(TestEvent::preFoo);
-$eventManager-&gt;dispatchEvent(TestEvent::postFoo);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b707135793e415339c62704a9b56c23f901bec4b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b707135793e415339c62704a9b56c23f901bec4b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$eventManager-&gt;dispatchEvent(TestEvent::preFoo);
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$eventManager-&gt;dispatchEvent(TestEvent::postFoo);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="removing-event-listeners" name="removing-event-listeners"></a><h1 class="section-header"><a href="#removing-event-listeners">Removing Event Listeners<i class="fas fa-link"></i></a></h1>
 <p>You can easily remove a listener with the <code>removeEventListener()</code> method.</p>
-<pre><code class="php">$eventManager-&gt;removeEventListener([TestEvent::preFoo, TestEvent::postFoo], $testEvent);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d844058a92990065f6910fe56689cc1feed488eb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d844058a92990065f6910fe56689cc1feed488eb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$eventManager-&gt;removeEventListener([TestEvent::preFoo, TestEvent::postFoo], $testEvent);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="event-subscribers" name="event-subscribers"></a><h1 class="section-header"><a href="#event-subscribers">Event Subscribers<i class="fas fa-link"></i></a></h1>
 <p>The Doctrine event system also has a simple concept of event subscribers. We can define a simple <code>TestEventSubscriber</code> class which implements the <code>Doctrine\Common\EventSubscriber</code> interface with a <code>getSubscribedEvents()</code> method which returns an array of events it should be subscribed to.</p>
-<pre><code class="php">use Doctrine\Common\EventSubscriber;
-
-final class TestEventSubscriber implements EventSubscriber
-{
-    /** @var bool */
-    public $preFooInvoked = false;
-
-    public function preFoo() : void
-    {
-        $this-&gt;preFooInvoked = true;
-    }
-
-    public function getSubscribedEvents() : array
-    {
-        return [TestEvent::preFoo];
-    }
-}
-
-$eventSubscriber = new TestEventSubscriber();
-$eventManager-&gt;addEventSubscriber($eventSubscriber);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b0e9b70cc8a0cd6ea8772d3b9244b9aa320ba2e0"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b0e9b70cc8a0cd6ea8772d3b9244b9aa320ba2e0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEventSubscriber</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">EventSubscriber</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> bool */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> $preFooInvoked = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFoo</span><span class="hljs-params">()</span> : <span class="hljs-title">void</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;preFooInvoked = <span class="hljs-keyword">true</span>;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span> : <span class="hljs-title">array</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">return</span> [TestEvent::preFoo];
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$eventSubscriber = <span class="hljs-keyword">new</span> TestEventSubscriber();
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">$eventManager-&gt;addEventSubscriber($eventSubscriber);
+</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The array returned by the <code>getSubscribedEvents()</code> method is a simple array with the values being the event names. The subscriber must have a method that is named exactly like the event.</p>
 </div>
 <p>Now when you dispatch an event, any event subscribers will be notified of that event.</p>
-<pre><code class="php">$eventManager-&gt;dispatchEvent(TestEvent::preFoo);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="28a5c662575492bf47851e95b3be24f7b0b7123e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="28a5c662575492bf47851e95b3be24f7b0b7123e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$eventManager-&gt;dispatchEvent(TestEvent::preFoo);
+</td></tr></table></div></code></pre>
 <p>Now you can check the <code>preFooInvoked</code> property to see if the event subscriber was notified of the event:</p>
-<pre><code class="php">if ($eventSubscriber-&gt;preFooInvoked) {
-    // the preFoo method was invoked
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e2db78f2aabf249ddade68fbb24b0740e6c0a30e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e2db78f2aabf249ddade68fbb24b0740e6c0a30e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">if</span> ($eventSubscriber-&gt;preFooInvoked) {
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-comment">// the preFoo method was invoked</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -360,8 +405,6 @@ $eventManager-&gt;addEventSubscriber($eventSubscriber);
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -407,7 +450,7 @@ $eventManager-&gt;addEventSubscriber($eventSubscriber);
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

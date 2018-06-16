@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -246,190 +243,336 @@
 <p>Doctrine Cache is a library that provides an interface for caching data.
 It comes with implementations for some of the most popular caching data
 stores. Here is what the <code>Cache</code> interface looks like.</p>
-<pre><code class="php">namespace Doctrine\Common\Cache;
-
-interface Cache
-{
-    public function fetch($id);
-    public function contains($id);
-    public function save($id, $data, $lifeTime = 0);
-    public function delete($id);
-    public function getStats();
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5910307b08c6def808c4eb6af9bc5f83623f72ad"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5910307b08c6def808c4eb6af9bc5f83623f72ad"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Cache</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Cache</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetch</span><span class="hljs-params">($id)</span></span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">contains</span><span class="hljs-params">($id)</span></span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">save</span><span class="hljs-params">($id, $data, $lifeTime = <span class="hljs-number">0</span>)</span></span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delete</span><span class="hljs-params">($id)</span></span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStats</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Here is an example that uses Memcache.</p>
-<pre><code class="php">use Doctrine\Common\Cache\MemcacheCache;
-
-$memcache = new Memcache();
-$cache = new MemcacheCache();
-$cache-&gt;setMemcache($memcache);
-
-$cache-&gt;set('key', 'value');
-
-echo $cache-&gt;get('key') // prints &quot;value&quot;
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d00c19c15ac50ffb45034557bf88112fabda2e66"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d00c19c15ac50ffb45034557bf88112fabda2e66"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Cache</span>\<span class="hljs-title">MemcacheCache</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$memcache = <span class="hljs-keyword">new</span> Memcache();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> MemcacheCache();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$cache-&gt;setMemcache($memcache);
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$cache-&gt;set(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value'</span>);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-keyword">echo</span> $cache-&gt;get(<span class="hljs-string">'key'</span>) <span class="hljs-comment">// prints "value"</span>
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="drivers" name="drivers"></a><h1 class="section-header"><a href="#drivers">Drivers<i class="fas fa-link"></i></a></h1>
 <p>Doctrine ships with several common drivers that you can easily use.
 Below you can find information about all the available drivers.</p>
 <a class="section-anchor" id="apccache" name="apccache"></a><h2 class="section-header"><a href="#apccache">ApcCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>ApcCache</code> driver uses the <code>apc_fetch</code>, <code>apc_exists</code>, etc. functions that come
 with PHP so no additional setup is required in order to use it.</p>
-<pre><code class="php">$cache = new ApcCache();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b181257217c8f9b2720b536cf3c0b080cbfa38bf"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b181257217c8f9b2720b536cf3c0b080cbfa38bf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> ApcCache();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="apcucache" name="apcucache"></a><h2 class="section-header"><a href="#apcucache">ApcuCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>ApcCache</code> driver uses the <code>apcu_fetch</code>, <code>apcu_exists</code>, etc. functions that come
 with PHP so no additional setup is required in order to use it.</p>
-<pre><code class="php">$cache = new ApcuCache();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4fae4636093dff8854fe76b0add94ec6cf544271"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4fae4636093dff8854fe76b0add94ec6cf544271"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> ApcuCache();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="arraycache" name="arraycache"></a><h2 class="section-header"><a href="#arraycache">ArrayCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>ArrayCache</code> driver stores the cache data in PHPs memory and is not persisted anywhere.
 This can be useful for caching things in memory for a single process when you don't need
 the cache to be persistent across processes.</p>
-<pre><code class="php">$cache = new ArrayCache();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="03d76b752ce02884f971a4e71d3e6855138e72ab"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="03d76b752ce02884f971a4e71d3e6855138e72ab"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> ArrayCache();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="chaincache" name="chaincache"></a><h2 class="section-header"><a href="#chaincache">ChainCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>ChainCache</code> driver lets you chain multiple other drivers together easily.</p>
-<pre><code class="php">$arrayCache = new ArrayCache();
-$apcuCache = new ApcuCache();
-
-$cache = new ChainCache([$arrayCache, $apcuCache]);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c0f4f3e02804642bbb9cfccad281f1e48432fdea"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c0f4f3e02804642bbb9cfccad281f1e48432fdea"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$arrayCache = <span class="hljs-keyword">new</span> ArrayCache();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$apcuCache = <span class="hljs-keyword">new</span> ApcuCache();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> ChainCache([$arrayCache, $apcuCache]);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="couchbasebucketcache" name="couchbasebucketcache"></a><h2 class="section-header"><a href="#couchbasebucketcache">CouchbaseBucketCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>CouchbaseBucketCache</code> driver uses Couchbase to store the cache data.</p>
-<pre><code class="php">$bucketName = 'bucket-name';
-
-$authenticator = new Couchbase\PasswordAuthenticator();
-$authenticator-&gt;username('username')-&gt;password('password');
-
-$cluster = new CouchbaseCluster('couchbase://127.0.0.1');
-
-$cluster-&gt;authenticate($authenticator);
-$bucket = $cluster-&gt;openBucket($bucketName);
-
-$cache = new CouchbaseBucketCache($bucket);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="00dd6c38fdc2199236367fc94b20b40cb0643dd3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="00dd6c38fdc2199236367fc94b20b40cb0643dd3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$bucketName = <span class="hljs-string">'bucket-name'</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$authenticator = <span class="hljs-keyword">new</span> Couchbase\PasswordAuthenticator();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$authenticator-&gt;username(<span class="hljs-string">'username'</span>)-&gt;password(<span class="hljs-string">'password'</span>);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$cluster = <span class="hljs-keyword">new</span> CouchbaseCluster(<span class="hljs-string">'couchbase://127.0.0.1'</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$cluster-&gt;authenticate($authenticator);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$bucket = $cluster-&gt;openBucket($bucketName);
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> CouchbaseBucketCache($bucket);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="filesystemcache" name="filesystemcache"></a><h2 class="section-header"><a href="#filesystemcache">FilesystemCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>FilesystemCache</code> driver stores the cache data on the local filesystem.</p>
-<pre><code class="php">$cache = new FilesystemCache('/path/to/cache/directory');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="cb5ce4b7691066834d81e37c5267087625e701f4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="cb5ce4b7691066834d81e37c5267087625e701f4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> FilesystemCache(<span class="hljs-string">'/path/to/cache/directory'</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="memecachecache" name="memecachecache"></a><h2 class="section-header"><a href="#memecachecache">MemecacheCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>MemcacheCache</code> drivers stores the cache data in Memcache.</p>
-<pre><code class="php">$memcache = new Memcache();
-$memcache-&gt;connect('localhost', 11211);
-
-$cache = new MemcacheCache();
-$cache-&gt;setMemcache($memcache);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="97fec3a71f104d07630ff7add5723ecb2180fe3d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="97fec3a71f104d07630ff7add5723ecb2180fe3d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$memcache = <span class="hljs-keyword">new</span> Memcache();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$memcache-&gt;connect(<span class="hljs-string">'localhost'</span>, <span class="hljs-number">11211</span>);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> MemcacheCache();
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$cache-&gt;setMemcache($memcache);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="memcachedcache" name="memcachedcache"></a><h2 class="section-header"><a href="#memcachedcache">MemcachedCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>MemcachedCache</code> drivers stores the cache data in Memcached.</p>
-<pre><code class="php">$memcached = new Memcached();
-
-$cache = new MemcachedCache();
-$cache-&gt;setMemcached($memcached);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="63ef531a6eff2456bfcfa3f27cbd90625f29e0ed"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="63ef531a6eff2456bfcfa3f27cbd90625f29e0ed"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$memcached = <span class="hljs-keyword">new</span> Memcached();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> MemcachedCache();
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$cache-&gt;setMemcached($memcached);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="mongodbcache" name="mongodbcache"></a><h2 class="section-header"><a href="#mongodbcache">MongoDBCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>MongoDBCache</code> drivers stores the cache data in a MongoDB collection.</p>
-<pre><code class="php">$manager = new MongoDB\Driver\Manager(&quot;mongodb://localhost:27017&quot;);
-
-$collection = new MongoDB\Collection($manager, 'database_name', 'collection_name');
-
-$cache = new MongoDBCache($collection);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b0db4c4dd54074fbc63152a0ba1c1ec13e8fe297"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b0db4c4dd54074fbc63152a0ba1c1ec13e8fe297"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$manager = <span class="hljs-keyword">new</span> MongoDB\Driver\Manager(<span class="hljs-string">"mongodb://localhost:27017"</span>);
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$collection = <span class="hljs-keyword">new</span> MongoDB\Collection($manager, <span class="hljs-string">'database_name'</span>, <span class="hljs-string">'collection_name'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> MongoDBCache($collection);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="phpfilecache" name="phpfilecache"></a><h2 class="section-header"><a href="#phpfilecache">PhpFileCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>PhpFileCache</code> driver stores the cache data on the local filesystem like the
 <code>FilesystemCache</code> driver except the data is serialized using the <code>serialize()</code>
 and <code>unserialize()</code> functions available in PHP. The files are included so this means
 that the data can be cached in PHPs opcache.</p>
-<pre><code class="php">$cache = new PhpFileCache('/path/to/cache/directory');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6d11855c823d5e09af78b2dbbb17eafe13c44a76"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6d11855c823d5e09af78b2dbbb17eafe13c44a76"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> PhpFileCache(<span class="hljs-string">'/path/to/cache/directory'</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="prediscache" name="prediscache"></a><h2 class="section-header"><a href="#prediscache">PredisCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>PredisCache</code> driver stores the cache data in Redis
 and depends on the <code>predis/predis</code> package which can be installed with composer.</p>
-<pre><code class="bash">$ composer require predis/predis
-</code></pre>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>composer require predis/predis</code></pre></div>
 <p>Then you can use the <code>Predis\Client</code> class to pass to the <code>PredisCache</code> class.</p>
-<pre><code class="php">$client = new Predis\Client();
-
-$cache = new PredisCache($client);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a09f110173472b073d33ae8bb85d74562eb95b64"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a09f110173472b073d33ae8bb85d74562eb95b64"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$client = <span class="hljs-keyword">new</span> Predis\Client();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> PredisCache($client);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="rediscache" name="rediscache"></a><h2 class="section-header"><a href="#rediscache">RedisCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>RedisCache</code> driver stores the cache data in Redis and depends on the
 <code>phpredis</code> extension which can be found <a href="https://github.com/phpredis/phpredis">here</a>.</p>
-<pre><code class="php">$redis = new Redis();
-
-$cache = new RedisCache($redis);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2380a3feda2225c4e41382a54b6d5ad4dcd488b5"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2380a3feda2225c4e41382a54b6d5ad4dcd488b5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$redis = <span class="hljs-keyword">new</span> Redis();
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> RedisCache($redis);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="riakcache" name="riakcache"></a><h2 class="section-header"><a href="#riakcache">RiakCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>RiakCache</code> driver stores the cache data in Riak and depends on the
 <code>riak</code> extension which can be found <a href="https://github.com/php-riak/php_riak">here</a>.</p>
-<pre><code class="php">$connection = new Riak\Connection('localhost', 8087);
-
-$bucket = new Riak\Bucket($connection, 'bucket_name');
-
-$cache = new RiakCache($bucket);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="768659c8de56276ea10d11af12f9ccf1a94e1293"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="768659c8de56276ea10d11af12f9ccf1a94e1293"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$connection = <span class="hljs-keyword">new</span> Riak\Connection(<span class="hljs-string">'localhost'</span>, <span class="hljs-number">8087</span>);
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$bucket = <span class="hljs-keyword">new</span> Riak\Bucket($connection, <span class="hljs-string">'bucket_name'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> RiakCache($bucket);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="sqlite3cache" name="sqlite3cache"></a><h2 class="section-header"><a href="#sqlite3cache">SQLite3Cache<i class="fas fa-link"></i></a></h2>
 <p>The <code>SQLite3Cache</code> driver stores the cache data in a SQLite database and depends on the
 <code>sqlite3</code> extension which can be found <a href="http://php.net/manual/en/book.sqlite3.php">here</a>.</p>
-<pre><code class="php">$db = new SQLite3('mydatabase.db');
-
-$cache = new SQLite3Cache($db, 'table_name');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="189b63f2f78fe65149b9879356bf7382b935ae71"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="189b63f2f78fe65149b9879356bf7382b935ae71"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$db = <span class="hljs-keyword">new</span> SQLite3(<span class="hljs-string">'mydatabase.db'</span>);
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> SQLite3Cache($db, <span class="hljs-string">'table_name'</span>);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="voidcache" name="voidcache"></a><h2 class="section-header"><a href="#voidcache">VoidCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>VoidCache</code> driver does not store the cache data anywhere. This can
 be useful for test environments where you don't want to cache the data
 anywhere but need to satisfy the dependency for the <code>Doctrine\Common\Cache\Cache</code>
 interface.</p>
-<pre><code class="php">$cache = new VoidCache();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7f691561a85f6eb0a44558c616ed402a88221d2e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7f691561a85f6eb0a44558c616ed402a88221d2e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> VoidCache();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="wincachecache" name="wincachecache"></a><h2 class="section-header"><a href="#wincachecache">WinCacheCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>WinCacheCache</code> driver uses the <code>wincache_ucache_get</code>, <code>wincache_ucache_exists</code>, etc. functions that come
 with the <code>wincache</code> extension which can be found <a href="http://php.net/manual/en/book.wincache.php">here</a>.</p>
-<pre><code class="php">$cache = new WinCacheCache();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e9163d9a57c1aee82b8c4eafaa2991921e2c28f8"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e9163d9a57c1aee82b8c4eafaa2991921e2c28f8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> WinCacheCache();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="xcachecache" name="xcachecache"></a><h2 class="section-header"><a href="#xcachecache">XcacheCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>XcacheCache</code> driver uses functions that come with the <code>xcache</code>
 extension which can be found <a href="https://xcache.lighttpd.net/">here</a>.</p>
-<pre><code class="php">$cache = new XcacheCache();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e400409757d24a44d41415258865e6dad889c51f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e400409757d24a44d41415258865e6dad889c51f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> XcacheCache();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="zenddatacache" name="zenddatacache"></a><h2 class="section-header"><a href="#zenddatacache">ZendDataCache<i class="fas fa-link"></i></a></h2>
 <p>The <code>ZendDataCache</code> driver uses the Zend Data Cache API available in the Zend Platform.</p>
-<pre><code class="php">$cache = new ZendDataCache();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ac07a1f7851f84d9f646d0d78a745a6049634007"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ac07a1f7851f84d9f646d0d78a745a6049634007"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$cache = <span class="hljs-keyword">new</span> ZendDataCache();
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="custom-drivers" name="custom-drivers"></a><h1 class="section-header"><a href="#custom-drivers">Custom Drivers<i class="fas fa-link"></i></a></h1>
 <p>If you want to implement your own cache driver, you just need to implement
 the <code>Doctrine\Common\Cache\Cache</code> interface. Here is an example implementation
 skeleton.</p>
-<pre><code class="php">use Doctrine\Common\Cache\Cache;
-
-class MyCacheDriver implements Cache
-{
-    public function fetch($id)
-    {
-        // fetch $id from the cache
-    }
-
-    public function contains($id)
-    {
-        // check if $id exists in the cache
-    }
-
-    public function save($id, $data, $lifeTime = 0)
-    {
-        // save $data under $id in the cache for $lifetime
-    }
-
-    public function delete($id)
-    {
-        // delete $id from the cache
-    }
-
-    public function getStats()
-    {
-        // get cache stats
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4b37c855a468d832e55356ebb5ab51a517764578"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4b37c855a468d832e55356ebb5ab51a517764578"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Cache</span>\<span class="hljs-title">Cache</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCacheDriver</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Cache</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetch</span><span class="hljs-params">($id)</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-comment">// fetch $id from the cache</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">contains</span><span class="hljs-params">($id)</span></span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-comment">// check if $id exists in the cache</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">save</span><span class="hljs-params">($id, $data, $lifeTime = <span class="hljs-number">0</span>)</span></span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-comment">// save $data under $id in the cache for $lifetime</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delete</span><span class="hljs-params">($id)</span></span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-comment">// delete $id from the cache</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStats</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        <span class="hljs-comment">// get cache stats</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -454,8 +597,6 @@ class MyCacheDriver implements Cache
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -501,7 +642,7 @@ class MyCacheDriver implements Cache
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -272,31 +269,45 @@ interesting pieces of information on how to work with PHP DateTime instances in 
 <p>When calling <code>EntityManager#flush()</code> Doctrine computes the changesets of all the currently managed entities
 and saves the differences to the database. In case of object properties (@Column(type=&quot;datetime&quot;) or @Column(type=&quot;object&quot;))
 these comparisons are always made <strong>BY REFERENCE</strong>. That means the following change will <strong>NOT</strong> be saved into the database:</p>
-<pre><code class="php">&lt;?php
-/** @Entity */
-class Article
-{
-    /** @Column(type=&quot;datetime&quot;) */
-    private $updated;
-
-    public function setUpdated()
-    {
-        // will NOT be saved in the database
-        $this-&gt;updated-&gt;modify(&quot;now&quot;);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="86ffee21cf7487f5b5a54b21bbcbfcec43cd4f77"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="86ffee21cf7487f5b5a54b21bbcbfcec43cd4f77"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="datetime") */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $updated;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setUpdated</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-comment">// will NOT be saved in the database</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;updated-&gt;modify(<span class="hljs-string">"now"</span>);
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The way to go would be:</p>
-<pre><code class="php">&lt;?php
-class Article
-{
-    public function setUpdated()
-    {
-        // WILL be saved in the database
-        $this-&gt;updated = new \DateTime(&quot;now&quot;);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d49b428ffa318bef2f5b28dea959c0606b4c14bd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d49b428ffa318bef2f5b28dea959c0606b4c14bd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setUpdated</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// WILL be saved in the database</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;updated = <span class="hljs-keyword">new</span> \DateTime(<span class="hljs-string">"now"</span>);
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="default-timezone-gotcha" name="default-timezone-gotcha"></a><h2 class="section-header"><a href="#default-timezone-gotcha">Default Timezone Gotcha<i class="fas fa-link"></i></a></h2>
 <p>By default Doctrine assumes that you are working with a default timezone. Each DateTime instance that
 is created by Doctrine will be assigned the timezone that is currently the default, either through
@@ -324,102 +335,122 @@ that even allows correct date-time handling with timezones:</p>
 <p>Say we have an application for an international postal company and employees insert events regarding postal-package
 around the world, in their current timezones. To determine the exact time an event occurred means to save both
 the UTC time at the time of the booking and the timezone the event happened in.</p>
-<pre><code class="php">&lt;?php
-
-namespace DoctrineExtensions\DBAL\Types;
-
-use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
-use Doctrine\DBAL\Types\DateTimeType;
-
-class UTCDateTimeType extends DateTimeType
-{
-    static private $utc;
-
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
-    {
-        if ($value instanceof \DateTime) {
-            $value-&gt;setTimezone(self::getUtc());
-        }
-
-        return parent::convertToDatabaseValue($value, $platform);
-    }
-
-    public function convertToPHPValue($value, AbstractPlatform $platform)
-    {
-        if (null === $value || $value instanceof \DateTime) {
-            return $value;
-        }
-
-        $converted = \DateTime::createFromFormat(
-            $platform-&gt;getDateTimeFormatString(),
-            $value,
-            self::$utc ? self::$utc : self::$utc = new \DateTimeZone('UTC')
-        );
-
-        if (! $converted) {
-            throw ConversionException::conversionFailedFormat(
-                $value,
-                $this-&gt;getName(),
-                $platform-&gt;getDateTimeFormatString()
-            );
-        }
-
-        return $converted;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="0ab820b82b7e23aec6dfd8068f8d9d1ed83bc2c4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="0ab820b82b7e23aec6dfd8068f8d9d1ed83bc2c4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">DoctrineExtensions</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Platforms</span>\<span class="hljs-title">AbstractPlatform</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">ConversionException</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">DateTimeType</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UTCDateTimeType</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DateTimeType</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">private</span> $utc;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToDatabaseValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span></span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">if</span> ($value <span class="hljs-keyword">instanceof</span> \DateTime) {
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">            $value-&gt;setTimezone(<span class="hljs-keyword">self</span>::getUtc());
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">parent</span>::convertToDatabaseValue($value, $platform);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToPHPValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span></span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">null</span> === $value || $value <span class="hljs-keyword">instanceof</span> \DateTime) {
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">            <span class="hljs-keyword">return</span> $value;
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        $converted = \DateTime::createFromFormat(
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">            $platform-&gt;getDateTimeFormatString(),
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">            $value,
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">            <span class="hljs-keyword">self</span>::$utc ? <span class="hljs-keyword">self</span>::$utc : <span class="hljs-keyword">self</span>::$utc = <span class="hljs-keyword">new</span> \DateTimeZone(<span class="hljs-string">'UTC'</span>)
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">        );
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">        <span class="hljs-keyword">if</span> (! $converted) {
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">            <span class="hljs-keyword">throw</span> ConversionException::conversionFailedFormat(
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">                $value,
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">                <span class="hljs-keyword">$this</span>-&gt;getName(),
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">                $platform-&gt;getDateTimeFormatString()
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">            );
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">        <span class="hljs-keyword">return</span> $converted;
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>This database type makes sure that every DateTime instance is always saved in UTC, relative
 to the current timezone that the passed DateTime instance has.</p>
 <p>To actually use this new type instead of the default <code>datetime</code> type, you need to run following
 code before bootstrapping the ORM:</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\DBAL\Types\Type;
-use DoctrineExtensions\DBAL\Types\UTCDateTimeType;
-
-Type::overrideType('datetime', UTCDateTimeType::class);
-Type::overrideType('datetimetz', UTCDateTimeType::class);
-
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="607df35315210fec6d537e2cb99632385a8d198e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="607df35315210fec6d537e2cb99632385a8d198e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">DoctrineExtensions</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">UTCDateTimeType</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">Type::overrideType(<span class="hljs-string">'datetime'</span>, UTCDateTimeType::class);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">Type::overrideType(<span class="hljs-string">'datetimetz'</span>, UTCDateTimeType::class);
+</td></tr></table></div></code></pre>
 <p>To be able to transform these values
 back into their real timezone you have to save the timezone in a separate field of the entity
 requiring timezoned datetimes:</p>
-<pre><code class="php">&lt;?php
-namespace Shipping;
-
-/**
- * @Entity
- */
-class Event
-{
-    /** @Column(type=&quot;datetime&quot;) */
-    private $created;
-
-    /** @Column(type=&quot;string&quot;) */
-    private $timezone;
-
-    /**
-     * @var bool
-     */
-    private $localized = false;
-
-    public function __construct(\DateTime $createDate)
-    {
-        $this-&gt;localized = true;
-        $this-&gt;created = $createDate;
-        $this-&gt;timezone = $createDate-&gt;getTimeZone()-&gt;getName();
-    }
-
-    public function getCreated()
-    {
-        if (!$this-&gt;localized) {
-            $this-&gt;created-&gt;setTimeZone(new \DateTimeZone($this-&gt;timezone));
-        }
-        return $this-&gt;created;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="45975883d827a8fedfe3fc47f0a9e7fdba7b0892"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="45975883d827a8fedfe3fc47f0a9e7fdba7b0892"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Shipping</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Event</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="datetime") */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $created;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">private</span> $timezone;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * @<span class="hljs-keyword">var</span> bool
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">private</span> $localized = <span class="hljs-keyword">false</span>;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(\DateTime $createDate)</span></span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;localized = <span class="hljs-keyword">true</span>;
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;created = $createDate;
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;timezone = $createDate-&gt;getTimeZone()-&gt;getName();
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCreated</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">$this</span>-&gt;localized) {
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">            <span class="hljs-keyword">$this</span>-&gt;created-&gt;setTimeZone(<span class="hljs-keyword">new</span> \DateTimeZone(<span class="hljs-keyword">$this</span>-&gt;timezone));
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;created;
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>This snippet makes use of the previously discussed &quot;changeset by reference only&quot; property of
 objects. That means a new DateTime will only be used during updating if the reference
 changes between retrieval and flush operation. This means we can easily go and modify
@@ -448,8 +479,6 @@ the instance by setting the previous local timezone.</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -495,7 +524,7 @@ the instance by setting the previous local timezone.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -273,28 +270,35 @@
 interface to hold both embedded and referenced documents. That collection may then
 be wrapped by a <code>PersistentCollection</code> to allow for change tracking and other
 persistence-related features.</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\Common\Collections\ArrayCollection;
-
-/** @Document */
-class Application
-{
-    // ...
-
-    /**
-     * @EmbedMany(targetDocument=&quot;Section&quot;)
-     */
-    private $sections;
-
-    public function __construct()
-    {
-        $this-&gt;sections = new ArrayCollection();
-    }
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2cfdfee8cbd0ed422ac6b0c21c1e3f4c6f7d1017"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2cfdfee8cbd0ed422ac6b0c21c1e3f4c6f7d1017"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Application</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @EmbedMany(targetDocument=<span class="hljs-string">"Section"</span>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">private</span> $sections;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;sections = <span class="hljs-keyword">new</span> ArrayCollection();
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>For most cases this solution is sufficient but more sophisticated domains could use
 their own collections (e.g. a collection that ensures its contained objects are sorted)
 or to simply add common filtering methods that otherwise would otherwise be added to
@@ -307,64 +311,85 @@ aims to kickstart development of your own collections.</p>
 <p>Using your own <code>Collection</code> implementation is as simple as specifying the
 <code>collectionClass</code> parameter in the <code>@EmbedMany</code> or <code>@ReferenceMany</code> mapping
 and ensuring that your custom class is initialized in the owning class' constructor:</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\Common\Collections\ArrayCollection;
-
-/** @Document */
-class Application
-{
-    // ...
-
-    /**
-     * @EmbedMany(
-     *  collectionClass=&quot;SectionCollection&quot;
-     *  targetDocument=&quot;Section&quot;
-     * )
-     */
-    private $sections;
-
-    public function __construct()
-    {
-        $this-&gt;sections = new SectionCollection();
-    }
-
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7458a46f6446a3ce9386956511640a79908976de"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7458a46f6446a3ce9386956511640a79908976de"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Application</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @EmbedMany(
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     *  collectionClass=<span class="hljs-string">"SectionCollection"</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     *  targetDocument=<span class="hljs-string">"Section"</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     * )
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">private</span> $sections;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;sections = <span class="hljs-keyword">new</span> SectionCollection();
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>If you are satisfied with <code>ArrayCollection</code> and only want
 to sprinkle it with some filtering methods, you may just extend it:</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\Common\Collections\ArrayCollection;
-
-class SectionCollection extends ArrayCollection
-{
-    public function getEnabled(): SectionCollection
-    {
-        return $this-&gt;filter(function(Section $s) {
-            return $s-&gt;isEnabled();
-        });
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="24f234497fbe06ddb2a78b477b1df33b6b0cf385"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="24f234497fbe06ddb2a78b477b1df33b6b0cf385"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SectionCollection</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ArrayCollection</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getEnabled</span><span class="hljs-params">()</span>: <span class="hljs-title">SectionCollection</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;filter(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(Section $s)</span> </span>{
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">            <span class="hljs-keyword">return</span> $s-&gt;isEnabled();
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        });
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Alternatively, you may want to implement the whole class from scratch:</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\Common\Collections\Collection;
-
-class SectionCollection implements Collection
-{
-    private $elements = array();
-
-    public function __construct(array $elements = array())
-    {
-        $this-&gt;elements = $elements;
-    }
-
-    // your implementation of all methods interface requires
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="867bfcf48c2c79ecdd11264b0828420c42ff6cc0"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="867bfcf48c2c79ecdd11264b0828420c42ff6cc0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">Collection</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SectionCollection</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Collection</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $elements = <span class="hljs-keyword">array</span>();
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(array $elements = array<span class="hljs-params">()</span>)</span></span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;elements = $elements;
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">// your implementation of all methods interface requires</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="taking-control-of-the-collection-s-constructor" name="taking-control-of-the-collection-s-constructor"></a><h2 class="section-header"><a href="#taking-control-of-the-collection-s-constructor">Taking Control of the Collection's Constructor<i class="fas fa-link"></i></a></h2>
 <p>By default, Doctrine assumes that it can instantiate your collections in same
 manner as an <code>ArrayCollection</code> (i.e. the only parameter is an optional PHP
@@ -374,40 +399,54 @@ custom collection class(es). This will require you to create a
 which Doctrine will then use to construct its persistent collections.
 You may decide to implement this class from scratch or extend our
 <code>AbstractPersistentCollectionFactory</code>:</p>
-<pre><code class="php">&lt;?php
-
-use Doctrine\ODM\MongoDB\PersistentCollection\AbstractPersistentCollectionFactory;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
-final class YourPersistentCollectionFactory extends AbstractPersistentCollectionFactory
-{
-    private $eventDispatcher;
-
-    public function __construct(EventDispatcherInterface $eventDispatcher)
-    {
-        $this-&gt;eventDispatcher = $eventDispatcher;
-    }
-
-    protected function createCollectionClass($collectionClass)
-    {
-        switch ($collectionClass) {
-            case SectionCollection::class:
-                return new $collectionClass(array(), $this-&gt;eventDispatcher);
-            default:
-                return new $collectionClass;
-        }
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="08bbc36285cb0cf4029eef2b5990b51752e40c44"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="08bbc36285cb0cf4029eef2b5990b51752e40c44"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">PersistentCollection</span>\<span class="hljs-title">AbstractPersistentCollectionFactory</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">EventDispatcher</span>\<span class="hljs-title">EventDispatcherInterface</span>;
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourPersistentCollectionFactory</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractPersistentCollectionFactory</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">private</span> $eventDispatcher;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(EventDispatcherInterface $eventDispatcher)</span></span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;eventDispatcher = $eventDispatcher;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createCollectionClass</span><span class="hljs-params">($collectionClass)</span></span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-keyword">switch</span> ($collectionClass) {
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">            <span class="hljs-keyword">case</span> SectionCollection::class:
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> $collectionClass(<span class="hljs-keyword">array</span>(), <span class="hljs-keyword">$this</span>-&gt;eventDispatcher);
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">            <span class="hljs-keyword">default</span>:
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> $collectionClass;
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The factory class must then be registered in the <code>Configuration</code>:</p>
-<pre><code class="php">&lt;?php
-
-$eventDispatcher = $container-&gt;get('event_dispatcher');
-$collFactory = new YourPersistentCollectionFactory($eventDispatcher);
-$configuration = new Configuration();
-// your other config here
-$configuration-&gt;setPersistentCollectionFactory($collFactory);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="935854868f361426edb2063a30ef74d4e39daf52"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="935854868f361426edb2063a30ef74d4e39daf52"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$eventDispatcher = $container-&gt;get(<span class="hljs-string">'event_dispatcher'</span>);
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$collFactory = <span class="hljs-keyword">new</span> YourPersistentCollectionFactory($eventDispatcher);
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$configuration = <span class="hljs-keyword">new</span> Configuration();
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">// your other config here</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$configuration-&gt;setPersistentCollectionFactory($collFactory);
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -432,8 +471,6 @@ $configuration-&gt;setPersistentCollectionFactory($collFactory);
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -479,7 +516,7 @@ $configuration-&gt;setPersistentCollectionFactory($collFactory);
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

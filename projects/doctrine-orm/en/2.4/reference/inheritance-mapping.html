@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -284,38 +281,52 @@ For further support of inheritance, the single or
 joined table inheritance features have to be used.</p>
 </div>
 <p>Example:</p>
-<pre><code class="php">&lt;?php
-/** @MappedSuperclass */
-class MappedSuperclassBase
-{
-    /** @Column(type=&quot;integer&quot;) */
-    protected $mapped1;
-    /** @Column(type=&quot;string&quot;) */
-    protected $mapped2;
-    /**
-     * @OneToOne(targetEntity=&quot;MappedSuperclassRelated1&quot;)
-     * @JoinColumn(name=&quot;related1_id&quot;, referencedColumnName=&quot;id&quot;)
-     */
-    protected $mappedRelated1;
-
-    // ... more fields and methods
-}
-
-/** @Entity */
-class EntitySubClass extends MappedSuperclassBase
-{
-    /** @Id @Column(type=&quot;integer&quot;) */
-    private $id;
-    /** @Column(type=&quot;string&quot;) */
-    private $name;
-
-    // ... more fields and methods
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5e2fe0e850d3d456556e794d0f2dd48f1c8f642d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5e2fe0e850d3d456556e794d0f2dd48f1c8f642d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@MappedSuperclass</span> */</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MappedSuperclassBase</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="integer") */</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">protected</span> $mapped1;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">protected</span> $mapped2;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @OneToOne(targetEntity=<span class="hljs-string">"MappedSuperclassRelated1"</span>)
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"related1_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">protected</span> $mappedRelated1;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">// ... more fields and methods</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EntitySubClass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">MappedSuperclassBase</span></span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") */</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-comment">// ... more fields and methods</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The DDL for the corresponding database schema would look something
 like this (this is for SQLite):</p>
-<pre><code class="sql">CREATE TABLE EntitySubClass (mapped1 INTEGER NOT NULL, mapped2 TEXT NOT NULL, id INTEGER NOT NULL, name TEXT NOT NULL, related1_id INTEGER DEFAULT NULL, PRIMARY KEY(id))
-</code></pre>
+<pre class="code-block-table"><code class="sql"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="43bed69816a21143a31b2fe3a7f229ae9e203500"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="43bed69816a21143a31b2fe3a7f229ae9e203500"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> EntitySubClass (mapped1 <span class="hljs-built_in">INTEGER</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>, mapped2 <span class="hljs-built_in">TEXT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>, <span class="hljs-keyword">id</span> <span class="hljs-built_in">INTEGER</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>, <span class="hljs-keyword">name</span> <span class="hljs-built_in">TEXT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>, related1_id <span class="hljs-built_in">INTEGER</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-literal">NULL</span>, PRIMARY <span class="hljs-keyword">KEY</span>(<span class="hljs-keyword">id</span>))
+</td></tr></table></div></code></pre>
 <p>As you can see from this DDL snippet, there is only a single table
 for the entity subclass. All the mappings from the mapped
 superclass were inherited to the subclass as if they had been
@@ -327,28 +338,35 @@ are mapped to a single database table. In order to distinguish
 which row represents which type in the hierarchy a so-called
 discriminator column is used.</p>
 <p>Example:</p>
-<pre><code class="php">&lt;?php
-namespace MyProject\Model;
-
-/**
- * @Entity
- * @InheritanceType(&quot;SINGLE_TABLE&quot;)
- * @DiscriminatorColumn(name=&quot;discr&quot;, type=&quot;string&quot;)
- * @DiscriminatorMap({&quot;person&quot; = &quot;Person&quot;, &quot;employee&quot; = &quot;Employee&quot;})
- */
-class Person
-{
-    // ...
-}
-
-/**
- * @Entity
- */
-class Employee extends Person
-{
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c51bad38e6c9f8b4f5ff9543b6cdddf33f2ee9b3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c51bad38e6c9f8b4f5ff9543b6cdddf33f2ee9b3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @InheritanceType(<span class="hljs-string">"SINGLE_TABLE"</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @DiscriminatorColumn(name=<span class="hljs-string">"discr"</span>, type=<span class="hljs-string">"string"</span>)
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @DiscriminatorMap({<span class="hljs-string">"person"</span> = <span class="hljs-string">"Person"</span>, <span class="hljs-string">"employee"</span> = <span class="hljs-string">"Employee"</span>})
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Things to note:</p>
 <ul><li class="dash"> The @InheritanceType, @DiscriminatorColumn and @DiscriminatorMap
    must be specified on the topmost class that is part of the mapped
@@ -396,26 +414,33 @@ implements this strategy through the use of a discriminator column
 in the topmost table of the hierarchy because this is the easiest
 way to achieve polymorphic queries with Class Table Inheritance.</p>
 <p>Example:</p>
-<pre><code class="php">&lt;?php
-namespace MyProject\Model;
-
-/**
- * @Entity
- * @InheritanceType(&quot;JOINED&quot;)
- * @DiscriminatorColumn(name=&quot;discr&quot;, type=&quot;string&quot;)
- * @DiscriminatorMap({&quot;person&quot; = &quot;Person&quot;, &quot;employee&quot; = &quot;Employee&quot;})
- */
-class Person
-{
-    // ...
-}
-
-/** @Entity */
-class Employee extends Person
-{
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b5bc283f1f1342a5a186b8196b703bfc47dd649b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b5bc283f1f1342a5a186b8196b703bfc47dd649b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @InheritanceType(<span class="hljs-string">"JOINED"</span>)
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @DiscriminatorColumn(name=<span class="hljs-string">"discr"</span>, type=<span class="hljs-string">"string"</span>)
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @DiscriminatorMap({<span class="hljs-string">"person"</span> = <span class="hljs-string">"Person"</span>, <span class="hljs-string">"employee"</span> = <span class="hljs-string">"Employee"</span>})
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span></span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Things to note:</p>
 <ul><li class="dash"> The @InheritanceType, @DiscriminatorColumn and @DiscriminatorMap
    must be specified on the topmost class that is part of the mapped
@@ -476,140 +501,162 @@ to override a relationship or field mapping defined by the mapped superclass.</p
 <p>Could be used by an entity that extends a mapped superclass
 to override a relationship mapping defined by the mapped superclass.</p>
 <p>Example:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-// user mapping
-namespace MyProject\Model;
-/**
- * @MappedSuperclass
- */
-class User
-{
-    //other fields mapping
-
-    /**
-     * @ManyToMany(targetEntity=&quot;Group&quot;, inversedBy=&quot;users&quot;)
-     * @JoinTable(name=&quot;users_groups&quot;,
-     *  joinColumns={@JoinColumn(name=&quot;user_id&quot;, referencedColumnName=&quot;id&quot;)},
-     *  inverseJoinColumns={@JoinColumn(name=&quot;group_id&quot;, referencedColumnName=&quot;id&quot;)}
-     * )
-     */
-    protected $groups;
-
-    /**
-     * @ManyToOne(targetEntity=&quot;Address&quot;)
-     * @JoinColumn(name=&quot;address_id&quot;, referencedColumnName=&quot;id&quot;)
-     */
-    protected $address;
-}
-
-// admin mapping
-namespace MyProject\Model;
-/**
- * @Entity
- * @AssociationOverrides({
- *      @AssociationOverride(name=&quot;groups&quot;,
- *          joinTable=@JoinTable(
- *              name=&quot;users_admingroups&quot;,
- *              joinColumns=@JoinColumn(name=&quot;adminuser_id&quot;),
- *              inverseJoinColumns=@JoinColumn(name=&quot;admingroup_id&quot;)
- *          )
- *      ),
- *      @AssociationOverride(name=&quot;address&quot;,
- *          joinColumns=@JoinColumn(
- *              name=&quot;adminaddress_id&quot;, referencedColumnName=&quot;id&quot;
- *          )
- *      )
- * })
- */
-class Admin extends User
-{
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;!-- user mapping --&gt;
-&lt;doctrine-mapping&gt;
-  &lt;mapped-superclass name=&quot;MyProject\Model\User&quot;&gt;
-        &lt;!-- other fields mapping --&gt;
-        &lt;many-to-many field=&quot;groups&quot; target-entity=&quot;Group&quot; inversed-by=&quot;users&quot;&gt;
-            &lt;cascade&gt;
-                &lt;cascade-persist/&gt;
-                &lt;cascade-merge/&gt;
-                &lt;cascade-detach/&gt;
-            &lt;/cascade&gt;
-            &lt;join-table name=&quot;users_groups&quot;&gt;
-                &lt;join-columns&gt;
-                    &lt;join-column name=&quot;user_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-                &lt;/join-columns&gt;
-                &lt;inverse-join-columns&gt;
-                    &lt;join-column name=&quot;group_id&quot; referenced-column-name=&quot;id&quot; /&gt;
-                &lt;/inverse-join-columns&gt;
-            &lt;/join-table&gt;
-        &lt;/many-to-many&gt;
-    &lt;/mapped-superclass&gt;
-&lt;/doctrine-mapping&gt;
-
-&lt;!-- admin mapping --&gt;
-&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;MyProject\Model\Admin&quot;&gt;
-        &lt;association-overrides&gt;
-            &lt;association-override name=&quot;groups&quot;&gt;
-                &lt;join-table name=&quot;users_admingroups&quot;&gt;
-                    &lt;join-columns&gt;
-                        &lt;join-column name=&quot;adminuser_id&quot;/&gt;
-                    &lt;/join-columns&gt;
-                    &lt;inverse-join-columns&gt;
-                        &lt;join-column name=&quot;admingroup_id&quot;/&gt;
-                    &lt;/inverse-join-columns&gt;
-                &lt;/join-table&gt;
-            &lt;/association-override&gt;
-            &lt;association-override name=&quot;address&quot;&gt;
-                &lt;join-columns&gt;
-                    &lt;join-column name=&quot;adminaddress_id&quot; referenced-column-name=&quot;id&quot;/&gt;
-                &lt;/join-columns&gt;
-            &lt;/association-override&gt;
-        &lt;/association-overrides&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml"># user mapping
-MyProject\Model\User:
-  type: mappedSuperclass
-  # other fields mapping
-  manyToOne:
-    address:
-      targetEntity: Address
-      joinColumn:
-        name: address_id
-        referencedColumnName: id
-      cascade: [ persist, merge ]
-  manyToMany:
-    groups:
-      targetEntity: Group
-      joinTable:
-        name: users_groups
-        joinColumns:
-          user_id:
-            referencedColumnName: id
-        inverseJoinColumns:
-          group_id:
-            referencedColumnName: id
-      cascade: [ persist, merge, detach ]
-
-# admin mapping
-MyProject\Model\Admin:
-  type: entity
-  associationOverride:
-    address:
-      joinColumn:
-        adminaddress_id:
-          name: adminaddress_id
-          referencedColumnName: id
-    groups:
-      joinTable:
-        name: users_admingroups
-        joinColumns:
-          adminuser_id:
-            referencedColumnName: id
-        inverseJoinColumns:
-          admingroup_id:
-            referencedColumnName: id
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f07d9cb74fae1070cbedcd37f303bab5eef863ab"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f07d9cb74fae1070cbedcd37f303bab5eef863ab"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// user mapping</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @MappedSuperclass
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">//other fields mapping</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"Group"</span>, inversedBy=<span class="hljs-string">"users"</span>)
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     * @JoinTable(name=<span class="hljs-string">"users_groups"</span>,
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     *  joinColumns={@JoinColumn(name=<span class="hljs-string">"user_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)},
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     *  inverseJoinColumns={@JoinColumn(name=<span class="hljs-string">"group_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)}
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * )
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">protected</span> $groups;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     * @ManyToOne(targetEntity=<span class="hljs-string">"Address"</span>)
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"address_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">protected</span> $address;
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-comment">// admin mapping</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"> * @AssociationOverrides({
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"> *      @AssociationOverride(name=<span class="hljs-string">"groups"</span>,
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"> *          joinTable=@JoinTable(
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"> *              name=<span class="hljs-string">"users_admingroups"</span>,
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"> *              joinColumns=@JoinColumn(name=<span class="hljs-string">"adminuser_id"</span>),
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"> *              inverseJoinColumns=@JoinColumn(name=<span class="hljs-string">"admingroup_id"</span>)
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"> *          )
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"> *      ),
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"> *      @AssociationOverride(name=<span class="hljs-string">"address"</span>,
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line"> *          joinColumns=@JoinColumn(
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line"> *              name=<span class="hljs-string">"adminaddress_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line"> *          )
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line"> *      )
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line"> * })
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Admin</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ec0876c9d23e3520b5305ec51c72f15a38857165"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ec0876c9d23e3520b5305ec51c72f15a38857165"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">&lt;!-- user mapping --&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">  <span class="hljs-tag">&lt;<span class="hljs-name">mapped-superclass</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyProject\Model\User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-comment">&lt;!-- other fields mapping --&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"groups"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Group"</span> <span class="hljs-attr">inversed-by</span>=<span class="hljs-string">"users"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">cascade</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">cascade-persist</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">cascade-merge</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">cascade-detach</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">cascade</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">join-table</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"users_groups"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"user_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"group_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">join-table</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">many-to-many</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">mapped-superclass</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-comment">&lt;!-- admin mapping --&gt;</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyProject\Model\Admin"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">association-overrides</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">association-override</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"groups"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">join-table</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"users_admingroups"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">                        <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"adminuser_id"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">                    <span class="hljs-tag">&lt;/<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">                        <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"admingroup_id"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">                    <span class="hljs-tag">&lt;/<span class="hljs-name">inverse-join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">join-table</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">association-override</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">association-override</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"address"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">                    <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"adminaddress_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">                <span class="hljs-tag">&lt;/<span class="hljs-name">join-columns</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">association-override</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">association-overrides</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="6969d5c6459cefa157835393b74d4cc9a6178423"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="6969d5c6459cefa157835393b74d4cc9a6178423"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment"># user mapping</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-string">MyProject\Model\User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">mappedSuperclass</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">  <span class="hljs-comment"># other fields mapping</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">  manyToOne:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    address:</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Address</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      joinColumn:</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">        name:</span> <span class="hljs-string">address_id</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">        referencedColumnName:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      cascade:</span> <span class="hljs-string">[</span> <span class="hljs-string">persist,</span> <span class="hljs-string">merge</span> <span class="hljs-string">]</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">  manyToMany:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">    groups:</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Group</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">      joinTable:</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">        name:</span> <span class="hljs-string">users_groups</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">        joinColumns:</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">          user_id:</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">            referencedColumnName:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">        inverseJoinColumns:</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">          group_id:</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">            referencedColumnName:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">      cascade:</span> <span class="hljs-string">[</span> <span class="hljs-string">persist,</span> <span class="hljs-string">merge,</span> <span class="hljs-string">detach</span> <span class="hljs-string">]</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-comment"># admin mapping</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-string">MyProject\Model\Admin:</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-attr">  associationOverride:</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-attr">    address:</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-attr">      joinColumn:</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-attr">        adminaddress_id:</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"><span class="hljs-attr">          name:</span> <span class="hljs-string">adminaddress_id</span>
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-attr">          referencedColumnName:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-attr">    groups:</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"><span class="hljs-attr">      joinTable:</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"><span class="hljs-attr">        name:</span> <span class="hljs-string">users_admingroups</span>
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"><span class="hljs-attr">        joinColumns:</span>
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"><span class="hljs-attr">          adminuser_id:</span>
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"><span class="hljs-attr">            referencedColumnName:</span> <span class="hljs-string">id</span>
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line"><span class="hljs-attr">        inverseJoinColumns:</span>
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line"><span class="hljs-attr">          admingroup_id:</span>
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line"><span class="hljs-attr">            referencedColumnName:</span> <span class="hljs-string">id</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Things to note:</p>
 <ul><li class="dash"> The &quot;association override&quot; specifies the overrides base on the property name.</li>
 <li class="dash"> This feature is available for all kind of associations. (OneToOne, OneToMany, ManyToOne, ManyToMany)</li>
@@ -620,113 +667,135 @@ MyProject\Model\Admin:
 <a class="section-anchor" id="attribute-override" name="attribute-override"></a><h3 class="section-header"><a href="#attribute-override">Attribute Override<i class="fas fa-link"></i></a></h3>
 <p>Override the mapping of a field.</p>
 <p>Could be used by an entity that extends a mapped superclass to override a field mapping defined by the mapped superclass.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-// user mapping
-namespace MyProject\Model;
-/**
- * @MappedSuperclass
- */
-class User
-{
-    /** @Id @GeneratedValue @Column(type=&quot;integer&quot;, name=&quot;user_id&quot;, length=150) */
-    protected $id;
-
-    /** @Column(name=&quot;user_name&quot;, nullable=true, unique=false, length=250) */
-    protected $name;
-
-    // other fields mapping
-}
-
-// guest mapping
-namespace MyProject\Model;
-/**
- * @Entity
- * @AttributeOverrides({
- *      @AttributeOverride(name=&quot;id&quot;,
- *          column=@Column(
- *              name     = &quot;guest_id&quot;,
- *              type     = &quot;integer&quot;,
-                length   = 140
- *          )
- *      ),
- *      @AttributeOverride(name=&quot;name&quot;,
- *          column=@Column(
- *              name     = &quot;guest_name&quot;,
- *              nullable = false,
- *              unique   = true,
-                length   = 240
- *          )
- *      )
- * })
- */
-class Guest extends User
-{
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;!-- user mapping --&gt;
-&lt;doctrine-mapping&gt;
-  &lt;mapped-superclass name=&quot;MyProject\Model\User&quot;&gt;
-        &lt;id name=&quot;id&quot; type=&quot;integer&quot; column=&quot;user_id&quot; length=&quot;150&quot;&gt;
-            &lt;generator strategy=&quot;AUTO&quot;/&gt;
-        &lt;/id&gt;
-        &lt;field name=&quot;name&quot; column=&quot;user_name&quot; type=&quot;string&quot; length=&quot;250&quot; nullable=&quot;true&quot; unique=&quot;false&quot; /&gt;
-        &lt;many-to-one field=&quot;address&quot; target-entity=&quot;Address&quot;&gt;
-            &lt;cascade&gt;
-                &lt;cascade-persist/&gt;
-                &lt;cascade-merge/&gt;
-            &lt;/cascade&gt;
-            &lt;join-column name=&quot;address_id&quot; referenced-column-name=&quot;id&quot;/&gt;
-        &lt;/many-to-one&gt;
-        &lt;!-- other fields mapping --&gt;
-    &lt;/mapped-superclass&gt;
-&lt;/doctrine-mapping&gt;
-
-&lt;!-- admin mapping --&gt;
-&lt;doctrine-mapping&gt;
-    &lt;entity name=&quot;MyProject\Model\Guest&quot;&gt;
-        &lt;attribute-overrides&gt;
-            &lt;attribute-override name=&quot;id&quot;&gt;
-                &lt;field column=&quot;guest_id&quot; length=&quot;140&quot;/&gt;
-            &lt;/attribute-override&gt;
-            &lt;attribute-override name=&quot;name&quot;&gt;
-                &lt;field column=&quot;guest_name&quot; type=&quot;string&quot; length=&quot;240&quot; nullable=&quot;false&quot; unique=&quot;true&quot; /&gt;
-            &lt;/attribute-override&gt;
-        &lt;/attribute-overrides&gt;
-    &lt;/entity&gt;
-&lt;/doctrine-mapping&gt;</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml"># user mapping
-MyProject\Model\User:
-  type: mappedSuperclass
-  id:
-    id:
-      type: integer
-      column: user_id
-      length: 150
-      generator:
-        strategy: AUTO
-  fields:
-    name:
-      type: string
-      column: user_name
-      length: 250
-      nullable: true
-      unique: false
-  #other fields mapping
-
-
-# guest mapping
-MyProject\Model\Guest:
-  type: entity
-  attributeOverride:
-    id:
-      column: guest_id
-      type: integer
-      length: 140
-    name:
-      column: guest_name
-      type: string
-      length: 240
-      nullable: false
-      unique: true
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="53ed24a6b43d0977fa3cd25c334b1f00993c235f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="53ed24a6b43d0977fa3cd25c334b1f00993c235f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// user mapping</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @MappedSuperclass
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@GeneratedValue</span> <span class="hljs-doctag">@Column</span>(type="integer", name="user_id", length=150) */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">protected</span> $id;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(name="user_name", nullable=true, unique=false, length=250) */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">protected</span> $name;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">// other fields mapping</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-comment">// guest mapping</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">Model</span>;
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"> * @AttributeOverrides({
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"> *      @AttributeOverride(name=<span class="hljs-string">"id"</span>,
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"> *          column=@Column(
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"> *              name     = <span class="hljs-string">"guest_id"</span>,
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"> *              type     = <span class="hljs-string">"integer"</span>,
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">                length   = <span class="hljs-number">140</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"> *          )
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"> *      ),
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"> *      @AttributeOverride(name=<span class="hljs-string">"name"</span>,
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"> *          column=@Column(
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"> *              name     = <span class="hljs-string">"guest_name"</span>,
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"> *              nullable = <span class="hljs-keyword">false</span>,
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"> *              unique   = <span class="hljs-keyword">true</span>,
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">                length   = <span class="hljs-number">240</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"> *          )
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"> *      )
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"> * })
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Guest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="dbf1455de15adb6a2b22f107f8314f092a73eed6"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="dbf1455de15adb6a2b22f107f8314f092a73eed6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">&lt;!-- user mapping --&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">  <span class="hljs-tag">&lt;<span class="hljs-name">mapped-superclass</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyProject\Model\User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"integer"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"user_id"</span> <span class="hljs-attr">length</span>=<span class="hljs-string">"150"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">generator</span> <span class="hljs-attr">strategy</span>=<span class="hljs-string">"AUTO"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"user_name"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">length</span>=<span class="hljs-string">"250"</span> <span class="hljs-attr">nullable</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">unique</span>=<span class="hljs-string">"false"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"address"</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Address"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">cascade</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">cascade-persist</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">cascade-merge</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">cascade</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">join-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"address_id"</span> <span class="hljs-attr">referenced-column-name</span>=<span class="hljs-string">"id"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">many-to-one</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-comment">&lt;!-- other fields mapping --&gt;</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">mapped-superclass</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-comment">&lt;!-- admin mapping --&gt;</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyProject\Model\Guest"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">attribute-overrides</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">attribute-override</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"guest_id"</span> <span class="hljs-attr">length</span>=<span class="hljs-string">"140"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">attribute-override</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">attribute-override</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">                <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"guest_name"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">length</span>=<span class="hljs-string">"240"</span> <span class="hljs-attr">nullable</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">unique</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">            <span class="hljs-tag">&lt;/<span class="hljs-name">attribute-override</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">attribute-overrides</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ab2f19c01b1846100192ed088b929658a0398083"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ab2f19c01b1846100192ed088b929658a0398083"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment"># user mapping</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-string">MyProject\Model\User:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">mappedSuperclass</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  id:</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">      column:</span> <span class="hljs-string">user_id</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">150</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">      generator:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">        strategy:</span> <span class="hljs-string">AUTO</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">  fields:</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    name:</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      column:</span> <span class="hljs-string">user_name</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">250</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">      nullable:</span> <span class="hljs-literal">true</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">      unique:</span> <span class="hljs-literal">false</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">  <span class="hljs-comment">#other fields mapping</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-comment"># guest mapping</span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-string">MyProject\Model\Guest:</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">  attributeOverride:</span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">    id:</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-attr">      column:</span> <span class="hljs-string">guest_id</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">140</span>
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-attr">    name:</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-attr">      column:</span> <span class="hljs-string">guest_name</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">240</span>
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-attr">      nullable:</span> <span class="hljs-literal">false</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-attr">      unique:</span> <span class="hljs-literal">true</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Things to note:</p>
 <ul><li class="dash"> The &quot;attribute override&quot; specifies the overrides base on the property name.</li>
 <li class="dash"> The column type <em>CANNOT</em> be changed. if the column type is not equals you got a <code>MappingException</code></li>
@@ -757,8 +826,6 @@ MyProject\Model\Guest:
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -804,7 +871,7 @@ MyProject\Model\Guest:
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

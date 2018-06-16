@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -250,54 +247,75 @@ and <a href="http://www.day.com/specs/jcr/2.0/3_Repository_Model.html#3.7.11.8%2
 <a class="section-anchor" id="using-the-build-in-support" name="using-the-build-in-support"></a><h2 class="section-header"><a href="#using-the-build-in-support">Using the build-in support<i class="fas fa-link"></i></a></h2>
 <p>If the PHPCR implementation you use supports the mixins automatically,
 you can get timestamps on your documents by simply adding the mixins:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-
-/**
- * @PHPCR\Document(
- *   mixins={&quot;mix:created&quot;, &quot;mix:lastModified&quot;}
- * )
- */
-class SomeDocument
-{
-    /**
-     * @PHPCR\Field(type=&quot;date&quot;, property=&quot;jcr:created&quot;)
-     */
-    private $created;
-
-    /**
-     * @PHPCR\Field(type=&quot;string&quot;, property=&quot;jcr:createdBy&quot;)
-     */
-    private $createdBy;
-
-    /**
-     * @PHPCR\Field(type=&quot;date&quot;, property=&quot;jcr:lastModified&quot;)
-     */
-    private $lastModified;
-
-    /**
-     * @PHPCR\Field(type=&quot;string&quot;, property=&quot;jcr:lastModifiedBy&quot;)
-     */
-    private $lastModifiedBy;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;doctrine-mapping&gt;
-    &lt;document name=&quot;SomeDocument&quot;&gt;
-        &lt;field fieldName=&quot;created&quot; property=&quot;jcr:created&quot; /&gt;
-        &lt;field fieldName=&quot;createdBy&quot; property=&quot;jcr:createdBy&quot; /&gt;
-        &lt;field fieldName=&quot;lastModified&quot; type=&quot;jcr:lastModified&quot; /&gt;
-        &lt;field fieldName=&quot;lastModifiedBy&quot; type=&quot;jcr:lastModifiedBy&quot; /&gt;
-    &lt;/document&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">SomeDocument:
-    fields:
-        created:
-            property: &quot;jcr:created&quot;
-        createdBy:
-            property: &quot;jcr:createdBy&quot;
-        lastModified:
-            property: &quot;jcr:lastModified&quot;
-        lastModifiedBy:
-            property: &quot;jcr:lastModifiedBy&quot;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="abdc53ab1dbcceedf16b61a0aabc9c9dfdb6cd20"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="abdc53ab1dbcceedf16b61a0aabc9c9dfdb6cd20"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">PHPCR</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Annotations</span> <span class="hljs-title">as</span> <span class="hljs-title">PHPCR</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @PHPCR\Document(
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> *   mixins={<span class="hljs-string">"mix:created"</span>, <span class="hljs-string">"mix:lastModified"</span>}
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * )
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeDocument</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @PHPCR\Field(type=<span class="hljs-string">"date"</span>, property=<span class="hljs-string">"jcr:created"</span>)
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">private</span> $created;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * @PHPCR\Field(type=<span class="hljs-string">"string"</span>, property=<span class="hljs-string">"jcr:createdBy"</span>)
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">private</span> $createdBy;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     * @PHPCR\Field(type=<span class="hljs-string">"date"</span>, property=<span class="hljs-string">"jcr:lastModified"</span>)
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">private</span> $lastModified;
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     * @PHPCR\Field(type=<span class="hljs-string">"string"</span>, property=<span class="hljs-string">"jcr:lastModifiedBy"</span>)
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-keyword">private</span> $lastModifiedBy;
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b99295f8a0cb47c838029cd29e361bcacdfd1b19"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b99295f8a0cb47c838029cd29e361bcacdfd1b19"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"SomeDocument"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"created"</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"jcr:created"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"createdBy"</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"jcr:createdBy"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"lastModified"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"jcr:lastModified"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"lastModifiedBy"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"jcr:lastModifiedBy"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c6e0ff827454fdb030115d32c93a5fef0d47a3d4"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c6e0ff827454fdb030115d32c93a5fef0d47a3d4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">SomeDocument:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">    fields:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">        created:</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">            property:</span> <span class="hljs-string">"jcr:created"</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">        createdBy:</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">            property:</span> <span class="hljs-string">"jcr:createdBy"</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">        lastModified:</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">            property:</span> <span class="hljs-string">"jcr:lastModified"</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">        lastModifiedBy:</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">            property:</span> <span class="hljs-string">"jcr:lastModifiedBy"</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>After flushing this document, these fields will be populated. The creation
 date of course will never change, but the last modified date will be updated
 whenever you change properties on the document.</p>
@@ -410,8 +428,6 @@ class LastModified
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
         <script id="instantsearch-template" type="text/template">
@@ -456,7 +472,7 @@ class LastModified
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

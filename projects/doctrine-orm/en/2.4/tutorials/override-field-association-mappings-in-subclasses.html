@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -273,74 +270,95 @@ i.e. attributes and associations metadata in particular. The example here shows
 the overriding of a class that uses a trait but is similar when extending a base
 class as shown at the end of this tutorial.</p>
 <p>Suppose we have a class ExampleEntityWithOverride. This class uses trait ExampleTrait:</p>
-<pre><code class="php">&lt;?php
-/**
- * @Entity
- *
- * @AttributeOverrides({
- *      @AttributeOverride(name=&quot;foo&quot;,
- *          column=@Column(
- *              name     = &quot;foo_overridden&quot;,
- *              type     = &quot;integer&quot;,
- *              length   = 140,
- *              nullable = false,
- *              unique   = false
- *          )
- *      )
- * })
- *
- * @AssociationOverrides({
- *      @AssociationOverride(name=&quot;bar&quot;,
- *          joinColumns=@JoinColumn(
- *              name=&quot;example_entity_overridden_bar_id&quot;, referencedColumnName=&quot;id&quot;
- *          )
- *      )
- * })
- */
-class ExampleEntityWithOverride
-{
-    use ExampleTrait;
-}
-
-/**
- * @Entity
- */
-class Bar
-{
-    /** @Id @Column(type=&quot;string&quot;) */
-    private $id;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="9bc88af6441c2b66b27ec3bf45c51ef23f13f2bc"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="9bc88af6441c2b66b27ec3bf45c51ef23f13f2bc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @AttributeOverrides({
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *      @AttributeOverride(name=<span class="hljs-string">"foo"</span>,
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *          column=@Column(
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> *              name     = <span class="hljs-string">"foo_overridden"</span>,
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> *              type     = <span class="hljs-string">"integer"</span>,
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> *              length   = <span class="hljs-number">140</span>,
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> *              nullable = <span class="hljs-keyword">false</span>,
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> *              unique   = <span class="hljs-keyword">false</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> *          )
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"> *      )
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"> * })
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"> * @AssociationOverrides({
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"> *      @AssociationOverride(name=<span class="hljs-string">"bar"</span>,
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"> *          joinColumns=@JoinColumn(
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"> *              name=<span class="hljs-string">"example_entity_overridden_bar_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"> *          )
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"> *      )
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"> * })
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleEntityWithOverride</span></span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-keyword">use</span> <span class="hljs-title">ExampleTrait</span>;
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"> * @Entity
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span></span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The docblock is showing metadata override of the attribute and association type. It
 basically changes the names of the columns mapped for a property <code>foo</code> and for
 the association <code>bar</code> which relates to Bar class shown above. Here is the trait
 which has mapping metadata that is overridden by the annotation above:</p>
-<pre><code class="php">/**
- * Trait class
- */
-trait ExampleTrait
-{
-    /** @Id @Column(type=&quot;string&quot;) */
-    private $id;
-
-    /**
-     * @Column(name=&quot;trait_foo&quot;, type=&quot;integer&quot;, length=100, nullable=true, unique=true)
-     */
-    protected $foo;
-
-    /**
-     * @OneToOne(targetEntity=&quot;Bar&quot;, cascade={&quot;persist&quot;, &quot;merge&quot;})
-     * @JoinColumn(name=&quot;example_trait_bar_id&quot;, referencedColumnName=&quot;id&quot;)
-     */
-    protected $bar;
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="5d6f88bbd280fb6b59f49e8f1c8dec43a7e226ab"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="5d6f88bbd280fb6b59f49e8f1c8dec43a7e226ab"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"> * <span class="hljs-keyword">Trait</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">trait</span> ExampleTrait
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @Column(name=<span class="hljs-string">"trait_foo"</span>, type=<span class="hljs-string">"integer"</span>, length=<span class="hljs-number">100</span>, nullable=<span class="hljs-keyword">true</span>, unique=<span class="hljs-keyword">true</span>)
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">protected</span> $foo;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     * @OneToOne(targetEntity=<span class="hljs-string">"Bar"</span>, cascade={<span class="hljs-string">"persist"</span>, <span class="hljs-string">"merge"</span>})
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * @JoinColumn(name=<span class="hljs-string">"example_trait_bar_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">protected</span> $bar;
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>The case for just extending a class would be just the same but:</p>
-<pre><code class="php">class ExampleEntityWithOverride extends BaseEntityWithSomeMapping
-{
-    // ...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4daa9716a1455a852fec9e1cd1362760f76b5c55"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4daa9716a1455a852fec9e1cd1362760f76b5c55"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleEntityWithOverride</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseEntityWithSomeMapping</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>Overriding is also supported via XML and YAML.</p>
 <p></p>
                                             </div>
@@ -366,8 +384,6 @@ trait ExampleTrait
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -413,7 +429,7 @@ trait ExampleTrait
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

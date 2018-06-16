@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -276,45 +273,59 @@ identity check, as demonstrated in the following sections.</p></div>
 <a class="section-anchor" id="safely-implementing-wakeup" name="safely-implementing-wakeup"></a><h2 class="section-header"><a href="#safely-implementing-wakeup">Safely implementing \_\_wakeup<i class="fas fa-link"></i></a></h2>
 <p>To safely implement <code>__wakeup</code>, simply enclose your
 implementation code in an identity check as follows:</p>
-<pre><code class="php">&lt;?php
-
-class MyDocument
-{
-    private $id; // This is the identifier of the document.
-    //...
-
-    public function __wakeup()
-    {
-        // If the document has an identity, proceed as normal.
-        if ($this-&gt;id) {
-            // ... Your code here as normal ...
-        }
-        // otherwise do nothing, do NOT throw an exception!
-    }
-
-    //...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="f55902b1cf13298606434034b7b01df39461ba9a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="f55902b1cf13298606434034b7b01df39461ba9a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyDocument</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">private</span> $id; <span class="hljs-comment">// This is the identifier of the document.</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-comment">// If the document has an identity, proceed as normal.</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;id) {
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">            <span class="hljs-comment">// ... Your code here as normal ...</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-comment">// otherwise do nothing, do NOT throw an exception!</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="safely-implementing-clone" name="safely-implementing-clone"></a><h2 class="section-header"><a href="#safely-implementing-clone">Safely implementing \_\_clone<i class="fas fa-link"></i></a></h2>
 <p>Safely implementing <code>__clone</code> is pretty much the same:</p>
-<pre><code class="php">&lt;?php
-class MyDocument
-{
-    private $id; // This is the identifier of the document.
-    //...
-
-    public function __clone()
-    {
-        // If the document has an identity, proceed as normal.
-        if ($this-&gt;id) {
-            // ... Your code here as normal ...
-        }
-        // otherwise do nothing, do NOT throw an exception!
-    }
-
-    //...
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a3bb96eb0b838cd3ccc275786ba665284517e04f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a3bb96eb0b838cd3ccc275786ba665284517e04f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyDocument</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">private</span> $id; <span class="hljs-comment">// This is the identifier of the document.</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__clone</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-comment">// If the document has an identity, proceed as normal.</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;id) {
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            <span class="hljs-comment">// ... Your code here as normal ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-comment">// otherwise do nothing, do NOT throw an exception!</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">//...</span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="summary" name="summary"></a><h2 class="section-header"><a href="#summary">Summary<i class="fas fa-link"></i></a></h2>
 <p>As you have seen, it is quite easy to safely make use of
 <code>__wakeup</code> and <code>__clone</code> in your documents without adding any
@@ -348,8 +359,6 @@ unserialize or clone a document with no identity.</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -395,7 +404,7 @@ unserialize or clone a document with no identity.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

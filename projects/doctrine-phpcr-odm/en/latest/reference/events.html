@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -356,100 +353,121 @@ listeners:</p>
 providing a mechanism to register direct callbacks inside the
 corresponding document classes that are executed when the lifecycle
 event occurs.</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-
-/**
- * @PHPCR\PrePersist
- */
-public function doStuffOnPrePersist()
-{
-    $this-&gt;createdAt = date('Y-m-d H:m:s');
-}
-
-/**
- * @PHPCR\PrePersist
- */
-public function doOtherStuffOnPrePersist()
-{
-    $this-&gt;value = 'changed from prePersist callback!';
-}
-
-/**
- * @PHPCR\PostPersist
- */
-public function doStuffOnPostPersist()
-{
-    $this-&gt;value = 'changed from postPersist callback!';
-}
-
-/**
- * @PHPCR\PostLoad
- */
-public function doStuffOnPostLoad()
-{
-    $this-&gt;value = 'changed from postLoad callback!';
-}
-
-/**
- * @PHPCR\PreUpdate
- */
-public function doStuffOnPreUpdate()
-{
-    $this-&gt;value = 'changed from preUpdate callback!';
-}
-
-/**
- * @PHPCR\PreBindTranslation
- */
-public function doStuffOnPreBindTranslation()
-{
-    $this-&gt;value = 'changed from preBindTranslation callback!';
-}
-
-/**
- * @PHPCR\PostBindTranslation
- */
-public function doStuffOnPostBindTranslation()
-{
-    $this-&gt;value = 'changed from postBindTranslation callback!';
-}
-
-/**
- * @PHPCR\postLoadTranslation
- */
-public function doStuffOnPostLoadTranslation()
-{
-    $this-&gt;value = 'changed from postLoadTranslation callback!';
-}
-/**
- * @PHPCR\PreRemoveTranslation
- */
-public function doStuffOnPreRemoveTranslation()
-{
-    $this-&gt;value = 'changed from preRemoveTranslation callback!';
-}
-/**
- * @PHPCR\PostRemoveTranslation
- */
-public function doStuffOnPostRemoveTranslation()
-{
-    $this-&gt;value = 'changed from postRemoveTranslation callback!';
-}
-</code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre><code class="yaml">MyPersistentClass:
-  lifecycleCallbacks:
-    prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
-    postPersist: [ doStuffOnPostPersist ]
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-
-&lt;doctrine-mapping&gt;
-    &lt;document name=&quot;MyPersistentClass&quot;&gt;
-        &lt;lifecycle-callbacks&gt;
-            &lt;lifecycle-callback type=&quot;prePersist&quot; method=&quot;doStuffOnPrePersist&quot;/&gt;
-            &lt;lifecycle-callback type=&quot;postPersist&quot; method=&quot;doStuffOnPostPersist&quot;/&gt;
-        &lt;/lifecycle-callbacks&gt;
-    &lt;/document&gt;
-&lt;/doctrine-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1b8a6c551d30cef8b4ddf7a728cce001c8887d68"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1b8a6c551d30cef8b4ddf7a728cce001c8887d68"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">PHPCR</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Annotations</span> <span class="hljs-title">as</span> <span class="hljs-title">PHPCR</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @PHPCR\PrePersist
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPrePersist</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;createdAt = date(<span class="hljs-string">'Y-m-d H:m:s'</span>);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> * @PHPCR\PrePersist
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doOtherStuffOnPrePersist</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from prePersist callback!'</span>;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"> * @PHPCR\PostPersist
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPostPersist</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from postPersist callback!'</span>;
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"> * @PHPCR\PostLoad
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPostLoad</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from postLoad callback!'</span>;
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"> * @PHPCR\PreUpdate
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPreUpdate</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from preUpdate callback!'</span>;
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line"> * @PHPCR\PreBindTranslation
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPreBindTranslation</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from preBindTranslation callback!'</span>;
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line"> * @PHPCR\PostBindTranslation
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">54</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPostBindTranslation</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from postBindTranslation callback!'</span>;
+</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">59</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">60</td><td class="code-line"> * @PHPCR\postLoadTranslation
+</td></tr><tr><td class="line-number noselect">61</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">62</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPostLoadTranslation</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">63</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">64</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from postLoadTranslation callback!'</span>;
+</td></tr><tr><td class="line-number noselect">65</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">66</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">67</td><td class="code-line"> * @PHPCR\PreRemoveTranslation
+</td></tr><tr><td class="line-number noselect">68</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">69</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPreRemoveTranslation</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">70</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">71</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from preRemoveTranslation callback!'</span>;
+</td></tr><tr><td class="line-number noselect">72</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">73</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">74</td><td class="code-line"> * @PHPCR\PostRemoveTranslation
+</td></tr><tr><td class="line-number noselect">75</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">76</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuffOnPostRemoveTranslation</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">77</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">78</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;value = <span class="hljs-string">'changed from postRemoveTranslation callback!'</span>;
+</td></tr><tr><td class="line-number noselect">79</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="4d793a1869869d1d37fff7696564c08e243835fb"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="4d793a1869869d1d37fff7696564c08e243835fb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">MyPersistentClass:</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  lifecycleCallbacks:</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">    prePersist:</span> <span class="hljs-string">[</span> <span class="hljs-string">doStuffOnPrePersist,</span> <span class="hljs-string">doOtherStuffOnPrePersistToo</span> <span class="hljs-string">]</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    postPersist:</span> <span class="hljs-string">[</span> <span class="hljs-string">doStuffOnPostPersist</span> <span class="hljs-string">]</span>
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="b777e1250d39fcd234544dc334634e79814c057f"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="b777e1250d39fcd234544dc334634e79814c057f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyPersistentClass"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callbacks</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"prePersist"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"doStuffOnPrePersist"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">lifecycle-callback</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"postPersist"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"doStuffOnPostPersist"</span>/&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">lifecycle-callbacks</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>The methods mapped to the callbacks in xml or yml need to be public methods of your document.</p>
 <p>The <code>key</code> of the lifecycleCallbacks is the name of the method and
 the value is the event type. The allowed event types are the ones
@@ -482,8 +500,6 @@ listed in the previous Lifecycle Events section.</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -529,7 +545,7 @@ listed in the previous Lifecycle Events section.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

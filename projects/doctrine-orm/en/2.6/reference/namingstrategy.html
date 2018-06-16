@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -273,108 +270,136 @@ reduce the verbosity of the mapping document, eliminating repetitive noise (eg: 
 <p>By default the <code>Doctrine\ORM\Mapping\DefaultNamingStrategy</code>
 uses the simple class name and the attribute names to generate tables and columns.</p>
 <p>You can specify a different strategy by calling <code>Doctrine\ORM\Configuration#setNamingStrategy()</code>:</p>
-<pre><code class="php">&lt;?php
-$namingStrategy = new MyNamingStrategy();
-$configuration-&gt;setNamingStrategy($namingStrategy);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1bfb14483516cb719c483053d9db92581e649a3b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1bfb14483516cb719c483053d9db92581e649a3b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$namingStrategy = <span class="hljs-keyword">new</span> MyNamingStrategy();
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$configuration-&gt;setNamingStrategy($namingStrategy);
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="underscore-naming-strategy" name="underscore-naming-strategy"></a><h2 class="section-header"><a href="#underscore-naming-strategy">Underscore naming strategy<i class="fas fa-link"></i></a></h2>
 <p><code>\Doctrine\ORM\Mapping\UnderscoreNamingStrategy</code> is a built-in strategy.</p>
-<pre><code class="php">&lt;?php
-$namingStrategy = new \Doctrine\ORM\Mapping\UnderscoreNamingStrategy(CASE_UPPER);
-$configuration-&gt;setNamingStrategy($namingStrategy);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8f9462aa28b395279a436ffc93d4a75781d05d0d"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8f9462aa28b395279a436ffc93d4a75781d05d0d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$namingStrategy = <span class="hljs-keyword">new</span> \Doctrine\ORM\Mapping\UnderscoreNamingStrategy(CASE_UPPER);
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$configuration-&gt;setNamingStrategy($namingStrategy);
+</td></tr></table></div></code></pre>
 <p>For SomeEntityName the strategy will generate the table SOME_ENTITY_NAME with the
 <code>CASE_UPPER</code> option, or some_entity_name with the <code>CASE_LOWER</code> option.</p>
 <a class="section-anchor" id="naming-strategy-interface" name="naming-strategy-interface"></a><h2 class="section-header"><a href="#naming-strategy-interface">Naming strategy interface<i class="fas fa-link"></i></a></h2>
 <p>The interface <code>Doctrine\ORM\Mapping\NamingStrategy</code> allows you to specify
 a naming strategy for database tables and columns.</p>
-<pre><code class="php">&lt;?php
-/**
- * Return a table name for an entity class
- *
- * @param string $className The fully-qualified class name
- * @return string A table name
- */
-function classToTableName($className);
-
-/**
- * Return a column name for a property
- *
- * @param string $propertyName A property
- * @return string A column name
- */
-function propertyToColumnName($propertyName);
-
-/**
- * Return the default reference column name
- *
- * @return string A column name
- */
-function referenceColumnName();
-
-/**
- * Return a join column name for a property
- *
- * @param string $propertyName A property
- * @return string A join column name
- */
-function joinColumnName($propertyName, $className = null);
-
-/**
- * Return a join table name
- *
- * @param string $sourceEntity The source entity
- * @param string $targetEntity The target entity
- * @param string $propertyName A property
- * @return string A join table name
- */
-function joinTableName($sourceEntity, $targetEntity, $propertyName = null);
-
-/**
- * Return the foreign key column name for the given parameters
- *
- * @param string $entityName A entity
- * @param string $referencedColumnName A property
- * @return string A join column name
- */
-function joinKeyColumnName($entityName, $referencedColumnName = null);
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="1851b3ef68c3d7a082781227fd3a36618bd87a9a"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="1851b3ef68c3d7a082781227fd3a36618bd87a9a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * <span class="hljs-keyword">Return</span> a table name <span class="hljs-keyword">for</span> an entity <span class="hljs-class"><span class="hljs-keyword">class</span></span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @param string $className The fully-qualified <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">name</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @<span class="hljs-keyword">return</span> string A table name
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">classToTableName</span><span class="hljs-params">($className)</span></span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> * <span class="hljs-keyword">Return</span> a column name <span class="hljs-keyword">for</span> a property
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> * @param string $propertyName A property
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"> * @<span class="hljs-keyword">return</span> string A column name
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">propertyToColumnName</span><span class="hljs-params">($propertyName)</span></span>;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"> * <span class="hljs-keyword">Return</span> the <span class="hljs-keyword">default</span> reference column name
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"> * @<span class="hljs-keyword">return</span> string A column name
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">referenceColumnName</span><span class="hljs-params">()</span></span>;
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"> * <span class="hljs-keyword">Return</span> a join column name <span class="hljs-keyword">for</span> a property
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"> * @param string $propertyName A property
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"> * @<span class="hljs-keyword">return</span> string A join column name
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">joinColumnName</span><span class="hljs-params">($propertyName, $className = null)</span></span>;
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"> * <span class="hljs-keyword">Return</span> a join table name
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"> * @param string $sourceEntity The source entity
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"> * @param string $targetEntity The target entity
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"> * @param string $propertyName A property
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"> * @<span class="hljs-keyword">return</span> string A join table name
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">joinTableName</span><span class="hljs-params">($sourceEntity, $targetEntity, $propertyName = null)</span></span>;
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line"> * <span class="hljs-keyword">Return</span> the foreign key column name <span class="hljs-keyword">for</span> the given parameters
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line"> *
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line"> * @param string $entityName A entity
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line"> * @param string $referencedColumnName A property
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line"> * @<span class="hljs-keyword">return</span> string A join column name
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">joinKeyColumnName</span><span class="hljs-params">($entityName, $referencedColumnName = null)</span></span>;
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="implementing-a-naming-strategy" name="implementing-a-naming-strategy"></a><h2 class="section-header"><a href="#implementing-a-naming-strategy">Implementing a naming strategy<i class="fas fa-link"></i></a></h2>
 <p>If you have database naming standards, like all table names should be prefixed
 by the application prefix, all column names should be lower case, you can easily
 achieve such standards by implementing a naming strategy.</p>
 <p>You need to create a class which implements <code>Doctrine\ORM\Mapping\NamingStrategy</code>.</p>
-<pre><code class="php">&lt;?php
-class MyAppNamingStrategy implements NamingStrategy
-{
-    public function classToTableName($className)
-    {
-        return 'MyApp_' . substr($className, strrpos($className, '\\') + 1);
-    }
-    public function propertyToColumnName($propertyName)
-    {
-        return $propertyName;
-    }
-    public function referenceColumnName()
-    {
-        return 'id';
-    }
-    public function joinColumnName($propertyName, $className = null)
-    {
-        return $propertyName . '_' . $this-&gt;referenceColumnName();
-    }
-    public function joinTableName($sourceEntity, $targetEntity, $propertyName = null)
-    {
-        return strtolower($this-&gt;classToTableName($sourceEntity) . '_' .
-                $this-&gt;classToTableName($targetEntity));
-    }
-    public function joinKeyColumnName($entityName, $referencedColumnName = null)
-    {
-        return strtolower($this-&gt;classToTableName($entityName) . '_' .
-                ($referencedColumnName ?: $this-&gt;referenceColumnName()));
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a767c8c5abd7badc975867b0de3181278b0c12b5"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a767c8c5abd7badc975867b0de3181278b0c12b5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAppNamingStrategy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">NamingStrategy</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">classToTableName</span><span class="hljs-params">($className)</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-string">'MyApp_'</span> . substr($className, strrpos($className, <span class="hljs-string">'\\'</span>) + <span class="hljs-number">1</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">propertyToColumnName</span><span class="hljs-params">($propertyName)</span></span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">return</span> $propertyName;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">referenceColumnName</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-string">'id'</span>;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">joinColumnName</span><span class="hljs-params">($propertyName, $className = null)</span></span>
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        <span class="hljs-keyword">return</span> $propertyName . <span class="hljs-string">'_'</span> . <span class="hljs-keyword">$this</span>-&gt;referenceColumnName();
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">joinTableName</span><span class="hljs-params">($sourceEntity, $targetEntity, $propertyName = null)</span></span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        <span class="hljs-keyword">return</span> strtolower(<span class="hljs-keyword">$this</span>-&gt;classToTableName($sourceEntity) . <span class="hljs-string">'_'</span> .
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">                <span class="hljs-keyword">$this</span>-&gt;classToTableName($targetEntity));
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">joinKeyColumnName</span><span class="hljs-params">($entityName, $referencedColumnName = null)</span></span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        <span class="hljs-keyword">return</span> strtolower(<span class="hljs-keyword">$this</span>-&gt;classToTableName($entityName) . <span class="hljs-string">'_'</span> .
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">                ($referencedColumnName ?: <span class="hljs-keyword">$this</span>-&gt;referenceColumnName()));
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -399,8 +424,6 @@ class MyAppNamingStrategy implements NamingStrategy
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -446,7 +469,7 @@ class MyAppNamingStrategy implements NamingStrategy
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

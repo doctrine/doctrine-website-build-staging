@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -288,158 +285,179 @@ longitude/latitude pair to represent a geographic location.</p>
 <p>We create a simple entity with a field <code>$point</code> which holds a value object
 <code>Point</code> representing the latitude and longitude of the position.</p>
 <p>The entity class:</p>
-<pre><code class="php">&lt;?php
-
-namespace Geo\Entity;
-
-use Doctrine\ORM\Annotation as ORM;
-
-/**
- * @ORM\Entity
- */
-class Location
-{
-    /**
-     * @ORM\Column(type=&quot;point&quot;)
-     *
-     * @var \Geo\ValueObject\Point
-     */
-    private $point;
-
-    /**
-     * @ORM\Column(type=&quot;string&quot;)
-     *
-     * @var string
-     */
-    private $address;
-
-    /**
-     * @param \Geo\ValueObject\Point $point
-     */
-    public function setPoint(\Geo\ValueObject\Point $point)
-    {
-        $this-&gt;point = $point;
-    }
-
-    /**
-     * @return \Geo\ValueObject\Point
-     */
-    public function getPoint()
-    {
-        return $this-&gt;point;
-    }
-
-    /**
-     * @param string $address
-     */
-    public function setAddress($address)
-    {
-        $this-&gt;address = $address;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAddress()
-    {
-        return $this-&gt;address;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="3a0968b18e0f723eb9c13d884e33e29c16ad3a86"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="3a0968b18e0f723eb9c13d884e33e29c16ad3a86"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Geo</span>\<span class="hljs-title">Entity</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Annotation</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @ORM\Entity
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Location</span></span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     * @ORM\Column(type=<span class="hljs-string">"point"</span>)
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     *
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     * @<span class="hljs-keyword">var</span> \Geo\ValueObject\Point
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">private</span> $point;
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * @ORM\Column(type=<span class="hljs-string">"string"</span>)
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     *
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     * @<span class="hljs-keyword">var</span> string
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">private</span> $address;
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     * @param \Geo\ValueObject\Point $point
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setPoint</span><span class="hljs-params">(\Geo\ValueObject\Point $point)</span></span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;point = $point;
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">     * @<span class="hljs-keyword">return</span> \Geo\ValueObject\Point
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPoint</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;point;
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">     * @param string $address
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAddress</span><span class="hljs-params">($address)</span></span>
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;address = $address;
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAddress</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;address;
+</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>We use the custom type <code>point</code> in the <code>@Column</code>  docblock annotation of the
 <code>$point</code> field. We will create this custom mapping type in the next chapter.</p>
 <p>The point class:</p>
-<pre><code class="php">&lt;?php
-
-namespace Geo\ValueObject;
-
-class Point
-{
-
-    /**
-     * @param float $latitude
-     * @param float $longitude
-     */
-    public function __construct($latitude, $longitude)
-    {
-        $this-&gt;latitude  = $latitude;
-        $this-&gt;longitude = $longitude;
-    }
-
-    /**
-     * @return float
-     */
-    public function getLatitude()
-    {
-        return $this-&gt;latitude;
-    }
-
-    /**
-     * @return float
-     */
-    public function getLongitude()
-    {
-        return $this-&gt;longitude;
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="8a29541802906e281cbbfc1d109b8d6ed5a708a3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="8a29541802906e281cbbfc1d109b8d6ed5a708a3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Geo</span>\<span class="hljs-title">ValueObject</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span></span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @param float $latitude
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @param float $longitude
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($latitude, $longitude)</span></span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;latitude  = $latitude;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;longitude = $longitude;
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     * @<span class="hljs-keyword">return</span> float
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLatitude</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;latitude;
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     * @<span class="hljs-keyword">return</span> float
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLongitude</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;longitude;
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <a class="section-anchor" id="the-mapping-type" name="the-mapping-type"></a><h2 class="section-header"><a href="#the-mapping-type">The mapping type<i class="fas fa-link"></i></a></h2>
 <p>Now we're going to create the <code>point</code> type and implement all required methods.</p>
-<pre><code class="php">&lt;?php
-
-namespace Geo\Types;
-
-use Doctrine\DBAL\Types\Type;
-use Doctrine\DBAL\Platforms\AbstractPlatform;
-
-use Geo\ValueObject\Point;
-
-class PointType extends Type
-{
-    const POINT = 'point';
-
-    public function getName()
-    {
-        return self::POINT;
-    }
-
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
-    {
-        return 'POINT';
-    }
-
-    public function convertToPHPValue($value, AbstractPlatform $platform)
-    {
-        list($longitude, $latitude) = sscanf($value, 'POINT(%f %f)');
-
-        return new Point($latitude, $longitude);
-    }
-
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
-    {
-        if ($value instanceof Point) {
-            $value = sprintf('POINT(%F %F)', $value-&gt;getLongitude(), $value-&gt;getLatitude());
-        }
-
-        return $value;
-    }
-
-    public function canRequireSQLConversion()
-    {
-        return true;
-    }
-
-    public function convertToPHPValueSQL($sqlExpr, AbstractPlatform $platform)
-    {
-        return sprintf('AsText(%s)', $sqlExpr);
-    }
-
-    public function convertToDatabaseValueSQL($sqlExpr, AbstractPlatform $platform)
-    {
-        return sprintf('PointFromText(%s)', $sqlExpr);
-    }
-}
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="628175e58b23c890bec64154c851546b87dee26e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="628175e58b23c890bec64154c851546b87dee26e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Geo</span>\<span class="hljs-title">Types</span>;
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Platforms</span>\<span class="hljs-title">AbstractPlatform</span>;
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Geo</span>\<span class="hljs-title">ValueObject</span>\<span class="hljs-title">Point</span>;
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PointType</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Type</span></span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">const</span> POINT = <span class="hljs-string">'point'</span>;
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::POINT;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSQLDeclaration</span><span class="hljs-params">(array $fieldDeclaration, AbstractPlatform $platform)</span></span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-string">'POINT'</span>;
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToPHPValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span></span>
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">        <span class="hljs-keyword">list</span>($longitude, $latitude) = sscanf($value, <span class="hljs-string">'POINT(%f %f)'</span>);
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Point($latitude, $longitude);
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToDatabaseValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span></span>
+</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        <span class="hljs-keyword">if</span> ($value <span class="hljs-keyword">instanceof</span> Point) {
+</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">            $value = sprintf(<span class="hljs-string">'POINT(%F %F)'</span>, $value-&gt;getLongitude(), $value-&gt;getLatitude());
+</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">        }
+</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">        <span class="hljs-keyword">return</span> $value;
+</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">canRequireSQLConversion</span><span class="hljs-params">()</span></span>
+</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToPHPValueSQL</span><span class="hljs-params">($sqlExpr, AbstractPlatform $platform)</span></span>
+</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">        <span class="hljs-keyword">return</span> sprintf(<span class="hljs-string">'AsText(%s)'</span>, $sqlExpr);
+</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToDatabaseValueSQL</span><span class="hljs-params">($sqlExpr, AbstractPlatform $platform)</span></span>
+</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    {
+</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">        <span class="hljs-keyword">return</span> sprintf(<span class="hljs-string">'PointFromText(%s)'</span>, $sqlExpr);
+</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">    }
+</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">}
+</td></tr></table></div></code></pre>
 <p>We do a 2-step conversion here. In the first step, we convert the <code>Point</code>
 object into a string representation before saving to the database (in the
 <code>convertToDatabaseValue</code> method) and back into an object after fetching the
@@ -465,37 +483,44 @@ and path expressions in SELECT clauses. Expressions in  WHERE clauses are
 <code>PointFromText</code>.</p>
 </div>
 <a class="section-anchor" id="example-usage" name="example-usage"></a><h2 class="section-header"><a href="#example-usage">Example usage<i class="fas fa-link"></i></a></h2>
-<pre><code class="php">&lt;?php
-
-// Bootstrapping stuff...
-// $em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config);
-
-// Setup custom mapping type
-use Doctrine\DBAL\Types\Type;
-
-Type::addType('point', 'Geo\Types\PointType');
-$em-&gt;getConnection()-&gt;getDatabasePlatform()-&gt;registerDoctrineTypeMapping('point', 'point');
-
-// Store a Location object
-use Geo\Entity\Location;
-use Geo\ValueObject\Point;
-
-$location = new Location();
-
-$location-&gt;setAddress('1600 Amphitheatre Parkway, Mountain View, CA');
-$location-&gt;setPoint(new Point(37.4220761, -122.0845187));
-
-$em-&gt;persist($location);
-$em-&gt;flush();
-$em-&gt;clear();
-
-// Fetch the Location object
-$query = $em-&gt;createQuery(&quot;SELECT l FROM Geo\Entity\Location WHERE l.address = '1600 Amphitheatre Parkway, Mountain View, CA'&quot;);
-$location = $query-&gt;getSingleResult();
-
-/** @var Geo\ValueObject\Point $point */
-$point = $location-&gt;getPoint();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c6e878b6904a08bd866c0dbf4a73c2d8e78adb32"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c6e878b6904a08bd866c0dbf4a73c2d8e78adb32"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// Bootstrapping stuff...</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// $em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config);</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">// Setup custom mapping type</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>;
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">Type::addType(<span class="hljs-string">'point'</span>, <span class="hljs-string">'Geo\Types\PointType'</span>);
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$em-&gt;getConnection()-&gt;getDatabasePlatform()-&gt;registerDoctrineTypeMapping(<span class="hljs-string">'point'</span>, <span class="hljs-string">'point'</span>);
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">// Store a Location object</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Geo</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Location</span>;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Geo</span>\<span class="hljs-title">ValueObject</span>\<span class="hljs-title">Point</span>;
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$location = <span class="hljs-keyword">new</span> Location();
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$location-&gt;setAddress(<span class="hljs-string">'1600 Amphitheatre Parkway, Mountain View, CA'</span>);
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$location-&gt;setPoint(<span class="hljs-keyword">new</span> Point(<span class="hljs-number">37.4220761</span>, <span class="hljs-number">-122.0845187</span>));
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">$em-&gt;persist($location);
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">$em-&gt;flush();
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$em-&gt;clear();
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-comment">// Fetch the Location object</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">$query = $em-&gt;createQuery(<span class="hljs-string">"SELECT l FROM Geo\Entity\Location WHERE l.address = '1600 Amphitheatre Parkway, Mountain View, CA'"</span>);
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">$location = $query-&gt;getSingleResult();
+</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@var</span> Geo\ValueObject\Point $point */</span>
+</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">$point = $location-&gt;getPoint();
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -520,8 +545,6 @@ $point = $location-&gt;getPoint();
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -567,7 +590,7 @@ $point = $location-&gt;getPoint();
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

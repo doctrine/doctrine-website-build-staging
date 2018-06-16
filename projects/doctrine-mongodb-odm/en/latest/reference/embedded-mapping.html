@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -271,165 +268,249 @@ Doctrine.</p>
 <a id="embed_one"></a>
 <a class="section-anchor" id="embed-one" name="embed-one"></a><h2 class="section-header"><a href="#embed-one">Embed One<i class="fas fa-link"></i></a></h2>
 <p>Embed a single document:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-/** @Document */
-class User
-{
-    // ...
-
-    /** @EmbedOne(targetDocument=&quot;Address&quot;) */
-    private $address;
-
-    // ...
-}
-
-/** @EmbeddedDocument */
-class Address
-{
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;doctrine-mongo-mapping xmlns=&quot;http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping&quot;
-                xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-                xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
-                http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd&quot;&gt;
-  &lt;document name=&quot;Documents\User&quot;&gt;
-        &lt;embed-one field=&quot;address&quot; target-document=&quot;Address&quot; /&gt;
-  &lt;/document&gt;
-&lt;/doctrine-mongo-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="26538ab5148e01a6c56227b0a9ee110fb82688b3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="26538ab5148e01a6c56227b0a9ee110fb82688b3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedOne</span>(targetDocument="Address") */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $address;
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@EmbeddedDocument</span> */</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span></span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c80814fdf05cec70c22c948f591253307b1ddc7b"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c80814fdf05cec70c22c948f591253307b1ddc7b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mongo-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">                xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">  <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Documents\User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">embed-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"address"</span> <span class="hljs-attr">target-document</span>=<span class="hljs-string">"Address"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">  <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mongo-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <a id="embed_many"></a>
 <a class="section-anchor" id="embed-many" name="embed-many"></a><h2 class="section-header"><a href="#embed-many">Embed Many<i class="fas fa-link"></i></a></h2>
 <p>Embed many documents:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-/** @Document */
-class User
-{
-    // ...
-
-    /** @EmbedMany(targetDocument=&quot;Phonenumber&quot;) */
-    private $phonenumbers = array();
-
-    // ...
-}
-
-/** @EmbeddedDocument */
-class Phonenumber
-{
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;doctrine-mongo-mapping xmlns=&quot;http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping&quot;
-                xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-                xsi:schemaLocation=&quot;http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
-                http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd&quot;&gt;
-  &lt;document name=&quot;Documents\User&quot;&gt;
-        &lt;embed-many field=&quot;phonenumbers&quot; target-document=&quot;Phonenumber&quot; /&gt;
-  &lt;/document&gt;
-&lt;/doctrine-mongo-mapping&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="196171841a950d80fdbe42ecdde4f181533a06cd"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="196171841a950d80fdbe42ecdde4f181533a06cd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedMany</span>(targetDocument="Phonenumber") */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $phonenumbers = <span class="hljs-keyword">array</span>();
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@EmbeddedDocument</span> */</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Phonenumber</span></span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="afbe85e8332cb4243c3c7d2a76c133c69a587676"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="afbe85e8332cb4243c3c7d2a76c133c69a587676"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mongo-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"</span></span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">                xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd"&gt;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">  <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Documents\User"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">embed-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"phonenumbers"</span> <span class="hljs-attr">target-document</span>=<span class="hljs-string">"Phonenumber"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">  <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mongo-mapping</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <a id="embed_mixing_document_types"></a>
 <a class="section-anchor" id="mixing-document-types" name="mixing-document-types"></a><h2 class="section-header"><a href="#mixing-document-types">Mixing Document Types<i class="fas fa-link"></i></a></h2>
 <p>If you want to store different types of embedded documents in the same field,
 you can simply omit the <code>targetDocument</code> option:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-/** @Document */
-class User
-{
-    // ..
-
-    /** @EmbedMany */
-    private $tasks = array();
-
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;embed-many field=&quot;tasks&quot; /&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e8347425420b5b4cf65e6397cff8e04c6e9f1da3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e8347425420b5b4cf65e6397cff8e04c6e9f1da3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ..</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedMany</span> */</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $tasks = <span class="hljs-keyword">array</span>();
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="aa2b2914242d4df8fc6e502330a1805bf0a1f420"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="aa2b2914242d4df8fc6e502330a1805bf0a1f420"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">embed-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"tasks"</span> /&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Now the <code>$tasks</code> property can store any type of document! The class name will
 be automatically stored in a field named <code>_doctrine_class_name</code> within
 the embedded document. The field name can be customized with the
 <code>discriminatorField</code> option:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-/** @Document */
-class User
-{
-    // ..
-
-    /**
-     * @EmbedMany(discriminatorField=&quot;type&quot;)
-     */
-    private $tasks = array();
-
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;embed-many field=&quot;tasks&quot;&gt;
-    &lt;discriminator-field name=&quot;type&quot; /&gt;
-&lt;/embed-many&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="7868e17baa59c09f4426c1af7ca32f2749b67c86"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="7868e17baa59c09f4426c1af7ca32f2749b67c86"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ..</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @EmbedMany(discriminatorField=<span class="hljs-string">"type"</span>)
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">private</span> $tasks = <span class="hljs-keyword">array</span>();
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="622d67760c5920ccc09e2c801fff9e912da43a21"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="622d67760c5920ccc09e2c801fff9e912da43a21"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">embed-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"tasks"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">discriminator-field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"type"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">embed-many</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>You can also specify a discriminator map to avoid storing the <abbr title="Fully-Qualified Class Name">FQCN</abbr>
 
 in each embedded document:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-/** @Document */
-class User
-{
-    // ..
-
-    /**
-     * @EmbedMany(
-     *   discriminatorMap={
-     *     &quot;download&quot;=&quot;DownloadTask&quot;,
-     *     &quot;build&quot;=&quot;BuildTask&quot;
-     *   }
-     * )
-     */
-    private $tasks = array();
-
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;embed-many field=&quot;tasks&quot;&gt;
-    &lt;discriminator-map&gt;
-        &lt;discriminator-mapping value=&quot;download&quot; class=&quot;DownloadTask&quot; /&gt;
-        &lt;discriminator-mapping value=&quot;build&quot; class=&quot;BuildTask&quot; /&gt;
-    &lt;/discriminator-map&gt;
-&lt;/embed-many&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d72be81d09f8d8ba63c15c3d587f5c8fb799c0e0"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d72be81d09f8d8ba63c15c3d587f5c8fb799c0e0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ..</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @EmbedMany(
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     *   discriminatorMap={
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     *     <span class="hljs-string">"download"</span>=<span class="hljs-string">"DownloadTask"</span>,
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     *     <span class="hljs-string">"build"</span>=<span class="hljs-string">"BuildTask"</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     *   }
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     * )
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">private</span> $tasks = <span class="hljs-keyword">array</span>();
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="2729c8050effb2174acf45a7c4a418525d062f2e"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="2729c8050effb2174acf45a7c4a418525d062f2e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">embed-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"tasks"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">discriminator-map</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">discriminator-mapping</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"download"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"DownloadTask"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">discriminator-mapping</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"build"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"BuildTask"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">discriminator-map</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">embed-many</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <p>If you have embedded documents without a discriminator value that need to be
 treated correctly you can optionally specify a default value for the
 discriminator:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-/** @Document */
-class User
-{
-    // ..
-
-    /**
-     * @EmbedMany(
-     *   discriminatorMap={
-     *     &quot;download&quot;=&quot;DownloadTask&quot;,
-     *     &quot;build&quot;=&quot;BuildTask&quot;
-     *   },
-     *   defaultDiscriminatorValue=&quot;download&quot;
-     * )
-     */
-    private $tasks = array();
-
-    // ...
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;embed-many field=&quot;tasks&quot;&gt;
-    &lt;discriminator-map&gt;
-        &lt;discriminator-mapping value=&quot;download&quot; class=&quot;DownloadTask&quot; /&gt;
-        &lt;discriminator-mapping value=&quot;build&quot; class=&quot;BuildTask&quot; /&gt;
-    &lt;/discriminator-map&gt;
-    &lt;default-discriminator-value value=&quot;download&quot; /&gt;
-&lt;/embed-many&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="e4691d87b5c7d32502555a95e071ea1f87c219df"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="e4691d87b5c7d32502555a95e071ea1f87c219df"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// ..</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @EmbedMany(
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     *   discriminatorMap={
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     *     <span class="hljs-string">"download"</span>=<span class="hljs-string">"DownloadTask"</span>,
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     *     <span class="hljs-string">"build"</span>=<span class="hljs-string">"BuildTask"</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     *   },
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     *   defaultDiscriminatorValue=<span class="hljs-string">"download"</span>
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     * )
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     */
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">private</span> $tasks = <span class="hljs-keyword">array</span>();
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">// ...</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="ab73de2f6f7c160a84f5522e1b33c52654826777"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="ab73de2f6f7c160a84f5522e1b33c52654826777"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">embed-many</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"tasks"</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">discriminator-map</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">discriminator-mapping</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"download"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"DownloadTask"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">discriminator-mapping</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"build"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"BuildTask"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">discriminator-map</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">default-discriminator-value</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"download"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">embed-many</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <a class="section-anchor" id="cascading-operations" name="cascading-operations"></a><h2 class="section-header"><a href="#cascading-operations">Cascading Operations<i class="fas fa-link"></i></a></h2>
 <p>All operations on embedded documents are automatically cascaded.
 This is because embedded documents are part of their parent
@@ -458,8 +539,6 @@ document and cannot exist without those by nature.</p>
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -505,7 +584,7 @@ document and cannot exist without those by nature.</p>
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

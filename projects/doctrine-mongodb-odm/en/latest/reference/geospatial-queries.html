@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -146,9 +146,6 @@
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
 
@@ -270,49 +267,70 @@
 like checking for documents within a rectangle or circle.</p>
 <a class="section-anchor" id="mapping" name="mapping"></a><h2 class="section-header"><a href="#mapping">Mapping<i class="fas fa-link"></i></a></h2>
 <p>First, setup some documents like the following:</p>
-<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre><code class="php">&lt;?php
-
-/**
- * @Document
- * @Index(keys={&quot;coordinates&quot;=&quot;2d&quot;})
- */
-class City
-{
-    /** @Id */
-    public $id;
-
-    /** @Field(type=&quot;string&quot;) */
-    public $name;
-
-    /** @EmbedOne(targetDocument=&quot;Coordinates&quot;) */
-    public $coordinates;
-}
-
-/** @EmbeddedDocument */
-class Coordinates
-{
-    /** @Field(type=&quot;float&quot;) */
-    public $x;
-
-    /** @Field(type=&quot;float&quot;) */
-    public $y;
-}
-</code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre><code class="xml">&lt;indexes&gt;
-    &lt;index&gt;
-        &lt;key name=&quot;coordinates&quot; order=&quot;2d&quot; /&gt;
-    &lt;/index&gt;
-&lt;/indexes&gt;
-</code></pre></div></li></ul></div>
+<div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="d5a4578c2dd48525419ef51fe07878e4592391b3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="d5a4578c2dd48525419ef51fe07878e4592391b3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Document
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Index(keys={<span class="hljs-string">"coordinates"</span>=<span class="hljs-string">"2d"</span>})
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">City</span></span>
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $name;
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@EmbedOne</span>(targetDocument="Coordinates") */</span>
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> $coordinates;
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@EmbeddedDocument</span> */</span>
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Coordinates</span></span>
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">{
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="float") */</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> $x;
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="float") */</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-keyword">public</span> $y;
+</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">}
+</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="abb864d48909d66a10d748adf4c78ecf733360e3"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="abb864d48909d66a10d748adf4c78ecf733360e3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">key</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"coordinates"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"2d"</span> /&gt;</span>
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">index</span>&gt;</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">indexes</span>&gt;</span>
+</td></tr></table></div></code></pre></div></li></ul></div>
 <a class="section-anchor" id="near-query" name="near-query"></a><h2 class="section-header"><a href="#near-query">Near Query<i class="fas fa-link"></i></a></h2>
 <p>Now you can execute queries against these documents like the
 following. Check for the 10 nearest cities to a given longitude
 and latitude with the <code>near($longitude, $latitude)</code> method:</p>
-<pre><code class="php">&lt;?php
-
-$cities = $this-&gt;dm-&gt;createQuery('City')
-    -&gt;field('coordinates')-&gt;near(-120, 40)
-    -&gt;execute();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="c036804490814c9f41177281ff54323756d4c1ea"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="c036804490814c9f41177281ff54323756d4c1ea"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cities = <span class="hljs-keyword">$this</span>-&gt;dm-&gt;createQuery(<span class="hljs-string">'City'</span>)
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'coordinates'</span>)-&gt;near(<span class="hljs-number">-120</span>, <span class="hljs-number">40</span>)
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;execute();
+</td></tr></table></div></code></pre>
 <a id="geonear"></a>
 <p></p>
                                             </div>
@@ -338,8 +356,6 @@ $cities = $this-&gt;dm-&gt;createQuery('City')
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -385,7 +401,7 @@ $cities = $this-&gt;dm-&gt;createQuery('City')
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">

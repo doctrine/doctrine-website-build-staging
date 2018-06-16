@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a4b3e9" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -145,9 +145,6 @@
                                                                     <a class="dropdown-item notranslate" href="https://staging.doctrine-project.org/projects/reflection.html">Reflection</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="https://staging.doctrine-project.org/projects.html">View All</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://staging.doctrine-project.org/about/">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://staging.doctrine-project.org/contribute/" id="navbarContributeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contribute</a>
@@ -437,9 +434,16 @@ requires however that you specify a single document source - this is because the
 PHPCR query builder is not bound to the field mappings of the ODM.</p>
 </div>
 <a class="section-anchor" id="from-single-source" name="from-single-source"></a><h4 class="section-header"><a href="#from-single-source">From Single Source<i class="fas fa-link"></i></a></h4>
-<pre><code class="php">// select documents of class Foo\Bar.
-$qb-&gt;from()-&gt;document('Blog\Post', 'p');
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="a8546315a0f98d0d50820aaed5e7d49ab6d52b17"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="a8546315a0f98d0d50820aaed5e7d49ab6d52b17"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">// select documents of class Foo\Bar.</span>
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$qb-&gt;from()-&gt;document(<span class="hljs-string">'Blog\Post'</span>, <span class="hljs-string">'p'</span>);
+</td></tr></table></div></code></pre>
 <p>The above example will setup the query builder to select documents only of class
 <code>Blog\Post</code> using the <em>alias name</em> &quot;p&quot;. The alias name is the alias used
 in subsequent references to this document source or properties within this
@@ -613,33 +617,40 @@ builder class and a special companion class, the <code>QueryBuilderTester</code>
   instance.</li>
 </ul>
 
-<pre><code class="php">use Doctrine\ODM\PHPCR\Query\Builder\QueryBuilder;
-use Doctrine\ODM\PHPCR\Tools\Test\QueryBuilderTester;
-
-$test = // pretend we have a PHPUnit_Framework_TestCase
-$qb = new QueryBuilder;
-$qb-&gt;where()-&gt;eq()-&gt;field('p.title')-&gt;literal('Foobar');
-
-$qbTester = new QueryBuilderTester($qb);
-
-// -&gt;getNode - retrieve node by its nodetype path.
-$literalNode = $qbTester-&gt;getNode('where.constraint.operand_statuc');
-$fieldNode = $qbTester-&gt;getNode('where.constraint.operand_dynamic');
-
-$test-&gt;assertEquals('Foobar', $literalNode-&gt;getValue());
-$test-&gt;assertEquals('p', $fieldNode-&gt;getSelectorName());
-$test-&gt;assertEquals('title', $fieldNode-&gt;getPropertyName());
-
-$qb-&gt;where()-&gt;andX()
-    -&gt;eq()-&gt;field('p.title')-&gt;literal('Foobar')-&gt;end()
-    -&gt;fieldIsset('p.username');
-
-// first constraint is the &quot;andX&quot;, the second constraint node of &quot;andX&quot; is &quot;fieldIsset&quot;
-$fieldIsset = $qbTester-&gt;getNode('where.constraint.constraint[1]');
-
-// -&gt;dumpNodePaths - dump all the node paths of the query builder
-$res = $qbTester-&gt;dumpNodePaths();
-</code></pre>
+<pre class="code-block-table"><code class="php"><button
+            type="button"
+            class="copy-to-clipboard"
+            data-copy-element-id="33e8135ffb194fa9c990283cb1d1329d0939cb28"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Copy to Clipboard"
+        ><i class="fas fa-copy"></i></button><div id="33e8135ffb194fa9c990283cb1d1329d0939cb28"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">PHPCR</span>\<span class="hljs-title">Query</span>\<span class="hljs-title">Builder</span>\<span class="hljs-title">QueryBuilder</span>;
+</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">PHPCR</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Test</span>\<span class="hljs-title">QueryBuilderTester</span>;
+</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$test = <span class="hljs-comment">// pretend we have a PHPUnit_Framework_TestCase</span>
+</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$qb = <span class="hljs-keyword">new</span> QueryBuilder;
+</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$qb-&gt;where()-&gt;eq()-&gt;field(<span class="hljs-string">'p.title'</span>)-&gt;literal(<span class="hljs-string">'Foobar'</span>);
+</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$qbTester = <span class="hljs-keyword">new</span> QueryBuilderTester($qb);
+</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">// -&gt;getNode - retrieve node by its nodetype path.</span>
+</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$literalNode = $qbTester-&gt;getNode(<span class="hljs-string">'where.constraint.operand_statuc'</span>);
+</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$fieldNode = $qbTester-&gt;getNode(<span class="hljs-string">'where.constraint.operand_dynamic'</span>);
+</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$test-&gt;assertEquals(<span class="hljs-string">'Foobar'</span>, $literalNode-&gt;getValue());
+</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$test-&gt;assertEquals(<span class="hljs-string">'p'</span>, $fieldNode-&gt;getSelectorName());
+</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$test-&gt;assertEquals(<span class="hljs-string">'title'</span>, $fieldNode-&gt;getPropertyName());
+</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$qb-&gt;where()-&gt;andX()
+</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    -&gt;eq()-&gt;field(<span class="hljs-string">'p.title'</span>)-&gt;literal(<span class="hljs-string">'Foobar'</span>)-&gt;end()
+</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    -&gt;fieldIsset(<span class="hljs-string">'p.username'</span>);
+</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-comment">// first constraint is the "andX", the second constraint node of "andX" is "fieldIsset"</span>
+</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$fieldIsset = $qbTester-&gt;getNode(<span class="hljs-string">'where.constraint.constraint[1]'</span>);
+</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
+</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-comment">// -&gt;dumpNodePaths - dump all the node paths of the query builder</span>
+</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">$res = $qbTester-&gt;dumpNodePaths();
+</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>
@@ -664,8 +675,6 @@ $res = $qbTester-&gt;dumpNodePaths();
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-        <script src="https://staging.doctrine-project.org/components/highlightjs/highlight.pack.js?3970aa"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0"></script>
 
@@ -711,7 +720,7 @@ $res = $qbTester-&gt;dumpNodePaths();
             Raven.config('https://09ce137590054cfd8f0b7e9324d6ec14@sentry.io/1197701').install()
         </script>
 
-        <script src="https://staging.doctrine-project.org/js/main.js?2a2af0"></script>
+        <script src="https://staging.doctrine-project.org/js/main.js?850a2b"></script>
         <script src="https://staging.doctrine-project.org/js/search.js?21d569"></script>
 
         <script type="text/javascript">
