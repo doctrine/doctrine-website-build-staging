@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -268,44 +268,66 @@ query builder object so you can easily run these types of queries!</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="77a20dc28b49b6e820681b832e513c220aecf07d"
+            data-copy-element-id="b268800b51e7b7fe2d6c8939511c2bf31e179c1e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="77a20dc28b49b6e820681b832e513c220aecf07d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$job = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Job'</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">// Find the job</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;findAndUpdate()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;set(<span class="hljs-keyword">true</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;equals(<span class="hljs-keyword">false</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;sort(<span class="hljs-string">'priority'</span>, <span class="hljs-string">'desc'</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">// Update found job</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    -&gt;field(<span class="hljs-string">'started'</span>)-&gt;set(<span class="hljs-keyword">new</span> \MongoDate())
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    -&gt;getQuery()
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    -&gt;execute();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b268800b51e7b7fe2d6c8939511c2bf31e179c1e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="13"><span class="hljs-meta">&lt;?php</span>
+
+$job = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Job'</span>)
+    <span class="hljs-comment">// Find the job</span>
+    -&gt;findAndUpdate()
+    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;set(<span class="hljs-keyword">true</span>)
+    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;equals(<span class="hljs-keyword">false</span>)
+    -&gt;sort(<span class="hljs-string">'priority'</span>, <span class="hljs-string">'desc'</span>)
+
+    <span class="hljs-comment">// Update found job</span>
+    -&gt;field(<span class="hljs-string">'started'</span>)-&gt;set(<span class="hljs-keyword">new</span> \MongoDate())
+    -&gt;getQuery()
+    -&gt;execute();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr></table></div></code></pre>
 <p>If you want to update a job and return the new document you can
 call the <code>returnNew()</code> method.</p>
 <p>Here is an example where we return the new updated job document:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8f136ac22b913650ee7093e03663bddedd73a593"
+            data-copy-element-id="9c1186584e2888b7f17293d141df5dcd4bd91778"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8f136ac22b913650ee7093e03663bddedd73a593"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$job = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Job'</span>)
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-comment">// Find the job</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;findAndUpdate()
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;returnNew()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;equals(<span class="hljs-keyword">false</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;sort(<span class="hljs-string">'priority'</span>, <span class="hljs-string">'desc'</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">// Update found job</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    -&gt;field(<span class="hljs-string">'started'</span>)-&gt;set(<span class="hljs-keyword">new</span> \MongoDate())
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;set(<span class="hljs-keyword">true</span>)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    -&gt;getQuery()
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    -&gt;execute();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9c1186584e2888b7f17293d141df5dcd4bd91778"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="13"><span class="hljs-meta">&lt;?php</span>
+$job = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Job'</span>)
+    <span class="hljs-comment">// Find the job</span>
+    -&gt;findAndUpdate()
+    -&gt;returnNew()
+    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;equals(<span class="hljs-keyword">false</span>)
+    -&gt;sort(<span class="hljs-string">'priority'</span>, <span class="hljs-string">'desc'</span>)
+
+    <span class="hljs-comment">// Update found job</span>
+    -&gt;field(<span class="hljs-string">'started'</span>)-&gt;set(<span class="hljs-keyword">new</span> \MongoDate())
+    -&gt;field(<span class="hljs-string">'in_progress'</span>)-&gt;set(<span class="hljs-keyword">true</span>)
+    -&gt;getQuery()
+    -&gt;execute();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr></table></div></code></pre>
 <p>The returned <code>$job</code> will be a managed <code>Job</code> instance with the
 <code>started</code> and <code>in_progress</code> fields updated.</p>
 <a class="section-anchor" id="remove" name="remove"></a><h2 class="section-header"><a href="#remove">Remove<i class="fas fa-link"></i></a></h2>
@@ -313,16 +335,21 @@ call the <code>returnNew()</code> method.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="321ac092dc4e52c8f57687445c3832d98ccad7b2"
+            data-copy-element-id="125c9e1b3bace0ea6dc395dd71e78cf583099c0b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="321ac092dc4e52c8f57687445c3832d98ccad7b2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$job = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Job'</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;findAndRemove()
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;sort(<span class="hljs-string">'priority'</span>, <span class="hljs-string">'desc'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getQuery()
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;execute();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="125c9e1b3bace0ea6dc395dd71e78cf583099c0b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+
+$job = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Job'</span>)
+    -&gt;findAndRemove()
+    -&gt;sort(<span class="hljs-string">'priority'</span>, <span class="hljs-string">'desc'</span>)
+    -&gt;getQuery()
+    -&gt;execute();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>You can read more about the find and modify functionality on the
 <a href="https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/">MongoDB website</a>.</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>If you don't need to return the document, you can use just run a normal update which can

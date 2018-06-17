@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -311,148 +311,276 @@ the middle of your page, for example).</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="740b52078a3a4630e5d8e5fa7031e7eac363626e"
+            data-copy-element-id="448504df3385e73e3bdb01bc7ffb61e7dda40f81"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="740b52078a3a4630e5d8e5fa7031e7eac363626e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * This <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">defines</span> <span class="hljs-title">the</span> <span class="hljs-title">basic</span> <span class="hljs-title">actions</span> <span class="hljs-title">that</span> <span class="hljs-title">a</span> <span class="hljs-title">block</span> / <span class="hljs-title">panel</span> <span class="hljs-title">needs</span> <span class="hljs-title">to</span> <span class="hljs-title">support</span>.</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> *
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * Every blockstrategy is *only* responsible <span class="hljs-keyword">for</span> rendering a block <span class="hljs-keyword">and</span> declaring some basic
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * support, but *not* <span class="hljs-keyword">for</span> updating its configuration etc. <span class="hljs-keyword">For</span> this purpose, <span class="hljs-keyword">use</span> <span class="hljs-title">controllers</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * <span class="hljs-keyword">and</span> models.
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">BlockStrategyInterface</span> </span>{
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * This could configure your entity
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setConfig</span><span class="hljs-params">(Config\EntityConfig $config)</span></span>;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * Returns the config this strategy is configured with.
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Core\Model\Config\EntityConfig
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getConfig</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     * Set the view object.
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     * @param  \Zend_View_Interface $view
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">     * @<span class="hljs-keyword">return</span> \Zend_View_Helper_Interface
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setView</span><span class="hljs-params">(\Zend_View_Interface $view)</span></span>;
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">     * @<span class="hljs-keyword">return</span> \Zend_View_Interface
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getView</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">     * Renders this strategy. This method will be called when the user
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">     * displays the site.
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderFrontend</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">     * Renders the backend of this block. This method will be called when
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">     * a user tries to reconfigure this block instance.
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">     * Most of the time, this method will <span class="hljs-keyword">return</span> / output a simple form which in turn
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">     * calls some controllers.
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderBackend</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">     * Returns all possible types of panels this block can be stacked onto
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">     * @<span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRequiredPanelTypes</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">59</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">60</td><td class="code-line">     * Determines whether a Block is able to <span class="hljs-keyword">use</span> <span class="hljs-title">a</span> <span class="hljs-title">given</span> <span class="hljs-title">type</span> <span class="hljs-title">or</span> <span class="hljs-title">not</span>
-</td></tr><tr><td class="line-number noselect">61</td><td class="code-line">     * @param string $typeName The typename
-</td></tr><tr><td class="line-number noselect">62</td><td class="code-line">     * @<span class="hljs-keyword">return</span> boolean
-</td></tr><tr><td class="line-number noselect">63</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">64</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">canUsePanelType</span><span class="hljs-params">($typeName)</span></span>;
-</td></tr><tr><td class="line-number noselect">65</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">66</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setBlockEntity</span><span class="hljs-params">(AbstractBlock $block)</span></span>;
-</td></tr><tr><td class="line-number noselect">67</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">68</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBlockEntity</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">69</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="448504df3385e73e3bdb01bc7ffb61e7dda40f81"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="69"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/**
+ * This interface defines the basic actions that a block / panel needs to support.
+ *
+ * Every blockstrategy is *only* responsible for rendering a block and declaring some basic
+ * support, but *not* for updating its configuration etc. For this purpose, use controllers
+ * and models.
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">BlockStrategyInterface</span> </span>{
+    <span class="hljs-comment">/**
+     * This could configure your entity
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setConfig</span><span class="hljs-params">(Config\EntityConfig $config)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Returns the config this strategy is configured with.
+     * <span class="hljs-doctag">@return</span> Core\Model\Config\EntityConfig
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getConfig</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Set the view object.
+     * <span class="hljs-doctag">@param</span>  \Zend_View_Interface $view
+     * <span class="hljs-doctag">@return</span> \Zend_View_Helper_Interface
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setView</span><span class="hljs-params">(\Zend_View_Interface $view)</span></span>;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@return</span> \Zend_View_Interface
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getView</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Renders this strategy. This method will be called when the user
+     * displays the site.
+     *
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderFrontend</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Renders the backend of this block. This method will be called when
+     * a user tries to reconfigure this block instance.
+     *
+     * Most of the time, this method will return / output a simple form which in turn
+     * calls some controllers.
+     *
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderBackend</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Returns all possible types of panels this block can be stacked onto
+     *
+     * <span class="hljs-doctag">@return</span> array
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRequiredPanelTypes</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Determines whether a Block is able to use a given type or not
+     * <span class="hljs-doctag">@param</span> string $typeName The typename
+     * <span class="hljs-doctag">@return</span> boolean
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">canUsePanelType</span><span class="hljs-params">($typeName)</span></span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setBlockEntity</span><span class="hljs-params">(AbstractBlock $block)</span></span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBlockEntity</span><span class="hljs-params">()</span></span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr>
+<tr><td class="line-number noselect">58</td></tr>
+<tr><td class="line-number noselect">59</td></tr>
+<tr><td class="line-number noselect">60</td></tr>
+<tr><td class="line-number noselect">61</td></tr>
+<tr><td class="line-number noselect">62</td></tr>
+<tr><td class="line-number noselect">63</td></tr>
+<tr><td class="line-number noselect">64</td></tr>
+<tr><td class="line-number noselect">65</td></tr>
+<tr><td class="line-number noselect">66</td></tr>
+<tr><td class="line-number noselect">67</td></tr>
+<tr><td class="line-number noselect">68</td></tr>
+<tr><td class="line-number noselect">69</td></tr></table></div></code></pre>
 <p>As you can see, we have a method &quot;setBlockEntity&quot; which ties a potential strategy to an object of type AbstractBlock. This type will simply define the basic behaviour of our blocks and could potentially look something like this:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="9803ea7a45ae99730395f0e21c432c8a15ea2ac1"
+            data-copy-element-id="84706b5e96ed0793a0acd404d06dc03c655b0449"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="9803ea7a45ae99730395f0e21c432c8a15ea2ac1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * This is the base <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">for</span> <span class="hljs-title">both</span> <span class="hljs-title">Panels</span> <span class="hljs-title">and</span> <span class="hljs-title">Blocks</span>.</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * It shouldn<span class="hljs-string">'t be extended by your own blocks - simply write a strategy!</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractBlock</span> </span>{
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * The id of the block item instance
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * This is a doctrine field, so you need to setup generation <span class="hljs-keyword">for</span> it
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @<span class="hljs-keyword">var</span> integer
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">// Add code for relation to the parent panel, configuration objects, ....</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     * This <span class="hljs-keyword">var</span> contains the classname of the strategy
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     * that is used <span class="hljs-keyword">for</span> this blockitem. (This string (!) value will be persisted by Doctrine <span class="hljs-number">2</span>)
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * This is a doctrine field, so make sure that you <span class="hljs-keyword">use</span> <span class="hljs-title">an</span> @<span class="hljs-title">column</span> <span class="hljs-title">annotation</span> <span class="hljs-title">or</span> <span class="hljs-title">setup</span> <span class="hljs-title">your</span>
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     * yaml <span class="hljs-keyword">or</span> xml files correctly
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     * @<span class="hljs-keyword">var</span> string
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">protected</span> $strategyClassName;
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     * This <span class="hljs-keyword">var</span> contains an instance of <span class="hljs-keyword">$this</span>-&gt;blockStrategy. Will not be persisted by Doctrine <span class="hljs-number">2.</span>
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">     * @<span class="hljs-keyword">var</span> BlockStrategyInterface
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-keyword">protected</span> $strategyInstance;
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">     * Returns the strategy that is used <span class="hljs-keyword">for</span> this blockitem.
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">     * The strategy itself defines how this block can be rendered etc.
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStrategyClassName</span><span class="hljs-params">()</span> </span>{
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;strategyClassName;
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">     * Returns the instantiated strategy
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">     * @<span class="hljs-keyword">return</span> BlockStrategyInterface
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStrategyInstance</span><span class="hljs-params">()</span> </span>{
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;strategyInstance;
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">     * Sets the strategy this block / panel should work <span class="hljs-keyword">as</span>. Make sure that you<span class="hljs-string">'ve used</span>
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">     * this method before persisting the block!
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">     * @param BlockStrategyInterface $strategy
-</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">59</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStrategy</span><span class="hljs-params">(BlockStrategyInterface $strategy)</span> </span>{
-</td></tr><tr><td class="line-number noselect">60</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;strategyInstance  = $strategy;
-</td></tr><tr><td class="line-number noselect">61</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;strategyClassName = get_class($strategy);
-</td></tr><tr><td class="line-number noselect">62</td><td class="code-line">        $strategy-&gt;setBlockEntity(<span class="hljs-keyword">$this</span>);
-</td></tr><tr><td class="line-number noselect">63</td><td class="code-line">    }
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="84706b5e96ed0793a0acd404d06dc03c655b0449"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="63"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/**
+ * This is the base class for both Panels and Blocks.
+ * It shouldn't be extended by your own blocks - simply write a strategy!
+ */</span>
+<span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractBlock</span> </span>{
+    <span class="hljs-comment">/**
+     * The id of the block item instance
+     * This is a doctrine field, so you need to setup generation for it
+     * <span class="hljs-doctag">@var</span> integer
+     */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">// Add code for relation to the parent panel, configuration objects, ....</span>
+
+    <span class="hljs-comment">/**
+     * This var contains the classname of the strategy
+     * that is used for this blockitem. (This string (!) value will be persisted by Doctrine 2)
+     *
+     * This is a doctrine field, so make sure that you use an <span class="hljs-doctag">@column</span> annotation or setup your
+     * yaml or xml files correctly
+     * <span class="hljs-doctag">@var</span> string
+     */</span>
+    <span class="hljs-keyword">protected</span> $strategyClassName;
+
+    <span class="hljs-comment">/**
+     * This var contains an instance of $this-&gt;blockStrategy. Will not be persisted by Doctrine 2.
+     *
+     * <span class="hljs-doctag">@var</span> BlockStrategyInterface
+     */</span>
+    <span class="hljs-keyword">protected</span> $strategyInstance;
+
+    <span class="hljs-comment">/**
+     * Returns the strategy that is used for this blockitem.
+     *
+     * The strategy itself defines how this block can be rendered etc.
+     *
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStrategyClassName</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;strategyClassName;
+    }
+
+    <span class="hljs-comment">/**
+     * Returns the instantiated strategy
+     *
+     * <span class="hljs-doctag">@return</span> BlockStrategyInterface
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStrategyInstance</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;strategyInstance;
+    }
+
+    <span class="hljs-comment">/**
+     * Sets the strategy this block / panel should work as. Make sure that you've used
+     * this method before persisting the block!
+     *
+     * <span class="hljs-doctag">@param</span> BlockStrategyInterface $strategy
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStrategy</span><span class="hljs-params">(BlockStrategyInterface $strategy)</span> </span>{
+        <span class="hljs-keyword">$this</span>-&gt;strategyInstance  = $strategy;
+        <span class="hljs-keyword">$this</span>-&gt;strategyClassName = get_class($strategy);
+        $strategy-&gt;setBlockEntity(<span class="hljs-keyword">$this</span>);
+    }</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr>
+<tr><td class="line-number noselect">58</td></tr>
+<tr><td class="line-number noselect">59</td></tr>
+<tr><td class="line-number noselect">60</td></tr>
+<tr><td class="line-number noselect">61</td></tr>
+<tr><td class="line-number noselect">62</td></tr>
+<tr><td class="line-number noselect">63</td></tr></table></div></code></pre>
 <p>Now, the important point is that $strategyClassName is a Doctrine 2
 field, i.e. Doctrine will persist this value. This is only the
 class name of your strategy and not an instance!</p>
@@ -464,44 +592,77 @@ instance of it and set it via setStrategyBlock().</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="d848ab1854ca3a36a44b7feec0dd7235cf045653"
+            data-copy-element-id="79aa9b5f8bcec9f3426f22043ea09055c2ddb105"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="d848ab1854ca3a36a44b7feec0dd7235cf045653"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>,
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    \Doctrine\Common;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * The BlockStrategyEventListener will initialize a strategy after the
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * block itself was loaded.
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlockStrategyEventListener</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span> </span>{
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">protected</span> $view;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(\Zend_View_Interface $view)</span> </span>{
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;view = $view;
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span> </span>{
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">       <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(ORM\Events::postLoad);
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postLoad</span><span class="hljs-params">(ORM\Event\LifecycleEventArgs $args)</span> </span>{
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        $blockItem = $args-&gt;getEntity();
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-comment">// Both blocks and panels are instances of Block\AbstractBlock</span>
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">if</span> ($blockItem <span class="hljs-keyword">instanceof</span> Block\AbstractBlock) {
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">            $strategy  = $blockItem-&gt;getStrategyClassName();
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">            $strategyInstance = <span class="hljs-keyword">new</span> $strategy();
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">null</span> !== $blockItem-&gt;getConfig()) {
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">                $strategyInstance-&gt;setConfig($blockItem-&gt;getConfig());
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">            }
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">            $strategyInstance-&gt;setView(<span class="hljs-keyword">$this</span>-&gt;view);
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">            $blockItem-&gt;setStrategy($strategyInstance);
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="79aa9b5f8bcec9f3426f22043ea09055c2ddb105"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="35"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>,
+    \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>;
+
+<span class="hljs-comment">/**
+ * The BlockStrategyEventListener will initialize a strategy after the
+ * block itself was loaded.
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlockStrategyEventListener</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span> </span>{
+
+    <span class="hljs-keyword">protected</span> $view;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(\Zend_View_Interface $view)</span> </span>{
+        <span class="hljs-keyword">$this</span>-&gt;view = $view;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span> </span>{
+       <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(ORM\Events::postLoad);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postLoad</span><span class="hljs-params">(ORM\Event\LifecycleEventArgs $args)</span> </span>{
+        $blockItem = $args-&gt;getEntity();
+
+        <span class="hljs-comment">// Both blocks and panels are instances of Block\AbstractBlock</span>
+        <span class="hljs-keyword">if</span> ($blockItem <span class="hljs-keyword">instanceof</span> Block\AbstractBlock) {
+            $strategy  = $blockItem-&gt;getStrategyClassName();
+            $strategyInstance = <span class="hljs-keyword">new</span> $strategy();
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">null</span> !== $blockItem-&gt;getConfig()) {
+                $strategyInstance-&gt;setConfig($blockItem-&gt;getConfig());
+            }
+            $strategyInstance-&gt;setView(<span class="hljs-keyword">$this</span>-&gt;view);
+            $blockItem-&gt;setStrategy($strategyInstance);
+        }
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr></table></div></code></pre>
 <p>In this example, even some variables are set - like a view object
 or a specific configuration object.</p>
 <p></p>

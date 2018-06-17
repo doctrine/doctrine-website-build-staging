@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -267,62 +267,113 @@ MongoGridFS:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="dba4ccc31c0757f7c03cd264b90faf919b83403b"
+            data-copy-element-id="6ad4d0287dec601aa834d65438330544517b0ab6"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="dba4ccc31c0757f7c03cd264b90faf919b83403b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Image</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@File</span> */</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">private</span> $file;
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">private</span> $uploadDate;
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">private</span> $length;
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">private</span> $chunkSize;
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-keyword">private</span> $md5;
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id;
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">($name)</span></span>
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;name = $name;
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name;
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFile</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;file;
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setFile</span><span class="hljs-params">($file)</span></span>
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;file = $file;
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="6ad4d0287dec601aa834d65438330544517b0ab6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="53"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Image</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
+    <span class="hljs-keyword">private</span> $name;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@File</span> */</span>
+    <span class="hljs-keyword">private</span> $file;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
+    <span class="hljs-keyword">private</span> $uploadDate;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
+    <span class="hljs-keyword">private</span> $length;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
+    <span class="hljs-keyword">private</span> $chunkSize;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
+    <span class="hljs-keyword">private</span> $md5;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">($name)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;name = $name;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFile</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;file;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setFile</span><span class="hljs-params">($file)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;file = $file;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr></table></div></code></pre>
 <p>Notice how we annotated the $file property with @File. This is what
 tells the Document that it is to be stored using the MongoGridFS
 and the MongoGridFSFile instance is placed in the $file property
@@ -336,121 +387,192 @@ until the next time the document is hydrated (fetched from the database).</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="6c48f51fb991fe281c8800cd02ec63a8d2d3a6c1"
+            data-copy-element-id="5a3a4bce0feb2f95a241e72bd33c54657da719eb"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="6c48f51fb991fe281c8800cd02ec63a8d2d3a6c1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$image = <span class="hljs-keyword">new</span> Image();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$image-&gt;setName(<span class="hljs-string">'Test image'</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$image-&gt;setFile(<span class="hljs-string">'/path/to/image.png'</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$dm-&gt;persist($image);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$dm-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="5a3a4bce0feb2f95a241e72bd33c54657da719eb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-meta">&lt;?php</span>
+
+$image = <span class="hljs-keyword">new</span> Image();
+$image-&gt;setName(<span class="hljs-string">'Test image'</span>);
+$image-&gt;setFile(<span class="hljs-string">'/path/to/image.png'</span>);
+
+$dm-&gt;persist($image);
+$dm-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <p>Now you can later query for the Image and render it:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="1c298a3c15a1b1de5330d6ab768d6a158ea572fe"
+            data-copy-element-id="2fa3cd3621c04fdb92e498a48dbfdf53e512d465"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="1c298a3c15a1b1de5330d6ab768d6a158ea572fe"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$image = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Documents\Image'</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'name'</span>)-&gt;equals(<span class="hljs-string">'Test image'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getSingleResult();
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">header(<span class="hljs-string">'Content-type: image/png;'</span>);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-keyword">echo</span> $image-&gt;getFile()-&gt;getBytes();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2fa3cd3621c04fdb92e498a48dbfdf53e512d465"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+
+$image = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Documents\Image'</span>)
+    -&gt;field(<span class="hljs-string">'name'</span>)-&gt;equals(<span class="hljs-string">'Test image'</span>)
+    -&gt;getQuery()
+    -&gt;getSingleResult();
+
+header(<span class="hljs-string">'Content-type: image/png;'</span>);
+<span class="hljs-keyword">echo</span> $image-&gt;getFile()-&gt;getBytes();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <p>You can of course make references to this Image document from
 another document. Imagine you had a Profile document and you wanted
 every Profile to have a profile image:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c16f0761e7063ce97f83065e56cc32d0c1d6f29f"
+            data-copy-element-id="f9f9576097fbf1f76ba775c37cbd13b7e29a3f32"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c16f0761e7063ce97f83065e56cc32d0c1d6f29f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Profile</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="Documents\Image") */</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">private</span> $image;
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">      <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id;
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name;
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">($name)</span></span>
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;name = $name;
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getImage</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;image;
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setImage</span><span class="hljs-params">(Image $image)</span></span>
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;image = $image;
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="f9f9576097fbf1f76ba775c37cbd13b7e29a3f32"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="41"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Profile</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span> */</span>
+    <span class="hljs-keyword">private</span> $name;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="Documents\Image") */</span>
+    <span class="hljs-keyword">private</span> $image;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span>
+    </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">($name)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;name = $name;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getImage</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;image;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setImage</span><span class="hljs-params">(Image $image)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;image = $image;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr></table></div></code></pre>
 <p>Now you can create a new Profile and give it an Image:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e2d481a29a96d3233f168729cecf48cd60f1126e"
+            data-copy-element-id="141d95624c766bbf10b4076f0e918aa519846665"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e2d481a29a96d3233f168729cecf48cd60f1126e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$image = <span class="hljs-keyword">new</span> Image();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$image-&gt;setName(<span class="hljs-string">'Test image'</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$image-&gt;setFile(<span class="hljs-string">'/path/to/image.png'</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$profile = <span class="hljs-keyword">new</span> Profile();
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$profile-&gt;setName(<span class="hljs-string">'Jonathan H. Wage'</span>);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$profile-&gt;setImage($image);
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$dm-&gt;persist($profile);
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$dm-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="141d95624c766bbf10b4076f0e918aa519846665"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+
+$image = <span class="hljs-keyword">new</span> Image();
+$image-&gt;setName(<span class="hljs-string">'Test image'</span>);
+$image-&gt;setFile(<span class="hljs-string">'/path/to/image.png'</span>);
+
+$profile = <span class="hljs-keyword">new</span> Profile();
+$profile-&gt;setName(<span class="hljs-string">'Jonathan H. Wage'</span>);
+$profile-&gt;setImage($image);
+
+$dm-&gt;persist($profile);
+$dm-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p>If you want to query for the Profile and load the Image reference
 in a query you can use:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0e9494856bb6a7cd86678214de0c36ef75d36a7f"
+            data-copy-element-id="a02f472cb4fde150bb47bf6c5be572fdfd30c258"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0e9494856bb6a7cd86678214de0c36ef75d36a7f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$profile = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Profile'</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;field(<span class="hljs-string">'name'</span>)-&gt;equals(<span class="hljs-string">'Jonathan H. Wage'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;getQuery()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;getSingleResult();
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$image = $profile-&gt;getImage();
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">header(<span class="hljs-string">'Content-type: image/png;'</span>);
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-keyword">echo</span> $image-&gt;getFile()-&gt;getBytes();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a02f472cb4fde150bb47bf6c5be572fdfd30c258"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+
+$profile = $dm-&gt;createQueryBuilder(<span class="hljs-string">'Profile'</span>)
+    -&gt;field(<span class="hljs-string">'name'</span>)-&gt;equals(<span class="hljs-string">'Jonathan H. Wage'</span>)
+    -&gt;getQuery()
+    -&gt;getSingleResult();
+
+$image = $profile-&gt;getImage();
+
+header(<span class="hljs-string">'Content-type: image/png;'</span>);
+<span class="hljs-keyword">echo</span> $image-&gt;getFile()-&gt;getBytes();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

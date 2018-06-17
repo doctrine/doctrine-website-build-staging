@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -274,172 +274,322 @@ provides transparent persistence for PHP objects to the popular <a href="http://
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="88968bc7e9b474e44c7643ea12f523b27be0232e"
+            data-copy-element-id="cbc9580344b06b9f55af7ee129044f07df28e584"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="88968bc7e9b474e44c7643ea12f523b27be0232e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Annotations</span> <span class="hljs-title">as</span> <span class="hljs-title">ODM</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">DateTime</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\MappedSuperclass */</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseEmployee</span></span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Id */</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Increment */</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">private</span> $changes = <span class="hljs-number">0</span>;
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Collection */</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">private</span> $notes = <span class="hljs-keyword">array</span>();
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Int */</span>
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">private</span> $salary;
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Date */</span>
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-keyword">private</span> $started;
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Date */</span>
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">private</span> $left;
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\EmbedOne(targetDocument="Address") */</span>
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    <span class="hljs-keyword">private</span> $address;
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id; }
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getChanges</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;changes; }
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">incrementChanges</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;changes++; }
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNotes</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;notes; }
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addNote</span><span class="hljs-params">($note)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;notes[] = $note; }
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name; }
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">($name)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;name = $name; }
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;salary; }
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSalary</span><span class="hljs-params">($salary)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;salary = (int) $salary; }
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStarted</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;started; }
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStarted</span><span class="hljs-params">(DateTime $started)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;started = $started; }
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLeft</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;left; }
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setLeft</span><span class="hljs-params">(DateTime $left)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;left = $left; }
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAddress</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;address; }
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAddress</span><span class="hljs-params">(Address $address)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;address = $address; }
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">58</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Document */</span>
-</td></tr><tr><td class="line-number noselect">59</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseEmployee</span></span>
-</td></tr><tr><td class="line-number noselect">60</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">61</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\ReferenceOne(targetDocument="Documents\Manager") */</span>
-</td></tr><tr><td class="line-number noselect">62</td><td class="code-line">    <span class="hljs-keyword">private</span> $manager;
-</td></tr><tr><td class="line-number noselect">63</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">64</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getManager</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;manager; }
-</td></tr><tr><td class="line-number noselect">65</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setManager</span><span class="hljs-params">(Manager $manager)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;manager = $manager; }
-</td></tr><tr><td class="line-number noselect">66</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">67</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">68</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Document */</span>
-</td></tr><tr><td class="line-number noselect">69</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseEmployee</span></span>
-</td></tr><tr><td class="line-number noselect">70</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">71</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\ReferenceMany(targetDocument="Documents\Project") */</span>
-</td></tr><tr><td class="line-number noselect">72</td><td class="code-line">    <span class="hljs-keyword">private</span> $projects;
-</td></tr><tr><td class="line-number noselect">73</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">74</td><td class="code-line">    <span class="hljs-keyword">public</span> __construct() { <span class="hljs-keyword">$this</span>-&gt;projects = <span class="hljs-keyword">new</span> ArrayCollection(); }
-</td></tr><tr><td class="line-number noselect">75</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">76</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProjects</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;projects; }
-</td></tr><tr><td class="line-number noselect">77</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addProject</span><span class="hljs-params">(Project $project)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;projects[] = $project; }
-</td></tr><tr><td class="line-number noselect">78</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">79</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">80</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\EmbeddedDocument */</span>
-</td></tr><tr><td class="line-number noselect">81</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span></span>
-</td></tr><tr><td class="line-number noselect">82</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">83</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
-</td></tr><tr><td class="line-number noselect">84</td><td class="code-line">    <span class="hljs-keyword">private</span> $address;
-</td></tr><tr><td class="line-number noselect">85</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">86</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
-</td></tr><tr><td class="line-number noselect">87</td><td class="code-line">    <span class="hljs-keyword">private</span> $city;
-</td></tr><tr><td class="line-number noselect">88</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">89</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
-</td></tr><tr><td class="line-number noselect">90</td><td class="code-line">    <span class="hljs-keyword">private</span> $state;
-</td></tr><tr><td class="line-number noselect">91</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">92</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
-</td></tr><tr><td class="line-number noselect">93</td><td class="code-line">    <span class="hljs-keyword">private</span> $zipcode;
-</td></tr><tr><td class="line-number noselect">94</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">95</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAddress</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;address; }
-</td></tr><tr><td class="line-number noselect">96</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAddress</span><span class="hljs-params">($address)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;address = $address; }
-</td></tr><tr><td class="line-number noselect">97</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">98</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCity</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;city; }
-</td></tr><tr><td class="line-number noselect">99</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setCity</span><span class="hljs-params">($city)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;city = $city; }
-</td></tr><tr><td class="line-number noselect">100</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">101</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getState</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;state; }
-</td></tr><tr><td class="line-number noselect">102</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setState</span><span class="hljs-params">($state)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;state = $state; }
-</td></tr><tr><td class="line-number noselect">103</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">104</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getZipcode</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;zipcode; }
-</td></tr><tr><td class="line-number noselect">105</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setZipcode</span><span class="hljs-params">($zipcode)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;zipcode = $zipcode; }
-</td></tr><tr><td class="line-number noselect">106</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">107</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">108</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Document */</span>
-</td></tr><tr><td class="line-number noselect">109</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Project</span></span>
-</td></tr><tr><td class="line-number noselect">110</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">111</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Id */</span>
-</td></tr><tr><td class="line-number noselect">112</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">113</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">114</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
-</td></tr><tr><td class="line-number noselect">115</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
-</td></tr><tr><td class="line-number noselect">116</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">117</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($name)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;name = $name; }
-</td></tr><tr><td class="line-number noselect">118</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">119</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id; }
-</td></tr><tr><td class="line-number noselect">120</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">121</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name; }
-</td></tr><tr><td class="line-number noselect">122</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">($name)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;name = $name; }
-</td></tr><tr><td class="line-number noselect">123</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="cbc9580344b06b9f55af7ee129044f07df28e584"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="123"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Annotations</span> <span class="hljs-title">as</span> <span class="hljs-title">ODM</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">DateTime</span>;
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\MappedSuperclass */</span>
+<span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseEmployee</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Id */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Increment */</span>
+    <span class="hljs-keyword">private</span> $changes = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Collection */</span>
+    <span class="hljs-keyword">private</span> $notes = <span class="hljs-keyword">array</span>();
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
+    <span class="hljs-keyword">private</span> $name;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Int */</span>
+    <span class="hljs-keyword">private</span> $salary;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Date */</span>
+    <span class="hljs-keyword">private</span> $started;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Date */</span>
+    <span class="hljs-keyword">private</span> $left;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\EmbedOne(targetDocument="Address") */</span>
+    <span class="hljs-keyword">private</span> $address;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getChanges</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;changes; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">incrementChanges</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;changes++; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNotes</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;notes; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addNote</span><span class="hljs-params">($note)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;notes[] = $note; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">($name)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;name = $name; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;salary; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSalary</span><span class="hljs-params">($salary)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;salary = (int) $salary; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStarted</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;started; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStarted</span><span class="hljs-params">(DateTime $started)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;started = $started; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLeft</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;left; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setLeft</span><span class="hljs-params">(DateTime $left)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;left = $left; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAddress</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;address; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAddress</span><span class="hljs-params">(Address $address)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;address = $address; }
+}
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Document */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseEmployee</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\ReferenceOne(targetDocument="Documents\Manager") */</span>
+    <span class="hljs-keyword">private</span> $manager;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getManager</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;manager; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setManager</span><span class="hljs-params">(Manager $manager)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;manager = $manager; }
+}
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Document */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseEmployee</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\ReferenceMany(targetDocument="Documents\Project") */</span>
+    <span class="hljs-keyword">private</span> $projects;
+
+    <span class="hljs-keyword">public</span> __construct() { <span class="hljs-keyword">$this</span>-&gt;projects = <span class="hljs-keyword">new</span> ArrayCollection(); }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProjects</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;projects; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addProject</span><span class="hljs-params">(Project $project)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;projects[] = $project; }
+}
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\EmbeddedDocument */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
+    <span class="hljs-keyword">private</span> $address;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
+    <span class="hljs-keyword">private</span> $city;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
+    <span class="hljs-keyword">private</span> $state;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
+    <span class="hljs-keyword">private</span> $zipcode;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAddress</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;address; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAddress</span><span class="hljs-params">($address)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;address = $address; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCity</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;city; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setCity</span><span class="hljs-params">($city)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;city = $city; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getState</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;state; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setState</span><span class="hljs-params">($state)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;state = $state; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getZipcode</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;zipcode; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setZipcode</span><span class="hljs-params">($zipcode)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;zipcode = $zipcode; }
+}
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Document */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Project</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\Id */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ODM</span>\String */</span>
+    <span class="hljs-keyword">private</span> $name;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($name)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;name = $name; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id; }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">($name)</span> </span>{ <span class="hljs-keyword">$this</span>-&gt;name = $name; }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr>
+<tr><td class="line-number noselect">58</td></tr>
+<tr><td class="line-number noselect">59</td></tr>
+<tr><td class="line-number noselect">60</td></tr>
+<tr><td class="line-number noselect">61</td></tr>
+<tr><td class="line-number noselect">62</td></tr>
+<tr><td class="line-number noselect">63</td></tr>
+<tr><td class="line-number noselect">64</td></tr>
+<tr><td class="line-number noselect">65</td></tr>
+<tr><td class="line-number noselect">66</td></tr>
+<tr><td class="line-number noselect">67</td></tr>
+<tr><td class="line-number noselect">68</td></tr>
+<tr><td class="line-number noselect">69</td></tr>
+<tr><td class="line-number noselect">70</td></tr>
+<tr><td class="line-number noselect">71</td></tr>
+<tr><td class="line-number noselect">72</td></tr>
+<tr><td class="line-number noselect">73</td></tr>
+<tr><td class="line-number noselect">74</td></tr>
+<tr><td class="line-number noselect">75</td></tr>
+<tr><td class="line-number noselect">76</td></tr>
+<tr><td class="line-number noselect">77</td></tr>
+<tr><td class="line-number noselect">78</td></tr>
+<tr><td class="line-number noselect">79</td></tr>
+<tr><td class="line-number noselect">80</td></tr>
+<tr><td class="line-number noselect">81</td></tr>
+<tr><td class="line-number noselect">82</td></tr>
+<tr><td class="line-number noselect">83</td></tr>
+<tr><td class="line-number noselect">84</td></tr>
+<tr><td class="line-number noselect">85</td></tr>
+<tr><td class="line-number noselect">86</td></tr>
+<tr><td class="line-number noselect">87</td></tr>
+<tr><td class="line-number noselect">88</td></tr>
+<tr><td class="line-number noselect">89</td></tr>
+<tr><td class="line-number noselect">90</td></tr>
+<tr><td class="line-number noselect">91</td></tr>
+<tr><td class="line-number noselect">92</td></tr>
+<tr><td class="line-number noselect">93</td></tr>
+<tr><td class="line-number noselect">94</td></tr>
+<tr><td class="line-number noselect">95</td></tr>
+<tr><td class="line-number noselect">96</td></tr>
+<tr><td class="line-number noselect">97</td></tr>
+<tr><td class="line-number noselect">98</td></tr>
+<tr><td class="line-number noselect">99</td></tr>
+<tr><td class="line-number noselect">100</td></tr>
+<tr><td class="line-number noselect">101</td></tr>
+<tr><td class="line-number noselect">102</td></tr>
+<tr><td class="line-number noselect">103</td></tr>
+<tr><td class="line-number noselect">104</td></tr>
+<tr><td class="line-number noselect">105</td></tr>
+<tr><td class="line-number noselect">106</td></tr>
+<tr><td class="line-number noselect">107</td></tr>
+<tr><td class="line-number noselect">108</td></tr>
+<tr><td class="line-number noselect">109</td></tr>
+<tr><td class="line-number noselect">110</td></tr>
+<tr><td class="line-number noselect">111</td></tr>
+<tr><td class="line-number noselect">112</td></tr>
+<tr><td class="line-number noselect">113</td></tr>
+<tr><td class="line-number noselect">114</td></tr>
+<tr><td class="line-number noselect">115</td></tr>
+<tr><td class="line-number noselect">116</td></tr>
+<tr><td class="line-number noselect">117</td></tr>
+<tr><td class="line-number noselect">118</td></tr>
+<tr><td class="line-number noselect">119</td></tr>
+<tr><td class="line-number noselect">120</td></tr>
+<tr><td class="line-number noselect">121</td></tr>
+<tr><td class="line-number noselect">122</td></tr>
+<tr><td class="line-number noselect">123</td></tr></table></div></code></pre>
 <p>Now those objects can be used just like you weren't using any
 persistence layer at all and can be persisted transparently by
 Doctrine:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="db68af0e83a4455f936ddc0f96cd782356581afa"
+            data-copy-element-id="994f2c7a976e1764635d873352a0a7581a0f61dc"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="db68af0e83a4455f936ddc0f96cd782356581afa"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Documents</span>\<span class="hljs-title">Employee</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Documents</span>\<span class="hljs-title">Address</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Documents</span>\<span class="hljs-title">Project</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Documents</span>\<span class="hljs-title">Manager</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">DateTime</span>;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$employee = <span class="hljs-keyword">new</span> Employee();
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$employee-&gt;setName(<span class="hljs-string">'Employee'</span>);
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$employee-&gt;setSalary(<span class="hljs-number">50000</span>);
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$employee-&gt;setStarted(<span class="hljs-keyword">new</span> DateTime());
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$address = <span class="hljs-keyword">new</span> Address();
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$address-&gt;setAddress(<span class="hljs-string">'555 Doctrine Rd.'</span>);
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$address-&gt;setCity(<span class="hljs-string">'Nashville'</span>);
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">$address-&gt;setState(<span class="hljs-string">'TN'</span>);
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$address-&gt;setZipcode(<span class="hljs-string">'37209'</span>);
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$employee-&gt;setAddress($address);
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">$project = <span class="hljs-keyword">new</span> Project(<span class="hljs-string">'New Project'</span>);
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">$manager = <span class="hljs-keyword">new</span> Manager();
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$manager-&gt;setName(<span class="hljs-string">'Manager'</span>);
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">$manager-&gt;setSalary(<span class="hljs-number">100000</span>);
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">$manager-&gt;setStarted(<span class="hljs-keyword">new</span> DateTime());
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">$dm-&gt;persist($employee);
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">$dm-&gt;persist($address);
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">$dm-&gt;persist($project);
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">$dm-&gt;persist($manager);
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">$dm-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="994f2c7a976e1764635d873352a0a7581a0f61dc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="31"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Documents</span>\<span class="hljs-title">Employee</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Documents</span>\<span class="hljs-title">Address</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Documents</span>\<span class="hljs-title">Project</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Documents</span>\<span class="hljs-title">Manager</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">DateTime</span>;
+
+$employee = <span class="hljs-keyword">new</span> Employee();
+$employee-&gt;setName(<span class="hljs-string">'Employee'</span>);
+$employee-&gt;setSalary(<span class="hljs-number">50000</span>);
+$employee-&gt;setStarted(<span class="hljs-keyword">new</span> DateTime());
+
+$address = <span class="hljs-keyword">new</span> Address();
+$address-&gt;setAddress(<span class="hljs-string">'555 Doctrine Rd.'</span>);
+$address-&gt;setCity(<span class="hljs-string">'Nashville'</span>);
+$address-&gt;setState(<span class="hljs-string">'TN'</span>);
+$address-&gt;setZipcode(<span class="hljs-string">'37209'</span>);
+$employee-&gt;setAddress($address);
+
+$project = <span class="hljs-keyword">new</span> Project(<span class="hljs-string">'New Project'</span>);
+$manager = <span class="hljs-keyword">new</span> Manager();
+$manager-&gt;setName(<span class="hljs-string">'Manager'</span>);
+$manager-&gt;setSalary(<span class="hljs-number">100000</span>);
+$manager-&gt;setStarted(<span class="hljs-keyword">new</span> DateTime());
+
+$dm-&gt;persist($employee);
+$dm-&gt;persist($address);
+$dm-&gt;persist($project);
+$dm-&gt;persist($manager);
+$dm-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr></table></div></code></pre>
 <p>The above would insert the following:</p>
 
 <pre><code class="">Array
@@ -515,18 +665,25 @@ efficient update query using the atomic operators:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="ca12c709aa80e03599f5092460d3e3019cd50b9b"
+            data-copy-element-id="dcf5b13257d83e0d63b87d4f82f4b19b23e3f067"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="ca12c709aa80e03599f5092460d3e3019cd50b9b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$newProject = <span class="hljs-keyword">new</span> Project(<span class="hljs-string">'Another Project'</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$manager-&gt;setSalary(<span class="hljs-number">200000</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$manager-&gt;addNote(<span class="hljs-string">'Gave user 100k a year raise'</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$manager-&gt;incrementChanges(<span class="hljs-number">2</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$manager-&gt;addProject($newProject);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$dm-&gt;persist($newProject);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$dm-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="dcf5b13257d83e0d63b87d4f82f4b19b23e3f067"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+$newProject = <span class="hljs-keyword">new</span> Project(<span class="hljs-string">'Another Project'</span>);
+$manager-&gt;setSalary(<span class="hljs-number">200000</span>);
+$manager-&gt;addNote(<span class="hljs-string">'Gave user 100k a year raise'</span>);
+$manager-&gt;incrementChanges(<span class="hljs-number">2</span>);
+$manager-&gt;addProject($newProject);
+
+$dm-&gt;persist($newProject);
+$dm-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <p>The above could would produce an update that looks something like
 this:</p>
 
@@ -582,32 +739,43 @@ we'll use:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="933a50ef3966bc9a11eedbb41c8418e9b96b1636"
+            data-copy-element-id="06b6ea6e06388405f18122f3eb73929a5631faaf"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="933a50ef3966bc9a11eedbb41c8418e9b96b1636"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Connection</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Configuration</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">DocumentManager</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">AnnotationDriver</span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="06b6ea6e06388405f18122f3eb73929a5631faaf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Connection</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Configuration</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">DocumentManager</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">AnnotationDriver</span>;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>The first bit of code will be to import Composer's autoloader, so these classes
 can actually be loaded:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0c958a433ef7b5b01aff2ac184a45f72e7ea197d"
+            data-copy-element-id="ad2d1cba10cce74648f8b48bfa4102a90bb34779"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0c958a433ef7b5b01aff2ac184a45f72e7ea197d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">if</span> ( ! file_exists($file = <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">'/vendor/autoload.php'</span>)) {
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">'Install dependencies to run this script.'</span>);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$loader = <span class="hljs-keyword">require_once</span> $file;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ad2d1cba10cce74648f8b48bfa4102a90bb34779"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">if</span> ( ! file_exists($file = <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">'/vendor/autoload.php'</span>)) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">'Install dependencies to run this script.'</span>);
+}
+
+$loader = <span class="hljs-keyword">require_once</span> $file;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <p>Note that instead of simply requiring the file, we assign its return value to
 the <code>$loader</code> variable. Assuming document classes will be stored in the
 <code>Documents/</code> directory (with a namespace to match), we can register them with
@@ -615,29 +783,36 @@ the autoloader like so:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="2202bb9fba954bea2841723bbdc1284b85038795"
+            data-copy-element-id="9e9be0417266a0c32a1770abd30df39d61906bb2"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="2202bb9fba954bea2841723bbdc1284b85038795"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$loader-&gt;add(<span class="hljs-string">'Documents'</span>, <span class="hljs-keyword">__DIR__</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9e9be0417266a0c32a1770abd30df39d61906bb2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// ...</span>
+
+$loader-&gt;add(<span class="hljs-string">'Documents'</span>, <span class="hljs-keyword">__DIR__</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <p>Ultimately, our application will utilize ODM through its <code>DocumentManager</code>
 class. Before we can instantiate a <code>DocumentManager</code>, we need to construct the
 <code>Connection</code> and <code>Configuration</code> objects required by its factory method:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0a8dbefca9eaeb7acee71852a4d10d59b1c5d9ca"
+            data-copy-element-id="f1bc273ece32ebd9ad48e53f5d4569a3c49340d9"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0a8dbefca9eaeb7acee71852a4d10d59b1c5d9ca"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$connection = <span class="hljs-keyword">new</span> Connection();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$config = <span class="hljs-keyword">new</span> Configuration();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="f1bc273ece32ebd9ad48e53f5d4569a3c49340d9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// ...</span>
+
+$connection = <span class="hljs-keyword">new</span> Connection();
+$config = <span class="hljs-keyword">new</span> Configuration();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>Next, we'll specify some essential configuration options. The following assumes
 that we will store generated proxy and hydrator classes in the <code>Proxies/</code> and
 <code>Hydrators/</code> directories, respectively. Additionally, we'll define a default
@@ -646,80 +821,120 @@ their mapping.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4e64f05e92db65c2a3abb7f5afb952502c9fefc6"
+            data-copy-element-id="18b17beca710745c7aa19d2d7930ed78bd62f07d"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4e64f05e92db65c2a3abb7f5afb952502c9fefc6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$config-&gt;setProxyDir(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Proxies'</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$config-&gt;setProxyNamespace(<span class="hljs-string">'Proxies'</span>);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$config-&gt;setHydratorDir(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Hydrators'</span>);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$config-&gt;setHydratorNamespace(<span class="hljs-string">'Hydrators'</span>);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$config-&gt;setDefaultDB(<span class="hljs-string">'doctrine_odm'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="18b17beca710745c7aa19d2d7930ed78bd62f07d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// ...</span>
+
+$config-&gt;setProxyDir(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Proxies'</span>);
+$config-&gt;setProxyNamespace(<span class="hljs-string">'Proxies'</span>);
+$config-&gt;setHydratorDir(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Hydrators'</span>);
+$config-&gt;setHydratorNamespace(<span class="hljs-string">'Hydrators'</span>);
+$config-&gt;setDefaultDB(<span class="hljs-string">'doctrine_odm'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <p>The easiest way to define mappings for our document classes is with annotations.
 We'll need to specify an annotation driver in our configuration (with one or
 more paths) and register the annotations for the driver:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="5f7f8485a8d9db3ce18b1c9012618711d1b9fedf"
+            data-copy-element-id="6493f22722679245dc146819e521f4877358be8e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="5f7f8485a8d9db3ce18b1c9012618711d1b9fedf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$config-&gt;setMetadataDriverImpl(AnnotationDriver::create(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Documents'</span>));
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">AnnotationDriver::registerAnnotationClasses();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="6493f22722679245dc146819e521f4877358be8e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// ...</span>
+
+$config-&gt;setMetadataDriverImpl(AnnotationDriver::create(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Documents'</span>));
+
+AnnotationDriver::registerAnnotationClasses();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>At this point, we have everything necessary to construct a <code>DocumentManager</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f445f544be3ebd44081eb92266acfd946a9577f8"
+            data-copy-element-id="be08d703eb10a308e7dee5c4523524633b43e3f0"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f445f544be3ebd44081eb92266acfd946a9577f8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$dm = DocumentManager::create($connection, $config);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="be08d703eb10a308e7dee5c4523524633b43e3f0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// ...</span>
+
+$dm = DocumentManager::create($connection, $config);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <p>The final <code>bootstrap.php</code> file should look like this:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="954eec0b8456a192099f0c96075985510a9c8c4f"
+            data-copy-element-id="eaded661133939a288c96ab72548c44ecf391d28"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="954eec0b8456a192099f0c96075985510a9c8c4f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Connection</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Configuration</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">DocumentManager</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">AnnotationDriver</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">if</span> ( ! file_exists($file = <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">'/vendor/autoload.php'</span>)) {
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">'Install dependencies to run this script.'</span>);
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$loader = <span class="hljs-keyword">require_once</span> $file;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$loader-&gt;add(<span class="hljs-string">'Documents'</span>, <span class="hljs-keyword">__DIR__</span>);
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$connection = <span class="hljs-keyword">new</span> Connection();
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">$config = <span class="hljs-keyword">new</span> Configuration();
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$config-&gt;setProxyDir(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Proxies'</span>);
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$config-&gt;setProxyNamespace(<span class="hljs-string">'Proxies'</span>);
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">$config-&gt;setHydratorDir(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Hydrators'</span>);
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">$config-&gt;setHydratorNamespace(<span class="hljs-string">'Hydrators'</span>);
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">$config-&gt;setDefaultDB(<span class="hljs-string">'doctrine_odm'</span>);
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$config-&gt;setMetadataDriverImpl(AnnotationDriver::create(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Documents'</span>));
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">AnnotationDriver::registerAnnotationClasses();
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">$dm = DocumentManager::create($connection, $config);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="eaded661133939a288c96ab72548c44ecf391d28"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="27"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Connection</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Configuration</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">DocumentManager</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">AnnotationDriver</span>;
+
+<span class="hljs-keyword">if</span> ( ! file_exists($file = <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">'/vendor/autoload.php'</span>)) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">'Install dependencies to run this script.'</span>);
+}
+
+$loader = <span class="hljs-keyword">require_once</span> $file;
+$loader-&gt;add(<span class="hljs-string">'Documents'</span>, <span class="hljs-keyword">__DIR__</span>);
+
+$connection = <span class="hljs-keyword">new</span> Connection();
+
+$config = <span class="hljs-keyword">new</span> Configuration();
+$config-&gt;setProxyDir(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Proxies'</span>);
+$config-&gt;setProxyNamespace(<span class="hljs-string">'Proxies'</span>);
+$config-&gt;setHydratorDir(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Hydrators'</span>);
+$config-&gt;setHydratorNamespace(<span class="hljs-string">'Hydrators'</span>);
+$config-&gt;setDefaultDB(<span class="hljs-string">'doctrine_odm'</span>);
+$config-&gt;setMetadataDriverImpl(AnnotationDriver::create(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Documents'</span>));
+
+AnnotationDriver::registerAnnotationClasses();
+
+$dm = DocumentManager::create($connection, $config);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr></table></div></code></pre>
 <p>That is it! Your <code>DocumentManager</code> instance is ready to be used!</p>
 <p></p>
                                             </div>

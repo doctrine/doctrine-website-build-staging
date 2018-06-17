@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -276,23 +276,35 @@ has a very simple API and implements the SPL interfaces <code>Countable</code> a
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="85e566691a35d94f4b50794dc16e8eeef5e359df"
+            data-copy-element-id="a9109f7a9ab4db684b43bf1b17ab15c283689e68"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="85e566691a35d94f4b50794dc16e8eeef5e359df"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Pagination</span>\<span class="hljs-title">Paginator</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$dql = <span class="hljs-string">"SELECT p, c FROM BlogPost p JOIN p.comments c"</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $entityManager-&gt;createQuery($dql)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">                       -&gt;setFirstResult(<span class="hljs-number">0</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">                       -&gt;setMaxResults(<span class="hljs-number">100</span>);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$paginator = <span class="hljs-keyword">new</span> Paginator($query, $fetchJoinCollection = <span class="hljs-keyword">true</span>);
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$c = count($paginator);
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($paginator <span class="hljs-keyword">as</span> $post) {
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">echo</span> $post-&gt;getHeadline() . <span class="hljs-string">"\n"</span>;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a9109f7a9ab4db684b43bf1b17ab15c283689e68"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="14"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Pagination</span>\<span class="hljs-title">Paginator</span>;
+
+$dql = <span class="hljs-string">"SELECT p, c FROM BlogPost p JOIN p.comments c"</span>;
+$query = $entityManager-&gt;createQuery($dql)
+                       -&gt;setFirstResult(<span class="hljs-number">0</span>)
+                       -&gt;setMaxResults(<span class="hljs-number">100</span>);
+
+$paginator = <span class="hljs-keyword">new</span> Paginator($query, $fetchJoinCollection = <span class="hljs-keyword">true</span>);
+
+$c = count($paginator);
+<span class="hljs-keyword">foreach</span> ($paginator <span class="hljs-keyword">as</span> $post) {
+    <span class="hljs-keyword">echo</span> $post-&gt;getHeadline() . <span class="hljs-string">"\n"</span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr></table></div></code></pre>
 <p>Paginating Doctrine queries is not as simple as you might think in the
 beginning. If you have complex fetch-join scenarios with one-to-many or
 many-to-many associations using the &quot;default&quot; LIMIT functionality of database

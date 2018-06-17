@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -278,12 +278,13 @@ In order to work, this requires certain conventions:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e51ec325c22ab5da5ceef8e6d8d85ee8287b3559"
+            data-copy-element-id="c3530145d102bf1934b3f301e028321570762632"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e51ec325c22ab5da5ceef8e6d8d85ee8287b3559"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$driver-&gt;setFileExtension(<span class="hljs-string">'.yml'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="c3530145d102bf1934b3f301e028321570762632"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+
+$driver-&gt;setFileExtension(<span class="hljs-string">'.yml'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>It is recommended to put all YAML mapping documents in a single
 folder but you can spread the documents over several folders if you
 want to. In order to tell the YamlDriver where to look for your
@@ -292,14 +293,17 @@ of the constructor, like this:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="480312ef43ebecbd039b03c5378ca8910b0891d5"
+            data-copy-element-id="d22633d3047c0b209f5c52571828a977ceefac86"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="480312ef43ebecbd039b03c5378ca8910b0891d5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// $config instanceof Doctrine\ODM\MongoDB\Configuration</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> YamlDriver(<span class="hljs-keyword">array</span>(<span class="hljs-string">'/path/to/files'</span>));
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$config-&gt;setMetadataDriverImpl($driver);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d22633d3047c0b209f5c52571828a977ceefac86"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// $config instanceof Doctrine\ODM\MongoDB\Configuration</span>
+$driver = <span class="hljs-keyword">new</span> YamlDriver(<span class="hljs-keyword">array</span>(<span class="hljs-string">'/path/to/files'</span>));
+$config-&gt;setMetadataDriverImpl($driver);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <a class="section-anchor" id="simplified-yaml-driver" name="simplified-yaml-driver"></a><h2 class="section-header"><a href="#simplified-yaml-driver">Simplified YAML Driver<i class="fas fa-link"></i></a></h2>
 <p>The Symfony project sponsored a driver that simplifies usage of the YAML Driver.
 The changes between the original driver are:</p>
@@ -312,114 +316,206 @@ The changes between the original driver are:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="1083ee56252cfe5000744d517c095b0450f0f98a"
+            data-copy-element-id="cbbe34a068473a89af711fca855dcacbd9e252c6"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="1083ee56252cfe5000744d517c095b0450f0f98a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$namespaces = <span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-string">'/path/to/files1'</span> =&gt; <span class="hljs-string">'MyProject\Documents'</span>,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">'/path/to/files2'</span> =&gt; <span class="hljs-string">'OtherProject\Documents'</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Mapping\Driver\SimplifiedYamlDriver($namespaces);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$driver-&gt;setGlobalBasename(<span class="hljs-string">'global'</span>); <span class="hljs-comment">// global.mongodb-odm.yml</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="cbbe34a068473a89af711fca855dcacbd9e252c6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+$namespaces = <span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'/path/to/files1'</span> =&gt; <span class="hljs-string">'MyProject\Documents'</span>,
+    <span class="hljs-string">'/path/to/files2'</span> =&gt; <span class="hljs-string">'OtherProject\Documents'</span>
+);
+$driver = <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Mapping\Driver\SimplifiedYamlDriver($namespaces);
+$driver-&gt;setGlobalBasename(<span class="hljs-string">'global'</span>); <span class="hljs-comment">// global.mongodb-odm.yml</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <a class="section-anchor" id="example" name="example"></a><h3 class="section-header"><a href="#example">Example<i class="fas fa-link"></i></a></h3>
 <p>As a quick start, here is a small example document that makes use
 of several common elements:</p>
 <pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a28dc384dc6c3101eed8f132d6a58b7eabacbcc8"
+            data-copy-element-id="a8e528fa5a6bbdc631d085d9cc7932e064bfdb72"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a28dc384dc6c3101eed8f132d6a58b7eabacbcc8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment"># Documents.User.dcm.yml</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-string">Documents\User:</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  db:</span> <span class="hljs-string">documents</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">  collection:</span> <span class="hljs-string">user</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  fields:</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    id:</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      id:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    username:</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      name:</span> <span class="hljs-string">login</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    email:</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      unique:</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">        order:</span> <span class="hljs-string">desc</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">    createdAt:</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">date</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">  indexes:</span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">    index1:</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">      keys:</span>
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">        username:</span> <span class="hljs-string">desc</span>
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">      options:</span>
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">        unique:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">        dropDups:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">        safe:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">  embedOne:</span>
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-attr">    address:</span>
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Address</span>
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-attr">  embedMany:</span>
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-attr">    phonenumbers:</span>
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Phonenumber</span>
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-attr">  referenceOne:</span>
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"><span class="hljs-attr">    profile:</span>
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Profile</span>
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"><span class="hljs-attr">    account:</span>
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"><span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Account</span>
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"><span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"><span class="hljs-attr">  referenceMany:</span>
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"><span class="hljs-attr">    groups:</span>
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line"><span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Group</span>
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line"><span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line"><span class="hljs-comment"># Alternative syntax for the exact same example</span>
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line"><span class="hljs-comment"># (allows custom key name for embedded document and reference).</span>
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line"><span class="hljs-string">Documents\User:</span>
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line"><span class="hljs-attr">  db:</span> <span class="hljs-string">documents</span>
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line"><span class="hljs-attr">  collection:</span> <span class="hljs-string">user</span>
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line"><span class="hljs-attr">  fields:</span>
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line"><span class="hljs-attr">    id:</span>
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line"><span class="hljs-attr">      id:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line"><span class="hljs-attr">    username:</span>
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line"><span class="hljs-attr">      name:</span> <span class="hljs-string">login</span>
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line"><span class="hljs-attr">    email:</span>
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line"><span class="hljs-attr">      unique:</span>
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line"><span class="hljs-attr">        order:</span> <span class="hljs-string">desc</span>
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line"><span class="hljs-attr">    createdAt:</span>
-</td></tr><tr><td class="line-number noselect">58</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">date</span>
-</td></tr><tr><td class="line-number noselect">59</td><td class="code-line"><span class="hljs-attr">    address:</span>
-</td></tr><tr><td class="line-number noselect">60</td><td class="code-line"><span class="hljs-attr">      embedded:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">61</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">one</span>
-</td></tr><tr><td class="line-number noselect">62</td><td class="code-line"><span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Address</span>
-</td></tr><tr><td class="line-number noselect">63</td><td class="code-line"><span class="hljs-attr">    phonenumbers:</span>
-</td></tr><tr><td class="line-number noselect">64</td><td class="code-line"><span class="hljs-attr">      embedded:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">65</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">many</span>
-</td></tr><tr><td class="line-number noselect">66</td><td class="code-line"><span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Phonenumber</span>
-</td></tr><tr><td class="line-number noselect">67</td><td class="code-line"><span class="hljs-attr">    profile:</span>
-</td></tr><tr><td class="line-number noselect">68</td><td class="code-line"><span class="hljs-attr">      reference:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">69</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">one</span>
-</td></tr><tr><td class="line-number noselect">70</td><td class="code-line"><span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Profile</span>
-</td></tr><tr><td class="line-number noselect">71</td><td class="code-line"><span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
-</td></tr><tr><td class="line-number noselect">72</td><td class="code-line"><span class="hljs-attr">    account:</span>
-</td></tr><tr><td class="line-number noselect">73</td><td class="code-line"><span class="hljs-attr">      reference:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">74</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">one</span>
-</td></tr><tr><td class="line-number noselect">75</td><td class="code-line"><span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Account</span>
-</td></tr><tr><td class="line-number noselect">76</td><td class="code-line"><span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
-</td></tr><tr><td class="line-number noselect">77</td><td class="code-line"><span class="hljs-attr">    groups:</span>
-</td></tr><tr><td class="line-number noselect">78</td><td class="code-line"><span class="hljs-attr">      reference:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">79</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">many</span>
-</td></tr><tr><td class="line-number noselect">80</td><td class="code-line"><span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Group</span>
-</td></tr><tr><td class="line-number noselect">81</td><td class="code-line"><span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
-</td></tr><tr><td class="line-number noselect">82</td><td class="code-line"><span class="hljs-attr">  indexes:</span>
-</td></tr><tr><td class="line-number noselect">83</td><td class="code-line"><span class="hljs-attr">    index1:</span>
-</td></tr><tr><td class="line-number noselect">84</td><td class="code-line"><span class="hljs-attr">      keys:</span>
-</td></tr><tr><td class="line-number noselect">85</td><td class="code-line"><span class="hljs-attr">        username:</span> <span class="hljs-string">desc</span>
-</td></tr><tr><td class="line-number noselect">86</td><td class="code-line"><span class="hljs-attr">      options:</span>
-</td></tr><tr><td class="line-number noselect">87</td><td class="code-line"><span class="hljs-attr">        unique:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">88</td><td class="code-line"><span class="hljs-attr">        dropDups:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">89</td><td class="code-line"><span class="hljs-attr">        safe:</span> <span class="hljs-literal">true</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a8e528fa5a6bbdc631d085d9cc7932e064bfdb72"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="89"><span class="hljs-comment"># Documents.User.dcm.yml</span>
+
+<span class="hljs-string">Documents\User:</span>
+<span class="hljs-attr">  db:</span> <span class="hljs-string">documents</span>
+<span class="hljs-attr">  collection:</span> <span class="hljs-string">user</span>
+<span class="hljs-attr">  fields:</span>
+<span class="hljs-attr">    id:</span>
+<span class="hljs-attr">      id:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">    username:</span>
+<span class="hljs-attr">      name:</span> <span class="hljs-string">login</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+<span class="hljs-attr">    email:</span>
+<span class="hljs-attr">      unique:</span>
+<span class="hljs-attr">        order:</span> <span class="hljs-string">desc</span>
+<span class="hljs-attr">    createdAt:</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">date</span>
+<span class="hljs-attr">  indexes:</span>
+<span class="hljs-attr">    index1:</span>
+<span class="hljs-attr">      keys:</span>
+<span class="hljs-attr">        username:</span> <span class="hljs-string">desc</span>
+<span class="hljs-attr">      options:</span>
+<span class="hljs-attr">        unique:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">        dropDups:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">        safe:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">  embedOne:</span>
+<span class="hljs-attr">    address:</span>
+<span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Address</span>
+<span class="hljs-attr">  embedMany:</span>
+<span class="hljs-attr">    phonenumbers:</span>
+<span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Phonenumber</span>
+<span class="hljs-attr">  referenceOne:</span>
+<span class="hljs-attr">    profile:</span>
+<span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Profile</span>
+<span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
+<span class="hljs-attr">    account:</span>
+<span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Account</span>
+<span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
+<span class="hljs-attr">  referenceMany:</span>
+<span class="hljs-attr">    groups:</span>
+<span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Group</span>
+<span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
+
+<span class="hljs-comment"># Alternative syntax for the exact same example</span>
+<span class="hljs-comment"># (allows custom key name for embedded document and reference).</span>
+<span class="hljs-string">Documents\User:</span>
+<span class="hljs-attr">  db:</span> <span class="hljs-string">documents</span>
+<span class="hljs-attr">  collection:</span> <span class="hljs-string">user</span>
+<span class="hljs-attr">  fields:</span>
+<span class="hljs-attr">    id:</span>
+<span class="hljs-attr">      id:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">    username:</span>
+<span class="hljs-attr">      name:</span> <span class="hljs-string">login</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+<span class="hljs-attr">    email:</span>
+<span class="hljs-attr">      unique:</span>
+<span class="hljs-attr">        order:</span> <span class="hljs-string">desc</span>
+<span class="hljs-attr">    createdAt:</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">date</span>
+<span class="hljs-attr">    address:</span>
+<span class="hljs-attr">      embedded:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">one</span>
+<span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Address</span>
+<span class="hljs-attr">    phonenumbers:</span>
+<span class="hljs-attr">      embedded:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">many</span>
+<span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Phonenumber</span>
+<span class="hljs-attr">    profile:</span>
+<span class="hljs-attr">      reference:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">one</span>
+<span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Profile</span>
+<span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
+<span class="hljs-attr">    account:</span>
+<span class="hljs-attr">      reference:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">one</span>
+<span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Account</span>
+<span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
+<span class="hljs-attr">    groups:</span>
+<span class="hljs-attr">      reference:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">many</span>
+<span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\Group</span>
+<span class="hljs-attr">      cascade:</span> <span class="hljs-string">all</span>
+<span class="hljs-attr">  indexes:</span>
+<span class="hljs-attr">    index1:</span>
+<span class="hljs-attr">      keys:</span>
+<span class="hljs-attr">        username:</span> <span class="hljs-string">desc</span>
+<span class="hljs-attr">      options:</span>
+<span class="hljs-attr">        unique:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">        dropDups:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">        safe:</span> <span class="hljs-literal">true</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr>
+<tr><td class="line-number noselect">58</td></tr>
+<tr><td class="line-number noselect">59</td></tr>
+<tr><td class="line-number noselect">60</td></tr>
+<tr><td class="line-number noselect">61</td></tr>
+<tr><td class="line-number noselect">62</td></tr>
+<tr><td class="line-number noselect">63</td></tr>
+<tr><td class="line-number noselect">64</td></tr>
+<tr><td class="line-number noselect">65</td></tr>
+<tr><td class="line-number noselect">66</td></tr>
+<tr><td class="line-number noselect">67</td></tr>
+<tr><td class="line-number noselect">68</td></tr>
+<tr><td class="line-number noselect">69</td></tr>
+<tr><td class="line-number noselect">70</td></tr>
+<tr><td class="line-number noselect">71</td></tr>
+<tr><td class="line-number noselect">72</td></tr>
+<tr><td class="line-number noselect">73</td></tr>
+<tr><td class="line-number noselect">74</td></tr>
+<tr><td class="line-number noselect">75</td></tr>
+<tr><td class="line-number noselect">76</td></tr>
+<tr><td class="line-number noselect">77</td></tr>
+<tr><td class="line-number noselect">78</td></tr>
+<tr><td class="line-number noselect">79</td></tr>
+<tr><td class="line-number noselect">80</td></tr>
+<tr><td class="line-number noselect">81</td></tr>
+<tr><td class="line-number noselect">82</td></tr>
+<tr><td class="line-number noselect">83</td></tr>
+<tr><td class="line-number noselect">84</td></tr>
+<tr><td class="line-number noselect">85</td></tr>
+<tr><td class="line-number noselect">86</td></tr>
+<tr><td class="line-number noselect">87</td></tr>
+<tr><td class="line-number noselect">88</td></tr>
+<tr><td class="line-number noselect">89</td></tr></table></div></code></pre>
 <p>Be aware that class-names specified in the YAML files should be fully qualified.</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The <code>name</code> property is an optional setting to change  name of the field
 <strong>in the database</strong>. Specifying it is optional and defaults to the name
@@ -433,12 +529,13 @@ This is only compatible with the <code>int</code> field type, and cannot be comb
 <pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="9e83125e163d2697980e55156a722270bb563069"
+            data-copy-element-id="75b4feb477e9c5a526405499948ecf3530479c37"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="9e83125e163d2697980e55156a722270bb563069"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">lock:</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">int</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  lock:</span> <span class="hljs-literal">true</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="75b4feb477e9c5a526405499948ecf3530479c37"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-attr">lock:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">int</span>
+<span class="hljs-attr">  lock:</span> <span class="hljs-literal">true</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <a id="yml_reference_version"></a>
 <a class="section-anchor" id="version" name="version"></a><h4 class="section-header"><a href="#version">Version<i class="fas fa-link"></i></a></h4>
 <p>The field with the <code>version</code> property will be used to store version information for <a href="">optimistic locking</a>.
@@ -446,12 +543,13 @@ This is only compatible with <code>int</code> and <code>date</code> field types,
 <pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="deabf93c1c243b856749ae5ae1c606b53b10f5df"
+            data-copy-element-id="e4589dd6cdf32d49517d62104afa515b6779c6c1"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="deabf93c1c243b856749ae5ae1c606b53b10f5df"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">version:</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">int</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  version:</span> <span class="hljs-literal">true</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="e4589dd6cdf32d49517d62104afa515b6779c6c1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-attr">version:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">int</span>
+<span class="hljs-attr">  version:</span> <span class="hljs-literal">true</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>By default, Doctrine ODM updates <a href="">embed-many</a> and
 <a href="">reference-many</a> collections in separate write operations,
 which do not bump the document version. Users employing document versioning are

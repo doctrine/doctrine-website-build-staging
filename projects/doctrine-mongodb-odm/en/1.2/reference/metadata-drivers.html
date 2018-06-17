@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -281,12 +281,13 @@ using the <code>setMetadataCacheImpl()</code> method on the
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="780bb299a50f8a7b94adf300eaac1df08dfe04f4"
+            data-copy-element-id="abc7847f665d04574975a94e710b64296a255492"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="780bb299a50f8a7b94adf300eaac1df08dfe04f4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em-&gt;getConfiguration()-&gt;setMetadataCacheImpl(<span class="hljs-keyword">new</span> ApcCache());
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="abc7847f665d04574975a94e710b64296a255492"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+
+$em-&gt;getConfiguration()-&gt;setMetadataCacheImpl(<span class="hljs-keyword">new</span> ApcCache());</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 </div>
 <p>If you want to use one of the included core metadata drivers you
 just need to configure it. All the drivers are in the
@@ -294,13 +295,15 @@ just need to configure it. All the drivers are in the
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="607ce4bc3789d303e1076411a4f6030f5ddf5c84"
+            data-copy-element-id="d0ddbfd5a2631b4e0a61db735b1947846f23a5b9"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="607ce4bc3789d303e1076411a4f6030f5ddf5c84"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Mapping\Driver\XmlDriver(<span class="hljs-string">'/path/to/mapping/files'</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d0ddbfd5a2631b4e0a61db735b1947846f23a5b9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+
+$driver = <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Mapping\Driver\XmlDriver(<span class="hljs-string">'/path/to/mapping/files'</span>);
+$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <a class="section-anchor" id="implementing-metadata-drivers" name="implementing-metadata-drivers"></a><h2 class="section-header"><a href="#implementing-metadata-drivers">Implementing Metadata Drivers<i class="fas fa-link"></i></a></h2>
 <p>In addition to the included metadata drivers you can very easily
 implement your own. All you need to do is define a class which
@@ -308,78 +311,134 @@ implements the <code>Driver</code> interface:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="ef601f5480fba7776ed8f50400cb8e2869f8aa51"
+            data-copy-element-id="8f621481cafcc42e2d1aea3f4fb4d5db15254720"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="ef601f5480fba7776ed8f50400cb8e2869f8aa51"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">ClassMetadataInfo</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Driver</span></span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * Loads the metadata <span class="hljs-keyword">for</span> the specified <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">into</span> <span class="hljs-title">the</span> <span class="hljs-title">provided</span> <span class="hljs-title">container</span>.</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * 
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     * @param string $className
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     * @param ClassMetadataInfo $metadata
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadataForClass</span><span class="hljs-params">($className, ClassMetadataInfo $metadata)</span></span>;
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     * Gets the names of all mapped classes known to this driver.
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     * 
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * @<span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span> The names of all mapped classes known to this driver.
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAllClassNames</span><span class="hljs-params">()</span></span>; 
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     * Whether the <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">with</span> <span class="hljs-title">the</span> <span class="hljs-title">specified</span> <span class="hljs-title">name</span> <span class="hljs-title">should</span> <span class="hljs-title">have</span> <span class="hljs-title">its</span> <span class="hljs-title">metadata</span> <span class="hljs-title">loaded</span>.</span>
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     * This is only the <span class="hljs-keyword">case</span> <span class="hljs-keyword">if</span> it is either mapped <span class="hljs-keyword">as</span> a Document <span class="hljs-keyword">or</span> a
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     * MappedSuperclass.
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">     * @param string $className
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">     * @<span class="hljs-keyword">return</span> boolean
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isTransient</span><span class="hljs-params">($className)</span></span>;
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="8f621481cafcc42e2d1aea3f4fb4d5db15254720"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="33"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">ClassMetadataInfo</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Driver</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Loads the metadata for the specified class into the provided container.
+     * 
+     * <span class="hljs-doctag">@param</span> string $className
+     * <span class="hljs-doctag">@param</span> ClassMetadataInfo $metadata
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadataForClass</span><span class="hljs-params">($className, ClassMetadataInfo $metadata)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Gets the names of all mapped classes known to this driver.
+     * 
+     * <span class="hljs-doctag">@return</span> array The names of all mapped classes known to this driver.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAllClassNames</span><span class="hljs-params">()</span></span>; 
+
+    <span class="hljs-comment">/**
+     * Whether the class with the specified name should have its metadata loaded.
+     * This is only the case if it is either mapped as a Document or a
+     * MappedSuperclass.
+     *
+     * <span class="hljs-doctag">@param</span> string $className
+     * <span class="hljs-doctag">@return</span> boolean
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isTransient</span><span class="hljs-params">($className)</span></span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr></table></div></code></pre>
 <p>If you want to write a metadata driver to parse information from
 some file format we've made your life a little easier by providing
 the <code>AbstractFileDriver</code> implementation for you to extend from:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="5ea256915479d90dfe8d9ac6487c8fdedde0544f"
+            data-copy-element-id="8fb12303f2a170ec3701b62a9e956130678c9450"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="5ea256915479d90dfe8d9ac6487c8fdedde0544f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyMetadataDriver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractFileDriver</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     * {@inheritdoc}
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">protected</span> $_fileExtension = <span class="hljs-string">'.dcm.ext'</span>;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * {@inheritdoc}
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadataForClass</span><span class="hljs-params">($className, ClassMetadataInfo $metadata)</span></span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        $data = <span class="hljs-keyword">$this</span>-&gt;_loadMappingFile($file);
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-comment">// populate ClassMetadataInfo instance from $data</span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     * {@inheritdoc}
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_loadMappingFile</span><span class="hljs-params">($file)</span></span>
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-comment">// parse contents of $file and return php data structure</span>
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="8fb12303f2a170ec3701b62a9e956130678c9450"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="27"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyMetadataDriver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractFileDriver</span>
+</span>{
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritdoc</span>}
+     */</span>
+    <span class="hljs-keyword">protected</span> $_fileExtension = <span class="hljs-string">'.dcm.ext'</span>;
+
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritdoc</span>}
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadataForClass</span><span class="hljs-params">($className, ClassMetadataInfo $metadata)</span>
+    </span>{
+        $data = <span class="hljs-keyword">$this</span>-&gt;_loadMappingFile($file);
+
+        <span class="hljs-comment">// populate ClassMetadataInfo instance from $data</span>
+    }
+
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritdoc</span>}
+     */</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_loadMappingFile</span><span class="hljs-params">($file)</span>
+    </span>{
+        <span class="hljs-comment">// parse contents of $file and return php data structure</span>
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>When using the <code>AbstractFileDriver</code> it requires that you
 only have one document defined per file and the file named after the
 class described inside where namespace separators are replaced by
@@ -393,13 +452,15 @@ it with the <code>setMetadataDriverImpl()</code> method:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0a8ee115b7523f05b007f515388dd099d91f95f9"
+            data-copy-element-id="9ef7f72a8ec8117ca651939585431ee30b36973f"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0a8ee115b7523f05b007f515388dd099d91f95f9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> MyMetadataDriver(<span class="hljs-string">'/path/to/mapping/files'</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9ef7f72a8ec8117ca651939585431ee30b36973f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+
+$driver = <span class="hljs-keyword">new</span> MyMetadataDriver(<span class="hljs-string">'/path/to/mapping/files'</span>);
+$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <a class="section-anchor" id="classmetadata" name="classmetadata"></a><h2 class="section-header"><a href="#classmetadata">ClassMetadata<i class="fas fa-link"></i></a></h2>
 <p>The last piece you need to know and understand about metadata in
 Doctrine is the API of the <code>ClassMetadata</code> classes. You need to
@@ -426,27 +487,32 @@ the <code>ClassMetadataFactory</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0ffc6ab088f0c851f0b450b37be545b9c2c49486"
+            data-copy-element-id="9d4b1fc70c37eb02a85778a7afddeb2732e60e42"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0ffc6ab088f0c851f0b450b37be545b9c2c49486"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cmf = $em-&gt;getMetadataFactory();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$class = $cmf-&gt;getMetadataFor(<span class="hljs-string">'MyDocumentName'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9d4b1fc70c37eb02a85778a7afddeb2732e60e42"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+
+$cmf = $em-&gt;getMetadataFactory();
+$class = $cmf-&gt;getMetadataFor(<span class="hljs-string">'MyDocumentName'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <p>Now you can learn about the document and use the data stored in the
 <code>ClassMetadata</code> instance to get all mapped fields for example and
 iterate over them:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="459d43ea36e28c58351e9820d2b955dcf9f42caf"
+            data-copy-element-id="95320b803951658bdce953257805b45130e1cc3c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="459d43ea36e28c58351e9820d2b955dcf9f42caf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($class-&gt;fieldMappings <span class="hljs-keyword">as</span> $fieldMapping) {
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">echo</span> $fieldMapping[<span class="hljs-string">'fieldName'</span>] . <span class="hljs-string">"\n"</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="95320b803951658bdce953257805b45130e1cc3c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">foreach</span> ($class-&gt;fieldMappings <span class="hljs-keyword">as</span> $fieldMapping) {
+    <span class="hljs-keyword">echo</span> $fieldMapping[<span class="hljs-string">'fieldName'</span>] . <span class="hljs-string">"\n"</span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

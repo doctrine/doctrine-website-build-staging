@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -291,114 +291,203 @@ list of stocks traded on a market they will be indexed by their symbol, which is
 <div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e35e9943b7c12f0b4d71f2fcfec2747a82d366d4"
+            data-copy-element-id="55b805f2d0c1e9ab205078d80e93f85cc1f7ae12"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e35e9943b7c12f0b4d71f2fcfec2747a82d366d4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Tests</span>\<span class="hljs-title">Models</span>\<span class="hljs-title">StockExchange</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @Entity
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @Table(name=<span class="hljs-string">"exchange_markets"</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Market</span></span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     * @Id @Column(type=<span class="hljs-string">"integer"</span>) @GeneratedValue
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     * @<span class="hljs-keyword">var</span> int
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     * @Column(type=<span class="hljs-string">"string"</span>)
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * @<span class="hljs-keyword">var</span> string
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">private</span> $name;
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     * @OneToMany(targetEntity=<span class="hljs-string">"Stock"</span>, mappedBy=<span class="hljs-string">"market"</span>, indexBy=<span class="hljs-string">"symbol"</span>)
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     * @<span class="hljs-keyword">var</span> Stock[]
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-keyword">private</span> $stocks;
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($name)</span></span>
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;name = $name;
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;stocks = <span class="hljs-keyword">new</span> ArrayCollection();
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id;
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name;
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addStock</span><span class="hljs-params">(Stock $stock)</span></span>
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;stocks[$stock-&gt;getSymbol()] = $stock;
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStock</span><span class="hljs-params">($symbol)</span></span>
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>(<span class="hljs-keyword">$this</span>-&gt;stocks[$symbol])) {
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \InvalidArgumentException(<span class="hljs-string">"Symbol is not traded on this market."</span>);
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;stocks[$symbol];
-</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">59</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">60</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStocks</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">61</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">62</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;stocks-&gt;toArray();
-</td></tr><tr><td class="line-number noselect">63</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">64</td><td class="code-line">}
-</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+        ><i class="fas fa-copy"></i></button><div id="55b805f2d0c1e9ab205078d80e93f85cc1f7ae12"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="64"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Tests</span>\<span class="hljs-title">Models</span>\<span class="hljs-title">StockExchange</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Entity</span>
+ * <span class="hljs-doctag">@Table</span>(name="exchange_markets")
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Market</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span>
+     * <span class="hljs-doctag">@var</span> int
+     */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Column</span>(type="string")
+     * <span class="hljs-doctag">@var</span> string
+     */</span>
+    <span class="hljs-keyword">private</span> $name;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@OneToMany</span>(targetEntity="Stock", mappedBy="market", indexBy="symbol")
+     * <span class="hljs-doctag">@var</span> Stock[]
+     */</span>
+    <span class="hljs-keyword">private</span> $stocks;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($name)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;name = $name;
+        <span class="hljs-keyword">$this</span>-&gt;stocks = <span class="hljs-keyword">new</span> ArrayCollection();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addStock</span><span class="hljs-params">(Stock $stock)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;stocks[$stock-&gt;getSymbol()] = $stock;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStock</span><span class="hljs-params">($symbol)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>(<span class="hljs-keyword">$this</span>-&gt;stocks[$symbol])) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \InvalidArgumentException(<span class="hljs-string">"Symbol is not traded on this market."</span>);
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;stocks[$symbol];
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStocks</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;stocks-&gt;toArray();
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr>
+<tr><td class="line-number noselect">58</td></tr>
+<tr><td class="line-number noselect">59</td></tr>
+<tr><td class="line-number noselect">60</td></tr>
+<tr><td class="line-number noselect">61</td></tr>
+<tr><td class="line-number noselect">62</td></tr>
+<tr><td class="line-number noselect">63</td></tr>
+<tr><td class="line-number noselect">64</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="df1cea7c126ab7f76a32a6492870d8837788363b"
+            data-copy-element-id="a765b1f6e1fbe7038af2da753fe0841ceccaccc0"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="df1cea7c126ab7f76a32a6492870d8837788363b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping"</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd"&gt;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Doctrine\Tests\Models\StockExchange\Market"</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"integer"</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">generator</span> <span class="hljs-attr">strategy</span>=<span class="hljs-string">"AUTO"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span>/&gt;</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">one-to-many</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Stock"</span> <span class="hljs-attr">mapped-by</span>=<span class="hljs-string">"market"</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"stocks"</span> <span class="hljs-attr">index-by</span>=<span class="hljs-string">"symbol"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
-</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+        ><i class="fas fa-copy"></i></button><div id="a765b1f6e1fbe7038af2da753fe0841ceccaccc0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="16"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping"</span>
+      <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+      <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Doctrine\Tests\Models\StockExchange\Market"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"integer"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">generator</span> <span class="hljs-attr">strategy</span>=<span class="hljs-string">"AUTO"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span>/&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">one-to-many</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Stock"</span> <span class="hljs-attr">mapped-by</span>=<span class="hljs-string">"market"</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"stocks"</span> <span class="hljs-attr">index-by</span>=<span class="hljs-string">"symbol"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="16b7dc4ce2498868a23bc885b8e6ed77f5b46833"
+            data-copy-element-id="488b118133aae823acb9251653338c03e243e68e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="16b7dc4ce2498868a23bc885b8e6ed77f5b46833"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-string">Doctrine\Tests\Models\StockExchange\Market:</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  id:</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    id:</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      generator:</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">        strategy:</span> <span class="hljs-string">AUTO</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">  fields:</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    name:</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      type:</span><span class="hljs-string">string</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">  oneToMany:</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    stocks:</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Stock</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      mappedBy:</span> <span class="hljs-string">market</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">      indexBy:</span> <span class="hljs-string">symbol</span>
-</td></tr></table></div></code></pre></div></li></ul></div>
+        ><i class="fas fa-copy"></i></button><div id="488b118133aae823acb9251653338c03e243e68e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="15"><span class="hljs-string">Doctrine\Tests\Models\StockExchange\Market:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+<span class="hljs-attr">  id:</span>
+<span class="hljs-attr">    id:</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+<span class="hljs-attr">      generator:</span>
+<span class="hljs-attr">        strategy:</span> <span class="hljs-string">AUTO</span>
+<span class="hljs-attr">  fields:</span>
+<span class="hljs-attr">    name:</span>
+<span class="hljs-attr">      type:</span><span class="hljs-string">string</span>
+<span class="hljs-attr">  oneToMany:</span>
+<span class="hljs-attr">    stocks:</span>
+<span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Stock</span>
+<span class="hljs-attr">      mappedBy:</span> <span class="hljs-string">market</span>
+<span class="hljs-attr">      indexBy:</span> <span class="hljs-string">symbol</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Inside the <code>addStock()</code> method you can see how we directly set the key of the association to the symbol,
 so that we can work with the indexed association directly after invoking <code>addStock()</code>. Inside <code>getStock($symbol)</code>
 we pick a stock traded on the particular market by symbol. If this stock doesn't exist an exception is thrown.</p>
@@ -407,88 +496,151 @@ here are the code and mappings for it:</p>
 <div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="d6a05c98f4372338f197084e5ca4256dcc9f1ead"
+            data-copy-element-id="9fbf56cd8ff0335b049e4d3e1897487be5631365"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="d6a05c98f4372338f197084e5ca4256dcc9f1ead"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Tests</span>\<span class="hljs-title">Models</span>\<span class="hljs-title">StockExchange</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Entity
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * @Table(name=<span class="hljs-string">"exchange_stocks"</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stock</span></span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @Id @GeneratedValue @Column(type=<span class="hljs-string">"integer"</span>)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     * @<span class="hljs-keyword">var</span> int
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     * <span class="hljs-keyword">For</span> real this column would have to be unique=<span class="hljs-keyword">true</span>. But I want to test behavior of non-unique overrides.
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     * @Column(type=<span class="hljs-string">"string"</span>, unique=<span class="hljs-keyword">true</span>)
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">private</span> $symbol;
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">     * @ManyToOne(targetEntity=<span class="hljs-string">"Market"</span>, inversedBy=<span class="hljs-string">"stocks"</span>)
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     * @<span class="hljs-keyword">var</span> Market
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-keyword">private</span> $market;
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($symbol, Market $market)</span></span>
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;symbol = $symbol;
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;market = $market;
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        $market-&gt;addStock(<span class="hljs-keyword">$this</span>);
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSymbol</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;symbol;
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">}
-</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+        ><i class="fas fa-copy"></i></button><div id="9fbf56cd8ff0335b049e4d3e1897487be5631365"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="40"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Tests</span>\<span class="hljs-title">Models</span>\<span class="hljs-title">StockExchange</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Entity</span>
+ * <span class="hljs-doctag">@Table</span>(name="exchange_stocks")
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stock</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@GeneratedValue</span> <span class="hljs-doctag">@Column</span>(type="integer")
+     * <span class="hljs-doctag">@var</span> int
+     */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/**
+     * For real this column would have to be unique=true. But I want to test behavior of non-unique overrides.
+     *
+     * <span class="hljs-doctag">@Column</span>(type="string", unique=true)
+     */</span>
+    <span class="hljs-keyword">private</span> $symbol;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@ManyToOne</span>(targetEntity="Market", inversedBy="stocks")
+     * <span class="hljs-doctag">@var</span> Market
+     */</span>
+    <span class="hljs-keyword">private</span> $market;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($symbol, Market $market)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;symbol = $symbol;
+        <span class="hljs-keyword">$this</span>-&gt;market = $market;
+        $market-&gt;addStock(<span class="hljs-keyword">$this</span>);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSymbol</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;symbol;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="61d1ff4d85d1dd3982a920a250841ad387c30bd9"
+            data-copy-element-id="135aded8ba60b56075be7e685407d31ff76ba910"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="61d1ff4d85d1dd3982a920a250841ad387c30bd9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping"</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd"&gt;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Doctrine\Tests\Models\StockExchange\Stock"</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"integer"</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            <span class="hljs-tag">&lt;<span class="hljs-name">generator</span> <span class="hljs-attr">strategy</span>=<span class="hljs-string">"AUTO"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"symbol"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">unique</span>=<span class="hljs-string">"true"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-one</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Market"</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"market"</span> <span class="hljs-attr">inversed-by</span>=<span class="hljs-string">"stocks"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
-</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+        ><i class="fas fa-copy"></i></button><div id="135aded8ba60b56075be7e685407d31ff76ba910"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="15"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping"</span>
+      <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+      <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">entity</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Doctrine\Tests\Models\StockExchange\Stock"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"integer"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">generator</span> <span class="hljs-attr">strategy</span>=<span class="hljs-string">"AUTO"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"symbol"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> <span class="hljs-attr">unique</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">many-to-one</span> <span class="hljs-attr">target-entity</span>=<span class="hljs-string">"Market"</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"market"</span> <span class="hljs-attr">inversed-by</span>=<span class="hljs-string">"stocks"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">entity</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c0d64b6414fb13e49b5b7c3ea057384bc557d6a5"
+            data-copy-element-id="211c97b206e53a1d411383bb14cf99578d2702bb"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c0d64b6414fb13e49b5b7c3ea057384bc557d6a5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-string">Doctrine\Tests\Models\StockExchange\Stock:</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  id:</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    id:</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      generator:</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">        strategy:</span> <span class="hljs-string">AUTO</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">  fields:</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    symbol:</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">  manyToOne:</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    market:</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Market</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      inversedBy:</span> <span class="hljs-string">stocks</span>
-</td></tr></table></div></code></pre></div></li></ul></div>
+        ><i class="fas fa-copy"></i></button><div id="211c97b206e53a1d411383bb14cf99578d2702bb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="14"><span class="hljs-string">Doctrine\Tests\Models\StockExchange\Stock:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+<span class="hljs-attr">  id:</span>
+<span class="hljs-attr">    id:</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+<span class="hljs-attr">      generator:</span>
+<span class="hljs-attr">        strategy:</span> <span class="hljs-string">AUTO</span>
+<span class="hljs-attr">  fields:</span>
+<span class="hljs-attr">    symbol:</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+<span class="hljs-attr">  manyToOne:</span>
+<span class="hljs-attr">    market:</span>
+<span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Market</span>
+<span class="hljs-attr">      inversedBy:</span> <span class="hljs-string">stocks</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr></table></div></code></pre></div></li></ul></div>
 <a class="section-anchor" id="querying-indexed-associations" name="querying-indexed-associations"></a><h2 class="section-header"><a href="#querying-indexed-associations">Querying indexed associations<i class="fas fa-link"></i></a></h2>
 <p>Now that we defined the stocks collection to be indexed by symbol we can take a look at some code,
 that makes use of the indexing.</p>
@@ -496,62 +648,92 @@ that makes use of the indexing.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="676073c094ba6a40830eb7cd31c0ad82fd93a7aa"
+            data-copy-element-id="af163eb780713dfe748056b8936c32f02186ff08"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="676073c094ba6a40830eb7cd31c0ad82fd93a7aa"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em is the EntityManager</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$market = <span class="hljs-keyword">new</span> Market(<span class="hljs-string">"Some Exchange"</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$stock1 = <span class="hljs-keyword">new</span> Stock(<span class="hljs-string">"AAPL"</span>, $market);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$stock2 = <span class="hljs-keyword">new</span> Stock(<span class="hljs-string">"GOOG"</span>, $market);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$em-&gt;persist($market);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$em-&gt;persist($stock1);
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$em-&gt;persist($stock2);
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$em-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="af163eb780713dfe748056b8936c32f02186ff08"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $em is the EntityManager</span>
+
+$market = <span class="hljs-keyword">new</span> Market(<span class="hljs-string">"Some Exchange"</span>);
+$stock1 = <span class="hljs-keyword">new</span> Stock(<span class="hljs-string">"AAPL"</span>, $market);
+$stock2 = <span class="hljs-keyword">new</span> Stock(<span class="hljs-string">"GOOG"</span>, $market);
+
+$em-&gt;persist($market);
+$em-&gt;persist($stock1);
+$em-&gt;persist($stock2);
+$em-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>This code is not particular interesting since the indexing feature is not yet used. In a new request we could
 now query for the market:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="141ae6d1cbd65b4b356af614e1d006cb2e057ea8"
+            data-copy-element-id="bc7d58c96c4351ac56567b62ecf8525ee7c3d59e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="141ae6d1cbd65b4b356af614e1d006cb2e057ea8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em is the EntityManager</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$marketId = <span class="hljs-number">1</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$symbol = <span class="hljs-string">"AAPL"</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$market = $em-&gt;find(<span class="hljs-string">"Doctrine\Tests\Models\StockExchange\Market"</span>, $marketId);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">// Access the stocks by symbol now:</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$stock = $market-&gt;getStock($symbol);
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-keyword">echo</span> $stock-&gt;getSymbol(); <span class="hljs-comment">// will print "AAPL"</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="bc7d58c96c4351ac56567b62ecf8525ee7c3d59e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $em is the EntityManager</span>
+$marketId = <span class="hljs-number">1</span>;
+$symbol = <span class="hljs-string">"AAPL"</span>;
+
+$market = $em-&gt;find(<span class="hljs-string">"Doctrine\Tests\Models\StockExchange\Market"</span>, $marketId);
+
+<span class="hljs-comment">// Access the stocks by symbol now:</span>
+$stock = $market-&gt;getStock($symbol);
+
+<span class="hljs-keyword">echo</span> $stock-&gt;getSymbol(); <span class="hljs-comment">// will print "AAPL"</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>The implementation <code>Market::addStock()</code> in combination with <code>indexBy</code> allows to access the collection
 consistently by the Stock symbol. It does not matter if Stock is managed by Doctrine or not.</p>
 <p>The same applies to DQL queries: The <code>indexBy</code> configuration acts as implicit &quot;INDEX BY&quot; to a join association.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="ee1445f9ab41148b2f7a091f7ceb78fdb0fb1036"
+            data-copy-element-id="a8cf44fa153a5357714fdaf02242bc30153a9ba0"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="ee1445f9ab41148b2f7a091f7ceb78fdb0fb1036"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em is the EntityManager</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$marketId = <span class="hljs-number">1</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$symbol = <span class="hljs-string">"AAPL"</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$dql = <span class="hljs-string">"SELECT m, s FROM Doctrine\Tests\Models\StockExchange\Market m JOIN m.stocks s WHERE m.id = ?1"</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$market = $em-&gt;createQuery($dql)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">             -&gt;setParameter(<span class="hljs-number">1</span>, $marketId)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">             -&gt;getSingleResult();
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-comment">// Access the stocks by symbol now:</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$stock = $market-&gt;getStock($symbol);
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-keyword">echo</span> $stock-&gt;getSymbol(); <span class="hljs-comment">// will print "AAPL"</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a8cf44fa153a5357714fdaf02242bc30153a9ba0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="14"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $em is the EntityManager</span>
+$marketId = <span class="hljs-number">1</span>;
+$symbol = <span class="hljs-string">"AAPL"</span>;
+
+$dql = <span class="hljs-string">"SELECT m, s FROM Doctrine\Tests\Models\StockExchange\Market m JOIN m.stocks s WHERE m.id = ?1"</span>;
+$market = $em-&gt;createQuery($dql)
+             -&gt;setParameter(<span class="hljs-number">1</span>, $marketId)
+             -&gt;getSingleResult();
+
+<span class="hljs-comment">// Access the stocks by symbol now:</span>
+$stock = $market-&gt;getStock($symbol);
+
+<span class="hljs-keyword">echo</span> $stock-&gt;getSymbol(); <span class="hljs-comment">// will print "AAPL"</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr></table></div></code></pre>
 <p>If you want to use <code>INDEX BY</code> explicitly on an indexed association you are free to do so. Additionally
 indexed associations also work with the <code>Collection::slice()</code> functionality, no matter if marked as
 LAZY or EXTRA_LAZY.</p>

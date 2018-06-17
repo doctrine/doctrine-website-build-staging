@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -273,27 +273,33 @@ querying and filtering your documents. ODM provides you with a default
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="60f6931ce398b6b3624d6ab7ba70d18be152c58d"
+            data-copy-element-id="f3fef50a8271f40ee3e7be2511d256424187b468"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="60f6931ce398b6b3624d6ab7ba70d18be152c58d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/* <span class="hljs-doctag">@var</span> $repository \Doctrine\ODM\MongoDB\DocumentRepository */</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$repository = $documentManager-&gt;getRepository(User::class);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$disabledUsers = $repository-&gt;findBy([<span class="hljs-string">'disabled'</span> =&gt; <span class="hljs-keyword">true</span>, <span class="hljs-string">'activated'</span> =&gt; <span class="hljs-keyword">true</span>]);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="f3fef50a8271f40ee3e7be2511d256424187b468"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">/* <span class="hljs-doctag">@var</span> $repository \Doctrine\ODM\MongoDB\DocumentRepository */</span>
+$repository = $documentManager-&gt;getRepository(User::class);
+$disabledUsers = $repository-&gt;findBy([<span class="hljs-string">'disabled'</span> =&gt; <span class="hljs-keyword">true</span>, <span class="hljs-string">'activated'</span> =&gt; <span class="hljs-keyword">true</span>]);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <p>The array passed to <code>findBy</code> specifies the criteria for which documents are matched.
 ODM will assist with converting PHP values to equivalent BSON types whenever possible:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="242be76f4180fe7f1678d178ee3a1423a09bd6bf"
+            data-copy-element-id="a43f1911f72a4cee4a488279b7f2c868054c0b43"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="242be76f4180fe7f1678d178ee3a1423a09bd6bf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$group = $documentManager-&gt;find(Group::class, <span class="hljs-number">123</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/* <span class="hljs-doctag">@var</span> $repository \Doctrine\ODM\MongoDB\DocumentRepository */</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$repository = $documentManager-&gt;getRepository(User::class);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$usersInGroup = $repository-&gt;findBy([<span class="hljs-string">'group'</span> =&gt; $group]);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a43f1911f72a4cee4a488279b7f2c868054c0b43"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+$group = $documentManager-&gt;find(Group::class, <span class="hljs-number">123</span>);
+<span class="hljs-comment">/* <span class="hljs-doctag">@var</span> $repository \Doctrine\ODM\MongoDB\DocumentRepository */</span>
+$repository = $documentManager-&gt;getRepository(User::class);
+$usersInGroup = $repository-&gt;findBy([<span class="hljs-string">'group'</span> =&gt; $group]);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <p>The default repository implementation provides the following methods:</p>
 <ul><li class="dash"><code>find()</code> - finds one document by its identifier. This may skip a database query
 if the document is already managed by ODM.</li>
@@ -314,26 +320,34 @@ document class like so:</p>
 <div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e2e2c7ef5149558668c9c580bf49deac3a66028b"
+            data-copy-element-id="6f2823b191613efe47d1af8305d7c899f649c3bd"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e2e2c7ef5149558668c9c580bf49deac3a66028b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span>(repositoryClass="Repositories\UserRepository") */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/* ... */</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">}
-</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+        ><i class="fas fa-copy"></i></button><div id="6f2823b191613efe47d1af8305d7c899f649c3bd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@Document</span>(repositoryClass="Repositories\UserRepository") */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-comment">/* ... */</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e8ef3ea2bffe62201a84a81242e3e110fb4b7d4a"
+            data-copy-element-id="a1aae207b1941e32b60e7b755f2795050c0d52ad"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e8ef3ea2bffe62201a84a81242e3e110fb4b7d4a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Documents\User"</span> <span class="hljs-attr">repository-class</span>=<span class="hljs-string">"Repositories\UserRepository"</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-comment">&lt;!-- ... --&gt;</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
-</td></tr></table></div></code></pre></div></li></ul></div>
+        ><i class="fas fa-copy"></i></button><div id="a1aae207b1941e32b60e7b755f2795050c0d52ad"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Documents\User"</span> <span class="hljs-attr">repository-class</span>=<span class="hljs-string">"Repositories\UserRepository"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- ... --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre></div></li></ul></div>
 <p>The next step is implementing your repository class. In most cases, ODM's default
 <code>DocumentRepository</code> class may be extended with additional methods that you need.
 More complex cases that require passing additional dependencies to a custom repository
@@ -341,30 +355,39 @@ class will be discussed in the next section.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="7f9676410c3b9e2d6de00788cf745da704ed6464"
+            data-copy-element-id="b19493f530e61a1b715db41437407282ad8ed47c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="7f9676410c3b9e2d6de00788cf745da704ed6464"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Repositories</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DocumentRepository</span></span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findDisabled</span><span class="hljs-params">()</span>: <span class="hljs-title">array</span></span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;findBy([<span class="hljs-string">'disabled'</span> =&gt; <span class="hljs-keyword">true</span>, <span class="hljs-string">'activated'</span> =&gt; <span class="hljs-keyword">true</span>]);
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b19493f530e61a1b715db41437407282ad8ed47c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Repositories</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DocumentRepository</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findDisabled</span><span class="hljs-params">()</span>: <span class="hljs-title">array</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;findBy([<span class="hljs-string">'disabled'</span> =&gt; <span class="hljs-keyword">true</span>, <span class="hljs-string">'activated'</span> =&gt; <span class="hljs-keyword">true</span>]);
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>It is also possible to change ODM's default <code>DocumentRepository</code> to your own
 implementation for all documents (unless overridden by the mapping):</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b521c913943dba986a636e51475f59fc707fa659"
+            data-copy-element-id="93d4d6c49f39fbf40b7bd3d24f8aeef6b71c169b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b521c913943dba986a636e51475f59fc707fa659"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$documentManager-&gt;getConfiguration()
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    -&gt;setDefaultRepositoryClassName(MyDefaultRepository::class);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="93d4d6c49f39fbf40b7bd3d24f8aeef6b71c169b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2">$documentManager-&gt;getConfiguration()
+    -&gt;setDefaultRepositoryClassName(MyDefaultRepository::class);</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <a class="section-anchor" id="repositories-with-additional-dependencies" name="repositories-with-additional-dependencies"></a><h2 class="section-header"><a href="#repositories-with-additional-dependencies">Repositories with Additional Dependencies<i class="fas fa-link"></i></a></h2>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Implementing your own RepositoryFactory is possible since version 1.0, but the
 <code>AbstractRepositoryFactory</code> class used in this example is only available since 1.2.</p>
@@ -374,67 +397,104 @@ as its default one:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="341044a3cea32668aa2783229a9e233c0a7f125a"
+            data-copy-element-id="2a56d725b6666ae5fe61bbca26025b52032c05a1"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="341044a3cea32668aa2783229a9e233c0a7f125a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Repositories</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DocumentRepository</span></span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(DocumentManager $dm, UnitOfWork $uow, ClassMetadata $classMetadata)</span></span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-comment">/* constructor is inherited from DocumentRepository */</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-comment">/* ... */</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2a56d725b6666ae5fe61bbca26025b52032c05a1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Repositories</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DocumentRepository</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(DocumentManager $dm, UnitOfWork $uow, ClassMetadata $classMetadata)</span>
+    </span>{
+        <span class="hljs-comment">/* constructor is inherited from DocumentRepository */</span>
+        <span class="hljs-comment">/* ... */</span>
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p>In order to change the way Doctrine instantiates repositories, you will need to implement your own
 <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Repository/RepositoryFactory.php">RepositoryFactory</a></p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="19ff19f7627aca0998bf054263056752458905d2"
+            data-copy-element-id="65a2e37fe219add142b73d99c86f467753c07bb5"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="19ff19f7627aca0998bf054263056752458905d2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Repository</span>\<span class="hljs-title">AbstractRepositoryFactory</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">EventDispatcher</span>\<span class="hljs-title">EventDispatcherInterface</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourRepositoryFactory</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractRepositoryFactory</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">private</span> $eventDispatcher;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(EventDispatcherInterface $eventDispatcher)</span></span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;eventDispatcher = $eventDispatcher;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">instantiateRepository</span><span class="hljs-params">($repositoryClassName, DocumentManager $documentManager, ClassMetadata $metadata)</span></span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        <span class="hljs-keyword">switch</span> ($repositoryClassName) {
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">            <span class="hljs-keyword">case</span> UserRepository::class:
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UserRepository(<span class="hljs-keyword">$this</span>-&gt;eventDispatcher, $documentManager, $metadata);
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">            <span class="hljs-keyword">default</span>:
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> $repositoryClassName($documentManager, $documentManager-&gt;getUnitOfWork(), $metadata);
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="65a2e37fe219add142b73d99c86f467753c07bb5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="24"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">Repository</span>\<span class="hljs-title">AbstractRepositoryFactory</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">EventDispatcher</span>\<span class="hljs-title">EventDispatcherInterface</span>;
+
+<span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourRepositoryFactory</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractRepositoryFactory</span>
+</span>{
+    <span class="hljs-keyword">private</span> $eventDispatcher;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(EventDispatcherInterface $eventDispatcher)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;eventDispatcher = $eventDispatcher;
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">instantiateRepository</span><span class="hljs-params">($repositoryClassName, DocumentManager $documentManager, ClassMetadata $metadata)</span>
+    </span>{
+        <span class="hljs-keyword">switch</span> ($repositoryClassName) {
+            <span class="hljs-keyword">case</span> UserRepository::class:
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UserRepository(<span class="hljs-keyword">$this</span>-&gt;eventDispatcher, $documentManager, $metadata);
+            <span class="hljs-keyword">default</span>:
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> $repositoryClassName($documentManager, $documentManager-&gt;getUnitOfWork(), $metadata);
+        }
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr></table></div></code></pre>
 <p>The factory class must then be registered in the <code>Configuration</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="62701ede99f41f105ef1b44ed587eac8317d1989"
+            data-copy-element-id="0677764344464a96cdfc4644ccebc50f314ed5c3"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="62701ede99f41f105ef1b44ed587eac8317d1989"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$eventDispatcher = $container-&gt;get(<span class="hljs-string">'event_dispatcher'</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$repoFactory = <span class="hljs-keyword">new</span> YourRepositoryFactory($eventDispatcher);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$configuration = <span class="hljs-keyword">new</span> Configuration();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">// your other config here</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$configuration-&gt;setRepositoryFactory($repoFactory);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0677764344464a96cdfc4644ccebc50f314ed5c3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+
+$eventDispatcher = $container-&gt;get(<span class="hljs-string">'event_dispatcher'</span>);
+$repoFactory = <span class="hljs-keyword">new</span> YourRepositoryFactory($eventDispatcher);
+$configuration = <span class="hljs-keyword">new</span> Configuration();
+<span class="hljs-comment">// your other config here</span>
+$configuration-&gt;setRepositoryFactory($repoFactory);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

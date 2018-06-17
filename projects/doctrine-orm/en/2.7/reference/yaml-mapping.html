@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -281,11 +281,11 @@ In order to work, this requires certain conventions:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e8a70f06fc0e425d2d048b2ea98acb95474d1e00"
+            data-copy-element-id="5ec5f3afcb5b9a16d9e33de72e2c5af7b5951900"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e8a70f06fc0e425d2d048b2ea98acb95474d1e00"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$driver-&gt;setFileExtension(<span class="hljs-string">'.yml'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="5ec5f3afcb5b9a16d9e33de72e2c5af7b5951900"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$driver-&gt;setFileExtension(<span class="hljs-string">'.yml'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <p>It is recommended to put all YAML mapping documents in a single
 folder but you can spread the documents over several folders if you
 want to. In order to tell the YamlDriver where to look for your
@@ -294,15 +294,19 @@ of the constructor, like this:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c49a76bc25cef885353affc98498d9b361518b5b"
+            data-copy-element-id="368e152e6fb05bcc5bb271d91b39505ae1eca51c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c49a76bc25cef885353affc98498d9b361518b5b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">YamlDriver</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// $config instanceof Doctrine\ORM\Configuration</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> YamlDriver(<span class="hljs-keyword">array</span>(<span class="hljs-string">'/path/to/files'</span>));
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$config-&gt;setMetadataDriverImpl($driver);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="368e152e6fb05bcc5bb271d91b39505ae1eca51c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">YamlDriver</span>;
+
+<span class="hljs-comment">// $config instanceof Doctrine\ORM\Configuration</span>
+$driver = <span class="hljs-keyword">new</span> YamlDriver(<span class="hljs-keyword">array</span>(<span class="hljs-string">'/path/to/files'</span>));
+$config-&gt;setMetadataDriverImpl($driver);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <a class="section-anchor" id="simplified-yaml-driver" name="simplified-yaml-driver"></a><h2 class="section-header"><a href="#simplified-yaml-driver">Simplified YAML Driver<i class="fas fa-link"></i></a></h2>
 <p>The Symfony project sponsored a driver that simplifies usage of the YAML Driver.
 The changes between the original driver are:</p>
@@ -315,85 +319,148 @@ The changes between the original driver are:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="6dc25153e6e47c326706b805491a53998e92f9eb"
+            data-copy-element-id="b35b979ed14ca1dfd7f2c2230f02053575ac4e91"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="6dc25153e6e47c326706b805491a53998e92f9eb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$namespaces = <span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-string">'/path/to/files1'</span> =&gt; <span class="hljs-string">'MyProject\Entities'</span>,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">'/path/to/files2'</span> =&gt; <span class="hljs-string">'OtherProject\Entities'</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> \Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver($namespaces);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$driver-&gt;setGlobalBasename(<span class="hljs-string">'global'</span>); <span class="hljs-comment">// global.orm.yml</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b35b979ed14ca1dfd7f2c2230f02053575ac4e91"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+$namespaces = <span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'/path/to/files1'</span> =&gt; <span class="hljs-string">'MyProject\Entities'</span>,
+    <span class="hljs-string">'/path/to/files2'</span> =&gt; <span class="hljs-string">'OtherProject\Entities'</span>
+);
+$driver = <span class="hljs-keyword">new</span> \Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver($namespaces);
+$driver-&gt;setGlobalBasename(<span class="hljs-string">'global'</span>); <span class="hljs-comment">// global.orm.yml</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <a class="section-anchor" id="example" name="example"></a><h3 class="section-header"><a href="#example">Example<i class="fas fa-link"></i></a></h3>
 <p>As a quick start, here is a small example document that makes use
 of several common elements:</p>
 <pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f64ad6ebebb0f613827736a632875ffa262196e3"
+            data-copy-element-id="91da2ff5aa65be7b23dcdfc31b3a70d1f8d257cf"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f64ad6ebebb0f613827736a632875ffa262196e3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment"># Doctrine.Tests.ORM.Mapping.User.dcm.yml</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-string">Doctrine\Tests\ORM\Mapping\User:</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  repositoryClass:</span> <span class="hljs-string">Doctrine\Tests\ORM\Mapping\UserRepository</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">  table:</span> <span class="hljs-string">cms_users</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  schema:</span> <span class="hljs-string">schema_name</span> <span class="hljs-comment"># The schema the table lies in, for platforms that support schemas (Optional, &gt;= 2.5)</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">  readOnly:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">  indexes:</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    name_index:</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      columns:</span> <span class="hljs-string">[</span> <span class="hljs-string">name</span> <span class="hljs-string">]</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">  id:</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    id:</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">      generator:</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">        strategy:</span> <span class="hljs-string">AUTO</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">  fields:</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">    name:</span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">50</span>
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">    email:</span>
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">      length:</span> <span class="hljs-number">32</span>
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">      column:</span> <span class="hljs-string">user_email</span>
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">      unique:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line"><span class="hljs-attr">      options:</span>
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line"><span class="hljs-attr">        fixed:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line"><span class="hljs-attr">        comment:</span> <span class="hljs-string">User's</span> <span class="hljs-string">email</span> <span class="hljs-string">address</span>
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-attr">    loginCount:</span>
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line"><span class="hljs-attr">      column:</span> <span class="hljs-string">login_count</span>
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line"><span class="hljs-attr">      nullable:</span> <span class="hljs-literal">false</span>
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"><span class="hljs-attr">      options:</span>
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-attr">        unsigned:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-attr">        default:</span> <span class="hljs-number">0</span>
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"><span class="hljs-attr">  oneToOne:</span>
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line"><span class="hljs-attr">    address:</span>
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line"><span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Address</span>
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line"><span class="hljs-attr">      joinColumn:</span>
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line"><span class="hljs-attr">        name:</span> <span class="hljs-string">address_id</span>
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line"><span class="hljs-attr">        referencedColumnName:</span> <span class="hljs-string">id</span>
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line"><span class="hljs-attr">        onDelete:</span> <span class="hljs-string">CASCADE</span>
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line"><span class="hljs-attr">  oneToMany:</span>
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line"><span class="hljs-attr">    phonenumbers:</span>
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line"><span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Phonenumber</span>
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line"><span class="hljs-attr">      mappedBy:</span> <span class="hljs-string">user</span>
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line"><span class="hljs-attr">      cascade:</span> <span class="hljs-string">["persist",</span> <span class="hljs-string">"merge"</span><span class="hljs-string">]</span>
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line"><span class="hljs-attr">  manyToMany:</span>
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line"><span class="hljs-attr">    groups:</span>
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line"><span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Group</span>
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line"><span class="hljs-attr">      joinTable:</span>
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line"><span class="hljs-attr">        name:</span> <span class="hljs-string">cms_users_groups</span>
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line"><span class="hljs-attr">        joinColumns:</span>
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line"><span class="hljs-attr">          user_id:</span>
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line"><span class="hljs-attr">            referencedColumnName:</span> <span class="hljs-string">id</span>
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line"><span class="hljs-attr">        inverseJoinColumns:</span>
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line"><span class="hljs-attr">          group_id:</span>
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line"><span class="hljs-attr">            referencedColumnName:</span> <span class="hljs-string">id</span>
-</td></tr><tr><td class="line-number noselect">58</td><td class="code-line"><span class="hljs-attr">  lifecycleCallbacks:</span>
-</td></tr><tr><td class="line-number noselect">59</td><td class="code-line"><span class="hljs-attr">    prePersist:</span> <span class="hljs-string">[</span> <span class="hljs-string">doStuffOnPrePersist,</span> <span class="hljs-string">doOtherStuffOnPrePersistToo</span> <span class="hljs-string">]</span>
-</td></tr><tr><td class="line-number noselect">60</td><td class="code-line"><span class="hljs-attr">    postPersist:</span> <span class="hljs-string">[</span> <span class="hljs-string">doStuffOnPostPersist</span> <span class="hljs-string">]</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="91da2ff5aa65be7b23dcdfc31b3a70d1f8d257cf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="60"><span class="hljs-comment"># Doctrine.Tests.ORM.Mapping.User.dcm.yml</span>
+<span class="hljs-string">Doctrine\Tests\ORM\Mapping\User:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+<span class="hljs-attr">  repositoryClass:</span> <span class="hljs-string">Doctrine\Tests\ORM\Mapping\UserRepository</span>
+<span class="hljs-attr">  table:</span> <span class="hljs-string">cms_users</span>
+<span class="hljs-attr">  schema:</span> <span class="hljs-string">schema_name</span> <span class="hljs-comment"># The schema the table lies in, for platforms that support schemas (Optional, &gt;= 2.5)</span>
+<span class="hljs-attr">  readOnly:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">  indexes:</span>
+<span class="hljs-attr">    name_index:</span>
+<span class="hljs-attr">      columns:</span> <span class="hljs-string">[</span> <span class="hljs-string">name</span> <span class="hljs-string">]</span>
+<span class="hljs-attr">  id:</span>
+<span class="hljs-attr">    id:</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+<span class="hljs-attr">      generator:</span>
+<span class="hljs-attr">        strategy:</span> <span class="hljs-string">AUTO</span>
+<span class="hljs-attr">  fields:</span>
+<span class="hljs-attr">    name:</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+<span class="hljs-attr">      length:</span> <span class="hljs-number">50</span>
+<span class="hljs-attr">    email:</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">string</span>
+<span class="hljs-attr">      length:</span> <span class="hljs-number">32</span>
+<span class="hljs-attr">      column:</span> <span class="hljs-string">user_email</span>
+<span class="hljs-attr">      unique:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">      options:</span>
+<span class="hljs-attr">        fixed:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">        comment:</span> <span class="hljs-string">User's</span> <span class="hljs-string">email</span> <span class="hljs-string">address</span>
+<span class="hljs-attr">    loginCount:</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">integer</span>
+<span class="hljs-attr">      column:</span> <span class="hljs-string">login_count</span>
+<span class="hljs-attr">      nullable:</span> <span class="hljs-literal">false</span>
+<span class="hljs-attr">      options:</span>
+<span class="hljs-attr">        unsigned:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">        default:</span> <span class="hljs-number">0</span>
+<span class="hljs-attr">  oneToOne:</span>
+<span class="hljs-attr">    address:</span>
+<span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Address</span>
+<span class="hljs-attr">      joinColumn:</span>
+<span class="hljs-attr">        name:</span> <span class="hljs-string">address_id</span>
+<span class="hljs-attr">        referencedColumnName:</span> <span class="hljs-string">id</span>
+<span class="hljs-attr">        onDelete:</span> <span class="hljs-string">CASCADE</span>
+<span class="hljs-attr">  oneToMany:</span>
+<span class="hljs-attr">    phonenumbers:</span>
+<span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Phonenumber</span>
+<span class="hljs-attr">      mappedBy:</span> <span class="hljs-string">user</span>
+<span class="hljs-attr">      cascade:</span> <span class="hljs-string">["persist",</span> <span class="hljs-string">"merge"</span><span class="hljs-string">]</span>
+<span class="hljs-attr">  manyToMany:</span>
+<span class="hljs-attr">    groups:</span>
+<span class="hljs-attr">      targetEntity:</span> <span class="hljs-string">Group</span>
+<span class="hljs-attr">      joinTable:</span>
+<span class="hljs-attr">        name:</span> <span class="hljs-string">cms_users_groups</span>
+<span class="hljs-attr">        joinColumns:</span>
+<span class="hljs-attr">          user_id:</span>
+<span class="hljs-attr">            referencedColumnName:</span> <span class="hljs-string">id</span>
+<span class="hljs-attr">        inverseJoinColumns:</span>
+<span class="hljs-attr">          group_id:</span>
+<span class="hljs-attr">            referencedColumnName:</span> <span class="hljs-string">id</span>
+<span class="hljs-attr">  lifecycleCallbacks:</span>
+<span class="hljs-attr">    prePersist:</span> <span class="hljs-string">[</span> <span class="hljs-string">doStuffOnPrePersist,</span> <span class="hljs-string">doOtherStuffOnPrePersistToo</span> <span class="hljs-string">]</span>
+<span class="hljs-attr">    postPersist:</span> <span class="hljs-string">[</span> <span class="hljs-string">doStuffOnPostPersist</span> <span class="hljs-string">]</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr>
+<tr><td class="line-number noselect">58</td></tr>
+<tr><td class="line-number noselect">59</td></tr>
+<tr><td class="line-number noselect">60</td></tr></table></div></code></pre>
 <p>Be aware that class-names specified in the YAML files should be
 fully qualified.</p>
 <a class="section-anchor" id="reference" name="reference"></a><h2 class="section-header"><a href="#reference">Reference<i class="fas fa-link"></i></a></h2>
@@ -402,17 +469,23 @@ fully qualified.</p>
 <pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0da7d8509d8a01e062d3f512bb00e0db64b61d2b"
+            data-copy-element-id="73dfceb334b3c224b41d3002f20f61876ca1c9a6"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0da7d8509d8a01e062d3f512bb00e0db64b61d2b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment"># ECommerceProduct.orm.yml</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">ECommerceProduct:</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  fields:</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment"># definition of some fields</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">  uniqueConstraints:</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    search_idx:</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      columns:</span> <span class="hljs-string">[</span> <span class="hljs-string">name,</span> <span class="hljs-string">email</span> <span class="hljs-string">]</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="73dfceb334b3c224b41d3002f20f61876ca1c9a6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-comment"># ECommerceProduct.orm.yml</span>
+<span class="hljs-attr">ECommerceProduct:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">entity</span>
+<span class="hljs-attr">  fields:</span>
+    <span class="hljs-comment"># definition of some fields</span>
+<span class="hljs-attr">  uniqueConstraints:</span>
+<span class="hljs-attr">    search_idx:</span>
+<span class="hljs-attr">      columns:</span> <span class="hljs-string">[</span> <span class="hljs-string">name,</span> <span class="hljs-string">email</span> <span class="hljs-string">]</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

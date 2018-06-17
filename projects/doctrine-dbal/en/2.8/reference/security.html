@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -307,24 +307,26 @@ SQL or DQL query. For Example:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8f82978dba51732460036fc02bf02431bd9a8ad2"
+            data-copy-element-id="087f77dd2605cfffe7fcf7127d7fbfc06034d1d1"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8f82978dba51732460036fc02bf02431bd9a8ad2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Very wrong!</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$sql = <span class="hljs-string">"SELECT * FROM users WHERE name = '"</span> . $_GET[<span class="hljs-string">'username'</span>]. <span class="hljs-string">"'"</span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="087f77dd2605cfffe7fcf7127d7fbfc06034d1d1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// Very wrong!</span>
+$sql = <span class="hljs-string">"SELECT * FROM users WHERE name = '"</span> . $_GET[<span class="hljs-string">'username'</span>]. <span class="hljs-string">"'"</span>;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>An attacker could inject any value into the GET variable &quot;username&quot; to modify the query to his needs.</p>
 <p>Although DQL is a wrapper around SQL that can prevent some security implications, the previous
 example is also a threat to DQL queries.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="9aa3e6382b95fb7ad1b634715f64851cb4ae83b9"
+            data-copy-element-id="1fa4c2bf3ba4d8d226de48b83f0b48811aa378d5"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="9aa3e6382b95fb7ad1b634715f64851cb4ae83b9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// DQL is not safe against arbitrary user-input as well:</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$dql = <span class="hljs-string">"SELECT u FROM User u WHERE u.username = '"</span> . $_GET[<span class="hljs-string">'username'</span>] . <span class="hljs-string">"'"</span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="1fa4c2bf3ba4d8d226de48b83f0b48811aa378d5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// DQL is not safe against arbitrary user-input as well:</span>
+$dql = <span class="hljs-string">"SELECT u FROM User u WHERE u.username = '"</span> . $_GET[<span class="hljs-string">'username'</span>] . <span class="hljs-string">"'"</span>;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>In this scenario an attacker could still pass a username set to <code>' OR 1 = 1</code> and create a valid DQL query.
 Although DQL will make use of quoting functions when literals are used in a DQL statement, allowing
 the attacker to modify the DQL statement with valid literals cannot be detected by the DQL parser, it
@@ -347,45 +349,69 @@ which placeholder. Each database vendor supports different placeholder styles:</
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f5d0acdd2689b08ab755e8b9f7266bc6b865c681"
+            data-copy-element-id="043f360a97d51fec60e24943dfd5a7679b6d4a46"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f5d0acdd2689b08ab755e8b9f7266bc6b865c681"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// SQL Prepared Statements: Positional</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$sql = <span class="hljs-string">"SELECT * FROM users WHERE username = ?"</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$stmt = $connection-&gt;prepare($sql);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$stmt-&gt;bindValue(<span class="hljs-number">1</span>, $_GET[<span class="hljs-string">'username'</span>]);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$stmt-&gt;execute();
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">// SQL Prepared Statements: Named</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$sql = <span class="hljs-string">"SELECT * FROM users WHERE username = :user"</span>;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$stmt = $connection-&gt;prepare($sql);
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$stmt-&gt;bindValue(<span class="hljs-string">"user"</span>, $_GET[<span class="hljs-string">'username'</span>]);
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$stmt-&gt;execute();
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">// DQL Prepared Statements: Positional</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$dql = <span class="hljs-string">"SELECT u FROM User u WHERE u.username = ?1"</span>;
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$query = $em-&gt;createQuery($dql);
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-number">1</span>, $_GET[<span class="hljs-string">'username'</span>]);
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$data = $query-&gt;getResult();
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-comment">// DQL Prepared Statements: Named</span>
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">$dql = <span class="hljs-string">"SELECT u FROM User u WHERE u.username = :name"</span>;
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">$query = $em-&gt;createQuery($dql);
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-string">"name"</span>, $_GET[<span class="hljs-string">'username'</span>]);
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">$data = $query-&gt;getResult();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="043f360a97d51fec60e24943dfd5a7679b6d4a46"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="24"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// SQL Prepared Statements: Positional</span>
+$sql = <span class="hljs-string">"SELECT * FROM users WHERE username = ?"</span>;
+$stmt = $connection-&gt;prepare($sql);
+$stmt-&gt;bindValue(<span class="hljs-number">1</span>, $_GET[<span class="hljs-string">'username'</span>]);
+$stmt-&gt;execute();
+
+<span class="hljs-comment">// SQL Prepared Statements: Named</span>
+$sql = <span class="hljs-string">"SELECT * FROM users WHERE username = :user"</span>;
+$stmt = $connection-&gt;prepare($sql);
+$stmt-&gt;bindValue(<span class="hljs-string">"user"</span>, $_GET[<span class="hljs-string">'username'</span>]);
+$stmt-&gt;execute();
+
+<span class="hljs-comment">// DQL Prepared Statements: Positional</span>
+$dql = <span class="hljs-string">"SELECT u FROM User u WHERE u.username = ?1"</span>;
+$query = $em-&gt;createQuery($dql);
+$query-&gt;setParameter(<span class="hljs-number">1</span>, $_GET[<span class="hljs-string">'username'</span>]);
+$data = $query-&gt;getResult();
+
+<span class="hljs-comment">// DQL Prepared Statements: Named</span>
+$dql = <span class="hljs-string">"SELECT u FROM User u WHERE u.username = :name"</span>;
+$query = $em-&gt;createQuery($dql);
+$query-&gt;setParameter(<span class="hljs-string">"name"</span>, $_GET[<span class="hljs-string">'username'</span>]);
+$data = $query-&gt;getResult();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr></table></div></code></pre>
 <p>You can see this is a bit more tedious to write, but this is the only way to write secure queries. If you
 are using just the DBAL there are also helper methods which simplify the usage quite a lot:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="7f98885c3b5d15f448f94f1cd2b8035d27e0e694"
+            data-copy-element-id="41cac640c7f385c0be429f7751cf1cbf4efb2f33"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="7f98885c3b5d15f448f94f1cd2b8035d27e0e694"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// bind parameters and execute query at once.</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$sql = <span class="hljs-string">"SELECT * FROM users WHERE username = ?"</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$stmt = $connection-&gt;executeQuery($sql, <span class="hljs-keyword">array</span>($_GET[<span class="hljs-string">'username'</span>]));
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="41cac640c7f385c0be429f7751cf1cbf4efb2f33"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// bind parameters and execute query at once.</span>
+$sql = <span class="hljs-string">"SELECT * FROM users WHERE username = ?"</span>;
+$stmt = $connection-&gt;executeQuery($sql, <span class="hljs-keyword">array</span>($_GET[<span class="hljs-string">'username'</span>]));</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <p>There is also <code>executeUpdate</code> which does not return a statement but the number of affected rows.</p>
 <p>Besides binding parameters you can also pass the type of the variable. This allows Doctrine or the underlying
 vendor to not only escape but also cast the value to the correct type. See the docs on querying and DQL in the
@@ -396,12 +422,13 @@ the <code>Connection#quote</code> method:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a063a5ae989d694afd6d7e93bc76f36348cd7e5c"
+            data-copy-element-id="795079a92e5327e7c70fe4fcbba8c0e62ecafe6b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a063a5ae989d694afd6d7e93bc76f36348cd7e5c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Parameter quoting</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$sql = <span class="hljs-string">"SELECT * FROM users WHERE name = "</span> . $connection-&gt;quote($_GET[<span class="hljs-string">'username'</span>]);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="795079a92e5327e7c70fe4fcbba8c0e62ecafe6b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// Parameter quoting</span>
+$sql = <span class="hljs-string">"SELECT * FROM users WHERE name = "</span> . $connection-&gt;quote($_GET[<span class="hljs-string">'username'</span>]);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>This method is only available for SQL, not for DQL. For DQL you are always encouraged to use prepared
 statements not only for security, but also for caching reasons.</p>
 <p></p>

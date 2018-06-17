@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -248,23 +248,35 @@ See this example:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a0c02424c2c91374a784f54dea5531f3c9753aa4"
+            data-copy-element-id="9c5d249314185545d77c2de41fe9275b1271c46d"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a0c02424c2c91374a784f54dea5531f3c9753aa4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$databaseName = <span class="hljs-string">"project_database_name"</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$documentPaths = <span class="hljs-keyword">array</span>(<span class="hljs-string">"MyApp\Documents"</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$httpClient = <span class="hljs-keyword">new</span> \Doctrine\CouchDB\HTTP\SocketClient();
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$dbClient = <span class="hljs-keyword">new</span> Doctrine\CouchDB\CouchDBClient($httpClient, $databaseName);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$config = <span class="hljs-keyword">new</span> \Doctrine\ODM\CouchDB\Configuration();
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$metadataDriver = $config-&gt;newDefaultAnnotationDriver($documentPaths);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$config-&gt;setProxyDir(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">"/proxies"</span>);
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$config-&gt;setMetadataDriverImpl($metadataDriver);
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$config-&gt;setLuceneHandlerName(<span class="hljs-string">'_fti'</span>);
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$dm = <span class="hljs-keyword">new</span> \Doctrine\ODM\CouchDB\DocumentManager($dbClient, $config);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9c5d249314185545d77c2de41fe9275b1271c46d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="14"><span class="hljs-meta">&lt;?php</span>
+$databaseName = <span class="hljs-string">"project_database_name"</span>;
+$documentPaths = <span class="hljs-keyword">array</span>(<span class="hljs-string">"MyApp\Documents"</span>);
+$httpClient = <span class="hljs-keyword">new</span> \Doctrine\CouchDB\HTTP\SocketClient();
+$dbClient = <span class="hljs-keyword">new</span> Doctrine\CouchDB\CouchDBClient($httpClient, $databaseName);
+
+$config = <span class="hljs-keyword">new</span> \Doctrine\ODM\CouchDB\Configuration();
+$metadataDriver = $config-&gt;newDefaultAnnotationDriver($documentPaths);
+
+$config-&gt;setProxyDir(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">"/proxies"</span>);
+$config-&gt;setMetadataDriverImpl($metadataDriver);
+$config-&gt;setLuceneHandlerName(<span class="hljs-string">'_fti'</span>);
+
+$dm = <span class="hljs-keyword">new</span> \Doctrine\ODM\CouchDB\DocumentManager($dbClient, $config);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr></table></div></code></pre>
 <a class="section-anchor" id="couchdbclient" name="couchdbclient"></a><h2 class="section-header"><a href="#couchdbclient">CouchDBClient<i class="fas fa-link"></i></a></h2>
 <p>You can create a CouchDBClient just by constructing a new instance.
 The constructor requires an instantiated HTTP Client and a database name.</p>
@@ -272,11 +284,11 @@ The constructor requires an instantiated HTTP Client and a database name.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b39a97ad3ad1b8cf506a5f21ec1859d266c76ae3"
+            data-copy-element-id="7f8e28debf84007a17fdcb5b77ef57a58d8ef71b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b39a97ad3ad1b8cf506a5f21ec1859d266c76ae3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$client = <span class="hljs-keyword">new</span> \Doctrine\CouchDB\HTTP\SocketClient();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="7f8e28debf84007a17fdcb5b77ef57a58d8ef71b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$client = <span class="hljs-keyword">new</span> \Doctrine\CouchDB\HTTP\SocketClient();</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <p>There are two different HTTP Clients shipped with Doctrine CouchDB:</p>
 <ul><li class="dash">  <code>Doctrine\CouchDB\HTTP\SocketClient</code> The default client uses fsockopen and
     has very good performance using keep alive connections.</li>
@@ -305,12 +317,13 @@ available on a <code>Doctrine\ODM\CouchDB\Configuration</code> instance.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f1405a5f02ee2c1945622963dcec303cc603b5f1"
+            data-copy-element-id="c889f950657ec6b44571bfe48b4a1c740883c251"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f1405a5f02ee2c1945622963dcec303cc603b5f1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setProxyDir($dir);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getProxyDir();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="c889f950657ec6b44571bfe48b4a1c740883c251"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setProxyDir($dir);
+$config-&gt;getProxyDir();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Gets or sets the directory where Doctrine generates any proxy
 classes. For a detailed explanation on proxy classes and how they
 are used in Doctrine, refer to the &quot;Proxy Objects&quot; section further
@@ -319,12 +332,13 @@ down.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="87cb166f8e468c99dcf40e453fe3c922dbb8bc1a"
+            data-copy-element-id="9d6e9bb76172296e4d2577867e08d6d3eb6ee6f9"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="87cb166f8e468c99dcf40e453fe3c922dbb8bc1a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setProxyNamespace($namespace);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getProxyNamespace();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9d6e9bb76172296e4d2577867e08d6d3eb6ee6f9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setProxyNamespace($namespace);
+$config-&gt;getProxyNamespace();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Gets or sets the namespace to use for generated proxy classes. For
 a detailed explanation on proxy classes and how they are used in
 Doctrine, refer to the &quot;Proxy Objects&quot; section further down.</p>
@@ -332,12 +346,13 @@ Doctrine, refer to the &quot;Proxy Objects&quot; section further down.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b869836c25ae2126608eff002b34255e66d90d30"
+            data-copy-element-id="1a3c6a13aa629dd90f58b6bfe4082f5144447fbb"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b869836c25ae2126608eff002b34255e66d90d30"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setMetadataDriverImpl($driver);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getMetadataDriverImpl();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="1a3c6a13aa629dd90f58b6bfe4082f5144447fbb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setMetadataDriverImpl($driver);
+$config-&gt;getMetadataDriverImpl();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Gets or sets the metadata driver implementation that is used by
 Doctrine to acquire the object-relational metadata for your
 classes.</p>
@@ -353,12 +368,13 @@ the <code>Doctrine\ODM\CouchDB\Configuration</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b25426c67257a30a7dbcf0583938d389caed5bad"
+            data-copy-element-id="7a1fa7b8cfb6bd4d5fd5fc4c234fb71b6826764e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b25426c67257a30a7dbcf0583938d389caed5bad"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$driverImpl = $config-&gt;newDefaultAnnotationDriver(<span class="hljs-keyword">array</span>(<span class="hljs-string">'/path/to/lib/MyApp/Documents'</span>));
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;setMetadataDriverImpl($driverImpl);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="7a1fa7b8cfb6bd4d5fd5fc4c234fb71b6826764e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$driverImpl = $config-&gt;newDefaultAnnotationDriver(<span class="hljs-keyword">array</span>(<span class="hljs-string">'/path/to/lib/MyApp/Documents'</span>));
+$config-&gt;setMetadataDriverImpl($driverImpl);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>The path information to the documents is required for the annotation
 driver, because otherwise mass-operations on all entities through
 the console could not work correctly. All of metadata drivers
@@ -369,12 +385,13 @@ directories of documents.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="1bdec4bd0d4d4be9f0c16b5004bc9a633889564a"
+            data-copy-element-id="3e20666e667a64ad4fcb6a6476a79b1af4176006"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="1bdec4bd0d4d4be9f0c16b5004bc9a633889564a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setMetadataCacheImpl($cache);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getMetadataCacheImpl();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="3e20666e667a64ad4fcb6a6476a79b1af4176006"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setMetadataCacheImpl($cache);
+$config-&gt;getMetadataCacheImpl();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Gets or sets the cache implementation to use for caching metadata
 information, that is, all the information you supply via
 annotations, xml or yaml, so that they do not need to be parsed and
@@ -395,12 +412,13 @@ per-request basis.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="43e4cea37920819d5ac88d99830674273bf38b9d"
+            data-copy-element-id="88ab32c3d87f82ceaeededeb5b002f5f7bd42191"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="43e4cea37920819d5ac88d99830674273bf38b9d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setLuceneHandlerName($handlerName);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getLuceneHandlerName();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="88ab32c3d87f82ceaeededeb5b002f5f7bd42191"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setLuceneHandlerName($handlerName);
+$config-&gt;getLuceneHandlerName();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>The default CouchDB Lucene handler is named &quot;_fti&quot;, but it might be named differently in your
 setup. You can rename this handler name with this option. You have to set this option
 to &quot;_fti&quot;, without setting this option it is supposed that CouchDB Lucene is not installed.</p>
@@ -430,15 +448,19 @@ identifier. You could simply do this:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="fc6df721db93fe57dd0d81ca84222dc8b77a702d"
+            data-copy-element-id="71996448971eae9dbdb93f6d0ccbed8e2529e531"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="fc6df721db93fe57dd0d81ca84222dc8b77a702d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $dm is an instance of DocumentManager</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// $cart is an instance of MyApp\Model\Cart</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// $itemId comes from somewhere, probably a request parameter</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$item = $dm-&gt;getReference(<span class="hljs-string">'MyApp\Model\Item'</span>, $itemId);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$cart-&gt;addItem($item);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="71996448971eae9dbdb93f6d0ccbed8e2529e531"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $dm is an instance of DocumentManager</span>
+<span class="hljs-comment">// $cart is an instance of MyApp\Model\Cart</span>
+<span class="hljs-comment">// $itemId comes from somewhere, probably a request parameter</span>
+$item = $dm-&gt;getReference(<span class="hljs-string">'MyApp\Model\Item'</span>, $itemId);
+$cart-&gt;addItem($item);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>Here, we added an Item to a Cart without loading the Item from the
 database. If you invoke any method on the Item instance, it would
 fully initialize its state transparently from the database. Here

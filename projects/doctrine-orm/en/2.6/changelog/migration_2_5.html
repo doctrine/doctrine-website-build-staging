@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -289,29 +289,47 @@ metadata generation:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="5235d3dc6aa4ff2c62443a4579741e5365b9fd62"
+            data-copy-element-id="ab696d9c464bc312e6ac81f25f4bc0ed4ae049f3"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="5235d3dc6aa4ff2c62443a4579741e5365b9fd62"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">AttachEntityListenersListener</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Events</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$listener = <span class="hljs-keyword">new</span> AttachEntityListenersListener();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$listener-&gt;addEntityListener(
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-string">'MyProject\Entity\User'</span>, <span class="hljs-string">'MyProject\Listener\TimestampableListener'</span>,
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    Events::prePersist, <span class="hljs-string">'onPrePersist'</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">);
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm-&gt;addEventListener(Events::loadClassMetadata, $listener);
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TimestampableListener</span></span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onPrePersist</span><span class="hljs-params">($event)</span></span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        $entity = $event-&gt;getEntity();
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        $entity-&gt;setCreated(<span class="hljs-keyword">new</span> \DateTime(<span class="hljs-string">'now'</span>));
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ab696d9c464bc312e6ac81f25f4bc0ed4ae049f3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="20"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">AttachEntityListenersListener</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Events</span>;
+
+$listener = <span class="hljs-keyword">new</span> AttachEntityListenersListener();
+$listener-&gt;addEntityListener(
+    <span class="hljs-string">'MyProject\Entity\User'</span>, <span class="hljs-string">'MyProject\Listener\TimestampableListener'</span>,
+    Events::prePersist, <span class="hljs-string">'onPrePersist'</span>
+);
+
+$evm-&gt;addEventListener(Events::loadClassMetadata, $listener);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TimestampableListener</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onPrePersist</span><span class="hljs-params">($event)</span>
+    </span>{
+        $entity = $event-&gt;getEntity();
+        $entity-&gt;setCreated(<span class="hljs-keyword">new</span> \DateTime(<span class="hljs-string">'now'</span>));
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr></table></div></code></pre>
 <a class="section-anchor" id="embeddable-objects" name="embeddable-objects"></a><h3 class="section-header"><a href="#embeddable-objects">Embeddable Objects<i class="fas fa-link"></i></a></h3>
 <p>Doctrine now supports creating multiple PHP objects from one database table
 implementing a feature called &quot;Embeddable Objects&quot;. Next to an <code>@Entity</code>
@@ -324,30 +342,49 @@ key, they are identified only by their values.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b01a398666a4e4137924cbaaa68191d7be844a1b"
+            data-copy-element-id="580c55a1dfbe02caf0a89a9a5317277137e6429e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b01a398666a4e4137924cbaaa68191d7be844a1b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Product</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Embedded</span>(class = "Money") */</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $price;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Embeddable</span> */</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Money</span></span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type = "decimal") */</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">private</span> $value;
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type = "string") */</span>
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">private</span> $currency = <span class="hljs-string">'EUR'</span>;
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="580c55a1dfbe02caf0a89a9a5317277137e6429e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="21"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Product</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Embedded</span>(class = "Money") */</span>
+    <span class="hljs-keyword">private</span> $price;
+}
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@Embeddable</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Money</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type = "decimal") */</span>
+    <span class="hljs-keyword">private</span> $value;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type = "string") */</span>
+    <span class="hljs-keyword">private</span> $currency = <span class="hljs-string">'EUR'</span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr></table></div></code></pre>
 <p>You can read more on the features of Embeddables objects <a href="#in-the-documentation-http-docs-doctrine-project-org-en-latest-tutorials-embeddables-html">in the documentation
 &lt;http://docs.doctrine-project.org/en/latest/tutorials/embeddables.html&gt;</a>.</p>
 <p>This feature was developed by external contributor <a href="#johannes-schmitt-https-twitter-com-schmittjoh">Johannes Schmitt
@@ -371,42 +408,63 @@ query to this table.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="6b3ec9149d4bc27ff3ed8eb4e98427c216aa1477"
+            data-copy-element-id="4f4dfc223f93c1e37a8cb9de44e06abcf626613d"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="6b3ec9149d4bc27ff3ed8eb4e98427c216aa1477"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * @Entity
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Cache(usage=<span class="hljs-string">"READ_ONLY"</span>, region=<span class="hljs-string">"country_region"</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Country</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @Id
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @GeneratedValue
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @Column(type=<span class="hljs-string">"integer"</span>)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">protected</span> $id;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * @Column(unique=<span class="hljs-keyword">true</span>)
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">protected</span> $name;
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="4f4dfc223f93c1e37a8cb9de44e06abcf626613d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="19"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Entity</span>
+ * <span class="hljs-doctag">@Cache</span>(usage="READ_ONLY", region="country_region")
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Country</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Id</span>
+     * <span class="hljs-doctag">@GeneratedValue</span>
+     * <span class="hljs-doctag">@Column</span>(type="integer")
+     */</span>
+    <span class="hljs-keyword">protected</span> $id;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Column</span>(unique=true)
+     */</span>
+    <span class="hljs-keyword">protected</span> $name;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr></table></div></code></pre>
 <p>In this example we have specified a caching region name called
 <code>country_region</code>, which we have to configure now on the EntityManager:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c9ef2838d525559f72d380b902f3b76a296336c9"
+            data-copy-element-id="ca489a701e41cb24f63a1b915788e1cc1f057ef5"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c9ef2838d525559f72d380b902f3b76a296336c9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$config = <span class="hljs-keyword">new</span> \Doctrine\ORM\Configuration();
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setSecondLevelCacheEnabled();
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$cacheConfig  =  $config-&gt;getSecondLevelCacheConfiguration();
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$regionConfig =  $cacheConfig-&gt;getRegionsConfiguration();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$regionConfig-&gt;setLifetime(<span class="hljs-string">'country_region'</span>, <span class="hljs-number">3600</span>); 
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ca489a701e41cb24f63a1b915788e1cc1f057ef5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6">$config = <span class="hljs-keyword">new</span> \Doctrine\ORM\Configuration();
+$config-&gt;setSecondLevelCacheEnabled();
+
+$cacheConfig  =  $config-&gt;getSecondLevelCacheConfiguration();
+$regionConfig =  $cacheConfig-&gt;getRegionsConfiguration();
+$regionConfig-&gt;setLifetime(<span class="hljs-string">'country_region'</span>, <span class="hljs-number">3600</span>); </td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>Now Doctrine will first check for the data of any country in the cache
 instead of the database.</p>
 <ul><li class="dash"><a href="http://docs.doctrine-project.org/en/latest/reference/second-level-cache.html">Documentation
@@ -427,39 +485,56 @@ condition.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="20a49c4be36406279c09fb6f1d2329f74efd7678"
+            data-copy-element-id="e6d4cfb025483682c50c18e7255e37453a064381"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="20a49c4be36406279c09fb6f1d2329f74efd7678"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">Criteria</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$criteria = Criteria::create()
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;where(Criteria::expr()-&gt;contains(<span class="hljs-string">'name'</span>, <span class="hljs-string">'Benjamin'</span>));
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$users = $repository-&gt;matching($criteria);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="e6d4cfb025483682c50c18e7255e37453a064381"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">Criteria</span>;
+
+$criteria = Criteria::create()
+    -&gt;where(Criteria::expr()-&gt;contains(<span class="hljs-string">'name'</span>, <span class="hljs-string">'Benjamin'</span>));
+
+$users = $repository-&gt;matching($criteria);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <a class="section-anchor" id="criteria-api-support-for-extra-lazy" name="criteria-api-support-for-extra-lazy"></a><h3 class="section-header"><a href="#criteria-api-support-for-extra-lazy">Criteria API: Support for EXTRA_LAZY<i class="fas fa-link"></i></a></h3>
 <p>A collection that is marked as <code>fetch=&quot;EXTRA_LAZY&quot;</code> will now return another
 lazy collection when using <code>Collection::matching($criteria)</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="729fffcb70d8b8500571befa292591c5454fcd7f"
+            data-copy-element-id="8d38f8d68a0e7ac0ffe76c5de325b08363d51dbc"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="729fffcb70d8b8500571befa292591c5454fcd7f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Post</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@OneToMany</span>(targetEntity="Comment", fetch="EXTRA_LAZY") */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $comments;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$criteria = Criteria::create()
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    -&gt;where(Criteria-&gt;expr()-&gt;eq(<span class="hljs-string">"published"</span>, <span class="hljs-number">1</span>));
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$publishedComments = $post-&gt;getComments()-&gt;matching($criteria);
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-keyword">echo</span> count($publishedComments);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="8d38f8d68a0e7ac0ffe76c5de325b08363d51dbc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="14"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Post</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@OneToMany</span>(targetEntity="Comment", fetch="EXTRA_LAZY") */</span>
+    <span class="hljs-keyword">private</span> $comments;
+}
+
+$criteria = Criteria::create()
+    -&gt;where(Criteria-&gt;expr()-&gt;eq(<span class="hljs-string">"published"</span>, <span class="hljs-number">1</span>));
+
+$publishedComments = $post-&gt;getComments()-&gt;matching($criteria);
+
+<span class="hljs-keyword">echo</span> count($publishedComments);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr></table></div></code></pre>
 <p>The lazy criteria currently supports the <code>count()</code> and <code>contains()</code>
 functionality lazily. All other operations of the <code>Collection</code> interface
 trigger a full load of the collection.</p>
@@ -475,18 +550,25 @@ only with a schema event listener before.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="02a898745c194049be54434920b1684b22ac3e29"
+            data-copy-element-id="ec705a714a562b1456660dacb55571807480b61b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="02a898745c194049be54434920b1684b22ac3e29"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Table(name=<span class="hljs-string">"product"</span>, indexes={@Index(columns={<span class="hljs-string">"description"</span>},flags={<span class="hljs-string">"fulltext"</span>})})
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Product</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">private</span> $description;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ec705a714a562b1456660dacb55571807480b61b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Table</span>(name="product", indexes={<span class="hljs-doctag">@Index</span>(columns={"description"},flags={"fulltext"})})
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Product</span>
+</span>{
+    <span class="hljs-keyword">private</span> $description;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <p>This feature was contributed by <a href="https://github.com/adrianolek">Adrian Olek</a>.</p>
 <ul><li class="dash"><a href="https://github.com/doctrine/doctrine2/pull/973">Pull Request #973</a></li>
 </ul>
@@ -498,25 +580,39 @@ to more easily control which features of a filter to enable or disable.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e76c05e1cb932df34fd2ba73e8417ef232881c90"
+            data-copy-element-id="2cd60dbb03080c2986d8a29a967040a4563f73ab"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e76c05e1cb932df34fd2ba73e8417ef232881c90"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyLocaleFilter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SQLFilter</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addFilterConstraint</span><span class="hljs-params">(ClassMetadata $targetEntity, $targetTableAlias)</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-keyword">if</span> (!$targetEntity-&gt;reflClass-&gt;implementsInterface(<span class="hljs-string">'LocaleAware'</span>)) {
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">$this</span>-&gt;hasParameter(<span class="hljs-string">'locale'</span>)) {
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-keyword">return</span> $targetTableAlias.<span class="hljs-string">'.locale = '</span> . <span class="hljs-keyword">$this</span>-&gt;getParameter(<span class="hljs-string">'locale'</span>);
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2cd60dbb03080c2986d8a29a967040a4563f73ab"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="16"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyLocaleFilter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SQLFilter</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addFilterConstraint</span><span class="hljs-params">(ClassMetadata $targetEntity, $targetTableAlias)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (!$targetEntity-&gt;reflClass-&gt;implementsInterface(<span class="hljs-string">'LocaleAware'</span>)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
+        }
+
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">$this</span>-&gt;hasParameter(<span class="hljs-string">'locale'</span>)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
+        }
+
+        <span class="hljs-keyword">return</span> $targetTableAlias.<span class="hljs-string">'.locale = '</span> . <span class="hljs-keyword">$this</span>-&gt;getParameter(<span class="hljs-string">'locale'</span>);
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr></table></div></code></pre>
 <p>This feature was contributed by <a href="https://github.com/mdemo">Miroslav Demovic</a></p>
 <ul><li class="dash"><a href="https://github.com/doctrine/doctrine2/pull/963">Pull Request #963</a></li>
 </ul>
@@ -561,22 +657,22 @@ so you still have to be careful.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a76d45f0e61eb2745dda1afb47ecd9a3a9397ba7"
+            data-copy-element-id="4d6b65d70c2d8eb39da666a468354a6fc8c675d8"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a76d45f0e61eb2745dda1afb47ecd9a3a9397ba7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$dql = <span class="hljs-string">"SELECT u FROM User u ORDER BY CONCAT(u.username, u.name)"</span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="4d6b65d70c2d8eb39da666a468354a6fc8c675d8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$dql = <span class="hljs-string">"SELECT u FROM User u ORDER BY CONCAT(u.username, u.name)"</span>;</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <ol><li>Support for functions in <code>IS NULL</code> expressions:</li>
 </ol>
 
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="9a4ed7c3c14809c49f0e9d3a5669f0de1ac1e66b"
+            data-copy-element-id="d56e4aaa5e21456d92a08a1381119b5b5d7dddd8"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="9a4ed7c3c14809c49f0e9d3a5669f0de1ac1e66b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$dql = <span class="hljs-string">"SELECT u.name FROM User u WHERE MAX(u.name) IS NULL"</span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d56e4aaa5e21456d92a08a1381119b5b5d7dddd8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$dql = <span class="hljs-string">"SELECT u.name FROM User u WHERE MAX(u.name) IS NULL"</span>;</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <ol><li>A <code>LIKE</code> expression is now suported in <code>HAVING</code> clause.</li>
 <li>Subselects are now supported inside a <code>NEW()</code> expression:</li>
 </ol>
@@ -584,37 +680,41 @@ so you still have to be careful.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="95b462a6401a5cd8f4514911a3055d2fb643fe82"
+            data-copy-element-id="40991f77f2ff9836b3043a2c711575e823ed391d"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="95b462a6401a5cd8f4514911a3055d2fb643fe82"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$dql = <span class="hljs-string">"SELECT new UserDTO(u.name, SELECT count(g.id) FROM Group g WHERE g.id = u.id) FROM User u"</span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="40991f77f2ff9836b3043a2c711575e823ed391d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$dql = <span class="hljs-string">"SELECT new UserDTO(u.name, SELECT count(g.id) FROM Group g WHERE g.id = u.id) FROM User u"</span>;</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <ol><li><code>MEMBER OF</code> expression now allows to filter for more than one result:</li>
 </ol>
 
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="7c27a5b718f78a6b1e122bb4c0804f2f4198c29d"
+            data-copy-element-id="98e29752145782f5353c8e4535347cadb537b1bb"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="7c27a5b718f78a6b1e122bb4c0804f2f4198c29d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$dql = <span class="hljs-string">"SELECT u FROM User u WHERE :groups MEMBER OF u.groups"</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query = $entityManager-&gt;createQuery($dql);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$query-&gt;setParameter(<span class="hljs-string">'groups'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>));
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$users = $query-&gt;getResult();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="98e29752145782f5353c8e4535347cadb537b1bb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+$dql = <span class="hljs-string">"SELECT u FROM User u WHERE :groups MEMBER OF u.groups"</span>;
+$query = $entityManager-&gt;createQuery($dql);
+$query-&gt;setParameter(<span class="hljs-string">'groups'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>));
+
+$users = $query-&gt;getResult();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <ol><li>Expressions inside <code>COUNT()</code> now allowed</li>
 </ol>
 
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="52f994b78d5c94d5389a9c4b13c16241ee30fb3c"
+            data-copy-element-id="425764a4bb39f1c668b8c3d30ef9fa2d1f2f295f"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="52f994b78d5c94d5389a9c4b13c16241ee30fb3c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$dql = <span class="hljs-string">"SELECT COUNT(DISTINCT CONCAT(u.name, u.lastname)) FROM User u"</span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="425764a4bb39f1c668b8c3d30ef9fa2d1f2f295f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$dql = <span class="hljs-string">"SELECT COUNT(DISTINCT CONCAT(u.name, u.lastname)) FROM User u"</span>;</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <ol><li>Add support for <code>HOUR</code> in <code>DATE_ADD()</code>/<code>DATE_SUB()</code> functions</li>
 </ol>
 
@@ -628,18 +728,25 @@ the function:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f688fcfe627917e54b61288561118948e9fe05d6"
+            data-copy-element-id="2bb33ca79cbff3aa64f1d5121474b0626edff97b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f688fcfe627917e54b61288561118948e9fe05d6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config = <span class="hljs-keyword">new</span> \Doctrine\ORM\Configuration();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$config-&gt;addCustomNumericFunction(
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-string">'IS_PUBLISHED'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($funcName)</span> <span class="hljs-title">use</span> <span class="hljs-params">($currentSiteId)</span> </span>{
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> IsPublishedFunction($currentSiteId);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     }
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2bb33ca79cbff3aa64f1d5121474b0626edff97b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+
+$config = <span class="hljs-keyword">new</span> \Doctrine\ORM\Configuration();
+
+$config-&gt;addCustomNumericFunction(
+    <span class="hljs-string">'IS_PUBLISHED'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($funcName)</span> <span class="hljs-title">use</span> <span class="hljs-params">($currentSiteId)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> IsPublishedFunction($currentSiteId);
+     }
+);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <a class="section-anchor" id="query-api-where-in-query-using-a-collection-as-parameter" name="query-api-where-in-query-using-a-collection-as-parameter"></a><h3 class="section-header"><a href="#query-api-where-in-query-using-a-collection-as-parameter">Query API: WHERE IN Query using a Collection as parameter<i class="fas fa-link"></i></a></h3>
 <p>When performing a <code>WHERE IN</code> query for a collection of entities you can
 now pass the array collection of entities as a parameter value to the query
@@ -647,19 +754,27 @@ object:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="cb91fa9a44fe2b54631c6b73ec87230a333e2f97"
+            data-copy-element-id="a2045f71b69a8488791c41b17099894ef80a75d4"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="cb91fa9a44fe2b54631c6b73ec87230a333e2f97"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$categories = $rootCategory-&gt;getChildren();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;select(<span class="hljs-string">'p'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;from(<span class="hljs-string">'Product'</span>, <span class="hljs-string">'p'</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;where(<span class="hljs-string">'p.category IN (:categories)'</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    -&gt;setParameter(<span class="hljs-string">'categories'</span>, $categories)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a2045f71b69a8488791c41b17099894ef80a75d4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="10"><span class="hljs-meta">&lt;?php</span>
+
+$categories = $rootCategory-&gt;getChildren();
+
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'p'</span>)
+    -&gt;from(<span class="hljs-string">'Product'</span>, <span class="hljs-string">'p'</span>)
+    -&gt;where(<span class="hljs-string">'p.category IN (:categories)'</span>)
+    -&gt;setParameter(<span class="hljs-string">'categories'</span>, $categories)
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr></table></div></code></pre>
 <p>This feature was contributed by <a href="#michael-perrin-https-github-com-michaelperrin">Michael Perrin
 &lt;https://github.com/michaelperrin&gt;</a>.</p>
 <ul><li class="dash"><a href="https://github.com/doctrine/doctrine2/pull/590">Pull Request #590</a></li>
@@ -674,15 +789,19 @@ called &quot;query hints&quot; since version 2.0. </p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="ed2a0c1b9862c281a2f8d0de35b533873105e88f"
+            data-copy-element-id="c23d639edc73d04f473abab7e8e1160c33980f98"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="ed2a0c1b9862c281a2f8d0de35b533873105e88f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config = <span class="hljs-keyword">new</span> \Doctrine\ORM\Configuration();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$config-&gt;setDefaultQueryHints(
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-string">'doctrine.customOutputWalker'</span> =&gt; <span class="hljs-string">'MyProject\CustomOutputWalker'</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="c23d639edc73d04f473abab7e8e1160c33980f98"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+
+$config = <span class="hljs-keyword">new</span> \Doctrine\ORM\Configuration();
+$config-&gt;setDefaultQueryHints(
+    <span class="hljs-string">'doctrine.customOutputWalker'</span> =&gt; <span class="hljs-string">'MyProject\CustomOutputWalker'</span>
+);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>This feature was contributed by <a href="#artur-eshenbrener-https-github-com-strate">Artur Eshenbrener
 &lt;https://github.com/Strate&gt;</a>.</p>
 <ul><li class="dash"><a href="https://github.com/doctrine/doctrine2/pull/863">Pull Request #863</a></li>
@@ -700,14 +819,17 @@ definition:</p>
 <pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="13ea6489119efcb3da14a213b39bb47487909d73"
+            data-copy-element-id="301745b573b2f2ebc5f3599c4537283e5fb683d4"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="13ea6489119efcb3da14a213b39bb47487909d73"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">manyToMany:</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">    groups:</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">        targetEntity:</span> <span class="hljs-string">Group</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">        joinTable:</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">            name:</span> <span class="hljs-string">users_groups</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="301745b573b2f2ebc5f3599c4537283e5fb683d4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-attr">manyToMany:</span>
+<span class="hljs-attr">    groups:</span>
+<span class="hljs-attr">        targetEntity:</span> <span class="hljs-string">Group</span>
+<span class="hljs-attr">        joinTable:</span>
+<span class="hljs-attr">            name:</span> <span class="hljs-string">users_groups</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <a class="section-anchor" id="schema-validator-command-allow-to-skip-sub-checks" name="schema-validator-command-allow-to-skip-sub-checks"></a><h3 class="section-header"><a href="#schema-validator-command-allow-to-skip-sub-checks">Schema Validator Command: Allow to skip sub-checks<i class="fas fa-link"></i></a></h3>
 <p>The Schema Validator command executes two independent checks
 for validity of the mappings and if the schema is synchronized
@@ -734,43 +856,75 @@ as long as they implement the magic method <code>__toString()</code>.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="845e7fd18215cf2009e9039d77243e54163d790e"
+            data-copy-element-id="2d6371cbc9ba83596e6e57d320827bb64f3c1671"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="845e7fd18215cf2009e9039d77243e54163d790e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserId</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">private</span> $value;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($value)</span></span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;value = $value;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-keyword">return</span> (string)<span class="hljs-keyword">$this</span>-&gt;value;
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="userid") */</span>
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(UserId $id)</span></span>
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;id = $id;
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserIdType</span> <span class="hljs-keyword">extends</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span></span>
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">Doctrine\DBAL\Types\Type::addType(<span class="hljs-string">'userid'</span>, <span class="hljs-string">'MyProject\UserIdType'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2d6371cbc9ba83596e6e57d320827bb64f3c1671"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="34"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserId</span>
+</span>{
+    <span class="hljs-keyword">private</span> $value;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($value)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;value = $value;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> (string)<span class="hljs-keyword">$this</span>-&gt;value;
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="userid") */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(UserId $id)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;id = $id;
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserIdType</span> <span class="hljs-keyword">extends</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>
+</span>{
+    <span class="hljs-comment">// ...</span>
+}
+
+Doctrine\DBAL\Types\Type::addType(<span class="hljs-string">'userid'</span>, <span class="hljs-string">'MyProject\UserIdType'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr></table></div></code></pre>
 <a class="section-anchor" id="behavioral-changes-bc-breaks" name="behavioral-changes-bc-breaks"></a><h2 class="section-header"><a href="#behavioral-changes-bc-breaks">Behavioral Changes (BC Breaks)<i class="fas fa-link"></i></a></h2>
 <a class="section-anchor" id="namingstrategy-interface-changed" name="namingstrategy-interface-changed"></a><h3 class="section-header"><a href="#namingstrategy-interface-changed">NamingStrategy interface changed<i class="fas fa-link"></i></a></h3>
 <p>The <code>Doctrine\ORM\Mapping\NamingStrategyInterface</code> changed slightly

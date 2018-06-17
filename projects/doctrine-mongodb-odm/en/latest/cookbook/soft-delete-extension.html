@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -274,119 +274,157 @@ Then, later you might want to restore that deleted data like it was never delete
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e6e49f2e635d3f3742217cfb764d1d864a935824"
+            data-copy-element-id="99b23d821e6a9bae6a9e531f4d3f354531ca37d3"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e6e49f2e635d3f3742217cfb764d1d864a935824"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$classLoader = <span class="hljs-keyword">new</span> ClassLoader(<span class="hljs-string">'Doctrine\ODM\MongoDB\SoftDelete'</span>, <span class="hljs-string">'mongodb-odm-softdelete/lib'</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$classLoader-&gt;register();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="99b23d821e6a9bae6a9e531f4d3f354531ca37d3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+
+$classLoader = <span class="hljs-keyword">new</span> ClassLoader(<span class="hljs-string">'Doctrine\ODM\MongoDB\SoftDelete'</span>, <span class="hljs-string">'mongodb-odm-softdelete/lib'</span>);
+$classLoader-&gt;register();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <a class="section-anchor" id="setup" name="setup"></a><h2 class="section-header"><a href="#setup">Setup<i class="fas fa-link"></i></a></h2>
 <p>Now you can autoload the classes you need to setup the <code>SoftDeleteManager</code> instance you need to manage
 the soft delete state of your documents:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="5038af9722884adee9da9f43215d8c2dcc77fade"
+            data-copy-element-id="d70bafd39b72b933156559dd7baf2aeffde30ccf"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="5038af9722884adee9da9f43215d8c2dcc77fade"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">SoftDelete</span>\<span class="hljs-title">Configuration</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">SoftDelete</span>\<span class="hljs-title">UnitOfWork</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">SoftDelete</span>\<span class="hljs-title">SoftDeleteManager</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventManager</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">// $dm is a DocumentManager instance we should already have</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$config = <span class="hljs-keyword">new</span> Configuration();
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> EventManager();
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$sdm = <span class="hljs-keyword">new</span> SoftDeleteManager($dm, $config, $evm);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d70bafd39b72b933156559dd7baf2aeffde30ccf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">SoftDelete</span>\<span class="hljs-title">Configuration</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">SoftDelete</span>\<span class="hljs-title">UnitOfWork</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">SoftDelete</span>\<span class="hljs-title">SoftDeleteManager</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventManager</span>;
+
+<span class="hljs-comment">// $dm is a DocumentManager instance we should already have</span>
+
+$config = <span class="hljs-keyword">new</span> Configuration();
+$evm = <span class="hljs-keyword">new</span> EventManager();
+$sdm = <span class="hljs-keyword">new</span> SoftDeleteManager($dm, $config, $evm);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <a class="section-anchor" id="softdeleteable-interface" name="softdeleteable-interface"></a><h2 class="section-header"><a href="#softdeleteable-interface">SoftDeleteable Interface<i class="fas fa-link"></i></a></h2>
 <p>In order for your documents to work with the SoftDelete functionality they must implement
 the <code>SoftDeleteable</code> interface:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a8012de64edf702a85d0496b397e08ecee90d4f5"
+            data-copy-element-id="eca3ab03ee7114dc0f51d1b616677055a87f3579"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a8012de64edf702a85d0496b397e08ecee90d4f5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">SoftDeleteable</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDeletedAt</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="eca3ab03ee7114dc0f51d1b616677055a87f3579"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">SoftDeleteable</span>
+</span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDeletedAt</span><span class="hljs-params">()</span></span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <a class="section-anchor" id="example-implementation" name="example-implementation"></a><h2 class="section-header"><a href="#example-implementation">Example Implementation<i class="fas fa-link"></i></a></h2>
 <p>An implementation might look like this in a <code>User</code> document:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="be4d20226c0192aaa8a1448d788b1984652b503f"
+            data-copy-element-id="614b96a11fb2a8fc8e8a5b4e2bb89841a3785436"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="be4d20226c0192aaa8a1448d788b1984652b503f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">SoftDelete</span>\<span class="hljs-title">SoftDeleteable</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@mongodb</span>:Document */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">SoftDeleteable</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@mongodb</span>:Date <span class="hljs-doctag">@mongodb</span>:Index */</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">private</span> $deletedAt;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDeletedAt</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;deletedAt;
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="614b96a11fb2a8fc8e8a5b4e2bb89841a3785436"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="19"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">SoftDelete</span>\<span class="hljs-title">SoftDeleteable</span>;
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@mongodb</span>:Document */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">SoftDeleteable</span>
+</span>{
+    <span class="hljs-comment">// ...</span>
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@mongodb</span>:Date <span class="hljs-doctag">@mongodb</span>:Index */</span>
+    <span class="hljs-keyword">private</span> $deletedAt;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDeletedAt</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;deletedAt;
+    }
+
+    <span class="hljs-comment">// ...</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr></table></div></code></pre>
 <a class="section-anchor" id="usage" name="usage"></a><h2 class="section-header"><a href="#usage">Usage<i class="fas fa-link"></i></a></h2>
 <p>Once you have the <code>$sdm</code> you can start managing the soft delete state of your documents:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="73ab60599b97bcce73fd49c027e9e1c543877413"
+            data-copy-element-id="56d27cb558fd3d3824601e7e83045a20863d03b7"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="73ab60599b97bcce73fd49c027e9e1c543877413"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$jwage = $dm-&gt;getRepository(<span class="hljs-string">'User'</span>)-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'jwage'</span>));
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$fabpot = $dm-&gt;getRepository(<span class="hljs-string">'User'</span>)-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'fabpot'</span>));
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$sdm-&gt;delete($jwage);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$sdm-&gt;delete($fabpot);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$sdm-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="56d27cb558fd3d3824601e7e83045a20863d03b7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+
+$jwage = $dm-&gt;getRepository(<span class="hljs-string">'User'</span>)-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'jwage'</span>));
+$fabpot = $dm-&gt;getRepository(<span class="hljs-string">'User'</span>)-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'fabpot'</span>));
+$sdm-&gt;delete($jwage);
+$sdm-&gt;delete($fabpot);
+$sdm-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>The call to <code>SoftDeleteManager#flush()</code> would persist the deleted state to the database
 for all the documents it knows about and run a query like the following:</p>
 <pre class="code-block-table"><code class="javascript"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="691ea8918ce7d8b44340a37584cf9c3463c3ac20"
+            data-copy-element-id="58c7f050aea25532d4828398da6ff1e5da873dca"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="691ea8918ce7d8b44340a37584cf9c3463c3ac20"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">db.users.update({ <span class="hljs-attr">_id</span> : { <span class="hljs-attr">$in</span> : userIds }}, { <span class="hljs-attr">$set</span> : { <span class="hljs-attr">deletedAt</span> : <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>() } })
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="58c7f050aea25532d4828398da6ff1e5da873dca"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1">db.users.update({ <span class="hljs-attr">_id</span> : { <span class="hljs-attr">$in</span> : userIds }}, { <span class="hljs-attr">$set</span> : { <span class="hljs-attr">deletedAt</span> : <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>() } })</td></tr></table></div></code></pre>
 <p>Now if we were to restore the documents:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="945c49ab81a323180e68393775b76bd6c099a256"
+            data-copy-element-id="af965c0e50ae561a4caf32dc399bdaf5f153c203"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="945c49ab81a323180e68393775b76bd6c099a256"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$sdm-&gt;restore($jwage);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$sdm-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="af965c0e50ae561a4caf32dc399bdaf5f153c203"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+
+$sdm-&gt;restore($jwage);
+$sdm-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <p>It would execute a query like the following:</p>
 <pre class="code-block-table"><code class="javascript"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="9f902006a65d10906220e0735d00f2228063369e"
+            data-copy-element-id="85e8199af0f4a46d602bf7047d31c0a530522cf4"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="9f902006a65d10906220e0735d00f2228063369e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">db.users.update({ <span class="hljs-attr">_id</span> : { <span class="hljs-attr">$in</span> : userIds }}, { <span class="hljs-attr">$unset</span> : { <span class="hljs-attr">deletedAt</span> : <span class="hljs-literal">true</span> } })
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="85e8199af0f4a46d602bf7047d31c0a530522cf4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1">db.users.update({ <span class="hljs-attr">_id</span> : { <span class="hljs-attr">$in</span> : userIds }}, { <span class="hljs-attr">$unset</span> : { <span class="hljs-attr">deletedAt</span> : <span class="hljs-literal">true</span> } })</td></tr></table></div></code></pre>
 <a class="section-anchor" id="events" name="events"></a><h2 class="section-header"><a href="#events">Events<i class="fas fa-link"></i></a></h2>
 <p>We trigger some additional lifecycle events when documents are soft deleted and restored:</p>
 <ul><li class="dash">Events::preSoftDelete</li>
@@ -399,47 +437,64 @@ for all the documents it knows about and run a query like the following:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="5414f969d76e6a3e53306aca3012e2f65be43faf"
+            data-copy-element-id="4a68ad7dd1746ede9b7f9a3a50ede7209079292e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="5414f969d76e6a3e53306aca3012e2f65be43faf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEventSubscriber</span> <span class="hljs-keyword">implements</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preSoftDelete</span><span class="hljs-params">(LifecycleEventArgs $args)</span>: <span class="hljs-title">void</span></span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $document = $args-&gt;getDocument();
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $sdm = $args-&gt;getSoftDeleteManager();
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span>: <span class="hljs-title">array</span></span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(Events::preSoftDelete);
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="4a68ad7dd1746ede9b7f9a3a50ede7209079292e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="15"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEventSubscriber</span> <span class="hljs-keyword">implements</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preSoftDelete</span><span class="hljs-params">(LifecycleEventArgs $args)</span>: <span class="hljs-title">void</span>
+    </span>{
+        $document = $args-&gt;getDocument();
+        $sdm = $args-&gt;getSoftDeleteManager();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span>: <span class="hljs-title">array</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(Events::preSoftDelete);
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr></table></div></code></pre>
 <p>Now we just need to add the event subscriber to the EventManager:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="289d7cec12179852b530c94c83105d2250cf6a94"
+            data-copy-element-id="2a3d2c27fd48e988446447c627762c6ed459862c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="289d7cec12179852b530c94c83105d2250cf6a94"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$eventSubscriber = <span class="hljs-keyword">new</span> TestEventSubscriber();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$evm-&gt;addEventSubscriber($eventSubscriber);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2a3d2c27fd48e988446447c627762c6ed459862c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+
+$eventSubscriber = <span class="hljs-keyword">new</span> TestEventSubscriber();
+$evm-&gt;addEventSubscriber($eventSubscriber);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <p>When we soft delete something the preSoftDelete() method will be invoked before any queries are sent
 to the database:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="176f150db1840dee7d31acf138306b2d843e5b7a"
+            data-copy-element-id="40283976414cc077e8bb9ab1170c550123847fff"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="176f150db1840dee7d31acf138306b2d843e5b7a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$sdm-&gt;delete($fabpot);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$sdm-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="40283976414cc077e8bb9ab1170c550123847fff"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+
+$sdm-&gt;delete($fabpot);
+$sdm-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <a class="section-anchor" id="cascading-soft-deletes" name="cascading-soft-deletes"></a><h2 class="section-header"><a href="#cascading-soft-deletes">Cascading Soft Deletes<i class="fas fa-link"></i></a></h2>
 <p>You can easily implement cascading soft deletes by using events in a certain way. Imagine you have
 a User and Post document and you want to soft delete a users posts when you delete him.</p>
@@ -447,42 +502,73 @@ a User and Post document and you want to soft delete a users posts when you dele
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="59202ef432c3b545b89729882f6dce2cdd63b948"
+            data-copy-element-id="3715d5d55da0422d922f608648193e50936dc62b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="59202ef432c3b545b89729882f6dce2cdd63b948"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">SoftDelete</span>\<span class="hljs-title">Event</span>\<span class="hljs-title">LifecycleEventArgs</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CascadingSoftDeleteListener</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">EventSubscriber</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preSoftDelete</span><span class="hljs-params">(LifecycleEventArgs $args)</span>: <span class="hljs-title">void</span></span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        $sdm = $args-&gt;getSoftDeleteManager();
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        $document = $args-&gt;getDocument();
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-keyword">if</span> ($document <span class="hljs-keyword">instanceof</span> User) {
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            $sdm-&gt;deleteBy(<span class="hljs-string">'Post'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'user.id'</span> =&gt; $document-&gt;getId()));
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preRestore</span><span class="hljs-params">(LifecycleEventArgs $args)</span>: <span class="hljs-title">void</span></span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        $sdm = $args-&gt;getSoftDeleteManager();
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        $document = $args-&gt;getDocument();
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-keyword">if</span> ($document <span class="hljs-keyword">instanceof</span> User) {
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">            $sdm-&gt;restoreBy(<span class="hljs-string">'Post'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'user.id'</span> =&gt; $document-&gt;getId()));
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span>: <span class="hljs-title">array</span></span>
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">            Events::preSoftDelete,
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">            Events::preRestore
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">        );
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="3715d5d55da0422d922f608648193e50936dc62b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="33"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">MongoDB</span>\<span class="hljs-title">SoftDelete</span>\<span class="hljs-title">Event</span>\<span class="hljs-title">LifecycleEventArgs</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CascadingSoftDeleteListener</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">EventSubscriber</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preSoftDelete</span><span class="hljs-params">(LifecycleEventArgs $args)</span>: <span class="hljs-title">void</span>
+    </span>{
+        $sdm = $args-&gt;getSoftDeleteManager();
+        $document = $args-&gt;getDocument();
+        <span class="hljs-keyword">if</span> ($document <span class="hljs-keyword">instanceof</span> User) {
+            $sdm-&gt;deleteBy(<span class="hljs-string">'Post'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'user.id'</span> =&gt; $document-&gt;getId()));
+        }
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preRestore</span><span class="hljs-params">(LifecycleEventArgs $args)</span>: <span class="hljs-title">void</span>
+    </span>{
+        $sdm = $args-&gt;getSoftDeleteManager();
+        $document = $args-&gt;getDocument();
+        <span class="hljs-keyword">if</span> ($document <span class="hljs-keyword">instanceof</span> User) {
+            $sdm-&gt;restoreBy(<span class="hljs-string">'Post'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'user.id'</span> =&gt; $document-&gt;getId()));
+        }
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span>: <span class="hljs-title">array</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(
+            Events::preSoftDelete,
+            Events::preRestore
+        );
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr></table></div></code></pre>
 <p>Now when you delete an instance of User it will also delete any Post documents where they
 reference the User being deleted. If you restore the User, his Post documents will also be restored.</p>
 <p></p>

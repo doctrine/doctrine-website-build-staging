@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -281,18 +281,25 @@ the session into a managed Doctrine object looks like this:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="55a2931f6a2cbb7b8c455705f6c879d3e9399682"
+            data-copy-element-id="ca19d54916a1c02d9e78becddf287c836201896c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="55a2931f6a2cbb7b8c455705f6c879d3e9399682"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'bootstrap.php'</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em = GetEntityManager(); <span class="hljs-comment">// creates an EntityManager </span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">session_start();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_SESSION[<span class="hljs-string">'user'</span>]) &amp;&amp; $_SESSION[<span class="hljs-string">'user'</span>] <span class="hljs-keyword">instanceof</span> User) {
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    $user = $_SESSION[<span class="hljs-string">'user'</span>]; 
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    $user = $em-&gt;merge($user);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ca19d54916a1c02d9e78becddf287c836201896c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'bootstrap.php'</span>;
+$em = GetEntityManager(); <span class="hljs-comment">// creates an EntityManager </span>
+
+session_start();
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_SESSION[<span class="hljs-string">'user'</span>]) &amp;&amp; $_SESSION[<span class="hljs-string">'user'</span>] <span class="hljs-keyword">instanceof</span> User) {
+    $user = $_SESSION[<span class="hljs-string">'user'</span>]; 
+    $user = $em-&gt;merge($user);
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>A frequent mistake is not to get the merged user object from the return
 value of <code>EntityManager#merge()</code>. The entity object passed to merge is
 not necessarily the same object that is returned from the method.</p>
@@ -307,16 +314,21 @@ object or implement the __sleep() magic method on your entity.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8f5d8ce0e6fe50de2d2f1ce65917ba75c591a35c"
+            data-copy-element-id="0d006260649b29d0390de40420ac3a063ca44cf1"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8f5d8ce0e6fe50de2d2f1ce65917ba75c591a35c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'bootstrap.php'</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em = GetEntityManager(); <span class="hljs-comment">// creates an EntityManager </span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$user = $em-&gt;find(<span class="hljs-string">"User"</span>, <span class="hljs-number">1</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$em-&gt;detach($user);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$_SESSION[<span class="hljs-string">'user'</span>] = $user;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0d006260649b29d0390de40420ac3a063ca44cf1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'bootstrap.php'</span>;
+$em = GetEntityManager(); <span class="hljs-comment">// creates an EntityManager </span>
+
+$user = $em-&gt;find(<span class="hljs-string">"User"</span>, <span class="hljs-number">1</span>);
+$em-&gt;detach($user);
+$_SESSION[<span class="hljs-string">'user'</span>] = $user;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>When you called detach on your objects they get &quot;unmanaged&quot; with that
 entity manager. This means you cannot use them as part of write operations
 during <code>EntityManager#flush()</code> anymore in this request.</p>

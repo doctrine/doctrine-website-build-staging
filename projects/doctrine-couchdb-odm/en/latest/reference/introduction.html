@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -263,90 +263,137 @@
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="d15f25dd9f0dd57bf8e03da86d19533795648ff2"
+            data-copy-element-id="23570c7f6288bc11296cb0daab7ba46aa944b631"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="d15f25dd9f0dd57bf8e03da86d19533795648ff2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyApp</span>\<span class="hljs-title">Document</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogPost</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $headline;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">private</span> $text;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $publishDate;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">// getter/setter here</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="23570c7f6288bc11296cb0daab7ba46aa944b631"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">MyApp</span>\<span class="hljs-title">Document</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogPost</span>
+</span>{
+    <span class="hljs-keyword">private</span> $id;
+    <span class="hljs-keyword">private</span> $headline;
+    <span class="hljs-keyword">private</span> $text;
+    <span class="hljs-keyword">private</span> $publishDate;
+    
+    <span class="hljs-comment">// getter/setter here</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p>No abstract/base-class nor interface was implemented, yet you can save an object of <code>BlogPost</code> into the CouchDB. You have to provide some metadata mapping information though, which is a necessary evil of any generic solution mapping between two different systems (CouchDB and PHP Objects). Doctrine CouchDB allows you to specifiy metadata using four different means: PHP Docblock Annotations, YAML, XML and PHP. Have a look at the following code examples:</p>
 <div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8836af4f2c99127e1f92805eaf2516025e07347f"
+            data-copy-element-id="5a9c3273bddd20bc79e9d28ee01d0ae061807225"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8836af4f2c99127e1f92805eaf2516025e07347f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyApp</span>\<span class="hljs-title">Document</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogPost</span></span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $headline;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $text;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="datetime") */</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">private</span> $publishDate;
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">// getter/setter here</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
-</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+        ><i class="fas fa-copy"></i></button><div id="5a9c3273bddd20bc79e9d28ee01d0ae061807225"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="17"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">MyApp</span>\<span class="hljs-title">Document</span>;
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogPost</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+    <span class="hljs-keyword">private</span> $id;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+    <span class="hljs-keyword">private</span> $headline;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+    <span class="hljs-keyword">private</span> $text;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="datetime") */</span>
+    <span class="hljs-keyword">private</span> $publishDate;
+    
+    <span class="hljs-comment">// getter/setter here</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="91bfd1d1b1c12456920bfa0623b9a15bc0fb8110"
+            data-copy-element-id="004bba23c055b574419b656eb457559242854df8"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="91bfd1d1b1c12456920bfa0623b9a15bc0fb8110"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyApp\Document\BlogPost"</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"headline"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"publishDate"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"datetime"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span>
-</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+        ><i class="fas fa-copy"></i></button><div id="004bba23c055b574419b656eb457559242854df8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mapping</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"MyApp\Document\BlogPost"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"headline"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"publishDate"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"datetime"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">document</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mapping</span>&gt;</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="646951c4a8c662f289174ba4dc19444b2ade0421"
+            data-copy-element-id="8620a148e00497234f53b593b3ed6356f1977b17"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="646951c4a8c662f289174ba4dc19444b2ade0421"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-string">MyApp\Document\BlogPost:</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">document</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">    id:</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">        id:</span> <span class="hljs-string">~</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    fields:</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">        headline:</span> <span class="hljs-string">{</span> <span class="hljs-attr">type:</span> <span class="hljs-string">string</span> <span class="hljs-string">}</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">        text:</span> <span class="hljs-string">{</span> <span class="hljs-attr">type:</span> <span class="hljs-string">string</span> <span class="hljs-string">}</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">        publishDate:</span> <span class="hljs-string">{</span> <span class="hljs-attr">type:</span> <span class="hljs-string">datetime</span> <span class="hljs-string">}</span>
-</td></tr></table></div></code></pre></div></li></ul></div>
+        ><i class="fas fa-copy"></i></button><div id="8620a148e00497234f53b593b3ed6356f1977b17"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-string">MyApp\Document\BlogPost:</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">document</span>
+<span class="hljs-attr">    id:</span>
+<span class="hljs-attr">        id:</span> <span class="hljs-string">~</span>
+<span class="hljs-attr">    fields:</span>
+<span class="hljs-attr">        headline:</span> <span class="hljs-string">{</span> <span class="hljs-attr">type:</span> <span class="hljs-string">string</span> <span class="hljs-string">}</span>
+<span class="hljs-attr">        text:</span> <span class="hljs-string">{</span> <span class="hljs-attr">type:</span> <span class="hljs-string">string</span> <span class="hljs-string">}</span>
+<span class="hljs-attr">        publishDate:</span> <span class="hljs-string">{</span> <span class="hljs-attr">type:</span> <span class="hljs-string">datetime</span> <span class="hljs-string">}</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre></div></li></ul></div>
 <p>These simple definitions describe to Doctrine CouchDB ODM what parts of your object should be mapped. Now your application code saving an instance of a blog post will look like the following lines:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f5ba1944704d761ce81a11c95e0988640ae7f418"
+            data-copy-element-id="1561edf75d1e01bf1072d7797e2c1d7e6e9a7cb6"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f5ba1944704d761ce81a11c95e0988640ae7f418"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $dm is an instance of Doctrine\ODM\CouchDB\DocumentManager</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">MyApp</span>\<span class="hljs-title">Document</span>\<span class="hljs-title">BlogPost</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$blogPost = <span class="hljs-keyword">new</span> BlogPost();
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$blogPost-&gt;setHeadline(<span class="hljs-string">"Hello World!"</span>);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$blogPost-&gt;setText(<span class="hljs-string">"This is a blog post going to be saved into CouchDB"</span>);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$blogPost-&gt;setPublishDate(<span class="hljs-keyword">new</span> \DateTime(<span class="hljs-string">"now"</span>));
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$dm-&gt;persist($blogPost);
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$dm-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="1561edf75d1e01bf1072d7797e2c1d7e6e9a7cb6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $dm is an instance of Doctrine\ODM\CouchDB\DocumentManager</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">MyApp</span>\<span class="hljs-title">Document</span>\<span class="hljs-title">BlogPost</span>;
+
+$blogPost = <span class="hljs-keyword">new</span> BlogPost();
+$blogPost-&gt;setHeadline(<span class="hljs-string">"Hello World!"</span>);
+$blogPost-&gt;setText(<span class="hljs-string">"This is a blog post going to be saved into CouchDB"</span>);
+$blogPost-&gt;setPublishDate(<span class="hljs-keyword">new</span> \DateTime(<span class="hljs-string">"now"</span>));
+
+$dm-&gt;persist($blogPost);
+$dm-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p>Using an instance of a <code>DocumentManager</code> you can save the blog post into your CouchDB instance. Calling <code>persist</code> tells the DocumentManager that this blog post is new and should be managed by Doctrine CouchDB ODM. It does not actually perform a POST request to create a document yet. The only thing that is being done is the generation of a UUID, which is automatically injected into the <code>$id</code> variable of your BlogPost.</p>
 <p>The call to <code>flush()</code> triggers the synchronization of the in-memory state of all current objects with the CouchDB database. In this particular case only one BlogPost is managed by the DocumentManager and does not yet have a corresponding document in the CouchDB, hence a POST request to create the document is executed. </p>
 <a class="section-anchor" id="write-behind" name="write-behind"></a><h3 class="section-header"><a href="#write-behind">Write-Behind<i class="fas fa-link"></i></a></h3>
@@ -358,12 +405,13 @@
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="003557c6b6e3c36c7418584b5809145986f11ef6"
+            data-copy-element-id="11093fadfa35f5a309697a099ed07038cdf73f59"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="003557c6b6e3c36c7418584b5809145986f11ef6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $dm is an instance of Doctrine\ODM\CouchDB\DocumentManager</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$blogPost = $dm-&gt;find(<span class="hljs-string">"MyApp\Document\BlogPost"</span>, $theUUID);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="11093fadfa35f5a309697a099ed07038cdf73f59"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $dm is an instance of Doctrine\ODM\CouchDB\DocumentManager</span>
+$blogPost = $dm-&gt;find(<span class="hljs-string">"MyApp\Document\BlogPost"</span>, $theUUID);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Here the variable <code>$blogPost</code> will be of the type <code>MyApp\Document\BlogPost</code> with no magic whatsoever being attached to that object. There will be some magic required later on described in the Object-Graph Traversal section, but its the most unspectacular magic we could come up with.</p>
 <p>If you know how CouchDB works you are probably now asking yourself how the HTTP View API of CouchDB is integrated into Doctrine CouchDB ODM to offer convenience finder methods such as MongoDB or a relational database would easily allow. The answer may shock you: There is no magic query API provided except the previously shown query by ID (UUID or any assigned document ID) by default. You have to actively mark fields as &quot;indexed&quot; to be able to access them using equality constraints.</p>
 <p>The reason for this approach is easily explained. While Doctrine CouchDB could potentially generate a bunch of powerful views for you that allow querying all fields by different means could potentially lead to a performance problem for your application down the road. Views in CouchDB come at a price: The more there are the slower your CouchDB gets. A view that indexes all fields of all documents would be much too large, so you have to construct the views yourself or use the indexing attributes to generate a simple query.</p>
@@ -389,51 +437,71 @@
 <pre class="code-block-table"><code class="javascript"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="801cd090aeb3a01aefa02db50bd0760b694c1387"
+            data-copy-element-id="b7ea1729dee7b0003c910ac63ef474b27f6fff23"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="801cd090aeb3a01aefa02db50bd0760b694c1387"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">   <span class="hljs-string">"_id"</span>: <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>,
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">   <span class="hljs-string">"_rev"</span>: <span class="hljs-string">"1-e76c463b527734b80f9ba55965fdffdf"</span>,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">   <span class="hljs-string">"name"</span>: <span class="hljs-string">"John Doe"</span>,
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">   <span class="hljs-string">"country"</span>: <span class="hljs-string">"New Zealand"</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b7ea1729dee7b0003c910ac63ef474b27f6fff23"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6">{
+   <span class="hljs-string">"_id"</span>: <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>,
+   <span class="hljs-string">"_rev"</span>: <span class="hljs-string">"1-e76c463b527734b80f9ba55965fdffdf"</span>,
+   <span class="hljs-string">"name"</span>: <span class="hljs-string">"John Doe"</span>,
+   <span class="hljs-string">"country"</span>: <span class="hljs-string">"New Zealand"</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>It would make sense to map this document to a PHP object called &quot;Person&quot; and Doctrine could populate it the following way:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="048fb4899dfc1eabae84d39f967cbc5b2414b8fc"
+            data-copy-element-id="69dab82f033b6901455e053a0fc69682317aae60"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="048fb4899dfc1eabae84d39f967cbc5b2414b8fc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyApp</span>\<span class="hljs-title">Document</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $name;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> $country;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$person = <span class="hljs-keyword">new</span> \MyApp\Document\Person();
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$person-&gt;id = <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>;
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">$person-&gt;name = <span class="hljs-string">"John Doe"</span>;
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$person-&gt;country = <span class="hljs-string">"New Zealand"</span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="69dab82f033b6901455e053a0fc69682317aae60"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="18"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">MyApp</span>\<span class="hljs-title">Document</span>;
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+    <span class="hljs-keyword">public</span> $id;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+    <span class="hljs-keyword">public</span> $name;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+    <span class="hljs-keyword">public</span> $country;
+}
+
+$person = <span class="hljs-keyword">new</span> \MyApp\Document\Person();
+$person-&gt;id = <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>;
+$person-&gt;name = <span class="hljs-string">"John Doe"</span>;
+$person-&gt;country = <span class="hljs-string">"New Zealand"</span>;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr></table></div></code></pre>
 <p>This is basically what Doctrine CouchDB does, but it does more under the hood.</p>
 <a class="section-anchor" id="document-type" name="document-type"></a><h3 class="section-header"><a href="#document-type">Document Type<i class="fas fa-link"></i></a></h3>
 <p>In the following API call to the <code>DocumentManager</code> not only the objects ID in CouchDB is given to the find method, but the type of the class aswell.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c4a5e873eaaf81504e97872017088a34d323c658"
+            data-copy-element-id="5b98ec48075be323e40a4bba525747c91484b2c1"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c4a5e873eaaf81504e97872017088a34d323c658"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$person = $dm-&gt;find(<span class="hljs-string">"Person"</span>, <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="5b98ec48075be323e40a4bba525747c91484b2c1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$person = $dm-&gt;find(<span class="hljs-string">"Person"</span>, <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <p>Because CouchDB works with globally unique identifiers on the database level this restriction is not necessary technically, but there are three reasons why Doctrine CouchDB enforces them:</p>
 <ul><li class="dash">  MongoDB and the ORM need the type of object to determine which set of identifiers to query for the given identifier. MongoDB saves documents in different collections, the ORM saves the objects in different database tables. Doctrine uses a unified set of Persistence interfaces and CouchDB has to follow them.</li>
 <li class="dash">  The given type is used to make an assertion if the document found in CouchDB is really of the specified type. This helps to force some structure onto the schemaless design of CouchDB and will help to assure your code always works with the right set of objects.</li>
@@ -444,16 +512,21 @@
 <pre class="code-block-table"><code class="javascript"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="7f66a41d2ae19543ddd285f61dd637958b252f4b"
+            data-copy-element-id="7b0a5a99611c06f6d477bea3b1491bb554ed403a"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="7f66a41d2ae19543ddd285f61dd637958b252f4b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>,
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-string">"_rev"</span>: <span class="hljs-string">"1-e76c463b527734b80f9ba55965fdffdf"</span>,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">"type"</span>: <span class="hljs-string">"MyApp.Document.Person"</span>,
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"John Doe"</span>,
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-string">"country"</span>: <span class="hljs-string">"New Zealand"</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="7b0a5a99611c06f6d477bea3b1491bb554ed403a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7">{
+    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>,
+    <span class="hljs-string">"_rev"</span>: <span class="hljs-string">"1-e76c463b527734b80f9ba55965fdffdf"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"MyApp.Document.Person"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"John Doe"</span>,
+    <span class="hljs-string">"country"</span>: <span class="hljs-string">"New Zealand"</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>The namespace seperator is translated into a dot to simplify using this information in CouchDB views, because the PHP namespace seperator needs to be escaped in javascript literals.</p>
 <a class="section-anchor" id="associations" name="associations"></a><h3 class="section-header"><a href="#associations">Associations<i class="fas fa-link"></i></a></h3>
 <p>By default CouchDB does not support associations. Of course you can just save associated identifiers in a document key, but CouchDB cannot enforce referential integrity for this associations. If the referenced document is deleted you will have a dangling reference to it. You have to be aware of this potential problem when developing an application with Doctrine CouchDB.</p>
@@ -461,51 +534,82 @@
 <pre class="code-block-table"><code class="javascript"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="2f85e810a4f9a454702827cbcca3c8c3eb1570ec"
+            data-copy-element-id="69eb0b5645c401e97d5b1759af69f1008261c678"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="2f85e810a4f9a454702827cbcca3c8c3eb1570ec"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>,
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-string">"_rev"</span>: <span class="hljs-string">"1-e76c463b527734b80f9ba55965fdffdf"</span>,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">"type"</span>: <span class="hljs-string">"MyApp.Document.Person"</span>,
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-string">"doctrine_metadata"</span>:
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-string">"associations"</span>: [<span class="hljs-string">"father"</span>, <span class="hljs-string">"mother"</span>, <span class="hljs-string">"addresses"</span>]
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"John Doe"</span>,
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-string">"country"</span>: <span class="hljs-string">"New Zealand"</span>,
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-string">"father"</span>: <span class="hljs-string">"4cb8afdfdafdacbfbabf02575d210e3f"</span>,
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-string">"mother"</span>: <span class="hljs-string">"884eeb55df405b43d03a5474f4371f98"</span>,
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-string">"addresses"</span>:
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-string">"4e0f9cc999cbd2694d6dd5cc37f6ee47"</span>,
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-string">"5091720c6b040e15eea38b46747ae0ab"</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="69eb0b5645c401e97d5b1759af69f1008261c678"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="18">{
+    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>,
+    <span class="hljs-string">"_rev"</span>: <span class="hljs-string">"1-e76c463b527734b80f9ba55965fdffdf"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"MyApp.Document.Person"</span>,
+    <span class="hljs-string">"doctrine_metadata"</span>:
+    {
+        <span class="hljs-string">"associations"</span>: [<span class="hljs-string">"father"</span>, <span class="hljs-string">"mother"</span>, <span class="hljs-string">"addresses"</span>]
+    }
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"John Doe"</span>,
+    <span class="hljs-string">"country"</span>: <span class="hljs-string">"New Zealand"</span>,
+    <span class="hljs-string">"father"</span>: <span class="hljs-string">"4cb8afdfdafdacbfbabf02575d210e3f"</span>,
+    <span class="hljs-string">"mother"</span>: <span class="hljs-string">"884eeb55df405b43d03a5474f4371f98"</span>,
+    <span class="hljs-string">"addresses"</span>:
+    {
+        <span class="hljs-string">"4e0f9cc999cbd2694d6dd5cc37f6ee47"</span>,
+        <span class="hljs-string">"5091720c6b040e15eea38b46747ae0ab"</span>
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr></table></div></code></pre>
 <p>The associated php object looks like:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="de9a86ed6ae27226b13fe9b4be3285ba690917d5"
+            data-copy-element-id="8d896fa98d41e5867495acc72bd3fc920432f9ec"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="de9a86ed6ae27226b13fe9b4be3285ba690917d5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> $id;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> $name;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $country;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="Person") */</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> $father;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="Person") */</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> $mother;
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceMany</span>(targetDocument="Address") */</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> $addresses;
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="8d896fa98d41e5867495acc72bd3fc920432f9ec"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="17"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+    <span class="hljs-keyword">public</span> $id;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+    <span class="hljs-keyword">public</span> $name;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="string") */</span>
+    <span class="hljs-keyword">public</span> $country;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="Person") */</span>
+    <span class="hljs-keyword">public</span> $father;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="Person") */</span>
+    <span class="hljs-keyword">public</span> $mother;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceMany</span>(targetDocument="Address") */</span>
+    <span class="hljs-keyword">public</span> $addresses;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr></table></div></code></pre>
 <p>In this example the @ReferenceOne and @ReferenceMany annotations, which are used to register associations with the CouchDB mapper, are restricted to target documents of certain types (Person and Address). You can aswell omit this information and CouchDB will allow you to save arbitrary objects into this field.</p>
 <a class="section-anchor" id="indexes" name="indexes"></a><h3 class="section-header"><a href="#indexes">Indexes<i class="fas fa-link"></i></a></h3>
 <p>The Doctrine persistence interfaces ship with a concept called ObjectRepository that allows to query for any one or set of fields of an object. Because CouchDB uses views for querying (comparable to materialized views in relational databases) this functionality cannot be achieved out of the box. Doctrine CouchDB could offer a view that exposes every field of every document, but this view would only grow into infinite size and most of the information would be useless.</p>
@@ -513,50 +617,71 @@
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="1cb5ad48dceda486f37985ad0892bf91f305cd88"
+            data-copy-element-id="7a3bd47c919b96f7f3d8ab5b3a1b62e079a03443"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="1cb5ad48dceda486f37985ad0892bf91f305cd88"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span>(indexed=true) */</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     * @Index
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     * @Field(type=<span class="hljs-string">"string"</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> $name;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="7a3bd47c919b96f7f3d8ab5b3a1b62e079a03443"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="10"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@Document</span>(indexed=true) */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Index</span>
+     * <span class="hljs-doctag">@Field</span>(type="string")
+     */</span>
+    <span class="hljs-keyword">public</span> $name;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr></table></div></code></pre>
 <p>This will lead to a JSON document structure that looks like:</p>
 <pre class="code-block-table"><code class="javascript"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e997e4c320399f40bb31a46814906b5bafb2fa2d"
+            data-copy-element-id="fe4320b004a7b82d293558505ff8b6b8c12c9ac8"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e997e4c320399f40bb31a46814906b5bafb2fa2d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>,
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-string">"_rev"</span>: <span class="hljs-string">"1-e76c463b527734b80f9ba55965fdffdf"</span>,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">"type"</span>: <span class="hljs-string">"MyApp.Document.Person"</span>,
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-string">"doctrine_metadata"</span>:
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-string">"indexed"</span>: <span class="hljs-literal">true</span>,
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-string">"indexes"</span>: [<span class="hljs-string">"name"</span>]
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    },
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"John Doe"</span>,
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-string">"country"</span>: <span class="hljs-string">"New Zealand"</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="fe4320b004a7b82d293558505ff8b6b8c12c9ac8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12">{
+    <span class="hljs-string">"_id"</span>: <span class="hljs-string">"2a9d3e2af0797fad094dded89a61c18b"</span>,
+    <span class="hljs-string">"_rev"</span>: <span class="hljs-string">"1-e76c463b527734b80f9ba55965fdffdf"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"MyApp.Document.Person"</span>,
+    <span class="hljs-string">"doctrine_metadata"</span>:
+    {
+        <span class="hljs-string">"indexed"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">"indexes"</span>: [<span class="hljs-string">"name"</span>]
+    },
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"John Doe"</span>,
+    <span class="hljs-string">"country"</span>: <span class="hljs-string">"New Zealand"</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p>You can now query the repository for person objects:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c746a44c23aea8126893657704ed9ef18b1c8eca"
+            data-copy-element-id="68ff9d227619d5a8993ad0837486bf1a4af11fc0"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c746a44c23aea8126893657704ed9ef18b1c8eca"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// enabled with @Document(indexed=true)</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$persons = $dm-&gt;getRepository(<span class="hljs-string">'MyApp\Document\Person'</span>)-&gt;findAll();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// enabled with @Index on $name property</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$persons = $dm-&gt;getRepository(<span class="hljs-string">'MyApp\Document\Person'</span>)-&gt;findBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">"name"</span> =&gt; <span class="hljs-string">"Benjamin"</span>));
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="68ff9d227619d5a8993ad0837486bf1a4af11fc0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// enabled with @Document(indexed=true)</span>
+$persons = $dm-&gt;getRepository(<span class="hljs-string">'MyApp\Document\Person'</span>)-&gt;findAll();
+<span class="hljs-comment">// enabled with @Index on $name property</span>
+$persons = $dm-&gt;getRepository(<span class="hljs-string">'MyApp\Document\Person'</span>)-&gt;findBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">"name"</span> =&gt; <span class="hljs-string">"Benjamin"</span>));</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <p>All this functionality is described in detail in later chapters, this chapter served as introduction how Doctrine saves its data into CouchDB documents.</p>
 <p></p>
                                             </div>

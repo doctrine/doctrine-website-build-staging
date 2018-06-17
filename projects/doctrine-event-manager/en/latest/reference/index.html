@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -251,122 +251,173 @@ for the DBAL and ORM but over time other projects adopted it and now it is avail
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f5e4b820019fb216f1e77f595b7e1f45e3c0b1a3"
+            data-copy-element-id="05168d7e62e5755355d41a9bf8c5d0c31f3df5ee"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f5e4b820019fb216f1e77f595b7e1f45e3c0b1a3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventManager</span>;
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$eventManager = <span class="hljs-keyword">new</span> EventManager();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="05168d7e62e5755355d41a9bf8c5d0c31f3df5ee"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventManager</span>;
+
+$eventManager = <span class="hljs-keyword">new</span> EventManager();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <a class="section-anchor" id="listeners" name="listeners"></a><h1 class="section-header"><a href="#listeners">Listeners<i class="fas fa-link"></i></a></h1>
 <p>Now you are ready to listen for events. Here is an example of a custom event listener named <code>TestEvent</code>.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8c6ee0e5bba9b3eb3c45c7ab5b9cb0403f88b909"
+            data-copy-element-id="b84b89aba57c6d6c86b753094eba901ce1c2cbea"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8c6ee0e5bba9b3eb3c45c7ab5b9cb0403f88b909"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventArgs</span>;
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventManager</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEvent</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> preFoo = <span class="hljs-string">'preFoo'</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> postFoo = <span class="hljs-string">'postFoo'</span>;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> EventManager */</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $eventManager;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> bool */</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $preFooInvoked = <span class="hljs-keyword">false</span>;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> bool */</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> $postFooInvoked = <span class="hljs-keyword">false</span>;
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(EventManager $eventManager)</span></span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        $eventManager-&gt;addEventListener([<span class="hljs-keyword">self</span>::preFoo, <span class="hljs-keyword">self</span>::postFoo], <span class="hljs-keyword">$this</span>);
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFoo</span><span class="hljs-params">(EventArgs $eventArgs)</span> : <span class="hljs-title">void</span></span>
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;preFooInvoked = <span class="hljs-keyword">true</span>;
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postFoo</span><span class="hljs-params">(EventArgs $eventArgs)</span> : <span class="hljs-title">void</span></span>
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;postFooInvoked = <span class="hljs-keyword">true</span>;
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-comment">// Create a new instance</span>
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">$testEvent = <span class="hljs-keyword">new</span> TestEvent($eventManager);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b84b89aba57c6d6c86b753094eba901ce1c2cbea"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="35"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventArgs</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventManager</span>;
+
+<span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEvent</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> preFoo = <span class="hljs-string">'preFoo'</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> postFoo = <span class="hljs-string">'postFoo'</span>;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> EventManager */</span>
+    <span class="hljs-keyword">private</span> $eventManager;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> bool */</span>
+    <span class="hljs-keyword">public</span> $preFooInvoked = <span class="hljs-keyword">false</span>;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> bool */</span>
+    <span class="hljs-keyword">public</span> $postFooInvoked = <span class="hljs-keyword">false</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(EventManager $eventManager)</span>
+    </span>{
+        $eventManager-&gt;addEventListener([<span class="hljs-keyword">self</span>::preFoo, <span class="hljs-keyword">self</span>::postFoo], <span class="hljs-keyword">$this</span>);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFoo</span><span class="hljs-params">(EventArgs $eventArgs)</span> : <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;preFooInvoked = <span class="hljs-keyword">true</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postFoo</span><span class="hljs-params">(EventArgs $eventArgs)</span> : <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;postFooInvoked = <span class="hljs-keyword">true</span>;
+    }
+}
+
+<span class="hljs-comment">// Create a new instance</span>
+$testEvent = <span class="hljs-keyword">new</span> TestEvent($eventManager);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr></table></div></code></pre>
 <a class="section-anchor" id="dispatching-events" name="dispatching-events"></a><h1 class="section-header"><a href="#dispatching-events">Dispatching Events<i class="fas fa-link"></i></a></h1>
 <p>Now you can dispatch events with the <code>dispatchEvent()</code> method.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b707135793e415339c62704a9b56c23f901bec4b"
+            data-copy-element-id="50d3289feea92db3bf1ab4b74e64ff8fe2f6bfd7"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b707135793e415339c62704a9b56c23f901bec4b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$eventManager-&gt;dispatchEvent(TestEvent::preFoo);
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$eventManager-&gt;dispatchEvent(TestEvent::postFoo);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="50d3289feea92db3bf1ab4b74e64ff8fe2f6bfd7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2">$eventManager-&gt;dispatchEvent(TestEvent::preFoo);
+$eventManager-&gt;dispatchEvent(TestEvent::postFoo);</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <a class="section-anchor" id="removing-event-listeners" name="removing-event-listeners"></a><h1 class="section-header"><a href="#removing-event-listeners">Removing Event Listeners<i class="fas fa-link"></i></a></h1>
 <p>You can easily remove a listener with the <code>removeEventListener()</code> method.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="d844058a92990065f6910fe56689cc1feed488eb"
+            data-copy-element-id="f165e30ea9df3414f1c720cb831f580cce041367"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="d844058a92990065f6910fe56689cc1feed488eb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$eventManager-&gt;removeEventListener([TestEvent::preFoo, TestEvent::postFoo], $testEvent);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="f165e30ea9df3414f1c720cb831f580cce041367"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1">$eventManager-&gt;removeEventListener([TestEvent::preFoo, TestEvent::postFoo], $testEvent);</td></tr></table></div></code></pre>
 <a class="section-anchor" id="event-subscribers" name="event-subscribers"></a><h1 class="section-header"><a href="#event-subscribers">Event Subscribers<i class="fas fa-link"></i></a></h1>
 <p>The Doctrine event system also has a simple concept of event subscribers. We can define a simple <code>TestEventSubscriber</code> class which implements the <code>Doctrine\Common\EventSubscriber</code> interface with a <code>getSubscribedEvents()</code> method which returns an array of events it should be subscribed to.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b0e9b70cc8a0cd6ea8772d3b9244b9aa320ba2e0"
+            data-copy-element-id="17a630ba6cfcb7d085318eaf0dd041743a6a4881"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b0e9b70cc8a0cd6ea8772d3b9244b9aa320ba2e0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span>;
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEventSubscriber</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">EventSubscriber</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> bool */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> $preFooInvoked = <span class="hljs-keyword">false</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFoo</span><span class="hljs-params">()</span> : <span class="hljs-title">void</span></span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;preFooInvoked = <span class="hljs-keyword">true</span>;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span> : <span class="hljs-title">array</span></span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">return</span> [TestEvent::preFoo];
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$eventSubscriber = <span class="hljs-keyword">new</span> TestEventSubscriber();
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">$eventManager-&gt;addEventSubscriber($eventSubscriber);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="17a630ba6cfcb7d085318eaf0dd041743a6a4881"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="20"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">EventSubscriber</span>;
+
+<span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEventSubscriber</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">EventSubscriber</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> bool */</span>
+    <span class="hljs-keyword">public</span> $preFooInvoked = <span class="hljs-keyword">false</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preFoo</span><span class="hljs-params">()</span> : <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;preFooInvoked = <span class="hljs-keyword">true</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubscribedEvents</span><span class="hljs-params">()</span> : <span class="hljs-title">array</span>
+    </span>{
+        <span class="hljs-keyword">return</span> [TestEvent::preFoo];
+    }
+}
+
+$eventSubscriber = <span class="hljs-keyword">new</span> TestEventSubscriber();
+$eventManager-&gt;addEventSubscriber($eventSubscriber);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The array returned by the <code>getSubscribedEvents()</code> method is a simple array with the values being the event names. The subscriber must have a method that is named exactly like the event.</p>
 </div>
 <p>Now when you dispatch an event, any event subscribers will be notified of that event.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="28a5c662575492bf47851e95b3be24f7b0b7123e"
+            data-copy-element-id="08f6e504f60d596c3cb58bb1d03e3c143527a752"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="28a5c662575492bf47851e95b3be24f7b0b7123e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$eventManager-&gt;dispatchEvent(TestEvent::preFoo);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="08f6e504f60d596c3cb58bb1d03e3c143527a752"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1">$eventManager-&gt;dispatchEvent(TestEvent::preFoo);</td></tr></table></div></code></pre>
 <p>Now you can check the <code>preFooInvoked</code> property to see if the event subscriber was notified of the event:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e2db78f2aabf249ddade68fbb24b0740e6c0a30e"
+            data-copy-element-id="e121ce959e210fd1dd8ef5c3a35afeb357be2f60"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e2db78f2aabf249ddade68fbb24b0740e6c0a30e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">if</span> ($eventSubscriber-&gt;preFooInvoked) {
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-comment">// the preFoo method was invoked</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="e121ce959e210fd1dd8ef5c3a35afeb357be2f60"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-keyword">if</span> ($eventSubscriber-&gt;preFooInvoked) {
+    <span class="hljs-comment">// the preFoo method was invoked</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -269,13 +269,15 @@ it was generated from. The API is roughly the same as that of the DQL Query Buil
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="6a0530cec519221e3e72c9accc81def06d20895e"
+            data-copy-element-id="dc595b2bb373b5b2bd754db3da27084fd7012dc4"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="6a0530cec519221e3e72c9accc81def06d20895e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$conn = DriverManager::getConnection(<span class="hljs-keyword">array</span>(<span class="hljs-comment">/*..*/</span>));
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$queryBuilder = $conn-&gt;createQueryBuilder();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="dc595b2bb373b5b2bd754db3da27084fd7012dc4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+
+$conn = DriverManager::getConnection(<span class="hljs-keyword">array</span>(<span class="hljs-comment">/*..*/</span>));
+$queryBuilder = $conn-&gt;createQueryBuilder();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <a class="section-anchor" id="security-safely-preventing-sql-injection" name="security-safely-preventing-sql-injection"></a><h2 class="section-header"><a href="#security-safely-preventing-sql-injection">Security: Safely preventing SQL Injection<i class="fas fa-link"></i></a></h2>
 <p>It is important to understand how the query builder works in terms of
 preventing SQL injection. Because SQL allows expressions in almost
@@ -291,17 +293,23 @@ input to any of the methods of the QueryBuilder and use the placeholder
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="dedda3f248e36530dae7824c0b9a7291e88c29b3"
+            data-copy-element-id="47b92b06e17df21a15cf6de44e9ccaec5d36c81f"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="dedda3f248e36530dae7824c0b9a7291e88c29b3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;from(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;where(<span class="hljs-string">'email = ?'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;setParameter(<span class="hljs-number">0</span>, $userInputEmail)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="47b92b06e17df21a15cf6de44e9ccaec5d36c81f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
+    -&gt;from(<span class="hljs-string">'users'</span>)
+    -&gt;where(<span class="hljs-string">'email = ?'</span>)
+    -&gt;setParameter(<span class="hljs-number">0</span>, $userInputEmail)
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The numerical parameters in the QueryBuilder API start with the needle
 <code>0</code>, not with <code>1</code> as in the PDO API.</p>
 </div>
@@ -313,36 +321,50 @@ are building depends on the methods you are using.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="2677f661e33a71c787285c7d4134357512448c44"
+            data-copy-element-id="7388cbf112d6a97cd61dfd3ee86aef0759d91a1c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="2677f661e33a71c787285c7d4134357512448c44"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;from(<span class="hljs-string">'users'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="7388cbf112d6a97cd61dfd3ee86aef0759d91a1c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
+    -&gt;from(<span class="hljs-string">'users'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <p>For <code>INSERT</code>, <code>UPDATE</code> and <code>DELETE</code> queries you can pass the
 table name into the <code>insert($tableName)</code>, <code>update($tableName)</code>
 and <code>delete($tableName)</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e16d9cee40eaa6c2a426ba380bac9f815450db37"
+            data-copy-element-id="bccb2b455ed2e3c4d1fe227a4cc08888da2405b3"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e16d9cee40eaa6c2a426ba380bac9f815450db37"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;insert(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;update(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    -&gt;delete(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="bccb2b455ed2e3c4d1fe227a4cc08888da2405b3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="13"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;insert(<span class="hljs-string">'users'</span>)
+;
+
+$queryBuilder
+    -&gt;update(<span class="hljs-string">'users'</span>)
+;
+
+$queryBuilder
+    -&gt;delete(<span class="hljs-string">'users'</span>)
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr></table></div></code></pre>
 <p>You can convert a query builder to its SQL string representation
 by calling <code>$queryBuilder-&gt;getSQL()</code> or casting the object to string.</p>
 <a class="section-anchor" id="where-clause" name="where-clause"></a><h3 class="section-header"><a href="#where-clause">WHERE-Clause<i class="fas fa-link"></i></a></h3>
@@ -351,16 +373,21 @@ clauses with the following API:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8bf823275c47545bd2a64f3543c0c4f2061036f7"
+            data-copy-element-id="c7e00a88c79e59da84c6dce5a86e8418cfe2585e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8bf823275c47545bd2a64f3543c0c4f2061036f7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;from(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;where(<span class="hljs-string">'email = ?'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="c7e00a88c79e59da84c6dce5a86e8418cfe2585e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
+    -&gt;from(<span class="hljs-string">'users'</span>)
+    -&gt;where(<span class="hljs-string">'email = ?'</span>)
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>Calling <code>where()</code> overwrites the previous clause and you can prevent
 this by combining expressions with <code>andWhere()</code> and <code>orWhere()</code> methods.
 You can alternatively use expressions to generate the where clause.</p>
@@ -370,16 +397,21 @@ alias can be specified.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8ee61b599e8864ee6898455568453d3ff43f7b32"
+            data-copy-element-id="b606b29f834aa21faaab5f748392687425c71dfa"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8ee61b599e8864ee6898455568453d3ff43f7b32"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;select(<span class="hljs-string">'u.id'</span>, <span class="hljs-string">'u.name'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;from(<span class="hljs-string">'users'</span>, <span class="hljs-string">'u'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;where(<span class="hljs-string">'u.email = ?'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b606b29f834aa21faaab5f748392687425c71dfa"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'u.id'</span>, <span class="hljs-string">'u.name'</span>)
+    -&gt;from(<span class="hljs-string">'users'</span>, <span class="hljs-string">'u'</span>)
+    -&gt;where(<span class="hljs-string">'u.email = ?'</span>)
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <a class="section-anchor" id="group-by-and-having-clause" name="group-by-and-having-clause"></a><h3 class="section-header"><a href="#group-by-and-having-clause">GROUP BY and HAVING Clause<i class="fas fa-link"></i></a></h3>
 <p>The <code>SELECT</code> statement can be specified with <code>GROUP BY</code> and <code>HAVING</code> clauses.
 Using <code>having()</code> works exactly like using <code>where()</code> and there are
@@ -389,16 +421,21 @@ previous expressions or <code>addGroupBy()</code> which adds to them:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="d4a935fed4541606d2a7695279f5ff8158aabfe2"
+            data-copy-element-id="4df16f6552203fc302fd4f6458d5c614fb5e4d9a"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="d4a935fed4541606d2a7695279f5ff8158aabfe2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    -&gt;select(<span class="hljs-string">'DATE(last_login) as date'</span>, <span class="hljs-string">'COUNT(id) AS users'</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;from(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;groupBy(<span class="hljs-string">'DATE(last_login)'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;having(<span class="hljs-string">'users &gt; 10'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="4df16f6552203fc302fd4f6458d5c614fb5e4d9a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'DATE(last_login) as date'</span>, <span class="hljs-string">'COUNT(id) AS users'</span>)
+    -&gt;from(<span class="hljs-string">'users'</span>)
+    -&gt;groupBy(<span class="hljs-string">'DATE(last_login)'</span>)
+    -&gt;having(<span class="hljs-string">'users &gt; 10'</span>)
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <a class="section-anchor" id="join-clauses" name="join-clauses"></a><h3 class="section-header"><a href="#join-clauses">Join Clauses<i class="fas fa-link"></i></a></h3>
 <p>For <code>SELECT</code> clauses you can generate different types of joins: <code>INNER</code>,
 <code>LEFT</code> and <code>RIGHT</code>. The <code>RIGHT</code> join is not portable across all platforms
@@ -411,14 +448,17 @@ join-table and the fourth argument contains the <code>ON</code> clause.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b6f95d25fa99d1d3ad05004d084b1ca38f8d9dca"
+            data-copy-element-id="6bf9430e2b1b40a2776f35117b6e56cdc9bc00b0"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b6f95d25fa99d1d3ad05004d084b1ca38f8d9dca"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    -&gt;select(<span class="hljs-string">'u.id'</span>, <span class="hljs-string">'u.name'</span>, <span class="hljs-string">'p.number'</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;from(<span class="hljs-string">'users'</span>, <span class="hljs-string">'u'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;innerJoin(<span class="hljs-string">'u'</span>, <span class="hljs-string">'phonenumbers'</span>, <span class="hljs-string">'p'</span>, <span class="hljs-string">'u.id = p.user_id'</span>)
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="6bf9430e2b1b40a2776f35117b6e56cdc9bc00b0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'u.id'</span>, <span class="hljs-string">'u.name'</span>, <span class="hljs-string">'p.number'</span>)
+    -&gt;from(<span class="hljs-string">'users'</span>, <span class="hljs-string">'u'</span>)
+    -&gt;innerJoin(<span class="hljs-string">'u'</span>, <span class="hljs-string">'phonenumbers'</span>, <span class="hljs-string">'p'</span>, <span class="hljs-string">'u.id = p.user_id'</span>)</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <p>The method signature for <code>join()</code>, <code>innerJoin()</code>, <code>leftJoin()</code> and
 <code>rightJoin()</code> is the same. <code>join()</code> is a shorthand syntax for
 <code>innerJoin()</code>.</p>
@@ -429,16 +469,21 @@ user input and accepts SQL expressions.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="effae0bd1f73f321ae53cdd3af3b41bfa1b01626"
+            data-copy-element-id="cce649012a309fa23b01042b1418b5a4b365564b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="effae0bd1f73f321ae53cdd3af3b41bfa1b01626"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;from(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;orderBy(<span class="hljs-string">'username'</span>, <span class="hljs-string">'ASC'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;addOrderBy(<span class="hljs-string">'last_login'</span>, <span class="hljs-string">'ASC NULLS FIRST'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="cce649012a309fa23b01042b1418b5a4b365564b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
+    -&gt;from(<span class="hljs-string">'users'</span>)
+    -&gt;orderBy(<span class="hljs-string">'username'</span>, <span class="hljs-string">'ASC'</span>)
+    -&gt;addOrderBy(<span class="hljs-string">'last_login'</span>, <span class="hljs-string">'ASC NULLS FIRST'</span>)
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>Use the <code>addOrderBy</code> method to add instead of replace the <code>orderBy</code> clause.</p>
 <a class="section-anchor" id="limit-clause" name="limit-clause"></a><h3 class="section-header"><a href="#limit-clause">Limit Clause<i class="fas fa-link"></i></a></h3>
 <p>Only a few database vendors have the <code>LIMIT</code> clause as known from MySQL,
@@ -449,97 +494,143 @@ returned.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4f24e6a4c5773a00a58f9a5ad4f85f79f03d662e"
+            data-copy-element-id="6c27b5d96ac101ec23a0c978d9f70a6bff3bde8b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4f24e6a4c5773a00a58f9a5ad4f85f79f03d662e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;from(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;setFirstResult(<span class="hljs-number">10</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;setMaxResults(<span class="hljs-number">20</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="6c27b5d96ac101ec23a0c978d9f70a6bff3bde8b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
+    -&gt;from(<span class="hljs-string">'users'</span>)
+    -&gt;setFirstResult(<span class="hljs-number">10</span>)
+    -&gt;setMaxResults(<span class="hljs-number">20</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <a class="section-anchor" id="values-clause" name="values-clause"></a><h3 class="section-header"><a href="#values-clause">VALUES Clause<i class="fas fa-link"></i></a></h3>
 <p>For the <code>INSERT</code> clause setting the values for columns to insert can be
 done with the <code>values()</code> method on the query builder:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c8a3063e46a0cc76e27598a6a6eaf5af3f0903aa"
+            data-copy-element-id="435296641faa2e22ed8aab776efc539659378c35"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c8a3063e46a0cc76e27598a6a6eaf5af3f0903aa"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;insert(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;values(
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'?'</span>,
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">            <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">'?'</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        )
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    )
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    -&gt;setParameter(<span class="hljs-number">0</span>, $username)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    -&gt;setParameter(<span class="hljs-number">1</span>, $password)
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">// INSERT INTO users (name, password) VALUES (?, ?)</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="435296641faa2e22ed8aab776efc539659378c35"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="14"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;insert(<span class="hljs-string">'users'</span>)
+    -&gt;values(
+        <span class="hljs-keyword">array</span>(
+            <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'?'</span>,
+            <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">'?'</span>
+        )
+    )
+    -&gt;setParameter(<span class="hljs-number">0</span>, $username)
+    -&gt;setParameter(<span class="hljs-number">1</span>, $password)
+;
+<span class="hljs-comment">// INSERT INTO users (name, password) VALUES (?, ?)</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr></table></div></code></pre>
 <p>Each subsequent call to <code>values()</code> overwrites any previous set values.
 Setting single values instead of all at once is also possible with the
 <code>setValue()</code> method:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0e5119b73e6768c9d4d33c03cafea75fd7fb461b"
+            data-copy-element-id="a6ed2ea9ae25f77358ded57caf65620b16733023"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0e5119b73e6768c9d4d33c03cafea75fd7fb461b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;insert(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;setValue(<span class="hljs-string">'name'</span>, <span class="hljs-string">'?'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;setValue(<span class="hljs-string">'password'</span>, <span class="hljs-string">'?'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;setParameter(<span class="hljs-number">0</span>, $username)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;setParameter(<span class="hljs-number">1</span>, $password)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">// INSERT INTO users (name, password) VALUES (?, ?)</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a6ed2ea9ae25f77358ded57caf65620b16733023"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="10"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;insert(<span class="hljs-string">'users'</span>)
+    -&gt;setValue(<span class="hljs-string">'name'</span>, <span class="hljs-string">'?'</span>)
+    -&gt;setValue(<span class="hljs-string">'password'</span>, <span class="hljs-string">'?'</span>)
+    -&gt;setParameter(<span class="hljs-number">0</span>, $username)
+    -&gt;setParameter(<span class="hljs-number">1</span>, $password)
+;
+<span class="hljs-comment">// INSERT INTO users (name, password) VALUES (?, ?)</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr></table></div></code></pre>
 <p>Of course you can also use both methods in combination:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="712bbe261bec24242d759b94095909f0adf25e3b"
+            data-copy-element-id="a07672f9e56c3aafdb81b8c74cce2e4d9df75628"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="712bbe261bec24242d759b94095909f0adf25e3b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;insert(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;values(
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'?'</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        )
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    )
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    -&gt;setParameter(<span class="hljs-number">0</span>, $username)
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">// INSERT INTO users (name) VALUES (?)</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-keyword">if</span> ($password) {
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    $queryBuilder
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        -&gt;setValue(<span class="hljs-string">'password'</span>, <span class="hljs-string">'?'</span>)
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        -&gt;setParameter(<span class="hljs-number">1</span>, $password)
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    ;
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">// INSERT INTO users (name, password) VALUES (?, ?)</span>
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a07672f9e56c3aafdb81b8c74cce2e4d9df75628"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="20"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;insert(<span class="hljs-string">'users'</span>)
+    -&gt;values(
+        <span class="hljs-keyword">array</span>(
+            <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'?'</span>
+        )
+    )
+    -&gt;setParameter(<span class="hljs-number">0</span>, $username)
+;
+<span class="hljs-comment">// INSERT INTO users (name) VALUES (?)</span>
+
+<span class="hljs-keyword">if</span> ($password) {
+    $queryBuilder
+        -&gt;setValue(<span class="hljs-string">'password'</span>, <span class="hljs-string">'?'</span>)
+        -&gt;setParameter(<span class="hljs-number">1</span>, $password)
+    ;
+    <span class="hljs-comment">// INSERT INTO users (name, password) VALUES (?, ?)</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr></table></div></code></pre>
 <p>Not setting any values at all will result in an empty insert statement:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="59d4b75927c824fe548ab42700200a664e4635b1"
+            data-copy-element-id="cfebfa5ad7b3168592d8d6a31ba5f039b05db3b9"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="59d4b75927c824fe548ab42700200a664e4635b1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;insert(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">// INSERT INTO users () VALUES ()</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="cfebfa5ad7b3168592d8d6a31ba5f039b05db3b9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;insert(<span class="hljs-string">'users'</span>)
+;
+<span class="hljs-comment">// INSERT INTO users () VALUES ()</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <a class="section-anchor" id="set-clause" name="set-clause"></a><h3 class="section-header"><a href="#set-clause">Set Clause<i class="fas fa-link"></i></a></h3>
 <p>For the <code>UPDATE</code> clause setting columns to new values is necessary
 and can be done with the <code>set()</code> method on the query builder.
@@ -548,17 +639,23 @@ user-input:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="158a404eb9ffb786898ac685c1621d89590ae87c"
+            data-copy-element-id="65a4ac77ec0e70b8be876dbd561c060fae1266f7"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="158a404eb9ffb786898ac685c1621d89590ae87c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;update(<span class="hljs-string">'users'</span>, <span class="hljs-string">'u'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;set(<span class="hljs-string">'u.logins'</span>, <span class="hljs-string">'u.logins + 1'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;set(<span class="hljs-string">'u.last_login'</span>, <span class="hljs-string">'?'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;setParameter(<span class="hljs-number">0</span>, $userInputLastLogin)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="65a4ac77ec0e70b8be876dbd561c060fae1266f7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;update(<span class="hljs-string">'users'</span>, <span class="hljs-string">'u'</span>)
+    -&gt;set(<span class="hljs-string">'u.logins'</span>, <span class="hljs-string">'u.logins + 1'</span>)
+    -&gt;set(<span class="hljs-string">'u.last_login'</span>, <span class="hljs-string">'?'</span>)
+    -&gt;setParameter(<span class="hljs-number">0</span>, $userInputLastLogin)
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <a class="section-anchor" id="building-expressions" name="building-expressions"></a><h2 class="section-header"><a href="#building-expressions">Building Expressions<i class="fas fa-link"></i></a></h2>
 <p>For more complex <code>WHERE</code>, <code>HAVING</code> or other clauses you can use expressions
 for building these query parts. You can invoke the expression API, by calling
@@ -567,20 +664,29 @@ for building these query parts. You can invoke the expression API, by calling
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b7969800afb3bbfd809ed7a8f8e83a1139e2c822"
+            data-copy-element-id="7265e1f56c3214604c5a32ac7594cbab03a6afcd"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b7969800afb3bbfd809ed7a8f8e83a1139e2c822"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;from(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;where(
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $queryBuilder-&gt;expr()-&gt;andX(
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">            $queryBuilder-&gt;expr()-&gt;eq(<span class="hljs-string">'username'</span>, <span class="hljs-string">'?'</span>),
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            $queryBuilder-&gt;expr()-&gt;eq(<span class="hljs-string">'email'</span>, <span class="hljs-string">'?'</span>)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        )
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    );
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="7265e1f56c3214604c5a32ac7594cbab03a6afcd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
+    -&gt;from(<span class="hljs-string">'users'</span>)
+    -&gt;where(
+        $queryBuilder-&gt;expr()-&gt;andX(
+            $queryBuilder-&gt;expr()-&gt;eq(<span class="hljs-string">'username'</span>, <span class="hljs-string">'?'</span>),
+            $queryBuilder-&gt;expr()-&gt;eq(<span class="hljs-string">'email'</span>, <span class="hljs-string">'?'</span>)
+        )
+    );</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>The <code>andX()</code> and <code>orX()</code> methods accept an arbitrary amount
 of arguments and can be nested in each other.</p>
 <p>There is a bunch of methods to create comparisons and other SQL snippets
@@ -593,24 +699,37 @@ in your query as a return value:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b92cfa3cdf079db57b1725e5b95ba5d977480bb4"
+            data-copy-element-id="003f67d2cec72e7b80b45bae619774bddc0c85e6"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b92cfa3cdf079db57b1725e5b95ba5d977480bb4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;from(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;where(<span class="hljs-string">'email = '</span> .  $queryBuilder-&gt;createNamedParameter($userInputEmail))
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">// SELECT id, name FROM users WHERE email = :dcValue1</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$queryBuilder
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    -&gt;from(<span class="hljs-string">'users'</span>)
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    -&gt;where(<span class="hljs-string">'email = '</span> .  $queryBuilder-&gt;createPositionalParameter($userInputEmail))
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">;
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-comment">// SELECT id, name FROM users WHERE email = ?</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="003f67d2cec72e7b80b45bae619774bddc0c85e6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="15"><span class="hljs-meta">&lt;?php</span>
+
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
+    -&gt;from(<span class="hljs-string">'users'</span>)
+    -&gt;where(<span class="hljs-string">'email = '</span> .  $queryBuilder-&gt;createNamedParameter($userInputEmail))
+;
+<span class="hljs-comment">// SELECT id, name FROM users WHERE email = :dcValue1</span>
+
+$queryBuilder
+    -&gt;select(<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>)
+    -&gt;from(<span class="hljs-string">'users'</span>)
+    -&gt;where(<span class="hljs-string">'email = '</span> .  $queryBuilder-&gt;createPositionalParameter($userInputEmail))
+;
+<span class="hljs-comment">// SELECT id, name FROM users WHERE email = ?</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

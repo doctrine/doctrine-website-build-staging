@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -270,40 +270,58 @@ error, like this:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="702b81138317e0d9c7df7052a3f3625dba95ee29"
+            data-copy-element-id="f61eb348a4b4f1bce22457e871ddeefc51463026"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="702b81138317e0d9c7df7052a3f3625dba95ee29"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">@trigger_error(
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-string">'QuantumDefraculator::__invoke() is deprecated.'</span>,
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    E_USER_DEPRECATED
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="f61eb348a4b4f1bce22457e871ddeefc51463026"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+
+@trigger_error(
+    <span class="hljs-string">'QuantumDefraculator::__invoke() is deprecated.'</span>,
+    E_USER_DEPRECATED
+);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>Since this error is silenced, it will not produce any effect unless you
 opt-in by setting up an error handler designed to ignore the silence
 operator in that case. Such an error handler could look like this:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b7a4d6d847b50595b7b27056bf7ac6e876374a90"
+            data-copy-element-id="1fc3373159ca71d2c33cf0940609060c6431369e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b7a4d6d847b50595b7b27056bf7ac6e876374a90"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">set_error_handler(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    int $errno,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    string $errstr,
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    string $errfile,
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    int $errline,
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">array</span> $errcontext
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">) : void {
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">if</span> (error_reporting() === <span class="hljs-number">0</span>) {
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-comment">/* "normal" error handlers would return in this case, but</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">           this one will not */
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Hey there was a deprecation, here is what it says: $errstr"</span>;
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}, E_USER_DEPRECATED);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="1fc3373159ca71d2c33cf0940609060c6431369e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="16"><span class="hljs-meta">&lt;?php</span>
+set_error_handler(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(
+    int $errno,
+    string $errstr,
+    string $errfile,
+    int $errline,
+    array $errcontext
+)</span> : <span class="hljs-title">void</span> </span>{
+    <span class="hljs-keyword">if</span> (error_reporting() === <span class="hljs-number">0</span>) {
+        <span class="hljs-comment">/* "normal" error handlers would return in this case, but
+           this one will not */</span>
+    }
+
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Hey there was a deprecation, here is what it says: $errstr"</span>;
+
+}, E_USER_DEPRECATED);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr></table></div></code></pre>
 <p>This is of course overly simplified, and if you are looking for such an
 error handler, consider the <code>symfony/debug</code>, error handler that will
 log deprecations. You may also be interested by the

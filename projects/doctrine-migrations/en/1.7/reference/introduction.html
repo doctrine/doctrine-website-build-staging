@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -265,15 +265,19 @@ namespace in your project:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b01a073ac87f839e22060a46a1b887e43ea7873c"
+            data-copy-element-id="ff3366e909764a9177235e227c99717f979c149b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b01a073ac87f839e22060a46a1b887e43ea7873c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'/path/to/migrations/lib/vendor/doctrine-common/Doctrine/Common/ClassLoader'</span>;
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">ClassLoader</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$classLoader = <span class="hljs-keyword">new</span> ClassLoader(<span class="hljs-string">'Doctrine\DBAL\Migrations'</span>, <span class="hljs-string">'/path/to/migrations/lib'</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$classLoader-&gt;register();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ff3366e909764a9177235e227c99717f979c149b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'/path/to/migrations/lib/vendor/doctrine-common/Doctrine/Common/ClassLoader'</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">ClassLoader</span>;
+
+$classLoader = <span class="hljs-keyword">new</span> ClassLoader(<span class="hljs-string">'Doctrine\DBAL\Migrations'</span>, <span class="hljs-string">'/path/to/migrations/lib'</span>);
+$classLoader-&gt;register();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>Now the above autoloader is able to load a class like the following:</p>
 <div class="console"><pre><code class="console"><span class="noselect">$ </span>/path/to/migrations/lib/Doctrine/DBAL/Migrations/Migrations/Migration.php
 </code></pre></div>
@@ -283,39 +287,57 @@ commands to our <a href="http://doctrine-orm.readthedocs.org/en/latest/reference
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e0b04bc18627a58547b6c4a9ba95b216e724eb21"
+            data-copy-element-id="d70cd912899b0877bfc7136135a7a663661add30"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e0b04bc18627a58547b6c4a9ba95b216e724eb21"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cli-&gt;addCommands(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// Migrations Commands</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\DiffCommand(),
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\ExecuteCommand(),
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\GenerateCommand(),
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\MigrateCommand(),
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\StatusCommand(),
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\VersionCommand()
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">));
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d70cd912899b0877bfc7136135a7a663661add30"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="13"><span class="hljs-comment">// ...</span>
+
+$cli-&gt;addCommands(<span class="hljs-keyword">array</span>(
+    <span class="hljs-comment">// ...</span>
+
+    <span class="hljs-comment">// Migrations Commands</span>
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\DiffCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\ExecuteCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\GenerateCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\MigrateCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\StatusCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\VersionCommand()
+));</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr></table></div></code></pre>
 <p>Additionally you have to make sure the 'db' and 'dialog' Helpers are added to your Symfony
 Console HelperSet.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4aa8570837bcbee8aab5b658d5f07234adbbd0d2"
+            data-copy-element-id="365010210146aed1d47dc0e6e45c61ddadf6c244"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4aa8570837bcbee8aab5b658d5f07234adbbd0d2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$db = \Doctrine\DBAL\DriverManager::getConnection($params);
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// or</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em = \Doctrine\ORM\EntityManager::create($params);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$db = $em-&gt;getConnection();
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$helperSet = <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\HelperSet(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-string">'db'</span> =&gt; <span class="hljs-keyword">new</span> \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($db),
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-string">'dialog'</span> =&gt; <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\QuestionHelper(),
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">));
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="365010210146aed1d47dc0e6e45c61ddadf6c244"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9">$db = \Doctrine\DBAL\DriverManager::getConnection($params);
+<span class="hljs-comment">// or</span>
+$em = \Doctrine\ORM\EntityManager::create($params);
+$db = $em-&gt;getConnection();
+
+$helperSet = <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\HelperSet(<span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'db'</span> =&gt; <span class="hljs-keyword">new</span> \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($db),
+    <span class="hljs-string">'dialog'</span> =&gt; <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\QuestionHelper(),
+));</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <p>You will see that you have a few new commands when you execute the following command:</p>
 <div class="console"><pre><code class="console"><span class="noselect">$ </span>./doctrine list migrations
 Doctrine Command Line Interface version 2.0.0BETA3-DEV
@@ -365,35 +387,50 @@ file like the following:</p>
 <pre class="code-block-table"><code class="xml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="7adc067e85e454f4e6f55675c7fb661548316818"
+            data-copy-element-id="d48bd9e8ef05676d031caa0ba978967f9ca122e5"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="7adc067e85e454f4e6f55675c7fb661548316818"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-migrations</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/migrations/configuration"</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">      xsi:schemaLocation="http://doctrine-project.org/schemas/migrations/configuration
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                    http://doctrine-project.org/schemas/migrations/configuration.xsd"&gt;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Doctrine Sandbox Migrations<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">migrations-namespace</span>&gt;</span>DoctrineMigrations<span class="hljs-tag">&lt;/<span class="hljs-name">migrations-namespace</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"doctrine_migration_versions"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">migrations-directory</span>&gt;</span>/path/to/migrations/classes/DoctrineMigrations<span class="hljs-tag">&lt;/<span class="hljs-name">migrations-directory</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-migrations</span>&gt;</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d48bd9e8ef05676d031caa0ba978967f9ca122e5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="15"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">doctrine-migrations</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/migrations/configuration"</span>
+      <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+      <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/migrations/configuration
+                    http://doctrine-project.org/schemas/migrations/configuration.xsd"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Doctrine Sandbox Migrations<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">migrations-namespace</span>&gt;</span>DoctrineMigrations<span class="hljs-tag">&lt;/<span class="hljs-name">migrations-namespace</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"doctrine_migration_versions"</span> /&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">migrations-directory</span>&gt;</span>/path/to/migrations/classes/DoctrineMigrations<span class="hljs-tag">&lt;/<span class="hljs-name">migrations-directory</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-migrations</span>&gt;</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr></table></div></code></pre>
 <p>Of course you could do the same thing with a <em>configuration.yml</em> file:</p>
 <pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="51a7140c1c2e20b41b962b4222cfcc302a873cff"
+            data-copy-element-id="82e7702495cce30659c32c7d3fca94a0cadbc515"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="51a7140c1c2e20b41b962b4222cfcc302a873cff"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">name:</span> <span class="hljs-string">Doctrine</span> <span class="hljs-string">Sandbox</span> <span class="hljs-string">Migrations</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">migrations_namespace:</span> <span class="hljs-string">DoctrineMigrations</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">table_name:</span> <span class="hljs-string">doctrine_migration_versions</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">migrations_directory:</span> <span class="hljs-string">/path/to/migrations/classes/DoctrineMigrations</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="82e7702495cce30659c32c7d3fca94a0cadbc515"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-attr">name:</span> <span class="hljs-string">Doctrine</span> <span class="hljs-string">Sandbox</span> <span class="hljs-string">Migrations</span>
+<span class="hljs-attr">migrations_namespace:</span> <span class="hljs-string">DoctrineMigrations</span>
+<span class="hljs-attr">table_name:</span> <span class="hljs-string">doctrine_migration_versions</span>
+<span class="hljs-attr">migrations_directory:</span> <span class="hljs-string">/path/to/migrations/classes/DoctrineMigrations</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <p>With the above example, the migrations tool will search the <code>migrations_directory</code>
 recursively for files that begin with <code>Version</code> followed one to 255 characters
 and a <code>.php</code> suffix. <code>Version.{1,255}\.php</code> is the regular expression that's
@@ -410,15 +447,19 @@ the migrations are executed in the correct order.</p>
 <pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="35822adfe5230aba73f11968ef5dc172da785763"
+            data-copy-element-id="a73fbb886bcd285b84c5d10b462a94a6d896b367"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="35822adfe5230aba73f11968ef5dc172da785763"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">table_name:</span> <span class="hljs-string">doctrine_migration_versions</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">migrations_directory:</span> <span class="hljs-string">/path/to/migrations/classes/DoctrineMigrations</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">migrations:</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  migration1:</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    version:</span> <span class="hljs-number">20100704000000</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    class:</span> <span class="hljs-string">DoctrineMigrations\NewMigration</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a73fbb886bcd285b84c5d10b462a94a6d896b367"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-attr">table_name:</span> <span class="hljs-string">doctrine_migration_versions</span>
+<span class="hljs-attr">migrations_directory:</span> <span class="hljs-string">/path/to/migrations/classes/DoctrineMigrations</span>
+<span class="hljs-attr">migrations:</span>
+<span class="hljs-attr">  migration1:</span>
+<span class="hljs-attr">    version:</span> <span class="hljs-number">20100704000000</span>
+<span class="hljs-attr">    class:</span> <span class="hljs-string">DoctrineMigrations\NewMigration</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>If you specify your own migration classes (like `DoctrineMigrations\NewMigration` in the previous
 example) you will need an autoloader unless all those classes begin with the prefix Version*,
 for example path/to/migrations/classes/VersionNewMigration.php.</p>

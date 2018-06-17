@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -279,42 +279,73 @@ appropriate autoloaders.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a22551521522e161e3560b4278cdf9e98d25855b"
+            data-copy-element-id="0b88270f3005e060c329b2827111a7c2a3442b6e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a22551521522e161e3560b4278cdf9e98d25855b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">DoctrineExtensions</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Event</span>\<span class="hljs-title">LoadClassMetadataEventArgs</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TablePrefix</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">protected</span> $prefix = <span class="hljs-string">''</span>;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($prefix)</span></span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;prefix = (string) $prefix;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadClassMetadata</span><span class="hljs-params">(LoadClassMetadataEventArgs $eventArgs)</span></span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        $classMetadata = $eventArgs-&gt;getClassMetadata();
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">if</span> (!$classMetadata-&gt;isInheritanceTypeSingleTable() || $classMetadata-&gt;getName() === $classMetadata-&gt;rootEntityName) {
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">            $classMetadata-&gt;setPrimaryTable([
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">                <span class="hljs-string">'name'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;prefix . $classMetadata-&gt;getTableName()
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">            ]);
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">foreach</span> ($classMetadata-&gt;getAssociationMappings() <span class="hljs-keyword">as</span> $fieldName =&gt; $mapping) {
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">            <span class="hljs-keyword">if</span> ($mapping[<span class="hljs-string">'type'</span>] == \Doctrine\ORM\Mapping\ClassMetadataInfo::MANY_TO_MANY &amp;&amp; $mapping[<span class="hljs-string">'isOwningSide'</span>]) {
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">                $mappedTableName = $mapping[<span class="hljs-string">'joinTable'</span>][<span class="hljs-string">'name'</span>];
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">                $classMetadata-&gt;associationMappings[$fieldName][<span class="hljs-string">'joinTable'</span>][<span class="hljs-string">'name'</span>] = <span class="hljs-keyword">$this</span>-&gt;prefix . $mappedTableName;
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">            }
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0b88270f3005e060c329b2827111a7c2a3442b6e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="33"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">DoctrineExtensions</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Event</span>\<span class="hljs-title">LoadClassMetadataEventArgs</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TablePrefix</span>
+</span>{
+    <span class="hljs-keyword">protected</span> $prefix = <span class="hljs-string">''</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($prefix)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;prefix = (string) $prefix;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadClassMetadata</span><span class="hljs-params">(LoadClassMetadataEventArgs $eventArgs)</span>
+    </span>{
+        $classMetadata = $eventArgs-&gt;getClassMetadata();
+
+        <span class="hljs-keyword">if</span> (!$classMetadata-&gt;isInheritanceTypeSingleTable() || $classMetadata-&gt;getName() === $classMetadata-&gt;rootEntityName) {
+            $classMetadata-&gt;setPrimaryTable([
+                <span class="hljs-string">'name'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;prefix . $classMetadata-&gt;getTableName()
+            ]);
+        }
+
+        <span class="hljs-keyword">foreach</span> ($classMetadata-&gt;getAssociationMappings() <span class="hljs-keyword">as</span> $fieldName =&gt; $mapping) {
+            <span class="hljs-keyword">if</span> ($mapping[<span class="hljs-string">'type'</span>] == \Doctrine\ORM\Mapping\ClassMetadataInfo::MANY_TO_MANY &amp;&amp; $mapping[<span class="hljs-string">'isOwningSide'</span>]) {
+                $mappedTableName = $mapping[<span class="hljs-string">'joinTable'</span>][<span class="hljs-string">'name'</span>];
+                $classMetadata-&gt;associationMappings[$fieldName][<span class="hljs-string">'joinTable'</span>][<span class="hljs-string">'name'</span>] = <span class="hljs-keyword">$this</span>-&gt;prefix . $mappedTableName;
+            }
+        }
+    }
+
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr></table></div></code></pre>
 <a class="section-anchor" id="telling-the-entitymanager-about-our-listener" name="telling-the-entitymanager-about-our-listener"></a><h2 class="section-header"><a href="#telling-the-entitymanager-about-our-listener">Telling the EntityManager about our listener<i class="fas fa-link"></i></a></h2>
 <p>A listener of this type must be set up before the EntityManager has
 been initialised, otherwise an Entity might be created or cached
@@ -325,20 +356,29 @@ to clear your caches and drop then recreate your database schema.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="13f281c0d18e2b47fefd931369f0d2b8622afabb"
+            data-copy-element-id="ea03d7f1bf28c04e1bee15e18be138e835d79e0b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="13f281c0d18e2b47fefd931369f0d2b8622afabb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// $connectionOptions and $config set earlier</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$evm = <span class="hljs-keyword">new</span> \Doctrine\Common\EventManager;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">// Table Prefix</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$tablePrefix = <span class="hljs-keyword">new</span> \DoctrineExtensions\TablePrefix(<span class="hljs-string">'prefix_'</span>);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$evm-&gt;addEventListener(\Doctrine\ORM\Events::loadClassMetadata, $tablePrefix);
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config, $evm);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ea03d7f1bf28c04e1bee15e18be138e835d79e0b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// $connectionOptions and $config set earlier</span>
+
+$evm = <span class="hljs-keyword">new</span> \Doctrine\Common\EventManager;
+
+<span class="hljs-comment">// Table Prefix</span>
+$tablePrefix = <span class="hljs-keyword">new</span> \DoctrineExtensions\TablePrefix(<span class="hljs-string">'prefix_'</span>);
+$evm-&gt;addEventListener(\Doctrine\ORM\Events::loadClassMetadata, $tablePrefix);
+
+$em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config, $evm);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

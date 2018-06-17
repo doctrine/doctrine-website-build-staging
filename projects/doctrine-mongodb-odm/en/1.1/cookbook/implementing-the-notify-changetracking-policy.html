@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -270,58 +270,94 @@ implement the <code>NotifyPropertyChanged</code> interface from the
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="3f64d95b3ed36d71b9b83f30843e503fb7dff233"
+            data-copy-element-id="3be695da24826609f2d2a7b448d7b6358ded0015"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="3f64d95b3ed36d71b9b83f30843e503fb7dff233"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">NotifyPropertyChanged</span>,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    Doctrine\Common\PropertyChangedListener;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DomainObject</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">NotifyPropertyChanged</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">private</span> $_listeners = <span class="hljs-keyword">array</span>();
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addPropertyChangedListener</span><span class="hljs-params">(PropertyChangedListener $listener)</span></span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;_listeners[] = $listener;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** Notifies listeners of a change. */</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_onPropertyChanged</span><span class="hljs-params">($propName, $oldValue, $newValue)</span></span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;_listeners) {
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">            <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">$this</span>-&gt;_listeners <span class="hljs-keyword">as</span> $listener) {
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">                $listener-&gt;propertyChanged(<span class="hljs-keyword">$this</span>, $propName, $oldValue, $newValue);
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">            }
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="3be695da24826609f2d2a7b448d7b6358ded0015"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="24"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">NotifyPropertyChanged</span>,
+    <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">PropertyChangedListener</span>;
+
+<span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DomainObject</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">NotifyPropertyChanged</span>
+</span>{
+    <span class="hljs-keyword">private</span> $_listeners = <span class="hljs-keyword">array</span>();
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addPropertyChangedListener</span><span class="hljs-params">(PropertyChangedListener $listener)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;_listeners[] = $listener;
+    }
+
+    <span class="hljs-comment">/** Notifies listeners of a change. */</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_onPropertyChanged</span><span class="hljs-params">($propName, $oldValue, $newValue)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;_listeners) {
+            <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">$this</span>-&gt;_listeners <span class="hljs-keyword">as</span> $listener) {
+                $listener-&gt;propertyChanged(<span class="hljs-keyword">$this</span>, $propName, $oldValue, $newValue);
+            }
+        }
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr></table></div></code></pre>
 <p>Then, in each property setter of concrete, derived domain classes,
 you need to invoke \_onPropertyChanged as follows to notify
 listeners:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="6217e41930f92c18c0381dcbc4076428b22eb847"
+            data-copy-element-id="86770f467e6609714891d04ce480bc588cd2d23c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="6217e41930f92c18c0381dcbc4076428b22eb847"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// Mapping not shown, either in annotations, xml or yaml as usual</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEntity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DomainObject</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $data;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">// ... other fields as usual</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setData</span><span class="hljs-params">($data)</span></span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">if</span> ($data != <span class="hljs-keyword">$this</span>-&gt;data) { <span class="hljs-comment">// check: is it actually modified?</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">            <span class="hljs-keyword">$this</span>-&gt;_onPropertyChanged(<span class="hljs-string">'data'</span>, <span class="hljs-keyword">$this</span>-&gt;data, $data);
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            <span class="hljs-keyword">$this</span>-&gt;data = $data;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="86770f467e6609714891d04ce480bc588cd2d23c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="16"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// Mapping not shown, either in annotations, xml or yaml as usual</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEntity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DomainObject</span>
+</span>{
+    <span class="hljs-keyword">private</span> $data;
+    <span class="hljs-comment">// ... other fields as usual</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setData</span><span class="hljs-params">($data)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($data != <span class="hljs-keyword">$this</span>-&gt;data) { <span class="hljs-comment">// check: is it actually modified?</span>
+            <span class="hljs-keyword">$this</span>-&gt;_onPropertyChanged(<span class="hljs-string">'data'</span>, <span class="hljs-keyword">$this</span>-&gt;data, $data);
+            <span class="hljs-keyword">$this</span>-&gt;data = $data;
+        }
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr></table></div></code></pre>
 <p>The check whether the new value is different from the old one is
 not mandatory but recommended. That way you can avoid unnecessary
 updates and also have full control over when you consider a

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -247,216 +247,421 @@ like the following:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="be72b63752f1d70d97151c72f6bb065339d315c5"
+            data-copy-element-id="1674e2fdd6341ae2adb9a01d000a89dd6a7f4ef1"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="be72b63752f1d70d97151c72f6bb065339d315c5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Lexer</span>\<span class="hljs-title">AbstractLexer</span>;
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lexer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractLexer</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// All tokens that are not valid identifiers must be &lt; 100</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NONE              = <span class="hljs-number">1</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_INTEGER           = <span class="hljs-number">2</span>;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_STRING            = <span class="hljs-number">3</span>;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_INPUT_PARAMETER   = <span class="hljs-number">4</span>;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_FLOAT             = <span class="hljs-number">5</span>;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_CLOSE_PARENTHESIS = <span class="hljs-number">6</span>;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_OPEN_PARENTHESIS  = <span class="hljs-number">7</span>;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_COMMA             = <span class="hljs-number">8</span>;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_DIVIDE            = <span class="hljs-number">9</span>;
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_DOT               = <span class="hljs-number">10</span>;
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_EQUALS            = <span class="hljs-number">11</span>;
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_GREATER_THAN      = <span class="hljs-number">12</span>;
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_LOWER_THAN        = <span class="hljs-number">13</span>;
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_MINUS             = <span class="hljs-number">14</span>;
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_MULTIPLY          = <span class="hljs-number">15</span>;
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NEGATE            = <span class="hljs-number">16</span>;
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_PLUS              = <span class="hljs-number">17</span>;
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_OPEN_CURLY_BRACE  = <span class="hljs-number">18</span>;
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_CLOSE_CURLY_BRACE = <span class="hljs-number">19</span>;
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-comment">// All tokens that are identifiers or keywords that could be considered as identifiers should be &gt;= 100</span>
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ALIASED_NAME         = <span class="hljs-number">100</span>;
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_FULLY_QUALIFIED_NAME = <span class="hljs-number">101</span>;
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_IDENTIFIER           = <span class="hljs-number">102</span>;
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-comment">// All keyword tokens should be &gt;= 200</span>
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ALL      = <span class="hljs-number">200</span>;
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_AND      = <span class="hljs-number">201</span>;
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ANY      = <span class="hljs-number">202</span>;
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_AS       = <span class="hljs-number">203</span>;
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ASC      = <span class="hljs-number">204</span>;
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_AVG      = <span class="hljs-number">205</span>;
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_BETWEEN  = <span class="hljs-number">206</span>;
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_BOTH     = <span class="hljs-number">207</span>;
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_BY       = <span class="hljs-number">208</span>;
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_CASE     = <span class="hljs-number">209</span>;
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_COALESCE = <span class="hljs-number">210</span>;
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_COUNT    = <span class="hljs-number">211</span>;
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_DELETE   = <span class="hljs-number">212</span>;
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_DESC     = <span class="hljs-number">213</span>;
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_DISTINCT = <span class="hljs-number">214</span>;
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ELSE     = <span class="hljs-number">215</span>;
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_EMPTY    = <span class="hljs-number">216</span>;
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_END      = <span class="hljs-number">217</span>;
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ESCAPE   = <span class="hljs-number">218</span>;
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_EXISTS   = <span class="hljs-number">219</span>;
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_FALSE    = <span class="hljs-number">220</span>;
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_FROM     = <span class="hljs-number">221</span>;
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_GROUP    = <span class="hljs-number">222</span>;
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_HAVING   = <span class="hljs-number">223</span>;
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_HIDDEN   = <span class="hljs-number">224</span>;
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_IN       = <span class="hljs-number">225</span>;
-</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_INDEX    = <span class="hljs-number">226</span>;
-</td></tr><tr><td class="line-number noselect">59</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_INNER    = <span class="hljs-number">227</span>;
-</td></tr><tr><td class="line-number noselect">60</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_INSTANCE = <span class="hljs-number">228</span>;
-</td></tr><tr><td class="line-number noselect">61</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_IS       = <span class="hljs-number">229</span>;
-</td></tr><tr><td class="line-number noselect">62</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_JOIN     = <span class="hljs-number">230</span>;
-</td></tr><tr><td class="line-number noselect">63</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_LEADING  = <span class="hljs-number">231</span>;
-</td></tr><tr><td class="line-number noselect">64</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_LEFT     = <span class="hljs-number">232</span>;
-</td></tr><tr><td class="line-number noselect">65</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_LIKE     = <span class="hljs-number">233</span>;
-</td></tr><tr><td class="line-number noselect">66</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_MAX      = <span class="hljs-number">234</span>;
-</td></tr><tr><td class="line-number noselect">67</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_MEMBER   = <span class="hljs-number">235</span>;
-</td></tr><tr><td class="line-number noselect">68</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_MIN      = <span class="hljs-number">236</span>;
-</td></tr><tr><td class="line-number noselect">69</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NEW      = <span class="hljs-number">237</span>;
-</td></tr><tr><td class="line-number noselect">70</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NOT      = <span class="hljs-number">238</span>;
-</td></tr><tr><td class="line-number noselect">71</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NULL     = <span class="hljs-number">239</span>;
-</td></tr><tr><td class="line-number noselect">72</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NULLIF   = <span class="hljs-number">240</span>;
-</td></tr><tr><td class="line-number noselect">73</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_OF       = <span class="hljs-number">241</span>;
-</td></tr><tr><td class="line-number noselect">74</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_OR       = <span class="hljs-number">242</span>;
-</td></tr><tr><td class="line-number noselect">75</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ORDER    = <span class="hljs-number">243</span>;
-</td></tr><tr><td class="line-number noselect">76</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_OUTER    = <span class="hljs-number">244</span>;
-</td></tr><tr><td class="line-number noselect">77</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_PARTIAL  = <span class="hljs-number">245</span>;
-</td></tr><tr><td class="line-number noselect">78</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_SELECT   = <span class="hljs-number">246</span>;
-</td></tr><tr><td class="line-number noselect">79</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_SET      = <span class="hljs-number">247</span>;
-</td></tr><tr><td class="line-number noselect">80</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_SOME     = <span class="hljs-number">248</span>;
-</td></tr><tr><td class="line-number noselect">81</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_SUM      = <span class="hljs-number">249</span>;
-</td></tr><tr><td class="line-number noselect">82</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_THEN     = <span class="hljs-number">250</span>;
-</td></tr><tr><td class="line-number noselect">83</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_TRAILING = <span class="hljs-number">251</span>;
-</td></tr><tr><td class="line-number noselect">84</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_TRUE     = <span class="hljs-number">252</span>;
-</td></tr><tr><td class="line-number noselect">85</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_UPDATE   = <span class="hljs-number">253</span>;
-</td></tr><tr><td class="line-number noselect">86</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_WHEN     = <span class="hljs-number">254</span>;
-</td></tr><tr><td class="line-number noselect">87</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_WHERE    = <span class="hljs-number">255</span>;
-</td></tr><tr><td class="line-number noselect">88</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_WITH     = <span class="hljs-number">256</span>;
-</td></tr><tr><td class="line-number noselect">89</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">90</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">91</td><td class="code-line">     * Creates a <span class="hljs-keyword">new</span> query scanner object.
-</td></tr><tr><td class="line-number noselect">92</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">93</td><td class="code-line">     * @param string $input A query string.
-</td></tr><tr><td class="line-number noselect">94</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">95</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($input)</span></span>
-</td></tr><tr><td class="line-number noselect">96</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">97</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;setInput($input);
-</td></tr><tr><td class="line-number noselect">98</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">99</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">100</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">101</td><td class="code-line">     * {@inheritdoc}
-</td></tr><tr><td class="line-number noselect">102</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">103</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCatchablePatterns</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">104</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">105</td><td class="code-line">        <span class="hljs-keyword">return</span> [
-</td></tr><tr><td class="line-number noselect">106</td><td class="code-line">            <span class="hljs-string">'[a-z_][a-z0-9_]*\:[a-z_][a-z0-9_]*(?:\\\[a-z_][a-z0-9_]*)*'</span>, <span class="hljs-comment">// aliased name</span>
-</td></tr><tr><td class="line-number noselect">107</td><td class="code-line">            <span class="hljs-string">'[a-z_\\\][a-z0-9_]*(?:\\\[a-z_][a-z0-9_]*)*'</span>, <span class="hljs-comment">// identifier or qualified name</span>
-</td></tr><tr><td class="line-number noselect">108</td><td class="code-line">            <span class="hljs-string">'(?:[0-9]+(?:[\.][0-9]+)*)(?:e[+-]?[0-9]+)?'</span>, <span class="hljs-comment">// numbers</span>
-</td></tr><tr><td class="line-number noselect">109</td><td class="code-line">            <span class="hljs-string">"'(?:[^']|'')*'"</span>, <span class="hljs-comment">// quoted strings</span>
-</td></tr><tr><td class="line-number noselect">110</td><td class="code-line">            <span class="hljs-string">'\?[0-9]*|:[a-z_][a-z0-9_]*'</span>, <span class="hljs-comment">// parameters</span>
-</td></tr><tr><td class="line-number noselect">111</td><td class="code-line">        ];
-</td></tr><tr><td class="line-number noselect">112</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">113</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">114</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">115</td><td class="code-line">     * {@inheritdoc}
-</td></tr><tr><td class="line-number noselect">116</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">117</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNonCatchablePatterns</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">118</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">119</td><td class="code-line">        <span class="hljs-keyword">return</span> [<span class="hljs-string">'\s+'</span>, <span class="hljs-string">'(.)'</span>];
-</td></tr><tr><td class="line-number noselect">120</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">121</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">122</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">123</td><td class="code-line">     * {@inheritdoc}
-</td></tr><tr><td class="line-number noselect">124</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">125</td><td class="code-line">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getType</span><span class="hljs-params">(&amp;$value)</span></span>
-</td></tr><tr><td class="line-number noselect">126</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">127</td><td class="code-line">        $type = <span class="hljs-keyword">self</span>::T_NONE;
-</td></tr><tr><td class="line-number noselect">128</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">129</td><td class="code-line">        <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">true</span>) {
-</td></tr><tr><td class="line-number noselect">130</td><td class="code-line">            <span class="hljs-comment">// Recognize numeric values</span>
-</td></tr><tr><td class="line-number noselect">131</td><td class="code-line">            <span class="hljs-keyword">case</span> (is_numeric($value)):
-</td></tr><tr><td class="line-number noselect">132</td><td class="code-line">                <span class="hljs-keyword">if</span> (strpos($value, <span class="hljs-string">'.'</span>) !== <span class="hljs-keyword">false</span> || stripos($value, <span class="hljs-string">'e'</span>) !== <span class="hljs-keyword">false</span>) {
-</td></tr><tr><td class="line-number noselect">133</td><td class="code-line">                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_FLOAT;
-</td></tr><tr><td class="line-number noselect">134</td><td class="code-line">                }
-</td></tr><tr><td class="line-number noselect">135</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">136</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_INTEGER;
-</td></tr><tr><td class="line-number noselect">137</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">138</td><td class="code-line">            <span class="hljs-comment">// Recognize quoted strings</span>
-</td></tr><tr><td class="line-number noselect">139</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value[<span class="hljs-number">0</span>] === <span class="hljs-string">"'"</span>):
-</td></tr><tr><td class="line-number noselect">140</td><td class="code-line">                $value = str_replace(<span class="hljs-string">"''"</span>, <span class="hljs-string">"'"</span>, substr($value, <span class="hljs-number">1</span>, strlen($value) - <span class="hljs-number">2</span>));
-</td></tr><tr><td class="line-number noselect">141</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">142</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_STRING;
-</td></tr><tr><td class="line-number noselect">143</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">144</td><td class="code-line">            <span class="hljs-comment">// Recognize identifiers, aliased or qualified names</span>
-</td></tr><tr><td class="line-number noselect">145</td><td class="code-line">            <span class="hljs-keyword">case</span> (ctype_alpha($value[<span class="hljs-number">0</span>]) || $value[<span class="hljs-number">0</span>] === <span class="hljs-string">'_'</span> || $value[<span class="hljs-number">0</span>] === <span class="hljs-string">'\\'</span>):
-</td></tr><tr><td class="line-number noselect">146</td><td class="code-line">                $name = <span class="hljs-string">'Doctrine\ORM\Query\Lexer::T_'</span> . strtoupper($value);
-</td></tr><tr><td class="line-number noselect">147</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">148</td><td class="code-line">                <span class="hljs-keyword">if</span> (defined($name)) {
-</td></tr><tr><td class="line-number noselect">149</td><td class="code-line">                    $type = constant($name);
-</td></tr><tr><td class="line-number noselect">150</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">151</td><td class="code-line">                    <span class="hljs-keyword">if</span> ($type &gt; <span class="hljs-number">100</span>) {
-</td></tr><tr><td class="line-number noselect">152</td><td class="code-line">                        <span class="hljs-keyword">return</span> $type;
-</td></tr><tr><td class="line-number noselect">153</td><td class="code-line">                    }
-</td></tr><tr><td class="line-number noselect">154</td><td class="code-line">                }
-</td></tr><tr><td class="line-number noselect">155</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">156</td><td class="code-line">                <span class="hljs-keyword">if</span> (strpos($value, <span class="hljs-string">':'</span>) !== <span class="hljs-keyword">false</span>) {
-</td></tr><tr><td class="line-number noselect">157</td><td class="code-line">                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_ALIASED_NAME;
-</td></tr><tr><td class="line-number noselect">158</td><td class="code-line">                }
-</td></tr><tr><td class="line-number noselect">159</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">160</td><td class="code-line">                <span class="hljs-keyword">if</span> (strpos($value, <span class="hljs-string">'\\'</span>) !== <span class="hljs-keyword">false</span>) {
-</td></tr><tr><td class="line-number noselect">161</td><td class="code-line">                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_FULLY_QUALIFIED_NAME;
-</td></tr><tr><td class="line-number noselect">162</td><td class="code-line">                }
-</td></tr><tr><td class="line-number noselect">163</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">164</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_IDENTIFIER;
-</td></tr><tr><td class="line-number noselect">165</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">166</td><td class="code-line">            <span class="hljs-comment">// Recognize input parameters</span>
-</td></tr><tr><td class="line-number noselect">167</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value[<span class="hljs-number">0</span>] === <span class="hljs-string">'?'</span> || $value[<span class="hljs-number">0</span>] === <span class="hljs-string">':'</span>):
-</td></tr><tr><td class="line-number noselect">168</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_INPUT_PARAMETER;
-</td></tr><tr><td class="line-number noselect">169</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">170</td><td class="code-line">            <span class="hljs-comment">// Recognize symbols</span>
-</td></tr><tr><td class="line-number noselect">171</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'.'</span>):
-</td></tr><tr><td class="line-number noselect">172</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_DOT;
-</td></tr><tr><td class="line-number noselect">173</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">','</span>):
-</td></tr><tr><td class="line-number noselect">174</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_COMMA;
-</td></tr><tr><td class="line-number noselect">175</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'('</span>):
-</td></tr><tr><td class="line-number noselect">176</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_OPEN_PARENTHESIS;
-</td></tr><tr><td class="line-number noselect">177</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">')'</span>):
-</td></tr><tr><td class="line-number noselect">178</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_CLOSE_PARENTHESIS;
-</td></tr><tr><td class="line-number noselect">179</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'='</span>):
-</td></tr><tr><td class="line-number noselect">180</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_EQUALS;
-</td></tr><tr><td class="line-number noselect">181</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'&gt;'</span>):
-</td></tr><tr><td class="line-number noselect">182</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_GREATER_THAN;
-</td></tr><tr><td class="line-number noselect">183</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'&lt;'</span>):
-</td></tr><tr><td class="line-number noselect">184</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_LOWER_THAN;
-</td></tr><tr><td class="line-number noselect">185</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'+'</span>):
-</td></tr><tr><td class="line-number noselect">186</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_PLUS;
-</td></tr><tr><td class="line-number noselect">187</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'-'</span>):
-</td></tr><tr><td class="line-number noselect">188</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_MINUS;
-</td></tr><tr><td class="line-number noselect">189</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'*'</span>):
-</td></tr><tr><td class="line-number noselect">190</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_MULTIPLY;
-</td></tr><tr><td class="line-number noselect">191</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'/'</span>):
-</td></tr><tr><td class="line-number noselect">192</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_DIVIDE;
-</td></tr><tr><td class="line-number noselect">193</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'!'</span>):
-</td></tr><tr><td class="line-number noselect">194</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_NEGATE;
-</td></tr><tr><td class="line-number noselect">195</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'{'</span>):
-</td></tr><tr><td class="line-number noselect">196</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_OPEN_CURLY_BRACE;
-</td></tr><tr><td class="line-number noselect">197</td><td class="code-line">            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'}'</span>):
-</td></tr><tr><td class="line-number noselect">198</td><td class="code-line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_CLOSE_CURLY_BRACE;
-</td></tr><tr><td class="line-number noselect">199</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">200</td><td class="code-line">            <span class="hljs-comment">// Default</span>
-</td></tr><tr><td class="line-number noselect">201</td><td class="code-line">            <span class="hljs-keyword">default</span>:
-</td></tr><tr><td class="line-number noselect">202</td><td class="code-line">                <span class="hljs-comment">// Do nothing</span>
-</td></tr><tr><td class="line-number noselect">203</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">204</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">205</td><td class="code-line">        <span class="hljs-keyword">return</span> $type;
-</td></tr><tr><td class="line-number noselect">206</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">207</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="1674e2fdd6341ae2adb9a01d000a89dd6a7f4ef1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="207"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Lexer</span>\<span class="hljs-title">AbstractLexer</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lexer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractLexer</span>
+</span>{
+    <span class="hljs-comment">// All tokens that are not valid identifiers must be &lt; 100</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NONE              = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_INTEGER           = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_STRING            = <span class="hljs-number">3</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_INPUT_PARAMETER   = <span class="hljs-number">4</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_FLOAT             = <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_CLOSE_PARENTHESIS = <span class="hljs-number">6</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_OPEN_PARENTHESIS  = <span class="hljs-number">7</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_COMMA             = <span class="hljs-number">8</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_DIVIDE            = <span class="hljs-number">9</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_DOT               = <span class="hljs-number">10</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_EQUALS            = <span class="hljs-number">11</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_GREATER_THAN      = <span class="hljs-number">12</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_LOWER_THAN        = <span class="hljs-number">13</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_MINUS             = <span class="hljs-number">14</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_MULTIPLY          = <span class="hljs-number">15</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NEGATE            = <span class="hljs-number">16</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_PLUS              = <span class="hljs-number">17</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_OPEN_CURLY_BRACE  = <span class="hljs-number">18</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_CLOSE_CURLY_BRACE = <span class="hljs-number">19</span>;
+
+    <span class="hljs-comment">// All tokens that are identifiers or keywords that could be considered as identifiers should be &gt;= 100</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ALIASED_NAME         = <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_FULLY_QUALIFIED_NAME = <span class="hljs-number">101</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_IDENTIFIER           = <span class="hljs-number">102</span>;
+
+    <span class="hljs-comment">// All keyword tokens should be &gt;= 200</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ALL      = <span class="hljs-number">200</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_AND      = <span class="hljs-number">201</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ANY      = <span class="hljs-number">202</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_AS       = <span class="hljs-number">203</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ASC      = <span class="hljs-number">204</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_AVG      = <span class="hljs-number">205</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_BETWEEN  = <span class="hljs-number">206</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_BOTH     = <span class="hljs-number">207</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_BY       = <span class="hljs-number">208</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_CASE     = <span class="hljs-number">209</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_COALESCE = <span class="hljs-number">210</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_COUNT    = <span class="hljs-number">211</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_DELETE   = <span class="hljs-number">212</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_DESC     = <span class="hljs-number">213</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_DISTINCT = <span class="hljs-number">214</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ELSE     = <span class="hljs-number">215</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_EMPTY    = <span class="hljs-number">216</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_END      = <span class="hljs-number">217</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ESCAPE   = <span class="hljs-number">218</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_EXISTS   = <span class="hljs-number">219</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_FALSE    = <span class="hljs-number">220</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_FROM     = <span class="hljs-number">221</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_GROUP    = <span class="hljs-number">222</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_HAVING   = <span class="hljs-number">223</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_HIDDEN   = <span class="hljs-number">224</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_IN       = <span class="hljs-number">225</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_INDEX    = <span class="hljs-number">226</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_INNER    = <span class="hljs-number">227</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_INSTANCE = <span class="hljs-number">228</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_IS       = <span class="hljs-number">229</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_JOIN     = <span class="hljs-number">230</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_LEADING  = <span class="hljs-number">231</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_LEFT     = <span class="hljs-number">232</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_LIKE     = <span class="hljs-number">233</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_MAX      = <span class="hljs-number">234</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_MEMBER   = <span class="hljs-number">235</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_MIN      = <span class="hljs-number">236</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NEW      = <span class="hljs-number">237</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NOT      = <span class="hljs-number">238</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NULL     = <span class="hljs-number">239</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_NULLIF   = <span class="hljs-number">240</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_OF       = <span class="hljs-number">241</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_OR       = <span class="hljs-number">242</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_ORDER    = <span class="hljs-number">243</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_OUTER    = <span class="hljs-number">244</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_PARTIAL  = <span class="hljs-number">245</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_SELECT   = <span class="hljs-number">246</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_SET      = <span class="hljs-number">247</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_SOME     = <span class="hljs-number">248</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_SUM      = <span class="hljs-number">249</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_THEN     = <span class="hljs-number">250</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_TRAILING = <span class="hljs-number">251</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_TRUE     = <span class="hljs-number">252</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_UPDATE   = <span class="hljs-number">253</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_WHEN     = <span class="hljs-number">254</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_WHERE    = <span class="hljs-number">255</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> T_WITH     = <span class="hljs-number">256</span>;
+
+    <span class="hljs-comment">/**
+     * Creates a new query scanner object.
+     *
+     * <span class="hljs-doctag">@param</span> string $input A query string.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($input)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;setInput($input);
+    }
+
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritdoc</span>}
+     */</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCatchablePatterns</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> [
+            <span class="hljs-string">'[a-z_][a-z0-9_]*\:[a-z_][a-z0-9_]*(?:\\\[a-z_][a-z0-9_]*)*'</span>, <span class="hljs-comment">// aliased name</span>
+            <span class="hljs-string">'[a-z_\\\][a-z0-9_]*(?:\\\[a-z_][a-z0-9_]*)*'</span>, <span class="hljs-comment">// identifier or qualified name</span>
+            <span class="hljs-string">'(?:[0-9]+(?:[\.][0-9]+)*)(?:e[+-]?[0-9]+)?'</span>, <span class="hljs-comment">// numbers</span>
+            <span class="hljs-string">"'(?:[^']|'')*'"</span>, <span class="hljs-comment">// quoted strings</span>
+            <span class="hljs-string">'\?[0-9]*|:[a-z_][a-z0-9_]*'</span>, <span class="hljs-comment">// parameters</span>
+        ];
+    }
+
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritdoc</span>}
+     */</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNonCatchablePatterns</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> [<span class="hljs-string">'\s+'</span>, <span class="hljs-string">'(.)'</span>];
+    }
+
+    <span class="hljs-comment">/**
+     * {<span class="hljs-doctag">@inheritdoc</span>}
+     */</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getType</span><span class="hljs-params">(&amp;$value)</span>
+    </span>{
+        $type = <span class="hljs-keyword">self</span>::T_NONE;
+
+        <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">true</span>) {
+            <span class="hljs-comment">// Recognize numeric values</span>
+            <span class="hljs-keyword">case</span> (is_numeric($value)):
+                <span class="hljs-keyword">if</span> (strpos($value, <span class="hljs-string">'.'</span>) !== <span class="hljs-keyword">false</span> || stripos($value, <span class="hljs-string">'e'</span>) !== <span class="hljs-keyword">false</span>) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_FLOAT;
+                }
+
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_INTEGER;
+
+            <span class="hljs-comment">// Recognize quoted strings</span>
+            <span class="hljs-keyword">case</span> ($value[<span class="hljs-number">0</span>] === <span class="hljs-string">"'"</span>):
+                $value = str_replace(<span class="hljs-string">"''"</span>, <span class="hljs-string">"'"</span>, substr($value, <span class="hljs-number">1</span>, strlen($value) - <span class="hljs-number">2</span>));
+
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_STRING;
+
+            <span class="hljs-comment">// Recognize identifiers, aliased or qualified names</span>
+            <span class="hljs-keyword">case</span> (ctype_alpha($value[<span class="hljs-number">0</span>]) || $value[<span class="hljs-number">0</span>] === <span class="hljs-string">'_'</span> || $value[<span class="hljs-number">0</span>] === <span class="hljs-string">'\\'</span>):
+                $name = <span class="hljs-string">'Doctrine\ORM\Query\Lexer::T_'</span> . strtoupper($value);
+
+                <span class="hljs-keyword">if</span> (defined($name)) {
+                    $type = constant($name);
+
+                    <span class="hljs-keyword">if</span> ($type &gt; <span class="hljs-number">100</span>) {
+                        <span class="hljs-keyword">return</span> $type;
+                    }
+                }
+
+                <span class="hljs-keyword">if</span> (strpos($value, <span class="hljs-string">':'</span>) !== <span class="hljs-keyword">false</span>) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_ALIASED_NAME;
+                }
+
+                <span class="hljs-keyword">if</span> (strpos($value, <span class="hljs-string">'\\'</span>) !== <span class="hljs-keyword">false</span>) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_FULLY_QUALIFIED_NAME;
+                }
+
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_IDENTIFIER;
+
+            <span class="hljs-comment">// Recognize input parameters</span>
+            <span class="hljs-keyword">case</span> ($value[<span class="hljs-number">0</span>] === <span class="hljs-string">'?'</span> || $value[<span class="hljs-number">0</span>] === <span class="hljs-string">':'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_INPUT_PARAMETER;
+
+            <span class="hljs-comment">// Recognize symbols</span>
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'.'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_DOT;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">','</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_COMMA;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'('</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_OPEN_PARENTHESIS;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">')'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_CLOSE_PARENTHESIS;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'='</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_EQUALS;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'&gt;'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_GREATER_THAN;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'&lt;'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_LOWER_THAN;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'+'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_PLUS;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'-'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_MINUS;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'*'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_MULTIPLY;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'/'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_DIVIDE;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'!'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_NEGATE;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'{'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_OPEN_CURLY_BRACE;
+            <span class="hljs-keyword">case</span> ($value === <span class="hljs-string">'}'</span>):
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::T_CLOSE_CURLY_BRACE;
+
+            <span class="hljs-comment">// Default</span>
+            <span class="hljs-keyword">default</span>:
+                <span class="hljs-comment">// Do nothing</span>
+        }
+
+        <span class="hljs-keyword">return</span> $type;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr>
+<tr><td class="line-number noselect">58</td></tr>
+<tr><td class="line-number noselect">59</td></tr>
+<tr><td class="line-number noselect">60</td></tr>
+<tr><td class="line-number noselect">61</td></tr>
+<tr><td class="line-number noselect">62</td></tr>
+<tr><td class="line-number noselect">63</td></tr>
+<tr><td class="line-number noselect">64</td></tr>
+<tr><td class="line-number noselect">65</td></tr>
+<tr><td class="line-number noselect">66</td></tr>
+<tr><td class="line-number noselect">67</td></tr>
+<tr><td class="line-number noselect">68</td></tr>
+<tr><td class="line-number noselect">69</td></tr>
+<tr><td class="line-number noselect">70</td></tr>
+<tr><td class="line-number noselect">71</td></tr>
+<tr><td class="line-number noselect">72</td></tr>
+<tr><td class="line-number noselect">73</td></tr>
+<tr><td class="line-number noselect">74</td></tr>
+<tr><td class="line-number noselect">75</td></tr>
+<tr><td class="line-number noselect">76</td></tr>
+<tr><td class="line-number noselect">77</td></tr>
+<tr><td class="line-number noselect">78</td></tr>
+<tr><td class="line-number noselect">79</td></tr>
+<tr><td class="line-number noselect">80</td></tr>
+<tr><td class="line-number noselect">81</td></tr>
+<tr><td class="line-number noselect">82</td></tr>
+<tr><td class="line-number noselect">83</td></tr>
+<tr><td class="line-number noselect">84</td></tr>
+<tr><td class="line-number noselect">85</td></tr>
+<tr><td class="line-number noselect">86</td></tr>
+<tr><td class="line-number noselect">87</td></tr>
+<tr><td class="line-number noselect">88</td></tr>
+<tr><td class="line-number noselect">89</td></tr>
+<tr><td class="line-number noselect">90</td></tr>
+<tr><td class="line-number noselect">91</td></tr>
+<tr><td class="line-number noselect">92</td></tr>
+<tr><td class="line-number noselect">93</td></tr>
+<tr><td class="line-number noselect">94</td></tr>
+<tr><td class="line-number noselect">95</td></tr>
+<tr><td class="line-number noselect">96</td></tr>
+<tr><td class="line-number noselect">97</td></tr>
+<tr><td class="line-number noselect">98</td></tr>
+<tr><td class="line-number noselect">99</td></tr>
+<tr><td class="line-number noselect">100</td></tr>
+<tr><td class="line-number noselect">101</td></tr>
+<tr><td class="line-number noselect">102</td></tr>
+<tr><td class="line-number noselect">103</td></tr>
+<tr><td class="line-number noselect">104</td></tr>
+<tr><td class="line-number noselect">105</td></tr>
+<tr><td class="line-number noselect">106</td></tr>
+<tr><td class="line-number noselect">107</td></tr>
+<tr><td class="line-number noselect">108</td></tr>
+<tr><td class="line-number noselect">109</td></tr>
+<tr><td class="line-number noselect">110</td></tr>
+<tr><td class="line-number noselect">111</td></tr>
+<tr><td class="line-number noselect">112</td></tr>
+<tr><td class="line-number noselect">113</td></tr>
+<tr><td class="line-number noselect">114</td></tr>
+<tr><td class="line-number noselect">115</td></tr>
+<tr><td class="line-number noselect">116</td></tr>
+<tr><td class="line-number noselect">117</td></tr>
+<tr><td class="line-number noselect">118</td></tr>
+<tr><td class="line-number noselect">119</td></tr>
+<tr><td class="line-number noselect">120</td></tr>
+<tr><td class="line-number noselect">121</td></tr>
+<tr><td class="line-number noselect">122</td></tr>
+<tr><td class="line-number noselect">123</td></tr>
+<tr><td class="line-number noselect">124</td></tr>
+<tr><td class="line-number noselect">125</td></tr>
+<tr><td class="line-number noselect">126</td></tr>
+<tr><td class="line-number noselect">127</td></tr>
+<tr><td class="line-number noselect">128</td></tr>
+<tr><td class="line-number noselect">129</td></tr>
+<tr><td class="line-number noselect">130</td></tr>
+<tr><td class="line-number noselect">131</td></tr>
+<tr><td class="line-number noselect">132</td></tr>
+<tr><td class="line-number noselect">133</td></tr>
+<tr><td class="line-number noselect">134</td></tr>
+<tr><td class="line-number noselect">135</td></tr>
+<tr><td class="line-number noselect">136</td></tr>
+<tr><td class="line-number noselect">137</td></tr>
+<tr><td class="line-number noselect">138</td></tr>
+<tr><td class="line-number noselect">139</td></tr>
+<tr><td class="line-number noselect">140</td></tr>
+<tr><td class="line-number noselect">141</td></tr>
+<tr><td class="line-number noselect">142</td></tr>
+<tr><td class="line-number noselect">143</td></tr>
+<tr><td class="line-number noselect">144</td></tr>
+<tr><td class="line-number noselect">145</td></tr>
+<tr><td class="line-number noselect">146</td></tr>
+<tr><td class="line-number noselect">147</td></tr>
+<tr><td class="line-number noselect">148</td></tr>
+<tr><td class="line-number noselect">149</td></tr>
+<tr><td class="line-number noselect">150</td></tr>
+<tr><td class="line-number noselect">151</td></tr>
+<tr><td class="line-number noselect">152</td></tr>
+<tr><td class="line-number noselect">153</td></tr>
+<tr><td class="line-number noselect">154</td></tr>
+<tr><td class="line-number noselect">155</td></tr>
+<tr><td class="line-number noselect">156</td></tr>
+<tr><td class="line-number noselect">157</td></tr>
+<tr><td class="line-number noselect">158</td></tr>
+<tr><td class="line-number noselect">159</td></tr>
+<tr><td class="line-number noselect">160</td></tr>
+<tr><td class="line-number noselect">161</td></tr>
+<tr><td class="line-number noselect">162</td></tr>
+<tr><td class="line-number noselect">163</td></tr>
+<tr><td class="line-number noselect">164</td></tr>
+<tr><td class="line-number noselect">165</td></tr>
+<tr><td class="line-number noselect">166</td></tr>
+<tr><td class="line-number noselect">167</td></tr>
+<tr><td class="line-number noselect">168</td></tr>
+<tr><td class="line-number noselect">169</td></tr>
+<tr><td class="line-number noselect">170</td></tr>
+<tr><td class="line-number noselect">171</td></tr>
+<tr><td class="line-number noselect">172</td></tr>
+<tr><td class="line-number noselect">173</td></tr>
+<tr><td class="line-number noselect">174</td></tr>
+<tr><td class="line-number noselect">175</td></tr>
+<tr><td class="line-number noselect">176</td></tr>
+<tr><td class="line-number noselect">177</td></tr>
+<tr><td class="line-number noselect">178</td></tr>
+<tr><td class="line-number noselect">179</td></tr>
+<tr><td class="line-number noselect">180</td></tr>
+<tr><td class="line-number noselect">181</td></tr>
+<tr><td class="line-number noselect">182</td></tr>
+<tr><td class="line-number noselect">183</td></tr>
+<tr><td class="line-number noselect">184</td></tr>
+<tr><td class="line-number noselect">185</td></tr>
+<tr><td class="line-number noselect">186</td></tr>
+<tr><td class="line-number noselect">187</td></tr>
+<tr><td class="line-number noselect">188</td></tr>
+<tr><td class="line-number noselect">189</td></tr>
+<tr><td class="line-number noselect">190</td></tr>
+<tr><td class="line-number noselect">191</td></tr>
+<tr><td class="line-number noselect">192</td></tr>
+<tr><td class="line-number noselect">193</td></tr>
+<tr><td class="line-number noselect">194</td></tr>
+<tr><td class="line-number noselect">195</td></tr>
+<tr><td class="line-number noselect">196</td></tr>
+<tr><td class="line-number noselect">197</td></tr>
+<tr><td class="line-number noselect">198</td></tr>
+<tr><td class="line-number noselect">199</td></tr>
+<tr><td class="line-number noselect">200</td></tr>
+<tr><td class="line-number noselect">201</td></tr>
+<tr><td class="line-number noselect">202</td></tr>
+<tr><td class="line-number noselect">203</td></tr>
+<tr><td class="line-number noselect">204</td></tr>
+<tr><td class="line-number noselect">205</td></tr>
+<tr><td class="line-number noselect">206</td></tr>
+<tr><td class="line-number noselect">207</td></tr></table></div></code></pre>
 <p>This is roughly what the DQL Parser looks like that uses the above
 Lexer implementation:</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>You can see the full implementation <a href="https://github.com/doctrine/doctrine2/blob/master/lib/Doctrine/ORM/Query/Parser.php">here</a>.</p>
@@ -464,70 +669,119 @@ Lexer implementation:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="03a18b33ce54496f154cdcf4f750f3d269b9f1f1"
+            data-copy-element-id="e5f4e2ff60a6c637b2db55a214f104725c7eda97"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="03a18b33ce54496f154cdcf4f750f3d269b9f1f1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parser</span></span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">private</span> $lexer;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($dql)</span></span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;lexer = <span class="hljs-keyword">new</span> Lexer();
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;lexer-&gt;setInput($dql);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAST</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-comment">// Parse &amp; build AST</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        $AST = <span class="hljs-keyword">$this</span>-&gt;QueryLanguage();
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        <span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-keyword">return</span> $AST;
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">QueryLanguage</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;lexer-&gt;moveNext();
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">$this</span>-&gt;lexer-&gt;lookahead[<span class="hljs-string">'type'</span>]) {
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">            <span class="hljs-keyword">case</span> Lexer::T_SELECT:
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">                $statement = <span class="hljs-keyword">$this</span>-&gt;SelectStatement();
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">                <span class="hljs-keyword">break</span>;
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">            <span class="hljs-keyword">case</span> Lexer::T_UPDATE:
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">                $statement = <span class="hljs-keyword">$this</span>-&gt;UpdateStatement();
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">                <span class="hljs-keyword">break</span>;
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">            <span class="hljs-keyword">case</span> Lexer::T_DELETE:
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">                $statement = <span class="hljs-keyword">$this</span>-&gt;DeleteStatement();
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">                <span class="hljs-keyword">break</span>;
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">            <span class="hljs-keyword">default</span>:
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">                <span class="hljs-keyword">$this</span>-&gt;syntaxError(<span class="hljs-string">'SELECT, UPDATE or DELETE'</span>);
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">                <span class="hljs-keyword">break</span>;
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">        <span class="hljs-comment">// Check for end of string</span>
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;lexer-&gt;lookahead !== <span class="hljs-keyword">null</span>) {
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">            <span class="hljs-keyword">$this</span>-&gt;syntaxError(<span class="hljs-string">'end of string'</span>);
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">        <span class="hljs-keyword">return</span> $statement;
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">    <span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="e5f4e2ff60a6c637b2db55a214f104725c7eda97"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="51"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parser</span>
+</span>{
+    <span class="hljs-keyword">private</span> $lexer;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($dql)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;lexer = <span class="hljs-keyword">new</span> Lexer();
+        <span class="hljs-keyword">$this</span>-&gt;lexer-&gt;setInput($dql);
+    }
+
+    <span class="hljs-comment">// ...</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAST</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">// Parse &amp; build AST</span>
+        $AST = <span class="hljs-keyword">$this</span>-&gt;QueryLanguage();
+
+        <span class="hljs-comment">// ...</span>
+
+        <span class="hljs-keyword">return</span> $AST;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">QueryLanguage</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;lexer-&gt;moveNext();
+
+        <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">$this</span>-&gt;lexer-&gt;lookahead[<span class="hljs-string">'type'</span>]) {
+            <span class="hljs-keyword">case</span> Lexer::T_SELECT:
+                $statement = <span class="hljs-keyword">$this</span>-&gt;SelectStatement();
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> Lexer::T_UPDATE:
+                $statement = <span class="hljs-keyword">$this</span>-&gt;UpdateStatement();
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> Lexer::T_DELETE:
+                $statement = <span class="hljs-keyword">$this</span>-&gt;DeleteStatement();
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">default</span>:
+                <span class="hljs-keyword">$this</span>-&gt;syntaxError(<span class="hljs-string">'SELECT, UPDATE or DELETE'</span>);
+                <span class="hljs-keyword">break</span>;
+        }
+
+        <span class="hljs-comment">// Check for end of string</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;lexer-&gt;lookahead !== <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">$this</span>-&gt;syntaxError(<span class="hljs-string">'end of string'</span>);
+        }
+
+        <span class="hljs-keyword">return</span> $statement;
+    }
+
+    <span class="hljs-comment">// ...</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr></table></div></code></pre>
 <p>Now the AST is used to transform the DQL query in to portable SQL for whatever relational
 database you are using!</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f7510e580a984769a51916d004e5e0414e7b3454"
+            data-copy-element-id="f00d9f25d9f3c405a7a13ff291452536b6c034b8"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f7510e580a984769a51916d004e5e0414e7b3454"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$parser = <span class="hljs-keyword">new</span> Parser(<span class="hljs-string">'SELECT u FROM User u'</span>);
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$AST = $parser-&gt;getAST(); <span class="hljs-comment">// returns \Doctrine\ORM\Query\AST\SelectStatement</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="f00d9f25d9f3c405a7a13ff291452536b6c034b8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2">$parser = <span class="hljs-keyword">new</span> Parser(<span class="hljs-string">'SELECT u FROM User u'</span>);
+$AST = $parser-&gt;getAST(); <span class="hljs-comment">// returns \Doctrine\ORM\Query\AST\SelectStatement</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <a class="section-anchor" id="what-is-an-ast" name="what-is-an-ast"></a><h1 class="section-header"><a href="#what-is-an-ast">What is an AST?<i class="fas fa-link"></i></a></h1>
 <p>AST stands for <a href="http://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract syntax tree</a>.
 In computer science, an abstract syntax tree (AST), or just syntax tree, is a

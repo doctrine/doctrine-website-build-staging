@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -341,37 +341,54 @@ platforms:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="235a15e0ffe54e427ed3b88ffbd2d533274aa8a2"
+            data-copy-element-id="1d8c071329c338c5bcd66def92527803ec74acf0"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="235a15e0ffe54e427ed3b88ffbd2d533274aa8a2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$conn = DriverManager::getConnection(<span class="hljs-comment">/**..**/</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$guid = $conn-&gt;fetchColumn(<span class="hljs-string">'SELECT '</span> . $conn-&gt;getDatabasePlatform()-&gt;getGuidExpression());
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$conn-&gt;insert(<span class="hljs-string">"my_table"</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">"id"</span> =&gt; $guid, <span class="hljs-string">"foo"</span> =&gt; <span class="hljs-string">"bar"</span>));
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="1d8c071329c338c5bcd66def92527803ec74acf0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
+
+$conn = DriverManager::getConnection(<span class="hljs-comment">/**..**/</span>);
+$guid = $conn-&gt;fetchColumn(<span class="hljs-string">'SELECT '</span> . $conn-&gt;getDatabasePlatform()-&gt;getGuidExpression());
+
+$conn-&gt;insert(<span class="hljs-string">"my_table"</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">"id"</span> =&gt; $guid, <span class="hljs-string">"foo"</span> =&gt; <span class="hljs-string">"bar"</span>));</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>In your application you should hide this details in Id-Generation services:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="adb018e9b7681797303ae4b3d60507578f1b3a29"
+            data-copy-element-id="b54d9f34d29df62e250c2dea031e6ee8e1a8c0a8"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="adb018e9b7681797303ae4b3d60507578f1b3a29"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyApplication</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IdGenerationService</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $conn;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateCustomerId</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;conn-&gt;fetchColumn(<span class="hljs-string">'SELECT '</span> .
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            <span class="hljs-keyword">$this</span>-&gt;conn-&gt;getDatabasePlatform()-&gt;getGuidExpression()
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        );
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b54d9f34d29df62e250c2dea031e6ee8e1a8c0a8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="14"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">MyApplication</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IdGenerationService</span>
+</span>{
+    <span class="hljs-keyword">private</span> $conn;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateCustomerId</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;conn-&gt;fetchColumn(<span class="hljs-string">'SELECT '</span> .
+            <span class="hljs-keyword">$this</span>-&gt;conn-&gt;getDatabasePlatform()-&gt;getGuidExpression()
+        );
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr></table></div></code></pre>
 <p>A good starting point to read up on GUIDs (vs numerical ids) is this blog post
 <a href="#coding-horror-primary-keys-ids-vs-guids-http-www-codinghorror-com-blog-2007-03-primary-keys-ids-versus-guids-html">Coding Horror: Primary Keys: IDs vs GUIDs
 &lt;http://www.codinghorror.com/blog/2007/03/primary-keys-ids-versus-guids.html&gt;</a>.</p>
@@ -398,20 +415,29 @@ following code in Doctrine:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e5b05c6445ff23d9637b1dc2a1632cbfd089c373"
+            data-copy-element-id="cf2aa1bc20c7ebf6dc4db8f51934fcdd13885784"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e5b05c6445ff23d9637b1dc2a1632cbfd089c373"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Id</span>\<span class="hljs-title">TableGenerator</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$conn = DriverManager::getConnection(<span class="hljs-comment">/**..**); // connection 1</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">// creating the TableGenerator automatically opens a second connection.</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$tableGenerator = <span class="hljs-keyword">new</span> TableGenerator($conn, <span class="hljs-string">"sequences_tbl_name"</span>);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$id1 = $tableGenerator-&gt;nextValue(<span class="hljs-string">"sequence_name1"</span>);
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$id2 = $tableGenerator-&gt;nextValue(<span class="hljs-string">"sequence_name2"</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="cf2aa1bc20c7ebf6dc4db8f51934fcdd13885784"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Id</span>\<span class="hljs-title">TableGenerator</span>;
+
+$conn = DriverManager::getConnection(<span class="hljs-comment">/**..**); // connection 1
+
+// creating the TableGenerator automatically opens a second connection.
+$tableGenerator = new TableGenerator($conn, "sequences_tbl_name");
+
+$id1 = $tableGenerator-&gt;nextValue("sequence_name1");
+$id2 = $tableGenerator-&gt;nextValue("sequence_name2");</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>The table generator obviously needs a table to work. The schema of this table
 is described in the <code>TableGenerator</code> class-docblock. Alternatively you
 can use the <code>Doctrine\DBAL\Id\TableGeneratorSchemaVisitor</code> and apply it to your
@@ -452,38 +478,55 @@ data such as meta tables or the &quot;user/tenant&quot; table.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="692cccc8c7d24c7ac8440acef658f2587f4151ed"
+            data-copy-element-id="9a2ddc6e0582beee16a55c8d452d6fa6e6bf0f06"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="692cccc8c7d24c7ac8440acef658f2587f4151ed"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Shards</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">SQLAzure</span>\<span class="hljs-title">SQLAzureShardManager</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$conn = DriverManager::getConnection(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-string">'sharding'</span> =&gt; <span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-string">'federationName'</span> =&gt; <span class="hljs-string">'my_database'</span>,
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-string">'distributionKey'</span> =&gt; <span class="hljs-string">'customer_id'</span>,
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    )
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">));
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$shardManager = <span class="hljs-keyword">new</span> SQLAzureShardManager($conn);
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$currentCustomerId = <span class="hljs-number">1234</span>;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$shardManager-&gt;selectShard($currentCustomerId);
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-comment">// all queries after this call hit the shard</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-comment">// where customer with id 1234 is on.</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$shardManager-&gt;selectGlobal();
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-comment">// the global database is selected.</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9a2ddc6e0582beee16a55c8d452d6fa6e6bf0f06"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="19"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Shards</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">SQLAzure</span>\<span class="hljs-title">SQLAzureShardManager</span>;
+
+$conn = DriverManager::getConnection(<span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'sharding'</span> =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'federationName'</span> =&gt; <span class="hljs-string">'my_database'</span>,
+        <span class="hljs-string">'distributionKey'</span> =&gt; <span class="hljs-string">'customer_id'</span>,
+    )
+));
+$shardManager = <span class="hljs-keyword">new</span> SQLAzureShardManager($conn);
+
+$currentCustomerId = <span class="hljs-number">1234</span>;
+$shardManager-&gt;selectShard($currentCustomerId);
+<span class="hljs-comment">// all queries after this call hit the shard</span>
+<span class="hljs-comment">// where customer with id 1234 is on.</span>
+
+$shardManager-&gt;selectGlobal();
+<span class="hljs-comment">// the global database is selected.</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr></table></div></code></pre>
 <p>To access the currently selected distribution value use the following API
 method:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="329e2450e05fd8fad7d0ef03985832dd5a795a78"
+            data-copy-element-id="26825853c980555e6c5321268a26c823cc14e9c1"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="329e2450e05fd8fad7d0ef03985832dd5a795a78"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$value = $shardManager-&gt;getCurrentDistributionValue();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="26825853c980555e6c5321268a26c823cc14e9c1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$value = $shardManager-&gt;getCurrentDistributionValue();</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <p>The shard manager will prevent you switching shards when a transaction is open.
 This is especially important when using sharding with the ORM. Because the ORM
 uses a single transaction during the flush-operation this means that you can
@@ -495,12 +538,13 @@ you have to sort the data in the application.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="10630985a84133f3a58dd60c27de13c0e2bb591a"
+            data-copy-element-id="74304a72ad369528a5a2aa3cad35401817722713"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="10630985a84133f3a58dd60c27de13c0e2bb591a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$sql = <span class="hljs-string">"SELECT * FROM customers"</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$rows = $shardManager-&gt;queryAll($sql, $params);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="74304a72ad369528a5a2aa3cad35401817722713"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$sql = <span class="hljs-string">"SELECT * FROM customers"</span>;
+$rows = $shardManager-&gt;queryAll($sql, $params);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <a class="section-anchor" id="schema-operations-schemasynchronizer-interface" name="schema-operations-schemasynchronizer-interface"></a><h2 class="section-header"><a href="#schema-operations-schemasynchronizer-interface">Schema Operations: SchemaSynchronizer Interface<i class="fas fa-link"></i></a></h2>
 <p>Schema Operations in a sharding architecture are tricky. You have to perform
 them on all databases instances (shards) at the same time. Also Doctrine
@@ -552,51 +596,69 @@ transparently on the server.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a6da38cc96c11304115afe9002e96c3e8b694007"
+            data-copy-element-id="75ffcb03f8fc74c2a815cc6d462d1c8e42bd7f9b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a6da38cc96c11304115afe9002e96c3e8b694007"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Shards</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">SQLAzure</span>\<span class="hljs-title">SQLAzureShardManager</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$conn = DriverManager::getConnection(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-string">'dbname'</span>   =&gt; <span class="hljs-string">'my_database'</span>,
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-string">'host'</span>     =&gt; <span class="hljs-string">'tcp:dbname.windows.net'</span>,
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-string">'user'</span>     =&gt; <span class="hljs-string">'user@dbname'</span>,
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">'XXX'</span>,
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-string">'sharding'</span> =&gt; <span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-string">'federationName'</span>   =&gt; <span class="hljs-string">'my_federation'</span>,
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-string">'distributionKey'</span>  =&gt; <span class="hljs-string">'customer_id'</span>,
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-string">'distributionType'</span> =&gt; <span class="hljs-string">'integer'</span>,
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    )
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">));
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$shardManager = <span class="hljs-keyword">new</span> SQLAzureShardManager($conn);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="75ffcb03f8fc74c2a815cc6d462d1c8e42bd7f9b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="16"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Shards</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">SQLAzure</span>\<span class="hljs-title">SQLAzureShardManager</span>;
+
+$conn = DriverManager::getConnection(<span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'dbname'</span>   =&gt; <span class="hljs-string">'my_database'</span>,
+    <span class="hljs-string">'host'</span>     =&gt; <span class="hljs-string">'tcp:dbname.windows.net'</span>,
+    <span class="hljs-string">'user'</span>     =&gt; <span class="hljs-string">'user@dbname'</span>,
+    <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">'XXX'</span>,
+    <span class="hljs-string">'sharding'</span> =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'federationName'</span>   =&gt; <span class="hljs-string">'my_federation'</span>,
+        <span class="hljs-string">'distributionKey'</span>  =&gt; <span class="hljs-string">'customer_id'</span>,
+        <span class="hljs-string">'distributionType'</span> =&gt; <span class="hljs-string">'integer'</span>,
+    )
+));
+$shardManager = <span class="hljs-keyword">new</span> SQLAzureShardManager($conn);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr></table></div></code></pre>
 <p>Currently you are limited to one federation in your application.</p>
 <p>You can inspect all the currently known shards on SQL Azure using the
 <code>ShardManager#getShards()</code> function:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="63b9bfc6fe4931e6017e6d52846c1380328640a0"
+            data-copy-element-id="b2422dd57b8c4b2bd87121b685fdf77430d491e9"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="63b9bfc6fe4931e6017e6d52846c1380328640a0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($shardManager-&gt;getShards() <span class="hljs-keyword">as</span> $shard) {
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">echo</span> $shard[<span class="hljs-string">'id'</span>] . <span class="hljs-string">" "</span> . $shard[<span class="hljs-string">'rangeLow'</span>] . <span class="hljs-string">" - "</span> . $shard[<span class="hljs-string">'rangeHigh'</span>];
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b2422dd57b8c4b2bd87121b685fdf77430d491e9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">foreach</span> ($shardManager-&gt;getShards() <span class="hljs-keyword">as</span> $shard) {
+    <span class="hljs-keyword">echo</span> $shard[<span class="hljs-string">'id'</span>] . <span class="hljs-string">" "</span> . $shard[<span class="hljs-string">'rangeLow'</span>] . <span class="hljs-string">" - "</span> . $shard[<span class="hljs-string">'rangeHigh'</span>];
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <a class="section-anchor" id="schema-operations" name="schema-operations"></a><h3 class="section-header"><a href="#schema-operations">Schema Operations<i class="fas fa-link"></i></a></h3>
 <p>Schema Operations on SQL Azure Federations are possible with the
 <code>SQLAzureSchemaSynchronizer</code>. You can instantiate this from your code:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="008c34583987c30e6b7e4e77d3a34812387d24ce"
+            data-copy-element-id="ecc9ec7ddc857f51377dda27714984d5e5232414"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="008c34583987c30e6b7e4e77d3a34812387d24ce"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Shards</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">SQLAzure</span>\<span class="hljs-title">SQLAzureSchemaSynchronizer</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$synchronizer = <span class="hljs-keyword">new</span> SQLAzureSchemaSynchronizer($conn, $shardManager);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ecc9ec7ddc857f51377dda27714984d5e5232414"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Shards</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">SQLAzure</span>\<span class="hljs-title">SQLAzureSchemaSynchronizer</span>;
+
+$synchronizer = <span class="hljs-keyword">new</span> SQLAzureSchemaSynchronizer($conn, $shardManager);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <p>You can use the API such as <code>createSchema($schema)</code> then and it will be
 distributed across all shards. The assumptions are:</p>
 <ul><li class="dash">Using <code>SchemaSynchronizer#createSchema()</code> assumes the database is empty.
@@ -611,31 +673,51 @@ the Schema API to mark tables:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="35d460bd3de34b216e79f01bb87ef6621b0e9a70"
+            data-copy-element-id="f6000c2a40c3a71b7ee5188490a2cc777f46e3fd"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="35d460bd3de34b216e79f01bb87ef6621b0e9a70"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Schema</span>\<span class="hljs-title">Schema</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$schema = <span class="hljs-keyword">new</span> Schema();
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">// no options set, this table will be on the federation root</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$users = $schema-&gt;createTable(<span class="hljs-string">'Users'</span>);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">//...</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">// marked as sharded, but no distribution column given:</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-comment">// non-federated table inside the federation</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$products = $schema-&gt;createTable(<span class="hljs-string">'Products'</span>);
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$products-&gt;addOption(<span class="hljs-string">'azure.federated'</span>, <span class="hljs-keyword">true</span>);
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">//...</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-comment">// shared + distribution column:</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-comment">// federated table</span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$customers = $schema-&gt;createTable(<span class="hljs-string">'Customers'</span>);
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$customers-&gt;addColumn(<span class="hljs-string">'CustomerID'</span>, <span class="hljs-string">'integer'</span>);
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-comment">//...</span>
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">$customers-&gt;addOption(<span class="hljs-string">'azure.federated'</span>, <span class="hljs-keyword">true</span>);
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">$customers-&gt;addOption(<span class="hljs-string">'azure.federatedOnColumnName'</span>, <span class="hljs-string">'CustomerID'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="f6000c2a40c3a71b7ee5188490a2cc777f46e3fd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="22"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Schema</span>\<span class="hljs-title">Schema</span>;
+
+$schema = <span class="hljs-keyword">new</span> Schema();
+
+<span class="hljs-comment">// no options set, this table will be on the federation root</span>
+$users = $schema-&gt;createTable(<span class="hljs-string">'Users'</span>);
+<span class="hljs-comment">//...</span>
+
+<span class="hljs-comment">// marked as sharded, but no distribution column given:</span>
+<span class="hljs-comment">// non-federated table inside the federation</span>
+$products = $schema-&gt;createTable(<span class="hljs-string">'Products'</span>);
+$products-&gt;addOption(<span class="hljs-string">'azure.federated'</span>, <span class="hljs-keyword">true</span>);
+<span class="hljs-comment">//...</span>
+
+<span class="hljs-comment">// shared + distribution column:</span>
+<span class="hljs-comment">// federated table</span>
+$customers = $schema-&gt;createTable(<span class="hljs-string">'Customers'</span>);
+$customers-&gt;addColumn(<span class="hljs-string">'CustomerID'</span>, <span class="hljs-string">'integer'</span>);
+<span class="hljs-comment">//...</span>
+$customers-&gt;addOption(<span class="hljs-string">'azure.federated'</span>, <span class="hljs-keyword">true</span>);
+$customers-&gt;addOption(<span class="hljs-string">'azure.federatedOnColumnName'</span>, <span class="hljs-string">'CustomerID'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr></table></div></code></pre>
 <a class="section-anchor" id="sqlazure-filtering" name="sqlazure-filtering"></a><h3 class="section-header"><a href="#sqlazure-filtering">SQLAzure Filtering<i class="fas fa-link"></i></a></h3>
 <p>SQL Azure comes with a powerful filtering feature, that allows you to
 automatically implement a multi-tenant application for a formerly single-tenant
@@ -668,22 +750,33 @@ request.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0d223809d1aad0100aa1293a47d061f9d111ba14"
+            data-copy-element-id="0de0f8576ff83364098620eb86efc8a15a90fdd5"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0d223809d1aad0100aa1293a47d061f9d111ba14"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$conn = DriverManager::getConnection(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-string">'wrapperClass'</span> =&gt; <span class="hljs-string">'Doctrine\Shards\DBAL\PoolingShardConnection'</span>,
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-string">'driver'</span>       =&gt; <span class="hljs-string">'pdo_sqlite'</span>,
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-string">'global'</span>       =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">'memory'</span> =&gt; <span class="hljs-keyword">true</span>),
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-string">'shards'</span>       =&gt; <span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">array</span>(<span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">1</span>, <span class="hljs-string">'memory'</span> =&gt; <span class="hljs-keyword">true</span>),
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">array</span>(<span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">2</span>, <span class="hljs-string">'memory'</span> =&gt; <span class="hljs-keyword">true</span>),
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    ),
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-string">'shardChoser'</span> =&gt; <span class="hljs-string">'Doctrine\Shards\DBAL\ShardChoser\MultiTenantShardChoser'</span>,
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">));
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0de0f8576ff83364098620eb86efc8a15a90fdd5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="13"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
+
+$conn = DriverManager::getConnection(<span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'wrapperClass'</span> =&gt; <span class="hljs-string">'Doctrine\Shards\DBAL\PoolingShardConnection'</span>,
+    <span class="hljs-string">'driver'</span>       =&gt; <span class="hljs-string">'pdo_sqlite'</span>,
+    <span class="hljs-string">'global'</span>       =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">'memory'</span> =&gt; <span class="hljs-keyword">true</span>),
+    <span class="hljs-string">'shards'</span>       =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-keyword">array</span>(<span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">1</span>, <span class="hljs-string">'memory'</span> =&gt; <span class="hljs-keyword">true</span>),
+        <span class="hljs-keyword">array</span>(<span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">2</span>, <span class="hljs-string">'memory'</span> =&gt; <span class="hljs-keyword">true</span>),
+    ),
+    <span class="hljs-string">'shardChoser'</span> =&gt; <span class="hljs-string">'Doctrine\Shards\DBAL\ShardChoser\MultiTenantShardChoser'</span>,
+));</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr></table></div></code></pre>
 <p>You have to configure the following options:</p>
 <ul><li class="dash">'wrapperClass' - Selecting the PoolingShardConnection as above.</li>
 <li class="dash">'global' - An array of database parameters that is used for connecting to the

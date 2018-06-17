@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -281,13 +281,15 @@ how Composer works, check out their <a href="#getting-started-http-getcomposer-o
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8227210ceefdfbc4844c1e5d61bfa32c20587fe7"
+            data-copy-element-id="b28d2a05c3d309143cacc3d07653982a673d45be"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8227210ceefdfbc4844c1e5d61bfa32c20587fe7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// bootstrap.php</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// Include Composer Autoload (relative to project root).</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">"vendor/autoload.php"</span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b28d2a05c3d309143cacc3d07653982a673d45be"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// bootstrap.php</span>
+<span class="hljs-comment">// Include Composer Autoload (relative to project root).</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">"vendor/autoload.php"</span>;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <a class="section-anchor" id="obtaining-an-entitymanager" name="obtaining-an-entitymanager"></a><h2 class="section-header"><a href="#obtaining-an-entitymanager">Obtaining an EntityManager<i class="fas fa-link"></i></a></h2>
 <p>Once you have prepared the class loading, you acquire an
 <em>EntityManager</em> instance. The EntityManager class is the primary
@@ -295,49 +297,69 @@ access point to ORM functionality provided by Doctrine.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8864c07fbdea75ada29a39f427b519ecc16372c2"
+            data-copy-element-id="00acf46a1214226df24587c707f35ef1a8c75ca7"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8864c07fbdea75ada29a39f427b519ecc16372c2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// bootstrap.php</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">"vendor/autoload.php"</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Setup</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">EntityManager</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$paths = <span class="hljs-keyword">array</span>(<span class="hljs-string">"/path/to/entities-or-mapping-files"</span>);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$isDevMode = <span class="hljs-keyword">false</span>;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-comment">// the connection configuration</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$dbParams = <span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-string">'driver'</span>   =&gt; <span class="hljs-string">'pdo_mysql'</span>,
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-string">'user'</span>     =&gt; <span class="hljs-string">'root'</span>,
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">''</span>,
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-string">'dbname'</span>   =&gt; <span class="hljs-string">'foo'</span>,
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">);
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">$entityManager = EntityManager::create($dbParams, $config);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="00acf46a1214226df24587c707f35ef1a8c75ca7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="20"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// bootstrap.php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">"vendor/autoload.php"</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Setup</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">EntityManager</span>;
+
+$paths = <span class="hljs-keyword">array</span>(<span class="hljs-string">"/path/to/entities-or-mapping-files"</span>);
+$isDevMode = <span class="hljs-keyword">false</span>;
+
+<span class="hljs-comment">// the connection configuration</span>
+$dbParams = <span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'driver'</span>   =&gt; <span class="hljs-string">'pdo_mysql'</span>,
+    <span class="hljs-string">'user'</span>     =&gt; <span class="hljs-string">'root'</span>,
+    <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">''</span>,
+    <span class="hljs-string">'dbname'</span>   =&gt; <span class="hljs-string">'foo'</span>,
+);
+
+$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+$entityManager = EntityManager::create($dbParams, $config);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr></table></div></code></pre>
 <p>Or if you prefer XML:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0f0ee9b0353b23fc5f807e6b2236d35738b2ff52"
+            data-copy-element-id="e580369030f2b51a258b1af25f996bdcdf66aa66"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0f0ee9b0353b23fc5f807e6b2236d35738b2ff52"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config = Setup::createXMLMetadataConfiguration($paths, $isDevMode);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$entityManager = EntityManager::create($dbParams, $config);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="e580369030f2b51a258b1af25f996bdcdf66aa66"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config = Setup::createXMLMetadataConfiguration($paths, $isDevMode);
+$entityManager = EntityManager::create($dbParams, $config);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Or if you prefer YAML:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="65342afe994e27a33a93b8a548b2fce1ec477e69"
+            data-copy-element-id="11e1fa6fd756e830ea73bc2cd7500924300f24f6"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="65342afe994e27a33a93b8a548b2fce1ec477e69"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config = Setup::createYAMLMetadataConfiguration($paths, $isDevMode);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$entityManager = EntityManager::create($dbParams, $config);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="11e1fa6fd756e830ea73bc2cd7500924300f24f6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config = Setup::createYAMLMetadataConfiguration($paths, $isDevMode);
+$entityManager = EntityManager::create($dbParams, $config);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Inside the <code>Setup</code> methods several assumptions are made:</p>
 <ul><li class="dash"> If `$devMode` is true always use an <code>ArrayCache</code> (in-memory) and regenerate proxies on every request.</li>
 <li class="dash"> If `$devMode` is false, check for Caches in the order APC, Xcache, Memcache (127.0.0.1:11211), Redis (127.0.0.1:6379) unless `$cache` is passed as fourth argument.</li>
@@ -363,37 +385,54 @@ following content:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="165e71cc823fd1513db162bff064c1a92f9197db"
+            data-copy-element-id="c89901b8af421674ecdaa0271d6b222e3797924d"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="165e71cc823fd1513db162bff064c1a92f9197db"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">ConsoleRunner</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// replace with file to your own project bootstrap</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'bootstrap.php'</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">// replace with mechanism to retrieve EntityManager in your app</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$entityManager = GetEntityManager();
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">return</span> ConsoleRunner::createHelperSet($entityManager);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="c89901b8af421674ecdaa0271d6b222e3797924d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="10"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">ConsoleRunner</span>;
+
+<span class="hljs-comment">// replace with file to your own project bootstrap</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'bootstrap.php'</span>;
+
+<span class="hljs-comment">// replace with mechanism to retrieve EntityManager in your app</span>
+$entityManager = GetEntityManager();
+
+<span class="hljs-keyword">return</span> ConsoleRunner::createHelperSet($entityManager);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr></table></div></code></pre>
 <p>On Doctrine 2.3 and below:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0a5bea80f17a072f50a7666d025047230d2d9c75"
+            data-copy-element-id="54ddd1e45eceac2c2ab91861bc101d14c160270f"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0a5bea80f17a072f50a7666d025047230d2d9c75"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// cli-config.php</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'my_bootstrap.php'</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// Any way to access the EntityManager from  your application</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$em = GetMyEntityManager();
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$helperSet = <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\HelperSet(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-string">'db'</span> =&gt; <span class="hljs-keyword">new</span> \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($em-&gt;getConnection()),
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-string">'em'</span> =&gt; <span class="hljs-keyword">new</span> \Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper($em)
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">));
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="54ddd1e45eceac2c2ab91861bc101d14c160270f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// cli-config.php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'my_bootstrap.php'</span>;
+
+<span class="hljs-comment">// Any way to access the EntityManager from  your application</span>
+$em = GetMyEntityManager();
+
+$helperSet = <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\HelperSet(<span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'db'</span> =&gt; <span class="hljs-keyword">new</span> \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($em-&gt;getConnection()),
+    <span class="hljs-string">'em'</span> =&gt; <span class="hljs-keyword">new</span> \Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper($em)
+));</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

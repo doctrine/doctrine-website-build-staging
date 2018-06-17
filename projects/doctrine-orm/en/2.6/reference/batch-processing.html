@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -284,24 +284,37 @@ internally but also mean more work during <code>flush</code>.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="2c7b3db430d75fcfe51b4fa27eb4022f1f5e1c7d"
+            data-copy-element-id="d5282e9d4e179d245cdb6fab88ad5547ad59ef8c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="2c7b3db430d75fcfe51b4fa27eb4022f1f5e1c7d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$batchSize = <span class="hljs-number">20</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">for</span> ($i = <span class="hljs-number">1</span>; $i &lt;= <span class="hljs-number">10000</span>; ++$i) {
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    $user = <span class="hljs-keyword">new</span> CmsUser;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    $user-&gt;setStatus(<span class="hljs-string">'user'</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    $user-&gt;setUsername(<span class="hljs-string">'user'</span> . $i);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    $user-&gt;setName(<span class="hljs-string">'Mr.Smith-'</span> . $i);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    $em-&gt;persist($user);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">if</span> (($i % $batchSize) === <span class="hljs-number">0</span>) {
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        $em-&gt;flush();
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        $em-&gt;clear(); <span class="hljs-comment">// Detaches all objects from Doctrine!</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$em-&gt;flush(); <span class="hljs-comment">//Persist objects that did not make up an entire batch</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$em-&gt;clear();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d5282e9d4e179d245cdb6fab88ad5547ad59ef8c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="15"><span class="hljs-meta">&lt;?php</span>
+$batchSize = <span class="hljs-number">20</span>;
+<span class="hljs-keyword">for</span> ($i = <span class="hljs-number">1</span>; $i &lt;= <span class="hljs-number">10000</span>; ++$i) {
+    $user = <span class="hljs-keyword">new</span> CmsUser;
+    $user-&gt;setStatus(<span class="hljs-string">'user'</span>);
+    $user-&gt;setUsername(<span class="hljs-string">'user'</span> . $i);
+    $user-&gt;setName(<span class="hljs-string">'Mr.Smith-'</span> . $i);
+    $em-&gt;persist($user);
+    <span class="hljs-keyword">if</span> (($i % $batchSize) === <span class="hljs-number">0</span>) {
+        $em-&gt;flush();
+        $em-&gt;clear(); <span class="hljs-comment">// Detaches all objects from Doctrine!</span>
+    }
+}
+$em-&gt;flush(); <span class="hljs-comment">//Persist objects that did not make up an entire batch</span>
+$em-&gt;clear();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr></table></div></code></pre>
 <a class="section-anchor" id="bulk-updates" name="bulk-updates"></a><h2 class="section-header"><a href="#bulk-updates">Bulk Updates<i class="fas fa-link"></i></a></h2>
 <p>There are 2 possibilities for bulk updates with Doctrine.</p>
 <a class="section-anchor" id="dql-update" name="dql-update"></a><h3 class="section-header"><a href="#dql-update">DQL UPDATE<i class="fas fa-link"></i></a></h3>
@@ -310,12 +323,13 @@ UPDATE query. Example:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="511a4c3058d0212eb40edc715489ac80a30cdf42"
+            data-copy-element-id="44029898b2203991bfc8035495bca3cd807ef3ac"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="511a4c3058d0212eb40edc715489ac80a30cdf42"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$q = $em-&gt;createQuery(<span class="hljs-string">'update MyProject\Model\Manager m set m.salary = m.salary * 0.9'</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$numUpdated = $q-&gt;execute();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="44029898b2203991bfc8035495bca3cd807ef3ac"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$q = $em-&gt;createQuery(<span class="hljs-string">'update MyProject\Model\Manager m set m.salary = m.salary * 0.9'</span>);
+$numUpdated = $q-&gt;execute();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <a class="section-anchor" id="iterating-results" name="iterating-results"></a><h3 class="section-header"><a href="#iterating-results">Iterating results<i class="fas fa-link"></i></a></h3>
 <p>An alternative solution for bulk updates is to use the
 <code>Query#iterate()</code> facility to iterate over the query results step
@@ -325,25 +339,39 @@ with the batching strategy that was already used for bulk inserts:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a251fb684139943aa1e32174d903eb2905fc3eb5"
+            data-copy-element-id="f64230b0142e198f1c29d2d8c74cebdc662a54c5"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a251fb684139943aa1e32174d903eb2905fc3eb5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$batchSize = <span class="hljs-number">20</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$i = <span class="hljs-number">0</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$q = $em-&gt;createQuery(<span class="hljs-string">'select u from MyProject\Model\User u'</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$iterableResult = $q-&gt;iterate();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($iterableResult <span class="hljs-keyword">as</span> $row) {
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    $user = $row[<span class="hljs-number">0</span>];
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    $user-&gt;increaseCredit();
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    $user-&gt;calculateNewBonuses();
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">if</span> (($i % $batchSize) === <span class="hljs-number">0</span>) {
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        $em-&gt;flush(); <span class="hljs-comment">// Executes all updates.</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        $em-&gt;clear(); <span class="hljs-comment">// Detaches all objects from Doctrine!</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    ++$i;
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$em-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="f64230b0142e198f1c29d2d8c74cebdc662a54c5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="16"><span class="hljs-meta">&lt;?php</span>
+$batchSize = <span class="hljs-number">20</span>;
+$i = <span class="hljs-number">0</span>;
+$q = $em-&gt;createQuery(<span class="hljs-string">'select u from MyProject\Model\User u'</span>);
+$iterableResult = $q-&gt;iterate();
+<span class="hljs-keyword">foreach</span> ($iterableResult <span class="hljs-keyword">as</span> $row) {
+    $user = $row[<span class="hljs-number">0</span>];
+    $user-&gt;increaseCredit();
+    $user-&gt;calculateNewBonuses();
+    <span class="hljs-keyword">if</span> (($i % $batchSize) === <span class="hljs-number">0</span>) {
+        $em-&gt;flush(); <span class="hljs-comment">// Executes all updates.</span>
+        $em-&gt;clear(); <span class="hljs-comment">// Detaches all objects from Doctrine!</span>
+    }
+    ++$i;
+}
+$em-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Iterating results is not possible with queries that
 fetch-join a collection-valued association. The nature of such SQL
 result sets is not suitable for incremental hydration.</p>
@@ -363,12 +391,13 @@ DELETE query.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="64f02e62b8520754f95f9d6c36501b86754e7dbf"
+            data-copy-element-id="2834800d73fcaa911476567e23d78dd585839d8b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="64f02e62b8520754f95f9d6c36501b86754e7dbf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$q = $em-&gt;createQuery(<span class="hljs-string">'delete from MyProject\Model\Manager m where m.salary &gt; 100000'</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$numDeleted = $q-&gt;execute();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2834800d73fcaa911476567e23d78dd585839d8b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$q = $em-&gt;createQuery(<span class="hljs-string">'delete from MyProject\Model\Manager m where m.salary &gt; 100000'</span>);
+$numDeleted = $q-&gt;execute();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <a class="section-anchor" id="iterating-results" name="iterating-results"></a><h3 class="section-header"><a href="#iterating-results">Iterating results<i class="fas fa-link"></i></a></h3>
 <p>An alternative solution for bulk deletes is to use the
 <code>Query#iterate()</code> facility to iterate over the query results step
@@ -377,23 +406,35 @@ The following example shows how to do this:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4e777919450d9f79430c71ba52a0ad0e0b9638b3"
+            data-copy-element-id="df4d56763b4a6290e7a06bc8c3171853590a00f0"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4e777919450d9f79430c71ba52a0ad0e0b9638b3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$batchSize = <span class="hljs-number">20</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$i = <span class="hljs-number">0</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$q = $em-&gt;createQuery(<span class="hljs-string">'select u from MyProject\Model\User u'</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$iterableResult = $q-&gt;iterate();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">while</span> (($row = $iterableResult-&gt;next()) !== <span class="hljs-keyword">false</span>) {
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    $em-&gt;remove($row[<span class="hljs-number">0</span>]);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">if</span> (($i % $batchSize) === <span class="hljs-number">0</span>) {
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        $em-&gt;flush(); <span class="hljs-comment">// Executes all deletions.</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        $em-&gt;clear(); <span class="hljs-comment">// Detaches all objects from Doctrine!</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    ++$i;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$em-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="df4d56763b4a6290e7a06bc8c3171853590a00f0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="14"><span class="hljs-meta">&lt;?php</span>
+$batchSize = <span class="hljs-number">20</span>;
+$i = <span class="hljs-number">0</span>;
+$q = $em-&gt;createQuery(<span class="hljs-string">'select u from MyProject\Model\User u'</span>);
+$iterableResult = $q-&gt;iterate();
+<span class="hljs-keyword">while</span> (($row = $iterableResult-&gt;next()) !== <span class="hljs-keyword">false</span>) {
+    $em-&gt;remove($row[<span class="hljs-number">0</span>]);
+    <span class="hljs-keyword">if</span> (($i % $batchSize) === <span class="hljs-number">0</span>) {
+        $em-&gt;flush(); <span class="hljs-comment">// Executes all deletions.</span>
+        $em-&gt;clear(); <span class="hljs-comment">// Detaches all objects from Doctrine!</span>
+    }
+    ++$i;
+}
+$em-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Iterating results is not possible with queries that
 fetch-join a collection-valued association. The nature of such SQL
 result sets is not suitable for incremental hydration.</p>
@@ -407,18 +448,25 @@ problems using the following approach:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="96d0566e946cd2dba5406b073c22bb681d0f7f43"
+            data-copy-element-id="b53c74bb129a16e34b414c784527d43f1318d140"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="96d0566e946cd2dba5406b073c22bb681d0f7f43"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$q = <span class="hljs-keyword">$this</span>-&gt;_em-&gt;createQuery(<span class="hljs-string">'select u from MyProject\Model\User u'</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$iterableResult = $q-&gt;iterate();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($iterableResult <span class="hljs-keyword">as</span> $row) {
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">// do stuff with the data in the row, $row[0] is always the object</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">// detach from Doctrine, so that it can be Garbage-Collected immediately</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">$this</span>-&gt;_em-&gt;detach($row[<span class="hljs-number">0</span>]);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b53c74bb129a16e34b414c784527d43f1318d140"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+$q = <span class="hljs-keyword">$this</span>-&gt;_em-&gt;createQuery(<span class="hljs-string">'select u from MyProject\Model\User u'</span>);
+$iterableResult = $q-&gt;iterate();
+<span class="hljs-keyword">foreach</span> ($iterableResult <span class="hljs-keyword">as</span> $row) {
+    <span class="hljs-comment">// do stuff with the data in the row, $row[0] is always the object</span>
+
+    <span class="hljs-comment">// detach from Doctrine, so that it can be Garbage-Collected immediately</span>
+    <span class="hljs-keyword">$this</span>-&gt;_em-&gt;detach($row[<span class="hljs-number">0</span>]);
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Iterating results is not possible with queries that
 fetch-join a collection-valued association. The nature of such SQL
 result sets is not suitable for incremental hydration.</p>

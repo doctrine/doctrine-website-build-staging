@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -279,42 +279,73 @@ you wish. Here is an example skeleton of such a custom type class:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="25fa0bd5ced92741edd38f6b30cd760a1cf48533"
+            data-copy-element-id="02b0f162ff2b32bc7bd4c3d10aec98a76e7e36fb"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="25fa0bd5ced92741edd38f6b30cd760a1cf48533"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">My</span>\<span class="hljs-title">Project</span>\<span class="hljs-title">Types</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Platforms</span>\<span class="hljs-title">AbstractPlatform</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * My custom datatype.
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyType</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Type</span></span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">const</span> MYTYPE = <span class="hljs-string">'mytype'</span>; <span class="hljs-comment">// modify to match your type name</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSQLDeclaration</span><span class="hljs-params">(array $fieldDeclaration, AbstractPlatform $platform)</span></span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-comment">// return the SQL used to create your column type. To create a portable column type, use the $platform.</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToPHPValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span></span>
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-comment">// This is executed when the value is read from the database. Make your conversions here, optionally using the $platform.</span>
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToDatabaseValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span></span>
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">        <span class="hljs-comment">// This is executed when the value is written to the database. Make your conversions here, optionally using the $platform.</span>
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::MYTYPE; <span class="hljs-comment">// modify to match your constant name</span>
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="02b0f162ff2b32bc7bd4c3d10aec98a76e7e36fb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="33"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">My</span>\<span class="hljs-title">Project</span>\<span class="hljs-title">Types</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Platforms</span>\<span class="hljs-title">AbstractPlatform</span>;
+
+<span class="hljs-comment">/**
+ * My custom datatype.
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyType</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Type</span>
+</span>{
+    <span class="hljs-keyword">const</span> MYTYPE = <span class="hljs-string">'mytype'</span>; <span class="hljs-comment">// modify to match your type name</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSQLDeclaration</span><span class="hljs-params">(array $fieldDeclaration, AbstractPlatform $platform)</span>
+    </span>{
+        <span class="hljs-comment">// return the SQL used to create your column type. To create a portable column type, use the $platform.</span>
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToPHPValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span>
+    </span>{
+        <span class="hljs-comment">// This is executed when the value is read from the database. Make your conversions here, optionally using the $platform.</span>
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToDatabaseValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span>
+    </span>{
+        <span class="hljs-comment">// This is executed when the value is written to the database. Make your conversions here, optionally using the $platform.</span>
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::MYTYPE; <span class="hljs-comment">// modify to match your constant name</span>
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The following assumptions are applied to mapping types by the ORM:</p>
 <ul><li class="dash"> The <code>UnitOfWork</code> never passes values to the database convert
    method that did not change in the request.</li>
@@ -332,20 +363,29 @@ method. See the following example:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="5d2a660ad60fcd2f246626633c2e27540f2b3452"
+            data-copy-element-id="11195e63741459620e2fec036f430fab64ad7f01"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="5d2a660ad60fcd2f246626633c2e27540f2b3452"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// in bootstrapping code</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">// Register my type</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">Type::addType(<span class="hljs-string">'mytype'</span>, <span class="hljs-string">'My\Project\Types\MyType'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="11195e63741459620e2fec036f430fab64ad7f01"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// in bootstrapping code</span>
+
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>;
+
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-comment">// Register my type</span>
+Type::addType(<span class="hljs-string">'mytype'</span>, <span class="hljs-string">'My\Project\Types\MyType'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>To convert the underlying database type of your
 new &quot;mytype&quot; directly into an instance of <code>MyType</code> when performing
 schema operations, the type has to be registered with the database
@@ -353,27 +393,32 @@ platform as well:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c3efaf59f99e096cf704cbc9cafbf72c7cf98bdf"
+            data-copy-element-id="eec1bdd572f127bc6ea40502be9b185dbab92d0e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c3efaf59f99e096cf704cbc9cafbf72c7cf98bdf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$conn = $em-&gt;getConnection();
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$conn-&gt;getDatabasePlatform()-&gt;registerDoctrineTypeMapping(<span class="hljs-string">'db_mytype'</span>, <span class="hljs-string">'mytype'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="eec1bdd572f127bc6ea40502be9b185dbab92d0e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$conn = $em-&gt;getConnection();
+$conn-&gt;getDatabasePlatform()-&gt;registerDoctrineTypeMapping(<span class="hljs-string">'db_mytype'</span>, <span class="hljs-string">'mytype'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>When registering the custom types in the configuration you specify a unique
 name for the mapping type and map that to the corresponding fully qualified
 class name. Now the new type can be used when mapping columns:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c78b59dd6b3d14cfdcb5463d44b78db2ed621c44"
+            data-copy-element-id="2cd5d26b2c93ade26d0f7fce3d50f9b194429327"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c78b59dd6b3d14cfdcb5463d44b78db2ed621c44"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPersistentClass</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="mytype") */</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">private</span> $field;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2cd5d26b2c93ade26d0f7fce3d50f9b194429327"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPersistentClass</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="mytype") */</span>
+    <span class="hljs-keyword">private</span> $field;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -269,41 +269,71 @@ steps of configuration.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4a7cac7f5074e6b28855fd7b1cb372df588e1a43"
+            data-copy-element-id="8cb7f9b3a2542395e4831262e10fe85870a46667"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4a7cac7f5074e6b28855fd7b1cb372df588e1a43"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">EntityManager</span>,
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    Doctrine\ORM\Configuration;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">if</span> ($applicationMode == <span class="hljs-string">"development"</span>) {
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    $cache = <span class="hljs-keyword">new</span> \Doctrine\Common\Cache\ArrayCache;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">} <span class="hljs-keyword">else</span> {
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    $cache = <span class="hljs-keyword">new</span> \Doctrine\Common\Cache\ApcCache;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$config = <span class="hljs-keyword">new</span> Configuration;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$config-&gt;setMetadataCacheImpl($cache);
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$driverImpl = $config-&gt;newDefaultAnnotationDriver(<span class="hljs-string">'/path/to/lib/MyProject/Entities'</span>);
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$config-&gt;setMetadataDriverImpl($driverImpl);
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">$config-&gt;setQueryCacheImpl($cache);
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">$config-&gt;setProxyDir(<span class="hljs-string">'/path/to/myproject/lib/MyProject/Proxies'</span>);
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">$config-&gt;setProxyNamespace(<span class="hljs-string">'MyProject\Proxies'</span>);
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-keyword">if</span> ($applicationMode == <span class="hljs-string">"development"</span>) {
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    $config-&gt;setAutoGenerateProxyClasses(<span class="hljs-keyword">true</span>);
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">} <span class="hljs-keyword">else</span> {
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    $config-&gt;setAutoGenerateProxyClasses(<span class="hljs-keyword">false</span>);
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">$connectionOptions = <span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-string">'driver'</span> =&gt; <span class="hljs-string">'pdo_sqlite'</span>,
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-string">'path'</span> =&gt; <span class="hljs-string">'database.sqlite'</span>
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">);
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">$em = EntityManager::create($connectionOptions, $config);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="8cb7f9b3a2542395e4831262e10fe85870a46667"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="32"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">EntityManager</span>,
+    <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Configuration</span>;
+
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">if</span> ($applicationMode == <span class="hljs-string">"development"</span>) {
+    $cache = <span class="hljs-keyword">new</span> \Doctrine\Common\Cache\ArrayCache;
+} <span class="hljs-keyword">else</span> {
+    $cache = <span class="hljs-keyword">new</span> \Doctrine\Common\Cache\ApcCache;
+}
+
+$config = <span class="hljs-keyword">new</span> Configuration;
+$config-&gt;setMetadataCacheImpl($cache);
+$driverImpl = $config-&gt;newDefaultAnnotationDriver(<span class="hljs-string">'/path/to/lib/MyProject/Entities'</span>);
+$config-&gt;setMetadataDriverImpl($driverImpl);
+$config-&gt;setQueryCacheImpl($cache);
+$config-&gt;setProxyDir(<span class="hljs-string">'/path/to/myproject/lib/MyProject/Proxies'</span>);
+$config-&gt;setProxyNamespace(<span class="hljs-string">'MyProject\Proxies'</span>);
+
+<span class="hljs-keyword">if</span> ($applicationMode == <span class="hljs-string">"development"</span>) {
+    $config-&gt;setAutoGenerateProxyClasses(<span class="hljs-keyword">true</span>);
+} <span class="hljs-keyword">else</span> {
+    $config-&gt;setAutoGenerateProxyClasses(<span class="hljs-keyword">false</span>);
+}
+
+$connectionOptions = <span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'driver'</span> =&gt; <span class="hljs-string">'pdo_sqlite'</span>,
+    <span class="hljs-string">'path'</span> =&gt; <span class="hljs-string">'database.sqlite'</span>
+);
+
+$em = EntityManager::create($connectionOptions, $config);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Do not use Doctrine without a metadata and query cache!
 Doctrine is optimized for working with caches. The main
 parts in Doctrine that are optimized for caching are the metadata
@@ -323,12 +353,13 @@ available on a <code>Doctrine\ORM\Configuration</code> instance.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f1405a5f02ee2c1945622963dcec303cc603b5f1"
+            data-copy-element-id="c889f950657ec6b44571bfe48b4a1c740883c251"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f1405a5f02ee2c1945622963dcec303cc603b5f1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setProxyDir($dir);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getProxyDir();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="c889f950657ec6b44571bfe48b4a1c740883c251"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setProxyDir($dir);
+$config-&gt;getProxyDir();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Gets or sets the directory where Doctrine generates any proxy
 classes. For a detailed explanation on proxy classes and how they
 are used in Doctrine, refer to the &quot;Proxy Objects&quot; section further
@@ -337,12 +368,13 @@ down.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="87cb166f8e468c99dcf40e453fe3c922dbb8bc1a"
+            data-copy-element-id="9d6e9bb76172296e4d2577867e08d6d3eb6ee6f9"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="87cb166f8e468c99dcf40e453fe3c922dbb8bc1a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setProxyNamespace($namespace);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getProxyNamespace();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9d6e9bb76172296e4d2577867e08d6d3eb6ee6f9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setProxyNamespace($namespace);
+$config-&gt;getProxyNamespace();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Gets or sets the namespace to use for generated proxy classes. For
 a detailed explanation on proxy classes and how they are used in
 Doctrine, refer to the &quot;Proxy Objects&quot; section further down.</p>
@@ -350,12 +382,13 @@ Doctrine, refer to the &quot;Proxy Objects&quot; section further down.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b869836c25ae2126608eff002b34255e66d90d30"
+            data-copy-element-id="1a3c6a13aa629dd90f58b6bfe4082f5144447fbb"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b869836c25ae2126608eff002b34255e66d90d30"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setMetadataDriverImpl($driver);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getMetadataDriverImpl();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="1a3c6a13aa629dd90f58b6bfe4082f5144447fbb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setMetadataDriverImpl($driver);
+$config-&gt;getMetadataDriverImpl();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Gets or sets the metadata driver implementation that is used by
 Doctrine to acquire the object-relational metadata for your
 classes.</p>
@@ -375,12 +408,13 @@ the <code>Doctrine\ORM\Configuration</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="3f1c8f3f6b9c3b7a798b3e78225c8223173d4e4f"
+            data-copy-element-id="9bc9ca2857306ed324872ecfbe79f4ee1f8e8cc6"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="3f1c8f3f6b9c3b7a798b3e78225c8223173d4e4f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$driverImpl = $config-&gt;newDefaultAnnotationDriver(<span class="hljs-string">'/path/to/lib/MyProject/Entities'</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;setMetadataDriverImpl($driverImpl);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9bc9ca2857306ed324872ecfbe79f4ee1f8e8cc6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$driverImpl = $config-&gt;newDefaultAnnotationDriver(<span class="hljs-string">'/path/to/lib/MyProject/Entities'</span>);
+$config-&gt;setMetadataDriverImpl($driverImpl);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>The path information to the entities is required for the annotation
 driver, because otherwise mass-operations on all entities through
 the console could not work correctly. All of metadata drivers
@@ -391,12 +425,13 @@ directories of Entities.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="1bdec4bd0d4d4be9f0c16b5004bc9a633889564a"
+            data-copy-element-id="3e20666e667a64ad4fcb6a6476a79b1af4176006"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="1bdec4bd0d4d4be9f0c16b5004bc9a633889564a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setMetadataCacheImpl($cache);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getMetadataCacheImpl();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="3e20666e667a64ad4fcb6a6476a79b1af4176006"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setMetadataCacheImpl($cache);
+$config-&gt;getMetadataCacheImpl();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Gets or sets the cache implementation to use for caching metadata
 information, that is, all the information you supply via
 annotations, xml or yaml, so that they do not need to be parsed and
@@ -419,12 +454,13 @@ per-request basis.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="cef41adc767ae5d405bf047bd3b5bda26d4403a4"
+            data-copy-element-id="373c96c192e122aa8ddcbddf04c80768228aca21"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="cef41adc767ae5d405bf047bd3b5bda26d4403a4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setQueryCacheImpl($cache);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getQueryCacheImpl();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="373c96c192e122aa8ddcbddf04c80768228aca21"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setQueryCacheImpl($cache);
+$config-&gt;getQueryCacheImpl();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Gets or sets the cache implementation to use for caching DQL
 queries, that is, the result of a DQL parsing process that includes
 the final SQL as well as meta information about how to process the
@@ -448,12 +484,13 @@ per-request basis.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="5ffc96ce126ef89d36e271928b77c234ebd4ea7c"
+            data-copy-element-id="1f9c8fbae6cd957647406c7239c5fc1674a7dbdd"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="5ffc96ce126ef89d36e271928b77c234ebd4ea7c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setSQLLogger($logger);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getSQLLogger();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="1f9c8fbae6cd957647406c7239c5fc1674a7dbdd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setSQLLogger($logger);
+$config-&gt;getSQLLogger();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Gets or sets the logger to use for logging all SQL statements
 executed by Doctrine. The logger class must implement the
 <code>Doctrine\DBAL\Logging\SQLLogger</code> interface. A simple default
@@ -467,11 +504,11 @@ option that controls this behavior is:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="36cc2d5648c115c253d3b8b70a073527a11b416a"
+            data-copy-element-id="d42d439c4830505d4493e35772d9508f9084e34e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="36cc2d5648c115c253d3b8b70a073527a11b416a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setAutoGenerateProxyClasses($mode);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d42d439c4830505d4493e35772d9508f9084e34e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setAutoGenerateProxyClasses($mode);</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <p>Possible values for <code>$mode</code> are:</p>
 <ul><li class="dash"> <code>Doctrine\Common\Proxy\AbstractProxyFactory::AUTOGENERATE_NEVER</code></li>
 </ul>
@@ -481,10 +518,9 @@ manually, for this use the Doctrine Console like so:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a96d66b50cfc49ce4ede5500ff376513f96854b1"
+            data-copy-element-id="0bb169ad723d4b4e6a7ab8d2d38ffa0c9c95a8a7"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a96d66b50cfc49ce4ede5500ff376513f96854b1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$ ./doctrine orm:generate-proxies
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0bb169ad723d4b4e6a7ab8d2d38ffa0c9c95a8a7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1">$ ./doctrine orm:generate-proxies</td></tr></table></div></code></pre>
 <p>When you do this in a development environment,
 be aware that you may get class/file not found errors if certain proxies
 are not yet generated. You may also get failing lazy-loads if new
@@ -563,14 +599,17 @@ identifier. You could simply do this:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4eccef37f57ae512ce4dcd86d6d64e19ad6d2d70"
+            data-copy-element-id="b5c2466d3d1902aba5958ee7836f21270028d8b4"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4eccef37f57ae512ce4dcd86d6d64e19ad6d2d70"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em instanceof EntityManager, $cart instanceof MyProject\Model\Cart</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// $itemId comes from somewhere, probably a request parameter</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$item = $em-&gt;getReference(<span class="hljs-string">'MyProject\Model\Item'</span>, $itemId);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$cart-&gt;addItem($item);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b5c2466d3d1902aba5958ee7836f21270028d8b4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $em instanceof EntityManager, $cart instanceof MyProject\Model\Cart</span>
+<span class="hljs-comment">// $itemId comes from somewhere, probably a request parameter</span>
+$item = $em-&gt;getReference(<span class="hljs-string">'MyProject\Model\Item'</span>, $itemId);
+$cart-&gt;addItem($item);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <p>Here, we added an Item to a Cart without loading the Item from the
 database. If you invoke any method on the Item instance, it would
 fully initialize its state transparently from the database. Here
@@ -599,10 +638,9 @@ using the Doctrine Console:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a96d66b50cfc49ce4ede5500ff376513f96854b1"
+            data-copy-element-id="0bb169ad723d4b4e6a7ab8d2d38ffa0c9c95a8a7"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a96d66b50cfc49ce4ede5500ff376513f96854b1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$ ./doctrine orm:generate-proxies
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0bb169ad723d4b4e6a7ab8d2d38ffa0c9c95a8a7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1">$ ./doctrine orm:generate-proxies</td></tr></table></div></code></pre>
 <p>The other options are interesting in development environment:</p>
 <ul><li class="dash"><code>AUTOGENERATE_ALWAYS</code> will require you to create and configure
   a proxy directory. Proxies will be generated and written to file
@@ -622,16 +660,21 @@ means that you have to register a special autoloader for these classes:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="35fdacf71e0cbdafc12c699f93d3986c25b9f68e"
+            data-copy-element-id="534ba8ad9b86626b7ebd628379c2bf2b3e20a31e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="35fdacf71e0cbdafc12c699f93d3986c25b9f68e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Proxy</span>\<span class="hljs-title">Autoloader</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$proxyDir = <span class="hljs-string">"/path/to/proxies"</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$proxyNamespace = <span class="hljs-string">"MyProxies"</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">Autoloader::register($proxyDir, $proxyNamespace);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="534ba8ad9b86626b7ebd628379c2bf2b3e20a31e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Proxy</span>\<span class="hljs-title">Autoloader</span>;
+
+$proxyDir = <span class="hljs-string">"/path/to/proxies"</span>;
+$proxyNamespace = <span class="hljs-string">"MyProxies"</span>;
+
+Autoloader::register($proxyDir, $proxyNamespace);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>If you want to execute additional logic to intercept the proxy file not found
 state you can pass a closure as the third argument. It will be called with
 the arguments proxydir, namespace and className when the proxy file could not
@@ -644,15 +687,19 @@ aggregate these drivers based on namespaces:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="7b15184f79ebdc4a9a13f5726a77925310805e7a"
+            data-copy-element-id="cf4bd199555cb503b325dba9da09e609639ac29a"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="7b15184f79ebdc4a9a13f5726a77925310805e7a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">DriverChain</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$chain = <span class="hljs-keyword">new</span> DriverChain();
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$chain-&gt;addDriver($xmlDriver, <span class="hljs-string">'Doctrine\Tests\Models\Company'</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$chain-&gt;addDriver($yamlDriver, <span class="hljs-string">'Doctrine\Tests\ORM\Mapping'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="cf4bd199555cb503b325dba9da09e609639ac29a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Driver</span>\<span class="hljs-title">DriverChain</span>;
+
+$chain = <span class="hljs-keyword">new</span> DriverChain();
+$chain-&gt;addDriver($xmlDriver, <span class="hljs-string">'Doctrine\Tests\Models\Company'</span>);
+$chain-&gt;addDriver($yamlDriver, <span class="hljs-string">'Doctrine\Tests\ORM\Mapping'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>Based on the namespace of the entity the loading of entities is
 delegated to the appropriate driver. The chain semantics come from
 the fact that the driver loops through all namespaces and matches
@@ -666,12 +713,13 @@ That will be available for all entities without a custom repository class.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="d07f2be1259938b76beb9a5d9eb01ab8c8b1c5a0"
+            data-copy-element-id="3957048b3d152017ae8c8b5e3eb6277a6be5776f"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="d07f2be1259938b76beb9a5d9eb01ab8c8b1c5a0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$config-&gt;setDefaultRepositoryClassName($fqcn);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config-&gt;getDefaultRepositoryClassName();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="3957048b3d152017ae8c8b5e3eb6277a6be5776f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$config-&gt;setDefaultRepositoryClassName($fqcn);
+$config-&gt;getDefaultRepositoryClassName();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>The default value is <code>Doctrine\ORM\EntityRepository</code>.
 Any repository class must be a subclass of EntityRepository otherwise you got an ORMException</p>
 <a class="section-anchor" id="setting-up-the-console" name="setting-up-the-console"></a><h2 class="section-header"><a href="#setting-up-the-console">Setting up the Console<i class="fas fa-link"></i></a></h2>
@@ -683,15 +731,19 @@ for inspiration how to setup the cli.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="ead784ca016b6c7175901e6651b5dee799527273"
+            data-copy-element-id="e246a2b96e808afe92c3ea7c4df2f620dbd65918"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="ead784ca016b6c7175901e6651b5dee799527273"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$cli = <span class="hljs-keyword">new</span> Application(<span class="hljs-string">'Doctrine Command Line Interface'</span>, \Doctrine\ORM\Version::VERSION);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cli-&gt;setCatchExceptions(<span class="hljs-keyword">true</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$cli-&gt;setHelperSet($helperSet);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">Doctrine\ORM\Tools\Console\ConsoleRunner::addCommands($cli);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$cli-&gt;run();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="e246a2b96e808afe92c3ea7c4df2f620dbd65918"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+$cli = <span class="hljs-keyword">new</span> Application(<span class="hljs-string">'Doctrine Command Line Interface'</span>, \Doctrine\ORM\Version::VERSION);
+$cli-&gt;setCatchExceptions(<span class="hljs-keyword">true</span>);
+$cli-&gt;setHelperSet($helperSet);
+Doctrine\ORM\Tools\Console\ConsoleRunner::addCommands($cli);
+$cli-&gt;run();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

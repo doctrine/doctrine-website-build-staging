@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -290,15 +290,19 @@ headline &quot;Hello World&quot; with the ID 1234:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="36bf06926cab0f7fe915e4d42935ee5bf854efb0"
+            data-copy-element-id="bba9981f30da7615fe124de6984be3f585d7a504"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="36bf06926cab0f7fe915e4d42935ee5bf854efb0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$article = $entityManager-&gt;find(<span class="hljs-string">'CMS\Article'</span>, <span class="hljs-number">1234</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$article-&gt;setHeadline(<span class="hljs-string">'Hello World dude!'</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$article2 = $entityManager-&gt;find(<span class="hljs-string">'CMS\Article'</span>, <span class="hljs-number">1234</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">echo</span> $article2-&gt;getHeadline();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="bba9981f30da7615fe124de6984be3f585d7a504"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+$article = $entityManager-&gt;find(<span class="hljs-string">'CMS\Article'</span>, <span class="hljs-number">1234</span>);
+$article-&gt;setHeadline(<span class="hljs-string">'Hello World dude!'</span>);
+
+$article2 = $entityManager-&gt;find(<span class="hljs-string">'CMS\Article'</span>, <span class="hljs-number">1234</span>);
+<span class="hljs-keyword">echo</span> $article2-&gt;getHeadline();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>In this case the Article is accessed from the entity manager twice,
 but modified in between. Doctrine 2 realizes this and will only
 ever give you access to one instance of the Article with ID 1234,
@@ -315,13 +319,15 @@ code:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="47822f3f2b33d36e614c71b66ce07d204bcc7864"
+            data-copy-element-id="f687eeae8adbbde213f4c8140ed1b31fb26142c3"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="47822f3f2b33d36e614c71b66ce07d204bcc7864"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">if</span> ($article === $article2) {
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Yes we are the same!"</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="f687eeae8adbbde213f4c8140ed1b31fb26142c3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">if</span> ($article === $article2) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Yes we are the same!"</span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <p>Sometimes you want to clear the identity map of an EntityManager to
 start over. We use this regularly in our unit-tests to enforce
 loading objects from the database again instead of serving them
@@ -338,35 +344,59 @@ from newly opened EntityManager.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0d379f04ed2e644a837e908e4c46199c36e527ab"
+            data-copy-element-id="a7149d5f652a4c237f3f89c98b15d4c975713d63"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0d379f04ed2e644a837e908e4c46199c36e527ab"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string") */</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $headline;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ManyToOne</span>(targetEntity="User") */</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $author;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@OneToMany</span>(targetEntity="Comment", mappedBy="article") */</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">private</span> $comments;
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;comments = <span class="hljs-keyword">new</span> ArrayCollection();
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAuthor</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;author; }
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getComments</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;comments; }
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">$article = $em-&gt;find(<span class="hljs-string">'Article'</span>, <span class="hljs-number">1</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a7149d5f652a4c237f3f89c98b15d4c975713d63"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="26"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string") */</span>
+    <span class="hljs-keyword">private</span> $headline;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ManyToOne</span>(targetEntity="User") */</span>
+    <span class="hljs-keyword">private</span> $author;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@OneToMany</span>(targetEntity="Comment", mappedBy="article") */</span>
+    <span class="hljs-keyword">private</span> $comments;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;comments = <span class="hljs-keyword">new</span> ArrayCollection();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAuthor</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;author; }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getComments</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;comments; }
+}
+
+$article = $em-&gt;find(<span class="hljs-string">'Article'</span>, <span class="hljs-number">1</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr></table></div></code></pre>
 <p>This code only retrieves the <code>Article</code> instance with id 1 executing
 a single SELECT statement against the articles table in the database.
 You can still access the associated properties author and comments
@@ -381,56 +411,90 @@ your code. See the following code:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="467d00cf729438b36bd78613e2ac1a9cf1a79301"
+            data-copy-element-id="d118c7da5993f383c21b27442286b425e2e348e5"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="467d00cf729438b36bd78613e2ac1a9cf1a79301"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$article = $em-&gt;find(<span class="hljs-string">'Article'</span>, <span class="hljs-number">1</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// accessing a method of the user instance triggers the lazy-load</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">echo</span> <span class="hljs-string">"Author: "</span> . $article-&gt;getAuthor()-&gt;getName() . <span class="hljs-string">"\n"</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">// Lazy Loading Proxies pass instanceof tests:</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">if</span> ($article-&gt;getAuthor() <span class="hljs-keyword">instanceof</span> User) {
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">// a User Proxy is a generated "UserProxy" class</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">// accessing the comments as an iterator triggers the lazy-load</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-comment">// retrieving ALL the comments of this article from the database</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-comment">// using a single SELECT statement</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($article-&gt;getComments() <span class="hljs-keyword">as</span> $comment) {
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">echo</span> $comment-&gt;getText() . <span class="hljs-string">"\n\n"</span>;
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-comment">// Article::$comments passes instanceof tests for the Collection interface</span>
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-comment">// But it will NOT pass for the ArrayCollection interface</span>
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-keyword">if</span> ($article-&gt;getComments() <span class="hljs-keyword">instanceof</span> \Doctrine\Common\Collections\Collection) {
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">echo</span> <span class="hljs-string">"This will always be true!"</span>;
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d118c7da5993f383c21b27442286b425e2e348e5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="23"><span class="hljs-meta">&lt;?php</span>
+$article = $em-&gt;find(<span class="hljs-string">'Article'</span>, <span class="hljs-number">1</span>);
+
+<span class="hljs-comment">// accessing a method of the user instance triggers the lazy-load</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"Author: "</span> . $article-&gt;getAuthor()-&gt;getName() . <span class="hljs-string">"\n"</span>;
+
+<span class="hljs-comment">// Lazy Loading Proxies pass instanceof tests:</span>
+<span class="hljs-keyword">if</span> ($article-&gt;getAuthor() <span class="hljs-keyword">instanceof</span> User) {
+    <span class="hljs-comment">// a User Proxy is a generated "UserProxy" class</span>
+}
+
+<span class="hljs-comment">// accessing the comments as an iterator triggers the lazy-load</span>
+<span class="hljs-comment">// retrieving ALL the comments of this article from the database</span>
+<span class="hljs-comment">// using a single SELECT statement</span>
+<span class="hljs-keyword">foreach</span> ($article-&gt;getComments() <span class="hljs-keyword">as</span> $comment) {
+    <span class="hljs-keyword">echo</span> $comment-&gt;getText() . <span class="hljs-string">"\n\n"</span>;
+}
+
+<span class="hljs-comment">// Article::$comments passes instanceof tests for the Collection interface</span>
+<span class="hljs-comment">// But it will NOT pass for the ArrayCollection interface</span>
+<span class="hljs-keyword">if</span> ($article-&gt;getComments() <span class="hljs-keyword">instanceof</span> \Doctrine\Common\Collections\Collection) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"This will always be true!"</span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr></table></div></code></pre>
 <p>A slice of the generated proxy classes code looks like the
 following piece of code. A real proxy class override ALL public
 methods along the lines of the <code>getName()</code> method shown below:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="88dbe4738792f3ff88a33d14577847cee3a16b51"
+            data-copy-element-id="f3a18b7f89e78d347345ae3054e415c44d8d9708"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="88dbe4738792f3ff88a33d14577847cee3a16b51"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Proxy</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_load</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// lazy loading code</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;_load();
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">parent</span>::getName();
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">// .. other public methods of User</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="f3a18b7f89e78d347345ae3054e415c44d8d9708"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="15"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserProxy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Proxy</span>
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_load</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">// lazy loading code</span>
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;_load();
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">parent</span>::getName();
+    }
+    <span class="hljs-comment">// .. other public methods of User</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr></table></div></code></pre>
 <div class="alert warning bg-light-yellow text-dark border"><i class="fas fa-exclamation-circle text-warning mr-2"></i><p>Traversing the object graph for parts that are lazy-loaded will
 easily trigger lots of SQL queries and will perform badly if used
 to heavily. Make sure to use DQL to fetch-join all the parts of the
@@ -457,14 +521,17 @@ taking care of maintaining referential integrity.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="878ba7538788e08f0c70e8eec005c02bb9fcc4cb"
+            data-copy-element-id="aa9dc6442ac989561a0cc34fc63368bcc07a664d"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="878ba7538788e08f0c70e8eec005c02bb9fcc4cb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$user = <span class="hljs-keyword">new</span> User;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user-&gt;setName(<span class="hljs-string">'Mr.Right'</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$em-&gt;persist($user);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$em-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="aa9dc6442ac989561a0cc34fc63368bcc07a664d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+$user = <span class="hljs-keyword">new</span> User;
+$user-&gt;setName(<span class="hljs-string">'Mr.Right'</span>);
+$em-&gt;persist($user);
+$em-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Generated entity identifiers / primary keys are
 guaranteed to be available after the next successful flush
 operation that involves the entity in question. You can not rely on
@@ -506,12 +573,13 @@ for more information.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4320f318cd5fe12f58166c35e9df6d6dba3c2721"
+            data-copy-element-id="4fab308f2d8f24278817b52f22beba2c9994c921"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4320f318cd5fe12f58166c35e9df6d6dba3c2721"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$em-&gt;remove($user);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="4fab308f2d8f24278817b52f22beba2c9994c921"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$em-&gt;remove($user);
+$em-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>The semantics of the remove operation, applied to an entity X are
 as follows:</p>
 <ul><li class="dash"> If X is a new entity, it is ignored by the remove operation.
@@ -571,11 +639,11 @@ detached.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4b3e452d6e96c91d7387f9ad297f4e6a06fc6730"
+            data-copy-element-id="3f2304ce60fac6efb1e3cb5dd9cc2b1cbe4d3f78"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4b3e452d6e96c91d7387f9ad297f4e6a06fc6730"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$em-&gt;detach($entity);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="3f2304ce60fac6efb1e3cb5dd9cc2b1cbe4d3f78"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$em-&gt;detach($entity);</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <p>The semantics of the detach operation, applied to an entity X are
 as follows:</p>
 <ul><li class="dash"> If X is a managed entity, the detach operation causes it to
@@ -616,14 +684,17 @@ this entity and this copy will subsequently be returned.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="5044299d06297e8ae95565b9be62e96c320ea0c1"
+            data-copy-element-id="89c1840274ec88b39142f61943bc1c5e8a7ec3d9"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="5044299d06297e8ae95565b9be62e96c320ea0c1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$detachedEntity = unserialize($serializedEntity); <span class="hljs-comment">// some detached entity</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$entity = $em-&gt;merge($detachedEntity);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// $entity now refers to the fully managed copy returned by the merge operation.</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// The EntityManager $em now manages the persistence of $entity as usual.</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="89c1840274ec88b39142f61943bc1c5e8a7ec3d9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+$detachedEntity = unserialize($serializedEntity); <span class="hljs-comment">// some detached entity</span>
+$entity = $em-&gt;merge($detachedEntity);
+<span class="hljs-comment">// $entity now refers to the fully managed copy returned by the merge operation.</span>
+<span class="hljs-comment">// The EntityManager $em now manages the persistence of $entity as usual.</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>When you want to serialize/unserialize entities you
 have to make all entity properties protected, never private. The
 reason for this is, if you serialize a class that was a proxy
@@ -748,11 +819,11 @@ entities at a particular point in time.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="663c270b893589613620b4996ff8535486aeba24"
+            data-copy-element-id="5022ce62bb1a40b08ecb3a746d490d02ac1ac470"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="663c270b893589613620b4996ff8535486aeba24"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$uowSize = $em-&gt;getUnitOfWork()-&gt;size();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="5022ce62bb1a40b08ecb3a746d490d02ac1ac470"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$uowSize = $em-&gt;getUnitOfWork()-&gt;size();</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <p>The size represents the number of managed entities in the Unit of
 Work. This size affects the performance of flush() operations due
 to change tracking (see &quot;Change Tracking Policies&quot;) and, of course,
@@ -773,11 +844,11 @@ instance the EntityManager is currently using.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="9458684e96f8e0ecdd3b09fd72eb1e33a0521bba"
+            data-copy-element-id="0ffd8312d03166144d833deb19a5e075d3e2ea9e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="9458684e96f8e0ecdd3b09fd72eb1e33a0521bba"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$uow = $em-&gt;getUnitOfWork();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0ffd8312d03166144d833deb19a5e075d3e2ea9e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$uow = $em-&gt;getUnitOfWork();</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Directly manipulating a UnitOfWork is not recommended.
 When working directly with the UnitOfWork API, respect methods
 marked as INTERNAL by not using them and carefully read the API
@@ -792,20 +863,29 @@ underlying <code>UnitOfWork</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="62bfff0594b5dab22fd55381212a404cd5c1af32"
+            data-copy-element-id="a22395f4cb2d154bce049c82ef2f3986a7d9ec9d"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="62bfff0594b5dab22fd55381212a404cd5c1af32"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">switch</span> ($em-&gt;getUnitOfWork()-&gt;getEntityState($entity)) {
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">case</span> UnitOfWork::STATE_MANAGED:
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        ...
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">case</span> UnitOfWork::STATE_REMOVED:
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        ...
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">case</span> UnitOfWork::STATE_DETACHED:
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        ...
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">case</span> UnitOfWork::STATE_NEW:
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        ...
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a22395f4cb2d154bce049c82ef2f3986a7d9ec9d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">switch</span> ($em-&gt;getUnitOfWork()-&gt;getEntityState($entity)) {
+    <span class="hljs-keyword">case</span> UnitOfWork::STATE_MANAGED:
+        ...
+    <span class="hljs-keyword">case</span> UnitOfWork::STATE_REMOVED:
+        ...
+    <span class="hljs-keyword">case</span> UnitOfWork::STATE_DETACHED:
+        ...
+    <span class="hljs-keyword">case</span> UnitOfWork::STATE_NEW:
+        ...
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>An entity is in MANAGED state if it is associated with an
 <code>EntityManager</code> and it is not REMOVED.</p>
 <p>An entity is in REMOVED state after it has been passed to
@@ -830,12 +910,13 @@ example:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="01b374b42104bb5f157e688df61cb447841ad707"
+            data-copy-element-id="dd0fffb58754330714a42aadfbe05d73703f5070"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="01b374b42104bb5f157e688df61cb447841ad707"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em instanceof EntityManager</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = $em-&gt;find(<span class="hljs-string">'MyProject\Domain\User'</span>, $id);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="dd0fffb58754330714a42aadfbe05d73703f5070"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $em instanceof EntityManager</span>
+$user = $em-&gt;find(<span class="hljs-string">'MyProject\Domain\User'</span>, $id);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>The return value is either the found entity instance or null if no
 instance could be found with the given identifier.</p>
 <p>Essentially, <code>EntityManager#find()</code> is just a shortcut for the
@@ -843,12 +924,13 @@ following:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c8c4a1f15283294292ac24b0ece1e6e4eb03d2af"
+            data-copy-element-id="51c7fc9db97f75d6f097a1fd05666a477ab046e0"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c8c4a1f15283294292ac24b0ece1e6e4eb03d2af"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em instanceof EntityManager</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;find($id);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="51c7fc9db97f75d6f097a1fd05666a477ab046e0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $em instanceof EntityManager</span>
+$user = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;find($id);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p><code>EntityManager#getRepository($entityName)</code> returns a repository
 object which provides many ways to retrieve entities of the
 specified type. By default, the repository instance is of type
@@ -861,74 +943,90 @@ methods on a repository as follows:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="ac10f935f1af67dfa2a1ee27e6e2aa44bd71eb2d"
+            data-copy-element-id="2e96aa236e6d2c35eb022dc1255d3bc988d349fb"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="ac10f935f1af67dfa2a1ee27e6e2aa44bd71eb2d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em instanceof EntityManager</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// All users that are 20 years old</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$users = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'age'</span> =&gt; <span class="hljs-number">20</span>));
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">// All users that are 20 years old and have a surname of 'Miller'</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$users = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'age'</span> =&gt; <span class="hljs-number">20</span>, <span class="hljs-string">'surname'</span> =&gt; <span class="hljs-string">'Miller'</span>));
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">// A single user by its nickname</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$user = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'nickname'</span> =&gt; <span class="hljs-string">'romanb'</span>));
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2e96aa236e6d2c35eb022dc1255d3bc988d349fb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $em instanceof EntityManager</span>
+
+<span class="hljs-comment">// All users that are 20 years old</span>
+$users = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'age'</span> =&gt; <span class="hljs-number">20</span>));
+
+<span class="hljs-comment">// All users that are 20 years old and have a surname of 'Miller'</span>
+$users = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'age'</span> =&gt; <span class="hljs-number">20</span>, <span class="hljs-string">'surname'</span> =&gt; <span class="hljs-string">'Miller'</span>));
+
+<span class="hljs-comment">// A single user by its nickname</span>
+$user = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'nickname'</span> =&gt; <span class="hljs-string">'romanb'</span>));</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>You can also load by owning side associations through the repository:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="aa2753a72c7fdccfbb01b95ed5ee9bf6d08c5e39"
+            data-copy-element-id="9e9d470be4d6d19d22487f267d51eca954fa719d"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="aa2753a72c7fdccfbb01b95ed5ee9bf6d08c5e39"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$number = $em-&gt;find(<span class="hljs-string">'MyProject\Domain\Phonenumber'</span>, <span class="hljs-number">1234</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'phone'</span> =&gt; $number-&gt;getId()));
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9e9d470be4d6d19d22487f267d51eca954fa719d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$number = $em-&gt;find(<span class="hljs-string">'MyProject\Domain\Phonenumber'</span>, <span class="hljs-number">1234</span>);
+$user = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'phone'</span> =&gt; $number-&gt;getId()));</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>The <code>EntityRepository#findBy()</code> method additionally accepts orderings, limit and offset as second to fourth parameters:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b04fef25b46d3aec0032b353ee6f08703fa51cc5"
+            data-copy-element-id="3419974ca38f685820f2276b7c164f5f3993e5ca"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b04fef25b46d3aec0032b353ee6f08703fa51cc5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$tenUsers = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'age'</span> =&gt; <span class="hljs-number">20</span>), <span class="hljs-keyword">array</span>(<span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'ASC'</span>), <span class="hljs-number">10</span>, <span class="hljs-number">0</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="3419974ca38f685820f2276b7c164f5f3993e5ca"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="2"><span class="hljs-meta">&lt;?php</span>
+$tenUsers = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'age'</span> =&gt; <span class="hljs-number">20</span>), <span class="hljs-keyword">array</span>(<span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'ASC'</span>), <span class="hljs-number">10</span>, <span class="hljs-number">0</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr></table></div></code></pre>
 <p>If you pass an array of values Doctrine will convert the query into a WHERE field IN (..) query automatically:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="50c01861058594328eb8d532119e85b13a822eeb"
+            data-copy-element-id="eefe944275b6adfc86e100a69f499e685cbe04f2"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="50c01861058594328eb8d532119e85b13a822eeb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$users = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'age'</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>)));
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// translates roughly to: SELECT * FROM users WHERE age IN (20, 30, 40)</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="eefe944275b6adfc86e100a69f499e685cbe04f2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$users = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'age'</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>)));
+<span class="hljs-comment">// translates roughly to: SELECT * FROM users WHERE age IN (20, 30, 40)</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>An EntityRepository also provides a mechanism for more concise
 calls through its use of <code>__call</code>. Thus, the following two
 examples are equivalent:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="dbf9599b0ba2ff795e1616da975ccabc20b24250"
+            data-copy-element-id="33958b3b82ab969fffde661d1de7b97bd5c0e878"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="dbf9599b0ba2ff795e1616da975ccabc20b24250"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// A single user by its nickname</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'nickname'</span> =&gt; <span class="hljs-string">'romanb'</span>));
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// A single user by its nickname (__call magic)</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$user = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findOneByNickname(<span class="hljs-string">'romanb'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="33958b3b82ab969fffde661d1de7b97bd5c0e878"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// A single user by its nickname</span>
+$user = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findOneBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'nickname'</span> =&gt; <span class="hljs-string">'romanb'</span>));
+
+<span class="hljs-comment">// A single user by its nickname (__call magic)</span>
+$user = $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;findOneByNickname(<span class="hljs-string">'romanb'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>Additionally, you can just count the result of the provided conditions when you don't really need the data:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8793af3ef0f990850ee6ffe0e9b8cd118b952021"
+            data-copy-element-id="0c88fd4d3f13b904a1041596b6f80bf6736caa99"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8793af3ef0f990850ee6ffe0e9b8cd118b952021"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Check there is no user with nickname</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$availableNickname = <span class="hljs-number">0</span> === $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;count([<span class="hljs-string">'nickname'</span> =&gt; <span class="hljs-string">'nonexistent'</span>]);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0c88fd4d3f13b904a1041596b6f80bf6736caa99"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// Check there is no user with nickname</span>
+$availableNickname = <span class="hljs-number">0</span> === $em-&gt;getRepository(<span class="hljs-string">'MyProject\Domain\User'</span>)-&gt;count([<span class="hljs-string">'nickname'</span> =&gt; <span class="hljs-string">'nonexistent'</span>]);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <a class="section-anchor" id="by-criteria" name="by-criteria"></a><h3 class="section-header"><a href="#by-criteria">By Criteria<i class="fas fa-link"></i></a></h3>
 <div class="version-added"><p>The Repository implement the <code>Doctrine\Common\Collections\Selectable</code>
 interface. That means you can build <code>Doctrine\Common\Collections\Criteria</code>
@@ -958,15 +1056,19 @@ but <em>it is not SQL</em>.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="55c6a977be997e373012c2fe1ab068ca0cb030f7"
+            data-copy-element-id="4acb77a4e33c808de6699763b4968c3bdbc82794"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="55c6a977be997e373012c2fe1ab068ca0cb030f7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em instanceof EntityManager</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// All users with an age between 20 and 30 (inclusive).</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$q = $em-&gt;createQuery(<span class="hljs-string">"select u from MyDomain\Model\User u where u.age &gt;= 20 and u.age &lt;= 30"</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$users = $q-&gt;getResult();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="4acb77a4e33c808de6699763b4968c3bdbc82794"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $em instanceof EntityManager</span>
+
+<span class="hljs-comment">// All users with an age between 20 and 30 (inclusive).</span>
+$q = $em-&gt;createQuery(<span class="hljs-string">"select u from MyDomain\Model\User u where u.age &gt;= 20 and u.age &lt;= 30"</span>);
+$users = $q-&gt;getResult();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>Note that this query contains no knowledge about the relational
 schema, only about the object model. DQL supports positional as
 well as named parameters, many functions, (fetch) joins,
@@ -997,42 +1099,64 @@ in a central location.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="2c3ccd1cf5ecf920d1db700a2a1eb0403ef13b8c"
+            data-copy-element-id="a383258d28fc915b1c553fff50fc0f3065d68ac0"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="2c3ccd1cf5ecf920d1db700a2a1eb0403ef13b8c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyDomain</span>\<span class="hljs-title">Model</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">EntityRepository</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @ORM\Entity(repositoryClass=<span class="hljs-string">"MyDomain\Model\UserRepository"</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EntityRepository</span></span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAllAdminUsers</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;_em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM MyDomain\Model\User u WHERE u.status = "admin"'</span>)
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">                         -&gt;getResult();
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a383258d28fc915b1c553fff50fc0f3065d68ac0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="22"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">MyDomain</span>\<span class="hljs-title">Model</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">EntityRepository</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@ORM</span>\Entity(repositoryClass="MyDomain\Model\UserRepository")
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EntityRepository</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAllAdminUsers</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;_em-&gt;createQuery(<span class="hljs-string">'SELECT u FROM MyDomain\Model\User u WHERE u.status = "admin"'</span>)
+                         -&gt;getResult();
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr></table></div></code></pre>
 <p>You can access your repository now by calling:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0a6af57bbf24e3622db81c0f344d239c8ed86b76"
+            data-copy-element-id="411e89fd1f9d9e9a5c552e8bd6b65a7967c96de3"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0a6af57bbf24e3622db81c0f344d239c8ed86b76"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// $em instanceof EntityManager</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$admins = $em-&gt;getRepository(<span class="hljs-string">'MyDomain\Model\User'</span>)-&gt;getAllAdminUsers();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="411e89fd1f9d9e9a5c552e8bd6b65a7967c96de3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// $em instanceof EntityManager</span>
+
+$admins = $em-&gt;getRepository(<span class="hljs-string">'MyDomain\Model\User'</span>)-&gt;getAllAdminUsers();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

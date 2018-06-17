@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -266,12 +266,13 @@ pipelines.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e90bc6fbe207e86b217b146e0e95b4bd4a4cd62c"
+            data-copy-element-id="d572d07615282d59b4b1bcea6034ca40ffd7bb76"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e90bc6fbe207e86b217b146e0e95b4bd4a4cd62c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\User::class);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d572d07615282d59b4b1bcea6034ca40ffd7bb76"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\User::class);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>The first argument indicates the document for which you want to create the
 builder.</p>
 <a class="section-anchor" id="adding-pipeline-stages" name="adding-pipeline-stages"></a><h3 class="section-header"><a href="#adding-pipeline-stages">Adding pipeline stages<i class="fas fa-link"></i></a></h3>
@@ -280,26 +281,41 @@ builder object:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a65dc3ec1710919ea931848fb4e08983deaa2678"
+            data-copy-element-id="2652a4675fc8169d1935bfa481c69a8fdd68a73e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a65dc3ec1710919ea931848fb4e08983deaa2678"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;match()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;field(<span class="hljs-string">'purchaseDate'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;gte($from)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        -&gt;lt($to)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        -&gt;field(<span class="hljs-string">'user'</span>)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        -&gt;references($user)
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    -&gt;group()
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        -&gt;field(<span class="hljs-string">'id'</span>)
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        -&gt;expression(<span class="hljs-string">'$user'</span>)
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        -&gt;field(<span class="hljs-string">'numPurchases'</span>)
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        -&gt;sum(<span class="hljs-number">1</span>)
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        -&gt;field(<span class="hljs-string">'amount'</span>)
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        -&gt;sum(<span class="hljs-string">'$amount'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2652a4675fc8169d1935bfa481c69a8fdd68a73e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="17"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;match()
+        -&gt;field(<span class="hljs-string">'purchaseDate'</span>)
+        -&gt;gte($from)
+        -&gt;lt($to)
+        -&gt;field(<span class="hljs-string">'user'</span>)
+        -&gt;references($user)
+    -&gt;group()
+        -&gt;field(<span class="hljs-string">'id'</span>)
+        -&gt;expression(<span class="hljs-string">'$user'</span>)
+        -&gt;field(<span class="hljs-string">'numPurchases'</span>)
+        -&gt;sum(<span class="hljs-number">1</span>)
+        -&gt;field(<span class="hljs-string">'amount'</span>)
+        -&gt;sum(<span class="hljs-string">'$amount'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr></table></div></code></pre>
 <p>Just like the query builder, the aggregation builder takes care of converting
 <code>DateTime</code> objects into <code>MongoDate</code> objects.</p>
 <a class="section-anchor" id="nesting-expressions" name="nesting-expressions"></a><h3 class="section-header"><a href="#nesting-expressions">Nesting expressions<i class="fas fa-link"></i></a></h3>
@@ -308,61 +324,90 @@ the aggregation builder.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="742fc65a144e1cac30711a0d98e36076f36ce2bb"
+            data-copy-element-id="775f24500894f026a9bc25f644c663f8751f5d15"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="742fc65a144e1cac30711a0d98e36076f36ce2bb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;match()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;field(<span class="hljs-string">'purchaseDate'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;gte($from)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        -&gt;lt($to)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        -&gt;field(<span class="hljs-string">'user'</span>)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        -&gt;references($user)
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    -&gt;group()
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        -&gt;field(<span class="hljs-string">'id'</span>)
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        -&gt;expression(
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">            $builder-&gt;expr()
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">                -&gt;field(<span class="hljs-string">'month'</span>)
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">                -&gt;month(<span class="hljs-string">'purchaseDate'</span>)
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">                -&gt;field(<span class="hljs-string">'year'</span>)
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">                -&gt;year(<span class="hljs-string">'purchaseDate'</span>)
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        )
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        -&gt;field(<span class="hljs-string">'numPurchases'</span>)
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        -&gt;sum(<span class="hljs-number">1</span>)
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">        -&gt;field(<span class="hljs-string">'amount'</span>)
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        -&gt;sum(<span class="hljs-string">'$amount'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="775f24500894f026a9bc25f644c663f8751f5d15"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="23"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;match()
+        -&gt;field(<span class="hljs-string">'purchaseDate'</span>)
+        -&gt;gte($from)
+        -&gt;lt($to)
+        -&gt;field(<span class="hljs-string">'user'</span>)
+        -&gt;references($user)
+    -&gt;group()
+        -&gt;field(<span class="hljs-string">'id'</span>)
+        -&gt;expression(
+            $builder-&gt;expr()
+                -&gt;field(<span class="hljs-string">'month'</span>)
+                -&gt;month(<span class="hljs-string">'purchaseDate'</span>)
+                -&gt;field(<span class="hljs-string">'year'</span>)
+                -&gt;year(<span class="hljs-string">'purchaseDate'</span>)
+        )
+        -&gt;field(<span class="hljs-string">'numPurchases'</span>)
+        -&gt;sum(<span class="hljs-number">1</span>)
+        -&gt;field(<span class="hljs-string">'amount'</span>)
+        -&gt;sum(<span class="hljs-string">'$amount'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr></table></div></code></pre>
 <p>This aggregation would group all purchases by their month and year by projecting
 those values into an embedded object for the <code>id</code> field. For example:</p>
 <pre class="code-block-table"><code class="json"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0a592f6b42135ae9e27720c16f871aeddf6dd818"
+            data-copy-element-id="2d642c9fa25113fb547ef7870b88daf1a1a2289c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0a592f6b42135ae9e27720c16f871aeddf6dd818"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    _id: {
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        month: <span class="hljs-number">1</span>,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        year: <span class="hljs-number">2016</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    },
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    numPurchases: <span class="hljs-number">1</span>,
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    amount: <span class="hljs-number">27.89</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2d642c9fa25113fb547ef7870b88daf1a1a2289c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8">{
+    _id: {
+        month: <span class="hljs-number">1</span>,
+        year: <span class="hljs-number">2016</span>
+    },
+    numPurchases: <span class="hljs-number">1</span>,
+    amount: <span class="hljs-number">27.89</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <a class="section-anchor" id="executing-an-aggregation-pipeline" name="executing-an-aggregation-pipeline"></a><h3 class="section-header"><a href="#executing-an-aggregation-pipeline">Executing an aggregation pipeline<i class="fas fa-link"></i></a></h3>
 <p>You can execute a pipeline using the <code>execute()</code> method. This will run the
 aggregation pipeline and return a cursor for you to iterate over the results:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="ffe1b3108677d85ce6e7d095b8204116b3d7ef7b"
+            data-copy-element-id="7a875cf4e24a91b07e4768a1e866cdcdf4f622f2"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="ffe1b3108677d85ce6e7d095b8204116b3d7ef7b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\User::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$result = $builder-&gt;execute();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="7a875cf4e24a91b07e4768a1e866cdcdf4f622f2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\User::class);
+$result = $builder-&gt;execute();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <p>If you instead want to look at the built aggregation pipeline, call the
 <code>Builder::getPipeline()</code> method.</p>
 <a class="section-anchor" id="hydration" name="hydration"></a><h3 class="section-header"><a href="#hydration">Hydration<i class="fas fa-link"></i></a></h3>
@@ -374,82 +419,129 @@ they can't be persisted to the database.</p>
 <div class="configuration-block jsactive clearfix"><ul class="simple"><li><em>PHP</em><div class="highlight-php"><pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="17363082393ca417eedab5bb7560be01086cbd1d"
+            data-copy-element-id="e292d8171cebf5ee083fd1c5a6c5da27acb23dc6"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="17363082393ca417eedab5bb7560be01086cbd1d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@QueryResultDocument</span> */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserPurchases</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="User", name="_id") */</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $user;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="int") */</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">private</span> $numPurchases;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="float") */</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">private</span> $amount;
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
-</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
+        ><i class="fas fa-copy"></i></button><div id="e292d8171cebf5ee083fd1c5a6c5da27acb23dc6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="16"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Documents</span>;
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@QueryResultDocument</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserPurchases</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceOne</span>(targetDocument="User", name="_id") */</span>
+    <span class="hljs-keyword">private</span> $user;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="int") */</span>
+    <span class="hljs-keyword">private</span> $numPurchases;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Field</span>(type="float") */</span>
+    <span class="hljs-keyword">private</span> $amount;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr></table></div></code></pre></div></li><li><em>XML</em><div class="highlight-xml"><pre class="code-block-table"><code class="xml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="05fc11e5ba29f39eb8d8c1c33ee5983c018709c6"
+            data-copy-element-id="12617c3e9cf4edb89c334d3b20abd98e9c48c361"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="05fc11e5ba29f39eb8d8c1c33ee5983c018709c6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mongo-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">                  xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">                  http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd"&gt;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-tag">&lt;<span class="hljs-name">query-result-document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Documents\UserPurchases"</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"numPurchases"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"int"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"amount"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"float"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-tag">&lt;<span class="hljs-name">reference-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"user"</span> <span class="hljs-attr">target-document</span>=<span class="hljs-string">"Documents\User"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"_id"</span> /&gt;</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">query-result-document</span>&gt;</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mongo-mapping</span>&gt;</span>
-</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
+        ><i class="fas fa-copy"></i></button><div id="12617c3e9cf4edb89c334d3b20abd98e9c48c361"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">doctrine-mongo-mapping</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"</span>
+                  <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+                  <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+                  http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">query-result-document</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Documents\UserPurchases"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"numPurchases"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"int"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">fieldName</span>=<span class="hljs-string">"amount"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"float"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">reference-one</span> <span class="hljs-attr">field</span>=<span class="hljs-string">"user"</span> <span class="hljs-attr">target-document</span>=<span class="hljs-string">"Documents\User"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"_id"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">query-result-document</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">doctrine-mongo-mapping</span>&gt;</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre></div></li><li><em>YAML</em><div class="highlight-yaml"><pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c8faa52278f9fd155f02b6419b2fad46abca0a20"
+            data-copy-element-id="1057879855631b5a42aaac171c156b37852049d5"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c8faa52278f9fd155f02b6419b2fad46abca0a20"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-string">Documents\User:</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">queryResultDocument</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">  fields:</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">    user:</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">      name:</span> <span class="hljs-string">_id</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\User</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    numPurchases:</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">int</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    amount:</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">      type:</span> <span class="hljs-string">float</span>
-</td></tr></table></div></code></pre></div></li></ul></div>
+        ><i class="fas fa-copy"></i></button><div id="1057879855631b5a42aaac171c156b37852049d5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="10"><span class="hljs-string">Documents\User:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">queryResultDocument</span>
+<span class="hljs-attr">  fields:</span>
+<span class="hljs-attr">    user:</span>
+<span class="hljs-attr">      name:</span> <span class="hljs-string">_id</span>
+<span class="hljs-attr">      targetDocument:</span> <span class="hljs-string">Documents\User</span>
+<span class="hljs-attr">    numPurchases:</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">int</span>
+<span class="hljs-attr">    amount:</span>
+<span class="hljs-attr">      type:</span> <span class="hljs-string">float</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr></table></div></code></pre></div></li></ul></div>
 <p>Once you have mapped the document, use the <code>hydrate()</code> method to tell the
 aggregation builder about this document:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4c4871a87a57b9574354a111ed18362a1b2545c0"
+            data-copy-element-id="1aeb4f97dbe1fcbee5e101744625b028ff6fff43"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4c4871a87a57b9574354a111ed18362a1b2545c0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;hydrate(\Documents\UserPurchases::class)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;match()
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;field(<span class="hljs-string">'purchaseDate'</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        -&gt;gte($from)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        -&gt;lt($to)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        -&gt;field(<span class="hljs-string">'user'</span>)
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        -&gt;references($user)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    -&gt;group()
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        -&gt;field(<span class="hljs-string">'id'</span>)
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        -&gt;expression(<span class="hljs-string">'$user'</span>)
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        -&gt;field(<span class="hljs-string">'numPurchases'</span>)
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        -&gt;sum(<span class="hljs-number">1</span>)
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        -&gt;field(<span class="hljs-string">'amount'</span>)
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        -&gt;sum(<span class="hljs-string">'$amount'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="1aeb4f97dbe1fcbee5e101744625b028ff6fff43"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="18"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;hydrate(\Documents\UserPurchases::class)
+    -&gt;match()
+        -&gt;field(<span class="hljs-string">'purchaseDate'</span>)
+        -&gt;gte($from)
+        -&gt;lt($to)
+        -&gt;field(<span class="hljs-string">'user'</span>)
+        -&gt;references($user)
+    -&gt;group()
+        -&gt;field(<span class="hljs-string">'id'</span>)
+        -&gt;expression(<span class="hljs-string">'$user'</span>)
+        -&gt;field(<span class="hljs-string">'numPurchases'</span>)
+        -&gt;sum(<span class="hljs-number">1</span>)
+        -&gt;field(<span class="hljs-string">'amount'</span>)
+        -&gt;sum(<span class="hljs-string">'$amount'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr></table></div></code></pre>
 <p>When you run the queries, all results will be returned as instances of the
 specified document.</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Query result documents can use all features regular documents can use: you
@@ -495,16 +587,21 @@ specifies all existing fields in the input documents and adds the new fields.</p
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f5bdac12aa75a127773800fdf8284d7c624f49d9"
+            data-copy-element-id="3d01f5511c1bcece6a2ca59328c471dfde19c133"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f5bdac12aa75a127773800fdf8284d7c624f49d9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;addFields()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;field(<span class="hljs-string">'purchaseYear'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;year(<span class="hljs-string">'$purchaseDate'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="3d01f5511c1bcece6a2ca59328c471dfde19c133"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;addFields()
+        -&gt;field(<span class="hljs-string">'purchaseYear'</span>)
+        -&gt;year(<span class="hljs-string">'$purchaseDate'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <a class="section-anchor" id="bucket" name="bucket"></a><h3 class="section-header"><a href="#bucket">$bucket<i class="fas fa-link"></i></a></h3>
 <p>Categorizes incoming documents into groups, called buckets, based on a specified
 expression and bucket boundaries.</p>
@@ -517,23 +614,35 @@ input document.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="045ade7c19520d750ed96c7caaeea25bb7d050cd"
+            data-copy-element-id="569a839daf0d677e5d8e7515c06cb4faef7165cb"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="045ade7c19520d750ed96c7caaeea25bb7d050cd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;bucket()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;groupBy(<span class="hljs-string">'$itemCount'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;boundaries(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-string">'5+'</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        -&gt;defaultBucket(<span class="hljs-string">'5+'</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        -&gt;output()
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">            -&gt;field(<span class="hljs-string">'lowestValue'</span>)
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            -&gt;min(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">            -&gt;field(<span class="hljs-string">'highestValue'</span>)
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            -&gt;max(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="569a839daf0d677e5d8e7515c06cb4faef7165cb"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="14"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;bucket()
+        -&gt;groupBy(<span class="hljs-string">'$itemCount'</span>)
+        -&gt;boundaries(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-string">'5+'</span>)
+        -&gt;defaultBucket(<span class="hljs-string">'5+'</span>)
+        -&gt;output()
+            -&gt;field(<span class="hljs-string">'lowestValue'</span>)
+            -&gt;min(<span class="hljs-string">'$value'</span>)
+            -&gt;field(<span class="hljs-string">'highestValue'</span>)
+            -&gt;max(<span class="hljs-string">'$value'</span>)
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr></table></div></code></pre>
 <a class="section-anchor" id="bucketauto" name="bucketauto"></a><h3 class="section-header"><a href="#bucketauto">$bucketAuto<i class="fas fa-link"></i></a></h3>
 <p>Similar to <code>$bucket</code>, except that boundaries are automatically determined in
 an attempt to evenly distribute the documents into the specified number of
@@ -541,22 +650,33 @@ buckets.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="7b56a2097b3f146fdeeca3501d1eee9342f8cef9"
+            data-copy-element-id="52a694d679241355b639ad2539eb100d9d6cf8ea"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="7b56a2097b3f146fdeeca3501d1eee9342f8cef9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;bucketAuto()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;groupBy(<span class="hljs-string">'$itemCount'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;buckets(<span class="hljs-number">5</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        -&gt;output()
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            -&gt;field(<span class="hljs-string">'lowestValue'</span>)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">            -&gt;min(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            -&gt;field(<span class="hljs-string">'highestValue'</span>)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">            -&gt;max(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="52a694d679241355b639ad2539eb100d9d6cf8ea"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="13"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;bucketAuto()
+        -&gt;groupBy(<span class="hljs-string">'$itemCount'</span>)
+        -&gt;buckets(<span class="hljs-number">5</span>)
+        -&gt;output()
+            -&gt;field(<span class="hljs-string">'lowestValue'</span>)
+            -&gt;min(<span class="hljs-string">'$value'</span>)
+            -&gt;field(<span class="hljs-string">'highestValue'</span>)
+            -&gt;max(<span class="hljs-string">'$value'</span>)
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr></table></div></code></pre>
 <a class="section-anchor" id="collstats" name="collstats"></a><h3 class="section-header"><a href="#collstats">$collStats<i class="fas fa-link"></i></a></h3>
 <p>The <code>$collStats</code> stage returns statistics regarding a collection or view.</p>
 <a class="section-anchor" id="count" name="count"></a><h3 class="section-header"><a href="#count">$count<i class="fas fa-link"></i></a></h3>
@@ -565,18 +685,25 @@ stage.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="58953e91883b6d0da2a07c8e6549cb483dda9b69"
+            data-copy-element-id="654c7564c4e4276437b9809cf124f21ab9dec64b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="58953e91883b6d0da2a07c8e6549cb483dda9b69"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;match()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;field(<span class="hljs-string">'itemCount'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;eq(<span class="hljs-number">1</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;count(<span class="hljs-string">'numSingleItemOrders'</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="654c7564c4e4276437b9809cf124f21ab9dec64b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;match()
+        -&gt;field(<span class="hljs-string">'itemCount'</span>)
+        -&gt;eq(<span class="hljs-number">1</span>)
+    -&gt;count(<span class="hljs-string">'numSingleItemOrders'</span>)
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <p>The example above returns a single document with the <code>numSingleItemOrders</code>
 containing the number of orders found.</p>
 <a class="section-anchor" id="facet" name="facet"></a><h3 class="section-header"><a href="#facet">$facet<i class="fas fa-link"></i></a></h3>
@@ -586,61 +713,100 @@ where its results are stored as an array of documents.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="3fd7eb7e24fcc7a45b02e7a203651d2abd8be337"
+            data-copy-element-id="20acb15ade607d22c33bdffbc6f731fe598b6414"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="3fd7eb7e24fcc7a45b02e7a203651d2abd8be337"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;facet()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;field(<span class="hljs-string">'groupedByItemCount'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;pipeline(
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">            $dm-&gt;createAggregationBuilder(\Documents\Orders::class)-&gt;group()
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">                -&gt;field(<span class="hljs-string">'id'</span>)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">                -&gt;expression(<span class="hljs-string">'$itemCount'</span>)
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">                -&gt;field(<span class="hljs-string">'lowestValue'</span>)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">                -&gt;min(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">                -&gt;field(<span class="hljs-string">'highestValue'</span>)
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">                -&gt;max(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">                -&gt;field(<span class="hljs-string">'totalValue'</span>)
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">                -&gt;sum(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">                -&gt;field(<span class="hljs-string">'averageValue'</span>)
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">                -&gt;avg(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        )
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        -&gt;field(<span class="hljs-string">'groupedByYear'</span>)
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        -&gt;pipeline(
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">            $dm-&gt;createAggregationBuilder(\Documents\Orders::class)-&gt;group()
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">                -&gt;field(<span class="hljs-string">'id'</span>)
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">                -&gt;year(<span class="hljs-string">'purchaseDate'</span>)
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">                -&gt;field(<span class="hljs-string">'lowestValue'</span>)
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">                -&gt;min(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">                -&gt;field(<span class="hljs-string">'highestValue'</span>)
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">                -&gt;max(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">                -&gt;field(<span class="hljs-string">'totalValue'</span>)
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">                -&gt;sum(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">                -&gt;field(<span class="hljs-string">'averageValue'</span>)
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">                -&gt;avg(<span class="hljs-string">'$value'</span>)
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        )
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="20acb15ade607d22c33bdffbc6f731fe598b6414"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="34"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;facet()
+        -&gt;field(<span class="hljs-string">'groupedByItemCount'</span>)
+        -&gt;pipeline(
+            $dm-&gt;createAggregationBuilder(\Documents\Orders::class)-&gt;group()
+                -&gt;field(<span class="hljs-string">'id'</span>)
+                -&gt;expression(<span class="hljs-string">'$itemCount'</span>)
+                -&gt;field(<span class="hljs-string">'lowestValue'</span>)
+                -&gt;min(<span class="hljs-string">'$value'</span>)
+                -&gt;field(<span class="hljs-string">'highestValue'</span>)
+                -&gt;max(<span class="hljs-string">'$value'</span>)
+                -&gt;field(<span class="hljs-string">'totalValue'</span>)
+                -&gt;sum(<span class="hljs-string">'$value'</span>)
+                -&gt;field(<span class="hljs-string">'averageValue'</span>)
+                -&gt;avg(<span class="hljs-string">'$value'</span>)
+        )
+        -&gt;field(<span class="hljs-string">'groupedByYear'</span>)
+        -&gt;pipeline(
+            $dm-&gt;createAggregationBuilder(\Documents\Orders::class)-&gt;group()
+                -&gt;field(<span class="hljs-string">'id'</span>)
+                -&gt;year(<span class="hljs-string">'purchaseDate'</span>)
+                -&gt;field(<span class="hljs-string">'lowestValue'</span>)
+                -&gt;min(<span class="hljs-string">'$value'</span>)
+                -&gt;field(<span class="hljs-string">'highestValue'</span>)
+                -&gt;max(<span class="hljs-string">'$value'</span>)
+                -&gt;field(<span class="hljs-string">'totalValue'</span>)
+                -&gt;sum(<span class="hljs-string">'$value'</span>)
+                -&gt;field(<span class="hljs-string">'averageValue'</span>)
+                -&gt;avg(<span class="hljs-string">'$value'</span>)
+        )
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr></table></div></code></pre>
 <a class="section-anchor" id="geonear" name="geonear"></a><h3 class="section-header"><a href="#geonear">$geoNear<i class="fas fa-link"></i></a></h3>
 <p>The <code>$geoNear</code> stage finds and outputs documents in order of nearest to
 farthest from a specified point.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="b72e1e64f6149e3500fc2c8f23f9713db43b55d8"
+            data-copy-element-id="b2d79fdf41aaee70f6919b5080368a3dde783e20"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="b72e1e64f6149e3500fc2c8f23f9713db43b55d8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = <span class="hljs-keyword">$this</span>-&gt;dm-&gt;createAggregationBuilder(\Documents\City::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;geoNear(<span class="hljs-number">120</span>, <span class="hljs-number">40</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    -&gt;spherical(<span class="hljs-keyword">true</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;distanceField(<span class="hljs-string">'distance'</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">// Convert radians to kilometers (use 3963.192 for miles)</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    -&gt;distanceMultiplier(<span class="hljs-number">6378.137</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b2d79fdf41aaee70f6919b5080368a3dde783e20"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+
+$builder = <span class="hljs-keyword">$this</span>-&gt;dm-&gt;createAggregationBuilder(\Documents\City::class);
+$builder
+    -&gt;geoNear(<span class="hljs-number">120</span>, <span class="hljs-number">40</span>)
+    -&gt;spherical(<span class="hljs-keyword">true</span>)
+    -&gt;distanceField(<span class="hljs-string">'distance'</span>)
+    <span class="hljs-comment">// Convert radians to kilometers (use 3963.192 for miles)</span>
+    -&gt;distanceMultiplier(<span class="hljs-number">6378.137</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The <code>$geoNear</code> stage must be the first stage in the pipeline and the
 collection must contain a single geospatial index. You must include the
 <code>distanceField</code> option for the stage to work.</p>
@@ -652,18 +818,25 @@ used to resolve association graphs and flatten them into a single list.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a9a73ed932e5e93cb96c4fbc4c07aa2c992958fa"
+            data-copy-element-id="849e21a85ffaa5ca74be09391f84b4c8fe8bb02c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a9a73ed932e5e93cb96c4fbc4c07aa2c992958fa"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = <span class="hljs-keyword">$this</span>-&gt;dm-&gt;createAggregationBuilder(\Documents\Traveller::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;graphLookup(<span class="hljs-string">'nearestAirport'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;connectFromField(<span class="hljs-string">'connections'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;maxDepth(<span class="hljs-number">2</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        -&gt;depthField(<span class="hljs-string">'numConnections'</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        -&gt;alias(<span class="hljs-string">'destinations'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="849e21a85ffaa5ca74be09391f84b4c8fe8bb02c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+
+$builder = <span class="hljs-keyword">$this</span>-&gt;dm-&gt;createAggregationBuilder(\Documents\Traveller::class);
+$builder
+    -&gt;graphLookup(<span class="hljs-string">'nearestAirport'</span>)
+        -&gt;connectFromField(<span class="hljs-string">'connections'</span>)
+        -&gt;maxDepth(<span class="hljs-number">2</span>)
+        -&gt;depthField(<span class="hljs-string">'numConnections'</span>)
+        -&gt;alias(<span class="hljs-string">'destinations'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The target document of the reference used in <code>connectFromField</code> must be
 the very same document. The aggregation builder will throw an exception if
 you try to resolve a different document.</p>
@@ -680,29 +853,47 @@ documents:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="60153d728a2adf65882e895d03276ca46886ae2f"
+            data-copy-element-id="85663e38012a76eb84ae2fd3b012f1df5525e049"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="60153d728a2adf65882e895d03276ca46886ae2f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;match()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;field(<span class="hljs-string">'user'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;references($user)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    -&gt;group()
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        -&gt;field(<span class="hljs-string">'id'</span>)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        -&gt;expression(
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            $builder-&gt;expr()
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">                -&gt;field(<span class="hljs-string">'month'</span>)
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">                -&gt;month(<span class="hljs-string">'purchaseDate'</span>)
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">                -&gt;field(<span class="hljs-string">'year'</span>)
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">                -&gt;year(<span class="hljs-string">'purchaseDate'</span>)
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        )
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        -&gt;field(<span class="hljs-string">'numPurchases'</span>)
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        -&gt;sum(<span class="hljs-number">1</span>)
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        -&gt;field(<span class="hljs-string">'amount'</span>)
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        -&gt;sum(<span class="hljs-string">'$amount'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="85663e38012a76eb84ae2fd3b012f1df5525e049"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="20"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;match()
+        -&gt;field(<span class="hljs-string">'user'</span>)
+        -&gt;references($user)
+    -&gt;group()
+        -&gt;field(<span class="hljs-string">'id'</span>)
+        -&gt;expression(
+            $builder-&gt;expr()
+                -&gt;field(<span class="hljs-string">'month'</span>)
+                -&gt;month(<span class="hljs-string">'purchaseDate'</span>)
+                -&gt;field(<span class="hljs-string">'year'</span>)
+                -&gt;year(<span class="hljs-string">'purchaseDate'</span>)
+        )
+        -&gt;field(<span class="hljs-string">'numPurchases'</span>)
+        -&gt;sum(<span class="hljs-number">1</span>)
+        -&gt;field(<span class="hljs-string">'amount'</span>)
+        -&gt;sum(<span class="hljs-string">'$amount'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr></table></div></code></pre>
 <a class="section-anchor" id="indexstats" name="indexstats"></a><h3 class="section-header"><a href="#indexstats">$indexStats<i class="fas fa-link"></i></a></h3>
 <p>The <code>$indexStats</code> stage returns statistics regarding the use of each index for
 the collection. More information can be found in the <a href="https://docs.mongodb.com/manual/reference/operator/aggregation/indexStats/">official Documentation</a></p>
@@ -715,62 +906,87 @@ pipeline stages. Take the following relationship for example:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="5ffb3b8a855a6b179871abc0d45f79dd2db3ad01"
+            data-copy-element-id="66390d6f39363550f94be5a67222b1eeb80830c0"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="5ffb3b8a855a6b179871abc0d45f79dd2db3ad01"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @ReferenceMany(
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> *     targetDocument=<span class="hljs-string">"Documents\Item"</span>,
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *     cascade=<span class="hljs-string">"all"</span>,
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *     storeAs=<span class="hljs-string">"id"</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * )
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">private</span> $items;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="66390d6f39363550f94be5a67222b1eeb80830c0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="10"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@ReferenceMany</span>(
+ *     targetDocument="Documents\Item",
+ *     cascade="all",
+ *     storeAs="id"
+ * )
+ */</span>
+<span class="hljs-keyword">private</span> $items;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr></table></div></code></pre>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0d8287ec606cdf148ef621351ef21d4905f2f0ef"
+            data-copy-element-id="9165678f90a436396ce2155b52f52cd387fb579f"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0d8287ec606cdf148ef621351ef21d4905f2f0ef"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;lookup(<span class="hljs-string">'items'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;alias(<span class="hljs-string">'items'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9165678f90a436396ce2155b52f52cd387fb579f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;lookup(<span class="hljs-string">'items'</span>)
+        -&gt;alias(<span class="hljs-string">'items'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>The resulting array will contain all matched item documents in an array. This has
 to be considered when looking up one-to-one relationships:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="331f6e8508f1420f59e3275d4cece50c47b50da6"
+            data-copy-element-id="048b16a008e8452effb1225d220b0908e659bb98"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="331f6e8508f1420f59e3275d4cece50c47b50da6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @ReferenceOne(
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> *     targetDocument=<span class="hljs-string">"Documents\Item"</span>,
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> *     cascade=<span class="hljs-string">"all"</span>,
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> *     storeAs=<span class="hljs-string">"id"</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * )
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">private</span> $items;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="048b16a008e8452effb1225d220b0908e659bb98"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="10"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@ReferenceOne</span>(
+ *     targetDocument="Documents\Item",
+ *     cascade="all",
+ *     storeAs="id"
+ * )
+ */</span>
+<span class="hljs-keyword">private</span> $items;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr></table></div></code></pre>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="97fbc66fb95c7095007daa02838edd4ee3e21582"
+            data-copy-element-id="ebb7b00a504e5529c664f43349ffc67b36f9adb1"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="97fbc66fb95c7095007daa02838edd4ee3e21582"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;lookup(<span class="hljs-string">'user'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;alias(<span class="hljs-string">'user'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    -&gt;unwind(<span class="hljs-string">'$user'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ebb7b00a504e5529c664f43349ffc67b36f9adb1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;lookup(<span class="hljs-string">'user'</span>)
+        -&gt;alias(<span class="hljs-string">'user'</span>)
+    -&gt;unwind(<span class="hljs-string">'$user'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>MongoDB will always return an array, even if the lookup only returned a single
 document. Thus, when looking up one-to-one references the result must be flattened
 using the <code>$unwind</code> operator.</p>
@@ -784,55 +1000,79 @@ document:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c2a30617f9c22393da0cdcd16bf65cf88cb04144"
+            data-copy-element-id="d979fe2de3b54b3d23f6210094a2d0294578125a"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c2a30617f9c22393da0cdcd16bf65cf88cb04144"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;lookup(<span class="hljs-string">'unmappedCollection'</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;localField(<span class="hljs-string">'_id'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;foreignField(<span class="hljs-string">'userId'</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        -&gt;alias(<span class="hljs-string">'items'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d979fe2de3b54b3d23f6210094a2d0294578125a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;lookup(<span class="hljs-string">'unmappedCollection'</span>)
+        -&gt;localField(<span class="hljs-string">'_id'</span>)
+        -&gt;foreignField(<span class="hljs-string">'userId'</span>)
+        -&gt;alias(<span class="hljs-string">'items'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <a class="section-anchor" id="match" name="match"></a><h3 class="section-header"><a href="#match">$match<i class="fas fa-link"></i></a></h3>
 <p>The <code>$match</code> stage lets you filter documents according to certain criteria. It
 works just like the query builder:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="51e10de7ecd5a4629c942a9d6f12a985b0b7b6a6"
+            data-copy-element-id="7a0962f64b9324bf6126cd70bccabba3a5c8be0b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="51e10de7ecd5a4629c942a9d6f12a985b0b7b6a6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;match()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;field(<span class="hljs-string">'purchaseDate'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;gte($from)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        -&gt;lt($to)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        -&gt;field(<span class="hljs-string">'user'</span>)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        -&gt;references($user);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="7a0962f64b9324bf6126cd70bccabba3a5c8be0b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="10"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;match()
+        -&gt;field(<span class="hljs-string">'purchaseDate'</span>)
+        -&gt;gte($from)
+        -&gt;lt($to)
+        -&gt;field(<span class="hljs-string">'user'</span>)
+        -&gt;references($user);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr></table></div></code></pre>
 <p>You can also use fields defined in previous stages:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="7f5e343af970240bd79bd25f781bdfcf2a9f4648"
+            data-copy-element-id="1743210e6a99fc4ba6372ff05ee3b9ee5adb6a65"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="7f5e343af970240bd79bd25f781bdfcf2a9f4648"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;project()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;excludeIdField()
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;includeFields([<span class="hljs-string">'purchaseDate'</span>, <span class="hljs-string">'user'</span>])
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        -&gt;field(<span class="hljs-string">'purchaseYear'</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        -&gt;year(<span class="hljs-string">'$purchaseDate'</span>)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    -&gt;match()
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        -&gt;field(<span class="hljs-string">'purchaseYear'</span>)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        -&gt;equals(<span class="hljs-number">2016</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="1743210e6a99fc4ba6372ff05ee3b9ee5adb6a65"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;project()
+        -&gt;excludeIdField()
+        -&gt;includeFields([<span class="hljs-string">'purchaseDate'</span>, <span class="hljs-string">'user'</span>])
+        -&gt;field(<span class="hljs-string">'purchaseYear'</span>)
+        -&gt;year(<span class="hljs-string">'$purchaseDate'</span>)
+    -&gt;match()
+        -&gt;field(<span class="hljs-string">'purchaseYear'</span>)
+        -&gt;equals(<span class="hljs-number">2016</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <a class="section-anchor" id="out" name="out"></a><h3 class="section-header"><a href="#out">$out<i class="fas fa-link"></i></a></h3>
 <p>The <code>$out</code> stage is used to store the result of the aggregation pipeline in a
 collection instead of returning an iterable cursor of results. This must be the
@@ -851,18 +1091,25 @@ new one:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c3e489537d3c4a4816fbaa6f146554335c2aa64c"
+            data-copy-element-id="dd90d66c04e65aa1f65caa3fcf52827f449dc2ef"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c3e489537d3c4a4816fbaa6f146554335c2aa64c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;project()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;excludeIdField()
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;includeFields([<span class="hljs-string">'purchaseDate'</span>, <span class="hljs-string">'user'</span>])
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        -&gt;field(<span class="hljs-string">'purchaseYear'</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        -&gt;year(<span class="hljs-string">'$purchaseDate'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="dd90d66c04e65aa1f65caa3fcf52827f449dc2ef"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;project()
+        -&gt;excludeIdField()
+        -&gt;includeFields([<span class="hljs-string">'purchaseDate'</span>, <span class="hljs-string">'user'</span>])
+        -&gt;field(<span class="hljs-string">'purchaseYear'</span>)
+        -&gt;year(<span class="hljs-string">'$purchaseDate'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <a class="section-anchor" id="redact" name="redact"></a><h3 class="section-header"><a href="#redact">$redact<i class="fas fa-link"></i></a></h3>
 <p>The redact stage can be used to restrict the contents of the documents based on
 information stored in the documents themselves. You can read more about the
@@ -872,54 +1119,89 @@ field on all document levels and evaluates it to grant or deny access:</p>
 <pre class="code-block-table"><code class="json"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="407b22435ddb37b3dad32db0f5c9f5ec2cba91b1"
+            data-copy-element-id="0b5e6a292d1c0924710e25bd36f02c3c34272079"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="407b22435ddb37b3dad32db0f5c9f5ec2cba91b1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    _id: <span class="hljs-number">1</span>,
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    level: <span class="hljs-number">1</span>,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    acct_id: <span class="hljs-string">"xyz123"</span>,
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    cc: {
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        level: <span class="hljs-number">5</span>,
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        type: <span class="hljs-string">"yy"</span>,
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        num: <span class="hljs-number">000000000000</span>,
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        exp_date: ISODate(<span class="hljs-string">"2015-11-01T00:00:00.000Z"</span>),
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        billing_addr: {
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">            level: <span class="hljs-number">5</span>,
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">            addr<span class="hljs-number">1</span>: <span class="hljs-string">"123 ABC Street"</span>,
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">            city: <span class="hljs-string">"Some City"</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        },
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        shipping_addr: [
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">            {
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">                level: <span class="hljs-number">3</span>,
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">                addr<span class="hljs-number">1</span>: <span class="hljs-string">"987 XYZ Ave"</span>,
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">                city: <span class="hljs-string">"Some City"</span>
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">            },
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">            {
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">                level: <span class="hljs-number">3</span>,
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">                addr<span class="hljs-number">1</span>: <span class="hljs-string">"PO Box 0123"</span>,
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">                city: <span class="hljs-string">"Some City"</span>
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">            }
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">        ]
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    },
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    status: <span class="hljs-string">"A"</span>
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0b5e6a292d1c0924710e25bd36f02c3c34272079"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="29">{
+    _id: <span class="hljs-number">1</span>,
+    level: <span class="hljs-number">1</span>,
+    acct_id: <span class="hljs-string">"xyz123"</span>,
+    cc: {
+        level: <span class="hljs-number">5</span>,
+        type: <span class="hljs-string">"yy"</span>,
+        num: <span class="hljs-number">000000000000</span>,
+        exp_date: ISODate(<span class="hljs-string">"2015-11-01T00:00:00.000Z"</span>),
+        billing_addr: {
+            level: <span class="hljs-number">5</span>,
+            addr1: <span class="hljs-string">"123 ABC Street"</span>,
+            city: <span class="hljs-string">"Some City"</span>
+        },
+        shipping_addr: [
+            {
+                level: <span class="hljs-number">3</span>,
+                addr1: <span class="hljs-string">"987 XYZ Ave"</span>,
+                city: <span class="hljs-string">"Some City"</span>
+            },
+            {
+                level: <span class="hljs-number">3</span>,
+                addr1: <span class="hljs-string">"PO Box 0123"</span>,
+                city: <span class="hljs-string">"Some City"</span>
+            }
+        ]
+    },
+    status: <span class="hljs-string">"A"</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr></table></div></code></pre>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="d6a4d0b422ec913763ddc16cf7fa934a1e1150bf"
+            data-copy-element-id="d9a840c75af67831770c6a281584d07ec665067d"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="d6a4d0b422ec913763ddc16cf7fa934a1e1150bf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;redact()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;cond(
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">            $builder-&gt;expr()-&gt;gte(<span class="hljs-string">'$$level'</span>, <span class="hljs-number">5</span>),
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">            <span class="hljs-string">'$$PRUNE'</span>,
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            <span class="hljs-string">'$$DESCEND'</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        )
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d9a840c75af67831770c6a281584d07ec665067d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="10"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;redact()
+        -&gt;cond(
+            $builder-&gt;expr()-&gt;gte(<span class="hljs-string">'$$level'</span>, <span class="hljs-number">5</span>),
+            <span class="hljs-string">'$$PRUNE'</span>,
+            <span class="hljs-string">'$$DESCEND'</span>
+        )</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr></table></div></code></pre>
 <a class="section-anchor" id="replaceroot" name="replaceroot"></a><h3 class="section-header"><a href="#replaceroot">$replaceRoot<i class="fas fa-link"></i></a></h3>
 <p>Promotes a specified document to the top level and replaces all other fields.
 The operation replaces all existing fields in the input document, including the
@@ -928,20 +1210,29 @@ or create a new document for promotion.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="6f8824caeaf736ecb93d065b2c38d4450fbd544f"
+            data-copy-element-id="04dbc2d709ff2675a41a3eb76b31fc1e3aeb3523"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="6f8824caeaf736ecb93d065b2c38d4450fbd544f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;replaceRoot(<span class="hljs-string">'$embeddedField'</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    -&gt;replaceRoot()
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        -&gt;field(<span class="hljs-string">'averagePricePerItem'</span>)
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        -&gt;divide(<span class="hljs-string">'$value'</span>, <span class="hljs-string">'$itemCount'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="04dbc2d709ff2675a41a3eb76b31fc1e3aeb3523"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;replaceRoot(<span class="hljs-string">'$embeddedField'</span>);
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;replaceRoot()
+        -&gt;field(<span class="hljs-string">'averagePricePerItem'</span>)
+        -&gt;divide(<span class="hljs-string">'$value'</span>, <span class="hljs-string">'$itemCount'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <a class="section-anchor" id="sample" name="sample"></a><h3 class="section-header"><a href="#sample">$sample<i class="fas fa-link"></i></a></h3>
 <p>The sample stage can be used to randomly select a subset of documents in the
 aggregation pipeline. It behaves like the <code>$limit</code> stage, but instead of
@@ -960,91 +1251,132 @@ to that grouping or category.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c2a19b5b7cbbf4f5a1574fdd47a501d8384edf0a"
+            data-copy-element-id="167d1a736b5358bce70aa86289b5285af66c28aa"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c2a19b5b7cbbf4f5a1574fdd47a501d8384edf0a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder-&gt;sortByCount(<span class="hljs-string">'$items'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="167d1a736b5358bce70aa86289b5285af66c28aa"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder-&gt;sortByCount(<span class="hljs-string">'$items'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <p>The example above is equivalent to the following pipeline:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="fbd89a89a95eb7a953efb8aafbeeefe8cddeaf28"
+            data-copy-element-id="d1d44f324b2a69c157aebf6fd4dfd5045a115d06"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="fbd89a89a95eb7a953efb8aafbeeefe8cddeaf28"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    -&gt;group()
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        -&gt;field(<span class="hljs-string">'_id'</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        -&gt;expression(<span class="hljs-string">'$items'</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        -&gt;field(<span class="hljs-string">'count'</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        -&gt;sum(<span class="hljs-number">1</span>)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    -&gt;sort([<span class="hljs-string">'count'</span> =&gt; <span class="hljs-number">-1</span>])
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d1d44f324b2a69c157aebf6fd4dfd5045a115d06"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\Orders::class);
+$builder
+    -&gt;group()
+        -&gt;field(<span class="hljs-string">'_id'</span>)
+        -&gt;expression(<span class="hljs-string">'$items'</span>)
+        -&gt;field(<span class="hljs-string">'count'</span>)
+        -&gt;sum(<span class="hljs-number">1</span>)
+    -&gt;sort([<span class="hljs-string">'count'</span> =&gt; <span class="hljs-number">-1</span>])
+;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <a class="section-anchor" id="unwind" name="unwind"></a><h3 class="section-header"><a href="#unwind">$unwind<i class="fas fa-link"></i></a></h3>
 <p>The <code>$unwind</code> stage flattens an array in a document, returning a copy for each
 item. Take this sample document:</p>
 <pre class="code-block-table"><code class="json"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4df76e5d6de40619a6572c4011769cb5b383bc47"
+            data-copy-element-id="b7d21e72e4f434e09d26a76fcb78596e1b3a53f3"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4df76e5d6de40619a6572c4011769cb5b383bc47"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    _id: {
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        month: <span class="hljs-number">1</span>,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        year: <span class="hljs-number">2016</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    },
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    purchaseDates: [
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        '<span class="hljs-number">2016</span><span class="hljs-number">-01</span><span class="hljs-number">-07</span>',
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        '<span class="hljs-number">2016</span><span class="hljs-number">-03</span><span class="hljs-number">-10</span>',
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        '<span class="hljs-number">2016</span><span class="hljs-number">-06</span><span class="hljs-number">-25</span>'
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    ]
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b7d21e72e4f434e09d26a76fcb78596e1b3a53f3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11">{
+    _id: {
+        month: <span class="hljs-number">1</span>,
+        year: <span class="hljs-number">2016</span>
+    },
+    purchaseDates: [
+        '<span class="hljs-number">2016</span><span class="hljs-number">-01</span><span class="hljs-number">-07</span>',
+        '<span class="hljs-number">2016</span><span class="hljs-number">-03</span><span class="hljs-number">-10</span>',
+        '<span class="hljs-number">2016</span><span class="hljs-number">-06</span><span class="hljs-number">-25</span>'
+    ]
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>To flatten the <code>purchaseDates</code> array, we would apply the following pipeline
 stage:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0a77e62f01d2bced2243fd6948030030745fbc82"
+            data-copy-element-id="b4341f6ecd8b38e81ee9406909fc7c89b9cce138"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0a77e62f01d2bced2243fd6948030030745fbc82"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$builder = $dm-&gt;createAggregationBuilder(\Documents\User::class);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$builder-&gt;unwind(<span class="hljs-string">'$purchaseDates'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b4341f6ecd8b38e81ee9406909fc7c89b9cce138"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+
+$builder = $dm-&gt;createAggregationBuilder(\Documents\User::class);
+$builder-&gt;unwind(<span class="hljs-string">'$purchaseDates'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <p>The stage would return three documents, each containing a single purchase date:</p>
 <pre class="code-block-table"><code class="json"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="846dc93edab9228048c9d1be1dabc4befbb208bc"
+            data-copy-element-id="c0c10f6fe05ecfbd33459fbc9aa06b4d38d4cb63"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="846dc93edab9228048c9d1be1dabc4befbb208bc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    _id: {
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        month: <span class="hljs-number">1</span>,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        year: <span class="hljs-number">2016</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    },
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    purchaseDates: '<span class="hljs-number">2016</span><span class="hljs-number">-01</span><span class="hljs-number">-07</span>'
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">},
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    _id: {
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        month: <span class="hljs-number">1</span>,
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        year: <span class="hljs-number">2016</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    },
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    purchaseDates: '<span class="hljs-number">2016</span><span class="hljs-number">-03</span><span class="hljs-number">-10</span>'
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">},
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    _id: {
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">        month: <span class="hljs-number">1</span>,
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        year: <span class="hljs-number">2016</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    },
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    purchaseDates: '<span class="hljs-number">2016</span><span class="hljs-number">-06</span><span class="hljs-number">-25</span>'
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="c0c10f6fe05ecfbd33459fbc9aa06b4d38d4cb63"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="21">{
+    _id: {
+        month: <span class="hljs-number">1</span>,
+        year: <span class="hljs-number">2016</span>
+    },
+    purchaseDates: '<span class="hljs-number">2016</span><span class="hljs-number">-01</span><span class="hljs-number">-07</span>'
+},
+{
+    _id: {
+        month: <span class="hljs-number">1</span>,
+        year: <span class="hljs-number">2016</span>
+    },
+    purchaseDates: '<span class="hljs-number">2016</span><span class="hljs-number">-03</span><span class="hljs-number">-10</span>'
+},
+{
+    _id: {
+        month: <span class="hljs-number">1</span>,
+        year: <span class="hljs-number">2016</span>
+    },
+    purchaseDates: '<span class="hljs-number">2016</span><span class="hljs-number">-06</span><span class="hljs-number">-25</span>'
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -279,15 +279,19 @@ controller first before going on to the view.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a9ea6ae83d15d37e441585c2908e12037a72f97b"
+            data-copy-element-id="4fa4bad6d02159d31592a4fa233c3fa825bbbbf6"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a9ea6ae83d15d37e441585c2908e12037a72f97b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;eagerCursor(<span class="hljs-keyword">true</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $qb-&gt;getQuery();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$users = $query-&gt;execute(); <span class="hljs-comment">// returns instance of Doctrine\MongoDB\ODM\EagerCursor</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="4fa4bad6d02159d31592a4fa233c3fa825bbbbf6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+
+$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+    -&gt;eagerCursor(<span class="hljs-keyword">true</span>);
+$query = $qb-&gt;getQuery();
+$users = $query-&gt;execute(); <span class="hljs-comment">// returns instance of Doctrine\MongoDB\ODM\EagerCursor</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>At this point all data is loaded from the database and cursors to MongoDB
 have been closed but hydration of the data in to objects has not begun. Once
 insertion starts the data will be hydrated in to PHP objects.</p>
@@ -295,14 +299,17 @@ insertion starts the data will be hydrated in to PHP objects.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="33e8a12270508ef55fce179ff7ff864aee6eb3ae"
+            data-copy-element-id="9c9bb8e2bfbb2ce7725f82fccc57f26f76ec4ede"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="33e8a12270508ef55fce179ff7ff864aee6eb3ae"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($users <span class="hljs-keyword">as</span> $user) {
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">echo</span> $user-&gt;getUsername().<span class="hljs-string">"\n"</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9c9bb8e2bfbb2ce7725f82fccc57f26f76ec4ede"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">foreach</span> ($users <span class="hljs-keyword">as</span> $user) {
+    <span class="hljs-keyword">echo</span> $user-&gt;getUsername().<span class="hljs-string">"\n"</span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <p>Not all documents are converted to objects at once, the hydration is still done
 one document at a time during iteration. The only change is that all data is retrieved
 first.</p>

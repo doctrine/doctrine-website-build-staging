@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -260,25 +260,39 @@ namespace in your project:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="6f888d16cb49bbca4d2e2bcc3e3c2b7e95a19e19"
+            data-copy-element-id="de85d281572a1341806606afec3abebe055d73bd"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="6f888d16cb49bbca4d2e2bcc3e3c2b7e95a19e19"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$autoloadFiles = <span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/../vendor/autoload.php'</span>,
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/../../../autoload.php'</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$autoloader = <span class="hljs-keyword">false</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($autoloadFiles <span class="hljs-keyword">as</span> $autoloadFile) {
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">if</span> (file_exists($autoloadFile)) {
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">require_once</span> $autoloadFile;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        $autoloader = <span class="hljs-keyword">true</span>;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-keyword">if</span> (!$autoloader) {
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">die</span>(<span class="hljs-string">'vendor/autoload.php could not be found. Did you run `php composer.phar install`?'</span>);
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="de85d281572a1341806606afec3abebe055d73bd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="16">$autoloadFiles = <span class="hljs-keyword">array</span>(
+    <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/../vendor/autoload.php'</span>,
+    <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/../../../autoload.php'</span>
+);
+
+$autoloader = <span class="hljs-keyword">false</span>;
+<span class="hljs-keyword">foreach</span> ($autoloadFiles <span class="hljs-keyword">as</span> $autoloadFile) {
+    <span class="hljs-keyword">if</span> (file_exists($autoloadFile)) {
+        <span class="hljs-keyword">require_once</span> $autoloadFile;
+        $autoloader = <span class="hljs-keyword">true</span>;
+    }
+}
+
+<span class="hljs-keyword">if</span> (!$autoloader) {
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">'vendor/autoload.php could not be found. Did you run `php composer.phar install`?'</span>);
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr></table></div></code></pre>
 <p>Now the above autoloader is able to load a class like the following:</p>
 <div class="console"><pre><code class="console"><span class="noselect">$ </span>/path/to/migrations/lib/Doctrine/DBAL/Migrations/Migrations/Migration.php
 </code></pre></div>
@@ -288,20 +302,29 @@ commands to our <a href="http://doctrine-orm.readthedocs.org/en/latest/reference
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="544b18247ecfe7cfa1dc503633ce78c11131508f"
+            data-copy-element-id="609d3c43295fab0205a358c651217c5230c53c44"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="544b18247ecfe7cfa1dc503633ce78c11131508f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$cli-&gt;addCommands(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">// Migrations Commands</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\ExecuteCommand(),
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\GenerateCommand(),
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\LatestCommand(),
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\MigrateCommand(),
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\StatusCommand(),
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\VersionCommand()
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">));
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="609d3c43295fab0205a358c651217c5230c53c44"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-comment">// ...</span>
+
+$cli-&gt;addCommands(<span class="hljs-keyword">array</span>(
+    <span class="hljs-comment">// Migrations Commands</span>
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\ExecuteCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\GenerateCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\LatestCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\MigrateCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\StatusCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\DBAL\Migrations\Tools\Console\Command\VersionCommand()
+));</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <a class="section-anchor" id="register-console-helpers" name="register-console-helpers"></a><h2 class="section-header"><a href="#register-console-helpers">Register Console helpers<i class="fas fa-link"></i></a></h2>
 <p>Additionally you have to make sure the 'db' and 'dialog' Helpers are added to your Symfony
 Console HelperSet in a cli-config.php file.</p>
@@ -309,20 +332,29 @@ Console HelperSet in a cli-config.php file.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="30d6bed9849f7cf31705289f787b4a2baa4d323a"
+            data-copy-element-id="fba445ee53542b62015705d0fbebd027ae4f2abe"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="30d6bed9849f7cf31705289f787b4a2baa4d323a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$db = \Doctrine\DBAL\DriverManager::getConnection($params);
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// or</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em = \Doctrine\ORM\EntityManager::create($params);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$db = $em-&gt;getConnection();
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$helperSet = <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\HelperSet(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-string">'db'</span> =&gt; <span class="hljs-keyword">new</span> \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($db),
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-string">'question'</span> =&gt; <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\QuestionHelper(),
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">));
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-keyword">return</span> $helperset;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="fba445ee53542b62015705d0fbebd027ae4f2abe"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11">$db = \Doctrine\DBAL\DriverManager::getConnection($params);
+<span class="hljs-comment">// or</span>
+$em = \Doctrine\ORM\EntityManager::create($params);
+$db = $em-&gt;getConnection();
+
+$helperSet = <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\HelperSet(<span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'db'</span> =&gt; <span class="hljs-keyword">new</span> \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($db),
+    <span class="hljs-string">'question'</span> =&gt; <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\QuestionHelper(),
+));
+
+<span class="hljs-keyword">return</span> $helperset;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>Note that the db helper is not required as you might want to pass the connection information
 from the command line directly.</p>
 <p>You will see that you have a few new commands when you execute the following command:</p>

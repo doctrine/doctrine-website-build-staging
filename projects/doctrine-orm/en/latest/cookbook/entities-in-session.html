@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -290,22 +290,33 @@ the session into a managed Doctrine object looks like this:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4ff3d75e3b6fba654c0ee1127a99156047562ee8"
+            data-copy-element-id="870a336858c756d20a042dec06ca04d9432b256a"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4ff3d75e3b6fba654c0ee1127a99156047562ee8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'bootstrap.php'</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em = GetEntityManager(); <span class="hljs-comment">// creates an EntityManager</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">session_start();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_SESSION[<span class="hljs-string">'user'</span>])) {
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    $user = $em-&gt;find(User::class, $_SESSION[<span class="hljs-string">'user'</span>]);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">if</span> (! $user <span class="hljs-keyword">instanceof</span> User) {
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-comment">// user not found in the database</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        $_SESSION[<span class="hljs-string">'user'</span>] = <span class="hljs-keyword">null</span>;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="870a336858c756d20a042dec06ca04d9432b256a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="13"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'bootstrap.php'</span>;
+$em = GetEntityManager(); <span class="hljs-comment">// creates an EntityManager</span>
+
+session_start();
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_SESSION[<span class="hljs-string">'user'</span>])) {
+    $user = $em-&gt;find(User::class, $_SESSION[<span class="hljs-string">'user'</span>]);
+
+    <span class="hljs-keyword">if</span> (! $user <span class="hljs-keyword">instanceof</span> User) {
+        <span class="hljs-comment">// user not found in the database</span>
+        $_SESSION[<span class="hljs-string">'user'</span>] = <span class="hljs-keyword">null</span>;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr></table></div></code></pre>
 <a class="section-anchor" id="serializing-entities-into-the-session" name="serializing-entities-into-the-session"></a><h2 class="section-header"><a href="#serializing-entities-into-the-session">Serializing entities into the session<i class="fas fa-link"></i></a></h2>
 <p>Serializing entities in the session means serializing also all associated
 entities and collections. While this might look like a quick solution in

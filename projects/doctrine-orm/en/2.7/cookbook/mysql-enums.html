@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -289,54 +289,76 @@ will even detect this match correctly when using SchemaTool update commands.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="fbaf01fd28b6769ae6f89805fc29936f1dc1c038"
+            data-copy-element-id="b75c7e6509437fd2637511f24291fd13fe9006a2"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="fbaf01fd28b6769ae6f89805fc29936f1dc1c038"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$conn = $em-&gt;getConnection();
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$conn-&gt;getDatabasePlatform()-&gt;registerDoctrineTypeMapping(<span class="hljs-string">'enum'</span>, <span class="hljs-string">'string'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b75c7e6509437fd2637511f24291fd13fe9006a2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$conn = $em-&gt;getConnection();
+$conn-&gt;getDatabasePlatform()-&gt;registerDoctrineTypeMapping(<span class="hljs-string">'enum'</span>, <span class="hljs-string">'string'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>In this case you have to ensure that each varchar field that is an enum in the
 database only gets passed the allowed values. You can easily enforce this in your
 entities:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="dbe5bb42dbf65471ff3824c7573ceff5831af40f"
+            data-copy-element-id="efba043f41d6334d9ccf3730cb56b06189e38a6a"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="dbe5bb42dbf65471ff3824c7573ceff5831af40f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">const</span> STATUS_VISIBLE = <span class="hljs-string">'visible'</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">const</span> STATUS_INVISIBLE = <span class="hljs-string">'invisible'</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string") */</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">private</span> $status;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStatus</span><span class="hljs-params">($status)</span></span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-keyword">if</span> (!in_array($status, <span class="hljs-keyword">array</span>(<span class="hljs-keyword">self</span>::STATUS_VISIBLE, <span class="hljs-keyword">self</span>::STATUS_INVISIBLE))) {
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \InvalidArgumentException(<span class="hljs-string">"Invalid status"</span>);
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;status = $status;
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="efba043f41d6334d9ccf3730cb56b06189e38a6a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="18"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span>
+</span>{
+    <span class="hljs-keyword">const</span> STATUS_VISIBLE = <span class="hljs-string">'visible'</span>;
+    <span class="hljs-keyword">const</span> STATUS_INVISIBLE = <span class="hljs-string">'invisible'</span>;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string") */</span>
+    <span class="hljs-keyword">private</span> $status;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStatus</span><span class="hljs-params">($status)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (!in_array($status, <span class="hljs-keyword">array</span>(<span class="hljs-keyword">self</span>::STATUS_VISIBLE, <span class="hljs-keyword">self</span>::STATUS_INVISIBLE))) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \InvalidArgumentException(<span class="hljs-string">"Invalid status"</span>);
+        }
+        <span class="hljs-keyword">$this</span>-&gt;status = $status;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr></table></div></code></pre>
 <p>If you want to actively create enums through the Doctrine Schema-Tool by using
 the <strong>columnDefinition</strong> attribute.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="225b5d61a6e8f66db5ba44d8dcead5d01b746024"
+            data-copy-element-id="8923f5c18c0d622a4868e7345ba5700b3e9cd972"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="225b5d61a6e8f66db5ba44d8dcead5d01b746024"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string", columnDefinition="ENUM('visible', 'invisible')") */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $status;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="8923f5c18c0d622a4868e7345ba5700b3e9cd972"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="string", columnDefinition="ENUM('visible', 'invisible')") */</span>
+    <span class="hljs-keyword">private</span> $status;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>In this case however Schema-Tool update will have a hard time not to request changes for this column on each call.</p>
 <a class="section-anchor" id="solution-2-defining-a-type" name="solution-2-defining-a-type"></a><h2 class="section-header"><a href="#solution-2-defining-a-type">Solution 2: Defining a Type<i class="fas fa-link"></i></a></h2>
 <p>You can make a stateless ENUM type by creating a type class for each unique set of ENUM values.
@@ -344,127 +366,215 @@ For example for the previous enum type:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="69aabaa74d3925f2ccb15f586e8c9db420eeb6ae"
+            data-copy-element-id="33ff1d8bc14fc9ac1b5bd653c1ddb8e635e46094"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="69aabaa74d3925f2ccb15f586e8c9db420eeb6ae"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">DBAL</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Platforms</span>\<span class="hljs-title">AbstractPlatform</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EnumVisibilityType</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Type</span></span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">const</span> ENUM_VISIBILITY = <span class="hljs-string">'enumvisibility'</span>;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">const</span> STATUS_VISIBLE = <span class="hljs-string">'visible'</span>;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">const</span> STATUS_INVISIBLE = <span class="hljs-string">'invisible'</span>;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSQLDeclaration</span><span class="hljs-params">(array $fieldDeclaration, AbstractPlatform $platform)</span></span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"ENUM('visible', 'invisible')"</span>;
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToPHPValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span></span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-keyword">return</span> $value;
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToDatabaseValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span></span>
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">        <span class="hljs-keyword">if</span> (!in_array($value, <span class="hljs-keyword">array</span>(<span class="hljs-keyword">self</span>::STATUS_VISIBLE, <span class="hljs-keyword">self</span>::STATUS_INVISIBLE))) {
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \InvalidArgumentException(<span class="hljs-string">"Invalid status"</span>);
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        <span class="hljs-keyword">return</span> $value;
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::ENUM_VISIBILITY;
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">requiresSQLCommentHint</span><span class="hljs-params">(AbstractPlatform $platform)</span></span>
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="33ff1d8bc14fc9ac1b5bd653c1ddb8e635e46094"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="40"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">DBAL</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Platforms</span>\<span class="hljs-title">AbstractPlatform</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EnumVisibilityType</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Type</span>
+</span>{
+    <span class="hljs-keyword">const</span> ENUM_VISIBILITY = <span class="hljs-string">'enumvisibility'</span>;
+    <span class="hljs-keyword">const</span> STATUS_VISIBLE = <span class="hljs-string">'visible'</span>;
+    <span class="hljs-keyword">const</span> STATUS_INVISIBLE = <span class="hljs-string">'invisible'</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSQLDeclaration</span><span class="hljs-params">(array $fieldDeclaration, AbstractPlatform $platform)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"ENUM('visible', 'invisible')"</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToPHPValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $value;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToDatabaseValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (!in_array($value, <span class="hljs-keyword">array</span>(<span class="hljs-keyword">self</span>::STATUS_VISIBLE, <span class="hljs-keyword">self</span>::STATUS_INVISIBLE))) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \InvalidArgumentException(<span class="hljs-string">"Invalid status"</span>);
+        }
+        <span class="hljs-keyword">return</span> $value;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::ENUM_VISIBILITY;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">requiresSQLCommentHint</span><span class="hljs-params">(AbstractPlatform $platform)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr></table></div></code></pre>
 <p>You can register this type with <code>Type::addType('enumvisibility', 'MyProject\DBAL\EnumVisibilityType');</code>.
 Then in your entity you can just use this type:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="71d31099b28fc74e60ad6f8a337493430da2421d"
+            data-copy-element-id="83012455ffab081df8995750432acac8929d8945"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="71d31099b28fc74e60ad6f8a337493430da2421d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="enumvisibility") */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $status;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="83012455ffab081df8995750432acac8929d8945"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Column</span>(type="enumvisibility") */</span>
+    <span class="hljs-keyword">private</span> $status;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>You can generalize this approach easily to create a base class for enums:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="ca76211019386b0eaac60c386225e6ca85d9a38c"
+            data-copy-element-id="a951fb2a01041ba8d29277dc06b2ed21c311ab5a"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="ca76211019386b0eaac60c386225e6ca85d9a38c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">DBAL</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Platforms</span>\<span class="hljs-title">AbstractPlatform</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EnumType</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Type</span></span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">protected</span> $name;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">protected</span> $values = <span class="hljs-keyword">array</span>();
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSQLDeclaration</span><span class="hljs-params">(array $fieldDeclaration, AbstractPlatform $platform)</span></span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        $values = array_map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($val)</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-string">"'"</span>.$val.<span class="hljs-string">"'"</span>; }, <span class="hljs-keyword">$this</span>-&gt;values);
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"ENUM("</span>.implode(<span class="hljs-string">", "</span>, $values).<span class="hljs-string">")"</span>;
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToPHPValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span></span>
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-keyword">return</span> $value;
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToDatabaseValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span></span>
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">        <span class="hljs-keyword">if</span> (!in_array($value, <span class="hljs-keyword">$this</span>-&gt;values)) {
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \InvalidArgumentException(<span class="hljs-string">"Invalid '"</span>.<span class="hljs-keyword">$this</span>-&gt;name.<span class="hljs-string">"' value."</span>);
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">        <span class="hljs-keyword">return</span> $value;
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name;
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">requiresSQLCommentHint</span><span class="hljs-params">(AbstractPlatform $platform)</span></span>
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a951fb2a01041ba8d29277dc06b2ed21c311ab5a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="41"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">DBAL</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Types</span>\<span class="hljs-title">Type</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Platforms</span>\<span class="hljs-title">AbstractPlatform</span>;
+
+<span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EnumType</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Type</span>
+</span>{
+    <span class="hljs-keyword">protected</span> $name;
+    <span class="hljs-keyword">protected</span> $values = <span class="hljs-keyword">array</span>();
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSQLDeclaration</span><span class="hljs-params">(array $fieldDeclaration, AbstractPlatform $platform)</span>
+    </span>{
+        $values = array_map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($val)</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-string">"'"</span>.$val.<span class="hljs-string">"'"</span>; }, <span class="hljs-keyword">$this</span>-&gt;values);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"ENUM("</span>.implode(<span class="hljs-string">", "</span>, $values).<span class="hljs-string">")"</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToPHPValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $value;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToDatabaseValue</span><span class="hljs-params">($value, AbstractPlatform $platform)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (!in_array($value, <span class="hljs-keyword">$this</span>-&gt;values)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \InvalidArgumentException(<span class="hljs-string">"Invalid '"</span>.<span class="hljs-keyword">$this</span>-&gt;name.<span class="hljs-string">"' value."</span>);
+        }
+        <span class="hljs-keyword">return</span> $value;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;name;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">requiresSQLCommentHint</span><span class="hljs-params">(AbstractPlatform $platform)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr></table></div></code></pre>
 <p>With this base class you can define an enum as easily as:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c17eca5c91aeac13e1dbd54ef82cf57a1095a1e3"
+            data-copy-element-id="06f44780082c894ee6a8da5dc7258895cacdc5f7"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c17eca5c91aeac13e1dbd54ef82cf57a1095a1e3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">DBAL</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EnumVisibilityType</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EnumType</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">protected</span> $name = <span class="hljs-string">'enumvisibility'</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">protected</span> $values = <span class="hljs-keyword">array</span>(<span class="hljs-string">'visible'</span>, <span class="hljs-string">'invisible'</span>);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="06f44780082c894ee6a8da5dc7258895cacdc5f7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">MyProject</span>\<span class="hljs-title">DBAL</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EnumVisibilityType</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EnumType</span>
+</span>{
+    <span class="hljs-keyword">protected</span> $name = <span class="hljs-string">'enumvisibility'</span>;
+    <span class="hljs-keyword">protected</span> $values = <span class="hljs-keyword">array</span>(<span class="hljs-string">'visible'</span>, <span class="hljs-string">'invisible'</span>);
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

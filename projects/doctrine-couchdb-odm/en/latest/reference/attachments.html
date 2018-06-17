@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -249,132 +249,231 @@ of a document of this type:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="ad60cba78615a25c372123bfa3ad03631a7b864f"
+            data-copy-element-id="7846d66b2a56f8fa51c54b0a4ab55c6e3878c36e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="ad60cba78615a25c372123bfa3ad03631a7b864f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Attachments</span> */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $attachments;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="7846d66b2a56f8fa51c54b0a4ab55c6e3878c36e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Attachments</span> */</span>
+    <span class="hljs-keyword">private</span> $attachments;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>The attachments field is an array of <code>Doctrine\CouchDB\Attachment</code> instances.
 Keys of the attachments array are the filenames of the attachments.</p>
 <p>The API of the <code>Doctrine\CouchDB\Attachment</code> looks as follows:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="3e2fe0100b72e7f786dea7b70eaa27d900f94dae"
+            data-copy-element-id="5831a666c557bedc21dc8627e33d79ae247c855b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="3e2fe0100b72e7f786dea7b70eaa27d900f94dae"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">CouchDB</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Attachment</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     * Get the content-type of this attachment.
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * Does not trigger lazy loading the attachment from the database.
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * 
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getContentType</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * Get the length of the base64 encoded representation of this attachment.
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     * Does not trigger lazy loading the attachment from the database.
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLength</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     * Get the raw data of this attachment.
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRawData</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBase64EncodedData</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">     * @<span class="hljs-keyword">return</span> bool
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isLoaded</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">     * Number of times an attachment was already saved with the document, indicating in which revision it was added.
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">     * @<span class="hljs-keyword">return</span> int
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRevPos</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">     * Attachments are special in how they need to be persisted depending on stub <span class="hljs-keyword">or</span> not.
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">     * TODO: Is this really necessary with all this special logic? Having attahments <span class="hljs-keyword">as</span> special
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">     * <span class="hljs-keyword">case</span> without special code would be really awesome.
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">     * @<span class="hljs-keyword">return</span> string
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toArray</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">59</td><td class="code-line">     * Create an Attachment from a string <span class="hljs-keyword">or</span> resource of binary data.
-</td></tr><tr><td class="line-number noselect">60</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">61</td><td class="code-line">     * WARNING: Changes to the file handle after calling this method will *NOT* be recognized anymore.
-</td></tr><tr><td class="line-number noselect">62</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">63</td><td class="code-line">     * @param string|resource $data
-</td></tr><tr><td class="line-number noselect">64</td><td class="code-line">     * @param string $contentType
-</td></tr><tr><td class="line-number noselect">65</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Attachment
-</td></tr><tr><td class="line-number noselect">66</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">67</td><td class="code-line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createFromBinaryData</span><span class="hljs-params">($data, $contentType = false)</span></span>;
-</td></tr><tr><td class="line-number noselect">68</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">69</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">70</td><td class="code-line">     * Create an attachment from base64 data.
-</td></tr><tr><td class="line-number noselect">71</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">72</td><td class="code-line">     * @param string $data
-</td></tr><tr><td class="line-number noselect">73</td><td class="code-line">     * @param string $contentType
-</td></tr><tr><td class="line-number noselect">74</td><td class="code-line">     * @param int $revpos
-</td></tr><tr><td class="line-number noselect">75</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Attachment
-</td></tr><tr><td class="line-number noselect">76</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">77</td><td class="code-line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createFromBase64Data</span><span class="hljs-params">($data, $contentType = false, $revpos = false)</span></span>;
-</td></tr><tr><td class="line-number noselect">78</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">79</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">80</td><td class="code-line">     * Create a stub attachment that has lazy loading capabilities.
-</td></tr><tr><td class="line-number noselect">81</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">82</td><td class="code-line">     * @param string $contentType
-</td></tr><tr><td class="line-number noselect">83</td><td class="code-line">     * @param int $length
-</td></tr><tr><td class="line-number noselect">84</td><td class="code-line">     * @param int $revPos
-</td></tr><tr><td class="line-number noselect">85</td><td class="code-line">     * @param Client $httpClient
-</td></tr><tr><td class="line-number noselect">86</td><td class="code-line">     * @param string $path
-</td></tr><tr><td class="line-number noselect">87</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Attachment
-</td></tr><tr><td class="line-number noselect">88</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">89</td><td class="code-line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createStub</span><span class="hljs-params">($contentType, $length, $revPos, Client $httpClient, $path)</span></span>;
-</td></tr><tr><td class="line-number noselect">90</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="5831a666c557bedc21dc8627e33d79ae247c855b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="90"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">CouchDB</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Attachment</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Get the content-type of this attachment.
+     *
+     * Does not trigger lazy loading the attachment from the database.
+     * 
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getContentType</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Get the length of the base64 encoded representation of this attachment.
+     *
+     * Does not trigger lazy loading the attachment from the database.
+     *
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLength</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Get the raw data of this attachment.
+     *
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRawData</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBase64EncodedData</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@return</span> bool
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isLoaded</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Number of times an attachment was already saved with the document, indicating in which revision it was added.
+     *
+     * <span class="hljs-doctag">@return</span> int
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRevPos</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Attachments are special in how they need to be persisted depending on stub or not.
+     *
+     * <span class="hljs-doctag">TODO:</span> Is this really necessary with all this special logic? Having attahments as special
+     * case without special code would be really awesome.
+     *
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toArray</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Create an Attachment from a string or resource of binary data.
+     *
+     * WARNING: Changes to the file handle after calling this method will *NOT* be recognized anymore.
+     *
+     * <span class="hljs-doctag">@param</span> string|resource $data
+     * <span class="hljs-doctag">@param</span> string $contentType
+     * <span class="hljs-doctag">@return</span> Attachment
+     */</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createFromBinaryData</span><span class="hljs-params">($data, $contentType = false)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Create an attachment from base64 data.
+     *
+     * <span class="hljs-doctag">@param</span> string $data
+     * <span class="hljs-doctag">@param</span> string $contentType
+     * <span class="hljs-doctag">@param</span> int $revpos
+     * <span class="hljs-doctag">@return</span> Attachment
+     */</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createFromBase64Data</span><span class="hljs-params">($data, $contentType = false, $revpos = false)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Create a stub attachment that has lazy loading capabilities.
+     *
+     * <span class="hljs-doctag">@param</span> string $contentType
+     * <span class="hljs-doctag">@param</span> int $length
+     * <span class="hljs-doctag">@param</span> int $revPos
+     * <span class="hljs-doctag">@param</span> Client $httpClient
+     * <span class="hljs-doctag">@param</span> string $path
+     * <span class="hljs-doctag">@return</span> Attachment
+     */</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createStub</span><span class="hljs-params">($contentType, $length, $revPos, Client $httpClient, $path)</span></span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr>
+<tr><td class="line-number noselect">58</td></tr>
+<tr><td class="line-number noselect">59</td></tr>
+<tr><td class="line-number noselect">60</td></tr>
+<tr><td class="line-number noselect">61</td></tr>
+<tr><td class="line-number noselect">62</td></tr>
+<tr><td class="line-number noselect">63</td></tr>
+<tr><td class="line-number noselect">64</td></tr>
+<tr><td class="line-number noselect">65</td></tr>
+<tr><td class="line-number noselect">66</td></tr>
+<tr><td class="line-number noselect">67</td></tr>
+<tr><td class="line-number noselect">68</td></tr>
+<tr><td class="line-number noselect">69</td></tr>
+<tr><td class="line-number noselect">70</td></tr>
+<tr><td class="line-number noselect">71</td></tr>
+<tr><td class="line-number noselect">72</td></tr>
+<tr><td class="line-number noselect">73</td></tr>
+<tr><td class="line-number noselect">74</td></tr>
+<tr><td class="line-number noselect">75</td></tr>
+<tr><td class="line-number noselect">76</td></tr>
+<tr><td class="line-number noselect">77</td></tr>
+<tr><td class="line-number noselect">78</td></tr>
+<tr><td class="line-number noselect">79</td></tr>
+<tr><td class="line-number noselect">80</td></tr>
+<tr><td class="line-number noselect">81</td></tr>
+<tr><td class="line-number noselect">82</td></tr>
+<tr><td class="line-number noselect">83</td></tr>
+<tr><td class="line-number noselect">84</td></tr>
+<tr><td class="line-number noselect">85</td></tr>
+<tr><td class="line-number noselect">86</td></tr>
+<tr><td class="line-number noselect">87</td></tr>
+<tr><td class="line-number noselect">88</td></tr>
+<tr><td class="line-number noselect">89</td></tr>
+<tr><td class="line-number noselect">90</td></tr></table></div></code></pre>
 <p>You have to use one of the two methods <code>Attachment::createFromBinaryData()</code> and
 <code>Attachment::createFromBase64Data()</code> to create new attachments. The key of the attachments
 array will become the filename of this attachment.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="5de83431ab8ee7110cc52eedeb61fd51192ef4ee"
+            data-copy-element-id="a919620547c015c587775e57bb0af1c01837538b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="5de83431ab8ee7110cc52eedeb61fd51192ef4ee"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$fh = fopen(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/_files/logo.jpg'</span>, <span class="hljs-string">'r'</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$user = $dm-&gt;find(<span class="hljs-string">'Doctrine\Tests\Models\CMS\CmsUser'</span>, <span class="hljs-string">'user_with_attachment'</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$user-&gt;attachments[<span class="hljs-string">'logo.jpg'</span>] = \Doctrine\CouchDB\Attachment::createFromBinaryData($fh, <span class="hljs-string">'image/jpeg'</span>);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$dm-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a919620547c015c587775e57bb0af1c01837538b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-meta">&lt;?php</span>
+
+$fh = fopen(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/_files/logo.jpg'</span>, <span class="hljs-string">'r'</span>);
+
+$user = $dm-&gt;find(<span class="hljs-string">'Doctrine\Tests\Models\CMS\CmsUser'</span>, <span class="hljs-string">'user_with_attachment'</span>);
+$user-&gt;attachments[<span class="hljs-string">'logo.jpg'</span>] = \Doctrine\CouchDB\Attachment::createFromBinaryData($fh, <span class="hljs-string">'image/jpeg'</span>);
+
+$dm-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <p>Attachments are value objects. If you want to replace an attachment with a new version just
 replace the Attachment instance at the appropriate filename key.</p>
 <p></p>

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -261,51 +261,80 @@ in the AnnotationRegistry. Annotation classes have to contain a class-level docb
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="57837e733e7c34393c7471f5db0586af71edf077"
+            data-copy-element-id="e4b35f94d512cc9ec02bf241b6b08e0bd925441f"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="57837e733e7c34393c7471f5db0586af71edf077"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>;
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Annotation</span> */</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">// some code</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="e4b35f94d512cc9ec02bf241b6b08e0bd925441f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>;
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@Annotation</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span>
+</span>{
+    <span class="hljs-comment">// some code</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <a class="section-anchor" id="inject-annotation-values" name="inject-annotation-values"></a><h2 class="section-header"><a href="#inject-annotation-values">Inject annotation values<i class="fas fa-link"></i></a></h2>
 <p>The annotation parser check if the annotation constructor has arguments,
 if so then we will pass the value array, otherwise will try to inject values into public properties directly:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c60e6bffe98fa546f8d853d20225e3860b9cf567"
+            data-copy-element-id="ead04770c723d3d9e1633f654553f5c0d89f5bd5"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c60e6bffe98fa546f8d853d20225e3860b9cf567"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>;
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Annotation
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> *
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> * Some Annotation using a constructor
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span></span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $foo;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(array $values)</span></span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;foo = $values[<span class="hljs-string">'foo'</span>];
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"> * @Annotation
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"> *
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"> * Some Annotation without a constructor
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span></span>
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-keyword">public</span> $bar;
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ead04770c723d3d9e1633f654553f5c0d89f5bd5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="26"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Annotation</span>
+ *
+ * Some Annotation using a constructor
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span>
+</span>{
+    <span class="hljs-keyword">private</span> $foo;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(array $values)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;foo = $values[<span class="hljs-string">'foo'</span>];
+    }
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Annotation</span>
+ *
+ * Some Annotation without a constructor
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>
+</span>{
+    <span class="hljs-keyword">public</span> $bar;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr></table></div></code></pre>
 <a class="section-anchor" id="annotation-target" name="annotation-target"></a><h2 class="section-header"><a href="#annotation-target">Annotation Target<i class="fas fa-link"></i></a></h2>
 <p><code>@Target</code> indicates the kinds of class element to which an annotation type is applicable.
 Then you could define one or more targets:</p>
@@ -320,28 +349,45 @@ Then you could define one or more targets:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="cc96907edbb1866d4049a830c45d717bff28cb13"
+            data-copy-element-id="22ff2ae109ca0a75438b46cee5fbebca5bf2ee79"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="cc96907edbb1866d4049a830c45d717bff28cb13"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>;
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Annotation
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Target({<span class="hljs-string">"METHOD"</span>,<span class="hljs-string">"PROPERTY"</span>})
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span></span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">// some code</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"> * @Annotation
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"> * @Target(<span class="hljs-string">"CLASS"</span>)
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span></span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">// some code</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="22ff2ae109ca0a75438b46cee5fbebca5bf2ee79"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="19"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Annotation</span>
+ * <span class="hljs-doctag">@Target</span>({"METHOD","PROPERTY"})
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span>
+</span>{
+    <span class="hljs-comment">// some code</span>
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Annotation</span>
+ * <span class="hljs-doctag">@Target</span>("CLASS")
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>
+</span>{
+    <span class="hljs-comment">// some code</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr></table></div></code></pre>
 <a class="section-anchor" id="attribute-types" name="attribute-types"></a><h2 class="section-header"><a href="#attribute-types">Attribute types<i class="fas fa-link"></i></a></h2>
 <p>Annotation parser check the given parameters using the phpdoc annotation <code>@var</code>,
 The data type could be validated using the <code>@var</code> annotation on the annotation properties
@@ -350,66 +396,121 @@ or using the annotations <code>@Attributes</code> and <code>@Attribute</code>.</
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="6a47977829f36cd3b94439ac300f16fc5bf6e548"
+            data-copy-element-id="4338761f46054d020072aad0b01e3cc4b5902fde"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="6a47977829f36cd3b94439ac300f16fc5bf6e548"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>;
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> * @Annotation
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"> * @Target({<span class="hljs-string">"METHOD"</span>,<span class="hljs-string">"PROPERTY"</span>})
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span></span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> mixed */</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $mixed;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> boolean */</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> $boolean;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> bool */</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> $bool;
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> float */</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> $float;
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> string */</span>
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">public</span> $string;
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> integer */</span>
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-keyword">public</span> $integer;
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> array */</span>
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-keyword">public</span> $array;
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> SomeAnnotationClass */</span>
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-keyword">public</span> $annotation;
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> array&lt;integer&gt; */</span>
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-keyword">public</span> $arrayOfIntegers;
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> array&lt;SomeAnnotationClass&gt; */</span>
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-keyword">public</span> $arrayOfAnnotations;
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line"> * @Annotation
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line"> * @Target({<span class="hljs-string">"METHOD"</span>,<span class="hljs-string">"PROPERTY"</span>})
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line"> * @Attributes({
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line"> *   @Attribute(<span class="hljs-string">"stringProperty"</span>, type = <span class="hljs-string">"string"</span>),
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line"> *   @Attribute(<span class="hljs-string">"annotProperty"</span>,  type = <span class="hljs-string">"SomeAnnotationClass"</span>),
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line"> * })
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span></span>
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(array $values)</span></span>
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;stringProperty = $values[<span class="hljs-string">'stringProperty'</span>];
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;annotProperty = $values[<span class="hljs-string">'annotProperty'</span>];
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">    <span class="hljs-comment">// some code</span>
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="4338761f46054d020072aad0b01e3cc4b5902fde"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="57"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Annotation</span>
+ * <span class="hljs-doctag">@Target</span>({"METHOD","PROPERTY"})
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> mixed */</span>
+    <span class="hljs-keyword">public</span> $mixed;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> boolean */</span>
+    <span class="hljs-keyword">public</span> $boolean;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> bool */</span>
+    <span class="hljs-keyword">public</span> $bool;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> float */</span>
+    <span class="hljs-keyword">public</span> $float;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> string */</span>
+    <span class="hljs-keyword">public</span> $string;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> integer */</span>
+    <span class="hljs-keyword">public</span> $integer;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> array */</span>
+    <span class="hljs-keyword">public</span> $array;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> SomeAnnotationClass */</span>
+    <span class="hljs-keyword">public</span> $annotation;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> array&lt;integer&gt; */</span>
+    <span class="hljs-keyword">public</span> $arrayOfIntegers;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> array&lt;SomeAnnotationClass&gt; */</span>
+    <span class="hljs-keyword">public</span> $arrayOfAnnotations;
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Annotation</span>
+ * <span class="hljs-doctag">@Target</span>({"METHOD","PROPERTY"})
+ * <span class="hljs-doctag">@Attributes</span>({
+ *   <span class="hljs-doctag">@Attribute</span>("stringProperty", type = "string"),
+ *   <span class="hljs-doctag">@Attribute</span>("annotProperty",  type = "SomeAnnotationClass"),
+ * })
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(array $values)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;stringProperty = $values[<span class="hljs-string">'stringProperty'</span>];
+        <span class="hljs-keyword">$this</span>-&gt;annotProperty = $values[<span class="hljs-string">'annotProperty'</span>];
+    }
+
+    <span class="hljs-comment">// some code</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr></table></div></code></pre>
 <a class="section-anchor" id="annotation-required" name="annotation-required"></a><h2 class="section-header"><a href="#annotation-required">Annotation Required<i class="fas fa-link"></i></a></h2>
 <p><code>@Required</code> indicates that the field must be specified when the annotation is used.
 If it is not used you get an <code>AnnotationException</code> stating that this value can not be null.</p>
@@ -417,30 +518,40 @@ If it is not used you get an <code>AnnotationException</code> stating that this 
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="28ae99c6bc39faad2b89c7ee23663ad4302cb188"
+            data-copy-element-id="4c29d2e083248313c063cb677e67426307384f14"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="28ae99c6bc39faad2b89c7ee23663ad4302cb188"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"> * @Annotation
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * @Target(<span class="hljs-string">"ALL"</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span></span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Required</span> */</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-keyword">public</span> $requiredField;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="4c29d2e083248313c063cb677e67426307384f14"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Annotation</span>
+ * <span class="hljs-doctag">@Target</span>("ALL")
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Required</span> */</span>
+    <span class="hljs-keyword">public</span> $requiredField;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <p>Usage:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="bc3dc8bcc4cc2dbb866decb1d01476141729b161"
+            data-copy-element-id="7eddafd28e4afda6c12b02a5deb5cdeb0a8ce5f9"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="bc3dc8bcc4cc2dbb866decb1d01476141729b161"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Foo</span>(requiredField="value") */</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">public</span> $direction;                  <span class="hljs-comment">// Valid</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> <span class="hljs-comment">/** <span class="hljs-doctag">@Foo</span> */</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">public</span> $direction;                  <span class="hljs-comment">// Required field missing, throws an AnnotationException</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="7eddafd28e4afda6c12b02a5deb5cdeb0a8ce5f9"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-comment">/** <span class="hljs-doctag">@Foo</span>(requiredField="value") */</span>
+<span class="hljs-keyword">public</span> $direction;                  <span class="hljs-comment">// Valid</span>
+
+ <span class="hljs-comment">/** <span class="hljs-doctag">@Foo</span> */</span>
+<span class="hljs-keyword">public</span> $direction;                  <span class="hljs-comment">// Required field missing, throws an AnnotationException</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <a class="section-anchor" id="enumerated-values" name="enumerated-values"></a><h2 class="section-header"><a href="#enumerated-values">Enumerated values<i class="fas fa-link"></i></a></h2>
 <ul><li class="dash">An annotation property marked with <code>@Enum</code> is a field that accept a fixed set of scalar values.</li>
 <li class="dash">You should use <code>@Enum</code> fields any time you need to represent fixed values.</li>
@@ -451,56 +562,81 @@ If it is not used you get an <code>AnnotationException</code> stating that this 
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="6c112f2d4442c89a640a06267be85e96bcd0f53f"
+            data-copy-element-id="270cd533e31496fb4aeb0e3d1b9f3d1c3de8ad49"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="6c112f2d4442c89a640a06267be85e96bcd0f53f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"> * @Annotation
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"> * @Target(<span class="hljs-string">"ALL"</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Direction</span></span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * @Enum({<span class="hljs-string">"NORTH"</span>, <span class="hljs-string">"SOUTH"</span>, <span class="hljs-string">"EAST"</span>, <span class="hljs-string">"WEST"</span>})
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> $value;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="270cd533e31496fb4aeb0e3d1b9f3d1c3de8ad49"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Annotation</span>
+ * <span class="hljs-doctag">@Target</span>("ALL")
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Direction</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Enum</span>({"NORTH", "SOUTH", "EAST", "WEST"})
+     */</span>
+    <span class="hljs-keyword">public</span> $value;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>Annotation usage:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e2b9f94785dc4733130d0af02db5ba73cf13dd7f"
+            data-copy-element-id="a108aa47dc50666fccbf11fb50f7f2c069c57b19"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e2b9f94785dc4733130d0af02db5ba73cf13dd7f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Direction</span>("NORTH") */</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">public</span> $direction;                  <span class="hljs-comment">// Valid value</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"> <span class="hljs-comment">/** <span class="hljs-doctag">@Direction</span>("NORTHEAST") */</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">public</span> $direction;                  <span class="hljs-comment">// Invalid value, throws an AnnotationException</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a108aa47dc50666fccbf11fb50f7f2c069c57b19"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-comment">/** <span class="hljs-doctag">@Direction</span>("NORTH") */</span>
+<span class="hljs-keyword">public</span> $direction;                  <span class="hljs-comment">// Valid value</span>
+
+ <span class="hljs-comment">/** <span class="hljs-doctag">@Direction</span>("NORTHEAST") */</span>
+<span class="hljs-keyword">public</span> $direction;                  <span class="hljs-comment">// Invalid value, throws an AnnotationException</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <a class="section-anchor" id="constants" name="constants"></a><h2 class="section-header"><a href="#constants">Constants<i class="fas fa-link"></i></a></h2>
 <p>The use of constants and class constants are available on the annotations parser.</p>
 <p>The following usage are allowed:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4ed61543899f670883e9784914013b4a6392d9a2"
+            data-copy-element-id="d3b5ce91f22c76984931dd5f37298291d950d84b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4ed61543899f670883e9784914013b4a6392d9a2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Entity</span>;
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>\<span class="hljs-title">Foo</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>\<span class="hljs-title">Bar</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">SomeClass</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @Foo(PHP_EOL)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> * @Bar(Bar::FOO)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"> * @Foo({SomeClass::FOO, SomeClass::BAR})
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"> * @Bar({SomeClass::FOO_KEY = SomeClass::BAR_VALUE})
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d3b5ce91f22c76984931dd5f37298291d950d84b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="15"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Entity</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>\<span class="hljs-title">Foo</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>\<span class="hljs-title">Bar</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">SomeClass</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Foo</span>(PHP_EOL)
+ * <span class="hljs-doctag">@Bar</span>(Bar::FOO)
+ * <span class="hljs-doctag">@Foo</span>({SomeClass::FOO, SomeClass::BAR})
+ * <span class="hljs-doctag">@Bar</span>({SomeClass::FOO_KEY = SomeClass::BAR_VALUE})
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr></table></div></code></pre>
 <p>Be careful with constants and the cache !</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The cached reader will not re-evaluate each time an annotation is loaded from cache.
 When a constant is changed the cache must be cleaned.</p>
@@ -511,38 +647,56 @@ you can now annotate other classes with your annotations:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f3fb2a87efdf4045cda0f4a7cb457b033a1074a4"
+            data-copy-element-id="6485d6f58d64d33fcdc1b348f7df4ab5ea999acd"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f3fb2a87efdf4045cda0f4a7cb457b033a1074a4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Entity</span>;
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>\<span class="hljs-title">Foo</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>\<span class="hljs-title">Bar</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"> * @Foo(bar=<span class="hljs-string">"foo"</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @Bar(foo=<span class="hljs-string">"bar"</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="6485d6f58d64d33fcdc1b348f7df4ab5ea999acd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Entity</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>\<span class="hljs-title">Foo</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">MyCompany</span>\<span class="hljs-title">Annotations</span>\<span class="hljs-title">Bar</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Foo</span>(bar="foo")
+ * <span class="hljs-doctag">@Bar</span>(foo="bar")
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p>Now we can write a script to get the annotations above:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4278be5257400be458c02bd93ef7fedc7854d66f"
+            data-copy-element-id="9a40b020aa40f2227b1a448e18bdbe5c165c7658"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4278be5257400be458c02bd93ef7fedc7854d66f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$reflClass = <span class="hljs-keyword">new</span> ReflectionClass(<span class="hljs-string">'MyCompany\Entity\User'</span>);
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$classAnnotations = $reader-&gt;getClassAnnotations($reflClass);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($classAnnotations <span class="hljs-keyword">AS</span> $annot) {
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">if</span> ($annot <span class="hljs-keyword">instanceof</span> \MyCompany\Annotations\Foo) {
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-keyword">echo</span> $annot-&gt;bar; <span class="hljs-comment">// prints "foo";</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ($annot <span class="hljs-keyword">instanceof</span> \MyCompany\Annotations\Bar) {
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-keyword">echo</span> $annot-&gt;foo; <span class="hljs-comment">// prints "bar";</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9a40b020aa40f2227b1a448e18bdbe5c165c7658"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="10">$reflClass = <span class="hljs-keyword">new</span> ReflectionClass(<span class="hljs-string">'MyCompany\Entity\User'</span>);
+$classAnnotations = $reader-&gt;getClassAnnotations($reflClass);
+
+<span class="hljs-keyword">foreach</span> ($classAnnotations <span class="hljs-keyword">AS</span> $annot) {
+    <span class="hljs-keyword">if</span> ($annot <span class="hljs-keyword">instanceof</span> \MyCompany\Annotations\Foo) {
+        <span class="hljs-keyword">echo</span> $annot-&gt;bar; <span class="hljs-comment">// prints "foo";</span>
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ($annot <span class="hljs-keyword">instanceof</span> \MyCompany\Annotations\Bar) {
+        <span class="hljs-keyword">echo</span> $annot-&gt;foo; <span class="hljs-comment">// prints "bar";</span>
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr></table></div></code></pre>
 <p>You have a complete API for retrieving annotation class instances
 from a class, property or method docblock:</p>
 <a class="section-anchor" id="reader-api" name="reader-api"></a><h3 class="section-header"><a href="#reader-api">Reader API<i class="fas fa-link"></i></a></h3>
@@ -550,50 +704,44 @@ from a class, property or method docblock:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="ada560cd97b0e330e445d326a8ced2f70e5898c2"
+            data-copy-element-id="ad028786684cb94f8a32eb98038515893866746e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="ada560cd97b0e330e445d326a8ced2f70e5898c2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClassAnnotations</span><span class="hljs-params">(\ReflectionClass $class)</span></span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ad028786684cb94f8a32eb98038515893866746e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClassAnnotations</span><span class="hljs-params">(\ReflectionClass $class)</span></span>;</td></tr></table></div></code></pre>
 <a class="section-anchor" id="access-one-annotation-of-a-class" name="access-one-annotation-of-a-class"></a><h4 class="section-header"><a href="#access-one-annotation-of-a-class">Access one annotation of a class<i class="fas fa-link"></i></a></h4>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="fdb4c2a8bf48f763bb14d429ce74069cc70f0459"
+            data-copy-element-id="e9cfb895937c6d17565a5f7bdcc044141f406835"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="fdb4c2a8bf48f763bb14d429ce74069cc70f0459"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClassAnnotation</span><span class="hljs-params">(\ReflectionClass $class, $annotationName)</span></span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="e9cfb895937c6d17565a5f7bdcc044141f406835"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClassAnnotation</span><span class="hljs-params">(\ReflectionClass $class, $annotationName)</span></span>;</td></tr></table></div></code></pre>
 <a class="section-anchor" id="access-all-annotations-of-a-method" name="access-all-annotations-of-a-method"></a><h4 class="section-header"><a href="#access-all-annotations-of-a-method">Access all annotations of a method<i class="fas fa-link"></i></a></h4>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a9eba17474a95668ede5e9e161e134c527305f24"
+            data-copy-element-id="c8172d4d25b67ae5b4a9c190ec93606e9e336c9b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a9eba17474a95668ede5e9e161e134c527305f24"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMethodAnnotations</span><span class="hljs-params">(\ReflectionMethod $method)</span></span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="c8172d4d25b67ae5b4a9c190ec93606e9e336c9b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMethodAnnotations</span><span class="hljs-params">(\ReflectionMethod $method)</span></span>;</td></tr></table></div></code></pre>
 <a class="section-anchor" id="access-one-annotation-of-a-method" name="access-one-annotation-of-a-method"></a><h4 class="section-header"><a href="#access-one-annotation-of-a-method">Access one annotation of a method<i class="fas fa-link"></i></a></h4>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c2445a510968b1dc7c58b7625ca9b02dc09f9e37"
+            data-copy-element-id="79b25b293e410028902e83f68892caa6499d2266"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c2445a510968b1dc7c58b7625ca9b02dc09f9e37"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMethodAnnotation</span><span class="hljs-params">(\ReflectionMethod $method, $annotationName)</span></span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="79b25b293e410028902e83f68892caa6499d2266"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMethodAnnotation</span><span class="hljs-params">(\ReflectionMethod $method, $annotationName)</span></span>;</td></tr></table></div></code></pre>
 <a class="section-anchor" id="access-all-annotations-of-a-property" name="access-all-annotations-of-a-property"></a><h4 class="section-header"><a href="#access-all-annotations-of-a-property">Access all annotations of a property<i class="fas fa-link"></i></a></h4>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c73372a45674f0d360fb4c60196ff9b0cc2cbbb0"
+            data-copy-element-id="c619cfa654696b9aad1f9dbda563a086a7530804"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c73372a45674f0d360fb4c60196ff9b0cc2cbbb0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPropertyAnnotations</span><span class="hljs-params">(\ReflectionProperty $property)</span></span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="c619cfa654696b9aad1f9dbda563a086a7530804"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPropertyAnnotations</span><span class="hljs-params">(\ReflectionProperty $property)</span></span>;</td></tr></table></div></code></pre>
 <a class="section-anchor" id="access-one-annotation-of-a-property" name="access-one-annotation-of-a-property"></a><h4 class="section-header"><a href="#access-one-annotation-of-a-property">Access one annotation of a property<i class="fas fa-link"></i></a></h4>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="370ef5ecf0484842cd138f2134f22f4fd6888a2c"
+            data-copy-element-id="6831c46d39dc534da74ca67ec9a7ea5a9fd2bd23"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="370ef5ecf0484842cd138f2134f22f4fd6888a2c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPropertyAnnotation</span><span class="hljs-params">(\ReflectionProperty $property, $annotationName)</span></span>;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="6831c46d39dc534da74ca67ec9a7ea5a9fd2bd23"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="1"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPropertyAnnotation</span><span class="hljs-params">(\ReflectionProperty $property, $annotationName)</span></span>;</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

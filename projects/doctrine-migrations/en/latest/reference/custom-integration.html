@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -257,51 +257,91 @@ you can always setup your own custom integration.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="ff471b4f345e48b34e751a32667e48fe24afe4e0"
+            data-copy-element-id="ca6de6824df44fbd114c0b22078818711155bfb3"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="ff471b4f345e48b34e751a32667e48fe24afe4e0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-comment">#!/usr/bin/env php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">'/vendor/autoload.php'</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Helper</span>\<span class="hljs-title">ConnectionHelper</span>;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Command</span>;
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Application</span>;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Helper</span>\<span class="hljs-title">HelperSet</span>;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Helper</span>\<span class="hljs-title">QuestionHelper</span>;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$dbParams = [
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-string">'dbname'</span> =&gt; <span class="hljs-string">'migrations_test'</span>,
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-string">'user'</span> =&gt; <span class="hljs-string">'root'</span>,
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">''</span>,
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-string">'host'</span> =&gt; <span class="hljs-string">'localhost'</span>,
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-string">'driver'</span> =&gt; <span class="hljs-string">'pdo_mysql'</span>,
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">];
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">$connection = DriverManager::getConnection($dbParams);
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">$helperSet = <span class="hljs-keyword">new</span> HelperSet();
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">$helperSet-&gt;set(<span class="hljs-keyword">new</span> QuestionHelper(), <span class="hljs-string">'question'</span>);
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">$helperSet-&gt;set(<span class="hljs-keyword">new</span> ConnectionHelper($connection), <span class="hljs-string">'db'</span>);
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">$cli = <span class="hljs-keyword">new</span> Application(<span class="hljs-string">'Doctrine Migrations'</span>);
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">$cli-&gt;setCatchExceptions(<span class="hljs-keyword">true</span>);
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">$cli-&gt;setHelperSet($helperSet);
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">$cli-&gt;addCommands(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    <span class="hljs-keyword">new</span> Command\DumpSchemaCommand(),
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">    <span class="hljs-keyword">new</span> Command\ExecuteCommand(),
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    <span class="hljs-keyword">new</span> Command\GenerateCommand(),
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-keyword">new</span> Command\LatestCommand(),
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-keyword">new</span> Command\MigrateCommand(),
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-keyword">new</span> Command\RollupCommand(),
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    <span class="hljs-keyword">new</span> Command\StatusCommand(),
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    <span class="hljs-keyword">new</span> Command\VersionCommand()
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">));
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">$cli-&gt;run();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ca6de6824df44fbd114c0b22078818711155bfb3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="42"><span class="hljs-comment">#!/usr/bin/env php</span>
+<span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">'/vendor/autoload.php'</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Helper</span>\<span class="hljs-title">ConnectionHelper</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">Tools</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Command</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Application</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Helper</span>\<span class="hljs-title">HelperSet</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Helper</span>\<span class="hljs-title">QuestionHelper</span>;
+
+$dbParams = [
+    <span class="hljs-string">'dbname'</span> =&gt; <span class="hljs-string">'migrations_test'</span>,
+    <span class="hljs-string">'user'</span> =&gt; <span class="hljs-string">'root'</span>,
+    <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">''</span>,
+    <span class="hljs-string">'host'</span> =&gt; <span class="hljs-string">'localhost'</span>,
+    <span class="hljs-string">'driver'</span> =&gt; <span class="hljs-string">'pdo_mysql'</span>,
+];
+
+$connection = DriverManager::getConnection($dbParams);
+
+$helperSet = <span class="hljs-keyword">new</span> HelperSet();
+$helperSet-&gt;set(<span class="hljs-keyword">new</span> QuestionHelper(), <span class="hljs-string">'question'</span>);
+$helperSet-&gt;set(<span class="hljs-keyword">new</span> ConnectionHelper($connection), <span class="hljs-string">'db'</span>);
+
+$cli = <span class="hljs-keyword">new</span> Application(<span class="hljs-string">'Doctrine Migrations'</span>);
+$cli-&gt;setCatchExceptions(<span class="hljs-keyword">true</span>);
+$cli-&gt;setHelperSet($helperSet);
+
+$cli-&gt;addCommands(<span class="hljs-keyword">array</span>(
+    <span class="hljs-keyword">new</span> Command\DumpSchemaCommand(),
+    <span class="hljs-keyword">new</span> Command\ExecuteCommand(),
+    <span class="hljs-keyword">new</span> Command\GenerateCommand(),
+    <span class="hljs-keyword">new</span> Command\LatestCommand(),
+    <span class="hljs-keyword">new</span> Command\MigrateCommand(),
+    <span class="hljs-keyword">new</span> Command\RollupCommand(),
+    <span class="hljs-keyword">new</span> Command\StatusCommand(),
+    <span class="hljs-keyword">new</span> Command\VersionCommand()
+));
+
+$cli-&gt;run();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr></table></div></code></pre>
 <p>Now you can execute the migrations console application like this:</p>
 <div class="console"><pre><code class="console"><span class="noselect">$ </span>./migrations</code></pre></div>
 <p></p>

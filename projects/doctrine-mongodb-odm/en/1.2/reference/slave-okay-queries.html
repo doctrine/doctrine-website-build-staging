@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -263,17 +263,23 @@ instead.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="1bee72c265b528b3f67e79cc68e1745059b93aae"
+            data-copy-element-id="40fb99f2726975d2ad097c78092dfcf6e64bce58"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="1bee72c265b528b3f67e79cc68e1745059b93aae"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span>(slaveOkay=true) */</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="40fb99f2726975d2ad097c78092dfcf6e64bce58"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@Document</span>(slaveOkay=true) */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> */</span>
+    <span class="hljs-keyword">private</span> $id;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <p>Now all reads involving the <code>User</code> document will be sent to a slave.</p>
 <a class="section-anchor" id="queries" name="queries"></a><h2 class="section-header"><a href="#queries">Queries<i class="fas fa-link"></i></a></h2>
 <p>If you want to instruct individual queries to read from a slave you can use the <code>slaveOkay()</code> method
@@ -281,49 +287,69 @@ on the query builder.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="79cd486569da2c25a3a17caf70fd9df644c9247d"
+            data-copy-element-id="288369f1b2b88338ad4a141d8b6448a4862fa10c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="79cd486569da2c25a3a17caf70fd9df644c9247d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;slaveOkay(<span class="hljs-keyword">true</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $qb-&gt;getQuery();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$users = $query-&gt;execute();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="288369f1b2b88338ad4a141d8b6448a4862fa10c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+
+$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+    -&gt;slaveOkay(<span class="hljs-keyword">true</span>);
+$query = $qb-&gt;getQuery();
+$users = $query-&gt;execute();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>The data in the query above will be read from a slave. Even if you have a <code>@ReferenceOne</code> or<br /><code>@ReferenceMany</code> resulting from the query above it will be initialized and loaded from a slave.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="82eb2513f7d341252d89094115229488efe504bf"
+            data-copy-element-id="b669db51550c37a29f104aea4ae83eefeb5cd7d2"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="82eb2513f7d341252d89094115229488efe504bf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceMany</span>(targetDocument="Account") */</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $accounts;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b669db51550c37a29f104aea4ae83eefeb5cd7d2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@Document</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ReferenceMany</span>(targetDocument="Account") */</span>
+    <span class="hljs-keyword">private</span> $accounts;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <p>Now when you query and iterate over the accounts, they will be loaded from a slave:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="49c1358edb3a0b5bceadb69d28f04c04ffdbe9f1"
+            data-copy-element-id="b474381c8743af83e97d76cf46e6ebc7c3cb3673"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="49c1358edb3a0b5bceadb69d28f04c04ffdbe9f1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    -&gt;slaveOkay(<span class="hljs-keyword">true</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$query = $qb-&gt;getQuery();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$users = $query-&gt;execute();
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($users <span class="hljs-keyword">as</span> $user) {
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">foreach</span> ($user-&gt;getAccounts() <span class="hljs-keyword">as</span> $account) {
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">echo</span> $account-&gt;getName();
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b474381c8743af83e97d76cf46e6ebc7c3cb3673"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+
+$qb = $dm-&gt;createQueryBuilder(<span class="hljs-string">'User'</span>)
+    -&gt;slaveOkay(<span class="hljs-keyword">true</span>);
+$query = $qb-&gt;getQuery();
+$users = $query-&gt;execute();
+
+<span class="hljs-keyword">foreach</span> ($users <span class="hljs-keyword">as</span> $user) {
+    <span class="hljs-keyword">foreach</span> ($user-&gt;getAccounts() <span class="hljs-keyword">as</span> $account) {
+        <span class="hljs-keyword">echo</span> $account-&gt;getName();
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -292,66 +292,121 @@ added on the <code>Entry</code> object.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="04fb03a322d04fc17d923bdc4f601a91912803c7"
+            data-copy-element-id="84fcb0f923d2336ba62304e5f820b194e5c83f4e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="04fb03a322d04fc17d923bdc4f601a91912803c7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Bank</span>\<span class="hljs-title">Entities</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Annotation</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @ORM\Entity
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span></span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Id <span class="hljs-doctag">@ORM</span>\GeneratedValue <span class="hljs-doctag">@ORM</span>\Column(type="integer") */</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="string", unique=true) */</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">private</span> $no;
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\OneToMany(targetEntity="Entry", mappedBy="account", cascade={"persist"}) */</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">private</span> $entries;
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="integer") */</span>
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">private</span> $maxCredit = <span class="hljs-number">0</span>;
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($no, $maxCredit = <span class="hljs-number">0</span>)</span></span>
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;no = $no;
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;maxCredit = $maxCredit;
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;entries = <span class="hljs-keyword">new</span> \Doctrine\Common\Collections\ArrayCollection();
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"> * @ORM\Entity
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Entry</span></span>
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Id <span class="hljs-doctag">@ORM</span>\GeneratedValue <span class="hljs-doctag">@ORM</span>\Column(type="integer") */</span>
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\ManyToOne(targetEntity="Account", inversedBy="entries") */</span>
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-keyword">private</span> $account;
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="integer") */</span>
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    <span class="hljs-keyword">private</span> $amount;
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($account, $amount)</span></span>
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;account = $account;
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;amount = $amount;
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">        <span class="hljs-comment">// more stuff here, from/to whom, stated reason, execution date and such</span>
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAmount</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;amount;
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="84fcb0f923d2336ba62304e5f820b194e5c83f4e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="57"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Bank</span>\<span class="hljs-title">Entities</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Annotation</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@ORM</span>\Entity
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Id <span class="hljs-doctag">@ORM</span>\GeneratedValue <span class="hljs-doctag">@ORM</span>\Column(type="integer") */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="string", unique=true) */</span>
+    <span class="hljs-keyword">private</span> $no;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\OneToMany(targetEntity="Entry", mappedBy="account", cascade={"persist"}) */</span>
+    <span class="hljs-keyword">private</span> $entries;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="integer") */</span>
+    <span class="hljs-keyword">private</span> $maxCredit = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($no, $maxCredit = <span class="hljs-number">0</span>)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;no = $no;
+        <span class="hljs-keyword">$this</span>-&gt;maxCredit = $maxCredit;
+        <span class="hljs-keyword">$this</span>-&gt;entries = <span class="hljs-keyword">new</span> \Doctrine\Common\Collections\ArrayCollection();
+    }
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@ORM</span>\Entity
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Entry</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Id <span class="hljs-doctag">@ORM</span>\GeneratedValue <span class="hljs-doctag">@ORM</span>\Column(type="integer") */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\ManyToOne(targetEntity="Account", inversedBy="entries") */</span>
+    <span class="hljs-keyword">private</span> $account;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="integer") */</span>
+    <span class="hljs-keyword">private</span> $amount;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($account, $amount)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;account = $account;
+        <span class="hljs-keyword">$this</span>-&gt;amount = $amount;
+        <span class="hljs-comment">// more stuff here, from/to whom, stated reason, execution date and such</span>
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAmount</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;amount;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr></table></div></code></pre>
 <a class="section-anchor" id="using-dql" name="using-dql"></a><h2 class="section-header"><a href="#using-dql">Using DQL<i class="fas fa-link"></i></a></h2>
 <p>The Doctrine Query Language allows you to select for aggregate
 values computed from fields of your Domain Model. You can select
@@ -359,15 +414,19 @@ the current balance of your account by calling:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f08dfa21b6ede4cdb634190e133795019b38f304"
+            data-copy-element-id="e7e691f4fd00cfe868c1341f373043c13793eea1"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f08dfa21b6ede4cdb634190e133795019b38f304"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$dql = <span class="hljs-string">"SELECT SUM(e.amount) AS balance FROM Bank\Entities\Entry e "</span> .
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">       <span class="hljs-string">"WHERE e.account = ?1"</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$balance = $em-&gt;createQuery($dql)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">              -&gt;setParameter(<span class="hljs-number">1</span>, $myAccountId)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">              -&gt;getSingleScalarResult();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="e7e691f4fd00cfe868c1341f373043c13793eea1"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+$dql = <span class="hljs-string">"SELECT SUM(e.amount) AS balance FROM Bank\Entities\Entry e "</span> .
+       <span class="hljs-string">"WHERE e.account = ?1"</span>;
+$balance = $em-&gt;createQuery($dql)
+              -&gt;setParameter(<span class="hljs-number">1</span>, $myAccountId)
+              -&gt;getSingleScalarResult();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>The <code>$em</code> variable in this (and forthcoming) example holds the
 Doctrine <code>EntityManager</code>. We create a query for the SUM of all
 amounts (negative amounts are withdraws) and retrieve them as a
@@ -393,22 +452,33 @@ collection, which means we can compute this value at runtime:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="7c19b10063c243cefb3175ec451e84779b762187"
+            data-copy-element-id="283f50e7241eb7a9bc37553539b5710febace555"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="7c19b10063c243cefb3175ec451e84779b762187"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">// .. previous code</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBalance</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $balance = <span class="hljs-number">0</span>;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">$this</span>-&gt;entries <span class="hljs-keyword">as</span> $entry) {
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            $balance += $entry-&gt;getAmount();
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">return</span> $balance;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="283f50e7241eb7a9bc37553539b5710febace555"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="13"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span>
+</span>{
+    <span class="hljs-comment">// .. previous code</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBalance</span><span class="hljs-params">()</span>
+    </span>{
+        $balance = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">$this</span>-&gt;entries <span class="hljs-keyword">as</span> $entry) {
+            $balance += $entry-&gt;getAmount();
+        }
+        <span class="hljs-keyword">return</span> $balance;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr></table></div></code></pre>
 <p>Now we can always call <code>Account::getBalance()</code> to access the
 current account balance.</p>
 <p>To enforce the max credit rule we have to implement the &quot;Aggregate
@@ -423,71 +493,112 @@ relation with this method:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="bc80fd5946aff2d05fac7f30062602d5efc4a9c4"
+            data-copy-element-id="5ca7a4eae5e92764e0dd69dcc08f76725ad003ff"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="bc80fd5946aff2d05fac7f30062602d5efc4a9c4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addEntry</span><span class="hljs-params">($amount)</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;assertAcceptEntryAllowed($amount);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        $e = <span class="hljs-keyword">new</span> Entry(<span class="hljs-keyword">$this</span>, $amount);
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;entries[] = $e;
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">return</span> $e;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="5ca7a4eae5e92764e0dd69dcc08f76725ad003ff"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addEntry</span><span class="hljs-params">($amount)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;assertAcceptEntryAllowed($amount);
+
+        $e = <span class="hljs-keyword">new</span> Entry(<span class="hljs-keyword">$this</span>, $amount);
+        <span class="hljs-keyword">$this</span>-&gt;entries[] = $e;
+        <span class="hljs-keyword">return</span> $e;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p>Now look at the following test-code for our entities:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="bbf078b0e3323013cf26d6e84c512711f95d4287"
+            data-copy-element-id="034151d961b6044a5ad5524f69921d11d0ab89ae"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="bbf078b0e3323013cf26d6e84c512711f95d4287"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AccountTest</span> <span class="hljs-keyword">extends</span> \<span class="hljs-title">PHPUnit_Framework_TestCase</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testAddEntry</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        $account = <span class="hljs-keyword">new</span> Account(<span class="hljs-string">"123456"</span>, $maxCredit = <span class="hljs-number">200</span>);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">0</span>, $account-&gt;getBalance());
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">        $account-&gt;addEntry(<span class="hljs-number">500</span>);
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">500</span>, $account-&gt;getBalance());
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        $account-&gt;addEntry(<span class="hljs-number">-700</span>);
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">-200</span>, $account-&gt;getBalance());
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testExceedMaxLimit</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        $account = <span class="hljs-keyword">new</span> Account(<span class="hljs-string">"123456"</span>, $maxCredit = <span class="hljs-number">200</span>);
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;setExpectedException(<span class="hljs-string">"Exception"</span>);
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        $account-&gt;addEntry(<span class="hljs-number">-1000</span>);
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="034151d961b6044a5ad5524f69921d11d0ab89ae"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="23"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AccountTest</span> <span class="hljs-keyword">extends</span> \<span class="hljs-title">PHPUnit_Framework_TestCase</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testAddEntry</span><span class="hljs-params">()</span>
+    </span>{
+        $account = <span class="hljs-keyword">new</span> Account(<span class="hljs-string">"123456"</span>, $maxCredit = <span class="hljs-number">200</span>);
+        <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">0</span>, $account-&gt;getBalance());
+
+        $account-&gt;addEntry(<span class="hljs-number">500</span>);
+        <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">500</span>, $account-&gt;getBalance());
+
+        $account-&gt;addEntry(<span class="hljs-number">-700</span>);
+        <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">-200</span>, $account-&gt;getBalance());
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testExceedMaxLimit</span><span class="hljs-params">()</span>
+    </span>{
+        $account = <span class="hljs-keyword">new</span> Account(<span class="hljs-string">"123456"</span>, $maxCredit = <span class="hljs-number">200</span>);
+
+        <span class="hljs-keyword">$this</span>-&gt;setExpectedException(<span class="hljs-string">"Exception"</span>);
+        $account-&gt;addEntry(<span class="hljs-number">-1000</span>);
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr></table></div></code></pre>
 <p>To enforce our rule we can now implement the assertion in
 <code>Account::addEntry</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="a9a1750af4831bc9e6eda953355b8d8ad2bd9da5"
+            data-copy-element-id="b3aaef0ca4b1be7dfe3fa994dee20513f6baf355"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="a9a1750af4831bc9e6eda953355b8d8ad2bd9da5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">assertAcceptEntryAllowed</span><span class="hljs-params">($amount)</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        $futureBalance = <span class="hljs-keyword">$this</span>-&gt;getBalance() + $amount;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        $allowedMinimalBalance = (<span class="hljs-keyword">$this</span>-&gt;maxCredit * <span class="hljs-number">-1</span>);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">        <span class="hljs-keyword">if</span> ($futureBalance &lt; $allowedMinimalBalance) {
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">"Credit Limit exceeded, entry is not allowed!"</span>);
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b3aaef0ca4b1be7dfe3fa994dee20513f6baf355"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span>
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">assertAcceptEntryAllowed</span><span class="hljs-params">($amount)</span>
+    </span>{
+        $futureBalance = <span class="hljs-keyword">$this</span>-&gt;getBalance() + $amount;
+        $allowedMinimalBalance = (<span class="hljs-keyword">$this</span>-&gt;maxCredit * <span class="hljs-number">-1</span>);
+        <span class="hljs-keyword">if</span> ($futureBalance &lt; $allowedMinimalBalance) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">"Credit Limit exceeded, entry is not allowed!"</span>);
+        }
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p>We haven't talked to the entity manager for persistence of our
 account example before. You can call
 <code>EntityManager::persist($account)</code> and then
@@ -497,15 +608,19 @@ flushed to the database also.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="6486b94404422f0c909010cca05783e46463855c"
+            data-copy-element-id="0fdb64d029eaebb80a40e855b38f0e358e94a9c0"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="6486b94404422f0c909010cca05783e46463855c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$account = <span class="hljs-keyword">new</span> Account(<span class="hljs-string">"123456"</span>, <span class="hljs-number">200</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$account-&gt;addEntry(<span class="hljs-number">500</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$account-&gt;addEntry(<span class="hljs-number">-200</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$em-&gt;persist($account);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$em-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0fdb64d029eaebb80a40e855b38f0e358e94a9c0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+$account = <span class="hljs-keyword">new</span> Account(<span class="hljs-string">"123456"</span>, <span class="hljs-number">200</span>);
+$account-&gt;addEntry(<span class="hljs-number">500</span>);
+$account-&gt;addEntry(<span class="hljs-number">-200</span>);
+$em-&gt;persist($account);
+$em-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>The current implementation has a considerable drawback. To get the
 balance, we have to initialize the complete <code>Account::$entries</code>
 collection, possibly a very large one. This can considerably hurt
@@ -518,32 +633,53 @@ entries collection) we want to add an aggregate field called
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="78bd2d39be9e40f5e6f26f291cc1bff97a8b9de0"
+            data-copy-element-id="1fe2c48e6af24b046046745ca926835474fd031c"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="78bd2d39be9e40f5e6f26f291cc1bff97a8b9de0"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">     * @ORM\Column(type=<span class="hljs-string">"integer"</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $balance = <span class="hljs-number">0</span>;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBalance</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;balance;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addEntry</span><span class="hljs-params">($amount)</span></span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;assertAcceptEntryAllowed($amount);
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        $e = <span class="hljs-keyword">new</span> Entry(<span class="hljs-keyword">$this</span>, $amount);
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;entries[] = $e;
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;balance += $amount;
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        <span class="hljs-keyword">return</span> $e;
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="1fe2c48e6af24b046046745ca926835474fd031c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="23"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@ORM</span>\Column(type="integer")
+     */</span>
+    <span class="hljs-keyword">private</span> $balance = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBalance</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;balance;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addEntry</span><span class="hljs-params">($amount)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;assertAcceptEntryAllowed($amount);
+
+        $e = <span class="hljs-keyword">new</span> Entry(<span class="hljs-keyword">$this</span>, $amount);
+        <span class="hljs-keyword">$this</span>-&gt;entries[] = $e;
+        <span class="hljs-keyword">$this</span>-&gt;balance += $amount;
+        <span class="hljs-keyword">return</span> $e;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr></table></div></code></pre>
 <p>This is a very simple change, but all the tests still pass. Our
 account entities return the correct balance. Now calling the
 <code>Account::getBalance()</code> method will not occur the overhead of
@@ -559,21 +695,31 @@ potentially lead to inconsistent state. See this example:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0afe4c5c7a13997616c85b0c0deb1a2735b763fe"
+            data-copy-element-id="0d00f4f29ae1faba8918c2f9dfd6110daa933d57"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0afe4c5c7a13997616c85b0c0deb1a2735b763fe"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// The Account $accId has a balance of 0 and a max credit limit of 200:</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// request 1 account</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$account1 = $em-&gt;find(<span class="hljs-string">'Bank\Entities\Account'</span>, $accId);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-comment">// request 2 account</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$account2 = $em-&gt;find(<span class="hljs-string">'Bank\Entities\Account'</span>, $accId);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">$account1-&gt;addEntry(<span class="hljs-number">-200</span>);
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$account2-&gt;addEntry(<span class="hljs-number">-200</span>);
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-comment">// now request 1 and 2 both flush the changes.</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0d00f4f29ae1faba8918c2f9dfd6110daa933d57"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// The Account $accId has a balance of 0 and a max credit limit of 200:</span>
+<span class="hljs-comment">// request 1 account</span>
+$account1 = $em-&gt;find(<span class="hljs-string">'Bank\Entities\Account'</span>, $accId);
+
+<span class="hljs-comment">// request 2 account</span>
+$account2 = $em-&gt;find(<span class="hljs-string">'Bank\Entities\Account'</span>, $accId);
+
+$account1-&gt;addEntry(<span class="hljs-number">-200</span>);
+$account2-&gt;addEntry(<span class="hljs-number">-200</span>);
+
+<span class="hljs-comment">// now request 1 and 2 both flush the changes.</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p>The aggregate field <code>Account::$balance</code> is now -200, however the
 SUM over all entries amounts yields -400. A violation of our max
 credit rule.</p>
@@ -585,15 +731,19 @@ Eric Evans DDD carefully he mentions that the &quot;Aggregate Root&quot;
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="33270993646c4fec3202a484f4516677a308249d"
+            data-copy-element-id="cad3ab7f6eed0d1e0d1bd363d193ead95ce64fe5"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="33270993646c4fec3202a484f4516677a308249d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="integer") <span class="hljs-doctag">@ORM</span>\Version */</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">private</span> $version;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="cad3ab7f6eed0d1e0d1bd363d193ead95ce64fe5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@ORM</span>\Column(type="integer") <span class="hljs-doctag">@ORM</span>\Version */</span>
+    <span class="hljs-keyword">private</span> $version;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>The previous example would then throw an exception in the face of
 whatever request saves the entity last (and would create the
 inconsistent state).</p>
@@ -603,13 +753,15 @@ the database using a FOR UPDATE.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="5208ec829dc2f1361119f7eac40fb4e417ba8136"
+            data-copy-element-id="cda4609cc2dcfde35f87f2e38f9c5815b71ac343"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="5208ec829dc2f1361119f7eac40fb4e417ba8136"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">LockMode</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$account = $em-&gt;find(<span class="hljs-string">'Bank\Entities\Account'</span>, $accId, LockMode::PESSIMISTIC_READ);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="cda4609cc2dcfde35f87f2e38f9c5815b71ac343"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">LockMode</span>;
+
+$account = $em-&gt;find(<span class="hljs-string">'Bank\Entities\Account'</span>, $accId, LockMode::PESSIMISTIC_READ);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <a class="section-anchor" id="keeping-updates-and-deletes-in-sync" name="keeping-updates-and-deletes-in-sync"></a><h2 class="section-header"><a href="#keeping-updates-and-deletes-in-sync">Keeping Updates and Deletes in Sync<i class="fas fa-link"></i></a></h2>
 <p>The example shown in this article does not allow changes to the
 value in <code>Entry</code>, which considerably simplifies the effort to

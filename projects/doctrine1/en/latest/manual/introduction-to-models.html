@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -300,22 +300,33 @@ sql statement:</p>
 <pre class="code-block-table"><code class="mysql"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4e7a22461013d50ada69122d164eb8160e7afd22"
+            data-copy-element-id="ee006847e71e12ba467eda02e132667ab52670d2"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4e7a22461013d50ada69122d164eb8160e7afd22"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">CREATE TABLE user (
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id BIGINT(20) NOT NULL AUTO_INCREMENT,
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    first_name VARCHAR(255) DEFAULT NULL,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    last_name VARCHAR(255) DEFAULT NULL,
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    username VARCHAR(255) DEFAULT NULL,
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    password VARCHAR(255) DEFAULT NULL,
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    type VARCHAR(255) DEFAULT NULL,
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    is_active TINYINT(1) DEFAULT '1',
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    is_super_admin TINYINT(1) DEFAULT '0',
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    created_at TIMESTAMP,
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    updated_at TIMESTAMP,
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    PRIMARY KEY (id)
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">) ENGINE=InnoDB
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="ee006847e71e12ba467eda02e132667ab52670d2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="13">CREATE TABLE user (
+    id BIGINT(20) NOT NULL AUTO_INCREMENT,
+    first_name VARCHAR(255) DEFAULT NULL,
+    last_name VARCHAR(255) DEFAULT NULL,
+    username VARCHAR(255) DEFAULT NULL,
+    password VARCHAR(255) DEFAULT NULL,
+    type VARCHAR(255) DEFAULT NULL,
+    is_active TINYINT(1) DEFAULT '1',
+    is_super_admin TINYINT(1) DEFAULT '0',
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr></table></div></code></pre>
 <p>Now we would like to convert it into Doctrine_Record class. With
 Doctrine this is easy! Remember our test script we created in the
 <a href="getting-started.html">Getting Started</a> chapter? We're going to use that generate our models.</p>
@@ -540,33 +551,55 @@ the <code>doctrine_test</code> directory. It should look like the following:</p>
 <pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="049a8a95b7adca1bfdd97ae8f09c551733772dba"
+            data-copy-element-id="28d563c717a3d2825f820c67cd335cca00b4c377"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="049a8a95b7adca1bfdd97ae8f09c551733772dba"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">User:</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">tableName:</span> <span class="hljs-string">user</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">columns:</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  id:</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">integer(8)</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    primary:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">    autoincrement:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">  is_active:</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">integer(1)</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">    default:</span> <span class="hljs-string">'1'</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">  is_super_admin:</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">integer(1)</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">    default:</span> <span class="hljs-string">'0'</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">  created_at:</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">timestamp(25)</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line"><span class="hljs-attr">    notnull:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line"><span class="hljs-attr">  updated_at:</span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">timestamp(25)</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-attr">    notnull:</span> <span class="hljs-literal">true</span>
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line"><span class="hljs-attr">  first_name:</span> <span class="hljs-string">string(255)</span>
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line"><span class="hljs-attr">  last_name:</span> <span class="hljs-string">string(255)</span>
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line"><span class="hljs-attr">  username:</span> <span class="hljs-string">string(255)</span>
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line"><span class="hljs-attr">  password:</span> <span class="hljs-string">string(255)</span>
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">string(255)</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="28d563c717a3d2825f820c67cd335cca00b4c377"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="24"><span class="hljs-attr">User:</span>
+<span class="hljs-attr">tableName:</span> <span class="hljs-string">user</span>
+<span class="hljs-attr">columns:</span>
+<span class="hljs-attr">  id:</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">integer(8)</span>
+<span class="hljs-attr">    primary:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">    autoincrement:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">  is_active:</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">integer(1)</span>
+<span class="hljs-attr">    default:</span> <span class="hljs-string">'1'</span>
+<span class="hljs-attr">  is_super_admin:</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">integer(1)</span>
+<span class="hljs-attr">    default:</span> <span class="hljs-string">'0'</span>
+<span class="hljs-attr">  created_at:</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">timestamp(25)</span>
+<span class="hljs-attr">    notnull:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">  updated_at:</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">timestamp(25)</span>
+<span class="hljs-attr">    notnull:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">  first_name:</span> <span class="hljs-string">string(255)</span>
+<span class="hljs-attr">  last_name:</span> <span class="hljs-string">string(255)</span>
+<span class="hljs-attr">  username:</span> <span class="hljs-string">string(255)</span>
+<span class="hljs-attr">  password:</span> <span class="hljs-string">string(255)</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">string(255)</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr></table></div></code></pre>
 <p>So now that we have a valid YAML schema file, we can now maintain our schema
 from here and generate the PHP classes from here. Lets create a new php script
 called <code>generate.php</code>. This script will re-generate everything and make sure
@@ -588,23 +621,35 @@ advantage of some of the power of Doctrine:</p>
 <pre class="code-block-table"><code class="yaml"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="17c72f3745c966a1458441a4578482885692d388"
+            data-copy-element-id="bad37b2c011caace21d94a4cd992688de0295afd"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="17c72f3745c966a1458441a4578482885692d388"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-attr">User:</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-attr">actAs:</span> <span class="hljs-string">[Timestampable]</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-attr">columns:</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-attr">  is_active:</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">integer(1)</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-attr">    default:</span> <span class="hljs-string">'1'</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-attr">  is_super_admin:</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"><span class="hljs-attr">    type:</span> <span class="hljs-string">integer(1)</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-attr">    default:</span> <span class="hljs-string">'0'</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-attr">  first_name:</span> <span class="hljs-string">string(255)</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-attr">  last_name:</span> <span class="hljs-string">string(255)</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line"><span class="hljs-attr">  username:</span> <span class="hljs-string">string(255)</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-attr">  password:</span> <span class="hljs-string">string(255)</span>
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line"><span class="hljs-attr">  type:</span> <span class="hljs-string">string(255)</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="bad37b2c011caace21d94a4cd992688de0295afd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="14"><span class="hljs-attr">User:</span>
+<span class="hljs-attr">actAs:</span> <span class="hljs-string">[Timestampable]</span>
+<span class="hljs-attr">columns:</span>
+<span class="hljs-attr">  is_active:</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">integer(1)</span>
+<span class="hljs-attr">    default:</span> <span class="hljs-string">'1'</span>
+<span class="hljs-attr">  is_super_admin:</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">integer(1)</span>
+<span class="hljs-attr">    default:</span> <span class="hljs-string">'0'</span>
+<span class="hljs-attr">  first_name:</span> <span class="hljs-string">string(255)</span>
+<span class="hljs-attr">  last_name:</span> <span class="hljs-string">string(255)</span>
+<span class="hljs-attr">  username:</span> <span class="hljs-string">string(255)</span>
+<span class="hljs-attr">  password:</span> <span class="hljs-string">string(255)</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">string(255)</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr></table></div></code></pre>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p><strong>Notice some of the changes we made:</strong></p>
 <ol><li>Removed the explicit <code>tableName</code> definition as it will default to user.</li>
 <li>Attached the <code>Timestampable</code> behavior.</li>

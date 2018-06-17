@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -252,16 +252,21 @@ design document in the database:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c96297e2ed1341b51e1186e0943c340a26e534bf"
+            data-copy-element-id="a0905034d3f05eac54add3cebb1a526438038a35"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c96297e2ed1341b51e1186e0943c340a26e534bf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">CouchDB</span>\<span class="hljs-title">View</span>\<span class="hljs-title">FolderDesignDocument</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$view = <span class="hljs-keyword">new</span> FolderDesignDocument(<span class="hljs-string">"path/to/app/couchdb"</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$designDocJson = $view-&gt;getData();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$couchClient-&gt;createDesignDocument(<span class="hljs-string">"myapp"</span>, $view);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="a0905034d3f05eac54add3cebb1a526438038a35"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">CouchDB</span>\<span class="hljs-title">View</span>\<span class="hljs-title">FolderDesignDocument</span>;
+
+$view = <span class="hljs-keyword">new</span> FolderDesignDocument(<span class="hljs-string">"path/to/app/couchdb"</span>);
+$designDocJson = $view-&gt;getData();
+
+$couchClient-&gt;createDesignDocument(<span class="hljs-string">"myapp"</span>, $view);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>If the directory structure now looked like the following:</p>
 
 <pre><code class="">couchdb/
@@ -278,31 +283,40 @@ the username map.js might look like:</p>
 <pre class="code-block-table"><code class="javascript"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="941cc888f3d0001f878e08858172b6adf35752b7"
+            data-copy-element-id="0f8c1abf05d6fc96fb283adfe669ec0af5fd77ee"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="941cc888f3d0001f878e08858172b6adf35752b7"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">doc</span>) </span>{
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    <span class="hljs-keyword">if</span> (doc.type == <span class="hljs-string">'Doctrine.Tests.Models.CMS.CmsUser'</span>) {
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">        emit(doc.username, doc._id);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0f8c1abf05d6fc96fb283adfe669ec0af5fd77ee"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="5"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">doc</span>) </span>{
+    <span class="hljs-keyword">if</span> (doc.type == <span class="hljs-string">'Doctrine.Tests.Models.CMS.CmsUser'</span>) {
+        emit(doc.username, doc._id);
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr></table></div></code></pre>
 <a class="section-anchor" id="querying-views" name="querying-views"></a><h2 class="section-header"><a href="#querying-views">Querying Views<i class="fas fa-link"></i></a></h2>
 <p>To query a view from Doctrine CouchDB ODM you have to register it with its design document name
 in the CouchDB ODM Configuration:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="fb9f2f143f379f3afbdb3162470375073e10a8f5"
+            data-copy-element-id="48e7ed0e41aeca6398e1f67ad9e715c71ceda279"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="fb9f2f143f379f3afbdb3162470375073e10a8f5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$config = $dm-&gt;getConfiguration();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$config-&gt;addDesignDocument(
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-string">"myapp"</span>, 
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-string">"Doctrine\CouchDB\View\FolderDesignDocument"</span>,
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-string">"path/to/app/couchdb"</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="48e7ed0e41aeca6398e1f67ad9e715c71ceda279"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-meta">&lt;?php</span>
+
+$config = $dm-&gt;getConfiguration();
+$config-&gt;addDesignDocument(
+    <span class="hljs-string">"myapp"</span>, 
+    <span class="hljs-string">"Doctrine\CouchDB\View\FolderDesignDocument"</span>,
+    <span class="hljs-string">"path/to/app/couchdb"</span>
+);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <p>You can then create either a native or a odm-query by calling
 either <code>DocumentManager#createNativeQuery($designDocName, $viewName)</code> or
 <code>DocumentManager#createQuery($designDocName, $viewName)</code>.</p>
@@ -314,189 +328,338 @@ the CouchDB.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="2ee1ae404ad9b88e531a1fc1a08d76dfa3db3cef"
+            data-copy-element-id="24b0ea36fd1d28b6d93d75c7186ef17f80a236bc"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="2ee1ae404ad9b88e531a1fc1a08d76dfa3db3cef"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">CouchDB</span>\<span class="hljs-title">View</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractQuery</span></span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * Get HTTP Query Parameter 
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @param  string $key
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @<span class="hljs-keyword">return</span> mixed
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getParameter</span><span class="hljs-params">($key)</span></span>;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     * Query the view with the current params.
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Doctrine\CouchDB\View\Result
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">execute</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     * Create design document <span class="hljs-keyword">for</span> this query.
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     * Method is used internally when querying the view <span class="hljs-keyword">and</span> it doesnt exist yet.
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     * @<span class="hljs-keyword">return</span> void
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createDesignDocument</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="24b0ea36fd1d28b6d93d75c7186ef17f80a236bc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="30"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">CouchDB</span>\<span class="hljs-title">View</span>;
+
+<span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractQuery</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Get HTTP Query Parameter 
+     *
+     * <span class="hljs-doctag">@param</span>  string $key
+     * <span class="hljs-doctag">@return</span> mixed
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getParameter</span><span class="hljs-params">($key)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Query the view with the current params.
+     *
+     * <span class="hljs-doctag">@return</span> Doctrine\CouchDB\View\Result
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">execute</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Create design document for this query.
+     *
+     * Method is used internally when querying the view and it doesnt exist yet.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createDesignDocument</span><span class="hljs-params">()</span></span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr></table></div></code></pre>
 <p>With both query types you just call execute() to retrieve the result from the database.</p>
 <p>The following query parameter related methods exist in both the native and odm-query:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="e1c1aca6cf62e425cdfa280a97b49f3788fe105b"
+            data-copy-element-id="684d9e762e3e421e34cec005d1f1e15e756ae2d3"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="e1c1aca6cf62e425cdfa280a97b49f3788fe105b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">CouchDB</span>\<span class="hljs-title">View</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Query</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractQuery</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     * Find key in view.
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * @param  string $val
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setKey</span><span class="hljs-params">($val)</span></span>;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     * Set starting key to query view <span class="hljs-keyword">for</span>.
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     * @param  string $val
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStartKey</span><span class="hljs-params">($val)</span></span>;
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     * Set ending key to query view <span class="hljs-keyword">for</span>.
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     * @param  string $val
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setEndKey</span><span class="hljs-params">($val)</span></span>;
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">     * Document id to start with
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">     * @param  string $val
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStartKeyDocId</span><span class="hljs-params">($val)</span></span>;
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">     * Last document id to <span class="hljs-keyword">include</span> in the output
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">     * @param  string $val
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setEndKeyDocId</span><span class="hljs-params">($val)</span></span>;
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">     * Limit the number of documents in the output
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">     * @param  int $val
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setLimit</span><span class="hljs-params">($val)</span></span>;
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">     * Skip n number of documents
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">     * @param  int $val
-</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">59</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">60</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSkip</span><span class="hljs-params">($val)</span></span>;
-</td></tr><tr><td class="line-number noselect">61</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">62</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">63</td><td class="code-line">     * <span class="hljs-keyword">If</span> stale=ok is set CouchDB will not refresh the view even <span class="hljs-keyword">if</span> it is stalled.
-</td></tr><tr><td class="line-number noselect">64</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">65</td><td class="code-line">     * @param  bool $flag
-</td></tr><tr><td class="line-number noselect">66</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">67</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">68</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStale</span><span class="hljs-params">($flag)</span></span>;
-</td></tr><tr><td class="line-number noselect">69</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">70</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">71</td><td class="code-line">     * reverse the output
-</td></tr><tr><td class="line-number noselect">72</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">73</td><td class="code-line">     * @param  bool $flag
-</td></tr><tr><td class="line-number noselect">74</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">75</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">76</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setDescending</span><span class="hljs-params">($flag)</span></span>;
-</td></tr><tr><td class="line-number noselect">77</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">78</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">79</td><td class="code-line">     * The group option controls whether the reduce <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reduces</span> <span class="hljs-title">to</span> <span class="hljs-title">a</span> <span class="hljs-title">set</span> <span class="hljs-title">of</span> <span class="hljs-title">distinct</span> <span class="hljs-title">keys</span> <span class="hljs-title">or</span> <span class="hljs-title">to</span> <span class="hljs-title">a</span> <span class="hljs-title">single</span> <span class="hljs-title">result</span> <span class="hljs-title">row</span>.</span>
-</td></tr><tr><td class="line-number noselect">80</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">81</td><td class="code-line">     * @param  bool $flag
-</td></tr><tr><td class="line-number noselect">82</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">83</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">84</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setGroup</span><span class="hljs-params">($flag)</span></span>;
-</td></tr><tr><td class="line-number noselect">85</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">86</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setGroupLevel</span><span class="hljs-params">($level)</span></span>;
-</td></tr><tr><td class="line-number noselect">87</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">88</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">89</td><td class="code-line">     * <span class="hljs-keyword">Use</span> <span class="hljs-title">the</span> <span class="hljs-title">reduce</span> <span class="hljs-title">function</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">view</span>. <span class="hljs-title">It</span> <span class="hljs-title">defaults</span> <span class="hljs-title">to</span> <span class="hljs-title">true</span>, <span class="hljs-title">if</span> <span class="hljs-title">a</span> <span class="hljs-title">reduce</span> <span class="hljs-title">function</span> <span class="hljs-title">is</span> <span class="hljs-title">defined</span> <span class="hljs-title">and</span> <span class="hljs-title">to</span> <span class="hljs-title">false</span> <span class="hljs-title">otherwise</span>.
-</td></tr><tr><td class="line-number noselect">90</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">91</td><td class="code-line">     * @param  bool $flag
-</td></tr><tr><td class="line-number noselect">92</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">93</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">94</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setReduce</span><span class="hljs-params">($flag)</span></span>;
-</td></tr><tr><td class="line-number noselect">95</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">96</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">97</td><td class="code-line">     * Controls whether the endkey is included in the result. It defaults to <span class="hljs-keyword">true</span>.
-</td></tr><tr><td class="line-number noselect">98</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">99</td><td class="code-line">     * @param  bool $flag
-</td></tr><tr><td class="line-number noselect">100</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">101</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">102</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setInclusiveEnd</span><span class="hljs-params">($flag)</span></span>;
-</td></tr><tr><td class="line-number noselect">103</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">104</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">105</td><td class="code-line">     * Automatically fetch <span class="hljs-keyword">and</span> <span class="hljs-keyword">include</span> the document which emitted each view entry
-</td></tr><tr><td class="line-number noselect">106</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">107</td><td class="code-line">     * @param  bool $flag
-</td></tr><tr><td class="line-number noselect">108</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Query
-</td></tr><tr><td class="line-number noselect">109</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">110</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setIncludeDocs</span><span class="hljs-params">($flag)</span></span>;
-</td></tr><tr><td class="line-number noselect">111</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="684d9e762e3e421e34cec005d1f1e15e756ae2d3"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="111"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">CouchDB</span>\<span class="hljs-title">View</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Query</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractQuery</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Find key in view.
+     *
+     * <span class="hljs-doctag">@param</span>  string $val
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setKey</span><span class="hljs-params">($val)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Set starting key to query view for.
+     *
+     * <span class="hljs-doctag">@param</span>  string $val
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStartKey</span><span class="hljs-params">($val)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Set ending key to query view for.
+     *
+     * <span class="hljs-doctag">@param</span>  string $val
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setEndKey</span><span class="hljs-params">($val)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Document id to start with
+     *
+     * <span class="hljs-doctag">@param</span>  string $val
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStartKeyDocId</span><span class="hljs-params">($val)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Last document id to include in the output
+     *
+     * <span class="hljs-doctag">@param</span>  string $val
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setEndKeyDocId</span><span class="hljs-params">($val)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Limit the number of documents in the output
+     *
+     * <span class="hljs-doctag">@param</span>  int $val
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setLimit</span><span class="hljs-params">($val)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Skip n number of documents
+     *
+     * <span class="hljs-doctag">@param</span>  int $val
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSkip</span><span class="hljs-params">($val)</span></span>;
+
+    <span class="hljs-comment">/**
+     * If stale=ok is set CouchDB will not refresh the view even if it is stalled.
+     *
+     * <span class="hljs-doctag">@param</span>  bool $flag
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setStale</span><span class="hljs-params">($flag)</span></span>;
+
+    <span class="hljs-comment">/**
+     * reverse the output
+     *
+     * <span class="hljs-doctag">@param</span>  bool $flag
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setDescending</span><span class="hljs-params">($flag)</span></span>;
+
+    <span class="hljs-comment">/**
+     * The group option controls whether the reduce function reduces to a set of distinct keys or to a single result row.
+     *
+     * <span class="hljs-doctag">@param</span>  bool $flag
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setGroup</span><span class="hljs-params">($flag)</span></span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setGroupLevel</span><span class="hljs-params">($level)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Use the reduce function of the view. It defaults to true, if a reduce function is defined and to false otherwise.
+     *
+     * <span class="hljs-doctag">@param</span>  bool $flag
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setReduce</span><span class="hljs-params">($flag)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Controls whether the endkey is included in the result. It defaults to true.
+     *
+     * <span class="hljs-doctag">@param</span>  bool $flag
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setInclusiveEnd</span><span class="hljs-params">($flag)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Automatically fetch and include the document which emitted each view entry
+     *
+     * <span class="hljs-doctag">@param</span>  bool $flag
+     * <span class="hljs-doctag">@return</span> Query
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setIncludeDocs</span><span class="hljs-params">($flag)</span></span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr>
+<tr><td class="line-number noselect">58</td></tr>
+<tr><td class="line-number noselect">59</td></tr>
+<tr><td class="line-number noselect">60</td></tr>
+<tr><td class="line-number noselect">61</td></tr>
+<tr><td class="line-number noselect">62</td></tr>
+<tr><td class="line-number noselect">63</td></tr>
+<tr><td class="line-number noselect">64</td></tr>
+<tr><td class="line-number noselect">65</td></tr>
+<tr><td class="line-number noselect">66</td></tr>
+<tr><td class="line-number noselect">67</td></tr>
+<tr><td class="line-number noselect">68</td></tr>
+<tr><td class="line-number noselect">69</td></tr>
+<tr><td class="line-number noselect">70</td></tr>
+<tr><td class="line-number noselect">71</td></tr>
+<tr><td class="line-number noselect">72</td></tr>
+<tr><td class="line-number noselect">73</td></tr>
+<tr><td class="line-number noselect">74</td></tr>
+<tr><td class="line-number noselect">75</td></tr>
+<tr><td class="line-number noselect">76</td></tr>
+<tr><td class="line-number noselect">77</td></tr>
+<tr><td class="line-number noselect">78</td></tr>
+<tr><td class="line-number noselect">79</td></tr>
+<tr><td class="line-number noselect">80</td></tr>
+<tr><td class="line-number noselect">81</td></tr>
+<tr><td class="line-number noselect">82</td></tr>
+<tr><td class="line-number noselect">83</td></tr>
+<tr><td class="line-number noselect">84</td></tr>
+<tr><td class="line-number noselect">85</td></tr>
+<tr><td class="line-number noselect">86</td></tr>
+<tr><td class="line-number noselect">87</td></tr>
+<tr><td class="line-number noselect">88</td></tr>
+<tr><td class="line-number noselect">89</td></tr>
+<tr><td class="line-number noselect">90</td></tr>
+<tr><td class="line-number noselect">91</td></tr>
+<tr><td class="line-number noselect">92</td></tr>
+<tr><td class="line-number noselect">93</td></tr>
+<tr><td class="line-number noselect">94</td></tr>
+<tr><td class="line-number noselect">95</td></tr>
+<tr><td class="line-number noselect">96</td></tr>
+<tr><td class="line-number noselect">97</td></tr>
+<tr><td class="line-number noselect">98</td></tr>
+<tr><td class="line-number noselect">99</td></tr>
+<tr><td class="line-number noselect">100</td></tr>
+<tr><td class="line-number noselect">101</td></tr>
+<tr><td class="line-number noselect">102</td></tr>
+<tr><td class="line-number noselect">103</td></tr>
+<tr><td class="line-number noselect">104</td></tr>
+<tr><td class="line-number noselect">105</td></tr>
+<tr><td class="line-number noselect">106</td></tr>
+<tr><td class="line-number noselect">107</td></tr>
+<tr><td class="line-number noselect">108</td></tr>
+<tr><td class="line-number noselect">109</td></tr>
+<tr><td class="line-number noselect">110</td></tr>
+<tr><td class="line-number noselect">111</td></tr></table></div></code></pre>
 <p>There is a single additional method on the ODM Query that specifies if
 you just want to return the documents associated with a view result:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="7387fdc19a0fcdaaa72fcc579b78013424b062bd"
+            data-copy-element-id="91968b8d2ce5e55e4102772c791a8016966d8df6"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="7387fdc19a0fcdaaa72fcc579b78013424b062bd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">CouchDB</span>\<span class="hljs-title">View</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ODMQuery</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Query</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onlyDocs</span><span class="hljs-params">($flag)</span></span>;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="91968b8d2ce5e55e4102772c791a8016966d8df6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ODM</span>\<span class="hljs-title">CouchDB</span>\<span class="hljs-title">View</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ODMQuery</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Query</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onlyDocs</span><span class="hljs-params">($flag)</span></span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>An example execution of the username view given above looks like:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="3da88084fd7bd2c6b301484b4c548560ad8d3a8d"
+            data-copy-element-id="d455d76ca125a0c0101541a7fe05177402ad2719"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="3da88084fd7bd2c6b301484b4c548560ad8d3a8d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query = $dm-&gt;createQuery(<span class="hljs-string">"myapp"</span>, <span class="hljs-string">"username"</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$result = $query-&gt;setStartKey(<span class="hljs-string">"b"</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">      -&gt;setEndKey(<span class="hljs-string">"c"</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">      -&gt;setLimit(<span class="hljs-number">100</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">      -&gt;setSkip(<span class="hljs-number">20</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">      -&gt;onlyDocs(<span class="hljs-keyword">true</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">      -&gt;execute();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d455d76ca125a0c0101541a7fe05177402ad2719"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="9"><span class="hljs-meta">&lt;?php</span>
+
+$query = $dm-&gt;createQuery(<span class="hljs-string">"myapp"</span>, <span class="hljs-string">"username"</span>);
+$result = $query-&gt;setStartKey(<span class="hljs-string">"b"</span>)
+      -&gt;setEndKey(<span class="hljs-string">"c"</span>)
+      -&gt;setLimit(<span class="hljs-number">100</span>)
+      -&gt;setSkip(<span class="hljs-number">20</span>)
+      -&gt;onlyDocs(<span class="hljs-keyword">true</span>)
+      -&gt;execute();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr></table></div></code></pre>
 <p>This will return all usernames starting with &quot;b&quot; and ending with &quot;c&quot;,
 skipping the first 20 results and limiting the result to 100 documents.</p>
 <a class="section-anchor" id="view-results" name="view-results"></a><h2 class="section-header"><a href="#view-results">View Results<i class="fas fa-link"></i></a></h2>
@@ -509,29 +672,47 @@ of the query.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="362a6d118740cc6867a5593f769228414bac254f"
+            data-copy-element-id="55063ab05c9d0609ba4b1a97f340859208327bbd"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="362a6d118740cc6867a5593f769228414bac254f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$query = $dm-&gt;createQuery(<span class="hljs-string">"myapp"</span>, <span class="hljs-string">"username"</span>);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$result = $query-&gt;setStartKey(<span class="hljs-string">"b"</span>)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">      -&gt;setEndKey(<span class="hljs-string">"c"</span>)
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">      -&gt;setLimit(<span class="hljs-number">100</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">      -&gt;setSkip(<span class="hljs-number">20</span>)
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">      -&gt;onlyDocs(<span class="hljs-keyword">true</span>)
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">      -&gt;execute();
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($result <span class="hljs-keyword">AS</span> $user) {
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-keyword">echo</span> $user-&gt;getUsername() . <span class="hljs-string">"\n"</span>;
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$query-&gt;onlyDocs(<span class="hljs-keyword">false</span>);
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">$result = $query-&gt;execute();
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($result <span class="hljs-keyword">AS</span> $userRow) {
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">echo</span> $userRow[<span class="hljs-string">'doc'</span>]-&gt;getUsername() . <span class="hljs-string">"\n"</span>;
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="55063ab05c9d0609ba4b1a97f340859208327bbd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="20"><span class="hljs-meta">&lt;?php</span>
+
+$query = $dm-&gt;createQuery(<span class="hljs-string">"myapp"</span>, <span class="hljs-string">"username"</span>);
+$result = $query-&gt;setStartKey(<span class="hljs-string">"b"</span>)
+      -&gt;setEndKey(<span class="hljs-string">"c"</span>)
+      -&gt;setLimit(<span class="hljs-number">100</span>)
+      -&gt;setSkip(<span class="hljs-number">20</span>)
+      -&gt;onlyDocs(<span class="hljs-keyword">true</span>)
+      -&gt;execute();
+
+<span class="hljs-keyword">foreach</span> ($result <span class="hljs-keyword">AS</span> $user) {
+    <span class="hljs-keyword">echo</span> $user-&gt;getUsername() . <span class="hljs-string">"\n"</span>;
+}
+
+$query-&gt;onlyDocs(<span class="hljs-keyword">false</span>);
+$result = $query-&gt;execute();
+
+<span class="hljs-keyword">foreach</span> ($result <span class="hljs-keyword">AS</span> $userRow) {
+    <span class="hljs-keyword">echo</span> $userRow[<span class="hljs-string">'doc'</span>]-&gt;getUsername() . <span class="hljs-string">"\n"</span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr></table></div></code></pre>
 <p></p>
                                             </div>
                 </div>

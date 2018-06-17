@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -262,30 +262,40 @@ with the <code>upsert</code> flag internally instead of a <code>batchInsert</cod
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8926ffb4faec090f5a3d10e234bbd141742c8757"
+            data-copy-element-id="6273b1a3580fd8a38ebd271655ed8575b726fac8"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8926ffb4faec090f5a3d10e234bbd141742c8757"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$article = <span class="hljs-keyword">new</span> Article();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$article-&gt;setId($articleId);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$article-&gt;incrementNumViews();
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$dm-&gt;persist($article);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$dm-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="6273b1a3580fd8a38ebd271655ed8575b726fac8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+
+$article = <span class="hljs-keyword">new</span> Article();
+$article-&gt;setId($articleId);
+$article-&gt;incrementNumViews();
+$dm-&gt;persist($article);
+$dm-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>The above would result in an operation like the following:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="65becc044252fdd6668f66e404531c38ffc77c9a"
+            data-copy-element-id="e118705db1d8998facf18482938dfe400ca226ea"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="65becc044252fdd6668f66e404531c38ffc77c9a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$articleCollection-&gt;update(
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-keyword">array</span>(<span class="hljs-string">'_id'</span> =&gt; <span class="hljs-keyword">new</span> MongoId($articleId)),
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">array</span>(<span class="hljs-string">'$inc'</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">'numViews'</span> =&gt; <span class="hljs-number">1</span>)),
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">array</span>(<span class="hljs-string">'upsert'</span> =&gt; <span class="hljs-keyword">true</span>, <span class="hljs-string">'safe'</span> =&gt; <span class="hljs-keyword">true</span>)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="e118705db1d8998facf18482938dfe400ca226ea"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+
+$articleCollection-&gt;update(
+    <span class="hljs-keyword">array</span>(<span class="hljs-string">'_id'</span> =&gt; <span class="hljs-keyword">new</span> MongoId($articleId)),
+    <span class="hljs-keyword">array</span>(<span class="hljs-string">'$inc'</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">'numViews'</span> =&gt; <span class="hljs-number">1</span>)),
+    <span class="hljs-keyword">array</span>(<span class="hljs-string">'upsert'</span> =&gt; <span class="hljs-keyword">true</span>, <span class="hljs-string">'safe'</span> =&gt; <span class="hljs-keyword">true</span>)
+);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>The extra benefit is the fact that you don't have to fetch the <code>$article</code> in order
 to append some new data to the document or change something. All you need is the
 identifier.</p>

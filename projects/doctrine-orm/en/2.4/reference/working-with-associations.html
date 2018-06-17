@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -289,104 +289,187 @@ information about its type and if it's the owning or inverse side.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="17d8b97289c0b9bc4dc75252dac85190cfff37dc"
+            data-copy-element-id="d3ad79203d986584061d19f63b7ad07a945cea31"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="17d8b97289c0b9bc4dc75252dac85190cfff37dc"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@GeneratedValue</span> <span class="hljs-doctag">@Column</span>(type="string") */</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     * Bidirectional - Many users have Many favorite comments (OWNING SIDE)
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"Comment"</span>, inversedBy=<span class="hljs-string">"userFavorites"</span>)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     * @JoinTable(name=<span class="hljs-string">"user_favorite_comments"</span>,
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     *   joinColumns={@JoinColumn(name=<span class="hljs-string">"user_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)},
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     *   inverseJoinColumns={@JoinColumn(name=<span class="hljs-string">"favorite_comment_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)}
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">     * )
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">private</span> $favorites;
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">     * Unidirectional - Many users have marked many comments <span class="hljs-keyword">as</span> read
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"Comment"</span>)
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     * @JoinTable(name=<span class="hljs-string">"user_read_comments"</span>,
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">     *   joinColumns={@JoinColumn(name=<span class="hljs-string">"user_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)},
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">     *   inverseJoinColumns={@JoinColumn(name=<span class="hljs-string">"comment_id"</span>, referencedColumnName=<span class="hljs-string">"id"</span>)}
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">     * )
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">    <span class="hljs-keyword">private</span> $commentsRead;
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">     * Bidirectional - One-To-Many (INVERSE SIDE)
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">     * @OneToMany(targetEntity=<span class="hljs-string">"Comment"</span>, mappedBy=<span class="hljs-string">"author"</span>)
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-keyword">private</span> $commentsAuthored;
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">     * Unidirectional - Many-To-One
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">     * @ManyToOne(targetEntity=<span class="hljs-string">"Comment"</span>)
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    <span class="hljs-keyword">private</span> $firstComment;
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line"><span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
-</td></tr><tr><td class="line-number noselect">46</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comment</span></span>
-</td></tr><tr><td class="line-number noselect">47</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">48</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@GeneratedValue</span> <span class="hljs-doctag">@Column</span>(type="string") */</span>
-</td></tr><tr><td class="line-number noselect">49</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">50</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">51</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">52</td><td class="code-line">     * Bidirectional - Many comments are favorited by many users (INVERSE SIDE)
-</td></tr><tr><td class="line-number noselect">53</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">54</td><td class="code-line">     * @ManyToMany(targetEntity=<span class="hljs-string">"User"</span>, mappedBy=<span class="hljs-string">"favorites"</span>)
-</td></tr><tr><td class="line-number noselect">55</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">56</td><td class="code-line">    <span class="hljs-keyword">private</span> $userFavorites;
-</td></tr><tr><td class="line-number noselect">57</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">58</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">59</td><td class="code-line">     * Bidirectional - Many Comments are authored by one user (OWNING SIDE)
-</td></tr><tr><td class="line-number noselect">60</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">61</td><td class="code-line">     * @ManyToOne(targetEntity=<span class="hljs-string">"User"</span>, inversedBy=<span class="hljs-string">"commentsAuthored"</span>)
-</td></tr><tr><td class="line-number noselect">62</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">63</td><td class="code-line">     <span class="hljs-keyword">private</span> $author;
-</td></tr><tr><td class="line-number noselect">64</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d3ad79203d986584061d19f63b7ad07a945cea31"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="64"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@GeneratedValue</span> <span class="hljs-doctag">@Column</span>(type="string") */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/**
+     * Bidirectional - Many users have Many favorite comments (OWNING SIDE)
+     *
+     * <span class="hljs-doctag">@ManyToMany</span>(targetEntity="Comment", inversedBy="userFavorites")
+     * <span class="hljs-doctag">@JoinTable</span>(name="user_favorite_comments",
+     *   joinColumns={<span class="hljs-doctag">@JoinColumn</span>(name="user_id", referencedColumnName="id")},
+     *   inverseJoinColumns={<span class="hljs-doctag">@JoinColumn</span>(name="favorite_comment_id", referencedColumnName="id")}
+     * )
+     */</span>
+    <span class="hljs-keyword">private</span> $favorites;
+
+    <span class="hljs-comment">/**
+     * Unidirectional - Many users have marked many comments as read
+     *
+     * <span class="hljs-doctag">@ManyToMany</span>(targetEntity="Comment")
+     * <span class="hljs-doctag">@JoinTable</span>(name="user_read_comments",
+     *   joinColumns={<span class="hljs-doctag">@JoinColumn</span>(name="user_id", referencedColumnName="id")},
+     *   inverseJoinColumns={<span class="hljs-doctag">@JoinColumn</span>(name="comment_id", referencedColumnName="id")}
+     * )
+     */</span>
+    <span class="hljs-keyword">private</span> $commentsRead;
+
+    <span class="hljs-comment">/**
+     * Bidirectional - One-To-Many (INVERSE SIDE)
+     *
+     * <span class="hljs-doctag">@OneToMany</span>(targetEntity="Comment", mappedBy="author")
+     */</span>
+    <span class="hljs-keyword">private</span> $commentsAuthored;
+
+    <span class="hljs-comment">/**
+     * Unidirectional - Many-To-One
+     *
+     * <span class="hljs-doctag">@ManyToOne</span>(targetEntity="Comment")
+     */</span>
+    <span class="hljs-keyword">private</span> $firstComment;
+}
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@Entity</span> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comment</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@GeneratedValue</span> <span class="hljs-doctag">@Column</span>(type="string") */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/**
+     * Bidirectional - Many comments are favorited by many users (INVERSE SIDE)
+     *
+     * <span class="hljs-doctag">@ManyToMany</span>(targetEntity="User", mappedBy="favorites")
+     */</span>
+    <span class="hljs-keyword">private</span> $userFavorites;
+
+    <span class="hljs-comment">/**
+     * Bidirectional - Many Comments are authored by one user (OWNING SIDE)
+     *
+     * <span class="hljs-doctag">@ManyToOne</span>(targetEntity="User", inversedBy="commentsAuthored")
+     */</span>
+     <span class="hljs-keyword">private</span> $author;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr>
+<tr><td class="line-number noselect">46</td></tr>
+<tr><td class="line-number noselect">47</td></tr>
+<tr><td class="line-number noselect">48</td></tr>
+<tr><td class="line-number noselect">49</td></tr>
+<tr><td class="line-number noselect">50</td></tr>
+<tr><td class="line-number noselect">51</td></tr>
+<tr><td class="line-number noselect">52</td></tr>
+<tr><td class="line-number noselect">53</td></tr>
+<tr><td class="line-number noselect">54</td></tr>
+<tr><td class="line-number noselect">55</td></tr>
+<tr><td class="line-number noselect">56</td></tr>
+<tr><td class="line-number noselect">57</td></tr>
+<tr><td class="line-number noselect">58</td></tr>
+<tr><td class="line-number noselect">59</td></tr>
+<tr><td class="line-number noselect">60</td></tr>
+<tr><td class="line-number noselect">61</td></tr>
+<tr><td class="line-number noselect">62</td></tr>
+<tr><td class="line-number noselect">63</td></tr>
+<tr><td class="line-number noselect">64</td></tr></table></div></code></pre>
 <p>This two entities generate the following MySQL Schema (Foreign Key
 definitions omitted):</p>
 <pre class="code-block-table"><code class="sql"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="d0c16568b2e2e76afa985e1b12bd4eace01d3b84"
+            data-copy-element-id="aee502d6b1931eaf40b198c4358d1a8bbef6ea25"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="d0c16568b2e2e76afa985e1b12bd4eace01d3b84"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">User</span> (
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">    id VARCHAR(255) NOT NULL,
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    firstComment_id VARCHAR(255) DEFAULT NULL,
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    PRIMARY KEY(id)
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">) ENGINE = InnoDB;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">Comment</span> (
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    id VARCHAR(255) NOT NULL,
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    author_id VARCHAR(255) DEFAULT NULL,
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    PRIMARY KEY(id)
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">) ENGINE = InnoDB;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> user_favorite_comments (
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    user_id VARCHAR(255) NOT NULL,
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    favorite_comment_id VARCHAR(255) NOT NULL,
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    PRIMARY KEY(user_id, favorite_comment_id)
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">) ENGINE = InnoDB;
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> user_read_comments (
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    user_id VARCHAR(255) NOT NULL,
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    comment_id VARCHAR(255) NOT NULL,
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    PRIMARY KEY(user_id, comment_id)
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">) ENGINE = InnoDB;
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="aee502d6b1931eaf40b198c4358d1a8bbef6ea25"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="23"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">User</span> (
+    <span class="hljs-keyword">id</span> <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    firstComment_id <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-literal">NULL</span>,
+    PRIMARY <span class="hljs-keyword">KEY</span>(<span class="hljs-keyword">id</span>)
+) <span class="hljs-keyword">ENGINE</span> = <span class="hljs-keyword">InnoDB</span>;
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">Comment</span> (
+    <span class="hljs-keyword">id</span> <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    author_id <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-literal">NULL</span>,
+    PRIMARY <span class="hljs-keyword">KEY</span>(<span class="hljs-keyword">id</span>)
+) <span class="hljs-keyword">ENGINE</span> = <span class="hljs-keyword">InnoDB</span>;
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> user_favorite_comments (
+    user_id <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    favorite_comment_id <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    PRIMARY <span class="hljs-keyword">KEY</span>(user_id, favorite_comment_id)
+) <span class="hljs-keyword">ENGINE</span> = <span class="hljs-keyword">InnoDB</span>;
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> user_read_comments (
+    user_id <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    comment_id <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    PRIMARY <span class="hljs-keyword">KEY</span>(user_id, comment_id)
+) <span class="hljs-keyword">ENGINE</span> = <span class="hljs-keyword">InnoDB</span>;</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr></table></div></code></pre>
 <a class="section-anchor" id="establishing-associations" name="establishing-associations"></a><h2 class="section-header"><a href="#establishing-associations">Establishing Associations<i class="fas fa-link"></i></a></h2>
 <p>Establishing an association between two entities is
 straight-forward. Here are some examples for the unidirectional
@@ -394,92 +477,153 @@ relations of the <code>User</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="d737b872e2344b3ad1431c39fe8d81737adb8376"
+            data-copy-element-id="2912ed501dce336916982d5b153435a838135bf2"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="d737b872e2344b3ad1431c39fe8d81737adb8376"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getReadComments</span><span class="hljs-params">()</span> </span>{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">         <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;commentsRead;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setFirstComment</span><span class="hljs-params">(Comment $c)</span> </span>{
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;firstComment = $c;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2912ed501dce336916982d5b153435a838135bf2"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getReadComments</span><span class="hljs-params">()</span> </span>{
+         <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;commentsRead;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setFirstComment</span><span class="hljs-params">(Comment $c)</span> </span>{
+        <span class="hljs-keyword">$this</span>-&gt;firstComment = $c;
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p>The interaction code would then look like in the following snippet
 (<code>$em</code> here is an instance of the EntityManager):</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="51d872f4f574b50dc394e50d549f1dceecb3bee4"
+            data-copy-element-id="2f255d83491aa598da84b18f6b96fcbe12572736"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="51d872f4f574b50dc394e50d549f1dceecb3bee4"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$user = $em-&gt;find(<span class="hljs-string">'User'</span>, $userId);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-comment">// unidirectional many to many</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$comment = $em-&gt;find(<span class="hljs-string">'Comment'</span>, $readCommentId);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$user-&gt;getReadComments()-&gt;add($comment);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$em-&gt;flush();
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-comment">// unidirectional many to one</span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$myFirstComment = <span class="hljs-keyword">new</span> Comment();
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$user-&gt;setFirstComment($myFirstComment);
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">$em-&gt;persist($myFirstComment);
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$em-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2f255d83491aa598da84b18f6b96fcbe12572736"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="15"><span class="hljs-meta">&lt;?php</span>
+$user = $em-&gt;find(<span class="hljs-string">'User'</span>, $userId);
+
+<span class="hljs-comment">// unidirectional many to many</span>
+$comment = $em-&gt;find(<span class="hljs-string">'Comment'</span>, $readCommentId);
+$user-&gt;getReadComments()-&gt;add($comment);
+
+$em-&gt;flush();
+
+<span class="hljs-comment">// unidirectional many to one</span>
+$myFirstComment = <span class="hljs-keyword">new</span> Comment();
+$user-&gt;setFirstComment($myFirstComment);
+
+$em-&gt;persist($myFirstComment);
+$em-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr></table></div></code></pre>
 <p>In the case of bi-directional associations you have to update the
 fields on both sides:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="2be2d48ad8f3f2c8982403bb4383ea1d1a98eed6"
+            data-copy-element-id="bc2922247db76c59f6e35685b3123ec8f2b00a7f"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="2be2d48ad8f3f2c8982403bb4383ea1d1a98eed6"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">// ..</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAuthoredComments</span><span class="hljs-params">()</span> </span>{
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;commentsAuthored;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFavoriteComments</span><span class="hljs-params">()</span> </span>{
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;favorites;
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comment</span></span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUserFavorites</span><span class="hljs-params">()</span> </span>{
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;userFavorites;
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAuthor</span><span class="hljs-params">(User $author = null)</span> </span>{
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;author = $author;
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line"><span class="hljs-comment">// Many-to-Many</span>
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">$user-&gt;getFavorites()-&gt;add($favoriteComment);
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">$favoriteComment-&gt;getUserFavorites()-&gt;add($user);
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">$em-&gt;flush();
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line"><span class="hljs-comment">// Many-To-One / One-To-Many Bidirectional</span>
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">$newComment = <span class="hljs-keyword">new</span> Comment();
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">$user-&gt;getAuthoredComments()-&gt;add($newComment);
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">$newComment-&gt;setAuthor($user);
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">$em-&gt;persist($newComment);
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">$em-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="bc2922247db76c59f6e35685b3123ec8f2b00a7f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="40"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-comment">// ..</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAuthoredComments</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;commentsAuthored;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFavoriteComments</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;favorites;
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comment</span>
+</span>{
+    <span class="hljs-comment">// ...</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUserFavorites</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;userFavorites;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAuthor</span><span class="hljs-params">(User $author = null)</span> </span>{
+        <span class="hljs-keyword">$this</span>-&gt;author = $author;
+    }
+}
+
+<span class="hljs-comment">// Many-to-Many</span>
+$user-&gt;getFavorites()-&gt;add($favoriteComment);
+$favoriteComment-&gt;getUserFavorites()-&gt;add($user);
+
+$em-&gt;flush();
+
+<span class="hljs-comment">// Many-To-One / One-To-Many Bidirectional</span>
+$newComment = <span class="hljs-keyword">new</span> Comment();
+$user-&gt;getAuthoredComments()-&gt;add($newComment);
+$newComment-&gt;setAuthor($user);
+
+$em-&gt;persist($newComment);
+$em-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr></table></div></code></pre>
 <p>Notice how always both sides of the bidirectional association are
 updated. The previous unidirectional associations were simpler to
 handle.</p>
@@ -490,20 +634,29 @@ element. Here are some examples:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="824591f1f05098ade0e9db83394b70a188b0779b"
+            data-copy-element-id="c679e240da03dbbf3d698b2b41aa808f991f7621"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="824591f1f05098ade0e9db83394b70a188b0779b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// Remove by Elements</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$user-&gt;getComments()-&gt;removeElement($comment);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$comment-&gt;setAuthor(<span class="hljs-keyword">null</span>);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$user-&gt;getFavorites()-&gt;removeElement($comment);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$comment-&gt;getUserFavorites()-&gt;removeElement($user);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"><span class="hljs-comment">// Remove by Key</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$user-&gt;getComments()-&gt;remove($ithComment);
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$comment-&gt;setAuthor(<span class="hljs-keyword">null</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="c679e240da03dbbf3d698b2b41aa808f991f7621"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// Remove by Elements</span>
+$user-&gt;getComments()-&gt;removeElement($comment);
+$comment-&gt;setAuthor(<span class="hljs-keyword">null</span>);
+
+$user-&gt;getFavorites()-&gt;removeElement($comment);
+$comment-&gt;getUserFavorites()-&gt;removeElement($user);
+
+<span class="hljs-comment">// Remove by Key</span>
+$user-&gt;getComments()-&gt;remove($ithComment);
+$comment-&gt;setAuthor(<span class="hljs-keyword">null</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr></table></div></code></pre>
 <p>You need to call <code>$em-&gt;flush()</code> to make persist these changes in
 the database permanently.</p>
 <p>Notice how both sides of the bidirectional association are always
@@ -546,53 +699,95 @@ example that encapsulate much of the association management code:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4a26fcbc4f45cb1c5d19a1c86112fde9881f81cf"
+            data-copy-element-id="43af24027834b5c6e5332304ab880caabd93efd8"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4a26fcbc4f45cb1c5d19a1c86112fde9881f81cf"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">//...</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">markCommentRead</span><span class="hljs-params">(Comment $comment)</span> </span>{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">        <span class="hljs-comment">// Collections implement ArrayAccess</span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;commentsRead[] = $comment;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addComment</span><span class="hljs-params">(Comment $comment)</span> </span>{
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">        <span class="hljs-keyword">if</span> (count(<span class="hljs-keyword">$this</span>-&gt;commentsAuthored) == <span class="hljs-number">0</span>) {
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">            <span class="hljs-keyword">$this</span>-&gt;setFirstComment($comment);
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        }
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;comments[] = $comment;
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        $comment-&gt;setAuthor(<span class="hljs-keyword">$this</span>);
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setFirstComment</span><span class="hljs-params">(Comment $c)</span> </span>{
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;firstComment = $c;
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addFavorite</span><span class="hljs-params">(Comment $comment)</span> </span>{
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;favorites-&gt;add($comment);
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">        $comment-&gt;addUserFavorite(<span class="hljs-keyword">$this</span>);
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeFavorite</span><span class="hljs-params">(Comment $comment)</span> </span>{
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;favorites-&gt;removeElement($comment);
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">        $comment-&gt;removeUserFavorite(<span class="hljs-keyword">$this</span>);
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comment</span></span>
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-comment">// ..</span>
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addUserFavorite</span><span class="hljs-params">(User $user)</span> </span>{
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;userFavorites[] = $user;
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeUserFavorite</span><span class="hljs-params">(User $user)</span> </span>{
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;userFavorites-&gt;removeElement($user);
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="43af24027834b5c6e5332304ab880caabd93efd8"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="44"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-comment">//...</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">markCommentRead</span><span class="hljs-params">(Comment $comment)</span> </span>{
+        <span class="hljs-comment">// Collections implement ArrayAccess</span>
+        <span class="hljs-keyword">$this</span>-&gt;commentsRead[] = $comment;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addComment</span><span class="hljs-params">(Comment $comment)</span> </span>{
+        <span class="hljs-keyword">if</span> (count(<span class="hljs-keyword">$this</span>-&gt;commentsAuthored) == <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">$this</span>-&gt;setFirstComment($comment);
+        }
+        <span class="hljs-keyword">$this</span>-&gt;comments[] = $comment;
+        $comment-&gt;setAuthor(<span class="hljs-keyword">$this</span>);
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setFirstComment</span><span class="hljs-params">(Comment $c)</span> </span>{
+        <span class="hljs-keyword">$this</span>-&gt;firstComment = $c;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addFavorite</span><span class="hljs-params">(Comment $comment)</span> </span>{
+        <span class="hljs-keyword">$this</span>-&gt;favorites-&gt;add($comment);
+        $comment-&gt;addUserFavorite(<span class="hljs-keyword">$this</span>);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeFavorite</span><span class="hljs-params">(Comment $comment)</span> </span>{
+        <span class="hljs-keyword">$this</span>-&gt;favorites-&gt;removeElement($comment);
+        $comment-&gt;removeUserFavorite(<span class="hljs-keyword">$this</span>);
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comment</span>
+</span>{
+    <span class="hljs-comment">// ..</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addUserFavorite</span><span class="hljs-params">(User $user)</span> </span>{
+        <span class="hljs-keyword">$this</span>-&gt;userFavorites[] = $user;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeUserFavorite</span><span class="hljs-params">(User $user)</span> </span>{
+        <span class="hljs-keyword">$this</span>-&gt;userFavorites-&gt;removeElement($user);
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr></table></div></code></pre>
 <p>You will notice that <code>addUserFavorite</code> and <code>removeUserFavorite</code>
 do not call <code>addFavorite</code> and <code>removeFavorite</code>, thus the
 bidirectional association is strictly-speaking still incomplete.
@@ -611,15 +806,19 @@ association management. For example:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="aa27f4eb64615e4b8e1174a5b7d296ab3284e94e"
+            data-copy-element-id="94b039b3149b8eecef4528dc43b3acc961239a40"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="aa27f4eb64615e4b8e1174a5b7d296ab3284e94e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>{
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getReadComments</span><span class="hljs-params">()</span> </span>{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;commentsRead-&gt;toArray();
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="94b039b3149b8eecef4528dc43b3acc961239a40"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getReadComments</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;commentsRead-&gt;toArray();
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>This will however always initialize the collection, with all the
 performance penalties given the size. In some scenarios of large
 collections it might even be a good idea to completely hide the
@@ -637,15 +836,19 @@ can show the possible caveats you can encounter:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="138d7582174361d3ac982fbe18ff1ab2a99eb912"
+            data-copy-element-id="08875c0b20beec9c697891612bddf1995ff0b05e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="138d7582174361d3ac982fbe18ff1ab2a99eb912"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$user-&gt;getFavorites()-&gt;add($favoriteComment);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// not calling $favoriteComment-&gt;getUserFavorites()-&gt;add($user);</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$user-&gt;getFavorites()-&gt;contains($favoriteComment); <span class="hljs-comment">// TRUE</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$favoriteComment-&gt;getUserFavorites()-&gt;contains($user); <span class="hljs-comment">// FALSE</span>
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="08875c0b20beec9c697891612bddf1995ff0b05e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="6"><span class="hljs-meta">&lt;?php</span>
+$user-&gt;getFavorites()-&gt;add($favoriteComment);
+<span class="hljs-comment">// not calling $favoriteComment-&gt;getUserFavorites()-&gt;add($user);</span>
+
+$user-&gt;getFavorites()-&gt;contains($favoriteComment); <span class="hljs-comment">// TRUE</span>
+$favoriteComment-&gt;getUserFavorites()-&gt;contains($user); <span class="hljs-comment">// FALSE</span></td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr></table></div></code></pre>
 <p>There are two approaches to handle this problem in your code:</p>
 <ol><li>Ignore updating the inverse side of bidirectional collections,
    BUT never read from them in requests that changed their state. In
@@ -692,17 +895,23 @@ following code:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="8a1fa4b9e174ed1aaccec9cfd9c05919eb57bd31"
+            data-copy-element-id="f1fdccad4ddfe6767d5f4382556e6017035a2d62"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="8a1fa4b9e174ed1aaccec9cfd9c05919eb57bd31"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$user = <span class="hljs-keyword">new</span> User();
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$myFirstComment = <span class="hljs-keyword">new</span> Comment();
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$user-&gt;addComment($myFirstComment);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$em-&gt;persist($user);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$em-&gt;persist($myFirstComment);
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$em-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="f1fdccad4ddfe6767d5f4382556e6017035a2d62"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-meta">&lt;?php</span>
+$user = <span class="hljs-keyword">new</span> User();
+$myFirstComment = <span class="hljs-keyword">new</span> Comment();
+$user-&gt;addComment($myFirstComment);
+
+$em-&gt;persist($user);
+$em-&gt;persist($myFirstComment);
+$em-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <p>Even if you <em>persist</em> a new User that contains our new Comment this
 code would fail if you removed the call to
 <code>EntityManager#persist($myFirstComment)</code>. Doctrine 2 does not
@@ -713,16 +922,21 @@ removed from the system:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="58582bb1609ac559ecbc96e8bf7da52a6a0bd36e"
+            data-copy-element-id="9c32f57db99ff06a91a0fdf93a36a74a0ec6f1da"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="58582bb1609ac559ecbc96e8bf7da52a6a0bd36e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line">$user = $em-&gt;find(<span class="hljs-string">'User'</span>, $deleteUserId);
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">foreach</span> ($user-&gt;getAuthoredComments() <span class="hljs-keyword">AS</span> $comment) {
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    $em-&gt;remove($comment);
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">}
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$em-&gt;remove($user);
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$em-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9c32f57db99ff06a91a0fdf93a36a74a0ec6f1da"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7">$user = $em-&gt;find(<span class="hljs-string">'User'</span>, $deleteUserId);
+
+<span class="hljs-keyword">foreach</span> ($user-&gt;getAuthoredComments() <span class="hljs-keyword">AS</span> $comment) {
+    $em-&gt;remove($comment);
+}
+$em-&gt;remove($user);
+$em-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>Without the loop over all the authored comments Doctrine would use
 an UPDATE statement only to set the foreign key to NULL and only
 the User would be deleted from the database during the
@@ -733,21 +947,31 @@ and the &quot;remove&quot; operation.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="c14b4aee786bf678f5199afa3e2417b78df78781"
+            data-copy-element-id="b082893f4b11f408652d721ad3185f537726f7a5"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="c14b4aee786bf678f5199afa3e2417b78df78781"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">    <span class="hljs-comment">//...</span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">     * Bidirectional - One-To-Many (INVERSE SIDE)
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">     *
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * @OneToMany(targetEntity=<span class="hljs-string">"Comment"</span>, mappedBy=<span class="hljs-string">"author"</span>, cascade={<span class="hljs-string">"persist"</span>, <span class="hljs-string">"remove"</span>})
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">private</span> $commentsAuthored;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">//...</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="b082893f4b11f408652d721ad3185f537726f7a5"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="12"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-comment">//...</span>
+    <span class="hljs-comment">/**
+     * Bidirectional - One-To-Many (INVERSE SIDE)
+     *
+     * <span class="hljs-doctag">@OneToMany</span>(targetEntity="Comment", mappedBy="author", cascade={"persist", "remove"})
+     */</span>
+    <span class="hljs-keyword">private</span> $commentsAuthored;
+    <span class="hljs-comment">//...</span>
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr></table></div></code></pre>
 <p>Even though automatic cascading is convenient it should be used
 with care. Do not blindly apply cascade=all to all associations as
 it will unnecessarily degrade the performance of your application.
@@ -786,58 +1010,96 @@ and StandingData:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="fcd05b60acf93d2d9d9c5461ff3174927e80b2ec"
+            data-copy-element-id="0fde29c3f51150719e8818dfbc3267fdf2cc8c7a"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="fcd05b60acf93d2d9d9c5461ff3174927e80b2ec"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Addressbook</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line"> * @Entity
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line"> */
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Contact</span></span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@OneToOne</span>(targetEntity="StandingData", orphanRemoval=true) */</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">private</span> $standingData;
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-comment">/** <span class="hljs-doctag">@OneToMany</span>(targetEntity="Address", mappedBy="contact", orphanRemoval=true) */</span>
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">private</span> $addresses;
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;addresses = <span class="hljs-keyword">new</span> ArrayCollection();
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newStandingData</span><span class="hljs-params">(StandingData $sd)</span></span>
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">        <span class="hljs-keyword">$this</span>-&gt;standingData = $sd;
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeAddress</span><span class="hljs-params">($pos)</span></span>
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">        <span class="hljs-keyword">unset</span>(<span class="hljs-keyword">$this</span>-&gt;addresses[$pos]);
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0fde29c3f51150719e8818dfbc3267fdf2cc8c7a"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="35"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Addressbook</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">ArrayCollection</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Entity</span>
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Contact</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@Id</span> <span class="hljs-doctag">@Column</span>(type="integer") <span class="hljs-doctag">@GeneratedValue</span> */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@OneToOne</span>(targetEntity="StandingData", orphanRemoval=true) */</span>
+    <span class="hljs-keyword">private</span> $standingData;
+
+    <span class="hljs-comment">/** <span class="hljs-doctag">@OneToMany</span>(targetEntity="Address", mappedBy="contact", orphanRemoval=true) */</span>
+    <span class="hljs-keyword">private</span> $addresses;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;addresses = <span class="hljs-keyword">new</span> ArrayCollection();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newStandingData</span><span class="hljs-params">(StandingData $sd)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;standingData = $sd;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeAddress</span><span class="hljs-params">($pos)</span>
+    </span>{
+        <span class="hljs-keyword">unset</span>(<span class="hljs-keyword">$this</span>-&gt;addresses[$pos]);
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr></table></div></code></pre>
 <p>Now two examples of what happens when you remove the references:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="59c96cb262a2d0f57128408509fd171ea92bab90"
+            data-copy-element-id="0e32bd63d7cd20e28b738e2242ba785a71eb3bce"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="59c96cb262a2d0f57128408509fd171ea92bab90"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$contact = $em-&gt;find(<span class="hljs-string">"Addressbook\Contact"</span>, $contactId);
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$contact-&gt;newStandingData(<span class="hljs-keyword">new</span> StandingData(<span class="hljs-string">"Firstname"</span>, <span class="hljs-string">"Lastname"</span>, <span class="hljs-string">"Street"</span>));
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$contact-&gt;removeAddress(<span class="hljs-number">1</span>);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$em-&gt;flush();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="0e32bd63d7cd20e28b738e2242ba785a71eb3bce"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="7"><span class="hljs-meta">&lt;?php</span>
+
+$contact = $em-&gt;find(<span class="hljs-string">"Addressbook\Contact"</span>, $contactId);
+$contact-&gt;newStandingData(<span class="hljs-keyword">new</span> StandingData(<span class="hljs-string">"Firstname"</span>, <span class="hljs-string">"Lastname"</span>, <span class="hljs-string">"Street"</span>));
+$contact-&gt;removeAddress(<span class="hljs-number">1</span>);
+
+$em-&gt;flush();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr></table></div></code></pre>
 <p>In this case you have not only changed the <code>Contact</code> entity itself but<br />you have also removed the references for standing data and as well as one<br />address reference. When flush is called not only are the references removed<br />but both the old standing data and the one address entity are also deleted<br />from the database.</p>
 <a class="section-anchor" id="filtering-collections" name="filtering-collections"></a><h2 class="section-header"><a href="#filtering-collections">Filtering Collections<i class="fas fa-link"></i></a></h2>
 <p>Collections have a filtering API that allows to slice parts of data from
@@ -847,24 +1109,37 @@ large collections.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="0637a5a572008513451f2f04d7b32f3bc5f24799"
+            data-copy-element-id="d0351acf212c790b67aa26c98da25e2b88124815"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="0637a5a572008513451f2f04d7b32f3bc5f24799"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">Criteria</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">$group          = $entityManager-&gt;find(<span class="hljs-string">'Group'</span>, $groupId);
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">$userCollection = $group-&gt;getUsers();
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">$criteria = Criteria::create()
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    -&gt;where(Criteria::expr()-&gt;eq(<span class="hljs-string">"birthday"</span>, <span class="hljs-string">"1982-02-17"</span>))
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    -&gt;orderBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">"username"</span> =&gt; <span class="hljs-string">"ASC"</span>))
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    -&gt;setFirstResult(<span class="hljs-number">0</span>)
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    -&gt;setMaxResults(<span class="hljs-number">20</span>)
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">;
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">$birthdayUsers = $userCollection-&gt;matching($criteria);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="d0351acf212c790b67aa26c98da25e2b88124815"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="15"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>\<span class="hljs-title">Criteria</span>;
+
+$group          = $entityManager-&gt;find(<span class="hljs-string">'Group'</span>, $groupId);
+$userCollection = $group-&gt;getUsers();
+
+$criteria = Criteria::create()
+    -&gt;where(Criteria::expr()-&gt;eq(<span class="hljs-string">"birthday"</span>, <span class="hljs-string">"1982-02-17"</span>))
+    -&gt;orderBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">"username"</span> =&gt; <span class="hljs-string">"ASC"</span>))
+    -&gt;setFirstResult(<span class="hljs-number">0</span>)
+    -&gt;setMaxResults(<span class="hljs-number">20</span>)
+;
+
+$birthdayUsers = $userCollection-&gt;matching($criteria);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr></table></div></code></pre>
 <div class="alert tip bg-success text-light"><i class="fas fa-question-circle mr-2"></i><p>You can move the access of slices of collections into dedicated methods of
 an entity. For example <code>Group#getTodaysBirthdayUsers()</code>.</p>
 </div>
@@ -874,54 +1149,97 @@ interchangeably, independent of in-memory or sql-backed collections.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="442609ac58b2c38a28c4ff3702fd788e3a6ea49c"
+            data-copy-element-id="73982640497380f7cb70d9358b9aff15eb1c988b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="442609ac58b2c38a28c4ff3702fd788e3a6ea49c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>;
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Criteria</span></span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Criteria
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">     * @param Expression $where
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Criteria
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">where</span><span class="hljs-params">(Expression $where)</span></span>;
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">     * @param Expression $where
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Criteria
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">andWhere</span><span class="hljs-params">(Expression $where)</span></span>;
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">     * @param Expression $where
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Criteria
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">orWhere</span><span class="hljs-params">(Expression $where)</span></span>;
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">27</td><td class="code-line">     * @param <span class="hljs-keyword">array</span> $orderings
-</td></tr><tr><td class="line-number noselect">28</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Criteria
-</td></tr><tr><td class="line-number noselect">29</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">30</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">orderBy</span><span class="hljs-params">(array $orderings)</span></span>;
-</td></tr><tr><td class="line-number noselect">31</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">32</td><td class="code-line">     * @param int $firstResult
-</td></tr><tr><td class="line-number noselect">33</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Criteria
-</td></tr><tr><td class="line-number noselect">34</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">35</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setFirstResult</span><span class="hljs-params">($firstResult)</span></span>;
-</td></tr><tr><td class="line-number noselect">36</td><td class="code-line">    <span class="hljs-comment">/**</span>
-</td></tr><tr><td class="line-number noselect">37</td><td class="code-line">     * @param int $maxResults
-</td></tr><tr><td class="line-number noselect">38</td><td class="code-line">     * @<span class="hljs-keyword">return</span> Criteria
-</td></tr><tr><td class="line-number noselect">39</td><td class="code-line">     */
-</td></tr><tr><td class="line-number noselect">40</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setMaxResults</span><span class="hljs-params">($maxResults)</span></span>;
-</td></tr><tr><td class="line-number noselect">41</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getOrderings</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">42</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getWhereExpression</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">43</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFirstResult</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">44</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMaxResults</span><span class="hljs-params">()</span></span>;
-</td></tr><tr><td class="line-number noselect">45</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="73982640497380f7cb70d9358b9aff15eb1c988b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="45"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Collections</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Criteria</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@return</span> Criteria
+     */</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@param</span> Expression $where
+     * <span class="hljs-doctag">@return</span> Criteria
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">where</span><span class="hljs-params">(Expression $where)</span></span>;
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@param</span> Expression $where
+     * <span class="hljs-doctag">@return</span> Criteria
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">andWhere</span><span class="hljs-params">(Expression $where)</span></span>;
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@param</span> Expression $where
+     * <span class="hljs-doctag">@return</span> Criteria
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">orWhere</span><span class="hljs-params">(Expression $where)</span></span>;
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@param</span> array $orderings
+     * <span class="hljs-doctag">@return</span> Criteria
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">orderBy</span><span class="hljs-params">(array $orderings)</span></span>;
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@param</span> int $firstResult
+     * <span class="hljs-doctag">@return</span> Criteria
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setFirstResult</span><span class="hljs-params">($firstResult)</span></span>;
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@param</span> int $maxResults
+     * <span class="hljs-doctag">@return</span> Criteria
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setMaxResults</span><span class="hljs-params">($maxResults)</span></span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getOrderings</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getWhereExpression</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFirstResult</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMaxResults</span><span class="hljs-params">()</span></span>;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr>
+<tr><td class="line-number noselect">27</td></tr>
+<tr><td class="line-number noselect">28</td></tr>
+<tr><td class="line-number noselect">29</td></tr>
+<tr><td class="line-number noselect">30</td></tr>
+<tr><td class="line-number noselect">31</td></tr>
+<tr><td class="line-number noselect">32</td></tr>
+<tr><td class="line-number noselect">33</td></tr>
+<tr><td class="line-number noselect">34</td></tr>
+<tr><td class="line-number noselect">35</td></tr>
+<tr><td class="line-number noselect">36</td></tr>
+<tr><td class="line-number noselect">37</td></tr>
+<tr><td class="line-number noselect">38</td></tr>
+<tr><td class="line-number noselect">39</td></tr>
+<tr><td class="line-number noselect">40</td></tr>
+<tr><td class="line-number noselect">41</td></tr>
+<tr><td class="line-number noselect">42</td></tr>
+<tr><td class="line-number noselect">43</td></tr>
+<tr><td class="line-number noselect">44</td></tr>
+<tr><td class="line-number noselect">45</td></tr></table></div></code></pre>
 <p>You can build expressions through the ExpressionBuilder. It has the following
 methods:</p>
 <ul><li><code>andX($arg1, $arg2, ...)</code></li>

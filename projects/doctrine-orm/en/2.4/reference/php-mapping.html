@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -273,64 +273,84 @@ for an entity you can do so by using the <code>PHPDriver</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="fed7d44168edb523efa74dd7ecff424d7ed42c98"
+            data-copy-element-id="7c7629272e84d139648666863a079cd700e31017"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="fed7d44168edb523efa74dd7ecff424d7ed42c98"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> PHPDriver(<span class="hljs-string">'/path/to/php/mapping/files'</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="7c7629272e84d139648666863a079cd700e31017"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$driver = <span class="hljs-keyword">new</span> PHPDriver(<span class="hljs-string">'/path/to/php/mapping/files'</span>);
+$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Now imagine we had an entity named <code>Entities\User</code> and we wanted
 to write a mapping file for it using the above configured
 <code>PHPDriver</code> instance:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="142d76009edb8c81f4c0dd5c9eed3a49aa718a6d"
+            data-copy-element-id="604752537ccdc7e0e101d4d597b38ad7b6bb0fdd"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="142d76009edb8c81f4c0dd5c9eed3a49aa718a6d"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Entities</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">    <span class="hljs-keyword">private</span> $id;
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">    <span class="hljs-keyword">private</span> $username;
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="604752537ccdc7e0e101d4d597b38ad7b6bb0fdd"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="8"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Entities</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-keyword">private</span> $id;
+    <span class="hljs-keyword">private</span> $username;
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr></table></div></code></pre>
 <p>To write the mapping information you just need to create a file
 named <code>Entities.User.php</code> inside of the
 <code>/path/to/php/mapping/files</code> folder:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="7837eddc3050f98b7b21fec78f954d5eef665084"
+            data-copy-element-id="113bbbc4f59db663cc16a1db66bd12ade987fe39"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="7837eddc3050f98b7b21fec78f954d5eef665084"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-comment">// /path/to/php/mapping/files/Entities.User.php</span>
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$metadata-&gt;mapField(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">   <span class="hljs-string">'id'</span> =&gt; <span class="hljs-keyword">true</span>,
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">   <span class="hljs-string">'fieldName'</span> =&gt; <span class="hljs-string">'id'</span>,
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">   <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'integer'</span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">));
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">$metadata-&gt;mapField(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">   <span class="hljs-string">'fieldName'</span> =&gt; <span class="hljs-string">'username'</span>,
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">   <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'string'</span>
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">));
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="113bbbc4f59db663cc16a1db66bd12ade987fe39"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="13"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// /path/to/php/mapping/files/Entities.User.php</span>
+
+$metadata-&gt;mapField(<span class="hljs-keyword">array</span>(
+   <span class="hljs-string">'id'</span> =&gt; <span class="hljs-keyword">true</span>,
+   <span class="hljs-string">'fieldName'</span> =&gt; <span class="hljs-string">'id'</span>,
+   <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'integer'</span>
+));
+
+$metadata-&gt;mapField(<span class="hljs-keyword">array</span>(
+   <span class="hljs-string">'fieldName'</span> =&gt; <span class="hljs-string">'username'</span>,
+   <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'string'</span>
+));</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr></table></div></code></pre>
 <p>Now we can easily retrieve the populated <code>ClassMetadata</code> instance
 where the <code>PHPDriver</code> includes the file and the
 <code>ClassMetadataFactory</code> caches it for later retrieval:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="15a9956e3ae16ae8da09b7c61aad218798d64b3c"
+            data-copy-element-id="080a0dd883b691e1f0ea9df321eea76923359eef"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="15a9956e3ae16ae8da09b7c61aad218798d64b3c"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$class = $em-&gt;getClassMetadata(<span class="hljs-string">'Entities\User'</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// or</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">$class = $em-&gt;getMetadataFactory()-&gt;getMetadataFor(<span class="hljs-string">'Entities\User'</span>);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="080a0dd883b691e1f0ea9df321eea76923359eef"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="4"><span class="hljs-meta">&lt;?php</span>
+$class = $em-&gt;getClassMetadata(<span class="hljs-string">'Entities\User'</span>);
+<span class="hljs-comment">// or</span>
+$class = $em-&gt;getMetadataFactory()-&gt;getMetadataFor(<span class="hljs-string">'Entities\User'</span>);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr></table></div></code></pre>
 <a class="section-anchor" id="static-function" name="static-function"></a><h2 class="section-header"><a href="#static-function">Static Function<i class="fas fa-link"></i></a></h2>
 <p>In addition to the PHP files you can also specify your mapping
 information inside of a static function defined on the entity class
@@ -340,68 +360,105 @@ For this you just need to use the <code>StaticPHPDriver</code>:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="85c3a1d672b40c606eea8b4161cb1caa825d3e74"
+            data-copy-element-id="2fc9a7d9888335bbeb188057e20aa397616e9537"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="85c3a1d672b40c606eea8b4161cb1caa825d3e74"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">$driver = <span class="hljs-keyword">new</span> StaticPHPDriver(<span class="hljs-string">'/path/to/entities'</span>);
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="2fc9a7d9888335bbeb188057e20aa397616e9537"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+$driver = <span class="hljs-keyword">new</span> StaticPHPDriver(<span class="hljs-string">'/path/to/entities'</span>);
+$em-&gt;getConfiguration()-&gt;setMetadataDriverImpl($driver);</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr></table></div></code></pre>
 <p>Now you just need to define a static function named
 <code>loadMetadata($metadata)</code> on your entity:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="110ad91c5e8c9e1b6d09583361d8672638f8a002"
+            data-copy-element-id="516e785561a3f2f300c401582d369b35d0ada25e"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="110ad91c5e8c9e1b6d09583361d8672638f8a002"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Entities</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">ClassMetadata</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadata</span><span class="hljs-params">(ClassMetadata $metadata)</span></span>
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">        $metadata-&gt;mapField(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">           <span class="hljs-string">'id'</span> =&gt; <span class="hljs-keyword">true</span>,
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">           <span class="hljs-string">'fieldName'</span> =&gt; <span class="hljs-string">'id'</span>,
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">           <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'integer'</span>
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">        ));
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">        $metadata-&gt;mapField(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">           <span class="hljs-string">'fieldName'</span> =&gt; <span class="hljs-string">'username'</span>,
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">           <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'string'</span>
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">        ));
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="516e785561a3f2f300c401582d369b35d0ada25e"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="23"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Entities</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">ClassMetadata</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-comment">// ...</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadata</span><span class="hljs-params">(ClassMetadata $metadata)</span>
+    </span>{
+        $metadata-&gt;mapField(<span class="hljs-keyword">array</span>(
+           <span class="hljs-string">'id'</span> =&gt; <span class="hljs-keyword">true</span>,
+           <span class="hljs-string">'fieldName'</span> =&gt; <span class="hljs-string">'id'</span>,
+           <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'integer'</span>
+        ));
+
+        $metadata-&gt;mapField(<span class="hljs-keyword">array</span>(
+           <span class="hljs-string">'fieldName'</span> =&gt; <span class="hljs-string">'username'</span>,
+           <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'string'</span>
+        ));
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr></table></div></code></pre>
 <a class="section-anchor" id="classmetadatabuilder" name="classmetadatabuilder"></a><h2 class="section-header"><a href="#classmetadatabuilder">ClassMetadataBuilder<i class="fas fa-link"></i></a></h2>
 <p>To ease the use of the ClassMetadata API (which is very raw) there is a <code>ClassMetadataBuilder</code> that you can use.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="557208e18748e289975c3f6019d6ec48b3e2153f"
+            data-copy-element-id="9b8771f7882c19494df49f931fe1d8fcd7d5e6ec"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="557208e18748e289975c3f6019d6ec48b3e2153f"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Entities</span>;
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">ClassMetadata</span>;
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Builder</span>\<span class="hljs-title">ClassMetadataBuilder</span>;
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">{
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">    <span class="hljs-comment">// ...</span>
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadata</span><span class="hljs-params">(ClassMetadata $metadata)</span></span>
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">    {
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">        $builder = <span class="hljs-keyword">new</span> ClassMetadataBuilder($metadata);
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">        $builder-&gt;createField(<span class="hljs-string">'id'</span>, <span class="hljs-string">'integer'</span>)-&gt;isPrimaryKey()-&gt;generatedValue()-&gt;build();
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">        $builder-&gt;addField(<span class="hljs-string">'username'</span>, <span class="hljs-string">'string'</span>);
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    }
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">}
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="9b8771f7882c19494df49f931fe1d8fcd7d5e6ec"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="17"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Entities</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">ClassMetadata</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span>\<span class="hljs-title">Builder</span>\<span class="hljs-title">ClassMetadataBuilder</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span>
+</span>{
+    <span class="hljs-comment">// ...</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadMetadata</span><span class="hljs-params">(ClassMetadata $metadata)</span>
+    </span>{
+        $builder = <span class="hljs-keyword">new</span> ClassMetadataBuilder($metadata);
+        $builder-&gt;createField(<span class="hljs-string">'id'</span>, <span class="hljs-string">'integer'</span>)-&gt;isPrimaryKey()-&gt;generatedValue()-&gt;build();
+        $builder-&gt;addField(<span class="hljs-string">'username'</span>, <span class="hljs-string">'string'</span>);
+    }
+}</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr></table></div></code></pre>
 <p>The API of the ClassMetadataBuilder has the following methods with a fluent interface:</p>
 <ul><li class="dash">  <code>addField($name, $type, array $mapping)</code></li>
 <li class="dash">  <code>setMappedSuperclass()</code></li>

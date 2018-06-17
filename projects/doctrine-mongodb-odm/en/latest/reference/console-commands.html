@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?87bf05" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?f86011" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -282,35 +282,59 @@ console command easily with the following code:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="541e8bdd2a6c5cdf40a17cbfeb982253661f6965"
+            data-copy-element-id="794fef0552856818e1f7f0ce15ad40afeda3a13b"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="541e8bdd2a6c5cdf40a17cbfeb982253661f6965"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line"><span class="hljs-meta">&lt;?php</span>
-</td></tr><tr><td class="line-number noselect">2</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">3</td><td class="code-line"><span class="hljs-comment">// mongodb.php</span>
-</td></tr><tr><td class="line-number noselect">4</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">5</td><td class="code-line"><span class="hljs-comment">// ... include Composer autoloader and configure DocumentManager instance</span>
-</td></tr><tr><td class="line-number noselect">6</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">7</td><td class="code-line">$helperSet = <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\HelperSet(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">8</td><td class="code-line">    <span class="hljs-string">'dm'</span> =&gt; <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Helper\DocumentManagerHelper($dm),
-</td></tr><tr><td class="line-number noselect">9</td><td class="code-line">));
-</td></tr><tr><td class="line-number noselect">10</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">11</td><td class="code-line">$app = <span class="hljs-keyword">new</span> Application(<span class="hljs-string">'Doctrine MongoDB ODM'</span>);
-</td></tr><tr><td class="line-number noselect">12</td><td class="code-line">$app-&gt;setHelperSet($helperSet);
-</td></tr><tr><td class="line-number noselect">13</td><td class="code-line">$app-&gt;addCommands(<span class="hljs-keyword">array</span>(
-</td></tr><tr><td class="line-number noselect">14</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\GenerateDocumentsCommand(),
-</td></tr><tr><td class="line-number noselect">15</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\GenerateHydratorsCommand(),
-</td></tr><tr><td class="line-number noselect">16</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\GenerateProxiesCommand(),
-</td></tr><tr><td class="line-number noselect">17</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\GenerateRepositoriesCommand(),
-</td></tr><tr><td class="line-number noselect">18</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\QueryCommand(),
-</td></tr><tr><td class="line-number noselect">19</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\ClearCache\MetadataCommand(),
-</td></tr><tr><td class="line-number noselect">20</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\Schema\CreateCommand(),
-</td></tr><tr><td class="line-number noselect">21</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\Schema\DropCommand(),
-</td></tr><tr><td class="line-number noselect">22</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\Schema\UpdateCommand(),
-</td></tr><tr><td class="line-number noselect">23</td><td class="code-line">    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\Schema\ShardCommand(),
-</td></tr><tr><td class="line-number noselect">24</td><td class="code-line">));
-</td></tr><tr><td class="line-number noselect">25</td><td class="code-line">
-</td></tr><tr><td class="line-number noselect">26</td><td class="code-line">$app-&gt;run();
-</td></tr></table></div></code></pre>
+        ><i class="fas fa-copy"></i></button><div id="794fef0552856818e1f7f0ce15ad40afeda3a13b"><table class="code-block-table"><tr><td class="line-number noselect">1</td><td class="code-line" rowspan="26"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// mongodb.php</span>
+
+<span class="hljs-comment">// ... include Composer autoloader and configure DocumentManager instance</span>
+
+$helperSet = <span class="hljs-keyword">new</span> \Symfony\Component\Console\Helper\HelperSet(<span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'dm'</span> =&gt; <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Helper\DocumentManagerHelper($dm),
+));
+
+$app = <span class="hljs-keyword">new</span> Application(<span class="hljs-string">'Doctrine MongoDB ODM'</span>);
+$app-&gt;setHelperSet($helperSet);
+$app-&gt;addCommands(<span class="hljs-keyword">array</span>(
+    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\GenerateDocumentsCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\GenerateHydratorsCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\GenerateProxiesCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\GenerateRepositoriesCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\QueryCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\ClearCache\MetadataCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\Schema\CreateCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\Schema\DropCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\Schema\UpdateCommand(),
+    <span class="hljs-keyword">new</span> \Doctrine\ODM\MongoDB\Tools\Console\Command\Schema\ShardCommand(),
+));
+
+$app-&gt;run();</td></tr>
+<tr><td class="line-number noselect">2</td></tr>
+<tr><td class="line-number noselect">3</td></tr>
+<tr><td class="line-number noselect">4</td></tr>
+<tr><td class="line-number noselect">5</td></tr>
+<tr><td class="line-number noselect">6</td></tr>
+<tr><td class="line-number noselect">7</td></tr>
+<tr><td class="line-number noselect">8</td></tr>
+<tr><td class="line-number noselect">9</td></tr>
+<tr><td class="line-number noselect">10</td></tr>
+<tr><td class="line-number noselect">11</td></tr>
+<tr><td class="line-number noselect">12</td></tr>
+<tr><td class="line-number noselect">13</td></tr>
+<tr><td class="line-number noselect">14</td></tr>
+<tr><td class="line-number noselect">15</td></tr>
+<tr><td class="line-number noselect">16</td></tr>
+<tr><td class="line-number noselect">17</td></tr>
+<tr><td class="line-number noselect">18</td></tr>
+<tr><td class="line-number noselect">19</td></tr>
+<tr><td class="line-number noselect">20</td></tr>
+<tr><td class="line-number noselect">21</td></tr>
+<tr><td class="line-number noselect">22</td></tr>
+<tr><td class="line-number noselect">23</td></tr>
+<tr><td class="line-number noselect">24</td></tr>
+<tr><td class="line-number noselect">25</td></tr>
+<tr><td class="line-number noselect">26</td></tr></table></div></code></pre>
 <p>A reference implementation of the console command may be found in the
 <code>tools/sandbox</code> directory of the project repository. That command is
 configured to store generated hydrators and proxies in the same directory, and
