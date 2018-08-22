@@ -20,7 +20,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
 
-        <link href="https://staging.doctrine-project.org/css/style.css?a9fab4" rel="stylesheet" type="text/css" />
+        <link href="https://staging.doctrine-project.org/css/style.css?aabb96" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
@@ -180,17 +180,17 @@
                         <!-- SearchBox widget will appear here -->
                     </div>
                 </div>
-
-                <div class="search-results rounded">
-                    <div id="hits">
-                        <!-- Hits widget will appear here -->
-                    </div>
-
-                    <a href="https://www.algolia.com" target="_blank"><img src="https://staging.doctrine-project.org/images/search-by-algolia.png" class="float-right" style="width: 150px;" /></a>
-                </div>
             </nav>
+
+            <div class="search-results rounded">
+                <div id="hits">
+                    <!-- Hits widget will appear here -->
+                </div>
+
+                <a href="https://www.algolia.com" target="_blank"><img src="https://staging.doctrine-project.org/images/search-by-algolia.png" class="float-right" style="width: 150px;" /></a>
+            </div>
         
-            <div class="container-wrapper container-fluid">
+            <div class="container-wrapper container">
         <div class="row row-offcanvas row-offcanvas-right">
                             <nav class="col-md-3 d-sm-block bg-light sidebar sidebar-offcanvas" id="sidebar">
                     <div class="sidebar-sticky">
@@ -211,6 +211,12 @@
                             </ol>
                         </nav>
                                     </div>
+
+                                                    
+                                    <div class="alert caution bg-light-yellow text-dark border">
+                        <i class="fas fa-exclamation-circle text-warning mr-2"></i>
+                        You are browsing documentation for a version that has not yet been released.
+                    </div>
 
                 
                 <div class="row">
@@ -280,6 +286,11 @@ database to be executed. Any other methods such as
 perform these operations during flush.</p>
 <p>Not calling <code>EntityManager#flush()</code> will lead to all changes
 during that request being lost.</p>
+</div>
+<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Doctrine does NEVER touch the public API of methods in your entity<br />classes (like getters and setters) nor the constructor method.
+Instead, it uses reflection to get/set data from/to your entity objects.
+When Doctrine fetches data from DB and saves it back,
+any code put in your get/set methods won't be implicitly taken into account.</p>
 </div>
 <a class="section-anchor" id="entities-and-the-identity-map" name="entities-and-the-identity-map"></a><h2 class="section-header"><a href="#entities-and-the-identity-map">Entities and the Identity Map<i class="fas fa-link"></i></a></h2>
 <p>Entities are objects with identity. Their identity has a conceptual
@@ -548,7 +559,7 @@ as follows:</p>
    persist operation. However, the persist operation is cascaded to
    entities referenced by X, if the relationships from X to these
    other entities are mapped with cascade=PERSIST or cascade=ALL (see
-   &quot;<a href="">Transitive Persistence</a>&quot;).</li>
+   &quot;<a href="../#transitive-persistence">Transitive Persistence</a>&quot;).</li>
 <li class="dash"> If X is a removed entity, it becomes managed.</li>
 <li class="dash"> If X is a detached entity, an exception will be thrown on
    flush.</li>
@@ -566,7 +577,7 @@ database. The entity will be deleted on the next invocation of
 <code>EntityManager#flush()</code> that involves that entity. This
 means that entities scheduled for removal can still be queried
 for and appear in query and collection results. See
-the section on <a href="#workingobjects_database_uow_outofsync">Database and UnitOfWork Out-Of-Sync</a>
+the section on <a href="../#workingobjects_database_uow_outofsync">Database and UnitOfWork Out-Of-Sync</a>
 for more information.</p>
 </div>
 <p>Example:</p>
@@ -585,12 +596,12 @@ as follows:</p>
 <ul><li class="dash"> If X is a new entity, it is ignored by the remove operation.
    However, the remove operation is cascaded to entities referenced by
    X, if the relationship from X to these other entities is mapped
-   with cascade=REMOVE or cascade=ALL (see &quot;<a href="">Transitive Persistence</a>&quot;).</li>
+   with cascade=REMOVE or cascade=ALL (see &quot;<a href="../#transitive-persistence">Transitive Persistence</a>&quot;).</li>
 <li class="dash"> If X is a managed entity, the remove operation causes it to
    become removed. The remove operation is cascaded to entities
    referenced by X, if the relationships from X to these other
    entities is mapped with cascade=REMOVE or cascade=ALL (see
-   &quot;<a href="">Transitive Persistence</a>&quot;).</li>
+   &quot;<a href="../#transitive-persistence">Transitive Persistence</a>&quot;).</li>
 <li class="dash"> If X is a detached entity, an InvalidArgumentException will be
    thrown.</li>
 <li class="dash"> If X is a removed entity, it is ignored by the remove operation.</li>
@@ -650,14 +661,14 @@ as follows:</p>
    become detached. The detach operation is cascaded to entities
    referenced by X, if the relationships from X to these other
    entities is mapped with cascade=DETACH or cascade=ALL (see
-   &quot;<a href="">Transitive Persistence</a>&quot;). Entities which previously referenced X
+   &quot;<a href="../#transitive-persistence">Transitive Persistence</a>&quot;). Entities which previously referenced X
    will continue to reference X.</li>
 <li class="dash"> If X is a new or detached entity, it is ignored by the detach
    operation.</li>
 <li class="dash"> If X is a removed entity, the detach operation is cascaded to
    entities referenced by X, if the relationships from X to these
    other entities is mapped with cascade=DETACH or cascade=ALL (see
-   &quot;<a href="">Transitive Persistence</a>&quot;). Entities which previously referenced X
+   &quot;<a href="../#transitive-persistence">Transitive Persistence</a>&quot;). Entities which previously referenced X
    will continue to reference X.</li>
 </ul>
 
@@ -712,7 +723,7 @@ as follows:</p>
 <li class="dash"> If X is a managed entity, it is ignored by the merge operation,
    however, the merge operation is cascaded to entities referenced by
    relationships from X if these relationships have been mapped with
-   the cascade element value MERGE or ALL (see &quot;<a href="">Transitive Persistence</a>&quot;).</li>
+   the cascade element value MERGE or ALL (see &quot;<a href="../#transitive-persistence">Transitive Persistence</a>&quot;).</li>
 <li class="dash"> For all entities Y referenced by relationships from X having the
    cascade element value MERGE or ALL, Y is merged recursively as Y'.
    For all such Y referenced by X, X' is set to reference Y'. (Note

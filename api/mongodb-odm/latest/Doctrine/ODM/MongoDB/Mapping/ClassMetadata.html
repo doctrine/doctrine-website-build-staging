@@ -328,6 +328,13 @@ the difference and using the $inc operator</em></p>
                     <p></p>
                 </td>
             </tr>
+                    <tr>
+                <td>ALLOWED_GRIDFS_FIELDS</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
             </table>
 
     
@@ -336,7 +343,7 @@ the difference and using the $inc operator</em></p>
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_db">
-                                                                                string
+                                                                                string|null
                 </td>
                 <td>$db</td>
                 <td class="last">READ-ONLY: The name of the mongo database the document is mapped to.</td>
@@ -348,6 +355,14 @@ the difference and using the $inc operator</em></p>
                 </td>
                 <td>$collection</td>
                 <td class="last">READ-ONLY: The name of the mongo collection the document is mapped to.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_bucketName">
+                                                                                string|null
+                </td>
+                <td>$bucketName</td>
+                <td class="last">READ-ONLY: The name of the GridFS bucket the document is mapped to.</td>
                 <td></td>
             </tr>
                     <tr>
@@ -432,14 +447,6 @@ operations to specific members, based on custom parameters.</td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_namespace">
-                                                                                string
-                </td>
-                <td>$namespace</td>
-                <td class="last">READ-ONLY: The namespace the document class is contained in.</td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td class="type" id="property_rootDocumentName">
                                                                                 string
                 </td>
@@ -451,7 +458,7 @@ as {@link $documentName}.</td>
             </tr>
                     <tr>
                 <td class="type" id="property_customRepositoryClassName">
-                                                                                string
+                                                                                string|null
                 </td>
                 <td>$customRepositoryClassName</td>
                 <td class="last">The name of the custom repository class used for the document class.</td>
@@ -491,7 +498,7 @@ as {@link $documentName}.</td>
             </tr>
                     <tr>
                 <td class="type" id="property_generatorType">
-                                                                                string
+                                                                                int
                 </td>
                 <td>$generatorType</td>
                 <td class="last">READ-ONLY: The Id generator type used by the class.</td>
@@ -603,6 +610,22 @@ inheritance mapping.</td>
                 <td></td>
             </tr>
                     <tr>
+                <td class="type" id="property_isFile">
+                                                                                bool
+                </td>
+                <td>$isFile</td>
+                <td class="last">READ-ONLY: Whether this class describes the mapping of a gridFS file</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_chunkSizeBytes">
+                                                                                int|null
+                </td>
+                <td>$chunkSizeBytes</td>
+                <td class="last">READ-ONLY: The default chunk size in bytes for the file</td>
+                <td></td>
+            </tr>
+                    <tr>
                 <td class="type" id="property_changeTrackingPolicy">
                                                                                 int
                 </td>
@@ -621,7 +644,7 @@ with optimistic locking.</td>
             </tr>
                     <tr>
                 <td class="type" id="property_versionField">
-                                                                                mixed
+                                                                                string|null
                 </td>
                 <td>$versionField</td>
                 <td class="last">READ-ONLY: The name of the field which is used for versioning in optimistic locking (if any).</td>
@@ -682,14 +705,14 @@ metadata of the class with the given name.</p>                </div>
                     static&nbsp;mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getReferenceId">getReferenceId</a>(mixed $reference, string $storeAs)
+                    <a href="#method_getReferenceId">getReferenceId</a>($reference, string $storeAs)
         
                                             <p>Helper method to get reference id of ref* type references</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    static&nbsp;
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getReferenceFieldName">getReferenceFieldName</a>(string $storeAs, string $pathPrefix = &#039;&#039;)
@@ -722,7 +745,7 @@ metadata of the class with the given name.</p>                </div>
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setIdentifier">setIdentifier</a>(string $identifier)
+                    <a href="#method_setIdentifier">setIdentifier</a>(string|null $identifier)
         
                                             <p>INTERNAL:
 Sets the mapped identifier field of this class.</p>                </div>
@@ -770,7 +793,7 @@ Sets the mapped identifier field of this class.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isInheritedField">isInheritedField</a>(string $fieldName)
@@ -783,7 +806,7 @@ Sets the mapped identifier field of this class.</p>                </div>
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setCustomRepositoryClass">setCustomRepositoryClass</a>(string $repositoryClassName)
+                    <a href="#method_setCustomRepositoryClass">setCustomRepositoryClass</a>(string|null $repositoryClassName)
         
                                             <p>Registers a custom repository class for the document class.</p>                </div>
                 <div class="col-md-2"></div>
@@ -793,7 +816,7 @@ Sets the mapped identifier field of this class.</p>                </div>
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_invokeLifecycleCallbacks">invokeLifecycleCallbacks</a>(string $event, object $document, array|null $arguments = null)
+                    <a href="#method_invokeLifecycleCallbacks">invokeLifecycleCallbacks</a>(string $event, <abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document, array|null $arguments = null)
         
                                             <p>Dispatches the lifecycle event of the given document by invoking all
 registered callbacks.</p>                </div>
@@ -801,7 +824,7 @@ registered callbacks.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_hasLifecycleCallbacks">hasLifecycleCallbacks</a>(string $event)
@@ -811,7 +834,7 @@ registered callbacks.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getLifecycleCallbacks">getLifecycleCallbacks</a>(string $event)
@@ -844,7 +867,7 @@ registered callbacks.</p>                </div>
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_registerAlsoLoadMethod">registerAlsoLoadMethod</a>(string $method, array|string $fields)
+                    <a href="#method_registerAlsoLoadMethod">registerAlsoLoadMethod</a>(string $method, $fields)
         
                                             <p>Registers a method for loading document data before field hydration.</p>                </div>
                 <div class="col-md-2"></div>
@@ -864,7 +887,7 @@ registered callbacks.</p>                </div>
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDiscriminatorField">setDiscriminatorField</a>(string $discriminatorField)
+                    <a href="#method_setDiscriminatorField">setDiscriminatorField</a>(string|array $discriminatorField)
         
                                             <p>Sets the discriminator field.</p>                </div>
                 <div class="col-md-2"></div>
@@ -884,7 +907,7 @@ registered callbacks.</p>                </div>
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDefaultDiscriminatorValue">setDefaultDiscriminatorValue</a>(string $defaultDiscriminatorValue)
+                    <a href="#method_setDefaultDiscriminatorValue">setDefaultDiscriminatorValue</a>(string|null $defaultDiscriminatorValue)
         
                                             <p>Sets the default discriminator value to be used for this class
 Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document has no discriminator value</p>                </div>
@@ -912,7 +935,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getIndexes">getIndexes</a>()
@@ -922,7 +945,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_hasIndexes">hasIndexes</a>()
@@ -942,7 +965,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getShardKey">getShardKey</a>()
@@ -953,7 +976,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isSharded">isSharded</a>()
@@ -966,7 +989,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setReadPreference">setReadPreference</a>(string $readPreference, array|null $tags)
+                    <a href="#method_setReadPreference">setReadPreference</a>(null|string|int $readPreference, array|null $tags)
         
                                             <p>Sets the read preference used by this class.</p>                </div>
                 <div class="col-md-2"></div>
@@ -976,14 +999,14 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setWriteConcern">setWriteConcern</a>(string $writeConcern)
+                    <a href="#method_setWriteConcern">setWriteConcern</a>(string|int|null $writeConcern)
         
                                             <p>Sets the write concern used by this class.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    int|null|string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getWriteConcern">getWriteConcern</a>()
@@ -994,7 +1017,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_hasWriteConcern">hasWriteConcern</a>()
@@ -1014,7 +1037,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isChangeTrackingDeferredExplicit">isChangeTrackingDeferredExplicit</a>()
@@ -1024,7 +1047,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isChangeTrackingDeferredImplicit">isChangeTrackingDeferredImplicit</a>()
@@ -1034,7 +1057,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isChangeTrackingNotify">isChangeTrackingNotify</a>()
@@ -1044,7 +1067,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getReflectionProperties">getReflectionProperties</a>()
@@ -1054,7 +1077,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a target="_blank" href="http://php.net/ReflectionProperty">ReflectionProperty</a>
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getReflectionProperty">getReflectionProperty</a>(string $name)
@@ -1074,17 +1097,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getNamespace">getNamespace</a>()
-        
-                                            <p>The namespace this Document class belongs to.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getDatabase">getDatabase</a>()
@@ -1097,14 +1110,14 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDatabase">setDatabase</a>(string $db)
+                    <a href="#method_setDatabase">setDatabase</a>(string|null $db)
         
                                             <p>Set the database this Document is mapped to.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getCollection">getCollection</a>()
@@ -1124,7 +1137,51 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getBucketName">getBucketName</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setBucketName">setBucketName</a>(string $bucketName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getChunkSizeBytes">getChunkSizeBytes</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setChunkSizeBytes">setChunkSizeBytes</a>(int $chunkSizeBytes)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getCollectionCapped">getCollectionCapped</a>()
@@ -1144,7 +1201,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getCollectionSize">getCollectionSize</a>()
@@ -1164,7 +1221,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getCollectionMax">getCollectionMax</a>()
@@ -1184,7 +1241,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isMappedToCollection">isMappedToCollection</a>()
@@ -1256,7 +1313,7 @@ Adds an association mapping without completing/validating it.</p>               
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_hasReference">hasReference</a>(string $fieldName)
@@ -1266,7 +1323,7 @@ Adds an association mapping without completing/validating it.</p>               
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_hasEmbed">hasEmbed</a>(string $fieldName)
@@ -1306,7 +1363,7 @@ Adds an association mapping without completing/validating it.</p>               
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isSingleValuedReference">isSingleValuedReference</a>(string $fieldName)
@@ -1317,7 +1374,7 @@ and if yes, checks whether it is a single-valued association (to-one).</p>      
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isCollectionValuedReference">isCollectionValuedReference</a>(string $fieldName)
@@ -1328,7 +1385,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isSingleValuedEmbed">isSingleValuedEmbed</a>(string $fieldName)
@@ -1339,7 +1396,7 @@ and if yes, checks whether it is a single-valued association (to-one).</p>      
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isCollectionValuedEmbed">isCollectionValuedEmbed</a>(string $fieldName)
@@ -1383,7 +1440,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setIdentifierValue">setIdentifierValue</a>(object $document, mixed $id)
+                    <a href="#method_setIdentifierValue">setIdentifierValue</a>(<abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document, $id)
         
                                             <p>Sets the document identifier of a document.</p>                </div>
                 <div class="col-md-2"></div>
@@ -1393,7 +1450,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
                     mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getIdentifierValue">getIdentifierValue</a>(object $document)
+                    <a href="#method_getIdentifierValue">getIdentifierValue</a>(<abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document)
         
                                             <p>Gets the document identifier as a PHP type.</p>                </div>
                 <div class="col-md-2"></div>
@@ -1410,10 +1467,10 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="MongoDB\BSON\ObjectId">ObjectId</abbr>
+                    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getIdentifierObject">getIdentifierObject</a>(object $document)
+                    <a href="#method_getIdentifierObject">getIdentifierObject</a>(<abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document)
         
                                             <p>Get the document identifier object as a database type.</p>                </div>
                 <div class="col-md-2"></div>
@@ -1423,7 +1480,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setFieldValue">setFieldValue</a>(object $document, string $field, mixed $value)
+                    <a href="#method_setFieldValue">setFieldValue</a>(<abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document, string $field, $value)
         
                                             <p>Sets the specified field to the specified value on the given document.</p>                </div>
                 <div class="col-md-2"></div>
@@ -1433,14 +1490,14 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
                     mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getFieldValue">getFieldValue</a>(object $document, string $field)
+                    <a href="#method_getFieldValue">getFieldValue</a>(<abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document, string $field)
         
                                             <p>Gets the specified field's value off the given document.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getFieldMapping">getFieldMapping</a>(string $fieldName)
@@ -1450,7 +1507,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getEmbeddedFieldsMappings">getEmbeddedFieldsMappings</a>()
@@ -1460,7 +1517,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getFieldMappingByDbFieldName">getFieldMappingByDbFieldName</a>(string $dbFieldName)
@@ -1470,7 +1527,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isNullable">isNullable</a>(string $fieldName)
@@ -1480,7 +1537,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_hasDiscriminator">hasDiscriminator</a>()
@@ -1493,7 +1550,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setIdGeneratorType">setIdGeneratorType</a>(string $generatorType)
+                    <a href="#method_setIdGeneratorType">setIdGeneratorType</a>(int $generatorType)
         
                                             <p>Sets the type of Id generator to use for the mapped class.</p>                </div>
                 <div class="col-md-2"></div>
@@ -1510,7 +1567,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isInheritanceTypeNone">isInheritanceTypeNone</a>()
@@ -1521,7 +1578,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isInheritanceTypeSingleCollection">isInheritanceTypeSingleCollection</a>()
@@ -1531,7 +1588,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isInheritanceTypeCollectionPerClass">isInheritanceTypeCollectionPerClass</a>()
@@ -1561,7 +1618,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isIdGeneratorAuto">isIdGeneratorAuto</a>()
@@ -1571,7 +1628,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isIdGeneratorIncrement">isIdGeneratorIncrement</a>()
@@ -1581,7 +1638,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isIdGeneratorUuid">isIdGeneratorUuid</a>()
@@ -1591,7 +1648,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isIdGeneratorNone">isIdGeneratorNone</a>()
@@ -1625,7 +1682,7 @@ value to use depending on the column type.</p>                </div>
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setVersionField">setVersionField</a>(string $versionField)
+                    <a href="#method_setVersionField">setVersionField</a>(string|null $versionField)
         
                                             <p>Sets the name of the field that is to be used for versioning if this class is
 versioned for optimistic locking.</p>                </div>
@@ -1745,7 +1802,7 @@ is currently locked or not.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_mapField">mapField</a>(array $mapping)
@@ -1775,7 +1832,7 @@ is currently locked or not.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    object
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_newInstance">newInstance</a>()
@@ -1791,7 +1848,7 @@ is currently locked or not.</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L481">line 481</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L490">line 490</a></div>
         <code>                    
     <strong>__construct</strong>(string $documentName)
         </code>
@@ -1810,7 +1867,7 @@ metadata of the class with the given name.</p>                                  
                     <tr>
                 <td>string</td>
                 <td>$documentName</td>
-                <td>The name of the document class the new instance is used for.</td>
+                <td></td>
             </tr>
             </table>
 
@@ -1823,9 +1880,9 @@ metadata of the class with the given name.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_getReferenceId">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L498">line 498</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L505">line 505</a></div>
         <code>        static            mixed
-    <strong>getReferenceId</strong>(mixed $reference, string $storeAs)
+    <strong>getReferenceId</strong>($reference, string $storeAs)
         </code>
     </h3>
     <div class="details">
@@ -1839,7 +1896,7 @@ metadata of the class with the given name.</p>                                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td></td>
                 <td>$reference</td>
                 <td></td>
             </tr>
@@ -1868,8 +1925,8 @@ metadata of the class with the given name.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_getReferenceFieldName">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L524">line 524</a></div>
-        <code>        static            string
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L527">line 527</a></div>
+        <code>        static            
     <strong>getReferenceFieldName</strong>(string $storeAs, string $pathPrefix = &#039;&#039;)
         </code>
     </h3>
@@ -1891,20 +1948,11 @@ metadata of the class with the given name.</p>                                  
                     <tr>
                 <td>string</td>
                 <td>$pathPrefix</td>
-                <td>The field path prefix</td>
+                <td></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -1913,7 +1961,7 @@ metadata of the class with the given name.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_getReflectionClass">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L536">line 536</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L539">line 539</a></div>
         <code>                    
     <strong>getReflectionClass</strong>()
         </code>
@@ -1934,7 +1982,7 @@ metadata of the class with the given name.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_isIdentifier">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L548">line 548</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L551">line 551</a></div>
         <code>                    
     <strong>isIdentifier</strong>($fieldName)
         </code>
@@ -1965,9 +2013,9 @@ metadata of the class with the given name.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setIdentifier">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L559">line 559</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L560">line 560</a></div>
         <code>                    
-    <strong>setIdentifier</strong>(string $identifier)
+    <strong>setIdentifier</strong>(string|null $identifier)
         </code>
     </h3>
     <div class="details">
@@ -1982,7 +2030,7 @@ Sets the mapped identifier field of this class.</p>                             
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$identifier</td>
                 <td></td>
             </tr>
@@ -1997,7 +2045,7 @@ Sets the mapped identifier field of this class.</p>                             
             </div>
                     <div class="method-item">
                     <h3 id="method_getIdentifier">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L570">line 570</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L571">line 571</a></div>
         <code>                    
     <strong>getIdentifier</strong>()
         </code>
@@ -2019,7 +2067,7 @@ this will always return an array with only one value</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_getIdentifierFieldNames">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L581">line 581</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L582">line 582</a></div>
         <code>                    
     <strong>getIdentifierFieldNames</strong>()
         </code>
@@ -2041,7 +2089,7 @@ this will always return an array with only one value</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_hasField">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L589">line 589</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L590">line 590</a></div>
         <code>                    
     <strong>hasField</strong>($fieldName)
         </code>
@@ -2072,7 +2120,7 @@ this will always return an array with only one value</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_setInheritanceType">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L599">line 599</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L598">line 598</a></div>
         <code>                    
     <strong>setInheritanceType</strong>(int $type)
         </code>
@@ -2103,8 +2151,8 @@ this will always return an array with only one value</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_isInheritedField">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L611">line 611</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L606">line 606</a></div>
+        <code>                    
     <strong>isInheritedField</strong>(string $fieldName)
         </code>
     </h3>
@@ -2126,15 +2174,6 @@ this will always return an array with only one value</p>                        
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE if the field is inherited, FALSE otherwise.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -2143,9 +2182,9 @@ this will always return an array with only one value</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_setCustomRepositoryClass">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L621">line 621</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L614">line 614</a></div>
         <code>                    
-    <strong>setCustomRepositoryClass</strong>(string $repositoryClassName)
+    <strong>setCustomRepositoryClass</strong>(string|null $repositoryClassName)
         </code>
     </h3>
     <div class="details">
@@ -2159,9 +2198,9 @@ this will always return an array with only one value</p>                        
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$repositoryClassName</td>
-                <td>The class name of the custom repository.</td>
+                <td></td>
             </tr>
             </table>
 
@@ -2174,9 +2213,9 @@ this will always return an array with only one value</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_invokeLifecycleCallbacks">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L644">line 644</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L630">line 630</a></div>
         <code>                    
-    <strong>invokeLifecycleCallbacks</strong>(string $event, object $document, array|null $arguments = null)
+    <strong>invokeLifecycleCallbacks</strong>(string $event, <abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document, array|null $arguments = null)
         </code>
     </h3>
     <div class="details">
@@ -2193,17 +2232,17 @@ registered callbacks.</p>                                                </div>
                     <tr>
                 <td>string</td>
                 <td>$event</td>
-                <td>Lifecycle event</td>
+                <td></td>
             </tr>
                     <tr>
-                <td>object</td>
+                <td><abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr></td>
                 <td>$document</td>
-                <td>Document on which the event occurred</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>array|null</td>
                 <td>$arguments</td>
-                <td>Arguments to pass to all callbacks</td>
+                <td></td>
             </tr>
             </table>
 
@@ -2226,8 +2265,8 @@ registered callbacks.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasLifecycleCallbacks">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L670">line 670</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L652">line 652</a></div>
+        <code>                    
     <strong>hasLifecycleCallbacks</strong>(string $event)
         </code>
     </h3>
@@ -2244,20 +2283,11 @@ registered callbacks.</p>                                                </div>
                     <tr>
                 <td>string</td>
                 <td>$event</td>
-                <td>Lifecycle event</td>
+                <td></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -2266,8 +2296,8 @@ registered callbacks.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getLifecycleCallbacks">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L681">line 681</a></div>
-        <code>                    array
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L660">line 660</a></div>
+        <code>                    
     <strong>getLifecycleCallbacks</strong>(string $event)
         </code>
     </h3>
@@ -2289,15 +2319,6 @@ registered callbacks.</p>                                                </div>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -2306,7 +2327,7 @@ registered callbacks.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addLifecycleCallback">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L694">line 694</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L670">line 670</a></div>
         <code>                    
     <strong>addLifecycleCallback</strong>(string $callback, string $event)
         </code>
@@ -2342,7 +2363,7 @@ registered callbacks.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setLifecycleCallbacks">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L710">line 710</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L684">line 684</a></div>
         <code>                    
     <strong>setLifecycleCallbacks</strong>(array $callbacks)
         </code>
@@ -2373,9 +2394,9 @@ registered callbacks.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_registerAlsoLoadMethod">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L724">line 724</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L697">line 697</a></div>
         <code>                    
-    <strong>registerAlsoLoadMethod</strong>(string $method, array|string $fields)
+    <strong>registerAlsoLoadMethod</strong>(string $method, $fields)
         </code>
     </h3>
     <div class="details">
@@ -2392,12 +2413,12 @@ it will be invoked only once for the first field found.</p>                     
                     <tr>
                 <td>string</td>
                 <td>$method</td>
-                <td>Method name</td>
+                <td></td>
             </tr>
                     <tr>
-                <td>array|string</td>
+                <td></td>
                 <td>$fields</td>
-                <td>Database field name(s)</td>
+                <td></td>
             </tr>
             </table>
 
@@ -2410,7 +2431,7 @@ it will be invoked only once for the first field found.</p>                     
             </div>
                     <div class="method-item">
                     <h3 id="method_setAlsoLoadMethods">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L736">line 736</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L707">line 707</a></div>
         <code>                    
     <strong>setAlsoLoadMethods</strong>(array $methods)
         </code>
@@ -2441,9 +2462,9 @@ it will be invoked only once for the first field found.</p>                     
             </div>
                     <div class="method-item">
                     <h3 id="method_setDiscriminatorField">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L753">line 753</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L724">line 724</a></div>
         <code>                    
-    <strong>setDiscriminatorField</strong>(string $discriminatorField)
+    <strong>setDiscriminatorField</strong>(string|array $discriminatorField)
         </code>
     </h3>
     <div class="details">
@@ -2459,7 +2480,7 @@ properties.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|array</td>
                 <td>$discriminatorField</td>
                 <td></td>
             </tr>
@@ -2484,7 +2505,7 @@ properties.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDiscriminatorMap">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L787">line 787</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L760">line 760</a></div>
         <code>                    
     <strong>setDiscriminatorMap</strong>(array $map)
         </code>
@@ -2524,9 +2545,9 @@ properties.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDefaultDiscriminatorValue">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L815">line 815</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L787">line 787</a></div>
         <code>                    
-    <strong>setDefaultDiscriminatorValue</strong>(string $defaultDiscriminatorValue)
+    <strong>setDefaultDiscriminatorValue</strong>(string|null $defaultDiscriminatorValue)
         </code>
     </h3>
     <div class="details">
@@ -2541,7 +2562,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$defaultDiscriminatorValue</td>
                 <td></td>
             </tr>
@@ -2565,7 +2586,7 @@ Used for JOINED and SINGLE_TABLE inheritance mapping strategies if the document 
             </div>
                     <div class="method-item">
                     <h3 id="method_setDiscriminatorValue">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L837">line 837</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L813">line 813</a></div>
         <code>                    
     <strong>setDiscriminatorValue</strong>(string $value)
         </code>
@@ -2590,6 +2611,15 @@ collection.</p>                            </div>
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Doctrine/ODM/MongoDB/Mapping/MappingException.html"><abbr title="Doctrine\ODM\MongoDB\Mapping\MappingException">MappingException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -2597,7 +2627,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addIndex">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L849">line 849</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L826">line 826</a></div>
         <code>                    
     <strong>addIndex</strong>(array $keys, array $options = [])
         </code>
@@ -2615,12 +2645,12 @@ collection.</p>                            </div>
                     <tr>
                 <td>array</td>
                 <td>$keys</td>
-                <td>Array of keys for the index.</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td>Array of options for the index.</td>
+                <td></td>
             </tr>
             </table>
 
@@ -2633,8 +2663,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIndexes">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L877">line 877</a></div>
-        <code>                    array
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L852">line 852</a></div>
+        <code>                    
     <strong>getIndexes</strong>()
         </code>
     </h3>
@@ -2646,15 +2676,6 @@ collection.</p>                            </div>
                                     <p>Returns the array of indexes for this Document.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td>$indexes The array of indexes.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -2663,8 +2684,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasIndexes">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L887">line 887</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L860">line 860</a></div>
+        <code>                    
     <strong>hasIndexes</strong>()
         </code>
     </h3>
@@ -2676,15 +2697,6 @@ collection.</p>                            </div>
                                     <p>Checks whether this document has indexes or not.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -2693,7 +2705,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setShardKey">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L900">line 900</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L870">line 870</a></div>
         <code>                    
     <strong>setShardKey</strong>(array $keys, array $options = [])
         </code>
@@ -2711,12 +2723,12 @@ collection.</p>                            </div>
                     <tr>
                 <td>array</td>
                 <td>$keys</td>
-                <td>Array of document keys.</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td>Array of sharding options.</td>
+                <td></td>
             </tr>
             </table>
 
@@ -2738,8 +2750,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getShardKey">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L948">line 948</a></div>
-        <code>                    array
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L915">line 915</a></div>
+        <code>                    
     <strong>getShardKey</strong>()
         </code>
     </h3>
@@ -2749,15 +2761,6 @@ collection.</p>                            </div>
 
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -2766,8 +2769,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isSharded">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L958">line 958</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L923">line 923</a></div>
+        <code>                    
     <strong>isSharded</strong>()
         </code>
     </h3>
@@ -2779,15 +2782,6 @@ collection.</p>                            </div>
                                     <p>Checks whether this document has shard key or not.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -2796,9 +2790,9 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setReadPreference">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L969">line 969</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L934">line 934</a></div>
         <code>                    
-    <strong>setReadPreference</strong>(string $readPreference, array|null $tags)
+    <strong>setReadPreference</strong>(null|string|int $readPreference, array|null $tags)
         </code>
     </h3>
     <div class="details">
@@ -2812,7 +2806,7 @@ collection.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>null|string|int</td>
                 <td>$readPreference</td>
                 <td></td>
             </tr>
@@ -2832,9 +2826,9 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setWriteConcern">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L980">line 980</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L945">line 945</a></div>
         <code>                    
-    <strong>setWriteConcern</strong>(string $writeConcern)
+    <strong>setWriteConcern</strong>(string|int|null $writeConcern)
         </code>
     </h3>
     <div class="details">
@@ -2848,7 +2842,7 @@ collection.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|int|null</td>
                 <td>$writeConcern</td>
                 <td></td>
             </tr>
@@ -2863,8 +2857,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getWriteConcern">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L988">line 988</a></div>
-        <code>                    string
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L953">line 953</a></div>
+        <code>                    int|null|string
     <strong>getWriteConcern</strong>()
         </code>
     </h3>
@@ -2878,7 +2872,7 @@ collection.</p>                            </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td>int|null|string</td>
             <td></td>
         </tr>
     </table>
@@ -2891,8 +2885,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasWriteConcern">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L998">line 998</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L961">line 961</a></div>
+        <code>                    
     <strong>hasWriteConcern</strong>()
         </code>
     </h3>
@@ -2904,15 +2898,6 @@ collection.</p>                            </div>
                                     <p>Whether there is a write concern configured for this class.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -2921,7 +2906,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setChangeTrackingPolicy">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1008">line 1008</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L969">line 969</a></div>
         <code>                    
     <strong>setChangeTrackingPolicy</strong>(int $policy)
         </code>
@@ -2952,8 +2937,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isChangeTrackingDeferredExplicit">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1018">line 1018</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L977">line 977</a></div>
+        <code>                    
     <strong>isChangeTrackingDeferredExplicit</strong>()
         </code>
     </h3>
@@ -2965,15 +2950,6 @@ collection.</p>                            </div>
                                     <p>Whether the change tracking policy of this class is "deferred explicit".</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -2982,8 +2958,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isChangeTrackingDeferredImplicit">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1028">line 1028</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L985">line 985</a></div>
+        <code>                    
     <strong>isChangeTrackingDeferredImplicit</strong>()
         </code>
     </h3>
@@ -2995,15 +2971,6 @@ collection.</p>                            </div>
                                     <p>Whether the change tracking policy of this class is "deferred implicit".</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3012,8 +2979,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isChangeTrackingNotify">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1038">line 1038</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L993">line 993</a></div>
+        <code>                    
     <strong>isChangeTrackingNotify</strong>()
         </code>
     </h3>
@@ -3025,15 +2992,6 @@ collection.</p>                            </div>
                                     <p>Whether the change tracking policy of this class is "notify".</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3042,8 +3000,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getReflectionProperties">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1048">line 1048</a></div>
-        <code>                    array
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1001">line 1001</a></div>
+        <code>                    
     <strong>getReflectionProperties</strong>()
         </code>
     </h3>
@@ -3055,15 +3013,6 @@ collection.</p>                            </div>
                                     <p>Gets the ReflectionProperties of the mapped class.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td>An array of ReflectionProperty instances.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3072,8 +3021,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getReflectionProperty">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1060">line 1060</a></div>
-        <code>                    <a target="_blank" href="http://php.net/ReflectionProperty">ReflectionProperty</a>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1009">line 1009</a></div>
+        <code>                    
     <strong>getReflectionProperty</strong>(string $name)
         </code>
     </h3>
@@ -3095,15 +3044,6 @@ collection.</p>                            </div>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a target="_blank" href="http://php.net/ReflectionProperty">ReflectionProperty</a></td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3112,7 +3052,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1068">line 1068</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1017">line 1017</a></div>
         <code>                    
     <strong>getName</strong>()
         </code>
@@ -3132,39 +3072,9 @@ collection.</p>                            </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getNamespace">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1078">line 1078</a></div>
-        <code>                    string
-    <strong>getNamespace</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>The namespace this Document class belongs to.</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>$namespace The namespace name.</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getDatabase">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1088">line 1088</a></div>
-        <code>                    string
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1025">line 1025</a></div>
+        <code>                    
     <strong>getDatabase</strong>()
         </code>
     </h3>
@@ -3176,15 +3086,6 @@ collection.</p>                            </div>
                                     <p>Returns the database this Document is mapped to.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>$db The database name.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3193,9 +3094,9 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDatabase">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1098">line 1098</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1033">line 1033</a></div>
         <code>                    
-    <strong>setDatabase</strong>(string $db)
+    <strong>setDatabase</strong>(string|null $db)
         </code>
     </h3>
     <div class="details">
@@ -3209,9 +3110,9 @@ collection.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$db</td>
-                <td>The database name</td>
+                <td></td>
             </tr>
             </table>
 
@@ -3224,8 +3125,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCollection">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1108">line 1108</a></div>
-        <code>                    string
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1041">line 1041</a></div>
+        <code>                    
     <strong>getCollection</strong>()
         </code>
     </h3>
@@ -3237,15 +3138,6 @@ collection.</p>                            </div>
                                     <p>Get the collection this Document is mapped to.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>$collection The collection name.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3254,7 +3146,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setCollection">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1120">line 1120</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1053">line 1053</a></div>
         <code>                    
     <strong>setCollection</strong>(array|string $name)
         </code>
@@ -3293,9 +3185,105 @@ collection.</p>                            </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getBucketName">
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1068">line 1068</a></div>
+        <code>                    
+    <strong>getBucketName</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setBucketName">
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1073">line 1073</a></div>
+        <code>                    
+    <strong>setBucketName</strong>(string $bucketName)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$bucketName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getChunkSizeBytes">
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1079">line 1079</a></div>
+        <code>                    
+    <strong>getChunkSizeBytes</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setChunkSizeBytes">
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1084">line 1084</a></div>
+        <code>                    
+    <strong>setChunkSizeBytes</strong>(int $chunkSizeBytes)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$chunkSizeBytes</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getCollectionCapped">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1140">line 1140</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1092">line 1092</a></div>
+        <code>                    
     <strong>getCollectionCapped</strong>()
         </code>
     </h3>
@@ -3307,15 +3295,6 @@ collection.</p>                            </div>
                                     <p>Get whether or not the documents collection is capped.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3324,7 +3303,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setCollectionCapped">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1150">line 1150</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1100">line 1100</a></div>
         <code>                    
     <strong>setCollectionCapped</strong>(bool $bool)
         </code>
@@ -3355,8 +3334,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCollectionSize">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1160">line 1160</a></div>
-        <code>                    int
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1108">line 1108</a></div>
+        <code>                    
     <strong>getCollectionSize</strong>()
         </code>
     </h3>
@@ -3368,15 +3347,6 @@ collection.</p>                            </div>
                                     <p>Get the collection size</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3385,7 +3355,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setCollectionSize">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1170">line 1170</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1116">line 1116</a></div>
         <code>                    
     <strong>setCollectionSize</strong>(int $size)
         </code>
@@ -3416,8 +3386,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCollectionMax">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1180">line 1180</a></div>
-        <code>                    int
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1124">line 1124</a></div>
+        <code>                    
     <strong>getCollectionMax</strong>()
         </code>
     </h3>
@@ -3429,15 +3399,6 @@ collection.</p>                            </div>
                                     <p>Get the collection max.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3446,7 +3407,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setCollectionMax">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1190">line 1190</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1132">line 1132</a></div>
         <code>                    
     <strong>setCollectionMax</strong>(int $max)
         </code>
@@ -3477,8 +3438,8 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isMappedToCollection">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1200">line 1200</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1140">line 1140</a></div>
+        <code>                    
     <strong>isMappedToCollection</strong>()
         </code>
     </h3>
@@ -3490,15 +3451,6 @@ collection.</p>                            </div>
                                     <p>Returns TRUE if this Document is mapped to a collection FALSE otherwise.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3507,7 +3459,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_mapOneEmbedded">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1259">line 1259</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1196">line 1196</a></div>
         <code>                    
     <strong>mapOneEmbedded</strong>(array $mapping)
         </code>
@@ -3525,7 +3477,7 @@ collection.</p>                            </div>
                     <tr>
                 <td>array</td>
                 <td>$mapping</td>
-                <td>The mapping information.</td>
+                <td></td>
             </tr>
             </table>
 
@@ -3538,7 +3490,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_mapManyEmbedded">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1271">line 1271</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1206">line 1206</a></div>
         <code>                    
     <strong>mapManyEmbedded</strong>(array $mapping)
         </code>
@@ -3556,7 +3508,7 @@ collection.</p>                            </div>
                     <tr>
                 <td>array</td>
                 <td>$mapping</td>
-                <td>The mapping information.</td>
+                <td></td>
             </tr>
             </table>
 
@@ -3569,7 +3521,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_mapOneReference">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1283">line 1283</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1216">line 1216</a></div>
         <code>                    
     <strong>mapOneReference</strong>(array $mapping)
         </code>
@@ -3587,7 +3539,7 @@ collection.</p>                            </div>
                     <tr>
                 <td>array</td>
                 <td>$mapping</td>
-                <td>The mapping information.</td>
+                <td></td>
             </tr>
             </table>
 
@@ -3600,7 +3552,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_mapManyReference">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1295">line 1295</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1226">line 1226</a></div>
         <code>                    
     <strong>mapManyReference</strong>(array $mapping)
         </code>
@@ -3618,7 +3570,7 @@ collection.</p>                            </div>
                     <tr>
                 <td>array</td>
                 <td>$mapping</td>
-                <td>The mapping information.</td>
+                <td></td>
             </tr>
             </table>
 
@@ -3631,7 +3583,7 @@ collection.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addInheritedFieldMapping">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1309">line 1309</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1238">line 1238</a></div>
         <code>                    
     <strong>addInheritedFieldMapping</strong>(array $fieldMapping)
         </code>
@@ -3663,7 +3615,7 @@ Adds a field mapping without completing/validating it.</p>                    <p
             </div>
                     <div class="method-item">
                     <h3 id="method_addInheritedAssociationMapping">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1330">line 1330</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1256">line 1256</a></div>
         <code>                    
     <strong>addInheritedAssociationMapping</strong>(array $mapping)
         </code>
@@ -3704,8 +3656,8 @@ Adds an association mapping without completing/validating it.</p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_hasReference">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1341">line 1341</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1264">line 1264</a></div>
+        <code>                    
     <strong>hasReference</strong>(string $fieldName)
         </code>
     </h3>
@@ -3727,15 +3679,6 @@ Adds an association mapping without completing/validating it.</p>               
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3744,8 +3687,8 @@ Adds an association mapping without completing/validating it.</p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_hasEmbed">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1352">line 1352</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1272">line 1272</a></div>
+        <code>                    
     <strong>hasEmbed</strong>(string $fieldName)
         </code>
     </h3>
@@ -3767,15 +3710,6 @@ Adds an association mapping without completing/validating it.</p>               
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3784,7 +3718,7 @@ Adds an association mapping without completing/validating it.</p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_hasAssociation">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1362">line 1362</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1282">line 1282</a></div>
         <code>                    
     <strong>hasAssociation</strong>($fieldName)
         </code>
@@ -3815,7 +3749,7 @@ Adds an association mapping without completing/validating it.</p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_isSingleValuedAssociation">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1373">line 1373</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1293">line 1293</a></div>
         <code>                    
     <strong>isSingleValuedAssociation</strong>($fieldName)
         </code>
@@ -3847,7 +3781,7 @@ is a single valued association.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isCollectionValuedAssociation">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1384">line 1384</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1304">line 1304</a></div>
         <code>                    
     <strong>isCollectionValuedAssociation</strong>($fieldName)
         </code>
@@ -3879,8 +3813,8 @@ is a collection valued association.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isSingleValuedReference">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1396">line 1396</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1314">line 1314</a></div>
+        <code>                    
     <strong>isSingleValuedReference</strong>(string $fieldName)
         </code>
     </h3>
@@ -3903,15 +3837,6 @@ and if yes, checks whether it is a single-valued association (to-one).</p>      
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE if the association exists and is single-valued, FALSE otherwise.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3920,8 +3845,8 @@ and if yes, checks whether it is a single-valued association (to-one).</p>      
             </div>
                     <div class="method-item">
                     <h3 id="method_isCollectionValuedReference">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1409">line 1409</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1324">line 1324</a></div>
+        <code>                    
     <strong>isCollectionValuedReference</strong>(string $fieldName)
         </code>
     </h3>
@@ -3944,15 +3869,6 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE if the association exists and is collection-valued, FALSE otherwise.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -3961,8 +3877,8 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_isSingleValuedEmbed">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1422">line 1422</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1334">line 1334</a></div>
+        <code>                    
     <strong>isSingleValuedEmbed</strong>(string $fieldName)
         </code>
     </h3>
@@ -3985,15 +3901,6 @@ and if yes, checks whether it is a single-valued association (to-one).</p>      
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE if the association exists and is single-valued, FALSE otherwise.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4002,8 +3909,8 @@ and if yes, checks whether it is a single-valued association (to-one).</p>      
             </div>
                     <div class="method-item">
                     <h3 id="method_isCollectionValuedEmbed">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1435">line 1435</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1344">line 1344</a></div>
+        <code>                    
     <strong>isCollectionValuedEmbed</strong>(string $fieldName)
         </code>
     </h3>
@@ -4026,15 +3933,6 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE if the association exists and is collection-valued, FALSE otherwise.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4043,7 +3941,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_setIdGenerator">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1446">line 1446</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1353">line 1353</a></div>
         <code>                    
     <strong>setIdGenerator</strong>(<a href="../../../../Doctrine/ODM/MongoDB/Id/AbstractIdGenerator.html"><abbr title="Doctrine\ODM\MongoDB\Id\AbstractIdGenerator">AbstractIdGenerator</abbr></a> $generator)
         </code>
@@ -4074,7 +3972,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_getPHPIdentifierValue">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1457">line 1457</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1364">line 1364</a></div>
         <code>                    mixed
     <strong>getPHPIdentifierValue</strong>(mixed $id)
         </code>
@@ -4114,7 +4012,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_getDatabaseIdentifierValue">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1469">line 1469</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1376">line 1376</a></div>
         <code>                    mixed
     <strong>getDatabaseIdentifierValue</strong>(mixed $id)
         </code>
@@ -4154,9 +4052,9 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_setIdentifierValue">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1483">line 1483</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1389">line 1389</a></div>
         <code>                    
-    <strong>setIdentifierValue</strong>(object $document, mixed $id)
+    <strong>setIdentifierValue</strong>(<abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document, $id)
         </code>
     </h3>
     <div class="details">
@@ -4170,12 +4068,12 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
 
                     <table class="table table-condensed">
                     <tr>
-                <td>object</td>
+                <td><abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr></td>
                 <td>$document</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td></td>
                 <td>$id</td>
                 <td></td>
             </tr>
@@ -4190,9 +4088,9 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_getIdentifierValue">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1495">line 1495</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1400">line 1400</a></div>
         <code>                    mixed
-    <strong>getIdentifierValue</strong>(object $document)
+    <strong>getIdentifierValue</strong>(<abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document)
         </code>
     </h3>
     <div class="details">
@@ -4206,7 +4104,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
 
                     <table class="table table-condensed">
                     <tr>
-                <td>object</td>
+                <td><abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr></td>
                 <td>$document</td>
                 <td></td>
             </tr>
@@ -4230,7 +4128,7 @@ and if yes, checks whether it is a collection-valued association (to-many).</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_getIdentifierValues">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1507">line 1507</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1412">line 1412</a></div>
         <code>                    
     <strong>getIdentifierValues</strong>($object)
         </code>
@@ -4263,9 +4161,9 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIdentifierObject">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1519">line 1519</a></div>
-        <code>                    <abbr title="MongoDB\BSON\ObjectId">ObjectId</abbr>
-    <strong>getIdentifierObject</strong>(object $document)
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1422">line 1422</a></div>
+        <code>                    mixed
+    <strong>getIdentifierObject</strong>(<abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document)
         </code>
     </h3>
     <div class="details">
@@ -4279,7 +4177,7 @@ field as a key.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>object</td>
+                <td><abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr></td>
                 <td>$document</td>
                 <td></td>
             </tr>
@@ -4290,8 +4188,8 @@ field as a key.</p>                            </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="MongoDB\BSON\ObjectId">ObjectId</abbr></td>
-            <td>$id The ObjectId</td>
+            <td>mixed</td>
+            <td>$id</td>
         </tr>
     </table>
 
@@ -4303,9 +4201,9 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setFieldValue">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1531">line 1531</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1432">line 1432</a></div>
         <code>                    
-    <strong>setFieldValue</strong>(object $document, string $field, mixed $value)
+    <strong>setFieldValue</strong>(<abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document, string $field, $value)
         </code>
     </h3>
     <div class="details">
@@ -4319,7 +4217,7 @@ field as a key.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>object</td>
+                <td><abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr></td>
                 <td>$document</td>
                 <td></td>
             </tr>
@@ -4329,7 +4227,7 @@ field as a key.</p>                            </div>
                 <td></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td></td>
                 <td>$value</td>
                 <td></td>
             </tr>
@@ -4344,9 +4242,9 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFieldValue">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1550">line 1550</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1448">line 1448</a></div>
         <code>                    mixed
-    <strong>getFieldValue</strong>(object $document, string $field)
+    <strong>getFieldValue</strong>(<abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr> $document, string $field)
         </code>
     </h3>
     <div class="details">
@@ -4360,7 +4258,7 @@ field as a key.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>object</td>
+                <td><abbr title="Doctrine\ODM\MongoDB\Mapping\object">object</abbr></td>
                 <td>$document</td>
                 <td></td>
             </tr>
@@ -4389,8 +4287,8 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFieldMapping">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1568">line 1568</a></div>
-        <code>                    array
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1462">line 1462</a></div>
+        <code>                    
     <strong>getFieldMapping</strong>(string $fieldName)
         </code>
     </h3>
@@ -4407,20 +4305,11 @@ field as a key.</p>                            </div>
                     <tr>
                 <td>string</td>
                 <td>$fieldName</td>
-                <td>The field name.</td>
+                <td></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td>The field mapping.</td>
-        </tr>
-    </table>
-
             
                             <h4>Exceptions</h4>
 
@@ -4438,8 +4327,8 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getEmbeddedFieldsMappings">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1581">line 1581</a></div>
-        <code>                    array
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1473">line 1473</a></div>
+        <code>                    
     <strong>getEmbeddedFieldsMappings</strong>()
         </code>
     </h3>
@@ -4451,15 +4340,6 @@ field as a key.</p>                            </div>
                                     <p>Gets mappings of fields holding embedded document(s).</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td>of field mappings</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4468,8 +4348,8 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFieldMappingByDbFieldName">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1600">line 1600</a></div>
-        <code>                    array
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1489">line 1489</a></div>
+        <code>                    
     <strong>getFieldMappingByDbFieldName</strong>(string $dbFieldName)
         </code>
     </h3>
@@ -4491,15 +4371,6 @@ field as a key.</p>                            </div>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
             
                             <h4>Exceptions</h4>
 
@@ -4517,8 +4388,8 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isNullable">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1618">line 1618</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1503">line 1503</a></div>
+        <code>                    
     <strong>isNullable</strong>(string $fieldName)
         </code>
     </h3>
@@ -4535,20 +4406,11 @@ field as a key.</p>                            </div>
                     <tr>
                 <td>string</td>
                 <td>$fieldName</td>
-                <td>The field name</td>
+                <td></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE if the field is not null, FALSE otherwise.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4557,8 +4419,8 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasDiscriminator">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1632">line 1632</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1515">line 1515</a></div>
+        <code>                    
     <strong>hasDiscriminator</strong>()
         </code>
     </h3>
@@ -4570,15 +4432,6 @@ field as a key.</p>                            </div>
                                     <p>Checks whether the document has a discriminator field and value configured.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4587,9 +4440,9 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setIdGeneratorType">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1642">line 1642</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1523">line 1523</a></div>
         <code>                    
-    <strong>setIdGeneratorType</strong>(string $generatorType)
+    <strong>setIdGeneratorType</strong>(int $generatorType)
         </code>
     </h3>
     <div class="details">
@@ -4603,9 +4456,9 @@ field as a key.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>int</td>
                 <td>$generatorType</td>
-                <td>Generator type.</td>
+                <td></td>
             </tr>
             </table>
 
@@ -4618,7 +4471,7 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setIdGeneratorOptions">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1652">line 1652</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1531">line 1531</a></div>
         <code>                    
     <strong>setIdGeneratorOptions</strong>(array $generatorOptions)
         </code>
@@ -4636,7 +4489,7 @@ field as a key.</p>                            </div>
                     <tr>
                 <td>array</td>
                 <td>$generatorOptions</td>
-                <td>Generator options.</td>
+                <td></td>
             </tr>
             </table>
 
@@ -4649,8 +4502,8 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isInheritanceTypeNone">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1660">line 1660</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1536">line 1536</a></div>
+        <code>                    
     <strong>isInheritanceTypeNone</strong>()
         </code>
     </h3>
@@ -4660,15 +4513,6 @@ field as a key.</p>                            </div>
 
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4677,8 +4521,8 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isInheritanceTypeSingleCollection">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1670">line 1670</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1544">line 1544</a></div>
+        <code>                    
     <strong>isInheritanceTypeSingleCollection</strong>()
         </code>
     </h3>
@@ -4690,15 +4534,6 @@ field as a key.</p>                            </div>
                                     <p>Checks whether the mapped class uses the SINGLE_COLLECTION inheritance mapping strategy.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4707,8 +4542,8 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isInheritanceTypeCollectionPerClass">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1680">line 1680</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1552">line 1552</a></div>
+        <code>                    
     <strong>isInheritanceTypeCollectionPerClass</strong>()
         </code>
     </h3>
@@ -4720,15 +4555,6 @@ field as a key.</p>                            </div>
                                     <p>Checks whether the mapped class uses the COLLECTION_PER_CLASS inheritance mapping strategy.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4737,7 +4563,7 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setSubclasses">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1690">line 1690</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1562">line 1562</a></div>
         <code>                    
     <strong>setSubclasses</strong>(array $subclasses)
         </code>
@@ -4768,7 +4594,7 @@ field as a key.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setParentClasses">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1708">line 1708</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1576">line 1576</a></div>
         <code>                    
     <strong>setParentClasses</strong>(array $classNames)
         </code>
@@ -4800,8 +4626,8 @@ directParent -> directParentParent -> directParentParentParent ... -> root.</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_isIdGeneratorAuto">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1724">line 1724</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1590">line 1590</a></div>
+        <code>                    
     <strong>isIdGeneratorAuto</strong>()
         </code>
     </h3>
@@ -4813,15 +4639,6 @@ directParent -> directParentParent -> directParentParentParent ... -> root.</p> 
                                     <p>Checks whether the class will generate a new \MongoDB\BSON\ObjectId instance for us.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE if the class uses the AUTO generator, FALSE otherwise.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4830,8 +4647,8 @@ directParent -> directParentParent -> directParentParentParent ... -> root.</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_isIdGeneratorIncrement">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1734">line 1734</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1598">line 1598</a></div>
+        <code>                    
     <strong>isIdGeneratorIncrement</strong>()
         </code>
     </h3>
@@ -4843,15 +4660,6 @@ directParent -> directParentParent -> directParentParentParent ... -> root.</p> 
                                     <p>Checks whether the class will use a collection to generate incremented identifiers.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE if the class uses the INCREMENT generator, FALSE otherwise.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4860,8 +4668,8 @@ directParent -> directParentParent -> directParentParentParent ... -> root.</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_isIdGeneratorUuid">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1744">line 1744</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1606">line 1606</a></div>
+        <code>                    
     <strong>isIdGeneratorUuid</strong>()
         </code>
     </h3>
@@ -4873,15 +4681,6 @@ directParent -> directParentParent -> directParentParentParent ... -> root.</p> 
                                     <p>Checks whether the class will generate a uuid id.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE if the class uses the UUID generator, FALSE otherwise.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4890,8 +4689,8 @@ directParent -> directParentParent -> directParentParentParent ... -> root.</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_isIdGeneratorNone">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1754">line 1754</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1614">line 1614</a></div>
+        <code>                    
     <strong>isIdGeneratorNone</strong>()
         </code>
     </h3>
@@ -4903,15 +4702,6 @@ directParent -> directParentParent -> directParentParentParent ... -> root.</p> 
                                     <p>Checks whether the class uses no id generator.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE if the class does not use any id generator, FALSE otherwise.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -4920,7 +4710,7 @@ directParent -> directParentParent -> directParentParentParent ... -> root.</p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_setVersionMapping">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1767">line 1767</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1625">line 1625</a></div>
         <code>                    
     <strong>setVersionMapping</strong>(array $mapping)
         </code>
@@ -4939,7 +4729,7 @@ value to use depending on the column type.</p>                                  
                     <tr>
                 <td>array</td>
                 <td>$mapping</td>
-                <td>The version field mapping array</td>
+                <td></td>
             </tr>
             </table>
 
@@ -4961,7 +4751,7 @@ value to use depending on the column type.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setVersioned">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1782">line 1782</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1638">line 1638</a></div>
         <code>                    
     <strong>setVersioned</strong>(bool $bool)
         </code>
@@ -4992,9 +4782,9 @@ value to use depending on the column type.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setVersionField">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1793">line 1793</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1647">line 1647</a></div>
         <code>                    
-    <strong>setVersionField</strong>(string $versionField)
+    <strong>setVersionField</strong>(string|null $versionField)
         </code>
     </h3>
     <div class="details">
@@ -5009,7 +4799,7 @@ versioned for optimistic locking.</p>                                           
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$versionField</td>
                 <td></td>
             </tr>
@@ -5024,7 +4814,7 @@ versioned for optimistic locking.</p>                                           
             </div>
                     <div class="method-item">
                     <h3 id="method_setLockMapping">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1806">line 1806</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1658">line 1658</a></div>
         <code>                    
     <strong>setLockMapping</strong>(array $mapping)
         </code>
@@ -5043,7 +4833,7 @@ value to use depending on the column type.</p>                                  
                     <tr>
                 <td>array</td>
                 <td>$mapping</td>
-                <td>The version field mapping array</td>
+                <td></td>
             </tr>
             </table>
 
@@ -5065,7 +4855,7 @@ value to use depending on the column type.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setLockable">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1821">line 1821</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1671">line 1671</a></div>
         <code>                    
     <strong>setLockable</strong>(bool $bool)
         </code>
@@ -5096,7 +4886,7 @@ value to use depending on the column type.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setLockField">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1832">line 1832</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1680">line 1680</a></div>
         <code>                    
     <strong>setLockField</strong>(string $lockField)
         </code>
@@ -5128,7 +4918,7 @@ is currently locked or not.</p>                                                <
             </div>
                     <div class="method-item">
                     <h3 id="method_markReadOnly">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1840">line 1840</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1688">line 1688</a></div>
         <code>                    
     <strong>markReadOnly</strong>()
         </code>
@@ -5149,7 +4939,7 @@ is currently locked or not.</p>                                                <
             </div>
                     <div class="method-item">
                     <h3 id="method_getFieldNames">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1848">line 1848</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1696">line 1696</a></div>
         <code>                    
     <strong>getFieldNames</strong>()
         </code>
@@ -5170,7 +4960,7 @@ is currently locked or not.</p>                                                <
             </div>
                     <div class="method-item">
                     <h3 id="method_getAssociationNames">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1856">line 1856</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1704">line 1704</a></div>
         <code>                    
     <strong>getAssociationNames</strong>()
         </code>
@@ -5191,7 +4981,7 @@ is currently locked or not.</p>                                                <
             </div>
                     <div class="method-item">
                     <h3 id="method_getTypeOfField">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1864">line 1864</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1712">line 1712</a></div>
         <code>                    
     <strong>getTypeOfField</strong>($fieldName)
         </code>
@@ -5222,7 +5012,7 @@ is currently locked or not.</p>                                                <
             </div>
                     <div class="method-item">
                     <h3 id="method_getAssociationTargetClass">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1873">line 1873</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1721">line 1721</a></div>
         <code>                    
     <strong>getAssociationTargetClass</strong>($assocName)
         </code>
@@ -5253,7 +5043,7 @@ is currently locked or not.</p>                                                <
             </div>
                     <div class="method-item">
                     <h3 id="method_getAssociationCollectionClass">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1887">line 1887</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1733">line 1733</a></div>
         <code>                    
     <strong>getAssociationCollectionClass</strong>(string $assocName)
         </code>
@@ -5284,7 +5074,7 @@ is currently locked or not.</p>                                                <
             </div>
                     <div class="method-item">
                     <h3 id="method_isAssociationInverseSide">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1903">line 1903</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1749">line 1749</a></div>
         <code>                    
     <strong>isAssociationInverseSide</strong>($fieldName)
         </code>
@@ -5315,7 +5105,7 @@ is currently locked or not.</p>                                                <
             </div>
                     <div class="method-item">
                     <h3 id="method_getAssociationMappedByTargetField">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1911">line 1911</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1757">line 1757</a></div>
         <code>                    
     <strong>getAssociationMappedByTargetField</strong>($fieldName)
         </code>
@@ -5346,8 +5136,8 @@ is currently locked or not.</p>                                                <
             </div>
                     <div class="method-item">
                     <h3 id="method_mapField">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1925">line 1925</a></div>
-        <code>                    array
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1767">line 1767</a></div>
+        <code>                    
     <strong>mapField</strong>(array $mapping)
         </code>
     </h3>
@@ -5364,20 +5154,11 @@ is currently locked or not.</p>                                                <
                     <tr>
                 <td>array</td>
                 <td>$mapping</td>
-                <td>The mapping information.</td>
+                <td></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
             
                             <h4>Exceptions</h4>
 
@@ -5395,7 +5176,7 @@ is currently locked or not.</p>                                                <
             </div>
                     <div class="method-item">
                     <h3 id="method___sleep">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L2117">line 2117</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L1942">line 1942</a></div>
         <code>                    array
     <strong>__sleep</strong>()
         </code>
@@ -5431,7 +5212,7 @@ their default value are NOT serialized.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method___wakeup">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L2196">line 2196</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L2026">line 2026</a></div>
         <code>                    
     <strong>__wakeup</strong>()
         </code>
@@ -5452,8 +5233,8 @@ their default value are NOT serialized.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_newInstance">
-        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L2218">line 2218</a></div>
-        <code>                    object
+        <div class="location">at         <a href="https://github.com/doctrine/mongodb-odm/blob/master/lib/Doctrine/ODM/MongoDB/Mapping/ClassMetadata.php#L2046">line 2046</a></div>
+        <code>                    
     <strong>newInstance</strong>()
         </code>
     </h3>
@@ -5465,15 +5246,6 @@ their default value are NOT serialized.</p>
                                     <p>Creates a new instance of the mapped class, without invoking the constructor.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>object</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
