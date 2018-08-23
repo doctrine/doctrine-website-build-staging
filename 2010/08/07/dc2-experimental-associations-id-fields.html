@@ -33,7 +33,7 @@
             "@type": "Person",
             "name": "beberlei"
         },
-         "publisher": {
+        "publisher": {
             "@type": "Organization",
             "name": "Doctrine",
             "logo": {
@@ -55,7 +55,7 @@ beginning, however we realized early "
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
 
-        <link rel="stylesheet" href="https://staging.doctrine-project.org/components/highlightjs/styles/railscasts.css?b4f8ae" />
+        <link rel="stylesheet" href="https://staging.doctrine-project.org/css/railscasts.css?6f6641" />
 
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -211,7 +211,7 @@ beginning, however we realized early "
             <main role="main" class="container-wrapper container">
             <article>
         <header>
-            <h2>Experimental Doctrine 2 Feature: Associated Entities as Id Fields <small>post</small></h2>
+            <h2>Experimental Doctrine 2 Feature: Associated Entities as Id Fields</h2>
         </header>
 
         <p class="lead">
@@ -223,22 +223,18 @@ beginning, however we realized early "
         <hr />
 
         <div>
-            <p>Doctrine 2 supports composite keys of primitive types from the
+                <p>Doctrine 2 supports composite keys of primitive types from the
 beginning, however we realized early that a very common use-case is a
 composite key with one or more elements being associated entities. For
 example think of a CMS System which allows Article Translations. A
 common SQL schema for this case would be:</p>
-
 <pre><code>[sql]
 CREATE TABLE article (id INT PRIMARY KEY, title VARCHAR(255), body LONGTEXT);
 
-CREATE TABLE article_translations (article_id INT, language CHAR(3), title VARCHAR(255), body LONGTEXT, PRIMARY KEY (article_id, language));
-</code></pre>
-
+CREATE TABLE article_translations (article_id INT, language CHAR(3), title VARCHAR(255), body LONGTEXT, PRIMARY KEY (article_id, language));</code></pre>
 <p>This sort of schema cannot be mapped with Doctrine 2 currently, it would
-be required to add another column <code>id</code> on the article&#95;translations
-table and enforce a unique constraint on article&#95;id + language.</p>
-
+be required to add another column <code>id</code> on the article_translations
+table and enforce a unique constraint on article_id + language.</p>
 <p>Under the umbrella of
 <a href="http://www.doctrine-project.org/jira/browse/DDC-117">DDC-117</a> and some
 related tickets there were discussions about adding a feature that would
@@ -246,11 +242,9 @@ help solve this problem: Allowing to add @Id to @ManyToOne or @OneToOne
 mappings. I committed this feature into an experimental Git branch today
 and we ask you to test this with as many crazy scenarios and use-cases
 as possible.</p>
-
 <p>This feature can potentially be uber-powerful, however we want to be
 sure that it works correctly and does not have to many problematic
 edge-cases. Therefore we need your feedback.</p>
-
 <ul>
 <li>Go to
 <a href="http://github.com/doctrine/doctrine2/commits/DDC-117">[http://github.com/doctrine/doctrine2/commits/DDC-117](http://github.com/doctrine/doctrine2/commits/DDC-117)</a>
@@ -262,23 +256,18 @@ to see the synatx</li>
 <code>git checkout DDC-117</code></li>
 <li>Do crazy testing against this branch!</li>
 </ul>
-
 <p>Personally I want this feature in core very much, however composite keys
 are very tricky. We want to find as many problematic cases with this
 feature as possible. That would enable us to evaluate if this approach
 will be merged into Doctrine 2.1 or not.</p>
-
 <blockquote>
-  <p><strong>NOTE</strong></p>
-  
-  <p>This feature currently only works with Annotations Mapping Driver. XML
-  and YAML will follow later.</p>
+<p><strong>NOTE</strong></p>
+<p>This feature currently only works with Annotations Mapping Driver. XML
+and YAML will follow later.</p>
 </blockquote>
-
 <p>By the way, the previous example is actually one of the functional
 test-cases for this feature:</p>
-
-<pre><code class="sourceCode php">&lt;?php
+<pre><code class="language-{.sourceCode .php}">&lt;?php
 /**
  * @Entity
  */
@@ -335,21 +324,9 @@ $em-&gt;flush();
 
 $translation = new DDC117Translation($article, "en", "Bar");
 $em-&gt;persist($translation);
-$em-&gt;flush();
-</code></pre>
-
+$em-&gt;flush();</code></pre>
         </div>
-
-                    <nav class="article">
-                <ul class="pagination">
-                                            <li class="page-item"><a class="page-link previous" href="https://staging.doctrine-project.org/2010/08/06/doctrine2-orm-beta3.html" title="Doctrine ORM Beta 3 released"><span class="title">Previous: Doctrine ORM Beta 3 released</span></a></li>
-                                                                <li class="page-item"><a class="page-link next" href="https://staging.doctrine-project.org/2010/08/10/mongodb-odm-atomic-operator-improvements.html" title="MongoDB ODM: Atomic Operator Improvements"><span class="title">Next: MongoDB ODM: Atomic Operator Improvements</span></a></li>
-                                    </ul>
-            </nav>
-            </article>
-
-
-
+    </article>
     </main>
 
         
@@ -446,7 +423,6 @@ $em-&gt;flush();
 
         <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 
-        
         
         
             </body>

@@ -33,7 +33,7 @@
             "@type": "Person",
             "name": "beberlei"
         },
-         "publisher": {
+        "publisher": {
             "@type": "Organization",
             "name": "Doctrine",
             "logo": {
@@ -55,7 +55,7 @@ changes to the new annotation read"
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
 
-        <link rel="stylesheet" href="https://staging.doctrine-project.org/components/highlightjs/styles/railscasts.css?b4f8ae" />
+        <link rel="stylesheet" href="https://staging.doctrine-project.org/css/railscasts.css?6f6641" />
 
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -211,7 +211,7 @@ changes to the new annotation read"
             <main role="main" class="container-wrapper container">
             <article>
         <header>
-            <h2>Doctrine 2.1 Release Candidate 3 <small>post</small></h2>
+            <h2>Doctrine 2.1 Release Candidate 3</h2>
         </header>
 
         <p class="lead">
@@ -223,10 +223,9 @@ changes to the new annotation read"
         <hr />
 
         <div>
-            <p>We released Doctrine 2.1 Release Candidate 3 after some important
+                <p>We released Doctrine 2.1 Release Candidate 3 after some important
 changes to the new annotation reader. That is also why we didnt manage
 to keep our release date of June 30th. The new date is Monday.</p>
-
 <p>About the Annotations: We constantly had problems with the autoloading
 of annotations through PHP autoloaders, increasing with Symfony2
 starting to use the reader with enabled autoloading. The problem with
@@ -239,41 +238,25 @@ autoload is triggered for a non-existant class. Implementing such an
 autoloader has performance drawbacks though, which is why the Doctrine
 does not fail silently. Autoloading annotations was not compatible with
 Doctrines own class loader.</p>
-
 <p>That problem is why we removed PHP autoloading completely and
 reimplemented our own autoloading mechanism inside Doctrine Annotations.
 Now we have much more control about when errors occur and if we skip
 them or throw an exception.</p>
-
 <p>See <a href="https://gist.github.com/1059486">this following Gist</a> on how
 autoloading annotations works. This is not relevant if you use
-\$config-&#62;newDefaultAnnotationDriver() with the ORM though, which will
+\$config->newDefaultAnnotationDriver() with the ORM though, which will
 handle all the necessary bootstrapping for you.</p>
-
 <p>Additionally we have changed the annotation reader in other aspects. To
 be a valid annotation your class have to extend (backwards compatible
 way, will be removed in 3.0.x) or contain @Annotation inside the class
 level docblock.</p>
-
 <p>We will update the documentation for Doctrine Common accordingly in the
 next hours to allow you to understand all the changes made between 2.0
 and 2.1.</p>
-
 <p>If you are using Annotations either in Doctrine 2 or within your own
 code please update and check the changes.</p>
-
         </div>
-
-                    <nav class="article">
-                <ul class="pagination">
-                                            <li class="page-item"><a class="page-link previous" href="https://staging.doctrine-project.org/2011/06/28/doctrine-2-1-rc2.html" title="Doctrine 2.1 Release Candidate 2"><span class="title">Previous: Doctrine 2.1 Release Candidate 2</span></a></li>
-                                                                <li class="page-item"><a class="page-link next" href="https://staging.doctrine-project.org/2011/07/04/doctrine-2-1.html" title="Doctrine 2.1 released"><span class="title">Next: Doctrine 2.1 released</span></a></li>
-                                    </ul>
-            </nav>
-            </article>
-
-
-
+    </article>
     </main>
 
         
@@ -370,7 +353,6 @@ code please update and check the changes.</p>
 
         <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 
-        
         
         
             </body>

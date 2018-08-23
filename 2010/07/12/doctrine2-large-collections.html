@@ -33,7 +33,7 @@
             "@type": "Person",
             "name": "beberlei"
         },
-         "publisher": {
+        "publisher": {
             "@type": "Organization",
             "name": "Doctrine",
             "logo": {
@@ -55,7 +55,7 @@ always initializes the comple"
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
 
-        <link rel="stylesheet" href="https://staging.doctrine-project.org/components/highlightjs/styles/railscasts.css?b4f8ae" />
+        <link rel="stylesheet" href="https://staging.doctrine-project.org/css/railscasts.css?6f6641" />
 
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -211,7 +211,7 @@ always initializes the comple"
             <main role="main" class="container-wrapper container">
             <article>
         <header>
-            <h2>Working with Large Collections in Doctrine2 <small>post</small></h2>
+            <h2>Working with Large Collections in Doctrine2</h2>
         </header>
 
         <p class="lead">
@@ -223,43 +223,35 @@ always initializes the comple"
         <hr />
 
         <div>
-            <p>If you access a collection of Entity A pointing to Entity B, Doctrine2
+                <p>If you access a collection of Entity A pointing to Entity B, Doctrine2
 always initializes the complete collection for you. For small
 collections up to around 100 entities this won't be a problem, however
 as soon as collections get (much) bigger than this you can get into
 serious trouble.</p>
-
 <p>By default Doctrine2 can only optimize adding new entities to a
 collection for you. This operation does not initialize the collection.
 This will only get you bigger collections though, reading them is still
 a pain.</p>
-
 <p>We already got requests from several development teams for better
 functionality in this regard and we are planning to add a solution to
 this problem that is not constraining your domain model with technical
 blurp. However this solution is currently on our schedule for the 2.1
 release of Doctrine only.</p>
-
 <p>Until then I wrote a very little extension for Doctrine2 that allows you
 to work with large collections. It has two methods that compute the
 following data for any given <code>PersistentCollection</code>:</p>
-
 <ul>
 <li>Total Number of Elements in the Collection</li>
 <li>A slice of entities from the collection using a sql limit (or
 alternative)</li>
 </ul>
-
 <p>You can get this extension from the <a href="http://github.com/beberlei/DoctrineExtensions">DoctrineExtensions Github
 repository</a>.</p>
-
-<h1 id="working-with-a-largecollection">Working with a LargeCollection</h1>
-
+<h1>Working with a LargeCollection</h1>
 <p>The <code>LargeCollection</code> class is a handler to work with large
 PersistentCollections. You can instantiate it by passing an
 <code>EntityManager</code> instance:</p>
-
-<pre><code class="sourceCode php">&lt;?php
+<pre><code class="language-{.sourceCode .php}">&lt;?php
 use DoctrineExtensions\LargeCollections\LargeCollection;
 
 $lc = new LargeCollection($em);
@@ -271,24 +263,15 @@ LargeCollection only works with instances of
 ``Doctrine\Common\Collections\Collection`` interface. That means
 that you can only pass collections to it, whose owning entities
 have been persisted before or are retrieved from the
-EntityManager.
-</code></pre>
-
+EntityManager.</code></pre>
 <p>You can compute the total number of elements in a given collection by
 passing it to the count method:</p>
-
-<pre><code class="sourceCode php">&lt;?php
-$size = $lc-&gt;count($article-&gt;getComments());
-</code></pre>
-
+<pre><code class="language-{.sourceCode .php}">&lt;?php
+$size = $lc-&gt;count($article-&gt;getComments());</code></pre>
 <p>You can retrieve a slice of entities from the collection by calling:</p>
-
-<pre><code class="sourceCode php">&lt;?php
-$slice = $lc-&gt;getSliceQuery($article-&gt;getComments(), $limit = 30);
-</code></pre>
-
+<pre><code class="language-{.sourceCode .php}">&lt;?php
+$slice = $lc-&gt;getSliceQuery($article-&gt;getComments(), $limit = 30);</code></pre>
 <p>As you can see this is very simple to use, but also missing some bits:</p>
-
 <ul>
 <li>In your domain models you sometimes don't want to return the
 <code>Collections</code> instance but call <code>toArray()</code> to encapsulate the
@@ -305,22 +288,10 @@ to the complete hydration of a collection.</li>
 <li>Methods link()/unlink() like described in
 <a href="http://www.doctrine-project.org/jira/browse/DDC-128">DDC-128</a></li>
 </ul>
-
 <p>I hope I got your attention and maybe someone has an interest in
 extending the LargeCollection a little bit more.</p>
-
         </div>
-
-                    <nav class="article">
-                <ul class="pagination">
-                                            <li class="page-item"><a class="page-link previous" href="https://staging.doctrine-project.org/2010/07/07/implementing-aggregate-fields.html" title="Implementing Aggregate Fields with Doctrine 2"><span class="title">Previous: Implementing Aggregate Fields with Doctrine 2</span></a></li>
-                                                                <li class="page-item"><a class="page-link next" href="https://staging.doctrine-project.org/2010/07/19/your-own-orm-doctrine2.html" title="Write your own ORM on top of Doctrine2"><span class="title">Next: Write your own ORM on top of Doctrine2</span></a></li>
-                                    </ul>
-            </nav>
-            </article>
-
-
-
+    </article>
     </main>
 
         
@@ -417,7 +388,6 @@ extending the LargeCollection a little bit more.</p>
 
         <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 
-        
         
         
             </body>
