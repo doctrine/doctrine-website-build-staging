@@ -253,14 +253,16 @@
 <a class="section-anchor" id="manager-exceptions" name="manager-exceptions"></a><h2 class="section-header"><a href="#manager-exceptions">Manager exceptions<i class="fas fa-link"></i></a></h2>
 <p>Doctrine_Manager_Exception is thrown if something failed at the
 connection management</p>
-<div class="console"><pre><code class="console">try
+
+<pre><code class="">try
 {
-    $manager->getConnection( 'unknown' );
+    $manager-&gt;getConnection( 'unknown' );
 }
 catch ( Doctrine_Manager_Exception )
 {
     // catch errors
-}</code></pre></div>
+}
+</code></pre>
 <hr />
 <a class="section-anchor" id="relation-exceptions" name="relation-exceptions"></a><h2 class="section-header"><a href="#relation-exceptions">Relation exceptions<i class="fas fa-link"></i></a></h2>
 <p>Relation exceptions are being thrown if something failed during the
@@ -271,15 +273,17 @@ relation parsing.</p>
 database level. Doctrine offers fully portable database error handling.
 This means that whether you are using sqlite or some other database you
 can always get portable error code and message for the occurred error.</p>
-<div class="console"><pre><code class="console">try
+
+<pre><code class="">try
 {
-    $conn->execute( 'SELECT * FROM unknowntable' );
+    $conn-&gt;execute( 'SELECT * FROM unknowntable' );
 }
 catch ( Doctrine_Connection_Exception $e )
 {
-    echo 'Code : ' . $e->getPortableCode();
-    echo 'Message : ' . $e->getPortableMessage();
-}</code></pre></div>
+    echo 'Code : ' . $e-&gt;getPortableCode();
+    echo 'Message : ' . $e-&gt;getPortableMessage();
+}
+</code></pre>
 <hr />
 <a class="section-anchor" id="query-exceptions" name="query-exceptions"></a><h2 class="section-header"><a href="#query-exceptions">Query exceptions<i class="fas fa-link"></i></a></h2>
 <p>An exception will be thrown when a query is executed if the DQL query is

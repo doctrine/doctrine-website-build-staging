@@ -354,16 +354,17 @@ build-all-reload command to reinitialize the database.</p>
 </blockquote>
 <p>changeme [Groups] =&gt; Array ( [0] =&gt; Array ( [id] =&gt; 1 [name] =&gt; Founder
 )</p>
-<div class="console"><pre><code class="console">[1] => Array
+
+<pre><code class="">[1] =&gt; Array
     (
-        [id] => 2
-        [name] => Lead
+        [id] =&gt; 2
+        [name] =&gt; Lead
     )
 
-[2] => Array
+[2] =&gt; Array
     (
-        [id] => 3
-        [name] => Documentation
+        [id] =&gt; 3
+        [name] =&gt; Documentation
     )
 
 
@@ -373,21 +374,26 @@ build-all-reload command to reinitialize the database.</p>
 
 
 2
-e] => jwage
-d] => changeme
- => Array
+e] =&gt; jwage
+d] =&gt; changeme
+ =&gt; Array
 
-[0] => Array
+[0] =&gt; Array
     (
-        [id] => 2
-        [name] => Lead
+        [id] =&gt; 2
+        [name] =&gt; Lead
     )
 
-[1] => Array
+[1] =&gt; Array
     (
-        [id] => 3
-        [name] => Documentation
-    )</code></pre></div>
+        [id] =&gt; 3
+        [name] =&gt; Documentation
+    )
+
+
+
+
+</code></pre>
 <p>)</p>
 <p>You can also issue DQL queries directly to your database by using the
 dql command line function. It is used like the following.</p>
@@ -412,54 +418,56 @@ will see the simple application.</p>
 <p>`module = isset(`\ <em>REQUEST['module']) ?$</em>REQUEST['module']:'users'; `action = isset(`\ <em>REQUEST['action'])? $</em>REQUEST['action']:'list';</p>
 <p>if ($module == 'users') { `userId = isset(`\ <em>REQUEST['id']) &amp;&amp;$</em>REQUEST['id'] &gt; 0 ? $\_REQUEST['id']:null; $userTable =
 Doctrine\_Core::getTable('User');</p>
-<div class="console"><pre><code class="console">if ($userId === null) {
+
+<pre><code class="">if ($userId === null) {
     $user = new User();
 } else {
-    $user = $userTable->find($userId);
+    $user = $userTable-&gt;find($userId);
 }
 
 switch ($action) {
     case 'edit':
     case 'add':
-        echo '<form action="index.php?module=users&action=save" method="POST">
-              <fieldset>
-                <legend>User</legend>
-                <input type="hidden" name="id" value="' . $user->id . '" />
-                <label for="username">Username</label> <input type="text" name="user[username]" value="' . $user->username . '" />
-                <label for="password">Password</label> <input type="text" name="user[password]" value="' . $user->password . '" />
-                <input type="submit" name="save" value="Save" />
-              </fieldset>
-              </form>';
+        echo '&lt;form action=&quot;index.php?module=users&amp;action=save&quot; method=&quot;POST&quot;&gt;
+              &lt;fieldset&gt;
+                &lt;legend&gt;User&lt;/legend&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;' . $user-&gt;id . '&quot; /&gt;
+                &lt;label for=&quot;username&quot;&gt;Username&lt;/label&gt; &lt;input type=&quot;text&quot; name=&quot;user[username]&quot; value=&quot;' . $user-&gt;username . '&quot; /&gt;
+                &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt; &lt;input type=&quot;text&quot; name=&quot;user[password]&quot; value=&quot;' . $user-&gt;password . '&quot; /&gt;
+                &lt;input type=&quot;submit&quot; name=&quot;save&quot; value=&quot;Save&quot; /&gt;
+              &lt;/fieldset&gt;
+              &lt;/form&gt;';
         break;
     case 'save':
-        $user->merge($_REQUEST['user']);
-        $user->save();
+        $user-&gt;merge($_REQUEST['user']);
+        $user-&gt;save();
 
-        header('location: index.php?module=users&action=edit&id=' . $user->id);
+        header('location: index.php?module=users&amp;action=edit&amp;id=' . $user-&gt;id);
         break;
     case 'delete':
-        $user->delete();
+        $user-&gt;delete();
 
-        header('location: index.php?module=users&action=list');
+        header('location: index.php?module=users&amp;action=list');
         break;
     default:
         $query = new Doctrine_Query();
-        $query->from('User u')
-              ->orderby('u.username');
+        $query-&gt;from('User u')
+              -&gt;orderby('u.username');
 
-        $users = $query->execute();
+        $users = $query-&gt;execute();
 
-        echo '<ul>';
+        echo '&lt;ul&gt;';
         foreach ($users as $user) {
-            echo '<li><a href="index.php?module=users&action=edit&id=' . $user->id . '">' . $user->username . '</a> &nbsp; <a href="index.php?module=users&action=delete&id=' . $user->id . '">[X]</a></li>';
+            echo '&lt;li&gt;&lt;a href=&quot;index.php?module=users&amp;action=edit&amp;id=' . $user-&gt;id . '&quot;&gt;' . $user-&gt;username . '&lt;/a&gt; &amp;nbsp; &lt;a href=&quot;index.php?module=users&amp;action=delete&amp;id=' . $user-&gt;id . '&quot;&gt;[X]&lt;/a&gt;&lt;/li&gt;';
         }
-        echo '</ul>';
+        echo '&lt;/ul&gt;';
 }
 
-echo '<ul>
-        <li><a href="index.php?module=users&action=add">Add</a></li>
-        <li><a href="index.php?module=users&action=list">List</a></li>
-      </ul>';</code></pre></div>
+echo '&lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;index.php?module=users&amp;action=add&quot;&gt;Add&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;index.php?module=users&amp;action=list&quot;&gt;List&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;';
+</code></pre>
 <p>} else { throw new Exception('Invalid module'); }</p>
 <p></p>
                                             </div>
