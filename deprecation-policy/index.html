@@ -269,7 +269,8 @@ and reported, you must use a tool like <a href="#phpstan-deprecation-rules">PHPS
 <a id="using-code-trigger-error-code-and-code-phpunit-bridge-code"></a><h2>Using <code>trigger_error()</code> and <code>phpunit-bridge</code></h2>
 <p>In some cases, you may need to conditionally deprecate functionality. In these cases, it is required
 to use the <code>trigger_error()</code> function and a tool like <a href="https://github.com/symfony/phpunit-bridge">PHPUnit Bridge</a> which implements a custom
-error handler for you to use to collect and report these warnings.</p>
+error handler for you to use to collect and report these warnings. This method is not recommended
+and Doctrine will try to avoid using it if possible.</p>
 <p>If you do not wish to use <a href="https://github.com/symfony/phpunit-bridge">PHPUnit Bridge</a> you can implement your own custom error handler using
 the <a href="http://php.net/manual/en/function.set-error-handler.php">set_error_handler</a> function.</p>
 <div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>In order for this strategy to work, you have to configure your <a href="http://php.net/manual/en/function.error-reporting.php">error_reporting</a> properly
