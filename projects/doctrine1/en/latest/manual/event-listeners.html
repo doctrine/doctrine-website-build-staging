@@ -312,7 +312,7 @@ class BlogPost extends Doctrine_Record
         $invoker->created = date('Y-m-d', time());
     }
 }</code></pre></div>
-<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>By now we have defined lots of models so you should be able
+<div class="note"><p>By now we have defined lots of models so you should be able
 to define your own <code>setTableDefinition()</code> for the <code>BlogPost</code>
 model or even create your own custom model!</p>
 </div>
@@ -446,7 +446,7 @@ class. And they are all passed an instance of Doctrine_Event.</p>
 and Doctrine_Connection_Statement classes. And they are all passed
 an instance of Doctrine_Event.</p>
 <table class="table table-bordered"><tr><td>Methods</td><td>Listens</td><td>Params</td></tr><tr><td><code>prePrepare()</code> <code>postPrepare()</code> <code>preExec()</code> <code>postExec()</code> <code>preStmtExecute()</code> <code>postStmtExecute()</code> <code>preExecute()</code> <code>postExecute()</code> <code>preFetch()</code> <code>postFetch()</code> <code>preFetchAll()</code> <code>postFetchAll()</code></td><td><code>prepare()</code> <code>prepare()</code> <code>exec()</code> <code>exec()</code> <code>execute()</code> <code>execute()</code> <code>execute()</code> <strong><em></strong> <code>execute()</code> <strong></em></strong> <code>fetch()</code> <code>fetch()</code> <code>fetchAll()</code> <code>fetchAll()</code></td><td><code>query</code> <code>query</code> <code>query</code> <code>query,rows</code> <code>query</code> <code>query</code> <code>query</code> <code>query</code> <code>query, data</code> <code>query, data</code> <code>query, data</code> <code>query, data</code></td></tr></table>
-<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p><code>preExecute()</code> and <code>postExecute()</code> only get invoked
+<div class="note"><p><code>preExecute()</code> and <code>postExecute()</code> only get invoked
 when <code>Doctrine_Connection::execute()</code> is being called without
 prepared statement parameters. Otherwise
 <code>Doctrine_Connection::execute()</code> invokes <code>prePrepare()</code>,
@@ -709,7 +709,7 @@ deleted flag:</p>
 <span class="noselect">$ </span>user->password = 'changeme';
 <span class="noselect">$ </span>user->save();
 <span class="noselect">$ </span>user->delete();</code></pre></div>
-<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The above call to <code>$user-&gt;delete()</code> does not actually
+<div class="note"><p>The above call to <code>$user-&gt;delete()</code> does not actually
 delete the record instead it sets the deleted flag to true.</p>
 </div>
 <div class="console"><pre><code class="console"><span class="noselect">$ </span>q = Doctrine_Query::create()
@@ -723,7 +723,7 @@ u.password AS u**password,
 u.deleted AS u**deleted
 FROM user u
 WHERE u.deleted = ?</code></pre></div>
-<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Notice how the <code>&quot;u.deleted = ?&quot;</code> was automatically added
+<div class="note"><p>Notice how the <code>&quot;u.deleted = ?&quot;</code> was automatically added
 to the where condition with a parameter value of <strong>true</strong>.</p>
 </div>
 <hr />

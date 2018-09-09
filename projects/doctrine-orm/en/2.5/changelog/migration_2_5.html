@@ -972,10 +972,11 @@ Doctrine\DBAL\Types\Type::addType(<span class="hljs-string">'userid'</span>, <sp
 <a class="section-anchor" id="namingstrategy-interface-changed" name="namingstrategy-interface-changed"></a><h3 class="section-header"><a href="#namingstrategy-interface-changed">NamingStrategy interface changed<i class="fas fa-link"></i></a></h3>
 <p>The <code>Doctrine\ORM\Mapping\NamingStrategyInterface</code> changed slightly
 to pass the Class Name of the entity into the join column name generation:</p>
+<p>::</p>
+<ul><li class="dash">   function joinColumnName($propertyName);
+    +    function joinColumnName($propertyName, $className = null);</li>
+</ul>
 
-<pre><code class="">-    function joinColumnName($propertyName);
-+    function joinColumnName($propertyName, $className = null);
-</code></pre>
 <p>It also received a new method for supporting embeddables:</p>
 <div class="console"><pre><code class="console"><span class="noselect">$ </span>public function embeddedFieldToColumnName($propertyName, $embeddedColumnName);
 </code></pre></div>
@@ -1052,7 +1053,7 @@ method signatures have been changed to declare <code>$lockMode = null</code> ins
 
 <p>You should update signatures for these methods if you have subclassed one of the above classes.
 Please also check the calling code of these methods in your application and update if necessary.</p>
-<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>This in fact is really a minor BC BREAK and should not have any affect on database vendors
+<div class="note"><p>This in fact is really a minor BC BREAK and should not have any affect on database vendors
 other than SQL Server because it is the only one that supports and therefore cares about
 <code>LockMode::NONE</code>. It's really just a FIX for SQL Server environments using ORM.</p>
 </div>

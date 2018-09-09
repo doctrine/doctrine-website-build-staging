@@ -482,7 +482,7 @@ echo $conn->export->alterTableSql('events', $alter);</code></pre></div>
 query:</p>
 <div class="console"><pre><code class="console">ALTER TABLE events ADD new_column VARCHAR(255),
 ADD new_column2 VARCHAR(255)</code></pre></div>
-<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>If you only want execute generated sql and not return it,
+<div class="note"><p>If you only want execute generated sql and not return it,
 use the <code>alterTable()</code> method.</p>
 </div>
 <div class="console"><pre><code class="console">// test.php
@@ -537,7 +537,7 @@ be the same as defined by the Doctrine parser.</p>
            );
 
 <span class="noselect">$ </span>conn->export->alterTable('events', $alter);</code></pre></div>
-<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Notice how we renamed the table to <code>event</code>, lets rename
+<div class="note"><p>Notice how we renamed the table to <code>event</code>, lets rename
 it back to <code>events</code>. We only renamed it to demonstrate the
 functionality and we will need the table to be named <code>events</code> for
 the next examples.</p>
@@ -594,7 +594,7 @@ try {
 
 // ...
 <span class="noselect">$ </span>conn->export->dropConstraint('events', 'PRIMARY', true);</code></pre></div>
-<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The third parameter gives a hint that this is a primary key
+<div class="note"><p>The third parameter gives a hint that this is a primary key
 constraint.</p>
 </div>
 <div class="console"><pre><code class="console">// test.php
@@ -665,7 +665,7 @@ print_r($indexes);</code></pre></div>
 print_r($tables);</code></pre></div>
 <hr />
 <a class="section-anchor" id="listing-views" name="listing-views"></a><h3 class="section-header"><a href="#listing-views">Listing Views<i class="fas fa-link"></i></a></h3>
-<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Currently there is no method to create views, so let's do it manually.</p>
+<div class="note"><p>Currently there is no method to create views, so let's do it manually.</p>
 </div>
 <div class="console"><pre><code class="console"><span class="noselect">$ </span>sql = "CREATE VIEW names_only AS SELECT name FROM people";
 <span class="noselect">$ </span>conn->exec($sql);
@@ -746,7 +746,7 @@ CHAR(20)</code></pre></div>
         'length' => 8
     )
 );</code></pre></div>
-<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The following option is mysql specific and skipped by other
+<div class="note"><p>The following option is mysql specific and skipped by other
 drivers.</p>
 </div>
 <div class="console"><pre><code class="console"><span class="noselect">$ </span>options = array('type' => 'INNODB');
