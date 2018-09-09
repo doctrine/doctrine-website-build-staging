@@ -721,7 +721,7 @@ essentially an ordered map (just like a PHP array). That is why the
 <code>remove</code> operation accepts an index/key. <code>removeElement</code> is a
 separate method that has O(n) complexity using <code>array_search</code>,
 where n is the size of the map.</p>
-<div class="note"><p>Since Doctrine always only looks at the owning side of a
+<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Since Doctrine always only looks at the owning side of a
 bidirectional association for updates, it is not necessary for
 write operations that an inverse collection of a bidirectional
 one-to-many or many-to-many association is updated. This knowledge
@@ -843,7 +843,7 @@ However if you would naively add the <code>addFavorite</code> in
 is needed. As you can see, proper bidirectional association
 management in plain OOP is a non-trivial task and encapsulating all
 the details inside the classes can be challenging.</p>
-<div class="note"><p>If you want to make sure that your collections are perfectly
+<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>If you want to make sure that your collections are perfectly
 encapsulated you should not return them from a
 <code>getCollectionName()</code> method directly, but call
 <code>$collection-&gt;toArray()</code>. This way a client programmer for the
@@ -924,7 +924,7 @@ operations. By default, no operations are cascaded.</p>
    associated entities.</li>
 </ul>
 
-<div class="note"><p>Cascade operations are performed in memory. That means collections and related entities
+<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Cascade operations are performed in memory. That means collections and related entities
 are fetched into memory, even if they are still marked as lazy when
 the cascade operation is about to be performed. However this approach allows
 entity lifecycle events to be performed for each of these operations.</p>
@@ -1047,7 +1047,7 @@ from collections. If an Entity of type <code>A</code> contains references to pri
 owned Entities <code>B</code> then if the reference from <code>A</code> to <code>B</code> is removed the
 entity <code>B</code> should also be removed, because it is not used anymore.</p>
 <p>OrphanRemoval works with one-to-one, one-to-many and many-to-many associations.</p>
-<div class="note"><p>When using the <code>orphanRemoval=true</code> option Doctrine makes the assumption
+<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>When using the <code>orphanRemoval=true</code> option Doctrine makes the assumption
 that the entities are privately owned and will <strong>NOT</strong> be reused by other entities.
 If you neglect this assumption your entities will get deleted by Doctrine even if
 you assigned the orphaned entity to another one.</p>

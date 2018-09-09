@@ -550,7 +550,7 @@ id standard and is guaranteed to be unique for the whole PHPCR repository (all w
 <tr><td class="line-number noselect"><a name="line-number-fd75007c97941b27b82e83d44b376f0172d36ffd-3" class="line-number-anchor" /><a href="#line-number-fd75007c97941b27b82e83d44b376f0172d36ffd-3">3</a></td></tr>
 <tr><td class="line-number noselect"><a name="line-number-fd75007c97941b27b82e83d44b376f0172d36ffd-4" class="line-number-anchor" /><a href="#line-number-fd75007c97941b27b82e83d44b376f0172d36ffd-4">4</a></td></tr>
 <tr><td class="line-number noselect"><a name="line-number-fd75007c97941b27b82e83d44b376f0172d36ffd-5" class="line-number-anchor" /><a href="#line-number-fd75007c97941b27b82e83d44b376f0172d36ffd-5">5</a></td></tr></table></div></code></pre></div></li></ul></div>
-<div class="note"><p>PHPCR-ODM has no migrations (yet). If you change a document class to become referenceable,
+<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>PHPCR-ODM has no migrations (yet). If you change a document class to become referenceable,
 you need to load and save every document of that type to make the stored documents note the change.</p>
 </div>
 <a id="associationmapping_referenceotherdocuments"></a>
@@ -695,7 +695,7 @@ If you only reference documents of one specific type, you can use this as sanity
 additionally path references will be faster this way.</p>
 <p>If you do not set the targetDocument, you can reference documents of any type.
 In ReferenceMany collections, you can even have documents of mixed types.</p>
-<div class="note"><p>If your repository supports programmatically setting the uuid property at node creation,
+<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>If your repository supports programmatically setting the uuid property at node creation,
 you can just persist your main document and the referenced documents will be persisted
 automatically.</p>
 <p>Otherwise you first need to flush the document manager for the reference targets before
@@ -787,7 +787,7 @@ will contain the referenced document.</p>
 <tr><td class="line-number noselect"><a name="line-number-da23baab98a1323ab82cbc504569efcd17057ba9-9" class="line-number-anchor" /><a href="#line-number-da23baab98a1323ab82cbc504569efcd17057ba9-9">9</a></td></tr></table></div></code></pre></div></li></ul></div>
 <p>Referrers can cascade like the other association mappings to persist or delete their
 referrers if desired.</p>
-<div class="note"><p>The main use case to persist cascade or deletion of the referrer mapping
+<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>The main use case to persist cascade or deletion of the referrer mapping
 is to build a form where it is possible to add documents that should reference
 this content. However, it is not allowed to modify both the reference collection
 and the referrer collection of interlinked content, as this would be ambiguous.</p>
@@ -884,7 +884,7 @@ can be configured specifically.</p>
    operations to associated documents.</li>
 </ul>
 
-<div class="note"><p>Cascade operations are performed in memory. That means collections and related documents
+<div class="alert note bg-light-yellow text-dark border"><i class="fas fa-sticky-note text-primary mr-2"></i><p>Cascade operations are performed in memory. That means collections and related documents
 are fetched into memory, even if they are still marked as lazy when
 the cascade operation is about to be performed. This approach allows
 document lifecycle events to be performed for each of these operations.</p>
