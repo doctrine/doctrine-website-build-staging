@@ -258,10 +258,15 @@
 
                                                     
                                     <div class="alert caution bg-light-yellow text-dark border">
-                        <i class="fas fa-exclamation-circle text-warning mr-2"></i>
-                        You are browsing documentation for a version that is no longer maintained.
+                        <table width="100%">
+                            <tr>
+                                <td width="10" class="align-top">
+                                    <i class="fas fa-exclamation-circle text-warning mr-2"></i>
+                                </td>
+                                <td><p>You are browsing documentation for a version that is no longer maintained.</p></td>
+                            </tr>
+                        </table>
                     </div>
-
                 
                 <div class="row">
                     <div class="col-12">
@@ -964,10 +969,12 @@ class:</p>
 <tr><td class="line-number noselect"><a name="line-number-6ddc3a7428488dc426a16304ef1072a09e81d383-30" class="line-number-anchor" /><a href="#line-number-6ddc3a7428488dc426a16304ef1072a09e81d383-30">30</a></td></tr>
 <tr><td class="line-number noselect"><a name="line-number-6ddc3a7428488dc426a16304ef1072a09e81d383-31" class="line-number-anchor" /><a href="#line-number-6ddc3a7428488dc426a16304ef1072a09e81d383-31">31</a></td></tr></table></div></code></pre>
 <p>Restrictions to keep in mind:</p>
-<p>-<br />   If the value of the field is <em>NULL</em> the method
-   <code>convertToDatabaseValue()</code> is not called.
--<br />   The <code>UnitOfWork</code> never passes values to the database convert
-   method that did not change in the request.</p>
+<ul><li class="dash">   If the value of the field is <em>NULL</em> the method
+   <code>convertToDatabaseValue()</code> is not called.</li>
+<li class="dash">   The <code>UnitOfWork</code> never passes values to the database convert
+   method that did not change in the request.</li>
+</ul>
+
 <p>When you have implemented the type you still need to let Doctrine
 know about it. This can be achieved through the
 <code>Doctrine\ODM\MongoDB\Mapping\Types#registerType($name, $class)</code>

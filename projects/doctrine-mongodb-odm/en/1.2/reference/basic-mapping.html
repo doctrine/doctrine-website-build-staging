@@ -964,10 +964,12 @@ class:</p>
 <tr><td class="line-number noselect"><a name="line-number-b5bf4203482afcd2a625209f2b881f74a66c3ad7-30" class="line-number-anchor" /><a href="#line-number-b5bf4203482afcd2a625209f2b881f74a66c3ad7-30">30</a></td></tr>
 <tr><td class="line-number noselect"><a name="line-number-b5bf4203482afcd2a625209f2b881f74a66c3ad7-31" class="line-number-anchor" /><a href="#line-number-b5bf4203482afcd2a625209f2b881f74a66c3ad7-31">31</a></td></tr></table></div></code></pre>
 <p>Restrictions to keep in mind:</p>
-<p>-<br />   If the value of the field is <em>NULL</em> the method
-   <code>convertToDatabaseValue()</code> is not called.
--<br />   The <code>UnitOfWork</code> never passes values to the database convert
-   method that did not change in the request.</p>
+<ul><li class="dash">   If the value of the field is <em>NULL</em> the method
+   <code>convertToDatabaseValue()</code> is not called.</li>
+<li class="dash">   The <code>UnitOfWork</code> never passes values to the database convert
+   method that did not change in the request.</li>
+</ul>
+
 <p>When you have implemented the type you still need to let Doctrine
 know about it. This can be achieved through the
 <code>Doctrine\ODM\MongoDB\Types\Type#registerType($name, $class)</code>
