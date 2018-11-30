@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Doctrine Migrations Bundle - Doctrine - PHP Database Tools</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="theme-color" content="#ffffff">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="description" content="Symfony DoctrineMigrationsBundle">
+
+        <meta name="keywords" content="DBAL,Migrations,Schema">
+
+                    <meta name="robots" content="noindex">
+        
+        
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://staging.doctrine-project.org/frontend/css/index.css?a98866"
+                        crossorigin="anonymous"
+        />
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://staging.doctrine-project.org/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://staging.doctrine-project.org/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://staging.doctrine-project.org/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://staging.doctrine-project.org/images/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://staging.doctrine-project.org/images/apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://staging.doctrine-project.org/images/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://staging.doctrine-project.org/images/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://staging.doctrine-project.org/images/apple-touch-icon-152x152.png" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-128.png" sizes="128x128" />
+        <meta name="application-name" content="Doctrine"/>
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="https://staging.doctrine-project.org/images/mstile-144x144.png" />
+        <meta name="msapplication-square70x70logo" content="https://staging.doctrine-project.org/images/mstile-70x70.png" />
+        <meta name="msapplication-square150x150logo" content="https://staging.doctrine-project.org/images/mstile-150x150.png" />
+        <meta name="msapplication-wide310x150logo" content="https://staging.doctrine-project.org/images/mstile-310x150.png" />
+        <meta name="msapplication-square310x310logo" content="https://staging.doctrine-project.org/images/mstile-310x310.png" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@doctrineorm" />
+        <meta name="twitter:creator" content="@doctrineorm" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://staging.doctrine-project.org/projects/doctrine-migrations-bundle.html" />
+        <meta property="og:title" content="Doctrine Migrations Bundle - Doctrine - PHP Database Tools" />
+        <meta property="og:description" content="Symfony DoctrineMigrationsBundle" />
+        <meta property="og:image" content="https://staging.doctrine-project.org/images/og.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="1200" />
+
+        <link rel="alternate" type="application/atom+xml" href="https://staging.doctrine-project.org/atom.xml" title="Doctrine activity feed" />
+
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "url": "https://staging.doctrine-project.org",
+            "logo": "https://staging.doctrine-project.org/images/doctrine-logo.svg"
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "url": "https://staging.doctrine-project.org",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://staging.doctrine-project.org?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "name": "Doctrine",
+            "url": "https://staging.doctrine-project.org",
+            "sameAs": [
+                "https://twitter.com/doctrineorm"
+            ]
+        }
+        </script>
+
+        
+        
+            </head>
+    <body>
+                    
+            <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap">
+                <a class="navbar-brand text-hide" href="/index.html"><img src="https://staging.doctrine-project.org/images/doctrine-logo.svg?6c0dab" />Doctrine</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="/projects.html" id="navbarProjectsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Projects
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarProjectsDropdown">
+                                                                    <a class="dropdown-item notranslate" href="/projects/annotations.html">Annotations</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/cache.html">Cache</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/coding-standard.html">Coding Standard</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/collections.html">Collections</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/common.html">Common</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/dbal.html">DBAL</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/event-manager.html">Event Manager</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/inflector.html">Inflector</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/instantiator.html">Instantiator</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/lexer.html">Lexer</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/migrations.html">Migrations</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/mongodb.html">MongoDB</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/mongodb-odm.html">MongoDB ODM</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/orm.html">ORM</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/persistence.html">Persistence</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/phpcr-odm.html">PHPCR ODM</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/reflection.html">Reflection</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/rst-parser.html">RST Parser</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/skeleton-mapper.html">Skeleton Mapper</a>
+                                                                <a class="dropdown-item bg-secondary text-white font-weight-bold" href="/projects.html">View All</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/contribute/index.html" id="navbarDevelopmentDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Development</a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarContributeDropdown">
+                                <a class="dropdown-item" href="/contribute/index.html">Contributor Workflow</a>
+                                <a class="dropdown-item" href="/contribute/maintainer/index.html">Maintainer Workflow</a>
+                                <a class="dropdown-item" href="/contribute/website/index.html">Contribute to Website</a>
+                                <a class="dropdown-item" href="/policies.html">Policies</a>
+                                <a class="dropdown-item" href="https://github.com/doctrine" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/community/index.html">Community</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog/index.html">Blog</a>
+                        </li>
+                       <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/team/maintainers.html" id="navbarTeamDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Team</a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarTeamDropdown">
+                                <a class="dropdown-item" href="/team/maintainers.html">Maintainers</a>
+                                <a class="dropdown-item" href="/team/contributors.html">Contributors</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="layout-edit-button d-inline-block mr-2">
+                                                    <a href="https://github.com/doctrine/doctrine-website/edit/master/source/projects/doctrine-migrations-bundle.html" class="btn btn-light" target="_blank" rel="noopener noreferrer">Edit</a>
+                                            </div>
+
+                    <div class="google-translate-dropdown dropdown show d-inline-block mr-2">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="translateDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Translate
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="translateDropdown">
+                            <div class="dropdown-item" id="google_translate_element">Loading...</div>
+                        </div>
+                    </div>
+
+                    <div id="search-box">
+                        <!-- SearchBox widget will appear here -->
+                    </div>
+                </div>
+            </nav>
+
+            <div class="search-results rounded">
+                <div id="hits">
+                    <!-- Hits widget will appear here -->
+                </div>
+
+                <a href="https://www.algolia.com" target="_blank" rel="noopener noreferrer"><img src="https://staging.doctrine-project.org/images/search-by-algolia.png" class="float-right" style="width: 150px;" /></a>
+            </div>
+        
+            <main role="main" class="container-wrapper container">
+                        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="https://staging.doctrine-project.org/projects.html">Projects</a></li>
+            <li class="breadcrumb-item active" aria-current="page">DoctrineMigrationsBundle</li>
+        </ol>
+    </nav>
+
+    
+    <h2>Doctrine Migrations Bundle</h2>
+
+    <p class="lead">Symfony DoctrineMigrationsBundle</p>
+
+    <a href="https://staging.doctrine-project.org/projects/doctrine-migrations-bundle/en/1.3/index.html" class="btn btn-primary mr-2">Docs</a>
+
+    <a href="https://staging.doctrine-project.org/api/doctrine-migrations-bundle/1.3/index.html" class="btn btn-primary mr-2">API Docs</a>
+
+    <a href="https://github.com/doctrine/DoctrineMigrationsBundle/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+    <hr />
+
+            <h2>Install</h2>
+
+        <div class="console"><pre><code class="console"><span class="noselect">$ </span>composer require doctrine/doctrine-migrations-bundle</code></pre></div>
+    
+            <h2>Versions</h2>
+
+        <div class="border-left border-right border-bottom rounded mb-4">
+            <table class="table mb-0">
+                <tbody>
+                                            <tr>
+                            <td>
+                                2.0
+
+                                
+                                
+                                                                    (upcoming)
+                                                            </td>
+                            <td><a href="https://staging.doctrine-project.org/projects/doctrine-migrations-bundle/en/2.0/index.html">Docs</a></td>
+                            <td><a href="https://staging.doctrine-project.org/api/doctrine-migrations-bundle/2.0/index.html">API Docs</a></td>
+                        </tr>
+                                            <tr>
+                            <td class="font-weight-bold">
+                                1.3
+
+                                                                    (current)
+                                
+                                
+                                                            </td>
+                            <td><a href="https://staging.doctrine-project.org/projects/doctrine-migrations-bundle/en/1.3/index.html">Docs</a></td>
+                            <td><a href="https://staging.doctrine-project.org/api/doctrine-migrations-bundle/1.3/index.html">API Docs</a></td>
+                        </tr>
+                                            <tr style="opacity: .40;">
+                            <td>
+                                1.2
+
+                                
+                                                                    (unmaintained)
+                                
+                                                            </td>
+                            <td><a href="https://staging.doctrine-project.org/projects/doctrine-migrations-bundle/en/1.2/index.html">Docs</a></td>
+                            <td><a href="https://staging.doctrine-project.org/api/doctrine-migrations-bundle/1.2/index.html">API Docs</a></td>
+                        </tr>
+                                            <tr style="opacity: .40;">
+                            <td>
+                                1.1
+
+                                
+                                                                    (unmaintained)
+                                
+                                                            </td>
+                            <td><a href="https://staging.doctrine-project.org/projects/doctrine-migrations-bundle/en/1.1/index.html">Docs</a></td>
+                            <td><a href="https://staging.doctrine-project.org/api/doctrine-migrations-bundle/1.1/index.html">API Docs</a></td>
+                        </tr>
+                                            <tr style="opacity: .40;">
+                            <td>
+                                1.1
+
+                                
+                                                                    (unmaintained)
+                                
+                                                            </td>
+                            <td><a href="https://staging.doctrine-project.org/projects/doctrine-migrations-bundle/en/1.1/index.html">Docs</a></td>
+                            <td><a href="https://staging.doctrine-project.org/api/doctrine-migrations-bundle/1.1/index.html">API Docs</a></td>
+                        </tr>
+                                            <tr style="opacity: .40;">
+                            <td>
+                                1.0
+
+                                
+                                                                    (unmaintained)
+                                
+                                                            </td>
+                            <td><a href="https://staging.doctrine-project.org/projects/doctrine-migrations-bundle/en/1.0/index.html">Docs</a></td>
+                            <td><a href="https://staging.doctrine-project.org/api/doctrine-migrations-bundle/1.0/index.html">API Docs</a></td>
+                        </tr>
+                                    </tbody>
+            </table>
+        </div>
+    
+    
+            <h2 class="mt-4">Maintainers</h2>
+
+        <ul class="list-group">
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/97422?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/jwage.html">
+                    Jonathan H. Wage
+
+                                            <small>(jwage)</small>
+                                    </a>
+            </strong>
+
+                            <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="https://twitter.com/jwage/" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter mr-2"></i></a></li>
+                    
+                                            <li class="list-inline-item"><a href="https://jwage.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-link mr-2"></i></a></li>
+                    
+                                            <li class="list-inline-item"><a href="https://github.com/jwage/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github mr-2"></i></a></li>
+                                    </ul>
+                    </li>
+    </ul>
+    
+            <h2 class="mt-4">Contributors</h2>
+
+        <ul class="list-group">
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/173250?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/aar0nr.html">
+                    aar0nr
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/2576509?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/andreybolonin.html">
+                    andreybolonin
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/26936?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/beberlei.html">
+                    beberlei
+                </a>
+            </strong>
+
+                            <ul class="list-inline">
+                    
+                                            <li class="list-inline-item"><a href="https://beberlei.de" target="_blank" rel="noopener noreferrer"><i class="fas fa-link mr-2"></i></a></li>
+                    
+                                            <li class="list-inline-item"><a href="https://github.com/beberlei/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github mr-2"></i></a></li>
+                                    </ul>
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/219286?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/blue-eyes.html">
+                    blue-eyes
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/53660?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/bobthecow.html">
+                    bobthecow
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/1150425?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/cafferata.html">
+                    cafferata
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/16328050?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/carusogabriel.html">
+                    carusogabriel
+                </a>
+            </strong>
+
+                            <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="https://twitter.com/carusogabriel/" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter mr-2"></i></a></li>
+                    
+                    
+                                            <li class="list-inline-item"><a href="https://github.com/carusogabriel/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github mr-2"></i></a></li>
+                                    </ul>
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/7502063?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/chalasr.html">
+                    chalasr
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/328359?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/cordoval.html">
+                    cordoval
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/265907?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/craigmarvelley.html">
+                    craigmarvelley
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/7052418?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/eugenekurasov.html">
+                    eugenekurasov
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/47313?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/fabpot.html">
+                    fabpot
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/172247?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/fesor.html">
+                    fesor
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/50098?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/frosas.html">
+                    frosas
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/176622?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/ftassi.html">
+                    ftassi
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/676675?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/gajdaw.html">
+                    gajdaw
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/179866?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/garak.html">
+                    garak
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/657779?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/greg0ire.html">
+                    greg0ire
+                </a>
+            </strong>
+
+                            <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="https://twitter.com/greg0ire/" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter mr-2"></i></a></li>
+                    
+                                            <li class="list-inline-item"><a href="https://greg0ire.fr" target="_blank" rel="noopener noreferrer"><i class="fas fa-link mr-2"></i></a></li>
+                    
+                                            <li class="list-inline-item"><a href="https://github.com/greg0ire/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github mr-2"></i></a></li>
+                                    </ul>
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/208883?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/guilhermeblanco.html">
+                    guilhermeblanco
+                </a>
+            </strong>
+
+                            <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="https://twitter.com/guilhermeblanco/" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter mr-2"></i></a></li>
+                    
+                                            <li class="list-inline-item"><a href="http://www.doctrine-project.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-link mr-2"></i></a></li>
+                    
+                                            <li class="list-inline-item"><a href="https://github.com/guilhermeblanco/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github mr-2"></i></a></li>
+                                    </ul>
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/288535?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/hason.html">
+                    hason
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/1457430?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/iamdto.html">
+                    iamdto
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/195271?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/inoryy.html">
+                    inoryy
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/3661151?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/j4nr6n.html">
+                    j4nr6n
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/73419?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/javiereguiluz.html">
+                    javiereguiluz
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/6114779?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/Jean-Beru.html">
+                    Jean-Beru
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/191082?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/Koc.html">
+                    Koc
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/33886?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/kriswallsmith.html">
+                    kriswallsmith
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/8415575?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/lainosantos.html">
+                    lainosantos
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/201963?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/lcobucci.html">
+                    lcobucci
+                </a>
+            </strong>
+
+                            <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="https://twitter.com/lcobucci/" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter mr-2"></i></a></li>
+                    
+                    
+                                            <li class="list-inline-item"><a href="https://github.com/lcobucci/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github mr-2"></i></a></li>
+                                    </ul>
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/300279?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/lsmith77.html">
+                    lsmith77
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/3296358?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/lucchese.html">
+                    lucchese
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/160332?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/marcw.html">
+                    marcw
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/4849482?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/martin-georgiev.html">
+                    martin-georgiev
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/763745?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/MasterB.html">
+                    MasterB
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/220502?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/mcbennn.html">
+                    mcbennn
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/1247388?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/mickaelandrieu.html">
+                    mickaelandrieu
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/907613?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/mikeSimonson.html">
+                    mikeSimonson
+                </a>
+            </strong>
+
+                            <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="https://twitter.com/_mikeSimonson/" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter mr-2"></i></a></li>
+                    
+                    
+                                            <li class="list-inline-item"><a href="https://github.com/mikeSimonson/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github mr-2"></i></a></li>
+                                    </ul>
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/243674?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/nicolas-grekas.html">
+                    nicolas-grekas
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/1954436?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/peter-gribanov.html">
+                    peter-gribanov
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/2010989?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/peterrehm.html">
+                    peterrehm
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/1614009?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/petk.html">
+                    petk
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/154553?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/piotrantosik.html">
+                    piotrantosik
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/11743?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/pminnieur.html">
+                    pminnieur
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/11846736?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/pSchaub.html">
+                    pSchaub
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/2032218?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/Ravetracer.html">
+                    Ravetracer
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/1642641?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/rbalazs.html">
+                    rbalazs
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/447579?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/rodnaph.html">
+                    rodnaph
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/3205112?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/ruudvanderweijde.html">
+                    ruudvanderweijde
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/533861?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/rybakit.html">
+                    rybakit
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/6578413?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/scaytrase.html">
+                    scaytrase
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/97280?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/shieldo.html">
+                    shieldo
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/159215?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/stfalcon.html">
+                    stfalcon
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/439401?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/stof.html">
+                    stof
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/16286510?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/tackerm.html">
+                    tackerm
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/187022?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/tgabi333.html">
+                    tgabi333
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars2.githubusercontent.com/u/637350?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/totaltrash.html">
+                    totaltrash
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/248818?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/vicb.html">
+                    vicb
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/407859?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/vincentchalamon.html">
+                    vincentchalamon
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars1.githubusercontent.com/u/121003?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/weaverryan.html">
+                    weaverryan
+                </a>
+            </strong>
+
+                            <ul class="list-inline">
+                    
+                                            <li class="list-inline-item"><a href="http://knpuniversity.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-link mr-2"></i></a></li>
+                    
+                                            <li class="list-inline-item"><a href="https://github.com/weaverryan/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github mr-2"></i></a></li>
+                                    </ul>
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars0.githubusercontent.com/u/1957048?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/xabbuh.html">
+                    xabbuh
+                </a>
+            </strong>
+
+                    </li>
+            <li class="list-group-item">
+            <img src="https://avatars3.githubusercontent.com/u/9623660?v=4" class="rounded float-left mr-5" style="width: 50px;" />
+
+            <strong>
+                <a href="/team/zatikbalazs.html">
+                    zatikbalazs
+                </a>
+            </strong>
+
+                    </li>
+    </ul>
+                </main>
+
+        <button id="back-to-top" title="Go to top">Top</button>
+
+        <script id="instantsearch-template" type="text/template">
+            
+    <a href="{{url}}" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{{_highlightResult.projectName.value}}}: {{{_highlightResult.h1.value}}}</h5>
+        </div>
+
+        {{#h2}}
+            <p class="mb-1">
+                <i class="far fa-arrow-alt-circle-right text-primary"></i>
+
+                {{{_highlightResult.h2.value}}}
+
+                {{#h3}}
+                    > {{{_highlightResult.h3.value}}}
+                {{/h3}}
+
+                {{#h4}}
+                    > {{{_highlightResult.h4.value}}}
+                {{/h4}}
+
+                {{#h5}}
+                    > {{{_highlightResult.h5.value}}}
+                {{/h5}}
+            </p>
+        {{/h2}}
+
+        {{#content}}
+            <div class="content p-2 rounded" style="background-color: rgba(0,0,0,.125);">
+                {{{_highlightResult.content.value}}}
+            </div>
+        {{/content}}
+    </a>
+
+        </script>
+
+        <script
+            src="https://staging.doctrine-project.org/frontend/js/bundle.js?3aa944"
+                        crossorigin="anonymous">
+        </script>
+
+                
+        <script type="text/javascript">
+            var projectSlug = 'doctrine-migrations-bundle';
+            var versionSlug = 'latest';
+
+            var searchBoxSettings = {
+                container: '#search-box',
+                placeholder: 'Search DoctrineMigrationsBundle'
+            };
+
+            function googleAnalyticsEvent(eventCategory, eventAction, eventLabel, eventValue, fieldsObject) {
+                                console.log(eventCategory, eventAction, eventLabel, eventValue, fieldsObject);
+                            }
+        </script>
+
+        
+        
+            </body>
+</html>

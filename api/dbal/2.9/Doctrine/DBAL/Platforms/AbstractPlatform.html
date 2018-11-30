@@ -1540,10 +1540,10 @@ e.g. when a field has the "columnDefinition" keyword.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getIndexFieldDeclarationListSQL">getIndexFieldDeclarationListSQL</a>(array $fields)
+                    <a href="#method_getIndexFieldDeclarationListSQL">getIndexFieldDeclarationListSQL</a>(mixed[]|<a href="../../../Doctrine/DBAL/Schema/Index.html"><abbr title="Doctrine\DBAL\Schema\Index">Index</abbr></a> $columnsOrIndex)
         
                                             <p>Obtains DBMS specific SQL code portion needed to set an index
 declaration to be used in statements like CREATE TABLE.</p>                </div>
@@ -2028,6 +2028,16 @@ like CREATE TABLE.</p>                </div>
                     <a href="#method_supportsPartialIndexes">supportsPartialIndexes</a>()
         
                                             <p>Whether the platform supports partial indexes.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_supportsColumnLengthIndexes">supportsColumnLengthIndexes</a>()
+        
+                                            <p>Whether the platform supports indexes with column length definitions.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -6235,7 +6245,7 @@ vendors allow to lighten this constraint up to be a real read lock.</p>         
             </div>
                     <div class="method-item">
                     <h3 id="method_getDropTemporaryTableSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L1434">line 1434</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L1436">line 1436</a></div>
         <code>                    string
     <strong>getDropTemporaryTableSQL</strong>(<a href="../../../Doctrine/DBAL/Schema/Table.html"><abbr title="Doctrine\DBAL\Schema\Table">Table</abbr></a>|string $table)
         </code>
@@ -6275,7 +6285,7 @@ vendors allow to lighten this constraint up to be a real read lock.</p>         
             </div>
                     <div class="method-item">
                     <h3 id="method_getDropIndexSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L1449">line 1449</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L1451">line 1451</a></div>
         <code>                    string
     <strong>getDropIndexSQL</strong>(<a href="../../../Doctrine/DBAL/Schema/Index.html"><abbr title="Doctrine\DBAL\Schema\Index">Index</abbr></a>|string $index, <a href="../../../Doctrine/DBAL/Schema/Table.html"><abbr title="Doctrine\DBAL\Schema\Table">Table</abbr></a>|string $table = null)
         </code>
@@ -6329,7 +6339,7 @@ vendors allow to lighten this constraint up to be a real read lock.</p>         
             </div>
                     <div class="method-item">
                     <h3 id="method_getDropConstraintSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L1468">line 1468</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L1470">line 1470</a></div>
         <code>                    string
     <strong>getDropConstraintSQL</strong>(<a href="../../../Doctrine/DBAL/Schema/Constraint.html"><abbr title="Doctrine\DBAL\Schema\Constraint">Constraint</abbr></a>|string $constraint, <a href="../../../Doctrine/DBAL/Schema/Table.html"><abbr title="Doctrine\DBAL\Schema\Table">Table</abbr></a>|string $table)
         </code>
@@ -6374,7 +6384,7 @@ vendors allow to lighten this constraint up to be a real read lock.</p>         
             </div>
                     <div class="method-item">
                     <h3 id="method_getDropForeignKeySQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L1492">line 1492</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L1494">line 1494</a></div>
         <code>                    string
     <strong>getDropForeignKeySQL</strong>(<a href="../../../Doctrine/DBAL/Schema/ForeignKeyConstraint.html"><abbr title="Doctrine\DBAL\Schema\ForeignKeyConstraint">ForeignKeyConstraint</abbr></a>|string $foreignKey, <a href="../../../Doctrine/DBAL/Schema/Table.html"><abbr title="Doctrine\DBAL\Schema\Table">Table</abbr></a>|string $table)
         </code>
@@ -6419,7 +6429,7 @@ vendors allow to lighten this constraint up to be a real read lock.</p>         
             </div>
                     <div class="method-item">
                     <h3 id="method_getCreateTableSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L1519">line 1519</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L1521">line 1521</a></div>
         <code>                    string[]
     <strong>getCreateTableSQL</strong>(<a href="../../../Doctrine/DBAL/Schema/Table.html"><abbr title="Doctrine\DBAL\Schema\Table">Table</abbr></a> $table, $createFlags = self::CREATE_INDEXES)
         </code>
@@ -8026,9 +8036,9 @@ e.g. when a field has the "columnDefinition" keyword.</p>                    <p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIndexFieldDeclarationListSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2399">line 2399</a></div>
-        <code>                    string
-    <strong>getIndexFieldDeclarationListSQL</strong>(array $fields)
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2397">line 2397</a></div>
+        <code>                    
+    <strong>getIndexFieldDeclarationListSQL</strong>(mixed[]|<a href="../../../Doctrine/DBAL/Schema/Index.html"><abbr title="Doctrine\DBAL\Schema\Index">Index</abbr></a> $columnsOrIndex)
         </code>
     </h3>
     <div class="details">
@@ -8043,22 +8053,13 @@ declaration to be used in statements like CREATE TABLE.</p>                     
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
-                <td>$fields</td>
-                <td></td>
+                <td>mixed[]|<a href="../../../Doctrine/DBAL/Schema/Index.html"><abbr title="Doctrine\DBAL\Schema\Index">Index</abbr></a></td>
+                <td>$columnsOrIndex</td>
+                <td>array declaration is deprecated, prefer passing Index to this method</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -8067,7 +8068,7 @@ declaration to be used in statements like CREATE TABLE.</p>                     
             </div>
                     <div class="method-item">
                     <h3 id="method_getTemporaryTableSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2428">line 2428</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2434">line 2434</a></div>
         <code>                    string
     <strong>getTemporaryTableSQL</strong>()
         </code>
@@ -8106,7 +8107,7 @@ requires a different SQL command from "CREATE TEMPORARY TABLE".</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getTemporaryTableName">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2440">line 2440</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2446">line 2446</a></div>
         <code>                    string
     <strong>getTemporaryTableName</strong>(string $tableName)
         </code>
@@ -8146,7 +8147,7 @@ requires a different SQL command from "CREATE TEMPORARY TABLE".</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getForeignKeyDeclarationSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2452">line 2452</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2458">line 2458</a></div>
         <code>                    string
     <strong>getForeignKeyDeclarationSQL</strong>(<a href="../../../Doctrine/DBAL/Schema/ForeignKeyConstraint.html"><abbr title="Doctrine\DBAL\Schema\ForeignKeyConstraint">ForeignKeyConstraint</abbr></a> $foreignKey)
         </code>
@@ -8188,7 +8189,7 @@ of a field declaration to be used in statements like CREATE TABLE.</p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_getAdvancedForeignKeyOptionsSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2468">line 2468</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2474">line 2474</a></div>
         <code>                    string
     <strong>getAdvancedForeignKeyOptionsSQL</strong>(<a href="../../../Doctrine/DBAL/Schema/ForeignKeyConstraint.html"><abbr title="Doctrine\DBAL\Schema\ForeignKeyConstraint">ForeignKeyConstraint</abbr></a> $foreignKey)
         </code>
@@ -8229,7 +8230,7 @@ as MATCH, INITIALLY DEFERRED, ON UPDATE, .</p>                    <p>..</p>     
             </div>
                     <div class="method-item">
                     <h3 id="method_getForeignKeyReferentialActionSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2490">line 2490</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2496">line 2496</a></div>
         <code>                    string
     <strong>getForeignKeyReferentialActionSQL</strong>(string $action)
         </code>
@@ -8278,7 +8279,7 @@ as MATCH, INITIALLY DEFERRED, ON UPDATE, .</p>                    <p>..</p>     
             </div>
                     <div class="method-item">
                     <h3 id="method_getForeignKeyBaseDeclarationSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2513">line 2513</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2519">line 2519</a></div>
         <code>                    string
     <strong>getForeignKeyBaseDeclarationSQL</strong>(<a href="../../../Doctrine/DBAL/Schema/ForeignKeyConstraint.html"><abbr title="Doctrine\DBAL\Schema\ForeignKeyConstraint">ForeignKeyConstraint</abbr></a> $foreignKey)
         </code>
@@ -8328,7 +8329,7 @@ of a field declaration to be used in statements like CREATE TABLE.</p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_getUniqueFieldDeclarationSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2544">line 2544</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2550">line 2550</a></div>
         <code>                    string
     <strong>getUniqueFieldDeclarationSQL</strong>()
         </code>
@@ -8360,7 +8361,7 @@ of a field declaration to be used in statements like CREATE TABLE.</p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_getColumnCharsetDeclarationSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2558">line 2558</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2564">line 2564</a></div>
         <code>                    string
     <strong>getColumnCharsetDeclarationSQL</strong>(string $charset)
         </code>
@@ -8402,7 +8403,7 @@ of a field declaration to be used in statements like CREATE TABLE.</p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_getColumnCollationDeclarationSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2572">line 2572</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2578">line 2578</a></div>
         <code>                    string
     <strong>getColumnCollationDeclarationSQL</strong>(string $collation)
         </code>
@@ -8444,7 +8445,7 @@ of a field declaration to be used in statements like CREATE TABLE.</p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_prefersSequences">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2583">line 2583</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2589">line 2589</a></div>
         <code>                    bool
     <strong>prefersSequences</strong>()
         </code>
@@ -8474,7 +8475,7 @@ of a field declaration to be used in statements like CREATE TABLE.</p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_prefersIdentityColumns">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2594">line 2594</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2600">line 2600</a></div>
         <code>                    bool
     <strong>prefersIdentityColumns</strong>()
         </code>
@@ -8504,7 +8505,7 @@ of a field declaration to be used in statements like CREATE TABLE.</p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_convertBooleans">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2613">line 2613</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2619">line 2619</a></div>
         <code>                    mixed
     <strong>convertBooleans</strong>(mixed $item)
         </code>
@@ -8549,7 +8550,7 @@ This method should handle the literal case</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_convertFromBoolean">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2639">line 2639</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2645">line 2645</a></div>
         <code>                    bool|null
     <strong>convertFromBoolean</strong>(mixed $item)
         </code>
@@ -8589,7 +8590,7 @@ This method should handle the literal case</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_convertBooleansToDatabaseValue">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2654">line 2654</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2660">line 2660</a></div>
         <code>                    mixed
     <strong>convertBooleansToDatabaseValue</strong>(mixed $item)
         </code>
@@ -8630,7 +8631,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getCurrentDateSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2664">line 2664</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2670">line 2670</a></div>
         <code>                    string
     <strong>getCurrentDateSQL</strong>()
         </code>
@@ -8660,7 +8661,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getCurrentTimeSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2674">line 2674</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2680">line 2680</a></div>
         <code>                    string
     <strong>getCurrentTimeSQL</strong>()
         </code>
@@ -8690,7 +8691,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getCurrentTimestampSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2684">line 2684</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2690">line 2690</a></div>
         <code>                    string
     <strong>getCurrentTimestampSQL</strong>()
         </code>
@@ -8720,7 +8721,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method__getTransactionIsolationLevelSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2698">line 2698</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2704">line 2704</a></div>
         <code>            protected        string
     <strong>_getTransactionIsolationLevelSQL</strong>(int $level)
         </code>
@@ -8769,7 +8770,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getListDatabasesSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2719">line 2719</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2725">line 2725</a></div>
         <code>                    string
     <strong>getListDatabasesSQL</strong>()
         </code>
@@ -8806,7 +8807,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getListNamespacesSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2731">line 2731</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2737">line 2737</a></div>
         <code>                    string
     <strong>getListNamespacesSQL</strong>()
         </code>
@@ -8845,7 +8846,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getListSequencesSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2743">line 2743</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2749">line 2749</a></div>
         <code>                    string
     <strong>getListSequencesSQL</strong>(string $database)
         </code>
@@ -8892,7 +8893,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getListTableConstraintsSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2755">line 2755</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2761">line 2761</a></div>
         <code>                    string
     <strong>getListTableConstraintsSQL</strong>(string $table)
         </code>
@@ -8939,7 +8940,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getListTableColumnsSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2768">line 2768</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2774">line 2774</a></div>
         <code>                    string
     <strong>getListTableColumnsSQL</strong>(string $table, string|null $database = null)
         </code>
@@ -8991,7 +8992,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getListTablesSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2778">line 2778</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2784">line 2784</a></div>
         <code>                    string
     <strong>getListTablesSQL</strong>()
         </code>
@@ -9028,7 +9029,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getListUsersSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2788">line 2788</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2794">line 2794</a></div>
         <code>                    string
     <strong>getListUsersSQL</strong>()
         </code>
@@ -9065,7 +9066,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getListViewsSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2802">line 2802</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2808">line 2808</a></div>
         <code>                    string
     <strong>getListViewsSQL</strong>(string $database)
         </code>
@@ -9114,7 +9115,7 @@ distinction, it's OK to use the same method.</p>                    <p>Note: if 
             </div>
                     <div class="method-item">
                     <h3 id="method_getListTableIndexesSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2824">line 2824</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2830">line 2830</a></div>
         <code>                    string
     <strong>getListTableIndexesSQL</strong>(string $table, string $currentDatabase = null)
         </code>
@@ -9173,7 +9174,7 @@ requests may be impossible.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getListTableForeignKeysSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2836">line 2836</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2842">line 2842</a></div>
         <code>                    string
     <strong>getListTableForeignKeysSQL</strong>(string $table)
         </code>
@@ -9220,7 +9221,7 @@ requests may be impossible.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCreateViewSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2849">line 2849</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2855">line 2855</a></div>
         <code>                    string
     <strong>getCreateViewSQL</strong>(string $name, string $sql)
         </code>
@@ -9272,7 +9273,7 @@ requests may be impossible.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDropViewSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2861">line 2861</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2867">line 2867</a></div>
         <code>                    string
     <strong>getDropViewSQL</strong>(string $name)
         </code>
@@ -9319,7 +9320,7 @@ requests may be impossible.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDropSequenceSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2875">line 2875</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2881">line 2881</a></div>
         <code>                    string
     <strong>getDropSequenceSQL</strong>(<a href="../../../Doctrine/DBAL/Schema/Sequence.html"><abbr title="Doctrine\DBAL\Schema\Sequence">Sequence</abbr></a>|string $sequence)
         </code>
@@ -9368,7 +9369,7 @@ requests may be impossible.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSequenceNextValSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2887">line 2887</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2893">line 2893</a></div>
         <code>                    string
     <strong>getSequenceNextValSQL</strong>(string $sequenceName)
         </code>
@@ -9415,7 +9416,7 @@ requests may be impossible.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCreateDatabaseSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2901">line 2901</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2907">line 2907</a></div>
         <code>                    string
     <strong>getCreateDatabaseSQL</strong>(string $database)
         </code>
@@ -9464,7 +9465,7 @@ requests may be impossible.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSetTransactionIsolationSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2915">line 2915</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2921">line 2921</a></div>
         <code>                    string
     <strong>getSetTransactionIsolationSQL</strong>(int $level)
         </code>
@@ -9513,7 +9514,7 @@ requests may be impossible.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDateTimeTypeDeclarationSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2930">line 2930</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2936">line 2936</a></div>
         <code>                    string
     <strong>getDateTimeTypeDeclarationSQL</strong>(array $fieldDeclaration)
         </code>
@@ -9563,7 +9564,7 @@ statements like CREATE TABLE.</p>                                               
             </div>
                     <div class="method-item">
                     <h3 id="method_getDateTimeTzTypeDeclarationSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2942">line 2942</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2948">line 2948</a></div>
         <code>                    string
     <strong>getDateTimeTzTypeDeclarationSQL</strong>(array $fieldDeclaration)
         </code>
@@ -9603,7 +9604,7 @@ statements like CREATE TABLE.</p>                                               
             </div>
                     <div class="method-item">
                     <h3 id="method_getDateTypeDeclarationSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2958">line 2958</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2964">line 2964</a></div>
         <code>                    string
     <strong>getDateTypeDeclarationSQL</strong>(array $fieldDeclaration)
         </code>
@@ -9653,7 +9654,7 @@ like CREATE TABLE.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTimeTypeDeclarationSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2973">line 2973</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2979">line 2979</a></div>
         <code>                    string
     <strong>getTimeTypeDeclarationSQL</strong>(array $fieldDeclaration)
         </code>
@@ -9703,7 +9704,7 @@ like CREATE TABLE.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFloatDeclarationSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2983">line 2983</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2989">line 2989</a></div>
         <code>                    string
     <strong>getFloatDeclarationSQL</strong>(array $fieldDeclaration)
         </code>
@@ -9741,7 +9742,7 @@ like CREATE TABLE.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDefaultTransactionIsolationLevel">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L2995">line 2995</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3001">line 3001</a></div>
         <code>                    int
     <strong>getDefaultTransactionIsolationLevel</strong>()
         </code>
@@ -9782,7 +9783,7 @@ like CREATE TABLE.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsSequences">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3007">line 3007</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3013">line 3013</a></div>
         <code>                    bool
     <strong>supportsSequences</strong>()
         </code>
@@ -9812,7 +9813,7 @@ like CREATE TABLE.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsIdentityColumns">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3020">line 3020</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3026">line 3026</a></div>
         <code>                    bool
     <strong>supportsIdentityColumns</strong>()
         </code>
@@ -9843,7 +9844,7 @@ database on insert of a row.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_usesSequenceEmulatedIdentityColumns">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3034">line 3034</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3040">line 3040</a></div>
         <code>                    bool
     <strong>usesSequenceEmulatedIdentityColumns</strong>()
         </code>
@@ -9875,7 +9876,7 @@ sequences.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIdentitySequenceName">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3051">line 3051</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3057">line 3057</a></div>
         <code>                    string
     <strong>getIdentitySequenceName</strong>(string $tableName, string $columnName)
         </code>
@@ -9940,7 +9941,7 @@ sequences.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsIndexes">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3061">line 3061</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3067">line 3067</a></div>
         <code>                    bool
     <strong>supportsIndexes</strong>()
         </code>
@@ -9970,7 +9971,7 @@ sequences.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsPartialIndexes">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3071">line 3071</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3077">line 3077</a></div>
         <code>                    bool
     <strong>supportsPartialIndexes</strong>()
         </code>
@@ -9999,8 +10000,29 @@ sequences.</p>                            </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_supportsColumnLengthIndexes">
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3085">line 3085</a></div>
+        <code>                    
+    <strong>supportsColumnLengthIndexes</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Whether the platform supports indexes with column length definitions.</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_supportsAlterTable">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3081">line 3081</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3095">line 3095</a></div>
         <code>                    bool
     <strong>supportsAlterTable</strong>()
         </code>
@@ -10030,7 +10052,7 @@ sequences.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsTransactions">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3091">line 3091</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3105">line 3105</a></div>
         <code>                    bool
     <strong>supportsTransactions</strong>()
         </code>
@@ -10060,7 +10082,7 @@ sequences.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsSavepoints">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3101">line 3101</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3115">line 3115</a></div>
         <code>                    bool
     <strong>supportsSavepoints</strong>()
         </code>
@@ -10090,7 +10112,7 @@ sequences.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsReleaseSavepoints">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3111">line 3111</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3125">line 3125</a></div>
         <code>                    bool
     <strong>supportsReleaseSavepoints</strong>()
         </code>
@@ -10120,7 +10142,7 @@ sequences.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsPrimaryConstraints">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3121">line 3121</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3135">line 3135</a></div>
         <code>                    bool
     <strong>supportsPrimaryConstraints</strong>()
         </code>
@@ -10150,7 +10172,7 @@ sequences.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsForeignKeyConstraints">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3131">line 3131</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3145">line 3145</a></div>
         <code>                    bool
     <strong>supportsForeignKeyConstraints</strong>()
         </code>
@@ -10180,7 +10202,7 @@ sequences.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsForeignKeyOnUpdate">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3141">line 3141</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3155">line 3155</a></div>
         <code>                    bool
     <strong>supportsForeignKeyOnUpdate</strong>()
         </code>
@@ -10210,7 +10232,7 @@ sequences.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsSchemas">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3151">line 3151</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3165">line 3165</a></div>
         <code>                    bool
     <strong>supportsSchemas</strong>()
         </code>
@@ -10240,7 +10262,7 @@ sequences.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_canEmulateSchemas">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3165">line 3165</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3179">line 3179</a></div>
         <code>                    bool
     <strong>canEmulateSchemas</strong>()
         </code>
@@ -10272,7 +10294,7 @@ AbstractManager#createSchema}.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDefaultSchemaName">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3177">line 3177</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3191">line 3191</a></div>
         <code>                    string
     <strong>getDefaultSchemaName</strong>()
         </code>
@@ -10311,7 +10333,7 @@ AbstractManager#createSchema}.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsCreateDropDatabase">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3189">line 3189</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3203">line 3203</a></div>
         <code>                    bool
     <strong>supportsCreateDropDatabase</strong>()
         </code>
@@ -10341,7 +10363,7 @@ AbstractManager#createSchema}.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsGettingAffectedRows">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3199">line 3199</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3213">line 3213</a></div>
         <code>                    bool
     <strong>supportsGettingAffectedRows</strong>()
         </code>
@@ -10371,7 +10393,7 @@ AbstractManager#createSchema}.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsInlineColumnComments">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3209">line 3209</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3223">line 3223</a></div>
         <code>                    bool
     <strong>supportsInlineColumnComments</strong>()
         </code>
@@ -10401,7 +10423,7 @@ AbstractManager#createSchema}.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsCommentOnStatement">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3219">line 3219</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3233">line 3233</a></div>
         <code>                    bool
     <strong>supportsCommentOnStatement</strong>()
         </code>
@@ -10431,7 +10453,7 @@ AbstractManager#createSchema}.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasNativeGuidType">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3229">line 3229</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3243">line 3243</a></div>
         <code>                    bool
     <strong>hasNativeGuidType</strong>()
         </code>
@@ -10461,7 +10483,7 @@ AbstractManager#createSchema}.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasNativeJsonType">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3239">line 3239</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3253">line 3253</a></div>
         <code>                    bool
     <strong>hasNativeJsonType</strong>()
         </code>
@@ -10491,7 +10513,7 @@ AbstractManager#createSchema}.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIdentityColumnNullInsertSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3249">line 3249</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3263">line 3263</a></div>
         <code>                    
     <strong>getIdentityColumnNullInsertSQL</strong>()
         <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
@@ -10517,7 +10539,7 @@ AbstractManager#createSchema}.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsViews">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3259">line 3259</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3273">line 3273</a></div>
         <code>                    bool
     <strong>supportsViews</strong>()
         </code>
@@ -10547,7 +10569,7 @@ AbstractManager#createSchema}.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsColumnCollation">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3269">line 3269</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3283">line 3283</a></div>
         <code>                    bool
     <strong>supportsColumnCollation</strong>()
         </code>
@@ -10577,7 +10599,7 @@ AbstractManager#createSchema}.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDateTimeFormatString">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3280">line 3280</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3294">line 3294</a></div>
         <code>                    string
     <strong>getDateTimeFormatString</strong>()
         </code>
@@ -10608,7 +10630,7 @@ the format of a stored datetime value of this platform.</p>                     
             </div>
                     <div class="method-item">
                     <h3 id="method_getDateTimeTzFormatString">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3291">line 3291</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3305">line 3305</a></div>
         <code>                    string
     <strong>getDateTimeTzFormatString</strong>()
         </code>
@@ -10639,7 +10661,7 @@ the format of a stored datetime with timezone value of this platform.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getDateFormatString">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3302">line 3302</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3316">line 3316</a></div>
         <code>                    string
     <strong>getDateFormatString</strong>()
         </code>
@@ -10670,7 +10692,7 @@ the format of a stored date value of this platform.</p>                         
             </div>
                     <div class="method-item">
                     <h3 id="method_getTimeFormatString">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3313">line 3313</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3327">line 3327</a></div>
         <code>                    string
     <strong>getTimeFormatString</strong>()
         </code>
@@ -10701,7 +10723,7 @@ the format of a stored time value of this platform.</p>                         
             </div>
                     <div class="method-item">
                     <h3 id="method_modifyLimitQuery">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3329">line 3329</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3343">line 3343</a></div>
         <code>final                    string
     <strong>modifyLimitQuery</strong>(string $query, int|null $limit, int|null $offset = null)
         </code>
@@ -10760,7 +10782,7 @@ the format of a stored time value of this platform.</p>                         
             </div>
                     <div class="method-item">
                     <h3 id="method_doModifyLimitQuery">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3363">line 3363</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3377">line 3377</a></div>
         <code>            protected        string
     <strong>doModifyLimitQuery</strong>(string $query, int|null $limit, int|null $offset)
         </code>
@@ -10810,7 +10832,7 @@ the format of a stored time value of this platform.</p>                         
             </div>
                     <div class="method-item">
                     <h3 id="method_supportsLimitOffset">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3381">line 3381</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3395">line 3395</a></div>
         <code>                    bool
     <strong>supportsLimitOffset</strong>()
         </code>
@@ -10840,7 +10862,7 @@ the format of a stored time value of this platform.</p>                         
             </div>
                     <div class="method-item">
                     <h3 id="method_getSQLResultCasing">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3393">line 3393</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3407">line 3407</a></div>
         <code>                    string
     <strong>getSQLResultCasing</strong>(string $column)
         </code>
@@ -10880,7 +10902,7 @@ the format of a stored time value of this platform.</p>                         
             </div>
                     <div class="method-item">
                     <h3 id="method_fixSchemaElementName">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3406">line 3406</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3420">line 3420</a></div>
         <code>                    string
     <strong>fixSchemaElementName</strong>(string $schemaElementName)
         </code>
@@ -10921,7 +10943,7 @@ by restrictions of the platform, like a maximum length.</p>                     
             </div>
                     <div class="method-item">
                     <h3 id="method_getMaxIdentifierLength">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3416">line 3416</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3430">line 3430</a></div>
         <code>                    int
     <strong>getMaxIdentifierLength</strong>()
         </code>
@@ -10951,7 +10973,7 @@ by restrictions of the platform, like a maximum length.</p>                     
             </div>
                     <div class="method-item">
                     <h3 id="method_getEmptyIdentityInsertSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3429">line 3429</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3443">line 3443</a></div>
         <code>                    string
     <strong>getEmptyIdentityInsertSQL</strong>(string $tableName, string $identifierColumnName)
         </code>
@@ -10996,7 +11018,7 @@ by restrictions of the platform, like a maximum length.</p>                     
             </div>
                     <div class="method-item">
                     <h3 id="method_getTruncateTableSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3445">line 3445</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3459">line 3459</a></div>
         <code>                    string
     <strong>getTruncateTableSQL</strong>(string $tableName, bool $cascade = false)
         </code>
@@ -11042,7 +11064,7 @@ following the foreign keys.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDummySelectSQL">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3457">line 3457</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3471">line 3471</a></div>
         <code>                    string
     <strong>getDummySelectSQL</strong>()
         </code>
@@ -11072,7 +11094,7 @@ following the foreign keys.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_createSavePoint">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3471">line 3471</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3485">line 3485</a></div>
         <code>                    string
     <strong>createSavePoint</strong>(string $savepoint)
         </code>
@@ -11112,7 +11134,7 @@ following the foreign keys.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_releaseSavePoint">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3483">line 3483</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3497">line 3497</a></div>
         <code>                    string
     <strong>releaseSavePoint</strong>(string $savepoint)
         </code>
@@ -11152,7 +11174,7 @@ following the foreign keys.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_rollbackSavePoint">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3495">line 3495</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3509">line 3509</a></div>
         <code>                    string
     <strong>rollbackSavePoint</strong>(string $savepoint)
         </code>
@@ -11192,7 +11214,7 @@ following the foreign keys.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getReservedKeywordsList">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3507">line 3507</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3521">line 3521</a></div>
         <code>final                    <a href="../../../Doctrine/DBAL/Platforms/Keywords/KeywordList.html"><abbr title="Doctrine\DBAL\Platforms\Keywords\KeywordList">KeywordList</abbr></a>
     <strong>getReservedKeywordsList</strong>()
         </code>
@@ -11231,7 +11253,7 @@ following the foreign keys.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getReservedKeywordsClass">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3533">line 3533</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3547">line 3547</a></div>
         <code>            protected        string
     <strong>getReservedKeywordsClass</strong>()
         </code>
@@ -11270,7 +11292,7 @@ following the foreign keys.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_quoteStringLiteral">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3548">line 3548</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3562">line 3562</a></div>
         <code>                    string
     <strong>quoteStringLiteral</strong>(string $str)
         </code>
@@ -11312,7 +11334,7 @@ quote character inside the given literal string.</p>                            
             </div>
                     <div class="method-item">
                     <h3 id="method_getStringLiteralQuoteCharacter">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3560">line 3560</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3574">line 3574</a></div>
         <code>                    string
     <strong>getStringLiteralQuoteCharacter</strong>()
         </code>
@@ -11342,7 +11364,7 @@ quote character inside the given literal string.</p>                            
             </div>
                     <div class="method-item">
                     <h3 id="method_escapeStringForLike">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3573">line 3573</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3587">line 3587</a></div>
         <code>final                    
     <strong>escapeStringForLike</strong>(string $inputString, string $escapeChar)
         </code>
@@ -11380,7 +11402,7 @@ operator.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getLikeWildcardCharacters">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3582">line 3582</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/master/lib/Doctrine/DBAL/Platforms/AbstractPlatform.php#L3596">line 3596</a></div>
         <code>            protected        
     <strong>getLikeWildcardCharacters</strong>()
         </code>
