@@ -14,10 +14,6 @@ import(/* webpackChunkName: "search" */ './search').then(module => {
     module.default(projectSlug, versionSlug, searchBoxSettings);
 });
 
-import(/* webpackChunkName: "carbonads" */ './carbonads').then(module => {
-    var _native = module.default();
-});
-
 if ($('#sidebar').length > 0) {
     import(/* webpackChunkName: "sidebar" */ './sidebar').then(module => {
         new module.default();
@@ -37,5 +33,4 @@ window.googleTranslateElementInit = () => {
         googleAnalyticsEvent('Translate', 'click', language);
     });
 };
-
 $.getScript('https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
