@@ -97,7 +97,7 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_closeCursor">closeCursor</a>()
@@ -117,10 +117,21 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setFetchMode">setFetchMode</a>(int $fetchMode, mixed[] ...$args)
+                    <a href="#method_rowCount">rowCount</a>()
+        
+                                            <p>Returns the number of rows affected by the last DELETE, INSERT, or UPDATE statement
+executed by the corresponding object.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setFetchMode">setFetchMode</a>(int $fetchMode, mixed ...$args)
         
                                             <p>Sets the fetch mode to use while iterating this statement.</p>                </div>
                 <div class="col-md-2"></div>
@@ -130,7 +141,7 @@
                     mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fetch">fetch</a>(int|null $fetchMode = null, mixed[] ...$args)
+                    <a href="#method_fetch">fetch</a>(int|null $fetchMode = null, mixed ...$args)
         
                                             <p>Returns the next row of a result set.</p>                </div>
                 <div class="col-md-2"></div>
@@ -140,7 +151,7 @@
                     mixed[]
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fetchAll">fetchAll</a>(int|null $fetchMode = null, mixed[] ...$args)
+                    <a href="#method_fetchAll">fetchAll</a>(int|null $fetchMode = null, mixed ...$args)
         
                                             <p>Returns an array containing all of the result set rows.</p>                </div>
                 <div class="col-md-2"></div>
@@ -164,7 +175,7 @@
                     <div class="method-item">
                     <h3 id="method_closeCursor">
         <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/ResultStatement.php#L17">line 17</a></div>
-        <code>                    bool
+        <code>                    
     <strong>closeCursor</strong>()
         </code>
     </h3>
@@ -176,15 +187,6 @@
                                     <p>Closes the cursor, enabling the statement to be executed again.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE on success or FALSE on failure.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -224,10 +226,35 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setFetchMode">
+                    <h3 id="method_rowCount">
         <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/ResultStatement.php#L37">line 37</a></div>
-        <code>                    bool
-    <strong>setFetchMode</strong>(int $fetchMode, mixed[] ...$args)
+        <code>                    
+    <strong>rowCount</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the number of rows affected by the last DELETE, INSERT, or UPDATE statement
+executed by the corresponding object.</p>                    <p>If the last SQL statement executed by the associated Statement object was a SELECT statement,
+some databases may return the number of rows returned by that statement. However,
+this behaviour is not guaranteed for all databases and should not be
+relied on for portable applications.</p>                            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFetchMode">
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/ResultStatement.php#L46">line 46</a></div>
+        <code>                    
+    <strong>setFetchMode</strong>(int $fetchMode, mixed ...$args)
         </code>
     </h3>
     <div class="details">
@@ -244,25 +271,16 @@
                 <td>int</td>
                 <td>$fetchMode</td>
                 <td>Controls how the next row will be returned to the caller.
-                          The value must be one of the {@link \Doctrine\DBAL\FetchMode} constants.</td>
+                        The value must be one of the {@link \Doctrine\DBAL\FetchMode} constants.</td>
             </tr>
                     <tr>
-                <td>mixed[]</td>
+                <td>mixed</td>
                 <td>...$args</td>
                 <td>Optional mode-specific arguments (see {@link self::fetchAll()}).</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -271,9 +289,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/ResultStatement.php#L50">line 50</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/ResultStatement.php#L59">line 59</a></div>
         <code>                    mixed
-    <strong>fetch</strong>(int|null $fetchMode = null, mixed[] ...$args)
+    <strong>fetch</strong>(int|null $fetchMode = null, mixed ...$args)
         </code>
     </h3>
     <div class="details">
@@ -294,7 +312,7 @@
                            defaulting to {@link \Doctrine\DBAL\FetchMode::MIXED}.</td>
             </tr>
                     <tr>
-                <td>mixed[]</td>
+                <td>mixed</td>
                 <td>...$args</td>
                 <td>Optional mode-specific arguments (see {@link self::fetchAll()}).</td>
             </tr>
@@ -319,9 +337,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fetchAll">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/ResultStatement.php#L67">line 67</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/ResultStatement.php#L76">line 76</a></div>
         <code>                    mixed[]
-    <strong>fetchAll</strong>(int|null $fetchMode = null, mixed[] ...$args)
+    <strong>fetchAll</strong>(int|null $fetchMode = null, mixed ...$args)
         </code>
     </h3>
     <div class="details">
@@ -342,7 +360,7 @@
                            defaulting to {@link \Doctrine\DBAL\FetchMode::MIXED}.</td>
             </tr>
                     <tr>
-                <td>mixed[]</td>
+                <td>mixed</td>
                 <td>...$args</td>
                 <td>Optional mode-specific arguments. Supported modes:
                            * {@link \Doctrine\DBAL\FetchMode::COLUMN}
@@ -371,7 +389,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fetchColumn">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/ResultStatement.php#L77">line 77</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/ResultStatement.php#L86">line 86</a></div>
         <code>                    mixed|<abbr title="Doctrine\DBAL\Driver\false">false</abbr>
     <strong>fetchColumn</strong>(int $columnIndex = 0)
         </code>

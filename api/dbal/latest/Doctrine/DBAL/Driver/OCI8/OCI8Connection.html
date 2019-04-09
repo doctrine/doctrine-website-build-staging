@@ -121,7 +121,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $username, string $password, string $db, string|null $charset = null, int $sessionMode = OCI_DEFAULT, bool $persistent = false)
+                    <a href="#method___construct">__construct</a>(string $username, string $password, string $db, string $charset = &#039;&#039;, int $sessionMode = OCI_DEFAULT, bool $persistent = false)
         
                                             <p>Creates a Connection to an Oracle Database using oci8 extension.</p>                </div>
                 <div class="col-md-2"></div>
@@ -168,10 +168,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_quote">quote</a>($value, int $type = ParameterType::STRING)
+                    <a href="#method_quote">quote</a>(string $input)
         
                                             <p>Quotes a string for use in a query.</p>                </div>
                 <div class="col-md-2"></div>
@@ -208,7 +208,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_beginTransaction">beginTransaction</a>()
@@ -218,7 +218,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_commit">commit</a>()
@@ -228,32 +228,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_rollBack">rollBack</a>()
         
                                             <p>Rolls back the current transaction, as initiated by beginTransaction().</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string|null
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_errorCode">errorCode</a>()
-        
-                                            <p>Returns the error code associated with the last operation on the database handle.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed[]
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_errorInfo">errorInfo</a>()
-        
-                                            <p>Returns extended error information associated with the last operation on the database handle.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -264,9 +244,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L52">line 52</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L49">line 49</a></div>
         <code>                    
-    <strong>__construct</strong>(string $username, string $password, string $db, string|null $charset = null, int $sessionMode = OCI_DEFAULT, bool $persistent = false)
+    <strong>__construct</strong>(string $username, string $password, string $db, string $charset = &#039;&#039;, int $sessionMode = OCI_DEFAULT, bool $persistent = false)
         </code>
     </h3>
     <div class="details">
@@ -295,7 +275,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$charset</td>
                 <td></td>
             </tr>
@@ -329,7 +309,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getServerVersion">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L73">line 73</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L74">line 74</a></div>
         <code>                    string
     <strong>getServerVersion</strong>()
         </code>
@@ -359,7 +339,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_requiresQueryForServerVersion">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L91">line 91</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L98">line 98</a></div>
         <code>                    bool
     <strong>requiresQueryForServerVersion</strong>()
         </code>
@@ -389,7 +369,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_prepare">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L99">line 99</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L106">line 106</a></div>
         <code>                    
     <strong>prepare</strong>(string $sql)
         </code>
@@ -420,7 +400,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_query">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L107">line 107</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L114">line 114</a></div>
         <code>                    
     <strong>query</strong>(string $sql)
         </code>
@@ -460,9 +440,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_quote">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L118">line 118</a></div>
-        <code>                    mixed
-    <strong>quote</strong>($value, int $type = ParameterType::STRING)
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L125">line 125</a></div>
+        <code>                    
+    <strong>quote</strong>(string $input)
         </code>
     </h3>
     <div class="details">
@@ -476,27 +456,13 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
-                <td>$value</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$type</td>
+                <td>string</td>
+                <td>$input</td>
                 <td></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -505,7 +471,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_exec">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L131">line 131</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L133">line 133</a></div>
         <code>                    
     <strong>exec</strong>(string $statement)
         </code>
@@ -545,7 +511,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_lastInsertId">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L142">line 142</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L144">line 144</a></div>
         <code>                    string
     <strong>lastInsertId</strong>(string|null $name = null)
         </code>
@@ -585,7 +551,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getExecuteMode">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L164">line 164</a></div>
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L166">line 166</a></div>
         <code>                    int
     <strong>getExecuteMode</strong>()
         </code>
@@ -615,8 +581,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_beginTransaction">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L172">line 172</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L174">line 174</a></div>
+        <code>                    
     <strong>beginTransaction</strong>()
         </code>
     </h3>
@@ -628,16 +594,16 @@
                                     <p>Initiates a transaction.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
+            
+                            <h4>Exceptions</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE on success or FALSE on failure.</td>
-        </tr>
-    </table>
+                    <tr>
+                <td><a href="../../../../Doctrine/DBAL/Driver/DriverException.html"><abbr title="Doctrine\DBAL\Driver\DriverException">DriverException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
 
-            
             
                     </div>
     </div>
@@ -646,7 +612,7 @@
                     <div class="method-item">
                     <h3 id="method_commit">
         <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L182">line 182</a></div>
-        <code>                    bool
+        <code>                    
     <strong>commit</strong>()
         </code>
     </h3>
@@ -658,16 +624,16 @@
                                     <p>Commits a transaction.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
+            
+                            <h4>Exceptions</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE on success or FALSE on failure.</td>
-        </tr>
-    </table>
+                    <tr>
+                <td><a href="../../../../Doctrine/DBAL/Driver/DriverException.html"><abbr title="Doctrine\DBAL\Driver\DriverException">DriverException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
 
-            
             
                     </div>
     </div>
@@ -675,8 +641,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_rollBack">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L195">line 195</a></div>
-        <code>                    bool
+        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L194">line 194</a></div>
+        <code>                    
     <strong>rollBack</strong>()
         </code>
     </h3>
@@ -688,76 +654,16 @@
                                     <p>Rolls back the current transaction, as initiated by beginTransaction().</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
+            
+                            <h4>Exceptions</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>TRUE on success or FALSE on failure.</td>
-        </tr>
-    </table>
+                    <tr>
+                <td><a href="../../../../Doctrine/DBAL/Driver/DriverException.html"><abbr title="Doctrine\DBAL\Driver\DriverException">DriverException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
 
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_errorCode">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L208">line 208</a></div>
-        <code>                    string|null
-    <strong>errorCode</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the error code associated with the last operation on the database handle.</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string|null</td>
-            <td>The error code, or null if no operation has been run on the database handle.</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_errorInfo">
-        <div class="location">at         <a href="https://github.com/doctrine/dbal/blob/develop/lib/Doctrine/DBAL/Driver/OCI8/OCI8Connection.php#L221">line 221</a></div>
-        <code>                    mixed[]
-    <strong>errorInfo</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns extended error information associated with the last operation on the database handle.</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed[]</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
             
                     </div>
     </div>
