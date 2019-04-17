@@ -456,37 +456,43 @@ to <code>prime()</code>, which allows more control over the priming query.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="4759966318bbd897b6add94ac8e575e553b48a3e"
+            data-copy-element-id="7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="4759966318bbd897b6add94ac8e575e553b48a3e"><table class="code-block-table"><tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-1" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-1">1</a></td><td class="code-line" rowspan="15"><span class="hljs-meta">&lt;?php</span>
+        ><i class="fas fa-copy"></i></button><div id="7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09"><table class="code-block-table"><tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-1" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-1">1</a></td><td class="code-line" rowspan="18"><span class="hljs-meta">&lt;?php</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(DocumentManager $dm, ClassMetadata $class, array $ids, array $hints)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(DocumentManager $dm, ClassMetadata $class, array $ids, array $hints)</span> : <span class="hljs-title">void</span> </span>{
+    <span class="hljs-keyword">if</span> ($class-&gt;identifier === <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">return</span>;
+    }
+
     $qb = $dm-&gt;createQueryBuilder($class-&gt;name)
         -&gt;field($class-&gt;identifier)-&gt;in($ids);
 
-    <span class="hljs-keyword">if</span> ( ! <span class="hljs-keyword">empty</span>($hints[Query::HINT_READ_PREFERENCE])) {
-        $qb-&gt;setReadPreference(
-            $hints[Query::HINT_READ_PREFERENCE],
-            $hints[Query::HINT_READ_PREFERENCE_TAGS]
-        );
+    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>($hints[Query::HINT_READ_PREFERENCE])) {
+        $qb-&gt;setReadPreference($hints[Query::HINT_READ_PREFERENCE]);
     }
 
-    $qb-&gt;getQuery()-&gt;toArray();
+    $iterator = $qb-&gt;getQuery()-&gt;execute();
+    assert($iterator <span class="hljs-keyword">instanceof</span> Iterator);
+    $iterator-&gt;toArray();
 };</td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-2" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-2">2</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-3" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-3">3</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-4" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-4">4</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-5" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-5">5</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-6" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-6">6</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-7" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-7">7</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-8" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-8">8</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-9" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-9">9</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-10" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-10">10</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-11" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-11">11</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-12" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-12">12</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-13" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-13">13</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-14" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-14">14</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-4759966318bbd897b6add94ac8e575e553b48a3e-15" class="line-number-anchor" /><a href="#line-number-4759966318bbd897b6add94ac8e575e553b48a3e-15">15</a></td></tr></table></div></code></pre>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-2" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-2">2</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-3" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-3">3</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-4" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-4">4</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-5" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-5">5</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-6" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-6">6</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-7" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-7">7</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-8" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-8">8</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-9" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-9">9</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-10" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-10">10</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-11" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-11">11</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-12" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-12">12</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-13" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-13">13</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-14" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-14">14</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-15" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-15">15</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-16" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-16">16</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-17" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-17">17</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-18" class="line-number-anchor" /><a href="#line-number-7fe4d61514ada9c0acde8974b41b4fe8ef3a0f09-18">18</a></td></tr></table></div></code></pre>
 <p>Firstly, the callable is passed the <code>DocumentManager</code> of the main query. This
 is necessary to create the query used for priming, and ensures that the results
 will become managed in the same scope. The <code>ClassMetadata</code> argument provides
