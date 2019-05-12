@@ -21,7 +21,7 @@ if ($('#sidebar').length > 0) {
 }
 
 if (typeof window.event === 'object') {
-    import(/* webpackChunkName: "events" */ './events').then(module => {
+    import(/* webpackChunkName: "event" */ './event').then(module => {
         module.default();
     });
 }

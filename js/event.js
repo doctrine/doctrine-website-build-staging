@@ -24,6 +24,10 @@ export default function() {
         window.location.hash = '';
     }
 
+    $('#checkout-button').on('click', function() {
+        $(this).addClass('disabled');
+    });
+
     $.getScript('https://js.stripe.com/v3', () => {
         var stripe = Stripe(window.stripePublishableKey);
 
