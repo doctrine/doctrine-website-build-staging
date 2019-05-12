@@ -19,7 +19,7 @@
         <link
             rel="stylesheet"
             type="text/css"
-            href="https://staging.doctrine-project.org/frontend/css/index.css?c14320"
+            href="https://staging.doctrine-project.org/frontend/css/index.css?fc5f29"
                         crossorigin="anonymous"
         />
 
@@ -304,31 +304,29 @@
                 </div>
             </div>
             
-    <!-- Load Stripe.js on your website. -->
-    <script src="https://js.stripe.com/v3"></script>
+    <div id="event-modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="event-modal-label"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="event-modal-body"></div>
+            </div>
+        </div>
+    </div>
 
-    <div id="error-message"></div>
+    <div id="stripe-error-message"></div>
 
-    <script>
-        var stripe = Stripe('pk_test_V7rmF8ac3GbakeSJYvp4u0a8003RPO66vC');
-
-        var checkoutButton = document.getElementById('checkout-button');
-
-        checkoutButton.addEventListener('click', function () {
-            stripe.redirectToCheckout({
-                items: [{sku: 'sku_F2tQ7YZJx6sNcP', quantity: 1}],
-                successUrl: 'https://staging.doctrine-project.org/events/doctrine-online-conference-2018.html#success',
-                cancelUrl: 'https://staging.doctrine-project.org/events/doctrine-online-conference-2018.html#canceled',
-            })
-            .then(function (result) {
-                if (result.error) {
-                    // If `redirectToCheckout` fails due to a browser or network
-                    // error, display the localized error message to your customer.
-                    var displayError = document.getElementById('error-message');
-                    displayError.textContent = result.error.message;
-                }
-            });
-        });
+    <script type="text/javascript">
+        window.stripePublishableKey = 'pk_test_V7rmF8ac3GbakeSJYvp4u0a8003RPO66vC';
+        window.event = {
+            name: 'Doctrine Online Conference 2018',
+            sku: 'sku_F2tQ7YZJx6sNcP',
+            url: 'https://staging.doctrine-project.org/events/doctrine-online-conference-2018.html'
+        };
     </script>
             </main>
 
@@ -385,7 +383,7 @@
         </script>
 
         <script
-            src="https://staging.doctrine-project.org/frontend/js/bundle.js?5ba1ea"
+            src="https://staging.doctrine-project.org/frontend/js/bundle.js?f91fe9"
                         crossorigin="anonymous">
         </script>
 
