@@ -24,6 +24,15 @@ export default function() {
         window.location.hash = '';
     }
 
+    if (window.location.hash === '#thanks') {
+        openEventModal(
+            'Event Finished',
+            'Thanks for attending <strong>' + window.event.name + '</strong>! Keep your eyes open for more events in the future.'
+        );
+
+        window.location.hash = '';
+    }
+
     $('#checkout-button').on('click', function() {
         $(this).addClass('disabled');
     });
