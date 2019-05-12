@@ -9,7 +9,7 @@ export default function() {
     if (window.location.hash === '#success') {
         openEventModal(
             'Purchase Successful',
-            'Your ticket purchase for <strong>' + window.event.name + '</strong> was successful! You will be e-mailed information about the event in the next 24 hours.'
+            'Your ticket purchase for <strong>' + window.event.name + '</strong> was successful! You will be e-mailed a receipt for your purchase immediately and details for joining the event will e-mailed 1 week before the event is scheduled to start.'
         );
 
         window.location.hash = '';
