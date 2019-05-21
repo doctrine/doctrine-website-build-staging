@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Built-in Cache Providers Reference - Doctrine Cache Bundle (DoctrineCacheBundle) - Doctrine</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="theme-color" content="#ffffff">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="description" content="Doctrine Doctrine Cache Bundle Documentation: Built-in Cache Providers Reference ">
+
+        <meta name="keywords" content="cache,caching,documentation,built-in,cache,providers,reference">
+
+                    <meta name="robots" content="noindex">
+        
+                    <link rel="canonical" href="https://staging.doctrine-project.org/projects/doctrine-cache-bundle/en/1.3/reference.html" />
+    
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://staging.doctrine-project.org/frontend/css/index.css?95b2e9"
+                        crossorigin="anonymous"
+        />
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://staging.doctrine-project.org/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://staging.doctrine-project.org/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://staging.doctrine-project.org/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://staging.doctrine-project.org/images/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://staging.doctrine-project.org/images/apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://staging.doctrine-project.org/images/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://staging.doctrine-project.org/images/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://staging.doctrine-project.org/images/apple-touch-icon-152x152.png" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="https://staging.doctrine-project.org/images/favicon-128.png" sizes="128x128" />
+        <meta name="application-name" content="Doctrine"/>
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="https://staging.doctrine-project.org/images/mstile-144x144.png" />
+        <meta name="msapplication-square70x70logo" content="https://staging.doctrine-project.org/images/mstile-70x70.png" />
+        <meta name="msapplication-square150x150logo" content="https://staging.doctrine-project.org/images/mstile-150x150.png" />
+        <meta name="msapplication-wide310x150logo" content="https://staging.doctrine-project.org/images/mstile-310x150.png" />
+        <meta name="msapplication-square310x310logo" content="https://staging.doctrine-project.org/images/mstile-310x310.png" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@doctrineorm" />
+        <meta name="twitter:creator" content="@doctrineorm" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://staging.doctrine-project.org/projects/doctrine-cache-bundle/en/1.3/reference.html" />
+        <meta property="og:title" content="Built-in Cache Providers Reference - Doctrine Cache Bundle (DoctrineCacheBundle) - Doctrine" />
+        <meta property="og:description" content="Doctrine Doctrine Cache Bundle Documentation: Built-in Cache Providers Reference " />
+        <meta property="og:image" content="https://staging.doctrine-project.org/images/og.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="1200" />
+
+        <link rel="alternate" type="application/atom+xml" href="https://staging.doctrine-project.org/atom.xml" title="Doctrine activity feed" />
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "https://staging.doctrine-project.org",
+            "logo": "https://staging.doctrine-project.org/images/doctrine-logo.svg"
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://staging.doctrine-project.org",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://staging.doctrine-project.org?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Doctrine",
+            "url": "https://staging.doctrine-project.org",
+            "sameAs": [
+                "https://twitter.com/doctrineorm"
+            ]
+        }
+        </script>
+
+                    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Doctrine Doctrine Cache Bundle",
+            "description": "Built-in Cache Providers Reference",
+            "provider": {
+                "@type": "Organization",
+                "name": "Doctrine",
+                "sameAs": "https://staging.doctrine-project.org"
+            }
+        }
+        </script>
+    
+        
+            </head>
+    <body>
+                    
+            <nav class="doctrine-navbar navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap">
+                <a class="navbar-brand text-hide" href="/index.html"><img src="https://staging.doctrine-project.org/images/doctrine-logo.svg?c1fd47" />Doctrine</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="/projects.html" id="navbarProjectsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Projects
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarProjectsDropdown">
+                                                                    <a class="dropdown-item notranslate" href="/projects/annotations.html">Annotations</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/cache.html">Cache</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/coding-standard.html">Coding Standard</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/collections.html">Collections</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/common.html">Common</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/dbal.html">DBAL</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/event-manager.html">Event Manager</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/inflector.html">Inflector</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/instantiator.html">Instantiator</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/lexer.html">Lexer</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/migrations.html">Migrations</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/mongodb.html">MongoDB</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/mongodb-odm.html">MongoDB ODM</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/orm.html">ORM</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/persistence.html">Persistence</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/phpcr-odm.html">PHPCR ODM</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/reflection.html">Reflection</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/rst-parser.html">RST Parser</a>
+                                                                    <a class="dropdown-item notranslate" href="/projects/skeleton-mapper.html">Skeleton Mapper</a>
+                                                                <a class="dropdown-item bg-secondary text-white font-weight-bold" href="/projects.html">View All</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/contribute/index.html" id="navbarDevelopmentDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Development</a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarContributeDropdown">
+                                <a class="dropdown-item" href="/community/index.html">Community</a>
+                                <a class="dropdown-item" href="/contribute/index.html">Contributor Workflow</a>
+                                <a class="dropdown-item" href="/contribute/maintainer/index.html">Maintainer Workflow</a>
+                                <a class="dropdown-item" href="/contribute/website/index.html">Contribute to Website</a>
+                                <a class="dropdown-item" href="/team/maintainers.html">Maintainers</a>
+                                <a class="dropdown-item" href="/team/contributors.html">Contributors</a>
+                                <a class="dropdown-item" href="/policies.html">Policies</a>
+                                <a class="dropdown-item" href="https://github.com/doctrine" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a class="dropdown-item" href="/styleguide.html">Styleguide</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/events.html">Events</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/consulting.html">Consulting</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/partners.html">Partners</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog/index.html">Blog</a>
+                        </li>
+                    </ul>
+
+                    <div class="layout-edit-button d-inline-block mr-2">
+                                                    <a href="https://github.com/doctrine/DoctrineCacheBundle/edit/master/Resources/doc/reference.rst" class="btn btn-light" target="_blank" rel="noopener noreferrer">Edit</a>
+                                            </div>
+
+                    <div class="google-translate-dropdown dropdown show d-inline-block mr-2">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="translateDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Translate
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="translateDropdown">
+                            <div class="dropdown-item" id="google_translate_element">Loading...</div>
+                        </div>
+                    </div>
+
+                    <div id="search-box">
+                        <!-- SearchBox widget will appear here -->
+                    </div>
+                </div>
+            </nav>
+
+            <div class="search-results rounded">
+                <div id="hits">
+                    <!-- Hits widget will appear here -->
+                </div>
+
+                <a href="https://www.algolia.com" target="_blank" rel="noopener noreferrer"><img src="https://staging.doctrine-project.org/images/search-by-algolia.png" class="float-right" style="width: 150px;" /></a>
+            </div>
+        
+            <div class="container-wrapper container">
+        <div class="row row-offcanvas row-offcanvas-right">
+                            <nav class="col-md-3 d-sm-block bg-light sidebar sidebar-offcanvas" id="sidebar">
+                    <div class="sidebar-sticky">
+                        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7D553W&placement=wwwdoctrine-projectorg" id="_carbonads_js"></script>
+
+                        <div class="toc"><ul><li id="acl-cache-html-symfony-acl-cache" class="toc-item"><a href="acl_cache.html#symfony-acl-cache">Symfony ACL Cache</a></li><li id="installation-html-installation" class="toc-item"><a href="installation.html#installation">Installation</a><ul><li id="installation-html-step-1-download-the-bundle" class="toc-item"><a href="installation.html#step-1-download-the-bundle">Step 1: Download the Bundle</a></li><li id="installation-html-step-2-enable-the-bundle" class="toc-item"><a href="installation.html#step-2-enable-the-bundle">Step 2: Enable the Bundle</a></li></ul></li><li id="reference-html-built-in-cache-providers-reference" class="toc-item"><a href="reference.html#built-in-cache-providers-reference">Built-in Cache Providers Reference</a><ul><li id="reference-html-abbe3d2b7a2af2f463f99e9633d12ee92ac7fa63" class="toc-item"><a href="reference.html#abbe3d2b7a2af2f463f99e9633d12ee92ac7fa63">abbe3d2b7a2af2f463f99e9633d12ee92ac7fa63</a></li><li id="reference-html-90b8cc41c3e720ee8ee94e1f8bda5ac8b23cf197" class="toc-item"><a href="reference.html#90b8cc41c3e720ee8ee94e1f8bda5ac8b23cf197">90b8cc41c3e720ee8ee94e1f8bda5ac8b23cf197</a></li><li id="reference-html-f7b610553003763da9b6862d480afc1f361249be" class="toc-item"><a href="reference.html#f7b610553003763da9b6862d480afc1f361249be">f7b610553003763da9b6862d480afc1f361249be</a></li><li id="reference-html-6972b6bec9d1723b17952480b7dce3a1184138cc" class="toc-item"><a href="reference.html#6972b6bec9d1723b17952480b7dce3a1184138cc">6972b6bec9d1723b17952480b7dce3a1184138cc</a></li><li id="reference-html-629846ea2bad4566d7026a938b9202c8b3550d66" class="toc-item"><a href="reference.html#629846ea2bad4566d7026a938b9202c8b3550d66">629846ea2bad4566d7026a938b9202c8b3550d66</a></li><li id="reference-html-a10462f512f0e704fe0e1698f97e4fb40b47a13a" class="toc-item"><a href="reference.html#a10462f512f0e704fe0e1698f97e4fb40b47a13a">a10462f512f0e704fe0e1698f97e4fb40b47a13a</a></li><li id="reference-html-38747717cf43e1f8c79f6ac36977423feca303b6" class="toc-item"><a href="reference.html#38747717cf43e1f8c79f6ac36977423feca303b6">38747717cf43e1f8c79f6ac36977423feca303b6</a></li><li id="reference-html-206507d83a3e519f21fce6a183d2f01c50b07514" class="toc-item"><a href="reference.html#206507d83a3e519f21fce6a183d2f01c50b07514">206507d83a3e519f21fce6a183d2f01c50b07514</a></li><li id="reference-html-ee338caf302fa7362da9fbc2d2669bc47f7257c9" class="toc-item"><a href="reference.html#ee338caf302fa7362da9fbc2d2669bc47f7257c9">ee338caf302fa7362da9fbc2d2669bc47f7257c9</a></li><li id="reference-html-c5aa88fa7ccdbeb0a5377525b5db653331dfd607" class="toc-item"><a href="reference.html#c5aa88fa7ccdbeb0a5377525b5db653331dfd607">c5aa88fa7ccdbeb0a5377525b5db653331dfd607</a></li><li id="reference-html-abefe71315059122edbb33d7affe9325d6062053" class="toc-item"><a href="reference.html#abefe71315059122edbb33d7affe9325d6062053">abefe71315059122edbb33d7affe9325d6062053</a></li><li id="reference-html-faa82925d6b8047e27f320def50d0f6e58e6c9a4" class="toc-item"><a href="reference.html#faa82925d6b8047e27f320def50d0f6e58e6c9a4">faa82925d6b8047e27f320def50d0f6e58e6c9a4</a></li><li id="reference-html-1b7726757e6da79ec18df635f318643b039623fb" class="toc-item"><a href="reference.html#1b7726757e6da79ec18df635f318643b039623fb">1b7726757e6da79ec18df635f318643b039623fb</a></li><li id="reference-html-a3eef5ca32dbc8ca34f00455778894d8c4ad9101" class="toc-item"><a href="reference.html#a3eef5ca32dbc8ca34f00455778894d8c4ad9101">a3eef5ca32dbc8ca34f00455778894d8c4ad9101</a></li><li id="reference-html-febd3aa3e151c32f707c271b3bab3af8ea980875" class="toc-item"><a href="reference.html#febd3aa3e151c32f707c271b3bab3af8ea980875">febd3aa3e151c32f707c271b3bab3af8ea980875</a></li><li id="reference-html-40811a9cbc60030f7ddb8b0a3cdff90c7a1fa53f" class="toc-item"><a href="reference.html#40811a9cbc60030f7ddb8b0a3cdff90c7a1fa53f">40811a9cbc60030f7ddb8b0a3cdff90c7a1fa53f</a></li><li id="reference-html-eca436b3722f15053cd9b22b1fcc37623419f1e5" class="toc-item"><a href="reference.html#eca436b3722f15053cd9b22b1fcc37623419f1e5">eca436b3722f15053cd9b22b1fcc37623419f1e5</a></li></ul></li><li id="index-html-doctrinecachebundle" class="toc-item"><a href="index.html#doctrinecachebundle">DoctrineCacheBundle</a></li><li id="service-parameter-html-service-parameter" class="toc-item"><a href="service_parameter.html#service-parameter">Service Parameter</a></li><li id="custom-providers-html-custom-providers" class="toc-item"><a href="custom_providers.html#custom-providers">Custom Providers</a></li><li id="usage-html-usage" class="toc-item"><a href="usage.html#usage">Usage</a><ul><li id="usage-html-service-aliases" class="toc-item"><a href="usage.html#service-aliases">Service Aliases</a></li></ul></li></ul></div>
+                    </div>
+                </nav>
+            
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4">
+                <div class="row">
+                                        
+                                                                <nav class="breadcrumbs d-none d-sm-block d-md-block d-lg-block d-xl-block" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="https://staging.doctrine-project.org/projects.html">Projects</a></li>
+                                <li class="breadcrumb-item"><a href="https://staging.doctrine-project.org/projects/doctrine-cache-bundle.html">DoctrineCacheBundle</a></li>
+                                <li class="breadcrumb-item"><a href="https://staging.doctrine-project.org/projects/doctrine-cache-bundle/en/1.3/">Documentation</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Built-in Cache Providers Reference</li>
+                            </ol>
+                        </nav>
+                                    </div>
+
+                
+
+                <div class="row">
+                    <div class="col-12">
+                                                    <button type="button" class="btn btn-primary btn-sm float-right toc-toggle" data-toggle="offcanvas" id="toc-toggle">Table of Contents</button>
+
+                                                            
+                                <div class="dropdown show d-inline-block">
+                                    <a class="project-version-switcher btn btn-secondary btn-sm dropdown-toggle" href="/projects/doctrine-cache-bundle/en/1.3/reference.html" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        1.3.5
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                                    <h6 class="dropdown-header">Maintained</h6>
+
+                                                                                            
+                                                <a class="project-version-switcher dropdown-item active" href="/projects/doctrine-cache-bundle/en/1.3/reference.html">
+                                                    1.3.5
+
+                                                                                                            (current)
+                                                    
+                                                                                                    </a>
+                                                                                    
+                                                                                    <h6 class="dropdown-header">Unmaintained</h6>
+
+                                                                                            
+                                                <a class="dropdown-item" href="">1.2</a>
+                                                                                                                        </div>
+                                </div>
+                            
+                            
+<div class="section"><a class="section-anchor" id="built-in-cache-providers-reference" name="built-in-cache-providers-reference"></a><h1 class="section-header"><a href="#built-in-cache-providers-reference">Built-in Cache Providers Reference<i class="fas fa-link"></i></a></h1>
+<p>This is the reference of all the built-in cache providers and their configuration
+options:</p>
+<div class="section"><a class="section-anchor" id="abbe3d2b7a2af2f463f99e9633d12ee92ac7fa63" name="abbe3d2b7a2af2f463f99e9633d12ee92ac7fa63"></a><h2 class="section-header"><a href="#abbe3d2b7a2af2f463f99e9633d12ee92ac7fa63"><code>apc</code><i class="fas fa-link"></i></a></h2>
+<p>This provider defines no configuration options.</p>
+</div>
+<div class="section"><a class="section-anchor" id="90b8cc41c3e720ee8ee94e1f8bda5ac8b23cf197" name="90b8cc41c3e720ee8ee94e1f8bda5ac8b23cf197"></a><h2 class="section-header"><a href="#90b8cc41c3e720ee8ee94e1f8bda5ac8b23cf197"><code>array</code><i class="fas fa-link"></i></a></h2>
+<p>This provider defines no configuration options.</p>
+</div>
+<div class="section"><a class="section-anchor" id="f7b610553003763da9b6862d480afc1f361249be" name="f7b610553003763da9b6862d480afc1f361249be"></a><h2 class="section-header"><a href="#f7b610553003763da9b6862d480afc1f361249be"><code>chain</code><i class="fas fa-link"></i></a></h2>
+<dl><dt><code>providers</code></dt><dd>The list of service ids of Doctrine Cache Providers to use. Put the fastest providers first (e.g. <code>array</code> cache) and you can skip <code>doctrine_cache.providers</code>. </dd></dl>
+</div>
+<div class="section"><a class="section-anchor" id="6972b6bec9d1723b17952480b7dce3a1184138cc" name="6972b6bec9d1723b17952480b7dce3a1184138cc"></a><h2 class="section-header"><a href="#6972b6bec9d1723b17952480b7dce3a1184138cc"><code>couchbase</code><i class="fas fa-link"></i></a></h2>
+<dl><dt><code>connection_id</code></dt><dt><code>hostnames</code></dt><dt><code>bucket_name</code></dt><dt><code>username</code></dt><dt><code>password</code></dt><dd>Couchbase connection service id Couchbase hostname list Couchbase bucket name Couchbase username Couchbase password </dd></dl>
+</div>
+<div class="section"><a class="section-anchor" id="629846ea2bad4566d7026a938b9202c8b3550d66" name="629846ea2bad4566d7026a938b9202c8b3550d66"></a><h2 class="section-header"><a href="#629846ea2bad4566d7026a938b9202c8b3550d66"><code>file_system</code><i class="fas fa-link"></i></a></h2>
+<dl><dt><code>extension</code></dt><dt><code>directory</code></dt><dt><code>umask</code></dt><dd>File extension Cache directory Umask to revoke permissions </dd></dl>
+</div>
+<div class="section"><a class="section-anchor" id="a10462f512f0e704fe0e1698f97e4fb40b47a13a" name="a10462f512f0e704fe0e1698f97e4fb40b47a13a"></a><h2 class="section-header"><a href="#a10462f512f0e704fe0e1698f97e4fb40b47a13a"><code>mongodb</code><i class="fas fa-link"></i></a></h2>
+<dl><dt><code>connection_id</code></dt><dt><code>collection_id</code></dt><dt><code>server</code></dt><dt><code>database_name</code></dt><dt><code>collection_name</code></dt><dd>MongoClient service id MongoCollection service id mongodb server uri mongodb database name mongodb collection name </dd></dl>
+</div>
+<div class="section"><a class="section-anchor" id="38747717cf43e1f8c79f6ac36977423feca303b6" name="38747717cf43e1f8c79f6ac36977423feca303b6"></a><h2 class="section-header"><a href="#38747717cf43e1f8c79f6ac36977423feca303b6"><code>memcache</code><i class="fas fa-link"></i></a></h2>
+<dl><dt><code>connection_id</code></dt><dt><code>servers</code></dt><dd><p class="first">Memcache connection service id Server list </p><p>* <code>server</code></p><p class="last"><em><code>host</code>, Memcache host </em><code>port</code>, Memcache port </p></dd></dl>
+</div>
+<div class="section"><a class="section-anchor" id="206507d83a3e519f21fce6a183d2f01c50b07514" name="206507d83a3e519f21fce6a183d2f01c50b07514"></a><h2 class="section-header"><a href="#206507d83a3e519f21fce6a183d2f01c50b07514"><code>memcached</code><i class="fas fa-link"></i></a></h2>
+<dl><dt><code>connection_id</code></dt><dt><code>servers</code></dt><dd><p class="first">Memcache connection service id Server list </p><p>* <code>server</code></p><p class="last"><em><code>host</code>, Memcached host </em><code>port</code>, Memcached port </p></dd></dl>
+</div>
+<div class="section"><a class="section-anchor" id="ee338caf302fa7362da9fbc2d2669bc47f7257c9" name="ee338caf302fa7362da9fbc2d2669bc47f7257c9"></a><h2 class="section-header"><a href="#ee338caf302fa7362da9fbc2d2669bc47f7257c9"><code>php_file</code><i class="fas fa-link"></i></a></h2>
+<dl><dt><code>extension</code></dt><dt><code>directory</code></dt><dt><code>umask</code></dt><dd>File extension Cache directory Umask to revoke permissions </dd></dl>
+</div>
+<div class="section"><a class="section-anchor" id="c5aa88fa7ccdbeb0a5377525b5db653331dfd607" name="c5aa88fa7ccdbeb0a5377525b5db653331dfd607"></a><h2 class="section-header"><a href="#c5aa88fa7ccdbeb0a5377525b5db653331dfd607"><code>redis</code><i class="fas fa-link"></i></a></h2>
+<dl><dt><code>connection_id</code></dt><dt><code>host</code></dt><dt><code>port</code></dt><dt><code>password</code></dt><dt><code>timeout</code></dt><dt><code>database</code></dt><dt><code>persistent</code></dt><dd>Redis connection service id Redis host Redis port Redis password Redis connection timeout Redis database selection (integer) Whether to use persistent connection or not (bool) </dd></dl>
+</div>
+<div class="section"><a class="section-anchor" id="abefe71315059122edbb33d7affe9325d6062053" name="abefe71315059122edbb33d7affe9325d6062053"></a><h2 class="section-header"><a href="#abefe71315059122edbb33d7affe9325d6062053"><code>predis</code><i class="fas fa-link"></i></a></h2>
+<dl><dt><code>client_id</code></dt><dt><code>scheme</code></dt><dt><code>host</code></dt><dt><code>port</code></dt><dt><code>password</code></dt><dt><code>timeout</code></dt><dt><code>database</code></dt><dt><code>options</code></dt><dd>Provide a client service id to skip the client creation by the bundle (optional, should be used for advanced configuration) Connection scheme (tcp) Redis host Redis port Redis password Redis connection timeout Redis database selection (integer) Array of predis client options </dd></dl>
+</div>
+<div class="section"><a class="section-anchor" id="faa82925d6b8047e27f320def50d0f6e58e6c9a4" name="faa82925d6b8047e27f320def50d0f6e58e6c9a4"></a><h2 class="section-header"><a href="#faa82925d6b8047e27f320def50d0f6e58e6c9a4"><code>riak</code><i class="fas fa-link"></i></a></h2>
+<dl><dt><code>connection_id</code></dt><dt><code>bucket_id</code></dt><dt><code>host</code></dt><dt><code>port</code></dt><dt><code>bucket_name</code></dt><dt><code>bucket_property_list</code></dt><dd><p class="first">Riak\Connection service id Riak\Bucket service id Riak host Riak port Riak bucket name Riak bucket configuration (property list) </p><p class="last"><em><code>allow_multiple: false</code>, riak bucket allow multiple configuration </em><code>n_value: 1</code>, riak bucket n-value configuration </p></dd></dl>
+</div>
+<div class="section"><a class="section-anchor" id="1b7726757e6da79ec18df635f318643b039623fb" name="1b7726757e6da79ec18df635f318643b039623fb"></a><h2 class="section-header"><a href="#1b7726757e6da79ec18df635f318643b039623fb"><code>sqlite3</code><i class="fas fa-link"></i></a></h2>
+<dl><dt><code>connection_id</code></dt><dt><code>file_name</code></dt><dt><code>table_name</code></dt><dd>SQLite3 connection service id SQLite3 database file name Cache table name </dd></dl>
+</div>
+<div class="section"><a class="section-anchor" id="a3eef5ca32dbc8ca34f00455778894d8c4ad9101" name="a3eef5ca32dbc8ca34f00455778894d8c4ad9101"></a><h2 class="section-header"><a href="#a3eef5ca32dbc8ca34f00455778894d8c4ad9101"><code>void</code><i class="fas fa-link"></i></a></h2>
+<p>This provider defines no configuration options.</p>
+</div>
+<div class="section"><a class="section-anchor" id="febd3aa3e151c32f707c271b3bab3af8ea980875" name="febd3aa3e151c32f707c271b3bab3af8ea980875"></a><h2 class="section-header"><a href="#febd3aa3e151c32f707c271b3bab3af8ea980875"><code>xcache</code><i class="fas fa-link"></i></a></h2>
+<p>This provider defines no configuration options.</p>
+</div>
+<div class="section"><a class="section-anchor" id="40811a9cbc60030f7ddb8b0a3cdff90c7a1fa53f" name="40811a9cbc60030f7ddb8b0a3cdff90c7a1fa53f"></a><h2 class="section-header"><a href="#40811a9cbc60030f7ddb8b0a3cdff90c7a1fa53f"><code>wincache</code><i class="fas fa-link"></i></a></h2>
+<p>This provider defines no configuration options.</p>
+</div>
+<div class="section"><a class="section-anchor" id="eca436b3722f15053cd9b22b1fcc37623419f1e5" name="eca436b3722f15053cd9b22b1fcc37623419f1e5"></a><h2 class="section-header"><a href="#eca436b3722f15053cd9b22b1fcc37623419f1e5"><code>zenddata</code><i class="fas fa-link"></i></a></h2>
+<p>This provider defines no configuration options.</p>
+
+</div>
+</div>
+
+                                                </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+        <button id="back-to-top" title="Go to top">Top</button>
+
+                    <footer class="footer">
+                <div class="container">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="/projects.html">Projects</a></li>
+                        <li class="list-inline-item"><a href="/partners.html">Partners</a></li>
+                        <li class="list-inline-item"><a href="/sponsorship.html">Sponsorship</a></li>
+                        <li class="list-inline-item"><a href="/community/index.html">Community</a></li>
+                        <li class="list-inline-item"><a href="/blog/index.html">Blog</a></li>
+                        <li class="list-inline-item"><a href="/events.html">Events</a></li>
+                        <li class="list-inline-item"><a href="/consulting.html">Consulting</a></li>
+                    </ul>
+                </div>
+            </footer>
+        
+        <script id="instantsearch-template" type="text/template">
+            
+    <a href="{{url}}" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{{_highlightResult.projectName.value}}}: {{{_highlightResult.h1.value}}}</h5>
+        </div>
+
+        {{#h2}}
+            <p class="mb-1">
+                <i class="far fa-arrow-alt-circle-right text-primary"></i>
+
+                {{{_highlightResult.h2.value}}}
+
+                {{#h3}}
+                    > {{{_highlightResult.h3.value}}}
+                {{/h3}}
+
+                {{#h4}}
+                    > {{{_highlightResult.h4.value}}}
+                {{/h4}}
+
+                {{#h5}}
+                    > {{{_highlightResult.h5.value}}}
+                {{/h5}}
+            </p>
+        {{/h2}}
+
+        {{#content}}
+            <div class="content p-2 rounded" style="background-color: rgba(0,0,0,.125);">
+                {{{_highlightResult.content.value}}}
+            </div>
+        {{/content}}
+    </a>
+
+        </script>
+
+        <script
+            src="https://staging.doctrine-project.org/frontend/js/bundle.js?fc1926"
+                        crossorigin="anonymous">
+        </script>
+
+                
+        <script type="text/javascript">
+            var projectSlug = 'doctrine-cache-bundle';
+            var versionSlug = '1.3';
+
+            var searchBoxSettings = {
+                container: '#search-box',
+                placeholder: 'Search DoctrineCacheBundle 1.3'
+            };
+
+            function googleAnalyticsEvent(eventCategory, eventAction, eventLabel, eventValue, fieldsObject) {
+                                console.log(eventCategory, eventAction, eventLabel, eventValue, fieldsObject);
+                            }
+        </script>
+
+        
+        
+            </body>
+</html>
