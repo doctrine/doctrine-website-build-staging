@@ -19,7 +19,7 @@
         <link
             rel="stylesheet"
             type="text/css"
-            href="https://staging.doctrine-project.org/frontend/css/index.css?d03983"
+            href="https://staging.doctrine-project.org/frontend/css/index.css?ac27f6"
                         crossorigin="anonymous"
         />
 
@@ -328,7 +328,7 @@ API]を使うことを考えるべきです。</p>
 <p>test.php</p>
 </blockquote>
 <p>// ... $users = Doctrine\_Core::getTable('User')-&gt;findAll();</p>
-<p>foreach($users as $user) { echo $user-&gt;username . &quot; has phonenumbers: &quot;;</p>
+<p>foreach($users as $user) { echo $user-&gt;username .  has phonenumbers: ;</p>
 <div class="console"><pre><code class="console">foreach($user->Phonenumbers as $phonenumber) {
     echo $phonenumber->phonenumber . "\n";
 }</code></pre></div>
@@ -352,13 +352,13 @@ p.user\_id</p>
 <blockquote><p>// test.php</p>
 </blockquote>
 <p>// ... $users = $q-&gt;execute();</p>
-<p>foreach($users as $user) { echo $user-&gt;username . &quot; has phonenumbers: &quot;;</p>
+<p>foreach($users as $user) { echo $user-&gt;username .  has phonenumbers: ;</p>
 <div class="console"><pre><code class="console">foreach($user->Phonenumbers as $phonenumber) {
     echo $phonenumber->phonenumber . "\n";
 }</code></pre></div>
 <p>}</p>
 <blockquote><p><strong>CAUTION</strong>
-DQLの文字列で二重引用符(&quot;)を使うのは非推奨です。これはMySQLの標準では使えますがDQLにおいて識別子と混同される可能性があります。代わりに値に対してプリペアードステートメントを使うことが推奨されます。これによって適切にエスケープされます。</p>
+DQLの文字列で二重引用符()を使うのは非推奨です。これはMySQLの標準では使えますがDQLにおいて識別子と混同される可能性があります。代わりに値に対してプリペアードステートメントを使うことが推奨されます。これによって適切にエスケープされます。</p>
 </blockquote>
 <hr />
 </div>
@@ -767,7 +767,7 @@ a') -&gt;where('a.amount = 432.123');</p>
 <blockquote><p>// test.php</p>
 </blockquote>
 <p>// ... $q = Doctrine\_Query::create() -&gt;select('a.id') -&gt;from('User u')
--&gt;where(&quot;u.type = 'admin'&quot;);</p>
+-&gt;where(u.type = 'admin');</p>
 <p>echo $q-&gt;getSqlQuery();</p>
 <p><code>getSql()</code>への呼び出しは次のSQLクエリを出力します:</p>
 <blockquote><p>SELECT u.id AS u\_\_id FROM user u WHERE u.type = 'admin'</p>
@@ -1036,7 +1036,7 @@ u.last\_name) AS name') -&gt;from('User u');</p>
 <blockquote><p>// test.php</p>
 </blockquote>
 <p>// ... $q = Doctrine\_Query::create() -&gt;select('u.username')
--&gt;from('User u') -&gt;where(&quot;SUBSTRING(u.username, 0, 1) = 'z'&quot;);</p>
+-&gt;from('User u') -&gt;where(SUBSTRING(u.username, 0, 1) = 'z');</p>
 <p>echo $q-&gt;getSqlQuery();</p>
 <p><code>getSql()</code>への呼び出しは次のSQLクエリを出力します:</p>
 <blockquote><p>SELECT u.id AS u<strong>id, u.username AS u</strong>username FROM user u WHERE</p>
@@ -1059,7 +1059,7 @@ SQLは使用しているDBMSに対して適切な<code>SUBSTRING</code>構文で
 <blockquote><p>// test.php</p>
 </blockquote>
 <p>// ... $q = Doctrine\_Query::create(); -&gt;select('u.username')
--&gt;from('User u') -&gt;where(&quot;LOWER(u.username) = 'jon wage'&quot;);</p>
+-&gt;from('User u') -&gt;where(LOWER(u.username) = 'jon wage');</p>
 <p>echo $q-&gt;getSqlQuery();</p>
 <p><code>getSql()</code>への呼び出しは次のSQLクエリを出力します:</p>
 <blockquote><p>SELECT u.id AS u<strong>id, u.username AS u</strong>username FROM user u WHERE</p>
@@ -1373,7 +1373,7 @@ u.id = ?');</p>
 <hr />
 </div>
 <div class="section"><a class="section-anchor" id="" name=""></a><h2 class="section-header"><a href="#">名前付きクエリにクロスアクセスする<i class="fas fa-link"></i></a></h2>
-<p>それで十分でなければ、Doctrineは<code>Doctrine\_Query_Registry</code>を利用しオブジェクト間の名前付きクエリにクロスアクセスできるようにする名前空間クエリを使います。<code>Article</code>レコードの<code>\*Table</code>クラスのインスタンスがあることを想定します。<code>User</code>レコードの&quot;get.by.id&quot;
+<p>それで十分でなければ、Doctrineは<code>Doctrine\_Query_Registry</code>を利用しオブジェクト間の名前付きクエリにクロスアクセスできるようにする名前空間クエリを使います。<code>Article</code>レコードの<code>\*Table</code>クラスのインスタンスがあることを想定します。<code>User</code>レコードのget.by.id
 名前付きクエリを呼び出したいとします。名前付きクエリにアクセスするには、次のように行わなければなりません:</p>
 <blockquote><p>// test.php</p>
 </blockquote>
@@ -1580,7 +1580,7 @@ component-overview :name]の章に移りすべてを鳥の目で見ることに�
         </script>
 
         <script
-            src="https://staging.doctrine-project.org/frontend/js/bundle.js?2dce55"
+            src="https://staging.doctrine-project.org/frontend/js/bundle.js?1f4233"
                         crossorigin="anonymous">
         </script>
 
