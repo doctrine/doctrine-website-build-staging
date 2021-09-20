@@ -10,16 +10,17 @@
 
         <meta name="description" content="Doctrine Database Abstraction Layer Documentation: Sharding ">
 
-        <meta name="keywords" content="abstraction,database,dbal,db2,mariadb,mssql,mysql,pgsql,postgresql,oci8,oracle,pdo,queryobject,sasql,sql,sqlanywhere,sqlite,sqlserver,sqlsrv,documentation,sharding">
+        <meta name="keywords" content="abstraction,database,dbal,db2,mariadb,mssql,mysql,pgsql,postgresql,oci8,oracle,pdo,queryobject,sasql,sql,sqlite,sqlserver,sqlsrv,documentation,sharding">
 
                     <meta name="robots" content="noindex">
         
-                    <link rel="canonical" href="https://staging.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/sharding.html" />
+        
+                    <link rel="canonical" href="https://staging.doctrine-project.org" />
     
         <link
             rel="stylesheet"
             type="text/css"
-            href="https://staging.doctrine-project.org/frontend/css/index.css?ac27f6"
+            href="https://staging.doctrine-project.org/frontend/css/index.css?f35337"
                         crossorigin="anonymous"
         />
 
@@ -65,7 +66,7 @@
             "@context": "https://schema.org",
             "@type": "Organization",
             "url": "https://staging.doctrine-project.org",
-            "logo": "https://staging.doctrine-project.org/images/doctrine-logo.svg"
+            "logo": "https://staging.doctrine-project.org/logos/doctrine-logo.svg"
         }
         </script>
 
@@ -113,7 +114,7 @@
     <body>
                     
             <nav class="doctrine-navbar navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap">
-                <a class="navbar-brand text-hide" href="/index.html"><img src="https://staging.doctrine-project.org/images/doctrine-logo.svg?c1fd47" />Doctrine</a>
+                <a class="navbar-brand text-hide" href="/index.html"><img src="https://staging.doctrine-project.org/logos/doctrine-logo.svg?1a5b7c" />Doctrine</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -135,7 +136,6 @@
                                                                     <a class="dropdown-item notranslate" href="/projects/instantiator.html">Instantiator</a>
                                                                     <a class="dropdown-item notranslate" href="/projects/lexer.html">Lexer</a>
                                                                     <a class="dropdown-item notranslate" href="/projects/migrations.html">Migrations</a>
-                                                                    <a class="dropdown-item notranslate" href="/projects/mongodb.html">MongoDB</a>
                                                                     <a class="dropdown-item notranslate" href="/projects/mongodb-odm.html">MongoDB ODM</a>
                                                                     <a class="dropdown-item notranslate" href="/projects/orm.html">ORM</a>
                                                                     <a class="dropdown-item notranslate" href="/projects/persistence.html">Persistence</a>
@@ -178,7 +178,7 @@
                     </ul>
 
                     <div class="layout-edit-button d-inline-block mr-2">
-                                                    <a href="https://github.com/doctrine/dbal/edit/2.10/docs/en/reference/sharding.rst" class="btn btn-light" target="_blank" rel="noopener noreferrer">Edit</a>
+                                                    <a href="https://github.com/doctrine/dbal/edit//docs/en/reference/sharding.rst" class="btn btn-light" target="_blank" rel="noopener noreferrer">Edit</a>
                                             </div>
 
                     <div class="google-translate-dropdown dropdown show d-inline-block mr-2">
@@ -257,7 +257,17 @@
 </nav>
                                     </div>
 
-                
+                    
+    <div class="alert caution bg-light-yellow text-dark border">
+    <table width="100%">
+        <tr>
+            <td width="10" class="align-top">
+                <i class="fas fa-exclamation-circle text-warning mr-2"></i>
+            </td>
+            <td><p>You are browsing a version that is no longer maintained.</p></td>
+        </tr>
+    </table>
+</div>
 
                 <div class="row">
                     <div class="col-12">
@@ -266,7 +276,7 @@
                                                             
                                 <div class="dropdown show d-inline-block">
                                     <a class="project-version-switcher btn btn-secondary btn-sm dropdown-toggle" href="/projects/doctrine-dbal/en/2.10/reference/sharding.html" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        2.10.1
+                                        2.10.4
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -274,14 +284,14 @@
 
                                                                                             
                                                 <a class="project-version-switcher dropdown-item" href="">
-                                                    3.0
+                                                    3.1.2
 
+                                                                                                            (current)
                                                     
-                                                                                                            (upcoming)
                                                                                                     </a>
                                                                                             
-                                                <a class="project-version-switcher dropdown-item active" href="/projects/doctrine-dbal/en/2.10/reference/sharding.html">
-                                                    2.10.1
+                                                <a class="project-version-switcher dropdown-item" href="/projects/doctrine-dbal/en/2.13/reference/sharding.html">
+                                                    2.13.3
 
                                                                                                             (current)
                                                     
@@ -289,6 +299,14 @@
                                                                                     
                                                                                     <h6 class="dropdown-header">Unmaintained</h6>
 
+                                                                                            
+                                                <a class="dropdown-item" href="">3.0</a>
+                                                                                            
+                                                <a class="dropdown-item" href="/projects/doctrine-dbal/en/2.12/reference/sharding.html">2.12</a>
+                                                                                            
+                                                <a class="dropdown-item" href="/projects/doctrine-dbal/en/2.11/reference/sharding.html">2.11</a>
+                                                                                            
+                                                <a class="dropdown-item active" href="/projects/doctrine-dbal/en/2.10/reference/sharding.html">2.10</a>
                                                                                             
                                                 <a class="dropdown-item" href="/projects/doctrine-dbal/en/2.9/reference/sharding.html">2.9</a>
                                                                                             
@@ -462,29 +480,29 @@ following code in Doctrine:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="fefec489fe0188a287e4eac6bf2841101ce6735a"
+            data-copy-element-id="b5136d970b0ab94343b6c096c7c273c6330f6800"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="fefec489fe0188a287e4eac6bf2841101ce6735a"><table class="code-block-table"><tr><td class="line-number noselect"><a name="line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-1" class="line-number-anchor" /><a href="#line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-1">1</a></td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
+        ><i class="fas fa-copy"></i></button><div id="b5136d970b0ab94343b6c096c7c273c6330f6800"><table class="code-block-table"><tr><td class="line-number noselect"><a name="line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-1" class="line-number-anchor" /><a href="#line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-1">1</a></td><td class="code-line" rowspan="11"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">DriverManager</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">DBAL</span>\<span class="hljs-title">Id</span>\<span class="hljs-title">TableGenerator</span>;
 
-$conn = DriverManager::getConnection(<span class="hljs-comment">/**..**); // connection 1
+$conn = DriverManager::getConnection(<span class="hljs-comment">/**..**/</span>); <span class="hljs-comment">// connection 1</span>
 
-// creating the TableGenerator automatically opens a second connection.
-$tableGenerator = new TableGenerator($conn, "sequences_tbl_name");
+<span class="hljs-comment">// creating the TableGenerator automatically opens a second connection.</span>
+$tableGenerator = <span class="hljs-keyword">new</span> TableGenerator($conn, <span class="hljs-string">"sequences_tbl_name"</span>);
 
-$id1 = $tableGenerator-&gt;nextValue("sequence_name1");
-$id2 = $tableGenerator-&gt;nextValue("sequence_name2");</span></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-2" class="line-number-anchor" /><a href="#line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-2">2</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-3" class="line-number-anchor" /><a href="#line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-3">3</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-4" class="line-number-anchor" /><a href="#line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-4">4</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-5" class="line-number-anchor" /><a href="#line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-5">5</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-6" class="line-number-anchor" /><a href="#line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-6">6</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-7" class="line-number-anchor" /><a href="#line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-7">7</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-8" class="line-number-anchor" /><a href="#line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-8">8</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-9" class="line-number-anchor" /><a href="#line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-9">9</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-10" class="line-number-anchor" /><a href="#line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-10">10</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-11" class="line-number-anchor" /><a href="#line-number-fefec489fe0188a287e4eac6bf2841101ce6735a-11">11</a></td></tr></table></div></code></pre>
+$id1 = $tableGenerator-&gt;nextValue(<span class="hljs-string">"sequence_name1"</span>);
+$id2 = $tableGenerator-&gt;nextValue(<span class="hljs-string">"sequence_name2"</span>);</td></tr>
+<tr><td class="line-number noselect"><a name="line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-2" class="line-number-anchor" /><a href="#line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-2">2</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-3" class="line-number-anchor" /><a href="#line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-3">3</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-4" class="line-number-anchor" /><a href="#line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-4">4</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-5" class="line-number-anchor" /><a href="#line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-5">5</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-6" class="line-number-anchor" /><a href="#line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-6">6</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-7" class="line-number-anchor" /><a href="#line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-7">7</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-8" class="line-number-anchor" /><a href="#line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-8">8</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-9" class="line-number-anchor" /><a href="#line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-9">9</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-10" class="line-number-anchor" /><a href="#line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-10">10</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-11" class="line-number-anchor" /><a href="#line-number-b5136d970b0ab94343b6c096c7c273c6330f6800-11">11</a></td></tr></table></div></code></pre>
 <p>The table generator obviously needs a table to work. The schema of this table
 is described in the <code>TableGenerator</code> class-docblock. Alternatively you
 can use the <code>Doctrine\DBAL\Id\TableGeneratorSchemaVisitor</code> and apply it to your
@@ -911,7 +929,7 @@ horizontally.</p>
         </script>
 
         <script
-            src="https://staging.doctrine-project.org/frontend/js/bundle.js?1f4233"
+            src="https://staging.doctrine-project.org/frontend/js/bundle.js?5b3818"
                         crossorigin="anonymous">
         </script>
 
