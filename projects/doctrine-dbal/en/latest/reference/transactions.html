@@ -20,7 +20,7 @@
         <link
             rel="stylesheet"
             type="text/css"
-            href="https://staging.doctrine-project.org/frontend/css/index.css?f35337"
+            href="https://staging.doctrine-project.org/frontend/css/index.css?7cb9d0"
                         crossorigin="anonymous"
         />
 
@@ -266,7 +266,7 @@
                                                             
                                 <div class="dropdown show d-inline-block">
                                     <a class="project-version-switcher btn btn-secondary btn-sm dropdown-toggle" href="/projects/doctrine-dbal/en/latest/reference/transactions.html" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        3.1.3
+                                        3.1.4
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -274,14 +274,14 @@
 
                                                                                             
                                                 <a class="project-version-switcher dropdown-item active" href="/projects/doctrine-dbal/en/latest/reference/transactions.html">
-                                                    3.1.3
+                                                    3.1.4
 
                                                                                                             (current)
                                                     
                                                                                                     </a>
                                                                                             
                                                 <a class="project-version-switcher dropdown-item" href="/projects/doctrine-dbal/en/2.13/reference/transactions.html">
-                                                    2.13.4
+                                                    2.13.5
 
                                                                                                             (current)
                                                     
@@ -314,10 +314,9 @@
                             
                             
 <div class="section"><a class="section-anchor" id="transactions" name="transactions"></a><h1 class="section-header"><a href="#transactions">Transactions<i class="fas fa-link"></i></a></h1>
-<p>A <code>Doctrine\DBAL\Connection</code> provides a PDO-like API for
+<p>A <code>Doctrine\DBAL\Connection</code> provides an API for
 transaction management, with the methods
-<code>Connection#beginTransaction()</code>, <code>Connection#commit()</code> and
-<code>Connection#rollBack()</code>.</p>
+<code>beginTransaction()</code>, <code>commit()</code> and <code>rollBack()</code>.</p>
 <p>Transaction demarcation with the Doctrine DBAL looks as follows:</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
@@ -480,10 +479,10 @@ time, it is possible. Transaction control should mostly be left to
 a service layer and not be handled in data access objects or
 similar.</p>
 </td></tr></table></div>
-<div class="alert warning-admonition bg-light-yellow text-dark border"><table width="100%"><tr><td width="10" class="align-top"><i class="fas fa-exclamation-circle text-warning mr-2"></i></td><td><p>Directly invoking <code>PDO#beginTransaction()</code>,
-<code>PDO#commit()</code> or <code>PDO#rollBack()</code> or the corresponding methods
-on the particular <code>Doctrine\DBAL\Driver\Connection</code> instance in
-use bypasses the transparent transaction nesting that is provided
+<div class="alert warning-admonition bg-light-yellow text-dark border"><table width="100%"><tr><td width="10" class="align-top"><i class="fas fa-exclamation-circle text-warning mr-2"></i></td><td><p>Directly invoking <code>PDO::beginTransaction()</code>,
+<code>PDO::commit()</code> or <code>PDO::rollBack()</code> or the corresponding methods
+on the particular <code>Doctrine\DBAL\Driver\Connection</code> instance
+bypasses the transparent transaction nesting that is provided
 by <code>Doctrine\DBAL\Connection</code> and can therefore corrupt the
 nesting level, causing errors with broken transaction boundaries
 that may be hard to debug.</p>
