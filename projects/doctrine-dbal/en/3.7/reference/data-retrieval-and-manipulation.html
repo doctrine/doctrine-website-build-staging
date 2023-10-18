@@ -17,12 +17,12 @@
                     <meta name="robots" content="noindex">
         
         
-                    <link rel="canonical" href="https://staging.doctrine-project.org/projects/doctrine-dbal/en/3.6/reference/data-retrieval-and-manipulation.html" />
+                    <link rel="canonical" href="https://staging.doctrine-project.org/projects/doctrine-dbal/en/3.7/reference/data-retrieval-and-manipulation.html" />
     
         <link
             rel="stylesheet"
             type="text/css"
-            href="https://staging.doctrine-project.org/frontend/css/index.css?54f9c4"
+            href="https://staging.doctrine-project.org/frontend/css/index.css?a5f744"
                         crossorigin="anonymous"
         />
 
@@ -166,9 +166,6 @@
                                 <a class="dropdown-item" href="/styleguide.html">Styleguide</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/events.html">Events</a>
-                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="/consulting.html">Consulting</a>
@@ -252,17 +249,7 @@
 </nav>
                                     </div>
 
-                    
-    <div class="alert caution bg-light-yellow text-dark border">
-    <table width="100%">
-        <tr>
-            <td width="10" class="align-top">
-                <i class="fas fa-exclamation-circle text-warning mr-2"></i>
-            </td>
-            <td><p>You are browsing a version that has not yet been released.</p></td>
-        </tr>
-    </table>
-</div>
+                
 
                 <div class="row">
                     <div class="col-12">
@@ -271,7 +258,7 @@
                                                             
                                 <div class="dropdown show d-inline-block">
                                     <a class="project-version-switcher btn btn-secondary btn-sm dropdown-toggle" href="/projects/doctrine-dbal/en/3.7/reference/data-retrieval-and-manipulation.html" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        3.7
+                                        3.7.1
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -279,21 +266,21 @@
 
                                                                                                                                                 
                                                     <a class="project-version-switcher dropdown-item" href="/projects/doctrine-dbal/en/latest/reference/data-retrieval-and-manipulation.html">
-                                                        4.0.0-BETA2
+                                                        4.0.0-RC1
+
+                                                        
+                                                                                                                    (upcoming)
+                                                                                                            </a>
+                                                                                                                                                                                                
+                                                    <a class="project-version-switcher dropdown-item" href="/projects/doctrine-dbal/en/3.8/reference/data-retrieval-and-manipulation.html">
+                                                        3.8
 
                                                         
                                                                                                                     (upcoming)
                                                                                                             </a>
                                                                                                                                                                                                 
                                                     <a class="project-version-switcher dropdown-item active" href="/projects/doctrine-dbal/en/3.7/reference/data-retrieval-and-manipulation.html">
-                                                        3.7
-
-                                                        
-                                                                                                                    (upcoming)
-                                                                                                            </a>
-                                                                                                                                                                                                
-                                                    <a class="project-version-switcher dropdown-item" href="/projects/doctrine-dbal/en/3.6/reference/data-retrieval-and-manipulation.html">
-                                                        3.6.6
+                                                        3.7.1
 
                                                                                                                     (current)
                                                         
@@ -302,6 +289,8 @@
                                                                                     <h6 class="dropdown-header">Unmaintained</h6>
 
                                                                                                                                                 
+                                                    <a class="dropdown-item" href="/projects/doctrine-dbal/en/3.6/reference/data-retrieval-and-manipulation.html">3.6</a>
+                                                                                                                                                                                                
                                                     <a class="dropdown-item" href="/projects/doctrine-dbal/en/3.5/reference/data-retrieval-and-manipulation.html">3.5</a>
                                                                                                                                                                                                 
                                                     <a class="dropdown-item" href="/projects/doctrine-dbal/en/3.4/reference/data-retrieval-and-manipulation.html">3.4</a>
@@ -613,10 +602,12 @@ SQL injection possibilities if not handled carefully.</p>
 <p>Doctrine DBAL implements a very powerful parsing process that will make this kind of prepared
 statement possible natively in the binding type system.
 The parsing necessarily comes with a performance overhead, but only if you really use a list of parameters.
-There are two special binding types that describe a list of integers or strings:</p>
+There are four special binding types that describe a list of integers, regular, ascii or binary strings:</p>
 <ul>
     <li class="dash"><code>\Doctrine\DBAL\ArrayParameterType::INTEGER</code></li>
 <li class="dash"><code>\Doctrine\DBAL\ArrayParameterType::STRING</code></li>
+<li class="dash"><code>\Doctrine\DBAL\ArrayParameterType::ASCII</code></li>
+<li class="dash"><code>\Doctrine\DBAL\ArrayParameterType::BINARY</code></li>
 </ul>
 <p>Using one of these constants as a type you can activate the SQLParser inside Doctrine that rewrites
 the SQL and flattens the specified values into the set of parameters. Consider our previous example:</p>
@@ -978,13 +969,13 @@ given data.</p>
 <pre class="code-block-table"><code class="php"><button
             type="button"
             class="copy-to-clipboard"
-            data-copy-element-id="f45f3dcc0450d7ce9584bd63a26e18fbeab3c3a5"
+            data-copy-element-id="07488edafbc28c64561322eb8b0556e8d02e9392"
             title="Copy to Clipboard"
-        ><i class="fas fa-copy"></i></button><div id="f45f3dcc0450d7ce9584bd63a26e18fbeab3c3a5"><table class="code-block-table"><tr><td class="line-number noselect"><a name="line-number-f45f3dcc0450d7ce9584bd63a26e18fbeab3c3a5-1" class="line-number-anchor" /><a href="#line-number-f45f3dcc0450d7ce9584bd63a26e18fbeab3c3a5-1">1</a></td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
+        ><i class="fas fa-copy"></i></button><div id="07488edafbc28c64561322eb8b0556e8d02e9392"><table class="code-block-table"><tr><td class="line-number noselect"><a name="line-number-07488edafbc28c64561322eb8b0556e8d02e9392-1" class="line-number-anchor" /><a href="#line-number-07488edafbc28c64561322eb8b0556e8d02e9392-1">1</a></td><td class="code-line" rowspan="3"><span class="hljs-meta">&lt;?php</span>
 $conn-&gt;update(<span class="hljs-string">'user'</span>, [<span class="hljs-string">'username'</span> =&gt; <span class="hljs-string">'jwage'</span>], [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-number">1</span>]);
-<span class="hljs-comment">// UPDATE user (username) VALUES (?) WHERE id = ? (jwage, 1)</span></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-f45f3dcc0450d7ce9584bd63a26e18fbeab3c3a5-2" class="line-number-anchor" /><a href="#line-number-f45f3dcc0450d7ce9584bd63a26e18fbeab3c3a5-2">2</a></td></tr>
-<tr><td class="line-number noselect"><a name="line-number-f45f3dcc0450d7ce9584bd63a26e18fbeab3c3a5-3" class="line-number-anchor" /><a href="#line-number-f45f3dcc0450d7ce9584bd63a26e18fbeab3c3a5-3">3</a></td></tr></table></div></code></pre>
+<span class="hljs-comment">// UPDATE user SET username = ? WHERE id = ? (jwage, 1)</span></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-07488edafbc28c64561322eb8b0556e8d02e9392-2" class="line-number-anchor" /><a href="#line-number-07488edafbc28c64561322eb8b0556e8d02e9392-2">2</a></td></tr>
+<tr><td class="line-number noselect"><a name="line-number-07488edafbc28c64561322eb8b0556e8d02e9392-3" class="line-number-anchor" /><a href="#line-number-07488edafbc28c64561322eb8b0556e8d02e9392-3">3</a></td></tr></table></div></code></pre>
 
 </div>
 </div>
@@ -1006,7 +997,6 @@ $conn-&gt;update(<span class="hljs-string">'user'</span>, [<span class="hljs-str
                         <li class="list-inline-item"><a href="/sponsorship.html">Sponsorship</a></li>
                         <li class="list-inline-item"><a href="/community/index.html">Community</a></li>
                         <li class="list-inline-item"><a href="/blog/index.html">Blog</a></li>
-                        <li class="list-inline-item"><a href="/events.html">Events</a></li>
                         <li class="list-inline-item"><a href="/consulting.html">Consulting</a></li>
                     </ul>
                 </div>
@@ -1049,7 +1039,7 @@ $conn-&gt;update(<span class="hljs-string">'user'</span>, [<span class="hljs-str
         </script>
 
         <script
-            src="https://staging.doctrine-project.org/frontend/js/bundle.js?5d0fd0"
+            src="https://staging.doctrine-project.org/frontend/js/bundle.js?c653f9"
                         crossorigin="anonymous">
         </script>
 
