@@ -5,6 +5,7 @@ import(/* webpackChunkName: "sentry" */ '@sentry/browser').then((module) => {
 });
 
 import 'bootstrap/js/dist/index';
+import 'bootstrap/dist/js/bootstrap';
 
 import(/* webpackChunkName: "main" */ './main').then((module) => {
   module.default();
@@ -19,7 +20,3 @@ if ($('#sidebar').length > 0) {
     new module.default();
   });
 }
-
-import(/* webpackChunkName: "tab" */ './tab').then((module) => {
-  module.default();
-});
