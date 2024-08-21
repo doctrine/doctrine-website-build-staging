@@ -20,7 +20,7 @@
         <link
             rel="stylesheet"
             type="text/css"
-            href="https://staging.doctrine-project.org/frontend/css/index.css?308422"
+            href="https://staging.doctrine-project.org/frontend/css/index.css?7ed5f2"
                         crossorigin="anonymous"
         />
 
@@ -122,10 +122,9 @@
                                                                     <a class="dropdown-item" href="/projects/migrations.html">Migrations</a>
                                                                     <a class="dropdown-item" href="/projects/mongodb-odm.html">MongoDB ODM</a>
                                                                     <a class="dropdown-item" href="/projects/orm.html">ORM</a>
-                                                                    <a class="dropdown-item" href="/projects/persistence.html">Persistence</a>
                                                                     <a class="dropdown-item" href="/projects/phpcr-odm.html">PHPCR ODM</a>
+                                                                    <a class="dropdown-item" href="/projects/persistence.html">Persistence</a>
                                                                     <a class="dropdown-item" href="/projects/rst-parser.html">RST Parser</a>
-                                                                    <a class="dropdown-item" href="/projects/skeleton-mapper.html">Skeleton Mapper</a>
                                                                 <a class="dropdown-item bg-secondary text-white font-weight-bold" href="/projects.html">View All</a>
                             </div>
                         </li>
@@ -137,12 +136,14 @@
                                 <a class="dropdown-item" href="/contribute/index.html">Contributor Workflow</a>
                                 <a class="dropdown-item" href="/contribute/maintainer/index.html">Maintainer Workflow</a>
                                 <a class="dropdown-item" href="/contribute/website/index.html">Contribute to Website</a>
-                                <a class="dropdown-item" href="/team/maintainers.html">Maintainers</a>
-                                <a class="dropdown-item" href="/team/contributors.html">Contributors</a>
                                 <a class="dropdown-item" href="/policies.html">Policies</a>
                                 <a class="dropdown-item" href="https://github.com/doctrine" target="_blank" rel="noopener noreferrer">GitHub</a>
                                 <a class="dropdown-item" href="/styleguide.html">Styleguide</a>
                             </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sponsorship.html">Sponsorship</a>
                         </li>
 
                         <li class="nav-item">
@@ -226,53 +227,52 @@ your local web server. You will need to setup a virtual host in your web
 server and point the root directory at
 <code>/data/doctrine-website/build-dev</code>.</p>
 </div>
-<div class="section" id="sync-project-repositories">
-<h2>Sync Project Repositories</h2>
-<p>First you need to checkout or update the repositories for each project.</p>
-<div class="console"><pre><code class="console"><span class="noselect">$ </span>./bin/console sync-repositories</code></pre></div>
-</div>
-<div class="section" id="build-website-data">
-<h2>Build Website Data</h2>
-<p>The website build process relies on data that is dynamically pulled from Git, GitHub API
-and YAML files in the <code>config</code> folder. To build the website data, run the <code>build-website-data</code>
-command.</p>
-<div class="console"><pre><code class="console"><span class="noselect">$ </span>./bin/console build-website-data</code></pre></div>
-</div>
-<div class="section" id="build-documentation">
-<h2>Build Documentation</h2>
-<p>Now are you ready to start building the website! Build the documentation with the
-<code>build-docs</code> command.</p>
-<div class="console"><pre><code class="console"><span class="noselect">$ </span>./bin/console build-docs</code></pre></div>
-<div class="section" id="api-documentation">
-<h3>API Documentation</h3>
-<p>By default only the RST docs are built. You need to pass the <code>--api</code>
-option to also generate the API docs:</p>
-<div class="console"><pre><code class="console"><span class="noselect">$ </span>./bin/console build-docs --api</code></pre></div>
-<p>We use <a href="https://github.com/FriendsOfPHP/Sami">Sami</a> for generating the
-PHP API documentation for each project.</p>
-</div>
+<div class="section" id="build-static-website">
+<h2>Build static website</h2>
+<p>To build the full website and its documentation you need to run the command</p>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>./bin/console build-all</code></pre></div>
+<p>This will run several commands in the appropriate order to create the Doctrine website and its content.</p>
 <div class="section" id="search-indexes">
 <h3>Search Indexes</h3>
 <p>To build the Algolia search indexes pass the <code>--search</code> option:</p>
-<div class="console"><pre><code class="console"><span class="noselect">$ </span>./bin/console build-docs --search</code></pre></div>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>./bin/console build-all --search</code></pre></div>
 <p>You will need to have the <code>doctrine.website.algolia.admin_api_key</code>
 parameter in <code>config/local.yml</code> in order to update the Algolia search
 indexes.</p>
 </div>
-</div>
-<div class="section" id="build-the-website">
-<h2>Build the Website</h2>
-<p>Now you are ready to build the website for the first time:</p>
-<div class="console"><pre><code class="console"><span class="noselect">$ </span>./bin/console build-website</code></pre></div>
+<div class="section" id="open-the-doctrine-website">
+<h3>Open the Doctrine website</h3>
 <p>Go take a look at <code>lcl.doctrine-project.org</code> and the local website
 should render. The built code for the website is written to
 <code>/data/doctrine-website/build-dev</code>.</p>
+</div>
 </div>
 <div class="section" id="watch-frontend-assets">
 <h2>Watch Frontend Assets</h2>
 <p>After the initial build you can watch for frontend asset changes to update the stylesheets.</p>
 <div class="console"><pre><code class="console"><span class="noselect">$ </span>npm run watch</code></pre></div>
 <p>This process will run in the foreground and recompile the assets when a change is made to them. After refreshing the browser you should see the new assets loaded.</p>
+</div>
+<div class="section" id="run-tests">
+<h2>Run tests</h2>
+<p>The Doctrine website includes Unit Tests and some Integration Tests to cover its functionality and to keep it stable.</p>
+<div class="section" id="javascript">
+<h3>JavaScript</h3>
+<p>If some changes are provided for JavaScript then there have to be tests written in `Jest &lt;<a href="https://jestjs.io">https://jestjs.io</a>&gt;`. You'll
+find the Jest tests in the <code>jest</code> directory of the Doctrine website project. The tests can be run with the following
+command:</p>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>yarn jest</code></pre></div>
+</div>
+<div class="section" id="php">
+<h3>PHP</h3>
+<p>PHP tests are using `PHPUnit &lt;<a href="https://phpunit.de">https://phpunit.de</a>&gt;` to cover the website's PHP code. If you want to run tests for PHP, you have to
+build the website with the <code>test</code> environment first.</p>
+<div class="console"><pre><code class="console"><span class="noselect">$ </span>./bin/console --env=test build-all</code></pre></div>
+<p><strong>Why using a different environment for tests?</strong> A full build of the website is essential for running integration tests
+and the stability of the build. The Doctrine project has so many different projects with documentation, that it would take
+too much time, locally or in GitHub Actions CI workflows, to finish a build. The <code>test</code> environment provides a minimal
+configuration to improve runtime while covering all the use cases a website build has.</p>
+</div>
 </div>
 <div class="section" id="restructuredtext">
 <h2>reStructuredText</h2>
@@ -292,18 +292,7 @@ and look for something that needs help.</p>
 
         <button id="back-to-top" title="Go to top">Top</button>
 
-                    <footer class="footer">
-                <div class="container">
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="/projects.html">Projects</a></li>
-                        <li class="list-inline-item"><a href="/partners.html">Partners</a></li>
-                        <li class="list-inline-item"><a href="/sponsorship.html">Sponsorship</a></li>
-                        <li class="list-inline-item"><a href="/community/index.html">Community</a></li>
-                        <li class="list-inline-item"><a href="/blog/index.html">Blog</a></li>
-                    </ul>
-                </div>
-            </footer>
-        
+                
         <script id="instantsearch-template" type="text/template">
             
     <a href="{{url}}" class="list-group-item list-group-item-action flex-column align-items-start">
